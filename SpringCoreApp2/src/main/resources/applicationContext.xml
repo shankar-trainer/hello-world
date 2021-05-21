@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<context:annotation-config></context:annotation-config>
+	<context:property-placeholder
+		location="fruits.properties" />
+
+	<bean id="fruit" class="com.cts.model.Fruits">
+		<property name="fruitsId" value="10001"></property>
+		<property name="fruitsName" value="Mango"></property>
+		<property name="fruitsCost" value="50"></property>
+		<property name="fruitsLocation" value="asam"></property>
+	</bean>
+
+	<bean id="fruit1" class="com.cts.model.Fruits">
+		<property name="fruitsId" value="${fruit.id}"></property>
+		<property name="fruitsName" value="${fruit.name}"></property>
+		<property name="fruitsCost" value="${fruit.cost}"></property>
+		<property name="fruitsLocation" value="${fruit.location}"></property>
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages</value>
+		</property>
+	</bean>
+	
+	<bean id="kid" class="com.cts.model.Kids" lazy-init="true">
+	  <property name="kidsId" value="76677"></property> 
+	  <property name="kidsName" value="babu"></property>
+	  <property name="kidsAge" value="3"></property>
+	</bean>
+	
+	<bean id="home1" class="com.cts.model.Home">
+	  <property name="homeId" value="7"></property> 
+	  <property name="homeName" value="beatiful home"></property>
+	  <property name="homeLocation" value="delhi"></property>
+	</bean>
+	
+	<!-- <bean id="home2" class="com.cts.model.Home">
+	  <property name="homeId" value="17"></property> 
+	  <property name="homeName" value="my heaven"></property>
+	  <property name="homeLocation" value="chennai"></property>
+	</bean>
+ -->	
+	
+	
+	
+	
+<context:component-scan base-package="com.cts.model"/>
+<context:annotation-config></context:annotation-config>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

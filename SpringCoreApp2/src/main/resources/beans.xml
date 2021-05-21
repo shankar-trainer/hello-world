@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="emp1" class="com.cts.model.Employee">
+		<property name="empId" value="1001"></property>
+		<property name="empName" value="a kumar"></property>
+		<property name="empSalary" value="20000"></property>
+	</bean>
+
+	<bean id="bk1" class="com.cts.model.Book">
+		<constructor-arg name="isbn" value="67767" />
+		<constructor-arg name="bname" value="spring in action" />
+		<constructor-arg name="author" value="p kumar" />
+		<constructor-arg name="cost" value="2300" />
+	</bean>
+	
+<!-- 	<bean id="prd1" class="com.cts.model.Product" autowire="byName">
+ -->	<bean id="prd1" class="com.cts.model.Product" autowire="byType">
+	  <property name="prdId" value="656556"></property>
+	  <property name="prdName" value="columbus show"></property>
+	  <property name="prdCost" value="2500"></property>
+	<!--   <property name="prdOrder" ref="prdOrder"   ></property> -->
+	</bean>
+	
+	<bean id="prdOrder1111" class="com.cts.model.ProductOrder">
+	  <property name="orderId" value="1001"></property>
+	  <property name="orderDate" value="04/20/2021"></property>
+	  <property name="orderDelieveryDate" value="04/25/2021"></property>
+	  <property name="orderLocation"  value="kelampakkam chennai"  ></property>
+	</bean>
+	
+	<bean id="prdOrder1112" class="com.cts.model.ProductOrder">
+	  <property name="orderId" value="1001"></property>
+	  <property name="orderDate" value="04/20/2021"></property>
+	  <property name="orderDelieveryDate" value="04/25/2021"></property>
+	  <property name="orderLocation"  value="kelampakkam chennai"  ></property>
+	</bean>
+	
+</beans>
