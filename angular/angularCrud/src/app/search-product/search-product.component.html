@@ -1,0 +1,34 @@
+<div class="container">
+    <form (ngSubmit)='onSubmit()' class="bg-dark text-light mt-5 p-5">
+        <div class="form-group row">
+            <label class="col-sm-2">Enter Id </label>
+            <input class="form-control col-sm-6" name="id" [(ngModel)]='prd.id' required>
+        </div>
+
+        <input type="submit" value="search" class="btn btn-success" />
+    </form>
+    <br>
+    <div *ngIf='prdstatus' class='border bg-dark text-light'>
+        <div class="border border-primary p-5">
+        product found
+        <ul>
+            <li>id is {{prd.id}}
+            <li>name is {{prd.name}}
+            <li>cost is {{prd.cost}}
+        </ul>
+        </div>
+        <div class="p-5">
+            <input type="button" value="Show All Product" class="btn btn-primary" (click)="showall()">
+        </div>
+    </div>
+    <div [hidden]="submitted">
+
+    </div>
+
+    <div [hidden]="!submitted" *ngIf='!prdstatus' class='border bg-dark text-light'>
+        product not found
+        <div class="p-5">
+            <input type="button" value="Show All Product" class="btn btn-primary" (click)="showall()">
+        </div>
+    </div>
+</div>

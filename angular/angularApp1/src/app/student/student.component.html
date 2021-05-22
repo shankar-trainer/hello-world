@@ -1,0 +1,68 @@
+<div class="container bg-dark text-light mt-5 p-3 border border-primary w-5">
+
+    <div [ngStyle]="{'color': 'yellowgreen', 'font-size': '24px', 'font-weight': 'bold','margin':'10px'}">
+        Student Details
+    </div>
+
+    <div [ngClass]="{style1:true}">
+        CTS Training
+    </div>
+
+    <div [ngClass]="{style1:false}">
+        CTS Training
+    </div>
+
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">
+            Enter Roll
+        </label>
+        <input [(ngModel)]='roll' placeholder="Enter roll" class="form-control col-sm-6"><br>
+    </div>
+
+    <div class="form-group row">
+
+        <label class="col-sm-2 col-form-label">
+            Enter Name
+        </label>
+
+        <input [(ngModel)]='name' placeholder="Enter name" class="form-control col-sm-6"><br>
+    </div>
+
+    <div class="form-group row">
+
+        <label class="col-sm-2 col-form-label"> Enter Marks
+        </label>
+        <input [(ngModel)]='marks' placeholder="Enter marks" class="form-control col-sm-6"><br>
+    </div>
+
+    <div class="form-group row">
+
+        <label class="col-sm-2 col-form-label"> Enter Marks
+        </label>
+        <input [(ngModel)]='grade' placeholder="Enter grade" class="form-control col-sm-6"><br>
+    </div>
+
+    <div class="border border-primary p-3" style='width:30%'>
+        roll is {{roll}}<br>
+        name is {{name}}<br>
+        marks is {{marks}}<br>
+        <p *ngIf='marks>75' class="ml-5 text-primary"> You got Distinction</p>
+        <p *ngIf='marks>=60 && marks<=75' class="ml-5 text-primary">You got First</p>
+        <p *ngIf='marks>50 && marks<=59' class="ml-5 text-primary">You got Second</p>
+        <p *ngIf='marks>35 && marks<=49' class="ml-5 text-primary">You got Third</p>
+        <p *ngIf='marks>0 && marks<=34' class="ml-5 text-danger">You got Fail</p>
+
+        grade is {{grade}}
+        <div [ngSwitch]='grade'>
+            <p *ngSwitchCase="'A'" class="ml-5 text-primary"> Excellent</p>
+            <p *ngSwitchCase="'B'" class="ml-5 text-primary"> Very Good</p>
+            <p *ngSwitchCase="'C'" class="ml-5 text-primary"> Good</p>
+            <p *ngSwitchCase="'D'" class="ml-5 text-warning"> Average</p>
+            <p *ngSwitchCase="'E'" class="ml-5 text-danger"> Poor </p>
+            <p *ngSwitchDefault class="ml-5 text-info"> Wrong Input </p>
+        </div>
+        <br>
+    </div>
+
+</div>

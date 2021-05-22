@@ -1,0 +1,67 @@
+<div class="container">
+    <h3 class="bg-primary text-white p-2" style="text-align: center;">Product Table</h3>
+    <table class="table table-striped table-bordered bg-dark text-light">
+        <tr>
+            <th>
+                Product Id
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Product Cost
+            </th>
+        </tr>
+        <tr>
+            <td>{{prd1.prdId}}</td>
+            <td>{{prd1.prdName}}</td>
+            <td>{{prd1.prdCost}}</td>
+        </tr>
+        <tr>
+            <td>{{prd2.prdId}}</td>
+            <td>{{prd2.prdName}}</td>
+            <td>{{prd2.prdCost}}</td>
+        </tr>
+        <tr>
+            <td>{{prd3.prdId}}</td>
+            <td>{{prd3.prdName}}</td>
+            <td>{{prd3.prdCost}}</td>
+        </tr>
+
+    </table>
+
+    <hr>
+
+    <table class="table table-striped table-bordered bg-dark text-light">
+        <tr>
+            <th> Product Id </th>
+            <th> Product Name </th>
+            <th> Product Cost </th>
+        </tr>
+        <tr *ngFor="let p of product">
+            <td *ngIf='p.prdCost>100'>{{p.prdId}}</td>
+            <td *ngIf='p.prdCost>100'>{{p.prdName}}</td>
+            <td *ngIf='p.prdCost>100'>{{p.prdCost}}</td>
+        </tr>
+    </table>
+    <br>
+    city is {{city}}
+
+    <div [ngSwitch]="city">
+        <p *ngSwitchCase="'delhi'">delhi is capital of india </p>
+        <p *ngSwitchCase="'bhopal'">bhopal is capital of mp </p>
+        <p *ngSwitchDefault>wrong value </p>
+    </div>
+
+
+    <button (click)="hello()">click it</button>
+    <br>
+
+    <img src={{image1}} />
+    <img [src]="image1" />
+    <br>
+    <img src={{image2}} />
+    <img src={{image2}} width="{{imageW}}" height="{{imageH}}" />
+    <br>
+
+</div>

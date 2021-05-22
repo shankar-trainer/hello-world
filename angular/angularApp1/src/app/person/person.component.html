@@ -1,0 +1,36 @@
+<H1>Person Form</H1>
+
+<div class="container bg-dark text-light p-3 m-4">
+    <form [formGroup]='personForm' (ngSubmit)="login()" >
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Enter id</label>
+            <input class="form-control col-sm-6" id="personId" [formControl]='personId' >
+            <div  class="col-sm-4" [hidden]="personId.valid||personId.untouched">
+                <div>person id is invalid</div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Enter Name</label>
+            <input class="form-control col-sm-6" id="personName" [formControl]='personName'>
+
+            <div class="col-sm-4" [hidden]="personName.valid||personName.untouched">
+                <div>person name is invalid</div>
+            </div>
+
+            <div class="col-sm-4" [hidden]="!personName.hasError('minlength')">
+                <div>person name must of  min 10 chars </div>
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Enter Salary</label>
+            <input class="form-control col-sm-6" id="personSalary" [formControl]='personSalary'>
+            <div class="col-sm-4" [hidden]="personSalary.valid||personSalary.untouched">
+                <div>person salary is invalid</div>
+            </div>
+        </div>
+
+    </form>
+</div>

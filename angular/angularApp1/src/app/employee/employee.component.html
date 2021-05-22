@@ -1,0 +1,40 @@
+<div class='container bg-dark text-light p-3 '>
+
+<h1>employee page</h1>
+<!-- my name is {{fname|uppercase}}{{lname|uppercase}}<br>
+<br>
+
+Salary is {{salary}}<br>
+Salary is {{salary|currency}}<br>
+Salary is {{salary|currency:'₹'}}<br>
+Date of birth is {{dob}}<br>
+Date of birth is {{dob|date}}<br>
+Date of birth is {{dob|date:'fullDate'}}<br>
+Date of birth is {{dob|date:'shortDate'}}<br>
+Date of birth is {{dob|date:'mediumDate'}}<br> -->
+
+<table class="table table-striped table-bordered">
+	<tr>
+		<th>Employee Id</th>
+		<th>Employee Name</th>
+		<th>Employee Location</th>
+		<th>Employee Dob</th>
+
+	</tr>
+	<tr *ngFor="let e of employee">
+    <td>{{e.empId}}</td>
+    <td>{{e.empName|uppercase}}</td>
+    <td>{{e.empSalary|currency:'₹'}}</td>
+    <td>{{e.empDob|date:'shortDate'}}</td>
+	</tr>
+</table>
+
+
+
+</div>
+
+
+<br><br><br><br><br>
+
+<pre>{{employee|json}}</pre>
+

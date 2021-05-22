@@ -1,0 +1,45 @@
+.index{
+	background-color: yellowgreen;
+	margin-left: 400px;
+	border:solid 1px;
+	width:30%;
+	padding: 1em;
+}
+label{
+	float:left;
+	width: 100px;
+	margin-top: 12px;
+}
+input{
+	width: 110px;
+	margin-top: 10px;
+}
+
+form{
+	margin-left:400px;
+	background-color: violet;
+	width:30%;
+	border:solid;
+	padding:2em;
+}
+
+.form{
+	margin-left:400px;
+	background-color: violet;
+	width:30%;
+	border:solid;
+	padding:2em;
+}
+
+.label{
+	float:left;
+	width: 100px;
+	margin-top: 12px;
+}
+.input{
+	width: 110px;
+	margin-top: 10px;
+}
+
+
+

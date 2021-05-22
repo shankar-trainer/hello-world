@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Product table</h1>
+    <table class="table table-striped table-bordered bg-dark text-light">
+     <tr>
+      <th>Product Id</th>
+      <th>Product Name</th>
+      <th>Product Cost</th>
+
+     </tr>
+     <tr *ngFor="let p of prd|async">
+         <td>{{p.id}}</td>
+         <td>{{p.name}}</td>
+         <td>{{p.cost}}</td>
+     </tr>   
+    </table>   
+</div>  

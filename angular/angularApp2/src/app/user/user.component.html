@@ -1,0 +1,19 @@
+
+<table class="table table-striped table-bordered bg-dark text-light">
+<tr>
+    <th>
+        User Id
+    </th>
+    <th>
+        User Name
+    </th>
+    <th>
+        User Location
+    </th>
+</tr>
+<tr *ngFor="let u of user">
+  <td>{{u.userId}}</td>
+  <td>{{u.userName}}</td>
+  <td>{{u.userLocation}}</td>
+</tr>
+</table>

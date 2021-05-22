@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="emp1" class="org.cts.beans.Employee"
+		init-method="empInit" destroy-method="empClean" lazy-init="true">
+
+		<property name="id" value="1001" />
+		<property name="name" value="bhupendra kumar" />
+		<property name="salary" value="67000" />
+
+	</bean>
+
+	<bean id="myemp1" p:id="9999" p:name="amitabh kumar"
+		p:salary="90000" class="org.cts.beans.Employee">
+		<!-- <property name="" value=""/> -->
+	</bean>
+
+	<bean id="customer1" class="org.cts.beans.Customer">
+		<constructor-arg name="id" value="67767"></constructor-arg>
+		<constructor-arg name="name" value="parag kumar"></constructor-arg>
+		<constructor-arg name="location" value="amritsar"></constructor-arg>
+	</bean>
+
+	<bean id="customer2" class="org.cts.beans.Customer">
+		<constructor-arg name="id" value="67768"></constructor-arg>
+		<constructor-arg name="name" value="yashwant kumar"></constructor-arg>
+		<constructor-arg name="location" value="patna"></constructor-arg>
+	</bean>
+	
+	<bean id="customer3" class="org.cts.beans.Customer">
+		<constructor-arg name="id" value="67769"></constructor-arg>
+		<constructor-arg name="name" value="jayant kumar"></constructor-arg>
+		<constructor-arg name="location" value="bhopal"></constructor-arg>
+	</bean>
+
+	<bean id="collection1" class="org.cts.beans.CollectionDemo">
+
+		<property name="custMap">
+			<map>
+				<entry key="67767" value-ref="customer1"></entry>
+				<entry key="67768" value-ref="customer2"></entry>
+				<entry key="67769" value-ref="customer3"></entry>
+			</map>
+		</property>
+
+		<property name="list1">
+			<list>
+				<value>Mobile</value>
+				<value>Spring Recipe Book</value>
+				<value>Spring In Action Book</value>
+				<value>Spring Recipe Book</value>
+			</list>
+		</property>
+
+		<property name="emp_list1">
+			<list>
+				<ref bean="emp1" />
+				<ref bean="myemp1" />
+				<ref bean="emp1" />
+			</list>
+		</property>
+
+		<property name="emp_set">
+			<list>
+				<ref bean="emp1" />
+				<ref bean="myemp1" />
+				<ref bean="emp1" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

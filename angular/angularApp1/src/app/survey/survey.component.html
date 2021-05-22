@@ -1,0 +1,82 @@
+<div class="container bg-dark text-light">
+    <span>
+        <h1>Survey Form</h1>
+    </span>
+
+    <form #qForm="ngForm" (onSubmit)="onSubmit()" class="m-3 p-3">
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Enter Id</label>
+            <input class="form-control col-sm-6" required [(ngModel)]="survey.surveyId" #surveyId="ngModel"
+                minlength="3" name="surveyId">
+
+            <div *ngIf="surveyId.touched && surveyId.errors">
+
+                <div class="alert alert-danger" *ngIf="surveyId.errors.required">
+                    Survey Id is empty
+                </div>
+
+                <div class="alert alert-danger" *ngIf="surveyId.errors.minlength">
+                    Survey Id must of 3 digit
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Enter Name</label>
+            <input class="form-control col-sm-6" required [(ngModel)]="survey.surveyName" minlength="5"
+                #surveyName="ngModel" name='surveyName'>
+
+
+            <div *ngIf="surveyName.touched && surveyName.errors">
+
+                <div class="alert alert-danger" *ngIf="surveyName.errors.required">
+                    Survey Name is empty
+                </div>
+
+                <div class="alert alert-danger" *ngIf="surveyName.errors.minlength">
+                    Survey Name must of 5 digit
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Enter Date</label>
+            <input type='date' class="form-control col-sm-6" required [(ngModel)]="survey.surveyDate" #surveyDate="ngModel"
+                name="surveyDate">
+
+            <div *ngIf="surveyDate.touched && surveyDate.errors">
+
+                <div class="alert alert-danger" *ngIf="surveyDate.errors.required">
+                    Survey Date is empty
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Enter Location</label>
+            <input class="form-control col-sm-6 " required [(ngModel)]="survey.surveyLocation" minlength="5"
+                #surveyLocation="ngModel">
+
+            <div *ngIf="surveyLocation.touched && surveyLocation.errors">
+
+                <div class="alert alert-danger" *ngIf="surveyLocation.errors.required">
+                    Survey Location is empty
+                </div>
+
+                <div class="alert alert-danger" *ngIf="surveyLocation.errors.minlength">
+                    Survey Location must of 5 digit
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </form>
+
+</div>

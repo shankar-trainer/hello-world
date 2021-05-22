@@ -1,0 +1,11 @@
+.myclass{
+
+    border: solid;
+    padding: 2em;
+    width: 50%;
+    margin: 200px;
+    margin-left: 400px;
+    background: yellowgreen;
+    color: blue;
+    font-size: 20pt;
+}

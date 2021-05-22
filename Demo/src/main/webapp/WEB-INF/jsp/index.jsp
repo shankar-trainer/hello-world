@@ -1,0 +1,5 @@
+<%
+
+response.sendRedirect("book/bookForm");
+
+%>

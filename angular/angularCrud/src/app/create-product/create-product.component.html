@@ -1,0 +1,66 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" class="bg-dark text-light p-5 mt-5 w-50" >
+     
+     <h3 class='mb-4'>Create Product</h3>
+
+      <div class="form-group row">
+        <label class="col-sm-3">Enter Id</label>
+        <input class="form-control col-sm-5" [(ngModel)]='prd.id' name='id' required #id='ngModel' minlength="3" />
+
+        <div *ngIf='id.touched && id.errors' class="ml-4">
+          <div *ngIf='id.errors.required'>
+            id is empty
+          </div>
+
+          <div *ngIf='id.errors.minlength'>
+            id must be of three digit
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3">Enter Name</label>
+        <input class="form-control  col-sm-5" [(ngModel)]='prd.name' name='name' required #name='ngModel'
+          minlength="10" />
+
+        <div *ngIf='name.touched && name.errors' class="ml-4">
+          <div *ngIf='name.errors.required'>
+            name is empty
+          </div>
+
+          <div *ngIf='name.errors.minlength'>
+            name must be of 10 character
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3">Enter Cost</label>
+        <input class="form-control col-sm-5" [(ngModel)]='prd.cost' name='cost' #cost='ngModel' minlength="2" required />
+        <div *ngIf='cost.touched && cost.errors' class="ml-4">
+          <div *ngIf='cost.errors.required'>
+            cost is empty
+          </div>
+
+          <div *ngIf='cost.errors.minlength'>
+            cost must be of 2 digit
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <input type="submit" value="Add Product" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+
+  
+  <div [hidden]="!submitted" *ngIf='prdstatus' class="col-sm-3 bg-dark text-light p-5 mt-5" style="margin-left:125px;">
+    <h5>Product Added</h5>
+
+  </div>
+  <div [hidden]="!submitted" *ngIf='!prdstatus' class="col-sm-3 bg-dark text-light p-5 mt-5" style="margin-left:125px;">
+    <!--><h5>Product Already Present</h5>-->
+    <h5>{{msg}}</h5>
+  </div>

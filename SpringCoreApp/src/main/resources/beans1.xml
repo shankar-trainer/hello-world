@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:property-placeholder
+		location="product_config.properties" />
+
+	<bean id="prd1" class="org.cts.beans.Product">
+		<property name="product_Pd" value="${prd.Id}"></property>
+		<property name="product_Name" value="${prd.name}"></property>
+		<property name="product_Cost" value="${prd.cost}"></property>
+	</bean>
+
+	<bean id="user1" class="org.cts.beans.User">
+		<property name="id" value="878787"></property>
+		<property name="name" value="shashi kumar"></property>
+		<property name="country" value="india"></property>
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages</value>
+		</property>
+	</bean>
+
+
+	<!-- <bean id="kid1" class="org.cts.beans.Kid" autowire="byName"> -->
+
+	<bean id="kid1" class="org.cts.beans.Kid" autowire="byType">
+		<property name="kid_Id" value="767676"></property>
+		<property name="kid_Name" value="palak babu"></property>
+		<property name="location" value="kolkotta"></property>
+		<!-- <property name="bday" ref="bday1"></property> -->
+	</bean>
+
+	<!-- <bean id="bday" class="org.cts.beans.Birthday"> -->
+	<bean id="bday1" class="org.cts.beans.Birthday">
+
+		<property name="day" value="10"></property>
+		<property name="month" value="10"></property>
+		<property name="year" value="2010"></property>
+
+	</bean>
+
+
+
+</beans>

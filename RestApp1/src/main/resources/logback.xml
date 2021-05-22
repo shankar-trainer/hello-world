@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<include
+		resource="org/springframework/boot/logging/logback/base.xml" />
+	<property name="LOG_PATH" value="C://log/" />
+	<appender name="Console-Appender"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<layout>
+			<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n
+			</pattern>
+		</layout>
+	</appender>
+	
+	<appender name="File-Appender"
+		class="ch.qos.logback.core.FileAppender">
+		<file>${LOG_PATH}/ Function1Logs.log</file>
+		
+		<layout>
+			<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n
+			</pattern>
+		</layout>
+	</appender>
+
+
+
+	<!-- <appender name="Function1Logs"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}/ Function1Logs.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/Function1Logs.%i.log
+			</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>600</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>5MB</maxFileSize>
+		</triggeringPolicy>
+		<encoder>
+			<pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n
+			</pattern>
+			<outputPatternAsHeader>true</outputPatternAsHeader>
+		</encoder>
+	</appender>
+
+	<logger name="Function1Logger" level="debug" additivity="false">
+		<appender-ref ref=" Function1Logs " />
+	</logger>
+
+	<root>
+		<appender-ref ref="Console-Appender" />
+	</root> -->
+</configuration>

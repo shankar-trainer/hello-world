@@ -1,0 +1,40 @@
+<div class="container">
+
+    <form (ngSubmit)='onSubmit()' class="p-5 bg-dark mt-5 text-light">
+        <div class="form-group row">
+            <label class="col-sm-2">Enter Id </label>
+            <input class="form-control col-sm-6" name="id" [(ngModel)]='prd.id' required #id='ngModel' minlength="3">
+            
+            <div *ngIf='id.touched && id.errors' class="ml-4">
+                <div *ngIf='id.errors.required'>
+                    id is empty
+                </div>
+
+                <div *ngIf='id.errors.minlength'>
+                    id must be of three digit
+                </div>
+            </div>
+        </div>
+
+        <input type="submit" value="delete" class="btn btn-success" />
+    </form>
+    <br>
+
+    <div *ngIf='prdstatus' class='border bg-dark text-light'>
+        product deleted with details below
+        <ul>
+            <li>id is {{prd.id}}
+            <li>name is {{prd.name}}
+            <li>cost is {{prd.cost}}
+        </ul>
+    </div>
+
+    <div [hidden]="submitted">
+
+    </div>
+
+    <div [hidden]="!submitted" *ngIf='!prdstatus' class='border bg-dark text-light'>
+        product not found
+    </div>
+
+</div>

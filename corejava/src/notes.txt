@@ -1,0 +1,345 @@
+int -- no infinity defined 
+2/0 --- error 
+
+2/9 --- 0 
+
+
+Integer 
+   long
+   int   -- default
+   short
+   byte 
+   
+Decimal 
+   float 
+   double -- default   
+
+
++
+-
+* 
+/
+%-- modulus operator
+
+
+
++ ---  in string it will concatenate 
+       in number  it will do arithmetic addition
+       
+
+
+Scanner 
+
+  next() -- single word
+  nextLine() -- multi word
+                it reads the token enter from the keyboard
+  
+  ASCII Code
+		  0 -- 255 
+		  
+		  65 to 90 -- A - Z
+		  
+		  97 - 120  -- a -z 
+		  
+  
+  Q1. take the distance in kilometer.
+  Convert it to meter, feet and inch and display  them.
+  
+  Q2.take the radius from user and calculate area and circumference.
+  
+  
+  
+  
+  
+  Class  --- group of object common behaviour and attributes
+         -- it is conceptual entity 
+         
+         Examples 
+              Employee, Mobile, Bank, Customer, Consumer
+              
+              
+Object   -- instance of class
+
+             it is real time entity 
+             
+              gopal is an employee.
+              
+              Object will have one copy of all thye attributes and behaviour 
+              object has default value as zero and null
+               
+              
+              
+              Student 
+                 attributes (roll, name, subject)
+                 behaviour  (study, assessment)
+                 
+                 5 student -- s1, s2 ,s3, s4 s,5 
+                 
+                 this -- curent class reference 
+                 
+                 Employee emp1=new Employee();
+              
+                 1 reference variable , 1 object 
+                 
+                 
+                 Student s1,s2, s3;
+                 
+                 s1=new Student();
+                 
+                 3 reference variable, 1 object
+                 
+                             
+                 Constructor --  
+                     * its special method having same name as of class
+                     * its automatically called when the object is created
+                     * it can not return the value
+                     * it is used to initialise the object           
+                     * by default one default constrcutor is added by compiler
+                     
+                    two type of constructor
+                       -- default constructor
+                       -- overloaded constructor
+                        
+                 
+                 Overloaded constructor
+                       -- for multiple objects initilisation we use overloaded constructor
+                       -- in a class there can be default and overloaded constructor
+                       -- in a class only one default constructor is allowed.
+                       -- in a class multiple overloaded constructor is allowed
+                       
+                       this, super 
+                           
+                           calling constructor 
+                           this()
+                           super()
+                           
+                           
+                           this-- current class instance variable, method
+                           super --super class instance variable, method
+                           
+                           
+                           
+  primitive   ------  reference data type
+  
+  byte                 Byte
+  short                Short
+  int                  Integer
+  float                Float
+  double               Double
+  char                 Character 
+  
+  primitive 
+     -- hold value itself
+     -- no method, attribues, constrcutor
+     -- no garbage collection
+     -- created at stack
+     
+  reference data type
+       -- refers some class          
+       -- reference variable has address/reference of class/object
+       -- attribues, constrcutor, method
+       -- garbage collection works with reference data type
+       -- create in heap 
+  
+  
+ primitive       Integer 
+      byte          
+      short 
+      int
+      long 
+      
+      
+  
+        
+  
+  
+  
+  
+  C, C++ 
+  
+     assign memory 
+     release memory  -- write code 
+     
+   Java 
+       -- reference variable refers the null not any object 
+       
+       String name="ram kumar"; ----> create object in heap, will allocate memory for the object
+                name-- object1
+                       
+       name=null; --- not referring any object in heap
+                           
+       jvm -- garbage collector --collect    object1 --- release memory
+       
+       
+        
+  String 
+     --> in  java.lang (default)
+     --> immutable fixed length of character 
+     
+          
+          String   Pool 
+          String s1="hello";
+          String s2="hello";
+
+          String s3=new String("hello");
+          
+          
+          Heap 
+               String Pool 
+           s1--->("hello)
+                /           
+           s2--/       
+           s3---> "hello"
+                 
+          
+       
+    String s1= "hello" -- string obj1
+           s1="welcome"-- obj2
+           
+           
+           ==  --> check references
+           .equals --> content 
+           
+           
+           
+      class variable/ static variable
+         --- whole  class      
+         --- single copy will be shared to all the objects
+         --- created to the jvm before the creation of object 
+         
+         
+           
+      instance variable      
+             -- belongs to object
+             -- one copy of instance variable is present to each object
+              
+      local variable 
+              -- method
+              
+                     
+      
+      Employee -- 
+                   id
+                   name
+                   salary 
+                  
+                  static  companyName
+                  static country 
+                  
+         
+         static 
+                variable 
+                method 
+                block 
+                  
+       
+       
+       constructor
+        init block// initialisation of instance variable 
+                 init block is called by constructor 
+                 we can have multiple   init block
+                 
+                 
+                 
+       constructor and init block are used for initilisation of instance variable
+                
+                static block is used for initilisation of static/class variable 
+       
+       
+       
+       inside static method only static members can be used directly 
+         non static/instance variable will be used with object 
+         
+         
+       
+      inside instance/normal method 
+          -- static and instance both directly 
+           
+       
+               object oriented programming features 
+               
+               1.encapsulation 
+                        -->bind code+data-- capsule
+                        --> data private 
+                         
+               2.inheritance
+               
+               3.abstraction
+               4.ploymorphism
+                  
+                  
+                  
+               inheritance 
+                  --> a class can inherit attributes and methos from parent class
+                  
+                  --> parent -- child class 
+                  
+                  --> is a relationship 
+                  
+                  
+                  Shape class 
+                     (draw) 
+                       \
+                   Child class 
+                        
+                        
+                  class  child      extends parent 
+                                 
+                  
+                  constructor is not inherited 
+                     -- each constructor has super() keyword in first line
+                     -- super() -- calls super class constructor
+                     
+                     
+                     
+                     overloading
+                        ->
+                     overriding 
+                        -->changing the super class method in sub class.
+                         
+                         --> in child class overriding method cannot have weaker access modifier
+                         --> it same return type
+                         -->same arguments 
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                  
+                  
+                              
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
