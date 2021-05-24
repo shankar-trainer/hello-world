@@ -13,6 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //@EnableEurekaClient
 @EnableSwagger2
 //http://localhost:9090/swagger-ui.html
+//http://localhost:6060/h2-console
 public class ProductMain {
 
 	public static void main(String[] args) {
@@ -23,6 +24,5 @@ public class ProductMain {
 		return new Docket(DocumentationType.SWAGGER_2).select().
 				apis(RequestHandlerSelectors.basePackage("")).
 				build();
-
 	}
 }

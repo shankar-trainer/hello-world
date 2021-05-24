@@ -108,6 +108,9 @@ Revert the changes specified by the fourth last commit in HEAD and create a new 
    
    commit 3395f2c5a5f1e26370acd3b856745cc9b4469b68 (HEAD -> myproject1)
    git revert  myproject1
+ git pull --rebase --autostash
+  
+   
    
    
    
