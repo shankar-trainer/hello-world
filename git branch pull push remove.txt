@@ -40,6 +40,7 @@ git  branch
  cts shankar.kumar@cognizant.com  ,  Tekno@1234
  
  git remote -- show remote main branch 
+
  git clone -b batch3  https://github.com/shankar-trainer/hello-world
  git clone -b branchname --clone specific branch
 
