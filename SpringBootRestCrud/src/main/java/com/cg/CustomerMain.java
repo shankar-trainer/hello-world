@@ -9,7 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CustomerMain implements CommandLineRunner {
+public class CustomerMain //implements CommandLineRunner
+{
 
     public static void main(String[] args) {
         SpringApplication.run(CustomerMain.class, args);
@@ -20,7 +21,7 @@ public class CustomerMain implements CommandLineRunner {
 
     @Autowired
     CustomerRepository dao;
-
+/*
     @Override
     public void run(String... strings) throws Exception {
 
@@ -48,4 +49,5 @@ public class CustomerMain implements CommandLineRunner {
         }
 
     }
+    */
 }

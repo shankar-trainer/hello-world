@@ -84,7 +84,6 @@ public class CustomerController {
     public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer) throws CustomerException {
         try {
             logger.info("save    " + customer);
-
             Customer c2 = service.addCustomer(customer);
 
             if (c2 != null) {
