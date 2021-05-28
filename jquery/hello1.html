@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'>
+    </script>
+
+    <script>
+        jQuery(document).ready(
+            function () {
+                alert('hello world')
+            }
+        )
+
+        $(document).ready(
+            function () {
+                alert('greeting')
+            }
+        )
+        $(
+            function () {
+                alert($('#id1').text())
+                $('#id1').text('hello i m fine')
+            }
+        )
+    </script>
+
+</head>
+
+<body>
+<div id='id1'>
+    This is my program
+</div>
+
+</body>
+
+</html>
