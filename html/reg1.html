@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <script>
+
+        var name = "mohan"
+        var age = "1";
+
+        console.log(/[a-z]+/g.test(name))
+
+        if (/[a-z]+/g.test(name))
+            alert("name is valid ")
+        else
+            alert("name is invalid")
+
+        if (/[0-9]+/g.test(age))
+            alert("age is valid ")
+        else
+            alert("age is invalid")
+
+        console.log(name.match(/[a-z]+/g))
+
+        if (name.match(/[a-z]+/g))
+            alert("name is ok")
+        else
+            alert("name not ok")
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

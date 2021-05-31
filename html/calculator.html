@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="css/style2.css">
+
+</head>
+
+<body>
+    <script>
+        // window.onbeforeunload = function () {
+        //     return "";
+        // }
+
+
+        function calc() {
+
+            var no1 = parseFloat(document.getElementById('n1').value)
+            var no2 = parseFloat(document.getElementById('n2').value)
+
+            var operation = document.getElementById('operation').value
+            var res = 0;
+
+            if (isNaN(no1)) {
+                alert("No1 is not a number")
+                return false
+            }
+            else if (isNaN(no2)) {
+                alert("No2 is not a number")
+                return false
+            }
+            else if (operation == 'addition') {
+                res = no1 + no2
+                console.log("res" + res)
+                document.getElementById('n3').value = res
+                return true
+            }
+            else if (operation == 'subtraction') {
+                res = no1 - no2
+                document.getElementById('n3').value = res
+                return true
+            }
+            else if (operation == 'multiplication') {
+                res = no1 * no2
+                document.getElementById('n3').value = res
+                return true
+            }
+            else if (operation == 'division') {
+                res = no1 / no2
+                document.getElementById('n3').value = res
+                return true
+            }
+        }
+
+    </script>
+
+
+    <form onsubmit="return calc()">
+
+        <label>Enter No1</label>
+        <input id='n1'><br>
+
+        <label>Enter No2</label>
+        <input id='n2'><br>
+
+        <label>Result </label>
+        <input id='n3'><br>
+
+
+        <label>Select Operation</label>
+        <select id="operation">
+
+            <option value="addition">Addition</option>
+            <option value=subtracttion">Subtracttion</option>
+            <option value="multiplication">Multiplication</option>
+            <option value="division">Division</option>
+
+        </select>
+
+        <br>
+
+        <input type="submit">
+        <input type="reset">
+
+
+    </form>
+
+
+</body>
+
+</html>

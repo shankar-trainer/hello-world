@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<script>
+
+names=new Array("ram kumar","mohan kumar","umesh kumar")
+names1=["aman kumar","piyush kumar","suman kumar"]
+
+console.log("start "+names)
+//console.log("reverse  "+names.reverse())
+
+len=names.length;
+
+for(x=0;x<len;x++){
+//  console.log("pop "+names.pop())// pop will remove n return from last
+ // console.log("shift "+names.shift())// shift will remove n return from first
+    //names.push(names1[x])// push add element at last poistion
+    names.unshift(names1[x])// unshift add element at first poistion
+}
+
+
+console.log("end "+names)
+document.write("end "+names)
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</head>
+
+<body>
+
+
+
+
+</body>
+
+</html>

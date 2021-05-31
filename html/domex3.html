@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <script>
+            function domTree() {
+                liNode = document.getElementsByTagName('li')
+    
+                for (i = 0; i < liNode.length; i++) {
+                    console.log(liNode[i].innerHTML)
+                }
+                var p=liNode[0].parentNode
+
+                console.log('parent node '+p.nodeName)
+                var c=liNode[0].childNodes
+                console.log('child  node length  '+c.length)
+            }
+        </script>
+</head>
+<body>
+    <ol>
+        <li>chennai</li>
+        <li>madurai</li>
+        <li>ooty</li>
+        <li>mahabalipuram</li>
+        <li>coimbtore</li>
+        
+        <li>
+            <a>google </a>
+            <a>google </a>
+            <a>google </a>
+            <a>google </a>
+            <a>google </a>
+        
+        </li>
+
+    </ol>
+<button onclick="domTree()"> get Node Tree</button>
+
+
+
+</body>
+
+</html>

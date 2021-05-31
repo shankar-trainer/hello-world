@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        var option = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+        function mypos(position) {
+            alert(" lat " + position.coords.latitude)
+            alert(" longitude " + position.coords.longitude)
+        }
+
+        function myerror(error) {
+            alert("error code " + error.code + "  error message  " + error.message);
+            switch(error.code){
+                case error.PERMISSION_DENIED:
+                alert("user has denied permission")
+                break;
+
+                case error.POSITION_UNAVAILABLE:
+                alert("posiotion is not available")
+                break;
+                case error.TIMEOUT:
+                alert("timeout error")
+                break;
+
+                case error.UNKNOWN_ERROR:
+                alert("unknown error")
+                break;
+            }
+        
+        }
+        function getLoc() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    mypos
+                    , myerror,
+                    option
+                )
+            }
+            else {
+                alert("geo location not supported")
+            }
+        }
+        getLoc()
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

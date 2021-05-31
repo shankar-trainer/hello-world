@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js">
+    </script>
+   <script>
+       $(function(){
+              $('#btn1').click(
+                  function(){
+                      var p1=$('#n1').val()
+                      var p2=$('#n2').val()
+                     alert('addition is '+(parseFloat(p1)+parseFloat(p2)))
+                    }
+              )
+       })
+   </script>    
+</head>
+
+<body>
+    <div class="container">
+        <form class="m-5 border p-4 bg-light text-dark" style="width: 40%;">
+            <div class="form-group">
+                <input id="n1" class="form-control" placeholder="Enter No1" style="width:250px">
+                <br>
+            </div>
+            
+            <div class="form-group">
+                <input id="n2" class="form-control" placeholder="Enter No2" style="width:250px">
+                <br>
+            </div>
+
+            <input type="button" class="btn btn-primary" value="Addition" id="btn1">
+
+        </form>
+    </div>
+</body>
+
+</html>

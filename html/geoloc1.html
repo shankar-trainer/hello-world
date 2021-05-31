@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function getLoc() {
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        alert(" lat " + position.coords.latitude)
+                        alert(" longitude " + position.coords.longitude)
+                    },
+                    function (error) {
+                        alert("error code " + error.code + "  error message  " + error.message);
+                    },
+                    option={
+                     enableHighAccuracy:true,
+                     timeout:5000,
+                     maximumAge:0 
+                    }
+                )
+            }
+            else {
+                alert("geo location not supported")
+            }
+        }
+        getLoc()
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

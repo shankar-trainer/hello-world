@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        #id1 {
+            margin-left: 500px;
+            font-size: 40px;
+            color: blue;
+        }
+    </style>
+    <script>
+        
+        x = 10;
+        function mytimer() {
+            document.getElementById('id1').innerText = x--
+        }
+
+        setInterval(mytimer, 1000)
+
+    </script>
+
+</head>
+
+<body onload="mytimer">
+
+    <h1>Timer</h1>
+
+    <div id='id1'>
+
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="css/style2.css">
+    <script>
+        function myproduct() {
+            // var product1= localStorage.getItem("prd1")
+            // var product2= localStorage.getItem("prd2")
+            // var date=  localStorage.getItem("date")   
+
+            // item1=localStorage.key(0)
+            // item2=localStorage.key(1)
+            // item3=localStorage.key(2)
+
+            var product1 = sessionStorage.getItem("prd1")
+            var product2 = sessionStorage.getItem("prd2")
+            var date = sessionStorage.getItem("date")
+            var time = sessionStorage.getItem("time")
+
+            item1 = sessionStorage.key(0)
+            item2 = sessionStorage.key(1)
+            item3 = sessionStorage.key(2)
+
+            console.log(item1)
+            console.log(item2)
+            console.log(item3)
+
+            //      alert(product1) 
+
+            var msg = "<table border='1'><tr><th>Product1</th><td>" + product1 + "</td></tr><tr><th>Product2</th><td>" + product2 +
+                "</td></tr><tr><th>Date</th><td>" + date + "</td></tr><tr><th>Time</th><td>" + time + "</td></tr></table>"
+            document.getElementById("id1").innerHTML = msg
+        }
+        
+        var i = 0;
+        function removeItem() {
+            localStorage.removeItem(localStorage.key(i++))
+        }
+
+    </script>
+    <style>
+        h1 {
+            border: none;
+            height: 25px;
+            background: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>shoppnig kart</h1>
+    </header>
+    <form>
+        <div id="id1">
+        </div>
+
+        <br>
+        <input type="button" value="GetProduct" onclick="myproduct()">
+        <br>
+        <input type="button" value="RemoveProduct" onclick="removeItem()">
+    </form>
+</body>
+
+</html>

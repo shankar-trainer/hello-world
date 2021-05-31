@@ -1,0 +1,124 @@
+predefined headers 
+
+
+h1  -- highest size
+
+h2
+h3
+h4
+h5
+h6
+
+
+simple tags 
+
+ <p> paragraph 
+    attribute 
+          align -- values left, right, center, justify
+
+    
+ <br> line break
+
+ formatting 
+  <b> bold  <strong>
+  <strong> bold
+   <i>  italic  <em>
+   <u> under line
+   <strike>  -- strike thru effect 
+
+
+<hr>  horizontal rule 
+
+    attribute  
+         align 
+         width
+         size
+         noshade 
+         color
+
+
+   style attribute -- any html tag 
+
+     style="attribute:value;attribute:value"
+
+
+   Color 
+        -- bgcolor -- background color 
+           color --  text color
+           font-family
+           text-align 
+
+      color 
+           1 way 
+               color names 
+                  red
+                  green 
+                  blue 
+
+           2nd way 
+               -- hexadecimal code 
+               0-9 and a-f 
+
+
+
+           3rd way 
+               rgb(r,g,b)
+                    r,g,b -- 0- 255 
+
+
+
+
+    <div>  -- division tag  -- create the block 
+    <span>  -- span tag --   line by line work 
+   
+   
+   working with  image
+
+    <img src="">
+
+ style border:style thickness color 
+
+
+
+------------------------------------
+callback function 
+
+     -->   a function which is passed into other function as argument, 
+            and its invoked later 
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

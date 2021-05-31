@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+<script>
+   function  greeting(name){
+       alert("greeting "+name)
+   }
+
+  function hello(callback){
+      name=prompt('enter name ');
+      callback(name);
+  }
+
+  hello(greeting)
+
+//-------------------------another example
+function homework(sub,callback){
+
+    alert('starting homework for  '+sub)
+    callback()
+}
+
+homework('math',function(){
+    alert('finished my homework')
+})
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</head>
+<body>
+    
+</body>
+</html>

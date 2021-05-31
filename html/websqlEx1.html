@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+<script>
+
+var db=openDatabase('db1','1.0','my first database',2*1024*1024);
+
+db.transaction(function(tr){
+  tr.executeSql('create table if not exists student(roll unique, name, marks)')
+  tr.executeSql('insert into student values(1001,"mohan kumar",45)');
+  tr.executeSql('insert into student values(1002,"suresh kumar",65)');
+  tr.executeSql('insert into student values(1003,"amresh kumar",85)');
+  tr.executeSql('insert into student values(1004,"partik kumar",95)');
+  alert('record  added')
+})
+
+
+db.transaction(function(tr){
+  tr.executeSql('select * from student',[],function(tr,rs){
+         
+    for(i=0;i<rs.rows.length;i++){
+
+   alert(rs.rows.item(i).roll+' '+rs.rows.item(i).name+' '+rs.rows.item(i).marks)
+
+    }
+
+  })
+
+})
+
+</script>
+
+</head>
+<body>
+    
+</body>
+</html>

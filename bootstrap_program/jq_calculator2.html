@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js">
+    </script>
+   <script>
+       $(function(){
+              $('#btn1').click(
+                  function(){
+                      var p1=$('#n1').val()
+                      var p2=$('#n2').val()
+                      if(p1=="")
+                         alert("no1 is blank")
+                         
+                      else  if(p2=="")
+                         alert("no2 is blank")
+                      else if(isNaN(p1))
+                          alert(p1+' is not a number  ')
+                            
+                      else if(isNaN(p2))
+                          alert(p2+' is not a number  ')
+                      else      
+                      $('#n3').val(parseFloat(p1)+parseFloat(p2))
+                    }
+              )
+              $('#btn2').click(
+                  function(){
+                      var p1=$('#n1').val()
+                      var p2=$('#n2').val()
+                       if(p1=="")
+                         alert("no1 is blank")
+                         
+                      else  if(p2=="")
+                         alert("no2 is blank")
+                      else if(isNaN(p1))
+                          alert(p1+' is not a number  ')
+                            
+                      else if(isNaN(p2))
+                          alert(p2+' is not a number  ')
+                      else
+                      $('#n3').val(parseFloat(p1)-parseFloat(p2))
+                    }
+              )
+              $('#btn3').click(
+                  function(){
+                      var p1=$('#n1').val()
+                      var p2=$('#n2').val()
+                       if(p1=="")
+                         alert("no1 is blank")
+                         
+                      else  if(p2=="")
+                         alert("no2 is blank")
+                      else if(isNaN(p1))
+                          alert(p1+' is not a number  ')
+                            
+                      else if(isNaN(p2))
+                          alert(p2+' is not a number  ')
+                      else
+                      $('#n3').val(parseFloat(p1)*parseFloat(p2))
+                    }
+              )
+              $('#btn4').click(
+                  function(){
+                      var p1=$('#n1').val()
+                      var p2=$('#n2').val()
+                       if(p1=="")
+                         alert("no1 is blank")
+                         
+                      else  if(p2=="")
+                         alert("no2 is blank")
+                      else if(isNaN(p1))
+                          alert(p1+' is not a number  ')
+                            
+                      else if(isNaN(p2))
+                          alert(p2+' is not a number  ')
+                      else
+                      $('#n3').val(parseFloat(p1)/parseFloat(p2))
+                    }
+              )
+       })
+   </script>    
+</head>
+
+<body>
+        <form>    
+			<label>Enter No1</label>
+                <input id="n1">
+                <br>
+            	<label>Enter No2</label>
+
+                <input id="n2">
+                <br>
+            	<label>Result</label>
+
+                <input id="n3">
+                <br>
+            </div>
+
+            <input type="button" value="Addition" id="btn1">
+            <input type="button" value="Subtraction" id="btn2">
+            <input type="button" value="Multiplication" id="btn3">
+            <input type="button" value="Division" id="btn4">
+
+        </form>
+    </div>
+</body>
+
+</html>

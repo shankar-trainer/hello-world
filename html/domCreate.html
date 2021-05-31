@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+        function hi() {
+            pnode = document.createElement("ol")
+
+            cnode1 = document.createElement("li")
+            cnode1Tex1 = document.createTextNode('java book')
+
+            cnode2 = document.createElement("li")
+            cnode2Tex1 = document.createTextNode('html book')
+
+            cnode3 = document.createElement("li")
+            cnode3Tex1 = document.createTextNode('css book')
+
+            cnode1.appendChild(cnode1Tex1);
+            cnode2.appendChild(cnode2Tex1);
+            cnode3.appendChild(cnode3Tex1);
+
+            pnode.appendChild(cnode1);
+            pnode.appendChild(cnode2);
+            pnode.appendChild(cnode3);
+
+            document.body.appendChild(pnode)
+            //document.getElementById('id1').appendChild(pnode)
+        }
+        function removeLast() {
+            var parent = document.getElementsByTagName("ol")[0]
+            var child = document.getElementsByTagName("li")[2]
+            parent.removeChild(child)
+
+        }
+        function changeColor(){
+             document.getElementsByTagName("ol")[0].style.backgroundColor='yellowgreen';
+            p= document.getElementsByTagName("ol")[0]
+              p.style.color='blue'
+              p.style.width='30%'
+              p.style.border='solid 3px';
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div id="id1">
+        List will come
+    </div>
+
+    <button onclick="hi()">getList</button>
+
+    <button onclick="removeLast()">Remove Last</button>
+    <button onclick="changeColor()">ChangeColor</button>
+
+
+
+</body>
+
+</html>

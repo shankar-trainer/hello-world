@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        table {
+            width: 30%;
+            height: 200px;
+            margin-left:500px;
+            padding: 10px;
+            background: yellowgreen;
+        }
+        table,td,th{
+            border: solid;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var emp1 = {
+            "Employees": [
+                {
+                    "id": 1001,
+                    "name": "ram kumar",
+                    "salary": 20000
+                },
+                {
+                    "id": 1002,
+                    "name": "suman kumar",
+                    "salary": 15000
+                },
+                {
+                    "id": 1003,
+                    "name": "aman kumar",
+                    "salary": 18000
+                }
+            ]
+        }
+        console.log(emp1.Employees[0].id)
+        console.log(emp1.Employees[0].name)
+        console.log(emp1.Employees[0].salary)
+
+        for (i = 0; i < emp1.Employees.length; i++) {
+            console.log(emp1.Employees[i].id + "  " + emp1.Employees[i].name + "  " + emp1.Employees[i].salary)
+        }
+
+        document.write("<table><tr>");
+
+        document.write("<th>Id</th>");
+        document.write("<th>Name</th>");
+        document.write("<th>Salary</th></tr>");
+
+        for (i = 0; i < emp1.Employees.length; i++) {
+            document.write("<tr>");
+            document.write("<td>" + emp1.Employees[i].id + "</td>")
+            document.write("<td>" + emp1.Employees[i].name + "</td>")
+            document.write("<td>" + emp1.Employees[i].salary + "</td>")
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+
+</body>
+
+</html>

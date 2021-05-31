@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="css/style2.css">
+    
+    <style>
+    form{
+      
+height: 300px;
+    }
+    </style>
+    <script>
+        function validate() {
+            var id1 = document.getElementById("id").value
+            var name1 = document.getElementById("name").value
+            var age1 = document.getElementById("age").value
+            var city1 = document.getElementsByName("city")
+
+
+            if (id1 == "") {
+                alert("id is blank ")
+            }
+            else if (!/[0-9]+/g.test(id1))
+                alert("id must have number only")
+
+            else if (name1 == "") {
+                alert("name is blank ")
+            }
+
+            //else if (!/[a-z]+\s[a-z]+/g.test(name1))
+            //else if (!/\w+/g.test(name1))
+
+            else if (!/\w{3,10}\s\w{5,10}/g.test(name1)) {
+                alert("name must have alphabets and 10 - 20 chars")
+            }
+
+
+            else if (age1 == "") {
+                alert("age is blank ")
+            }
+            else {
+                var mycity="";
+
+                 for(i=0;i<city1.length;i++){
+                       if(city1[i].checked)
+                          mycity=mycity+"<br> "+city1[i].value+","
+                 }
+
+                document.getElementById("info").innerHTML = 
+                "name is    " + name1 + "<br>id is " + id1 + "<br>age is " + age1+"cities are "+mycity
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <input placeholder="Enter Id " id="id">
+        <br>
+        <input placeholder="Enter Name (10- 20 char)" id="name">
+        <br>
+        <input placeholder="Enter Age" id="age">
+        <br>
+        <label>(choice select one more more) Cities  </label>
+       <br>
+       <br>
+        <input type="checkbox" name="city" value="chennai">Chennai<br>
+        <input type="checkbox" name="city" value="madurai">Madurai<br>
+        <input type="checkbox" name="city" value="coimbtore">Coimbtore<br>
+        <input type="checkbox" name="city" value="kolkotta">Kolkotta<br>
+        <input type="checkbox" name="city" value="pune">Pune<br>
+
+
+        <input type="button" onclick="validate()" value="ok">
+        <input type="reset">
+
+        <div id='info'>
+        </div>
+
+    </form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+   
+</head>
+<body>
+    <script>
+      function myvalue(){
+          alert(document.getElementById('id1').value)
+      }
+
+      function myvalue2(){
+          alert(document.getElementById('id2').innerHTML)
+      }
+    </script>
+
+
+<label>Enter name</label>
+<input id='id1' onchange="myvalue()" value="10">
+<br><br><br><br>
+<div id='id2' onmouseover="myvalue2()">
+        hello world
+</div>
+
+</body>
+</html>

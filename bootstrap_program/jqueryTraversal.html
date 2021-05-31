@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://code.jquery.com/jquery-3.5.1.js">
+    </script>
+
+    <script>
+       $(function(){
+           //$('h1').siblings().css({"color":"yellowgreen","border":"solid","width":"30%"})
+           //$('h1').next().css({"color":"blue","border":"solid","width":"30%"})
+           //$('h1').nextAll().css({"color":"blue","border":"solid","width":"30%"})
+        
+        //   $("p").parent().text("p parent")
+          // $("p").parent().css({"color":"blue","background":"pink"})
+           //$("li").parent().css({"color":"blue","background":"pink"})
+           //$("ul").parent().css({"color":"blue","background":"pink"})
+           $("p").children().css({"color":"blue","background":"pink"})
+           console.log("p children "+$("p").children())
+           $('div').find('ul').css({'border':'solid'})
+           })
+    </script>    
+
+</head>
+<body>
+   <div>
+       <h1> This is heading1</h1>
+       <span>This is span</span>
+       <p>
+            <span>
+                Animals
+            </span>    
+            <ul> 
+                <li>Tiger</li>        
+                <li>Lion</li>        
+                <li>Elephant</li>        
+                <li>Wolf</li>        
+                <li>Jackal</li>        
+            </ul>
+
+       </p>    
+   </div> 
+   
+
+</body>
+</html>

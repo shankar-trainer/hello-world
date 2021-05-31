@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+ <script>
+    function disp(){
+
+        var x=document.getElementsByName('city');
+//         alert(x.value)
+
+          var len=x.length
+
+          for(i=0;i<len;i++){
+              if(x[i].checked)
+             alert(x[i].value)
+          }
+    }
+    </script>
+    
+
+<form>
+        <input type="checkbox" name="city" value="chennai">Chennai<br>
+        <input type="checkbox" name="city" value="madurai">Madurai<br>
+        <input type="checkbox" name="city" value="coimbtore">Coimbtore<br>
+        <input type="checkbox" name="city" value="kolkotta">Kolkotta<br>
+        <input type="checkbox" name="city" value="pune">Pune<br>
+    
+        <button type="button" onclick="disp()"> click</button>
+
+    </form>
+
+
+</body>
+</html>

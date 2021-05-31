@@ -1,0 +1,13 @@
+var x = 99;
+var y = 3446;
+var z = 0xabc123;
+console.log(x);
+console.log(y);
+console.log(z);
+var name1 = "mohan kumar";
+var country = 'india';
+var p = 999;
+var q = 111;
+console.log(name1);
+console.log(country);
+console.log(p + q);

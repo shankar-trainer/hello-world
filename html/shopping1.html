@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel="stylesheet" href="css/style2.css">
+<script>
+    function myshopping(){
+
+        //  localStorage.setItem("prd1",document.getElementById('prd1').value)
+        //  localStorage.setItem("prd2",document.getElementById('prd2').value)
+        //  localStorage.setItem("date",document.getElementById('date').value)
+        //  alert("product added to the kart")
+
+         sessionStorage.setItem("prd1",document.getElementById('prd1').value)
+         sessionStorage.setItem("prd2",document.getElementById('prd2').value)
+         sessionStorage.setItem("date",document.getElementById('date').value)
+         sessionStorage.setItem("time",document.getElementById('time').value)
+         alert("product added to the kart")
+         
+        var product1= sessionStorage.getItem("prd1")
+        var product2= sessionStorage.getItem("prd2")
+        var date=  sessionStorage.getItem("date")   
+        var time=  sessionStorage.getItem("time")   
+
+        console.log(product1)
+        console.log(product2)
+        console.log(date)
+        console.log(time)
+
+        console.log("................ keys ----------------------")
+
+        item1=sessionStorage.key(0)
+        item2=sessionStorage.key(1)
+        item3=sessionStorage.key(2)
+   
+        console.log(item1)
+        console.log(item2)
+        console.log(item3)
+
+    }
+</script>
+<style>
+    h1{
+        border: none;
+        height: 25px;
+        background: none;   
+    }
+</style>
+</head>
+
+<body>
+    <header>
+        <h1>shoppnig kart</h1>
+    </header>
+    <form>
+        <label>Add product1</label>
+        <input id="prd1">
+        <br>
+        <label>Add product2</label>
+        <input id="prd2">
+        <br>
+        <label>Add Date</label>
+        <input id="date" type="date">
+        <br>
+        
+        <label>Add Time</label>
+        <input id="time" type="datetime-local">
+        <br>
+
+        <input type="button" value="Add to Kart" onclick="myshopping()">
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <script>
+
+        if (typeof window.localStorage != "undefined") {
+
+            alert("storage is supprted")
+
+            localStorage.setItem("prd1", "java book")
+            localStorage.setItem("prd2", "trouser")
+            localStorage.setItem("prd3", "mobile")
+            localStorage.setItem("date", new Date().toLocaleDateString())
+            localStorage.setItem("time", new Date().toLocaleTimeString())
+            //localStorage.removeItem("prd1")
+        }
+        else
+            alert("storage is not supported")
+    </script>
+    <h1> web storage program </h1>
+</body>
+
+</html>

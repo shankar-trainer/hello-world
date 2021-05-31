@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+<style>
+
+#id1{
+  margin-left:500px;
+  font-size: 40px;
+  color: blue;
+}
+
+</style>
+
+<script>
+
+function myclock(){
+ var date=new Date();
+    document.getElementById('id1').innerText=date.toLocaleTimeString()
+ console.log(date.toLocaleTimeString())
+}
+
+setInterval(myclock,1000)
+
+ </script>
+
+</head>
+<body onload="myclock()">
+
+    <div id="id1">
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <script>
+        function disp() {
+
+            document.getElementById('id1').innerText = '<h1> hello world<h1>';
+
+            document.querySelector('.id2').style.backgroundColor = 'red';
+
+            document.querySelector('li').style.backgroundColor = 'yellow';
+
+            var p=document.querySelectorAll('li')
+             mycolor=['pink','green','yellow','brown','greenyellow'];
+
+            for (i = 0; i < p.length; i++)
+                p[i].style.backgroundColor=mycolor[i]
+        
+
+
+            var cities = document.getElementsByTagName('li')
+
+            console.log(cities.length)
+
+            //alert(cities[0].innerHTML)
+            for (i = 0; i < cities.length; i++)
+                alert(cities[i].innerText)
+        }
+
+    </script>
+</head>
+
+
+<body onload="disp()">
+
+    <ol>
+        <li>chennai</li>
+        <li>madurai</li>
+        <li>ooty</li>
+        <li>mahabalipuram</li>
+        <li>coimbtore</li>
+
+    </ol>
+
+    <div id="id1">
+    </div>
+
+    <div class="id2">
+        hi....
+    </div>
+
+
+</body>
+
+</html>

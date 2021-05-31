@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style2.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Music</a>
+    </nav>
+
+    <section>
+        <header>
+            <h1>Employee Form</h1>
+        </header>
+        <hr>
+    </section>
+
+    <article>
+        <form action="" method="GET" enctype="multipart/form-data">
+            <label>Enter Id </label>
+            <input type="text" required><br>
+
+            <label>Enter Password </label>
+            <input type="password"><br>
+
+            <label>Enter Name </label>
+            <input name="name" id="name" autocomplete="on"><br>
+
+            <label>Enter Salary </label>
+            <input type="text" value="20000" readonly><br>
+
+            <label>Enter Location </label>
+            <input type="text" value="chennai" disabled><br>
+
+            <input type="hidden" name="pf" value="0.05">
+
+            <label>Hobbies</label>
+            <br><input type="checkbox" value="reading" name="hobby">Reading<br>
+            <input type="checkbox" value="Music" name="hobby">Music<br>
+            <input type="checkbox" value="Touring" name="hobby">Touring<br>
+            <input type="checkbox" value="Movie" name="hobby">Movie<br>
+            <input type="checkbox" value="Flowering" name="hobby">Flowering<br>
+            <input type="checkbox" value="Swimming" name="hobby">Swimming<br>
+
+
+            <label>Gender</label>
+            <input name="gender" type="radio" value="male">Male
+            <input name="gender" value="female" type="radio">Female
+            <br>
+            <label>Select Cities</label><br>
+
+            <select name="city" multiple>
+                <option value="chennai">chennai</option>
+                <option value="madurai">madurai</option>
+                <option value="delhi" selected>delhi</option>
+                <option value="noida">noida</option>
+                <option value="kolkotta">kolkotta</option>
+                <option value="ooty">ooty</option>
+                <option value="rameswaram">rameswaram</option>
+
+            </select>
+            <br>
+            <label>Upload Resume</label>
+            <input type="file">
+<br>
+            <input type="submit" value="login"
+            >
+            <input type="reset" value="cancel">
+
+            <button type="submit">Send</button>
+
+        </form>
+    </article>
+
+    <hr>
+    <br><br><br><br>
+    <footer>
+        created by mohan kumar
+        <br>
+        Date 11/12/2020<br>
+        Location chennain<br>
+        <a href="mailto:mohan@gmail.com">Contact us </a>
+    </footer>
+
+
+
+</body>
+
+</html>

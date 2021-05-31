@@ -1,0 +1,32 @@
+nav{
+  margin-left: 300px;
+}
+
+label{
+    float:left;
+    width:120px;
+    color: blue;
+    font-style: bold;
+}
+ 
+input{
+   width:110px;
+   margin-top:1px;
+   margin-left:10px; 
+}
+
+input[type='submit'],
+input[type='reset'],
+button
+{
+    width:80px;
+}
+
+form, h1, footer{
+   margin-left:300px;
+   background:yellow;
+   border:inset black 4px;
+   width:40%;
+   padding: 10px;
+   height: 150px;
+}

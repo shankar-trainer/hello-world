@@ -1,0 +1,51 @@
+h1,h2
+
+{
+
+    text-align: center;
+    color: darkgreen;
+    background: yellowgreen;
+}
+
+#id1{
+    width:30%;
+  text-align:center;
+}
+
+
+body{
+  background-color: bisque;
+}
+p[align]{
+
+      text-align: right;
+}
+p{
+    text-indent: 30px;
+}
+    .box{
+        width:200px;
+        height: 200px;
+        border:solid 10px;
+        background: yellow;
+        margin: 20px;
+    }
+
+
+div{
+    font-style: oblique;
+}
+
+div.bold{
+
+    font-weight: bold;
+}
+
+
+label{
+    text-align: center;
+    /* text-decoration: overline; */
+    text-transform:uppercase;
+    text-shadow: 14px 10px 1px;
+}
+

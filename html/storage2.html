@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+<script>
+
+if(typeof window.localStorage!="undefined")
+{
+
+alert("storage is supprted")
+//localStorage.removeItem("prd1")
+    //localStorage.clear()
+    alert(localStorage.getItem("prd1"))
+    alert(localStorage.getItem("prd2"))
+    alert(localStorage.getItem("prd3"))
+    alert(localStorage.getItem("date"))
+    alert(localStorage.getItem("time"))
+    
+}
+else
+alert("storage is not supported")
+</script>
+    <h1> web storage program </h1>
+</body>
+</html>

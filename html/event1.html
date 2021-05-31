@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <script>
+            function clickme(){
+                 alert("clicked the button1 ")
+            }
+        
+            addition=function (a,b){
+               alert("sum is "+(a+b))
+           }
+          addition(11,22)
+          
+          var button;
+          
+            function disp(){
+              button=document.getElementById('id1')
+    
+           button.onclick=function myclck(){
+                alert("2nd button clicked")
+             }
+           }
+        </script>    
+    
+
+</head>
+<body onload="disp()">
+
+    
+   <button onclick="clickme()">click me1 </button>
+   <br>
+
+   <button id='id1'>click me2 </button>
+
+
+
+</body>
+</html>
