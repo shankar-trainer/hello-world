@@ -1,0 +1,118 @@
+<div class="container">
+  
+  <p> 2 multiply by 10 is   {{2|mathPipe:10}}
+  <p> exp(2,3) is  {{2|expPipe:3}}
+
+  <div  class='text-dark border border-primary'  appEmpDirective >
+   
+    {{country}}
+<p class="mytext">{{country}}
+
+  </div>   
+
+    <div class="bg-primary text-white p-4 w-3 m-5 " [ngStyle]="{'border':'double 5px','text-align':'center'}">
+    Location is {{location}}
+     <p [ngSwitch]='location'>
+     <span *ngSwitchCase="'chennai'">
+     You are in tamilnadu
+     </span>
+     
+     <span *ngSwitchCase="'banglore'">
+     You are in karnataka
+     </span>
+     
+     <span *ngSwitchCase="'hyderabad'">
+     You are in andhra pardesh
+     </span>
+     
+     <span *ngSWitchDefault>
+     Some Thing wrong
+     </span>
+
+    </p>
+    <button class="btn btn-success" type="button" (click)='mylocation()'>my location</button>
+</div>
+
+
+    <div class="table table-striped table-bordered
+     bg-dark text-white" [ngClass]="{border1:true}">
+        <table width='100%'>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Dob</th>
+            </tr>
+            <tr>
+             <td>{{emp.empId}}</td>
+             <td>{{emp.empName|titlecase}}</td>
+             <td>{{emp.empSalary}}</td>
+             <td>{{emp.empDob.toDateString()}}</td>
+            </tr>
+        </table>
+    </div>
+
+<div class="bg-dark text-white" [ngClass]="{border1:true}">
+  {{emp1|json}}
+</div>  
+
+  <div class="table table-striped table-bordered
+       bg-dark text-white mt-4 p-4 ">
+          <table width='100%'>
+              <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Salary</th>
+                <th>Dob</th>
+              </tr>
+              <tr *ngFor="let e of emp1">
+               <td>{{e.empId}}</td>
+               <td>{{e.empName|uppercase}}</td>
+               <td>{{e.empSalary|currency:'₹'}}</td>
+               <!-- <td>{{e.empDob.toLocaleDateString()}}</td> -->
+               <td>{{e.empDob|date}}</td>
+              </tr>
+          </table>
+        </div>
+        <h2>Employee List Salary >=30000</h2>
+  <div class="table table-striped table-bordered
+       bg-dark text-white mt-4 p-4 ">
+          <table width='100%'>
+              <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Salary</th>
+                <th>Dob</th>
+              </tr>
+              <tr *ngFor="let e of emp1">
+               <td>{{e.empId}}</td>
+               <td>{{e.empName}}</td>
+               <td *ngIf='e.empSalary>=30000' class='bg-white text-dark'>{{e.empSalary}}</td>
+               <td *ngIf='e.empSalary<30000' class='bg-dark text-light'>{{e.empSalary}}</td>
+               <td>{{e.empDob.toLocaleDateString()}}</td>
+              </tr>
+          </table>
+   </div>
+  <div class="table table-striped table-bordered
+       bg-primary  mt-4 p-4 ">
+          <table width='100%'>
+              <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Salary</th>
+                <th>Dob</th>
+              </tr>
+              <tr *ngFor="let e of emp1">
+               <ng-container *ngIf='e.empSalary>=30000'>
+                <td>{{e.empId}}</td>
+               <td>{{e.empName}}</td>
+               <td>{{e.empSalary}}</td>
+               <td>{{e.empDob.toLocaleDateString()}}</td>
+               </ng-container>
+            </tr>
+        
+          </table>
+   </div>
+
+
+</div>
