@@ -1,0 +1,40 @@
+<div class='container bg-dark text-light p-4 mt-4'>
+    <span>Person Form</span>
+    <form [formGroup]="personForm" (ngSubmit)="login()" class='p-4 ml-4 mt-4' style="width:100%">
+
+        <div class='from-group row'>
+            <label class='col-sm-2 col-form-label'>Enter Id</label>
+            <input class='form-control col-sm-6' id='personId' [formControl]='personId'>
+
+            <div [hidden]="personId.valid || personId.untouched">
+                person id is invalid
+            </div>
+        </div>
+
+        <div class='from-group row'>
+            <label class='col-sm-2 col-form-label'>Enter Name</label>
+            <input class='form-control col-sm-6' id='personName' [formControl]='personName'>
+            <div [hidden]="personName.valid || personName.untouched">
+                person Name is invalid
+            </div>
+
+            <div [hidden]="!personName.hasError('minlength')">
+                person Namee must of 10 chars
+            </div>
+        </div>
+
+        <div class='from-group row'>
+            <label class='col-sm-2 col-form-label'>Enter Location</label>
+            <input class='form-control col-sm-6' id='personLocation' [formControl]='personLocation'>
+
+            <div [hidden]="personLocation.valid || personLocation.untouched">
+                person Location is invalid
+            </div>
+
+            <div [hidden]="!personLocation.hasError('minlength')">
+                person Location must of 5 chars
+            </div>
+
+        </div>
+    </form>
+</div>

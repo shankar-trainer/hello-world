@@ -3,30 +3,37 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployeeComponent } from './employee/employee.component';
-import { ProductComponent } from './product/product.component';
-import { UserComponent } from './user/user.component';
-import { FormsModule } from '@angular/forms';
-import { EmpDirectiveDirective } from './employee/emp-directive.directive';
+import  { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CustomerComponent } from './customer/customer.component';
+import { PersonComponent } from './person/person.component';
+import { BookComponent } from './book/book.component';
+import { UserComponent } from './user/user.component'
+import { EmployeeComponent } from './employee/employee.component'
+import { ProductComponent } from './product/product.component'
 import { MathPipePipe } from './employee/math-pipe.pipe';
 import { ExpPipePipe } from './employee/exp-pipe.pipe';
-import { BookComponent } from './book/book.component';
+import { EmpDirectiveDirective } from './employee/emp-directive.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    CustomerComponent,
+    PersonComponent,
+    BookComponent,
+    UserComponent,
     EmployeeComponent,
     ProductComponent,
-    UserComponent,
     EmpDirectiveDirective,
     MathPipePipe,
-    ExpPipePipe,
-    BookComponent
+    ExpPipePipe
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+        ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
