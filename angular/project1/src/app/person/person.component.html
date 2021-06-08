@@ -1,4 +1,12 @@
 <div class='container bg-dark text-light p-4 mt-4'>
+    <div class="bg-white  text-dark border border-primary">
+        count is {{counter}}
+        <br> Enter name <input [(ngModel)]="name">
+        <br> ur name is {{name}}
+        <br>
+        <button type="button" class='btn ntn-primary' (click)='countIt()'> count</button>
+    </div>
+
     <span>Person Form</span>
     <form [formGroup]="personForm" (ngSubmit)="login()" class='p-4 ml-4 mt-4' style="width:100%">
 

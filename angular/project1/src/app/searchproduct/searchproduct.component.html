@@ -1,0 +1,30 @@
+<div class="container">
+    <form (ngSubmit)='onSubmit()' class='bg-dark text-light'>
+        <div class='form-group row'>
+            <label class='col-sm-2'>Enter Id </label>
+            <input class='form-control col-sm-6' name='id' [(ngModel)]='prd.id' required>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <div *ngIf='prdstatus'>
+        <h2> Product Found</h2>
+        <table>
+            <tr>
+                <th>Id </th>
+                <th>Name</th>
+                <th>Cost</th>
+            </tr>
+            <tr>
+                <td>{{prd.id}}</td>
+                <td>{{prd.name}}</td>
+                <td>{{prd.cost}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div *ngIf='!prdstatus' [hidden]="!submitted">
+        <h3> {{msg}} </h3>
+
+    </div>
+</div>

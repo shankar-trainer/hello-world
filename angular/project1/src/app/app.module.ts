@@ -13,6 +13,10 @@ import { ProductComponent } from './product/product.component'
 import { MathPipePipe } from './employee/math-pipe.pipe';
 import { ExpPipePipe } from './employee/exp-pipe.pipe';
 import { EmpDirectiveDirective } from './employee/emp-directive.directive';
+import { MyproductComponent } from './myproduct/myproduct.component';
+
+import {HttpClientModule} from '@angular/common/http';
+import { SearchproductComponent } from './searchproduct/searchproduct.component';
 
 
 @NgModule({
@@ -26,14 +30,17 @@ import { EmpDirectiveDirective } from './employee/emp-directive.directive';
     ProductComponent,
     EmpDirectiveDirective,
     MathPipePipe,
-    ExpPipePipe
+    ExpPipePipe,
+    MyproductComponent,
+    SearchproductComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
