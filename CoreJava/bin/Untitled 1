@@ -1,7 +1,0 @@
-class Distance{
-   int feet;  // 50000
-   int inch;  // 10000
-       // constructor 
-       // convert it to km and m 
-        
-}
