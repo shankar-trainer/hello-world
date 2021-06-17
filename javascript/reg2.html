@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+		
+		name="mohankumar"
+
+		console.log(/[a-z]{10}/.test(name))// true
+		console.log(/[a-z]{11}/.test(name))//false
+		console.log(/[a-z]{10,20}/.test(name))//true 
+		console.log(/[a-z]{9,20}/.test(name))
+		console.log(/[a-z]{12,20}/.test(name))
+					 
+		age=20 
+
+
+		console.log(/\d/.test(age))//   \d-- digit    \D -- non digit 
+		console.log(/\w/.test(name))  // \w alphanumeric \W  non alphanumeric
+      
+      name="mohan kumar"
+      
+      console.log(/\w\s\w/.test(name))
+      console.log(/\w\s\w{10,20}}/.test(name))
+      		
+	</script>	
+</body>
+</html>

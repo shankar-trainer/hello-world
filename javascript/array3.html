@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+
+
+		var ar1=[1,2,3,4,5,6,7] // non empty string
+		var ar2=[11,22,33,44,55,66,77] // non empty string
+			
+			var ar=ar1.concat(ar2)
+			alert('concat '+ar)
+    
+// push and pop works at last position    
+        ar.push(999);
+        ar.push(888);// push add elements at last position
+        ar.push(777);
+        
+			alert('after push  '+ar)
+			
+		var j=ar.pop() // it will remove and return the element 
+		alert('popped element '+j+"\nafter popping array is  "+ar)
+
+		// shift and unshift works at first position
+		var city=["delhi","noida",'guragaon','kolkotta']
+
+		alert('city \n\n'+city)
+
+		alert("shift \n\t"+city.shift()+"\nafter shift elements are \n\t"+city)
+		// shift will remove and return element from first position
+
+
+		//unshift add element at first position
+
+		city.unshift('gurgaon')
+
+		console.log('after unshift '+city)
+		console.log('reverse  '+city.reverse())
+
+		var mycity=  city.join("  and ")
+					console.log(mycity)
+    
+    </script>
+    
+</body>
+</html>

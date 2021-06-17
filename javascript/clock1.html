@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+
+    function myclock(){
+      document.getElementById('id2').innerHTML=new Date().toLocaleTimeString()
+        setTimeout('myclock()',1000)
+    }
+
+    </script>
+</head>
+
+<body onload="myclock()">
+
+		<div id='id2'>
+
+		<div>
+
+
+</body>
+</html>

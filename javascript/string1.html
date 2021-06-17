@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+
+		var s="hello world"
+		var s2="we are learning javascript"
+
+		console.log('length '+s.length)     
+		console.log(s2+'  uppercase  '+s2.toUpperCase())   
+
+		for(var x=0;x<s2.length;x++){
+			
+			document.write(s2.charAt(x)+",     ")
+		}  
+			 console.log(s2.charAt(4))
+			
+		var pos=s2.indexOf('are')
+        
+        if(pos>=0)
+           alert("found at "+pos)
+        else
+           alert('not found')
+           
+        var fname="suresh";
+        var lname="kumar";
+           
+           var name=fname.concat(lname)
+           alert('full name is '+name)
+    
+    var s="hello world to javascript"
+    var ar=s.split(" ")
+    for(var i in ar)
+    {
+		console.log(ar[i]+"  ")
+	}
+
+   alert(s2.substr(0))
+   alert(s2.substr(0,5)) // 1st arg is start pos, 2nd arg is length
+   alert(s2.substr(4,15))
+   alert(s2.substring(4,15))// 1st arg is start pos, 2nd arg is position
+   
+   
+
+    
+    </script>
+    
+</body>
+</html>

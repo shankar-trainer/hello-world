@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+	
+city="Delhi123"
+
+
+if(/^[a-zA-Z0-9]{8}$/.test(city))
+  alert("city is of 5 chars ")
+else 
+  alert("city is not of 5 chars ")  
+  // [a-z]
+  //  [a-zA-Z]  - both small and capital 
+  //a-zA-Z0-9   -- alpha numeric 
+  // a-zA-Z0-9  _  \w
+  
+  
+ empId="Cts_emp_2021_788787";
+  
+  alert(/^\w+$/.test(empId))
+
+name="suresh kumar" // name with two word with single space 
+
+alert(/^\w+\s\w+$/.test(name))
+
+	
+	</script>	
+</body>
+</html>

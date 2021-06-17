@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  label{
+      margin-top:2px;
+      float:left;
+	 width:300px;  
+  }
+  input{
+	  
+	 width:180px;  
+  }
+  button[type='submit']{
+	  margin-top:10px;
+	 width:180px;  	  
+  }
+  button[type='reset']{
+	 width:180px;  	
+	 margin-left:100px;  
+  }
+  
+  
+span{
+	width:100px;
+	color:red;
+	
+}
+
+form{
+	margin-left:400px;
+	margin-top:200px;
+	background:yellowgreen;
+	width:50%;
+	padding:40px;
+	border:solid 3px;
+	color:blue;
+}
+</style>
+  	
+  	<script>
+           function validate(){
+			   var id=document.getElementById('id').value
+			   var name=document.getElementById('name').value
+			   var age=document.getElementById('age').value
+			   
+			   if(id==''){
+				   document.getElementById('id_err').innerHTML='id is blank'
+			     return false;
+			   }
+			   else if(!/^\w+$/.test(id)){
+				   document.getElementById('id_err').innerHTML='id is not alpha numeric'
+			     return false;
+			   }
+			   else if(name=='')
+			   {
+				 document.getElementById('name_err').innerHTML='name is blank'
+			     return false;
+			   }
+			   else if(!/^[a-zA-Z]+\s[a-zA-Z]+$/.test(name))
+			   {
+				 document.getElementById('name_err').innerHTML='name is invalid'
+			     return false;
+			   }
+			   
+			   else if(age=='')
+			   {
+				 document.getElementById('age_err').innerHTML='age is blank'
+			     return false;
+			   }
+			   else if(!/^[0-9]{2}$/.test(age))
+			   {
+				 document.getElementById('age_err').innerHTML='age is invalid'
+			     return false;
+			   }
+			   
+			   else{
+				   alert("Employee Information\nId is "+id+"\nname is "+name+"\nage is "+age)
+			   }
+			   
+		   }
+    </script>  	
+<body>
+
+<form onSubmit='return validate()'>
+	
+<label>Enter Id(alphanumeric with _) </label>
+<input id="id">
+<span id="id_err"></span>
+<br>
+
+<label>Enter Name(min=10, max=20  two words) </label>
+<input id="name">
+<span id="name_err"></span>
+<br>
+
+<label>Enter Age(min=0, max=99) </label>
+<input id="age">
+<span id="age_err"></span>
+<br>
+
+<button type='submit'>send</button>
+<button type='reset'>cancel</button>
+	
+
+
+</form>
+
+</body>
+</html>

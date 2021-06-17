@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+/*        window.onbeforeunload=function(){
+          return ""
+        }
+*/
+
+
+        function validate(){
+            var id=document.getElementById('id')
+            var name=document.getElementById('name')
+            var gender=document.getElementsByName('gender')
+            var gender_status=false;
+            var mygender="";
+
+            var hobby=document.getElementsByName('hobby')
+            var hobby_status=false;
+            var myhobby="";
+
+  var x=0;
+            for(i in hobby){
+              if(hobby[i].checked){
+                hobby_status=true;
+                myhobby=myhobby.concat("\n"+hobby[i].value);
+              }
+            }
+
+           for(i in gender){
+             if(gender[i].checked){
+               gender_status=true;
+               mygender=gender[i].value;
+             }
+           }
+
+        if(id.value==''){
+           document.getElementById("id_err").innerHTML='<b>id is blank</b>'
+         return false
+        }
+         else if(isNaN(id.value)){
+           document.getElementById("id_err").innerHTML='<b>id is not a number</b>'
+         return false
+        }
+
+        else if(name.value==''){
+          document.getElementById("name_err").innerHTML='<b>name is blank</b>'
+         return false
+        }
+
+        else if(name.value.length<=10){
+        document.getElementById("name_err").innerHTML='<b>name must of 10 character</b>'
+         return false
+        }
+       else if(!gender_status){
+         document.getElementById("gender_err").innerHTML='<b>select the gender</b>'
+  
+          return false
+       }
+
+       else if(!hobby_status){
+         document.getElementById("hobby_err").innerHTML='<b>select the hobby</b>'
+          return false
+       }
+
+      else{
+            alert('id is '+id.value+'\nname is '+name.value+"\ngender is "+mygender+"\nhobbies are "+myhobby)
+          }
+        }
+        </script>
+    <form onsubmit=" return validate()" style='color:blue;padding:20px;margin-left:400px;background:yellow;width:35%;
+   border:solid 5px; '>
+    <table>
+    <tr>
+    <td><label>Enter Id  </label></td>
+      <td><input id='id'></td>
+      <td><span id="id_err"></span></td>
+    </tr>
+
+    <tr>
+      <td>  <label>Enter name</label></td>
+      <td> <input id='name'>
+      </td>
+        <td><span id="name_err"></span></td>
+      </tr>
+          </tr>
+      <tr>
+        <td>
+         <label>Select Gender</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type='radio' name='gender' value='male'>Male
+          <input type='radio' name='gender' value='female'>Female
+        </td>
+
+       <td><span id="gender_err"></span></td>
+
+      </tr>
+       <tr>
+         <td>Select Hobbies</td>
+        </tr>
+         <tr>
+         <td>
+            <input type='checkbox' value='swimming' name='hobby'>swimming
+          </td>
+          <td><input type='checkbox' value='learning' name='hobby'>learning</td>
+          <td><input type='checkbox' value='reading' name='hobby'>reading</td>
+            <td><input type='checkbox' value='music' name='hobby'>music</td>
+            <td><span id="hobby_err"></span></td>
+         </tr>
+    <tr>
+    <td>
+      <input type='submit' value='login'>
+    </td>
+     <td>
+       <input type='reset' >  </td>
+     <td>
+       <span id="id_err"></span></td>
+    </tr>
+    </table>
+    </form>
+</body>
+</html>

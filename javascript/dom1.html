@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body onload='disp()'>
+    <script>
+		function disp(){
+		var li=document.getElementsByTagName("li")
+		
+		console.log("li length "+li.length)
+		for(i in li){
+			console.log(li[i].innerHTML)
+		}
+		
+		 alert(document.getElementById("id1").innerHTML)
+		 alert(document.querySelector("#id1").innerHTML)
+		 alert(document.querySelector("li").innerHTML)
+		 
+		 var my_li=document.querySelectorAll("li")
+		   console.log(' using querySelectorAll')
+		for(i in my_li){
+			console.log(my_li[i].innerHTML)
+		}
+		 
+	 }
+		
+	</script>	
+	<p id="id1">
+	 paragraph1
+	</p>
+
+	<nav>
+	  <li><a href="#">Music</li>
+	  <li><a href="#">Movie</li>
+	  <li><a href="#">Health</li>
+	  <li><a href="#">News</li>
+	  <li><a href="#">Sports</li>
+	</nav>
+	
+	
+</body>
+</html>

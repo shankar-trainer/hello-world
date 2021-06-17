@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+	var emp={
+		  "empId":67676,
+		  "empName":"ram kumar",
+		  "salary":12000		
+	}
+	  alert(JSON.stringify(emp))
+	
+	  console.log(JSON.stringify(emp))
+	  console.log("id "+emp.empId)
+	  console.log("name "+emp.empName)
+	  console.log("salary "+emp.salary)
+	
+	var employee=[
+                 {"empId":67676,
+		          "empName":"ram kumar",
+		          "salary":12000		
+                 },
+                 
+                 {"empId":67677,
+		          "empName":"surendra kumar",
+		          "salary":18000		
+                 },
+                 
+                 {"empId":67679,
+		          "empName":"virendra kumar",
+		          "salary":28000		
+                 },
+	]
+	
+	console.log(JSON.stringify(employee))
+	
+	document.write("<table border='1' width='40%' bgcolor='yellow'><tr><th>EmpId</th><th>EmpName</th><th>Salary</th></tr>")
+	
+	for(i in employee){
+	document.write("<tr>")
+	document.write("<td>"+employee[i].empId+"</td>")
+	document.write("<td>"+employee[i].empName+"</td>")
+	document.write("<td>"+employee[i].salary+"</td>")
+	document.write("</tr>")
+     }
+	document.write("</table>")
+	
+	</script>	
+</body>
+</html>
