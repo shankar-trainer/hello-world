@@ -37,7 +37,7 @@ public class CustomerController {
 	
 	@PostMapping("/addCustomerAddress")
 	public Customer addCustomer1(@RequestBody Customer customer){
-	addressRepository.save(customer.getAddress());
+	   addressRepository.save(customer.getAddress());
     return 	customerRepository.save(customer);
 	}
 	
