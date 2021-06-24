@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+	<script>
+		function validate() {
+			var id1 = document.getElementById('id').value
+			var name1 = document.getElementById('name').value
+			var salary1 = document.getElementById('salary').value
+
+			var hb = document.getElementsByName('hobby')
+			var myhb = new Array(4);
+			var y = 0;
+
+          var gender_status=false;
+		  var mygender;
+		  var gender=document.getElementsByName('gender');
+           for(i in gender){
+			   if(gender[i].checked)
+			   {
+				   gender_status=true;
+			      mygender=gender[i].value
+			   }
+		   }
+        
+			var status = false;
+
+			for (var x = 0; x < hb.length; x++) {
+				if (hb[x].checked) {
+					myhb[y++] = hb[x].value
+					status = true;
+				}
+			}
+
+			var city=document.getElementById('city').value
+			
+			if (id1 == "") {
+				document.getElementById("id_err").innerHTML = '<b>id is blank</b>'
+				return false;
+			}
+
+			else if (isNaN(id1)) {
+				document.getElementById("id_err").innerHTML = '<b>id is not a number</b>'
+				return false;
+			}
+
+			else if (name1 == "") {
+				document.getElementById("name_err").innerHTML = '<b>name is blank</b>'
+				return false;
+			}
+
+			else if (name1.length <= 10) {
+				document.getElementById("name_err").innerHTML = '<b>name must of 10 character </b>'
+				return false;
+			}
+
+			else if (salary1 == "") {
+				document.getElementById("salary_err").innerHTML = '<b>salary is blank</b>'
+				return false;
+			}
+
+			else if (isNaN(salary1)) {
+				document.getElementById("salary_err").innerHTML = '<b>salary is no a number</b>'
+				return false;
+			}
+			else if(!gender_status){
+				document.getElementById('gender_err').innerHTML='<b>select the gender</b>'
+			    return false;
+			}
+			else if (!status) {
+				document.getElementById("hobby_err").innerHTML = '<b>select the hobby</b>'
+				return false;
+			}
+			
+			else if(city==''){
+	  			document.getElementById("city_err").innerHTML = '<b>select the city</b>'
+				return false;
+			}
+			else {
+
+				alert("user information\nid is " + id1 + "\nname is " + name1 + "\nsalary is " + salary1 + "\nhobbies are  " + myhb+"\ngender is  "+mygender+"\ncity is "+city)
+
+				return true
+			}
+		}
+		/*
+		window.onbeforeunload = function () {
+			return "";
+		}
+		*/
+
+	</script>
+	<form onSubmit="return validate()" style='margin-left:400px; width:40%'>
+		<table bgcolor='pink'>
+			<tr>
+				<td>
+					<label>Enter Id</label>
+				</td>
+				<td>
+					<input id="id">
+				</td>
+				<td>
+					<span id="id_err"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label>Enter Name</label>
+				</td>
+				<td>
+					<input id="name"></td>
+				<td>
+					<span id="name_err"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td><label>Enter Salary</label></td>
+				<td><input id="salary"></td>
+
+				<td><span id="salary_err"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Select Gender</td>
+				<td>
+					<input type="radio" name='gender' value='male'>Male
+					<input type="radio" name='gender' value='female'>Female
+				</td>
+				<td>
+					<span id="gender_err"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>select hobbies</td>
+				<br>
+				<td>
+
+					<input name='hobby' type='checkbox' value='swimming'>swimming<br>
+					<input name='hobby' type='checkbox' value='swimming'>reading<br>
+					<input name='hobby' type='checkbox' value='music'>music<br>
+					<input name='hobby' type='checkbox' value='movie'>movie<br>
+
+				</td>
+				<td>
+					<span id="hobby_err"></span>
+				</td>
+			</tr>
+			<tr>
+			<td>Select City </td>
+			<td> 
+			  <select name='city' id='city'>
+				  <option value=''></option>
+				  <option value='delhi'>delhi</option>
+				  <option value='chennai'>chennai</option>
+				  <option value='noida'>noida</option>
+				  <option value='madurai'>madurai</option>
+				  <option value='ooty'>ooty</option>
+				  </select>
+			</td>
+			<td>
+			 <span id='city_err'></span>
+			</td>
+			</tr>
+
+
+			<tr>
+				<td>
+					<input type='submit' value='login'>
+				</td>
+				<td>
+					<input type='reset' value='cancel'>
+				</td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+	<script>
+		function changeit(){
+		console.log(	document.getElementById('id1').innerHTML)		
+		console.log(	document.getElementById('id1').innerText)	
+		console.log(	document.getElementById('id1').outerHTML)	
+			
+			document.getElementById('id1').innerHTML='<h2>welcome to javascript</h2>'
+			//document.getElementById('id1').innerText='<h2>welcome to javascript</h2>'
+		}
+	</script>	
+	
+<div id="id1">
+	
+<h1>hello world </h1>
+
+</div>
+
+<button type='button' onclick='changeit()'>
+change	</button>
+</form>
+</body>
+</html>

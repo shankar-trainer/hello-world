@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+	<script>
+		function addition(){
+			var p1=document.getElementById('n1').value
+			var p2=document.getElementById('n2').value
+			
+			if(p1=="")
+			alert("no1 is blank")
+			
+			else if(isNaN(p1))
+			alert("no1 is not a number ")
+			
+			else if(p2=="")
+			alert("no2 is blank")
+			
+			else if(isNaN(p2))
+			alert("no2 is not a number ")
+			
+			else{
+			var p3=parseFloat(p1)+parseFloat(p2)
+			document.getElementById('n3').value=p3
+		 }
+		}
+		function subtraction(){
+			var p1=document.getElementById('n1').value
+			var p2=document.getElementById('n2').value
+			
+			if(p1=="")
+			alert("no1 is blank")
+			
+			else if(isNaN(p1))
+			alert("no1 is not a number ")
+			
+			else if(p2=="")
+			alert("no2 is blank")
+			
+			else if(isNaN(p2))
+			alert("no2 is not a number ")
+			
+			else{
+			var p3=parseFloat(p1)-parseFloat(p2)
+			document.getElementById('n3').value=p3
+		 }
+		}
+		function multiplication(){
+			var p1=document.getElementById('n1').value
+			var p2=document.getElementById('n2').value
+			
+			if(p1=="")
+			alert("no1 is blank")
+			
+			else if(isNaN(p1))
+			alert("no1 is not a number ")
+			
+			else if(p2=="")
+			alert("no2 is blank")
+			
+			else if(isNaN(p2))
+			alert("no2 is not a number ")
+			
+			else{
+			var p3=parseFloat(p1)*parseFloat(p2)
+			document.getElementById('n3').value=p3
+		 }
+		}
+		function division(){
+			var p1=document.getElementById('n1').value
+			var p2=document.getElementById('n2').value
+			
+			if(p1=="")
+			alert("no1 is blank")
+			
+			else if(isNaN(p1))
+			alert("no1 is not a number ")
+			
+			else if(p2=="")
+			alert("no2 is blank")
+			
+			else if(isNaN(p2))
+			alert("no2 is not a number ")
+			
+			else{
+			var p3=parseFloat(p1)/ parseFloat(p2)
+			document.getElementById('n3').value=p3
+		 }
+		}
+		
+	</script>	
+	
+<form>
+	
+	
+<label>Enter No1</label>
+<input id='n1'>
+<br>
+
+<label>Enter No2</label>
+<input id='n2'>
+<br>
+
+<label>Result</label>
+<input id='n3'>
+<br>
+
+<input type='button' value='Addition' onclick='addition()'>
+<input type='button' value='Subtraction' onclick='subtraction()'>
+<br>
+<input type='button' value='Multiplication' onclick='multiplication()'>
+<input type='button' value='Division' onclick='division()'>
+
+</form>
+</body>
+</html>

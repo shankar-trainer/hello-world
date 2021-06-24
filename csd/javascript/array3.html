@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    
+</head>
+<body>
+    <script>
+     var s="hello"
+     var s1=new String(" hello world  ")
+     console.log(s1.length)
+     console.log(s1.toUpperCase())
+     console.log(s1.trim().length)
+
+     console.log(s1.substr(0))
+     console.log(s1.substr(5))
+     console.log("substr  "+s1.substr(2, 8))
+     console.log("substring    "+s1.substring(2, 8))
+     
+     console.log("charat  5 position is     "+s1.charAt(5))
+     console.log("charCode At pos"+s1.charCodeAt(4))
+     
+     var s3="we are learning javascript. javascript is easy to learn" 
+     
+     var pos=s3.indexOf("are")
+     if(pos>=0)
+     console.log("found at "+pos)
+     else 
+     console.log("not found  ")
+     
+     alert(s3.indexOf('javascript'))
+     alert(s3.lastIndexOf('javascript'))
+     
+     var fname="ramesh"
+     var lname="kumar"
+     
+     var name=fname.concat(lname)
+     
+     alert("full name is "+name)
+     
+     var ar1=s3.split(" ");
+        console.log("using for in loop after split")
+        
+        for(var key in ar1){
+			
+		   console.log(ar1[key])	
+		 }
+		 
+		 var mycity="chennai-madurai-coimbtore"
+		 console.log("mycity split values "+mycity.split("-"))
+		 
+    </script>
+    
+</body>
+</html>
+

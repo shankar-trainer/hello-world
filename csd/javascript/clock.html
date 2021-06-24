@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function myclock() {
+            date=new Date()
+            document.getElementById('id').innerHTML = date.toLocaleTimeString()
+          setTimeout(myclock,1000)
+        }
+function myclock1(){
+   clearTimeout(1000); 
+}
+    </script>
+</head>
+
+<body>
+
+    <div id="id">
+        welcome
+    </div>
+    <br>    <br>    <br>    <br>    <br>
+    <input type="button" value="start clock " onclick="myclock()">
+    <br>
+    <input type="button" value="stop clock " onclick="myclock1()">
+</body>
+
+</html>

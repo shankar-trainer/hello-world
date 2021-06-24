@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+   <script>
+	var emp={
+		   "id":8998,
+		   "name":"s kumar",
+		   "salary":56000		
+	}
+	
+	//var emp1=JSON.parse(emp)
+	alert(JSON.stringify(emp))
+	console.log("id is "+emp.id)
+	console.log("name is "+emp.name)
+	console.log("salary  is "+emp.salary)
+	alert(emp)
+	
+	
+	var customer=[
+	     {
+		  "customerId":766767,
+		  "customerName":"deepak kumar",
+		  "dob":"10-09-1996"	 
+		 },
+		 
+	     {
+		  "customerId":766768,
+		  "customerName":"ashoka kumar",
+		  "dob":"10-09-1996"	 
+		 },
+		 
+	     {
+		  "customerId":766769,
+		  "customerName":"suman kumar",
+		  "dob":"10-09-1996"	 
+		 },
+		 
+	     {
+		  "customerId":766762,
+		  "customerName":"pawan kumar",
+		  "dob":"10-09-1996"	 
+		 },
+		 
+	     {
+		  "customerId":766763,
+		  "customerName":"raman kumar",
+		  "dob":"10-09-1996"	 
+		 },
+	]
+	
+	console.log(JSON.stringify(customer))
+	alert(JSON.stringify(customer))
+	
+    
+    console.log(customer[3].customerId+"  "+customer[3].customerName+"  "+customer[3].dob)
+    
+    document.write("<table>")
+    document.write("<tr>")
+    document.write("<th>Id</th>")
+    document.write("<th>Name</th>")
+    document.write("<th>Dob</th>")
+    document.write("</tr>")
+    
+    for(i in customer){
+	 document.write("<tr>")
+      document.write("<td>"+customer[i].customerId+"</td>");
+      document.write("<td>"+customer[i].customerName+"</td>");
+      document.write("<td>"+customer[i].dob+"</td>");
+    document.write("</tr>")
+	}
+    
+    document.write("</table>")
+    	
+	</script>	
+	
+</head>
+
+<body>
+	
+	
+</body>
+</html>

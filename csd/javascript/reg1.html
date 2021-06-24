@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+	<script>
+		 //   [0-9] number
+		 //[a-z] small alphabet
+		 //[A-Z] capital alphabet 
+		 //
+
+		//var age="20"
+		//if (/^[0-9]+$/.test(age))
+		 
+		 amount='788787';
+		 if(/^[0-9]+$/.test(amount))
+		   console.log("valid amount ")
+		   else 
+		   console.log("invalid amount ")
+
+         name="Mohan";
+		 console.log(/^[a-z]+$/.test(name))
+		 console.log(/^[0-9]+$/.test(10001))
+		 console.log(/^[0-9a-z]+$/.test("abc123"))
+		 console.log(/^[0-9a-zA-Z]+$/.test("Aabc123"))
+		 console.log("2 digit age "+/^[0-9]{2}$/.test("288"))
+		 console.log("min 1 digit max 2  age "+/^[0-9]{1,2}$/.test("2"))
+		 console.log("name of 5 chars "+/^[a-z]{5}$/.test("raman"))
+		 console.log("name of min 5 or max 10  chars "+/^[a-z]{5,10}$/.test("ramankumar"))
+		 console.log("name of min 5 or max 10  chars uppercase or lowercase  "+/^[a-zA-Z]{5,10}$/.test("ramankumar"))
+   
+		 console.log("name of 2 words with 1 space  "+/^[a-zA-Z]+\s[a-zA-Z]+$/.test("raman kumar"))
+		 console.log("name of 2 words with 1 space  "+/^[a-zA-Z]+\s[a-zA-Z]+$/.test("ramankumar"))
+   
+// [0-9]  \d
+console.log("min 1 digit max 2  age "+/^[0-9]{1,2}$/.test("2"))
+console.log("min 1 digit max 2  age "+/^\d{1,2}$/.test("2"))
+		 // \w -- alpha numeric with _
+		console.log("emp id "+/^\w+$/.test("cts_54554_emp123")); 
+// \w --- [a-zA-Z0-9_]
+
+		 	</script>	
+	
+</body>
+</html>

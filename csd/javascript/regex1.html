@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+	<script>
+		
+		var age="20"
+		if (/^[0-9]+$/.test(age))
+		  alert(age+" is valid ")
+		  else 
+		  alert(age+" is not valid ")
+	    
+	    if(age.match(/^[0-9]+$/))
+	       alert("valid age ..")
+	     else
+	       alert("invalid age ..")
+	    
+	    var name="ramkumar";
+	    if (/^[a-z]+$/.test(name))
+	      alert("name is valid ")
+	     else 
+	      alert("name is invalid ")
+	      
+		
+	    var city="new delhi";
+	    
+	    if (/^[a-z]{5}$/.test(city))
+	      alert("city  is valid of 5 chars ")
+	     else 
+	      alert("city is invalid ")
+	      
+		
+		var language="Java"
+		
+		if(/^[a-z]{3,10}$/.test())
+	        alert("valid language with length 3, or 10")
+	        else
+	     alert("invalid language")
+	</script>	
+	
+</body>
+</html>
