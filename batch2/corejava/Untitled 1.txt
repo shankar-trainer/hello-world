@@ -1,0 +1,29 @@
+final  -- const variable 
+
+    variable -- const 
+    method  -- cannot be overridden
+    class   -- cannot ve inherited
+
+
+abstract class 
+     -- abstract method
+     -- constructor 
+     -- instance variable and class variable
+     -- cannot be instantiated
+     
+     
+     
+interface 
+   -- 100% abstract class
+   -- all methods are by default public abstract
+   -- all variables are by default public static and final
+   -- cannot be instantiated
+   -- no constructor
+   
+   
+   -- multiple inheritance
+   -- one interface can extends multiple interfaces
+   -- one class can extends one class but can implement 
+      multiple interfaces  
+     
+     
