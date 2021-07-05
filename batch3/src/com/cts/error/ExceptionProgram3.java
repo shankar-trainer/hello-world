@@ -12,7 +12,6 @@ public class ExceptionProgram3 {
 				System.out.println("error at divide method " + e.getMessage());
 				throw e;
 			}
-
 		return a / b;
 	}
 
