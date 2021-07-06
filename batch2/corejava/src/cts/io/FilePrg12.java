@@ -16,6 +16,7 @@ public class FilePrg12 {
 		while ((x = fileReader.read()) != -1) {
 			fileWriter.write(x);
 		}
+		
 		fileReader.close();
 
 		fileWriter.close();
