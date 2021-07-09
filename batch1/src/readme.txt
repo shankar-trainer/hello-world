@@ -387,3 +387,34 @@ static -- common methods, attributes
                 
                 
               
+ResultSet ---- all records 
+       -- maintain the cursor 
+       -- beforeFirst --  default position -- no record 
+       1
+       2
+       3
+       
+       
+       last 
+       afterlast  
+       
+         Connection -- 
+         
+         common to the project 
+         static connection --  single copy shared by all files 
+         
+DAO -->Data Access Object 
+   --> insert, update, delete, select 
+   
+   CRUD 
+   C -- create(insert) 
+   R -- retrieve (slect)
+   U -- Update 
+   D -- Delete 
+   
+   
+   
+   
+
+
+
