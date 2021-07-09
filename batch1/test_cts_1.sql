@@ -227,6 +227,9 @@ show tables;
 
 
 CREATE TABLE employee (id int(11) NOT NULL,  name varchar(20) NOT NULL,  salary float(10,2) DEFAULT NULL,
-  PRIMARY KEY (id),  CONSTRAINT employee_chk_1 CHECK ((salary>= 10000)))
+  PRIMARY KEY (id),  CONSTRAINT employee_chk_1 CHECK ((salary>= 10000)));
   
 show databases;
+use cts_db1;
+show tables;
+select * from book;

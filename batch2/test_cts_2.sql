@@ -252,7 +252,26 @@ select * from employee  where  not exists (select  emp_id from department);
 
 
 
+use cts_db1;
+desc book;
+select * from book;
+
+insert into book (isbn,bname,cost) values(6556,'java beginner', 566);
+show tables;
 
 
+desc customer;
 
+desc student;
+select * from student;
+delete from student where subject is null;
+
+set delimiter //
+drop procedure searchStudent;
+create procedure searchStudent(roll1 int,out name1 varchar(20),out subject1 varchar(20),out marks1 int, out dob1 date)
+begin
+select name,subject,marks,date_of_birth into name1,subject1,marks1,dob1 from student where roll=roll1;
+end;
+
+ 
 
