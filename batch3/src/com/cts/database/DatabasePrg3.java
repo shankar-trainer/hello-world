@@ -17,23 +17,27 @@ public class DatabasePrg3 {
 	public static void main(String[] args) {
 
 		try {
-			//DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-			//Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/cts_db3", "root", "mysql");
-		
-			Connection connection=DatabaseIUtil.getMyConnection();
-			
-			CallableStatement cst=connection.prepareCall("{call searchBook(?,?,?,?)}");
+			// DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+			// Connection connection =
+			// DriverManager.getConnection("jdbc:mysql://localhost:3306/cts_db3", "root",
+			// "mysql");
+
+			Connection connection = DatabaseIUtil.getMyConnection();
+
+			CallableStatement cst = connection.prepareCall("{call searchBook(?,?,?,?)}");
 			cst.setInt(1, 7676);
 			cst.registerOutParameter(2, java.sql.Types.VARCHAR);
 			cst.registerOutParameter(3, java.sql.Types.VARCHAR);
 			cst.registerOutParameter(4, java.sql.Types.FLOAT);
-			
-			cst.execute();
-			
-			System.out.println(cst.getString(2));
-			System.out.println(cst.getString(3));
-			System.out.println(cst.getFloat(4));
-			
+
+			if (!cst.execute()) {
+
+				System.out.println(cst.getString(2));
+				System.out.println(cst.getString(3));
+				System.out.println(cst.getFloat(4));
+			} else
+				System.out.println("not found");
+
 		} catch (SQLException e) {
 			System.err.println(e);
 		}
