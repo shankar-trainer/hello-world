@@ -19,6 +19,11 @@ public class StringPrg4 {
 		for (String string : ar) {
 			System.out.print(string + " , ");
 		}
+		String a=null;
+		
+		  a=String.join(" and ",ar[0],ar[1],ar[2],ar[3],ar[4]);
+		
+		System.out.println("\na is "+a);
 
 	}
 
