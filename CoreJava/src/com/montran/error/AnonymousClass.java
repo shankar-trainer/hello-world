@@ -55,6 +55,8 @@ public class AnonymousClass {
 				System.out.println("using phone we can send and receive message");
 			}
 
+			
+			
 			@Override
 			public void call() {
 				System.out.println("using phone we can call other and receive call ");
