@@ -27,14 +27,16 @@ public class User implements Comparable<User> {
 
 	@Override
 	public int compareTo(User o) {
+	return 	new Integer(this.getUserId()).compareTo(new Integer(o.getUserId()));
+		
+		/*
 		if (this.getUserId() > o.getUserId())
 			return 1;
-
 		else if (this.getUserId() < o.getUserId())
 			return -1;
 		else
 			return 0;
-
+       */
 	}
 
 }
