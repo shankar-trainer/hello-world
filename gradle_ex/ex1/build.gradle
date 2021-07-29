@@ -1,0 +1,10 @@
+description="""
+Example1
+"""
+
+task Hello{
+doLast{
+println "hello gradle"
+ }
+}
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE student SYSTEM "stud.dtd">
+
+<student>
+
+<stud id="3">
+<roll>1</roll>
+<name>mohan</name>
+
+<roll>1</roll>
+<name>mohan</name>
+
+</stud>
+
+<city></city>
+
+<stud id="2">
+<name>sohan</name>
+<roll>2</roll>
+</stud>
+
+<city></city>
+ 
+</student> 
+ 

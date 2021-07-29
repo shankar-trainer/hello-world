@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+// uncomment to apply ide specific plugin
+//apply plugin: 'idea'
+//apply plugin: 'eclipse'
+
+mainClassName = "com.packtpub.ge.hello.Main"
+
+run.args = ["Reader"]
+
+// uncomment to read runArgs from project properties
+run.args = [project.runArgs]
+
+// uncomment to change the archive's name
+//distributions.main.baseName = 'someName'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+
+    //api 'org.apache.commons:commons-math3:3.6.1'
+
+    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    //implementation 'com.google.guava:guava:28.0-jre'
+
+    // Use JUnit test framework
+    //testImplementation 'junit:junit:4.12'
+
+  testCompile 'junit:junit:4.12'
+}

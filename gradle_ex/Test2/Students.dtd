@@ -1,0 +1,6 @@
+<!ELEMENT Student (roll,first_name,middle_name,subject,grade)>
+<!ELEMENT roll (#PCDATA)?>
+<!ELEMENT first_name (#PCDATA)>
+<!ELEMENT middle_name (#PCDATA)>
+<!ELEMENT subject (grade)>
+<!ELEMENT grade (#PCDATA)>

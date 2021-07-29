@@ -1,0 +1,28 @@
+task work1<<{
+println'this is work1'
+}
+
+task work2(dependsOn: work1)<<{
+println 'this is work2'
+}
+
+task work3(dependsOn: work2) <<{
+println'this is work3'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

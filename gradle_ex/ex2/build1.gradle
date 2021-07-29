@@ -1,0 +1,17 @@
+/*
+> gradle  -q -b    build1.gradle  mywork1
+*/
+task mywork1 <<{
+print "this is mywork1"
+}
+
+task mywork2{
+doLast{
+println "this is mywork2"
+}
+}
+
+
+
+
+

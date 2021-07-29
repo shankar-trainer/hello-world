@@ -1,0 +1,6 @@
+<!ELEMENT student (stud,city)>
+<!ELEMENT stud ((roll,name)|(name,roll))+>
+<!ATTLIST stud id (1|2|3) #IMPLIED>
+<!ELEMENT roll (#PCDATA)>
+<!ELEMENT name ANY>
+<!ELEMENT city EMPTY> 

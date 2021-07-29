@@ -1,0 +1,23 @@
+apply plugin: 'base'
+apply plugin: 'java'
+//apply plugin: 'jetty'
+apply plugin: 'war'
+apply plugin: 'maven'
+ 
+repositories {
+    mavenLocal()
+
+    mavenCentral()
+}
+ 
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.5.8'
+    compile 'org.slf4j:slf4j-simple:1.5.8'
+    compile 'ch.qos.logback:logback-core:0.9.17'
+ 
+    // struts 2
+    compile 'org.apache.struts:struts2-core:2.3.14'
+  
+}
+
+//gradle build
