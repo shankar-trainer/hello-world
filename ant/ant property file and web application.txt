@@ -1,0 +1,72 @@
+http://www.tutorialspoint.com/ant/ant_property_files.htm
+http://www.tutorialspoint.com/ant/ant_data_types.htm
+https://ant.apache.org/manual/Tasks/propertyfile.html
+http://ant.apache.org/manual/properties.html
+http://ant.apache.org/manual/using.html
+
+
+<project name="MyProject" default="dist" basedir=".">
+    <description>
+        simple example build file
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target
+
+
+=============================
+reading .properties
+build.properties
+project.name="core java project with ant"
+project.duration="1 month"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="init">
+<property file="build.properties" />
+
+<target name="init">
+<echo>init called </echo>
+<echo>project name is ${project.name}</echo> <echo>project duration is ${project.duration}</echo> </target>
+
+</project>
+========================================================
+web application
+
+<?xml version="1.0" ?>
+<project name="AntExample1" default="war">
+
+<path id="compile.classpath">
+<!-- <fileset dir="WebContent/WEB-INF/lib"> -->
+
+<fileset dir="D:/apache-tomcat-6.0.37/lib/">
+<include name="*.jar" />
+</fileset>
+</path>
+
+<target name="init">
+<mkdir dir="build/classes" />
+<mkdir dir="dist" />
+</target>
+
+<target name="compile" depends="init">
+<javac destdir="build/classes" debug="true" srcdir="src"> 
+<classpath refid="compile.classpath" /> </javac> </target>
+
+<target name="war" depends="compile">
+<war destfile="dist/AntExample.war" webxml="WebContent/WEB-INF/web.xml">
+<fileset dir="WebContent" />
+<lib dir="WebContent/WEB-INF/lib" />
+<classes dir="build/classes" />
+</war>
+</target>
+
+
+</project>

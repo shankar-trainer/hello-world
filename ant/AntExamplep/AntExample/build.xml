@@ -1,0 +1,20 @@
+<?xml version="1.0" ?> 
+<project name="Ant Example" default="execute">
+
+	<target name="init" depends="clean">
+		<mkdir dir="build/classes" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="build/classes" />
+	</target>
+	
+	<target name="execute" depends="compile">
+		<java classname="com.vaannila.helloworld.HelloWorld" classpath="build/classes" />
+	</target>
+
+	<target name="clean">
+		<delete dir="build" />
+	</target>
+	
+</project>

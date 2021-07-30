@@ -1,0 +1,14 @@
+<?xml version="1.0" ?> 
+<project name="Hello World" default="compress">
+
+	<target name="compile">
+		<javac srcdir="."/>
+		<echo> Compilation Complete! </echo>
+	</target>
+	
+	<target name="compress" depends="compile">
+	        <jar destfile="HelloWorld.jar" basedir="." includes="*.class" />
+	        <echo> Building .jar file Complete! </echo>
+	</target>
+
+</project>

@@ -1,0 +1,489 @@
+CHAPTER 3 UNDERSTANDING ANT DATATYPES AND PROPERTIES 
+3.1 PRELIMINARIES 
+There are two fundamental concepts at the core of Ant’s capabilities: properties and 
+datatypes. Let’s start with a gentle overview of them both. 
+3.1.1 Datatype overview 
+One of the great advantages Ant has over the alternatives to building and packaging 
+Java applications is that it understands the primary problem domain, that of building 
+Java projects. Most steps to build a typical Java project deal with files and paths (such 
+as classpaths). Ant provides datatypes to handle these two concepts natively. You can 
+think of an Ant datatype as similar to Java’s own built-in core classes: data that can be 
+passed around and provided to tasks. The fileset and path datatypes, and several others, 
+form the basic building blocks of Ant build files. 
+Classpath-related headaches are commonplace in Java development. Ant makes 
+dealing with classpaths much more natural and pleasant than the command-line manual 
+alternative, and provides for the reuse of defined classpaths wherever needed. For 
+example, compiling source code requires that referenced classes be in the classpath. A 
+path can be defined once for compilation with <javac>, and reused for execution 
+(via <java>, covered in chapter 5). One of the consequences of classpaths being specified 
+inside the build file is that Ant can be invoked without an explicitly defined system 
+classpath, making it easy to install Ant and build a project with little or no 
+environmental configuration.1 Another no less important consequence is that classpaths 
+can be easily and tightly controlled. This reduces CLASSPATH configuration 
+problems, both for compilation and execution. 
+A set of files is a common entity to manipulate for such tasks as compiling, packaging, 
+copying, deleting, and documenting. Defining a fileset of all .java files, for 
+example, is straightforward: 
+<fileset dir="src" includes="**/*.java" id="source.fileset"/> 
+By providing an id attribute, we are defining a reference. This reference name can be 
+used later wherever a fileset is expected. For example, copying our source code to 
+another directory using the previously defined source.fileset is 
+<copy todir="backup"> 
+<fileset refid="source.fileset"/> 
+</copy> 
+3.1.2 Property overview 
+Ant’s property handling mechanism allows for build file extensibility and reusability 
+by parameterizing any string-specified item. The control users get over build files can 
+be dramatically increased with the techniques shown in this chapter. For example, 
+1 This is somewhat oversimplified, as Ant’s wrapper scripts do build a system classpath before invoking 
+Ant. It is also, unfortunately, necessary to add dependent JAR files to ANT_HOME/lib to utilize some tasks.
+
+INTRODUCING DATATYPES AND PROPERTIES WITH <JAVAC> 49 
+changing a build to use a different version of a third-party library, perhaps for testing 
+purposes, can be made as trivial as this: 
+ant -Dstruts.jar=/home/ant/newstruts/struts.jar 
+In this case, struts.jar represents an Ant property, and in our build file, we refer 
+to it with special syntax: ${struts.jar}. 
+A key feature of an Ant property is its immutability; it resists change once set.2 The 
+interesting and powerful consequence of properties retaining their first set value is that 
+build files can be coded to load property files in a specific order to allow user-, project-, 
+or environment-controlled overrides. 
+3.2 INTRODUCING DATATYPES AND PROPERTIES WITH <JAVAC> 
+Compiling Java source is the most fundamental task during a build. Ant provides Java 
+compilation using the <javac> task. The <javac> task provides a façade over Java 
+source compilation by wrapping many different Java compilers and their associated 
+switches behind a generalized task definition. A façade is a design pattern that provides 
+an interface to a system of classes, hiding the implementation details of those 
+classes behind a common interface. The <javac> task is the common interface to 
+JDK 1.1 and up, Jikes, and several other Java compilers. 
+There is much more to Java compilation than just specifying a source directory and 
+destination directory. A comparison of Sun’s JDK 1.3.1 javac command-line compiler 
+switches to Ant’s <javac> task is shown in table 3.1. 
+2 There are exceptions to this rule, but properties generally are immutable. 
+Table 3.1 Sun’s JDK 1.3.1 javac compared to Ant’s wrapper <javac> task. Note the similarities between all 
+of the parameters. Also note Ant’s way of using domain-specific terminology for concepts such as classpath. 
+This fundamental concept of specifying a build in a higher-level “language” is one of Ant’s greatest benefits 
+over any other alternative to building Java projects. 
+Option Name JDK’s javac switch Ant’s <javac> syntax 
+Debugging info -g (generate all debugging info) debug="yes" 
+-g:none (generate no debugging info) debug="no" 
+-g:{lines,vars,source} 
+(generate only some debugging info) 
+debug="yes" 
+debuglevel="lines,vars,source" 
+Optimize -O optimize="yes" 
+Generate no warnings -nowarn nowarn="true" 
+Output messages about 
+what the compiler is doing 
+-verbose verbose="true" 
+Output source locations 
+where deprecated APIs 
+are used 
+-deprecation deprecation="on" 
+continued on next page
+
+50 CHAPTER 3 UNDERSTANDING ANT DATATYPES AND PROPERTIES 
+NOTE Ant itself is not a Java compiler; it simply contains a façade over compilers 
+such as Sun’s javac. You need a Java compiler such as the JDK javac 
+compiler. See appendix A for installation and configuration information in 
+order to use <javac>. 
+The <javac> syntax shown in table 3.1 introduces several new attributes, as well as 
+several new subelements of <javac>. Most of these attributes are Boolean in 
+nature—debug, optimize, nowarn, verbose, and deprecation. Ant allows 
+flexibility in how Booleans can be specified with on, true, and yes all representing true, 
+and any other value mapping to false. The elements <classpath>, <src>, 
+<bootclasspath>, and <extdirs> introduce one of Ant’s greatest assets—its 
+path and file handling capability. Each of these elements represents a path. 
+For comparisons sake, to compile the code for our projects-indexing Ant task using 
+Sun’s JDK 1.3.1 javac compiler, the following command line is used: 
+javac -d build\classes 
+-classpath lib\lucene-1.2-rc3\lucene-1.2-rc3.jar; 
+lib\jtidy-04aug2000r7-dev\build\Tidy.jar; 
+C:\AntBook\jakarta-ant-1.5\lib\ant.jar; 
+-sourcepath src 
+-g 
+src\org\example\antbook\ant\lucene\*.java 
+The following Java compilation with Ant, utilizing Ant’s datatypes and properties, 
+shows the equivalent Ant task declaration in our build file. 
+Specify where to find referenced 
+class files and libraries 
+-classpath <path> <classpath> 
+<pathelement 
+location="lib/some.jar"/> 
+</classpath> 
+Specify where to find input 
+source files 
+-sourcepath <path> <src path="src"/> 
+Override location of 
+bootstrap class files 
+-bootclasspath <path> <bootclasspath …/> 
+Override location of installed 
+extensions 
+-extdirs <dirs> <extdirs …/> 
+Specify where to place 
+generated class files 
+-d <directory> destdir="build" 
+Specify character encoding 
+used by source files 
+-encoding <encoding> encoding="…" 
+Generate class files for 
+specific VM version 
+-target 1.1 target="1.1" 
+Enable JDK 1.4 assertions -source 1.4 source="1.4" 
+Table 3.1 Sun’s JDK 1.3.1 javac compared to Ant’s wrapper <javac> task. Note the similarities between all 
+of the parameters. Also note Ant’s way of using domain-specific terminology for concepts such as classpath. 
+This fundamental concept of specifying a build in a higher-level “language” is one of Ant’s greatest benefits 
+over any other alternative to building Java projects. (continued) 
+Option Name JDK’s javac switch Ant’s <javac> syntax
+
+PATHS 51 
+<javac destdir="${build.classes.dir}" 
+debug="${build.debug}" 
+includeAntRuntime="yes" 
+srcdir="${src.dir}"> 
+<classpath refid="compile.classpath"/> 
+<include name="**/*.java"/> 
+</javac> 
+In this build file, we have already defined the path compile.classpath as 
+<path id="compile.classpath"> 
+<pathelement location="${lucene.jar}"/> 
+<pathelement location="${jtidy.jar}"/> 
+</path> 
+This <javac> example is dramatically more sophisticated than shown in the previous 
+chapter. Each of these new concepts will be covered in detail in this chapter. Here 
+is a quick roadmap of what is to follow: 
+• The "${...}" notation denotes an Ant property, which is simply a mapping from 
+a name to a string value, in this case referring to the source directory, the destination 
+directory, what debug mode to use, and JAR locations. 
+• The subelement <classpath> specifies a path using a reference (indicating 
+which previously defined path to use). The previously defined <path> indicates 
+which JAR files to use, which here are specified by the use of properties 
+within the location attribute. 
+• The srcdir attribute implicitly defines a fileset containing all files in the specified 
+directory tree, and the nested <include> specifies a patternset used to 
+constrain the files to only Java source files. 
+We have set the includeAntRuntime attribute because we are compiling a custom 
+Ant task; this flag tells the task to add ant.jar to the classpath as well as the rest of 
+Ant’s classpath. 
+3.3 PATHS 
+A path, sometimes called a “path-like structure” in Ant’s documentation, is an 
+ordered list of path elements. It is analogous to the Java CLASSPATH, for example, 
+where each element in the list could be a file or directory separated by a delimiter. An 
+example of a path definition is: 
+<classpath> 
+<pathelement location="lib/some.jar"/> 
+</classpath> 
+The location attribute lets you specify a single file or directory. You can also 
+extend a path with another path, using path instead of location:
+
+52 CHAPTER 3 UNDERSTANDING ANT DATATYPES AND PROPERTIES 
+<classpath> 
+<pathelement path="build/classes;lib/some.jar"/> 
+</classpath> 
+The path specified can have its elements separated by either a semicolon (;) or colon 
+(:) and directories separated by either forward-slash (/) or back-slash (\),3 regardless of 
+operating system, making it extremely friendly for cross-platform use. If a path structure 
+only consists of a single path or location, it can be specified using a shortcut 
+form as in <classpath location="lib/some.jar"/> or <classpath 
+path="build/classes;lib/some.jar"/>. 
+Paths can also include a set of files: 
+<classpath> 
+<fileset dir="lib"> 
+<include name="*.jar"/> 
+</fileset> 
+</classpath> 
+It is important to note that Ant guarantees no order within a <fileset>. Each element 
+in a path is ordered from the top and down so that all files within a fileset 
+would be grouped together in a path. However, the order within that fileset is not 
+guaranteed. 
+3.4 FILESETS 
+Implicitly, all build processes will operate on sets of files, either to compile, copy, delete, 
+or operate on them in any number of other ways. Ant provides the fileset as a native 
+datatype. It is difficult to imagine any useful build that does not use a fileset. Some tasks 
+support paths, which implicitly support filesets, while other tasks support filesets 
+directly—and this distinction should be made clear in each task’s documentation. 
+A fileset is a set of files rooted from a single directory. By default, a fileset specified 
+with only a root directory will include all the files in that entire directory tree, including 
+files in all subdirectories recursively. For a concrete running example that will demonstrate 
+fileset features as we discuss them, let’s copy files from one directory to 
+another: 
+<copy todir="new_web"> 
+<fileset dir="web"/> 
+</copy> 
+In its current form, all files from the web directory are copied to the new_web directory. 
+This example will evolve into copying only specific files, altering them during 
+the copy with token replacement, and flattening the directory hierarchy in the 
+new_web directory. 
+3 Ant is not at all ashamed to be bi-slashual, and is actually quite proud of it!
+
+FILESETS 53 
+3.4.1 Fileset examples 
+During a build, you often need to build a fileset by including or excluding sets of 
+files. A few examples of typical filesets follow. 
+Include all JAR files in the lib directory (nonrecursive, no subdirectories are considered): 
+<fileset dir="lib"> 
+<include name="*.jar"/> 
+</fileset> 
+Include all .java files below the test directory that end with the word “Test” 
+(Chapter 4 will elaborate on this particular usage.): 
+<fileset dir="test"> 
+<include="**/*Test.java"/> 
+</fileset> 
+All non-JSP pages in the web directory and below: 
+<fileset dir="web"> 
+<exclude name="**/*.jsp"/> 
+</fileset> 
+By default, includes and excludes are case-sensitive, but this can be disabled by specifying 
+casesensitive="false". The <include> and <exclude> elements are 
+called patternsets. 
+3.4.2 Default excludes 
+In many cases, special or temporary files end up in your source tree from IDEs and 
+source code management (SCM) systems like CVS. In order to avoid the unpleasant 
+situation of always specifying exclude clauses in each fileset, exclude patterns are 
+enabled by default for many of these special patterns. The default exclude patterns are 
+shown in table 3.2. 
+Table 3.2 Default exclude patterns, and the typical reason for their existence. 
+Pattern Typical program that creates and uses these files 
+**/*~ jEdit and many other editors use this as previous version backup 
+**/#*# editors 
+**/.#* editors 
+**/%*% editors 
+**/CVS CVS (Concurrent Version System) metadata directory 
+**/CVS/** CVS, metadata files 
+**/.cvsignore CVS, contains exclusion patterns for CVS to ignore during routine operations 
+**/SCCS SCCS metadata directory 
+**/SCCS/** SCCS metadata files 
+**/vssver.scc Microsoft Visual SourceSafe metadata file 
+**/._* Mac OS/X resource fork files
+
+54 CHAPTER 3 UNDERSTANDING ANT DATATYPES AND PROPERTIES 
+The ** is a pattern to match multiple directories in a hierarchy. (These patterns are 
+discussed in more detail in the Patternset section.) Many users have been bitten by 
+the confusion caused when a fileset does not include every file that was intended 
+because it matches one of these default exclude patterns. The <fileset> element 
+has a defaultexcludes attribute for turning off this behavior. Simply use 
+defaultexcludes="no" to turn off the automatic exclusions. Unfortunately, 
+these default exclude patterns are hard-coded and not extensible, but in most cases 
+using the default excludes is the desired behavior and rarely becomes an issue. 
+NOTE Filesets resolve their files when the declaration is encountered during execution. 
+This is important to know when referring to a previously defined 
+fileset later, as new files and directories matching the patterns may have appeared 
+between the resolution and reference—these new files would not be 
+seen by tasks operating upon that fileset. 
+3.5 PATTERNSETS 
+Filesets accomplish the include/exclude capability by utilizing another of Ant’s core 
+datatypes: the patternset. A patternset is a collection of file matching patterns. A patternset 
+itself does not refer to any actual files until it is nested in a fileset and therefore 
+rooted at a specific directory. A pattern is a path-matching specification similar to 
+Unix- and MS-DOS-based file matching. Examples of this have already been shown 
+with *.jar used to represent all files with the .jar extension in the top directory and 
+**/*.jsp to represent all files in the entire directory tree with the .jsp extension. 
+The pattern matching features are as follows: 
+• * matches zero or more characters. 
+• ? matches a single character. 
+• **, used as the name of a directory, represents matching of all directories from 
+that point down, matching zero or more directories. 
+• A pattern ending with a trailing / or \ implies a trailing **. 
+Implicitly a <fileset> holds a patternset, but patternsets can also be specified 
+independently, allowing for the reuse of patternsets in multiple filesets. (See 
+section 3.14.) Table 3.3 lists the attributes available on the <patternset> element. 
+**/.svn Subversion SCM files 
+**/.svn/** Subversion SCM files 
+Table 3.2 Default exclude patterns, and the typical reason for their existence. (continued) 
+Pattern Typical program that creates and uses these files 
+
+PATTERNSETS 55 
+. 
+Excludes take precedence, so that if a file matched both an include and exclude pattern 
+the file would be excluded. Elements corresponding to these attributes are also 
+available as child elements of <patternset> for increased flexibility and control. 
+The elements are <include>, <exclude>, <includesfile>, and <excludesfile>. 
+Each of these elements has a name attribute. For <include> and 
+<exclude>, the name attribute specifies the pattern to be included or excluded, 
+respectively. For the <includesfile> and <excludesfile> elements, the name 
+attribute represents a file name. Each of these elements has if/unless attributes, 
+which are covered in the conditional patternset section later in this chapter Here are 
+some examples of patternsets: 
+<patternset> 
+<include name="*.jsp"/> 
+</patternset> 
+The <patternset> element is not always explicitly specified when used within a 
+fileset. A fileset implicitly contains patternsets. Our running copy example is shown 
+again using a patternset to include all JSP files: 
+<copy todir="new_web"> 
+<fileset dir="web" includes="**/*.jsp"/> 
+</copy> 
+This is equivalent to 
+<copy todir="new_web"> 
+<fileset dir="web"> 
+<include name="**/*.jsp"/> 
+</fileset> 
+</copy> 
+Had we specified just *.jsp, only the JSP files in the web directory would have been 
+copied, but no files in its subdirectories. 
+Patternsets may be nested within one another, such as 
+Table 3.3 Patternset attributes. Including and excluding patterns allows filesets to be defined 
+precisely to encompass only the files desired. The includesfile and excludesfile adds a level of 
+indirection and external customization. 
+Attribute Description 
+includes Comma-separated list of patterns of files that must be included. All files are 
+included when omitted. 
+excludes Comma-separated list of patterns of files that must be excluded. No files (except 
+default excludes) are excluded when omitted. 
+includesfile The name of a file; each line of this file is taken to be an include pattern. You can 
+specify more than one include file by using nested includesfile elements. 
+excludesfile The name of a file; each line of this file is taken to be an exclude pattern. You can 
+specify more than one exclude file by using nested excludesfile elements.
+
+56 CHAPTER 3 UNDERSTANDING ANT DATATYPES AND PROPERTIES 
+<patternset> 
+<include name="**/*.gif,**/*.jpg"/> 
+<patternset> 
+<exclude name="**/*.txt,**/*.xml"/> 
+</patternset> 
+</patternset> 
+This is a contrived example simply demonstrating the nesting capability. This nesting 
+is unnecessary in this example, but datatype references make the nesting capability 
+powerful. Patternset nesting is a feature introduced with Ant 1.5. This example is 
+shown again using references in section 3.14.2 
+3.6 SELECTORS 
+Ant 1.5 includes a sophisticated new feature, called selectors, for selecting the files 
+included in a fileset. The selectors are listed in table 3.4. 
+These selectors can be combined inside selector containers to provide grouping and 
+logic. The containers are <and>, <or>, <not>, <none>, and <majority>. Containers 
+may be nested inside containers, allowing for the construction of complex 
+selection logic. Rather than detailing every available selector, container, and their 
+options, we refer you to Ant’s documentation for this information. We will, however, 
+provide a couple of examples showing how selectors work. 
+To compare two directory trees and copy the files that exist in one tree but not 
+another we use a combination of <not> and <present>: 
+<copy todir="newfiles" includeemptydirs="false"> 
+<fileset dir="web"> 
+<not> 
+<present targetdir="currentfiles"/> 
+</not> 
+</fileset> 
+</copy> 
+Table 3.4 Ant’s built-in selectors 
+Selector Description 
+<filename> Works like a patternset <include> or <exclude> element to match files based 
+on a pattern. 
+<depth> Selects files based on a directory depth range. 
+<size> Selects files that are less, equal, or more than a specified size. 
+<date> Selects files (and optionally directories) that have been last modified before, after, 
+or on a specified date. 
+<present> Selects files if they exist in another directory tree. 
+<depend> Selects files that are newer than corresponding ones in another directory tree. 
+<contains> Selects files that contain a string.
+
+DATATYPE ELEMENT NAMING 57 
+The <copy> task is copying only the files from the web directory that do not exist in 
+the currentfiles directory. Using the <contains> selector, we can choose only the 
+files that contain a certain string: 
+<copy todir="currentfiles" includeemptydirs="false"> 
+<fileset dir="web"> 
+<contains text="System"/> 
+</fileset> 
+</copy> 
+Only the files containing the text “System” in the web directory are copied to the currentfiles 
+directory. By default <contains> is case-sensitive, but can be changed 
+using casesensitive="no". 
+All rules must be satisfied before a file is considered part of a fileset, so when using 
+selectors in conjunction with patternsets, the file must match the include patterns, 
+must not match any exclude patterns, and the selector rules must test positively. 
+A <custom> selector enables you to write your own selector logic in a Java class. 
+(See chapter 20 for more details on writing a custom selector.) 
+3.7 DATATYPE ELEMENT NAMING 
+Ant exposes the patternset, path, and fileset datatypes (and some others) in its API so, 
+for example, task writers have the luxury of implementing tasks to operate on a set of 
+files very easily. The framework does not force these datatypes to have specific element 
+names and tasks can support these datatypes without the need to explicitly 
+specify <fileset>. 
+<javac> is an example of a task implicitly encompassing a fileset, with 
+includes, excludes, includesfile, and excludesfile attributes as well as 
+nested <include>, <exclude>, <includesfile>, and <excludesfile> elements. 
+Note that a <fileset> has a mandatory root dir attribute, and in the case 
+of <javac> this is specified with the srcdir attribute. Confusing? Yes. However, 
+it was done this way in order to remove ambiguity for build file writers. Would a dir 
+attribute on <javac> have represented a source directory or a destination directory? 
+The <javac> task is also an example of a task allowing paths as nested elements. 
+Different types of paths may be specified (<src>, <classpath>, <bootclasspath>, 
+and <extdirs>); and they may be combined in any way. For example, you 
+could use two <src> tags to compile two directory trees of source code into a single 
+output directory: 
+<javac destdir="build/classes"> 
+<src path="src"/> 
+<src path="test/junit"/> 
+</javac> 
+The <javac> task aggregates all <src> paths for compilation. There are lots of permutations 
+of all the ways in which these fileset and path capabilities can work 
+together to accomplish choosing precisely the files desired. You will be exposed to 
+some of these variations throughout this book.
+
+58 CHAPTER 3 UNDERSTANDING ANT DATATYPES AND PROPERTIES 
+3.8 FILTERSET 
+During the build process, it is common to encounter situations that require simple 
+text substitutions in files based on dynamic build information or state. The two primary 
+tasks that support filterset functionality are <copy> and <move>. Two situations 
+typically take advantage of filtered copy: 
+• Putting the current date or version information into files bundled with a build, 
+such as documentation. 
+• Conditionally “commenting out” pieces of configuration files. 
+A filter operation replaces tokenized text in source files during either a <move> or 
+<copy> to a destination file. In a filtered <copy>, the source file is not altered. A 
+token is defined as text surrounded by beginning and ending token delimiters. These 
+delimiters default to the at-sign character (@), but can be altered using the <filterset> 
+begintoken and endtoken attributes. 
+3.8.1 Inserting date stamps in files at build-time 
+Returning to our running copy example, we will now enhance the copy to substitute 
+a date and time stamp tokens with the actual build date and time into the resultant 
+files, leaving the original files unaltered. An example JSP file including the tokens is: 
+<html> 
+<head><title>Ant Book</title></head> 
+<body> 
+System build time: @DATE@ @ @TIME@ 
+</body> 
+</html> 
+Here @DATE@ and @TIME@ will be replaced during the copy: 
+<tstamp/> 
+<copy todir="new_web" overwrite="true"> 
+<fileset dir="web" includes="**/*.jsp"/> 
+<filterset> 
+<filter token="DATE" value="${DSTAMP}"/> 
+<filter token="TIME" value="${TSTAMP}"/> 
+</filterset> 
+</copy> 
+There are a few new features introduced here. The <tstamp> task creates the 
+DSTAMP and TSTAMP Ant properties. Ant properties get covered extensively in section 
+3.12, but, for our purposes, the values of ${DSTAMP} and ${TSTAMP} contain 
+the date and time stamps respectively. The <copy> task has dependency checking so 
+that it does not copy files if the source file’s modification timestamp is earlier than the 
+destination file’s. Because our filtered copy should always replace the destination files, 
+we disable the dependency checking with overwrite="true". Applying this filtered 
+copy on the templated JSP file shown produces the following:
+
+FILTERCHAINS AND FILTERREADERS 59 
+<html> 
+<head><title>Ant Book</title></head> 
+<body> 
+System build time: 20020207 @ 1501 
+</body> 
+</html> 
+NOTE Do not try to filter binary files as they may be corrupted in the process. 
+A <filter> task creates a globally defined filterset. Because this filter applies on all 
+<copy> or <move> tasks that are then executed, it can be dangerous, unexpectedly 
+transforming binary files. We recommend, therefore, that filtered <copy> or <move> 
+tasks individually specify their own filterset. If a filterset needs to be reused for several 
+instances within a build, it can be defined globally using the <filterset id="global.
+filterset"> syntax and referenced where needed. (See section 3.14.) 
+3.9 FILTERCHAINS AND FILTERREADERS 
+Processing text files has never been so easy with Ant until the introduction, in version 
+1.5, of FilterChains and FilterReaders. A FilterReader is a simple filter of text input 
+that can remove or modify the text before it is output. A FilterChain is an ordered 
+group of one or more FilterReaders. A FilterChain is analogous to piping output from 
+one command to another in Unix, with the output of one command being the input 
+to the next, and so on. 
+There are a number built-in FilterReaders, as shown in table 3.5. 
+Four of Ant’s tasks support FilterChains: <copy>, <move>, <loadfile>, and 
+<loadproperties>. Stripping comments out of a Java properties file, perhaps to 
+ship without comments and keep comments in developer files, is a simply matter of 

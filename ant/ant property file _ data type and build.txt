@@ -1,0 +1,204 @@
+Ant properties and data types
+ 
+Setting properties directly in the build file is okay if you are working with a handful of properties. However, for a large project, it makes sense to store the properties in a separate property file.
+Storing the properties in a separate file allows you to reuse the same build file, with different property settings for different execution environment. For example, build properties file can be maintained separately for DEV, TEST and PROD environments.
+Specifying properties in a separate file is useful when you do not know the values for a property (in a particular environment) up front. This allows you to perform the build in other environments where the property value is known.
+There is no hard and fast rule, but typically the property file is named build.properties and is placed along side the build.xml file. You could create multiple build properties file based on the deployment environments - such as build.properties.dev and build.properties.test
+The contents of the build property file are similar to the normal java property file. They contain one property per line. Each property is represented by a name and a value pair. The name and value pair are separated by an equals sign. It is highly recommended that the properties are annotated with proper comments. Comments are listed using the hash character.
+The following shows a build.xml and an associated build.properties file
+build.xml
+<?xml version="1.0"?>
+<project name="Hello World Project" default="info">
+   <property file="build.properties"/>
+      <target name="info">
+         <echo>Apache Ant version is ${ant.version} - You are 
+         at ${sitename} </echo>
+     </target>
+</project>
+build.properties
+# The Site Name
+sitename=www.tutorialspoint.com
+buildversion=3.3.2
+In the above example, sitename is a custom property which is mapped to the site's name, You could declare any number of custom properties in this fashion. Another custom property listed in the above example is the buildversion, which, in this instance refers to the version of the build.
+In addition to the above, ant comes with a number of predefined build properties, which have been listed in the previous section, but is represented below once again.
+Properties	Description
+ant.file	The full location of the build file
+ant.version	The version of the Apache Ant installation
+basedir	The basedir of the build, as specified in the basedir attribute of the project element.
+ant.java.version	The version of the JDK that is used by Ant.
+ant.project.name
+The name of the project, as specified in the name atrribute of the project element.
+ant.project.default-target	The default target of the current project
+ant.project.invoked-targets	Comma separated list of the targets that were invoked in the current project
+ant.core.lib	The full location of the ant jar file
+ant.home	The home directory of Ant installation
+ant.library.dir	The home directory for Ant library files - typically ANT_HOME/lib folder.
+In the example presented in this section, we have used the ant.version built in property.
+
+ 
+Ant - Data Types
+Ant provides a number of predefined data types. Do not confuse the data types that are available in the programming language, but instead consider the data types as set of services that are built into the product already
+The following is a list of data types provided by Apache Ant
+File Set
+The Fileset data types represents a collection of files. The Fileset data type is usually used as a filter to include and exclude files that match a particular pattern.
+For example:
+<fileset dir="${src}" casesensitive="yes">
+  <include name="**/*.java"/>
+  <exclude name="**/*Stub*"/>
+</fileset>
+The src attribute in the above example points to the source folder of the project.
+In the above example, the fileset selects all java files in the source folder except those that contain the word 'Stub' in them. The casesensitive filter is applied to the fileset which means that a file with the name Samplestub.java will not be excluded from the fileset
+Pattern Set
+A pattern set is a pattern that allows to easily filter files or folders based on certain patterns. Patterns can be created using the following meta characters.
+•	? - Matches one character only
+•	* - Matches zero or many characters
+•	** - Matches zero or many directories recursively
+The following example should give an idea of the usage of a pattern set.
+<patternset id="java.files.without.stubs">
+  <include name="src/**/*.java"/>
+  <exclude name="src/**/*Stub*"/>
+</patternset>
+The patternset can then be reused with a fileset as follows:
+<fileset dir="${src}" casesensitive="yes">
+  <patternset refid="java.files.without.stubs"/>
+ </fileset>
+File List
+The File list data type is similar to the file set except that the File List contains explicitly named lists of files and do not support wild cards
+Another major difference between the file list and the file set data type is that the file list data type can be applied for files that may or may not exist yet.
+Following is an example of the File list data type
+<filelist id="config.files" dir="${webapp.src.folder}">
+  <file name="applicationConfig.xml"/>
+  <file name="faces-config.xml"/>
+  <file name="web.xml"/>
+  <file name="portlet.xml"/>
+</filelist>
+The webapp.src.folder attribute in the above example points to the web application's source folder of the project.
+Filter Set
+Using a Filter Set data type with the copy task, you can replace certain text in all files that match the pattern with a replacement value.
+A common example is to append the version number to the release notes file, as shown in the example below
+<copy todir="${output.dir}">
+  <fileset dir="${releasenotes.dir}" includes="**/*.txt"/>
+  <filterset>
+    <filter token="VERSION" value="${current.version}"/>
+  </filterset>
+</copy>
+The output.dir attribute in the above example points to the output folder of the project.
+The releasenotes.dir attribute in the above example points to the release notes folder of the project.
+The current.version attribute in the above example points to the current version folder of the project.
+The copy task, as the name suggests is used to copy files from one location to another.
+Path
+The path data type is commonly used to represent a classpath. Entries in the path are separated using a semicolon or colon. However, these characters are replaced a the run time by the running system's path separator character.
+Most commonly, the classpath is set to the list of jar files and classes in the project, as shown in the example below:
+<path id="build.classpath.jar">
+  <pathelement path="${env.J2EE_HOME}/${j2ee.jar}"/>
+  <fileset dir="lib">
+      <include name="**/*.jar"/>
+  </fileset>
+</path>
+The env.J2EE_HOME attribute in the above example points to the environment variable J2EE_HOME.
+The j2ee.jar attribute in the above example points to the name of the J2EE jar file in the J2EE base folder.
+Ant - Building Projects
+ 
+Now that we have learnt about the data types in Ant, it is time to put that into action. Consider the following project structure
+This project will form the Hello World Fax Application project for the rest of this tutorial.
+C:\work\FaxWebApplication>tree
+Folder PATH listing
+Volume serial number is 00740061 EC1C:ADB1
+C:.
++---db
++---src
+.   +---faxapp
+.       +---dao
+.       +---entity
+.       +---util
+.       +---web
++---war
+    +---images
+    +---js
+    +---META-INF
+    +---styles
+    +---WEB-INF
+        +---classes
+        +---jsp
+        +---lib
+Let me explain the project structure.
+•	The database scripts are stored in the db folder.
+•	The java source code is stored in the src folder.
+•	The images, js, META-INF, styles (css) are stored in the war folder.
+•	The JSPs are stored in the jsp folder.
+•	The third party jar files are stored in the lib folder.
+•	The java class files will be stored in the WEB-INF\classes folder.
+The aim of this exercise is to build an ant file that compiles the java classes and places them in the WEB-INF\classes folder.
+Here is the build.xml required for this project. Let us consider it piece by piece
+<?xml version="1.0"?>
+<project name="fax" basedir="." default="build">
+    <property name="src.dir" value="src"/>
+    <property name="web.dir" value="war"/>
+    <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
+    <property name="name" value="fax"/>
+
+    <path id="master-classpath">
+        <fileset dir="${web.dir}/WEB-INF/lib">
+            <include name="*.jar"/>
+        </fileset>
+        <pathelement path="${build.dir}"/>
+    </path>
+
+    <target name="build" description="Compile source tree java files">
+        <mkdir dir="${build.dir}"/>
+        <javac destdir="${build.dir}" source="1.5" target="1.5">
+            <src path="${src.dir}"/>
+            <classpath refid="master-classpath"/>
+        </javac>
+    </target>
+ 
+    <target name="clean" description="Clean output directories">
+        <delete>
+            <fileset dir="${build.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+        </delete>
+    </target>
+</project>
+First, let us declare some properties for the source, web and build folders.
+<property name="src.dir" value="src"/>
+<property name="web.dir" value="war"/>
+<property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
+In this example, the src.dir refers to the source folder of the project (i.e, where the java source files can be found).
+The web.dir refers to the web source folder of the project. This is where you can find the JSPs, web.xml, css, javascript and other web related files
+Finally, the build.dir refers to the output folder of the project compilation.
+Properties can refer to other properties. As shown in the above example, the build.dir property makes a reference to the web.dir property.
+In this example, the src.dir refers to the source folder of the project.
+The default target of our project is the compile target. But first let us look at the clean target.
+The clean target, as the name suggests deletes the files in the build folder.
+<target name="clean" description="Clean output directories">
+   <delete>
+      <fileset dir="${build.dir}">
+         <include name="**/*.class"/>
+      </fileset>
+   </delete>
+</target>
+The master-classpath holds the classpath information. In this case, it includes the classes in the build folder and the jar files in the lib folder.
+<path id="master-classpath">
+   <fileset dir="${web.dir}/WEB-INF/lib">
+      <include name="*.jar"/>
+   </fileset>
+   <pathelement path="${build.dir}"/>
+</path>
+Finally, the build target to build the files. First of all, we create the build directory if it doesn't exist. Then we execute the javac command (specifying jdk1.5 as our target compilation). We supply the source folder and the classpath to the javac task and ask it to drop the class files in the build folder.
+<target name="build" description="Compile main source tree java files">
+   <mkdir dir="${build.dir}"/>
+   <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true"
+             deprecation="false" optimize="false" failonerror="true">
+      <src path="${src.dir}"/>
+      <classpath refid="master-classpath"/>
+   </javac>
+</target>
+Running ant on this file will compile the java source files and place the classes in the build folder.
+The following outcome is the result of running the ant file: 
+C:\>ant
+Buildfile: C:\build.xml
+
+BUILD SUCCESSFUL
+Total time: 6.3 seconds
+The files are compiled and are placed in the build.dir folder.

@@ -1,0 +1,730 @@
+Ant is a free tool under GNU Licence and is freely available at http://jakarta.apache.org/ant/ , current version of ant is 1.4.1. Ant allows the developer to automate the repeated process involved in the development of J2EE application. Developers can easily write the script to automate the build process like compilation, archiving and deployment.
+For this tutorial I am using 1.4.1 and jdk1.4. I am also using Jboss 3.0 (with tomcat) downloaded from http://www.apache.org to deploy and test J2EE application developed in this lesson. In order to understand this tutorial you should have a solid knowledge of java programming and development of web application using java technologies.
+Lesson 1
+Downloading and Installing Ant
+Before installing Ant make sure you have JDK1.3 or above installed on your machine.
+For this tutorial download ant from http://jakarta.apache.org/ant/  and unzip the file into your favorite directory.
+Set the class path to the bin directory of the ant.
+Let's assume that Ant is installed in c:\ant\. The following code has to be put into autoexec.bat file:
+set ANT_HOME=c:\ant
+set JAVA_HOME=c:\jdk1.3
+set PATH=%PATH%;%ANT_HOME%\bin
+Testing Ant
+Go to command prompt and issue the following command.
+  
+C:\anttest>Ant 
+Buildfile: build.xml does not exist!Build failed
+C:\anttest>
+   
+If every this is installed correctly Ant will give the above message.
+Now its time to do some work with Ant.
+Ant uses configuration file called build.xml to work. This is the file where you defines the process of compiling, building and deploying.
+Writing build.xml file
+build.xml is a xml file used by ant utility to compile, build and deploy or run the application.
+Now here is code of simple build.xml file which compiles a java file present in src directory and places compiled class file in build/src directory.
+  
+<?xml version="1.0"?> 
+<!-- Build file for our first application -->
+<project name="Ant test project" default="build" basedir=".">
+<target name="build" >
+<javac srcdir="src" destdir="build/src" debug="true"
+includes="**/*.java"
+/>
+</target>
+</project>
+     
+First line of the build.xml file represents the document type declaration.  Next line is comment entry. Third line is the project tag. Each buildfile contains one project tag and all the instruction are written in the project tag.
+The project tag:
+<project name="Ant test project" default="build" basedir=".">
+requires three attributes namely name, default and basedir.
+Here is the description of the attributes:
+Attribute	Description
+name	Represents the name of the project.
+default	Name of the default target to use when no target is supplied.
+basedir	Name of the base directory from which all path calculations are done. 
+All the attributes are required.
+One project may contain one or more targets. In this example there is only one target.
+<target name="build" >
+<javac srcdir="src" destdir="build/src" debug="true"
+includes="**/*.java"
+/>
+</target>
+Which uses task javac to compile the java files.
+Here is the code of our test1.java file which is to be compiled by the Ant utility.
+  
+class test1{ 
+public static void main (String args[]){
+System.out.println("This is example 1");
+}
+}
+   
+Download the code of this tutorial and unzip it in c:\. files will be unzipped in anttest directory. To run the Ant utility to compile the file go to c:\anttest\example1 and issue ant command. You will receive the following out put.
+  
+C:\anttest\example1>ant 
+Buildfile: build.xml
+build:
+[javac] Compiling 1 source file to C:\anttest\example1\build\src
+BUILD SUCCESSFUL
+Total time: 4 seconds
+C:\anttest\example1>
+   
+Above mentioned process compiles the file and places in the build\src directory.
+In the next lesson I will show you how to use ant to compile, build and deploy your web application to the Jboss 3.0
+
+In this lesson I will show you how to build you web application and install on the Jboss 3.0 application server.
+After the completion of the lesson you will be able to include jsp, html and servlets in the ear file and deploy on the Jboss 3.0 application server. This example will provide a strong foundation for the further development. Ant script developed in this lesson will be used in subsequent tutorial for the development and deployment of complex J2EE Applications with little or no more modification.
+In this lesson we will write one Hello World Servlet and a JSP file file to call Hello World Servlet. In order to deploy components we have to build .ear file which is the standard format for the deployment of J2EE application.
+First of all let's understand the structure of .ear and .war files.
+Enterprise Archive Contents
+Enterprise Archive (.ear) component follows the standard directory structure defined in the J2EE specification. 
+Directory Structure of .ear archive
+ /
+  .war and .jar files
+   Meta-inf
+     	  application.xml
+   	  
+In the .ear file .war,.jar and application.xml file are packaged in the above format. 
+Enterprise Archive Contents
+Web component follows the standard directory structure defined in the J2EE specification. 
+Directory Structure of Web Component
+ /
+   index.htm, JSP, Images etc..
+   Web-inf
+  	web.xml
+  	 classes
+  	      servlet classes
+  	 lib
+  	      jar files
+   	  
+Root directory of the web archive ('.war' file) contains all the html, jsp, images files and the additional directories containing these files. In the root directory there is a special directory 'Web-inf' which contains the web deployment descriptor (web.xml), classes and the lib directory.  
+Directory Structure of Example2 directory
+After understanding the structure of .ear and .war file let's look at the directory structure of example2 directory where we have work to develop the deployable .ear file.
+Directory structure:
+ 
+Description of Directory and its content:
+Directory	Description
+example2	Base directory which contains build.xml and the .ear file generated by Ant utility will be placed here.
+build	Various files generated by Ant utility will be placed in different directories under this directory. 
+build/deploymentdesciptors	Web.xml and application.xml files are placed in this directory.
+build/ear	Intermediate files for the assembling of example2.ear ear file are placed here.
+build/jar	Any jar file if required will be placed in this directory.
+build/war	Intermediate files for the assembling of example2.war ear file are placed here.
+build/src	All the compiled .class files are placed in this directory.
+src	All the java source files are placed here.
+web	All the html,jsp, images etc. files are placed in this directory.
+In this lesson we creating HelloWorld.java and index.jsp which is in the /src and /web directory respectively.
+Source code of HelloWorld.java:
+import java.io.*;
+import java.text.*;
+import java.util.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+public class HelloWorld extends HttpServlet {
+
+public void service(HttpServletRequest request, HttpServletResponse response) throws  IOException, ServletException{
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+    out.println("<html>");
+    out.println("<head>");
+    out.println("<title>Hello World Servlet!</title>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<p align=\"center\"><font size=\"5\" color=\"#000080\">Hello World!</font></p>");
+    out.println("<p align=\"center\"><a href=\"javascript:history.back()\">Go to Home</a></p>");
+    out.println("</body>");
+    out.println("</html>");
+   }
+}
+      
+Here is the code of index.jsp file:
+ <%@page language="java" %>
+<html>
+
+<head>
+<title>Welcome to Jboss 3.0 tutorial</title>
+</head>
+
+<body bgcolor="#FFFFCC">
+
+<p align="center"><font size="6" color="#800000">Welcome to<br>
+Jboss 3.0 Tutorial</font></p>
+<p align="center"><font color="#000080" size="4">Congralutations you have successfully
+installed lesson 2 tutorial</font></p>
+<p align="center"><font color="#000080" size="4"><a href="servlet/HelloWorld">Click here
+to</a> execute Hello World Servlet.</font></p>
+<p><font size="4">&nbsp;</font></p>
+<p align="center"><font color="#000080"><font size="4">For more tutorials and examples visit
+</font> </font><font size="4"><a href="http://www.rosindia.net"><font color="#000080">http://www.rosindia.net</font></a></font></p>
+<p align="center"><font size="4">&nbsp;</font></p>
+<p align="center"><font color="#000080">Copyright © 2001 roseindia.net. All
+rights reserved.</font></p>
+
+</body>
+
+</html>
+
+    
+You can download all the file of this tutorial from here.
+Writing Application and Web deployment descriptor
+Since in this lesson we are developing one servlet and one jsp files so our deployment descriptor is very simple.
+web.xml file:
+ 
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app
+PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+"http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+
+<web-app>
+<servlet> 
+   <servlet-name>HelloWorld</servlet-name> 
+    <servlet-class>HelloWorld</servlet-class> 
+</servlet> 
+
+<servlet-mapping>
+      <url-pattern>/servlet/HelloWorld</url-pattern>
+      <servlet-name>HelloWorld</servlet-name>
+</servlet-mapping>
+
+</web-app>
+
+
+    
+application.xml file:
+ 
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<application>
+<display-name>Example 2 </display-name>
+<module>
+<web>
+<web-uri>example2.war</web-uri>
+<context-root>/example2</context-root>
+</web>
+</module>
+</application>
+
+    
+Above application.xml file describe the content of example2.ear. Tag <web-uri>example2.war</web-uri> describe the name of web module (i.e.. example2.war) packaged in the archive. The context root of this example2.ear is eample2.
+Writing Ant build xml file
+To build example2.ear file, I have written build.xml which compiles source code and builds deployable archive file.
+build.xml file:
+ <?xml version="1.0"?>
+<!-- ==================================================== -->
+<!-- Build file for our first web application -->
+<!-- build.xml, Sunday, July 07, 2002 -->
+<!-- Author: Deepak Kumar -->
+<!-- Email : deepak@roseindia.net -->
+<!-- Url : http://www.roseindia.net -->
+<!-- ==================================================== -->
+
+
+<project name="Jboss 3.0 tutorial series" default="all" basedir=".">
+
+
+<target name="init">
+<property name="dirs.base" value="${basedir}"/>
+<property name="classdir" value="${dirs.base}/build/src"/>
+<property name="src" value="${dirs.base}/src"/>
+<property name="web" value="${dirs.base}/web"/>
+<property name="deploymentdescription" value="${dirs.base}/build/deploymentdescriptors"/>
+
+<property name="warFile" value="example2.war"/>
+<property name="earFile" value="example2.ear"/>
+
+
+<property name="earDir" value="${dirs.base}/build/ear"/>
+<property name="warDir" value="${dirs.base}/build/war"/>
+
+
+<!-- Create Web-inf and classes directories -->
+<mkdir dir="${warDir}/WEB-INF"/>
+<mkdir dir="${warDir}/WEB-INF/classes"/>
+
+<!-- Create Meta-inf and classes directories -->
+<mkdir dir="${earDir}/META-INF"/>
+
+</target>
+
+<!-- Main target -->
+<target name="all" depends="init,build,buildWar,buildEar"/>
+
+
+<!-- Compile Java Files and store in /build/src directory -->
+<target name="build" >
+<javac srcdir="${src}" destdir="${classdir}" debug="true" includes="**/*.java" />
+</target>
+
+<!-- Create the War File -->
+<target name="buildWar" depends="init">
+<copy todir="${warDir}/WEB-INF/classes">
+<fileset dir="${classdir}" includes="**/*.class" /> 
+</copy>
+
+<copy todir="${warDir}/WEB-INF">
+<fileset dir="${deploymentdescription}" includes="web.xml" /> 
+</copy>
+
+<copy todir="${warDir}">
+<fileset dir="${web}" includes="**/*.*" /> 
+</copy>
+
+<!-- Create war file and place in ear directory -->
+<jar jarfile="${earDir}/${warFile}" basedir="${warDir}" />
+
+
+</target>
+
+
+<!-- Create the War File -->
+<target name="buildEar" depends="init">
+<copy todir="${earDir}/META-INF">
+<fileset dir="${deploymentdescription}" includes="application.xml" /> 
+</copy>
+
+<!-- Create ear file and place in ear directory -->
+<jar jarfile="${dirs.base}/${earFile}" basedir="${earDir}" />
+</target>
+
+</project>
+
+   
+Above build.xml file is design to create example2.ear for us in the base directory.
+Running Ant utility to build example2.ear
+Now it's time to build example2.ear and deploy on the Jboss 3.0 application server.
+To execute Ant utility go to c:\anttest\example2 directory and issue ant command. 
+Out put of ant command:
+C:\anttest\example2>ant
+Buildfile: build.xml
+
+init:
+[mkdir] Created dir: C:\anttest\example2\build\war\WEB-INF
+[mkdir] Created dir: C:\anttest\example2\build\war\WEB-INF\classes
+[mkdir] Created dir: C:\anttest\example2\build\ear\META-INF
+
+build:
+[javac] Compiling 1 source file to C:\anttest\example2\build\src
+
+buildWar:
+[copy] Copying 1 file to C:\anttest\example2\build\war\WEB-INF\classes
+[copy] Copying 1 file to C:\anttest\example2\build\war\WEB-INF
+[copy] Copying 1 file to C:\anttest\example2\build\war
+[jar] Building jar: C:\anttest\example2\build\ear\example2.war
+
+buildEar:
+[copy] Copying 1 file to C:\anttest\example2\build\ear\META-INF
+[jar] Building jar: C:\anttest\example2\example2.ear
+
+all:
+
+BUILD SUCCESSFUL
+
+Total time: 8 seconds
+C:\anttest\example2>| 
+The above process will create example2.ear in c:\anttest\example2 directory.
+Deploying and testing J2EE application
+Statrt Jboss 3.0 and copy example2.ear file into the JBOSS_HOME/server/default/deploy directory. Jboss application server automatically deploys the application. Open web browse and type http://localhost:8080/example2 in the web browser. Browse should show the screen something like this: 
+ 
+Also try to execute Hello World Servlet by clicking "Click Here to" link on the index.jsp in the browser.
+In this lesson you learned how to write build.xml file to automate the process of .ear file creation. Ant utility with help of our build.xml file automatically compiles source code and assembles J2EE application for us. Ant utility is very power full and it reduces the development time significantly.
+
+Our application is thin-client multitiered consisting of jsp, servlet and session bean. 
+ 
+In the next lesson we will create Entity bean. So first of all I will explain how to create Session bean and write the deployment descriptor.
+Writing Session Bean
+Session Bean interacts with the client and is non persistent in nature. If server crashes all the data stored in Session Bean are lost. But Entity Beans are persistent in nature and in case sever crashes Entity Bean reconstruct its data from the underlying database. Session Beans are used to handle the client request and manage the session and Entity Beans are used to do database processing.
+Session beans are of two types "Stateful" and "Stateless". A Stateful session bean preserve the information about its content and values between clients calls. Example of Stateful session bean may be Shopping Cart Session bean. Stateless session bean do not preserve the information between the client calls.
+Session Bean is consists of following components:
+1.	Enterprise Bean remote interface
+    
+2.	Enterprise Bean Home interface
+    
+3.	Enterprise bean class definition
+   
+4.	Deployment descriptors 
+Enterprise Bean remote interface
+All remote interfaces must extend javax.ejb.EJBObject. Remote interface is the client view of session bean. Methods defined in the remote interface are accessible to the client. In our example we have defined the  SayHello() method for calling from servlet. SayHello method is implemented in bean class.
+/*
+* MyTestSession.java
+*
+*/
+package test.session;
+import java.lang.*;
+import java.rmi.RemoteException;
+import javax.ejb.CreateException;
+import javax.ejb.EJBException;
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext; 
+/**
+* @author Deepak Kumar
+* @Web http://www.roseindia.net
+* @Email deepak@roseindia.net
+*/
+public interface MyTestSession extends javax.ejb.EJBObject{
+         public java.lang.String SayHello() throws java.rmi.RemoteException;
+}
+Enterprise Bean Home interface
+All home interfaces must extend javax.ejb.EJBHome. 'create()' method of home interface of the application enables the client to create and remove the session object. 
+/*
+* MyTestSessionHome.java
+*
+*/
+package test.session;
+import java.lang.*;
+import java.rmi.RemoteException;
+import javax.ejb.CreateException;
+import javax.ejb.EJBException;
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext;
+/**
+* @author Deepak Kumar
+* @Web http://www.roseindia.net
+* @Email deepak@roseindia.net
+*/
+public interface MyTestSessionHome extends javax.ejb.EJBHome{
+public static final String COMP_NAME="java:comp/env/ejb/test/MyTestSession";
+public static final String JNDI_NAME="ejb/test/MyTestSessionBean";
+public test.session.MyTestSession create() throws javax.ejb.CreateException, java.rmi.RemoteException;
+} 
+Enterprise Bean class
+All Bean class are defined as public and implements the javax.ejb.SessionBean. In the bean class we have defined SayHello() method, this method is called from our servlet. Besides this method other required methods which is to be implemented are:
+1.	ejbCreate() 
+2.	ejbRemove() 
+3.	ejbActivate() 
+4.	ejbPassivate() 
+5.	setSessionContext(SessionContext aContext) 
+For the time being these methods are left blank but for advance programming these are used.
+/*
+* SessionBean.java
+*
+*/
+package test.session;
+import java.rmi.RemoteException;
+import javax.ejb.CreateException;
+import javax.ejb.EJBException;
+import javax.ejb.SessionBean;
+import javax.ejb.SessionContext;
+/**
+* @author Deepak Kumar
+* @Web http://www.roseindia.net
+* @Email deepak@roseindia.net
+*/
+public class MyTestSessionBean implements SessionBean{
+public void ejbCreate() throws CreateException {
+}
+public String SayHello(){
+      String msg="Hello! I am Session Bean";
+      System.out.println(msg);
+      return msg;
+}
+ public void setSessionContext( SessionContext aContext ) throws EJBException {
+}
+ public void ejbActivate() throws EJBException {
+}
+public void ejbPassivate() throws EJBException {
+}
+public void ejbRemove() throws EJBException {
+}
+}
+Jar Descriptor File
+For creating example3.jar ejb-jar.xml and jboss.xml files are required which explains the content of jar file.
+ejb-jar.xml file:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<ejb-jar>
+
+ <description>Example 3</description>
+ <display-name>Example 3</display-name>
+
+<enterprise-beans>
+
+<!-- Session Beans -->
+<session id="test_MyTestSession">
+      <display-name>My Test Session Bean</display-name>
+     <ejb-name>test/MyTestSession</ejb-name>
+     <home>test.session.MyTestSessionHome</home>
+     <remote>test.session.MyTestSession</remote>
+     <ejb-class>test.session.MyTestSessionBean</ejb-class>
+     <session-type>Stateless</session-type>
+     <transaction-type>Container</transaction-type>
+</session>
+
+</enterprise-beans>
+
+<assembly-descriptor>
+
+</assembly-descriptor>
+
+</ejb-jar>
+Above deployment descriptor defines remote, home and bean class for the bean and assigns a name 'test/MyTestSession' to the session bean. Please note that bean of Stateless type and is defined by:
+<session-type>Stateless</session-type> 
+jboss.xml file:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS//EN" "http://www.jboss.org/j2ee/dtd/jboss.dtd">
+
+<jboss>
+
+<enterprise-beans>
+
+<session>
+<ejb-name>test/MyTestSession</ejb-name>
+<jndi-name>ejb/test/MyTestSessionBean</jndi-name>
+</session>
+
+</enterprise-beans>
+
+<resource-managers>
+</resource-managers>
+
+</jboss>
+The jboss deployment descriptor assigns jndi name ' ejb/test/MyTestSessionBean' to the 'test/MyTestSession' bean.
+Writing Servlet class and Web/Ear component
+Our servlet access the session bean and calls SayHello() method of the session bean and prints the return string on the browser. 
+Here is the code of our servlet.
+/*
+* SessionTestServlet.java
+*
+*/
+
+package test.session;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import javax.naming.*;
+import javax.rmi.PortableRemoteObject;
+
+
+/**
+* @author Deepak Kumar
+* @Web http://www.roseindia.net
+* @Email deepak@roseindia.net
+*/
+
+public class SessionTestServlet extends HttpServlet {
+MyTestSessionHome testSessionBean;
+
+public void init(ServletConfig config) throws ServletException{
+//Look up home interface
+try {
+       InitialContext ctx = new InitialContext();
+       Object objref = ctx.lookup("ejb/test/MyTestSessionBean");
+        testSessionBean = (MyTestSessionHome)PortableRemoteObject.narrow(objref,    MyTestSessionHome.class);
+} catch (Exception NamingException) {
+       NamingException.printStackTrace();
+}
+
+
+}
+
+public void doGet (HttpServletRequest request, 
+HttpServletResponse response) 
+throws ServletException, IOException
+{
+
+PrintWriter out;
+response.setContentType("text/html");
+String title = "EJB Example";
+out = response.getWriter();
+
+out.println("<html>");
+out.println("<head>");
+out.println("<title>Hello World Servlet!</title>");
+out.println("</head>");
+out.println("<body>");
+out.println("<p align=\"center\"><font size=\"4\" color=\"#000080\">Servlet Calling Session Bean</font></p>");
+
+
+try{
+MyTestSession beanRemote;
+beanRemote = testSessionBean.create();
+out.println("<p align=\"center\"> Message from Session Bean is: <b>" + beanRemote.SayHello() + "</b></p>"); 
+beanRemote.remove();
+}catch(Exception CreateException){
+CreateException.printStackTrace();
+}
+out.println("<p align=\"center\"><a href=\"javascript:history.back()\">Go to Home</a></p>");
+out.println("</body>");
+out.println("</html>");
+
+
+out.close();
+}
+
+public void destroy() {
+System.out.println("Destroy");
+}
+}
+Web-Component Descriptor File
+For creating example3.war web.xml and jboss-web.xml files are required which explains the content of web archinve.
+web.xml file:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+<servlet>
+<servlet-name>SessionServlet</servlet-name>
+<display-name>Simple Session Servlet</display-name>
+<servlet-class>test.session.SessionTestServlet</servlet-class>
+
+<load-on-startup>1</load-on-startup>
+
+</servlet>
+
+<servlet-mapping>
+<servlet-name>SessionServlet</servlet-name>
+<url-pattern>/servlet/test</url-pattern>
+</servlet-mapping>
+
+<session-config>
+<session-timeout>0</session-timeout>
+</session-config>
+
+</web-app>
+Above deployment descriptor defines servlet class for the servlet and assigns url pattern '/servlet/test' to the servlet. We call the servlet by tying <context>/servlet/test in the browser.
+jboss-web.xml file:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss-web PUBLIC "-//JBoss//DTD Web Application 2.2//EN" "http://www.jboss.org/j2ee/dtd/jboss-web.dtd">
+
+<jboss-web>
+
+</jboss-web> 
+J2EE Enterprise Archive (ear) Descriptor File
+For creating example3.ear application.xml, file is required which explains the content of enterprise archive.
+application.xml file:
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<application>
+<display-name>Example 3 </display-name>
+<module>
+<web>
+<web-uri>example3.war</web-uri>
+<context-root>/example3</context-root>
+</web>
+</module>
+
+<module>
+<ejb>example3.jar</ejb>
+</module>
+
+</application>
+Above deployment descriptor describes the content of example3.ear file which contains to modules one web module example3.war and one jar file example3.jar.
+Writing ant build file and assembling the application into enterprise archive example3.ear
+I have written ant build for compiling all source files and assembling into enterprise archive eample3.ear. Here is the code of ant build file:
+build.xml file:
+<?xml version="1.0"?>
+<!-- ==================================================== -->
+<!-- Build file for our first web application -->
+<!-- build.xml, Saturday, July 20, 2002 -->
+<!-- Author: Deepak Kumar -->
+<!-- Email : deepak@roseindia.net -->
+<!-- Url : http://www.roseindia.net -->
+<!-- ==================================================== -->
+
+
+<project name="Jboss 3.0 tutorial series" default="all" basedir=".">
+
+
+<target name="init">
+<property name="dirs.base" value="${basedir}"/>
+<property name="classdir" value="${dirs.base}/build/src"/>
+<property name="src" value="${dirs.base}/src"/>
+<property name="web" value="${dirs.base}/web"/>
+<property name="deploymentdescription" value="${dirs.base}/deploymentdescriptors"/>
+
+<property name="warFile" value="example3.war"/>
+<property name="earFile" value="example3.ear"/>
+<property name="jarFile" value="example3.jar"/>
+
+
+<property name="earDir" value="${dirs.base}/build/ear"/>
+<property name="warDir" value="${dirs.base}/build/war"/>
+<property name="jarDir" value="${dirs.base}/build/jar"/>
+
+
+
+<!-- Create Web-inf and classes directories -->
+<mkdir dir="${warDir}/WEB-INF"/>
+<mkdir dir="${warDir}/WEB-INF/classes"/>
+
+<!-- Create Meta-inf and classes directories -->
+<mkdir dir="${earDir}/META-INF"/>
+<mkdir dir="${jarDir}/META-INF"/>
+
+
+</target>
+
+<!-- Main target -->
+<target name="all" depends="init,build,buildWar,buildJar,buildEar"/>
+
+
+<!-- Compile Java Files and store in /build/src directory -->
+<target name="build" >
+<javac srcdir="${src}" destdir="${classdir}" debug="true" includes="**/*.java" />
+</target>
+
+<!-- Create the web archive File -->
+<target name="buildWar" depends="init">
+<copy todir="${warDir}/WEB-INF/classes">
+<fileset dir="${classdir}" includes="**/*.class" /> 
+</copy>
+
+<copy todir="${warDir}/WEB-INF">
+<fileset dir="${deploymentdescription}/web/" includes="web.xml,jboss-web.xml" /> 
+</copy>
+
+<copy todir="${warDir}">
+<fileset dir="${web}" includes="**/*.*" /> 
+</copy>
+
+<!-- Create war file and place in ear directory -->
+<jar jarfile="${earDir}/${warFile}" basedir="${warDir}" />
+
+
+</target>
+
+
+<!-- Create the jar File -->
+<target name="buildJar" depends="init">
+<copy todir="${jarDir}">
+<fileset dir="${classdir}" includes="**/*.class" /> 
+</copy>
+
+<copy todir="${jarDir}/META-INF">
+<fileset dir="${deploymentdescription}/jar/" includes="ejb-jar.xml,jboss.xml" /> 
+</copy>
+
+<!-- Create jar file and place in ear directory -->
+<jar jarfile="${earDir}/${jarFile}" basedir="${jarDir}" />
+
+
+</target>
+
+
+<!-- Create the ear File -->
+<target name="buildEar" depends="init">
+<copy todir="${earDir}/META-INF">
+<fileset dir="${deploymentdescription}/ear" includes="application.xml" /> 
+</copy>
+
+<!-- Create ear file and place in ear directory -->
+<jar jarfile="${basedir}/${earFile}" basedir="${earDir}" />
+</target>
+
+</project>
+Above file does every thing for you and creates example3.ear file in the example3 directory. To assemble the application simple run the ant build utity.
+To deploy the application copy the file into the deploy (JBOSS_HOME/server/default/deploy) directory of JBoss 3.0. 
+To test the application type http://localhost:8080/example3 in the browser and click on the link provided in the index.jsp. Your browser should show the following screen:
+ 
+Download the code of this lesson.
+After completing this lesson you are able to:
+1.	Write session bean 
+2.	Write a servlet 
+3.	Call session bean from servlet 
+4.	Write the deployment descriptor files 
+5.	Write ant build file 
+6.	Assemble enterprise archive, deploy and test on the JBoss 3 server  
+
+
+

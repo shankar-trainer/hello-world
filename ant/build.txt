@@ -1,0 +1,16 @@
+class test1{ 
+public static void main (String args[]){
+System.out.println("This is example 1");
+}
+}
+
+
+<?xml version="1.0"?> 
+<!-- Build file for our first application -->
+<project name="Ant test project" default="build" basedir=".">
+<target name="build" >
+<javac srcdir="src" destdir="build/src" debug="true"
+includes="**/*.java"
+/>
+</target>
+</project>

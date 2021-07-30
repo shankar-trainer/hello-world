@@ -1,0 +1,33 @@
+svn co file:///C:/test/svn hello
+
+C:\test\svnclient>svn co file:///C:/test/svn hello
+
+C:\test\svnclient>cd hello
+
+C:\test\svnclient\hello>touch test1.java
+
+C:\test\svnclient\hello>svn add test1.java
+A         test1.java
+
+C:\test\svnclient\hello>svn diff
+
+C:\test\svnclient\hello>svn commit -m "commit1"
+Adding         test1.java
+Transmitting file data .done
+Committing transaction...
+Committed revision 5.
+
+
+branch 
+
+svn copy file:///C:/test/svn/javaex  file:///C:/test/svn/branches/javabranch1  -m "branch1"
+svn co   file:///C:/test/svn/branches/javabranch1
+
+change dir to branch directory 
+
+	cd javabranch1
+	touch hello1.c
+	svn add hello1.c 
+	svn commit -m "javabranch1"
+	svn update 
+	
