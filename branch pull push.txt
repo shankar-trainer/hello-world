@@ -1,0 +1,135 @@
+push new repo
+
+--- working 
+ 
+git init
+git remote add origin https://github.com/shankar-trainer/hello-world
+git add 
+git commit -m 'Added my project'
+git pull --rebase origin master
+git push  origin master
+
+branch 
+
+git  branch 
+  -- master 
+  
+ git branch testing1  -- it will create new branch 
+ git  checkout testing1 -- it will change to testing1 branch 
+ 
+ git log 
+ 
+ git add  hello.c 
+     -- it will be added to testing1
+ git checkout master 
+ git merge testing1  -- merge testing1 to master
+ 
+ git branch -d testing1   --delete branch testing1   
+
+  git push -d <remote_name> <branch_name> -- delete remote branch
+  
+  most case origin is remote name 
+  git push -d origin <branch_name>
+  
+  git branch -d <branch_name>  -- delete local branch 
+  
+  --------------
+  to remove a local branch from your machine:
+	git branch -d {the_local_branch} (use -D instead to force deleting the branch without checking merged status)
+
+	To remove a remote branch from the server:
+
+	git push origin --delete {the_remote_branch}
+  
+  example 
+   delete from rrmote 
+   
+  git branch -d  gradle
+  git push origin  --delete gradle
+  
+  -------------------
+  
+
+  git branch -r   -- list all remote branch 
+
+ 
+ cts shankar.kumar@cognizant.com  ,  Tekno@1234
+ 
+ git remote -- show remote main branch 
+
+ git clone -b batch3  https://github.com/shankar-trainer/hello-world
+ git clone -b branchname --clone specific branch
+
+
+ =======git remove from remote 
+ 
+ 
+ If you want to remove the file from the Git repository and the filesystem, use:
+
+git rm file1.txt
+git commit -m "remove file1.txt"
+But if you want to remove the file only from the Git repository and not remove it from the filesystem, use:
+
+git rm --cached file1.txt
+git commit -m "remove file1.txt"
+And to push changes to remote repo
+
+git push origin branch_name
+
+=====================================
+Cloning Repositories
+In order to checkout a remote project, you will have to clone its repository first. Open the Eclipse Import wizard (e.g. File => Import), select Git => Projects from Git and click Next. Select “URI” and click next. Now you will have to enter the repository's location and connection data.
+
+===============
+
+
+push new repo
+
+---
+ working 
+ 
+git init
+git remote add origin https://github.com/shankar-trainer/hello-world
+git add 
+git commit -m 'Added my project'
+git pull --rebase origin master
+git push  origin master
+
+
+---
+
+1. git init .
+2.git remote add origin https://github.com/shankar-trainer/hello-world
+
+2. git pull 
+3. git add .
+4. git commit -m ""
+5. git push -u origin master 
+
+
+git pull --rebase origin master
+
+  incorporate changes by rebasing rather than merging
+  git edit 
+git config --list
+
+git config --global --edit
+
+git revert -- Revert some existing commits
+
+git revert HEAD~3
+
+Revert the changes specified by the fourth last commit in HEAD and create a new commit with the reverted changes.
+
+-- git log   then 
+   
+   commit 3395f2c5a5f1e26370acd3b856745cc9b4469b68 (HEAD -> myproject1)
+   git revert  myproject1
+   
+git pull --rebase --autostash
+   
+   
+   
+
+
+
