@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import com.montran.database.util.DatabaseUtil;
+
 public class Program4 {
 
 	Connection connection;
@@ -25,11 +27,14 @@ public class Program4 {
 	ResultSetMetaData metaData;
 
 	public Program4() throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.cj.jdbc.Driver");// step1 loading driver
-		connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/montran", "root", "mysql");// step 2 get
+		//Class.forName("com.mysql.cj.jdbc.Driver");// step1 loading driver
+		//connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/montran", "root", "mysql");// step 2 get
+		connection=DatabaseUtil.myConnection();
 		connection.setAutoCommit(false);
+		
 
-		st = connection.createStatement();// step3 get statement object
+	//	st = connection.createStatement(ResultSet.CONCUR_READ_ONLY,ResultSet.CONCUR_READ_ONLY);// step3 get statement object
+		st = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);// step3 get statement object
 		scanner = new Scanner(System.in);
 	}
 
@@ -39,10 +44,18 @@ public class Program4 {
 		for (int i = 1; i <= metaData.getColumnCount(); i++)
 			System.out.print(metaData.getColumnName(i) + "\t");
 
-		System.out.println("\n");
+		System.out.println("\nRecords in Normal Direction ");
 		while (resultSet.next())
 			System.out.println(resultSet.getInt(1) + "\t" + resultSet.getString(2) + "\t" + resultSet.getFloat("salary")
 					+ "  " + resultSet.getDate(4));
+		
+		System.out.println("\nRecords in reverse direction ");
+		resultSet.afterLast();
+		
+		while (resultSet.previous())
+			System.out.println(resultSet.getInt(1) + "\t" + resultSet.getString(2) + "\t" + resultSet.getFloat("salary")
+			+ "  " + resultSet.getDate(4));
+		
 	}
 
 	public void searchRecord(int id) throws SQLException {
@@ -108,7 +121,7 @@ public class Program4 {
 		Program4 program3 = null;
 		try {
 			program3 = new Program4();
-			program3.addRecord();
+			//program3.addRecord();
 			program3.showAllRecord();
 			// program3.searchRecord(8003);
 

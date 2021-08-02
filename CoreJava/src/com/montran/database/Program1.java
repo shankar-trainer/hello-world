@@ -49,6 +49,7 @@ public class Program1 {
 		} catch (ParseException e) {
 			System.err.println("date format error " + e.getMessage());
 		}
+		
 		java.sql.Date dob = new java.sql.Date(date.getTime());
 		try {
 			int r = statement.executeUpdate(

@@ -334,6 +334,40 @@ select * from test1 where month(dob)=10;
 
 
 
+use montran;
+select * from employee;
+select count(*) from employee;
+
+desc employee;
+select * from survey;
+delimiter //
+
+select * from student;
+select * from employee;
+insert into employee values(10001, 'deepak anand',89000,'1999-12-23');
+insert into employee values(10002, 'abhishek anand',90000,'1999-12-23');
+insert into employee values(10003, 'jeet anand',19000,'1999-12-23');
+insert into employee values(10004, 'pritam anand',29000,'1999-12-23');
+insert into employee values(10005, 'subhaam anand',44000,'1999-12-23');
+
+select * from employee;
+
+delimiter //
+create procedure emp_avg_salary()
+begin
+select avg(salary) from employee;
+end;
+//
+call emp_avg_salary;
+
+select * from employee;
+delimiter //
+create procedure emp_update_salary()
+begin
+update employee set salary=salary*0.05+salary ;
+end;
+//
+call emp_update_salary;
 
 
 
