@@ -39,7 +39,7 @@ public class UserDaoTest {
 	@Order(1)
 	@Test
 	void testAddUser() {
-		System.out.println("1.add user called ");
+		//System.out.println("1.add user called ");
 		for (User user2 : user) {
 			dao.addUser(user2);
 		}
@@ -49,7 +49,7 @@ public class UserDaoTest {
 	@Order(2)
 	@Test
 	void testRemoveUser() {
-		System.out.println("2. remove  user called ");
+		//System.out.println("2. remove  user called ");
 		assertEquals(4, dao.getAllUser().size());
 		dao.removeUser(user[0]);
     	assertNull(dao.searchUser(user[0]));
@@ -60,7 +60,7 @@ public class UserDaoTest {
 	@Test
 	@Order(3)
 	void testSearchUser() {
-		System.out.println("3. search  user called ");
+		//System.out.println("3. search  user called ");
 		assertNull(dao.searchUser(user[0]));
 		//assertNull(dao.searchUser(user[2]));
 		//assertNotNull(dao.searchUser(user[1]));
@@ -70,7 +70,7 @@ public class UserDaoTest {
 	@Test
 	@Order(4)
 	void testGetAllUser() {
-		System.out.println("4. all user called ");
+		//System.out.println("4. all user called ");
 		assertNotNull(dao.getAllUser());
 		assertEquals(3, dao.getAllUser().size());
 	}
