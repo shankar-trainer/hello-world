@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>the title</title>
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'>
+</script>
+
+<script type="text/javascript" language="javascript">
+	$(document).ready(function() {
+	$("#driver").click(function(event){
+	$.getJSON('result.json', function(jd) {
+	$('#stage').html('<p> Name: ' + jd.name + '</p>');
+	$('#stage').append('<p>Age : ' + jd.age+ '</p>');
+	$('#stage').append('<p> Sex: ' + jd.sex+ '</p>');
+});
+});
+});
+</script>
+</head>
+<body>
+<p>Click on the button to load result.html file:</p>
+<div id="stage" style="background-color:yellow;color:red">
+STAGE
+</div>
+<input type="button" id="driver" value="Load Data" />
+</body>
+</html>
