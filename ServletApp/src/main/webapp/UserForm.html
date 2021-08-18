@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<style type="text/css">
+@import url("style1.css");
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js">
+
+</script>
+<script type="text/javascript">
+$(function(){
+	
+	$("form").submit(function(){
+		if($('#id').val()==""){
+			alert("id is blank")
+			return false
+		}
+		if(isNaN($('#id').val())){
+			alert("id is not a number")
+			return false
+		}
+		
+		else if($('#name').val()==""){
+			alert("name is blank")
+			return false
+		}
+		return true;
+	})
+})
+
+</script>
+
+</head>
+<body>
+
+<form action="User2Servlet" method="post">
+<h1>User Form </h1>
+		<label>Enter Id </label>
+		<input name="id" id="id">
+		<br>
+		
+		<label>Enter Password </label>
+		<input type="password" name="pass" id="pass">
+		<br>
+		
+		<label>Enter Name </label>
+		<input name="name" id="name">
+		<br>
+		
+		<label>Select Gender </label>
+		<br>
+		<input  type='radio' name="gender" id="gender" value='male'>Male<br>
+		<input  type='radio' name="gender" id="gender" value="female">Female
+		
+		<br>
+		
+		<label>Select Hobbies </label>
+		<br>
+		<input  type="checkbox" name="hobbies" id="hobbies" value='swimming'>swimming<br>
+		<input  type="checkbox" name="hobbies" id="hobbies" value='drawing'>drawing<br>
+		<input  type="checkbox" name="hobbies" id="hobbies" value='singing'>singing<br>
+		<input  type="checkbox" name="hobbies" id="hobbies" value='flowering'>flowering<br>
+		<input  type="checkbox" name="hobbies" id="hobbies" value='reading'>reading<br>
+		
+		<br>
+		
+		<input type="submit" value="login">
+		<input type="reset" value="cancel">
+		
+</form>
+</body>
+</html>
