@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE student [
+ <!ELEMENT  student (roll,name,subject,marks)> 
+ <!ELEMENT  roll (#PCDATA)> 
+ <!ELEMENT  name (#PCDATA)> 
+ <!ELEMENT  subject (#PCDATA)> 
+ <!ELEMENT  marks (#PCDATA)> 
+]>
+
+<student>
+	<roll>6766</roll>
+	<name>p kumar</name>
+	<subject>math</subject>
+	<marks>88</marks>
+</student>
