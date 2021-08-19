@@ -8,9 +8,9 @@
 		<servlet-name>MySite</servlet-name>
 		<servlet-class>abc.com.MySite</servlet-class>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>MySite</servlet-name>
 		<url-pattern>/mychoice</url-pattern>
 	</servlet-mapping>
+
 </web-app>
