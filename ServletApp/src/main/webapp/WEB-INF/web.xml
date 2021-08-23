@@ -3,6 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 	id="WebApp_ID">
+	<filter>
+		<description>
+		</description>
+		<display-name>bookFilter</display-name>
+		<filter-name>bookFilter</filter-name>
+		<filter-class>abc.com.bookFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>bookFilter</filter-name>
+		<url-pattern>/bookFilter</url-pattern>
+	</filter-mapping>
 
 	<servlet>
 		<servlet-name>MySite</servlet-name>
