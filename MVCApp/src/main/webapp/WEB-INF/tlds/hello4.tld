@@ -1,0 +1,12 @@
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.1</jsp-version>
+	<uri> uppercasetag
+	</uri>
+	<tag>
+		<name>upper</name>
+		<tag-class>edu.abc.tag.MyTagUpperCase</tag-class>
+		<body-content>scriptless</body-content>
+	
+	</tag>
+</taglib>
