@@ -6,9 +6,15 @@
     <constant name="struts.devMode" value="false" />
 
     <package name="basicstruts2" extends="struts-default">
+
        <action name="myaction" class="com.example.model.User">
           <result name="success">result/success.jsp</result>
           <result name="error">result/error.jsp</result>
+       </action>
+       
+       <action name="empAction" class="com.example.model.Employee">
+       <result name='success'>WEB-INF/empResult/empdata.jsp</result>
+       <result name='error'>EmpForm.jsp</result>
        </action>
        
     </package>
