@@ -14,21 +14,13 @@
 	<%@taglib uri="/struts-tags" prefix="s"%>
 	<div class="style1">
 
-		<h2>Employee Data</h2>
+		<h2>Survey  Data</h2>
 		Id is
-		<s:property value="empId"/>
+		<s:property value="surveyId"/>
 		<br> Name is
-		<s:property value="empName" />
-		<br> Salary is
-		<s:property value="empSalary" />
-		<br> Gender is
-		<s:property value="gender" />
-		<br> Job are
-		<s:property value="job" />
-		<br> City are
-		<s:property value="city" />
-		<br> States are
-		<s:property value="state" />
+		<s:property value="surveyName" />
+		<br> Location is
+		<s:property value="surveyLocation" />
 		<br>
 	</div>
 </body>

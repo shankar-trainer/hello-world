@@ -79,33 +79,39 @@ public class Employee extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		System.out.println(getState()[0] == "");
-		System.out.println(getState()[0] );
-		//System.out.println(getState()[1] );
 		
 		if (getEmpId() <= 0) {
-			addActionError("emp id is zero or negative");
+			//addActionError("emp id is zero or negative");
+			addFieldError("empId", "emp id is zero or negative");
 			return ERROR;
 		} else if (getEmpPass().isEmpty() || getEmpPass() == null || getEmpPass() == "") {
-			addActionError("emp password is blank ");
+			//addActionError("emp password is blank ");
+			addFieldError("empPass", "emp password is blank");
 			return ERROR;
+			
 		} else if (getEmpName().isEmpty() || getEmpName() == null || getEmpName() == "") {
-			addActionError("emp name blank");
+			//addActionError("emp name blank");
+			addFieldError("empName","emp name blank");
 			return ERROR;
 		} else if (getEmpSalary() <= 0) {
-			addActionError("emp  salary is  zero or negative");
+//			addActionError("emp  salary is  zero or negative");
+			addFieldError("empSalary","emp  salary is  zero or negative");
 			return ERROR;
 		} else if (getCity() == null || getCity().length == 0) {
-			addActionError("select the city");
+			//addActionError("select the city");
+			addFieldError("city","select the city");
 			return ERROR;
 		} else if (getGender() == null || getGender().isEmpty() || getGender() == "") {
-			addActionError("select the gender");
+			//addActionError("select the gender");
+			addFieldError("gender","select the gender");
 			return ERROR;
 		} else if (getJob()[0] == "") {
-			addActionError("select the job");
+			//addActionError("select the job");
+			addFieldError("job","select the job");
 			return ERROR;
 		} else if (getState()[0] == "") {
-			addActionError("select the state");
+			//addActionError("select the state");
+			addFieldError("state","select the state");
 			return ERROR;
 		} else
 			return SUCCESS;

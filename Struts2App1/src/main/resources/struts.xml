@@ -17,5 +17,10 @@
        <result name='error'>EmpForm.jsp</result>
        </action>
        
+       <action name="surveyAction" class="com.example.model.Survey">
+       <result name='success'>WEB-INF/surveyResult/surveydata.jsp</result>
+       <result name='input'>SurveyForm.jsp</result>
+       </action>
+       
     </package>
 </struts>

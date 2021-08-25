@@ -9,10 +9,11 @@
 <style>
 @import url("CSS/file1.css");
 </style>
+
 <s:head/>
 </head>
 <body>
-<div class="style1" style="width:40%;background: lime;">
+<div class="style1" style="width:60%;background: aqua;">
 <s:actionerror/>
 	<s:form action="empAction" >
 		<s:textfield name="empId" label="Enter Id" value="0"/>
