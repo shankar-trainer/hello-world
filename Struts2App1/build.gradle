@@ -16,5 +16,9 @@ dependencies {
     compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
    
    implementation group: 'org.apache.struts', name: 'struts2-core', version: '2.5'
-    
+
+   implementation group: 'org.apache.struts', name: 'struts2-convention-plugin', version: '2.5.26'
+   
+   implementation group: 'org.apache.struts.xwork', name: 'xwork-core', version: '2.2.1'
+   
 }

@@ -35,19 +35,24 @@ public class Survey extends ActionSupport {
 	@Override
 	public void validate() {
 		if (getSurveyId() <= 0)
-			addFieldError("surveyId", "invalid survey id");
+			// addFieldError("surveyId", "invalid survey id");
+			addFieldError("surveyId", getText("id.required"));
 
 		else if (getSurveyName() == null || surveyName.isEmpty())
-			addFieldError("surveyName", "survey name is blank");
+			// addFieldError("surveyName", "survey name is blank");
+			addFieldError("surveyName", getText("name.required"));
 
 		else if (getSurveyName().length() < 5)
-			addFieldError("surveyName", "survey name must be of 5 chars");
+			// addFieldError("surveyName", "survey name must be of 5 chars");
+			addFieldError("surveyName", getText("name.length"));
 
 		else if (getSurveyLocation() == null || getSurveyLocation().isEmpty())
-			addFieldError("surveyLocation", "survey location is invalid");
+			// addFieldError("surveyLocation", "survey location is invalid");
+			addFieldError("surveyLocation", "location.required");
 
 		else if (getSurveyLocation().length() < 5)
-			addFieldError("surveyLocation", "survey Location must be of 5 chars");
+			// addFieldError("surveyLocation", "survey Location must be of 5 chars");
+			addFieldError("surveyLocation", "location.length");
 	}
 
 	@Override
