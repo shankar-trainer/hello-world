@@ -20,5 +20,6 @@ dependencies {
    implementation group: 'org.apache.struts', name: 'struts2-convention-plugin', version: '2.5.26'
    
    implementation group: 'org.apache.struts.xwork', name: 'xwork-core', version: '2.2.1'
-   
+ implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
+      
 }

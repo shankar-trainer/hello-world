@@ -2,10 +2,20 @@
 <!DOCTYPE struts PUBLIC
 		"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
 		"http://struts.apache.org/dtds/struts-2.5.dtd">
+
 <struts>
 	<constant name="struts.devMode" value="false" />
+		<constant name="struts.custom.i18n.resources"
+		value="Product" />
+		<constant name="struts.custom.i18n.resources"
+		value="Customer" />
 
 	<package name="basicstruts2" extends="struts-default">
+		<interceptors>
+			<interceptor name="myinterceptor1"
+				class="com.example.interceptor.StudentIntercepor">
+			</interceptor>
+		</interceptors>
 
 		<action name="myaction" class="com.example.model.User">
 			<result name="success">result/success.jsp</result>
@@ -21,10 +31,36 @@
 			<result name='success'>WEB-INF/surveyResult/surveydata.jsp</result>
 			<result name='input'>SurveyForm.jsp</result>
 		</action>
-		
-		<action name="actAction" class="com.example.model.Account">
-			<result name='success'>accountResult.jsp</result>
-			<result name='input'>accountForm.jsp</result>
+
+		<action name="studentAction"
+			class="com.example.model.StudentRegistration" method="execute">
+			<!-- <interceptor-ref name="myinterceptor1"/> -->
+			<result name='success'>WEB-INF/studentResult/StudentResult.jsp</result>
+			<result name='input'>StudentForm.jsp</result>
+		</action>
+
+		<action name="generictag">
+			<result name='success'>WEB-INF/studentResult/generictag.jsp</result>
+		</action>
+
+		<action name="bookAction" class="com.example.model.Book">
+			<result name='success'>BookInfo.jsp</result>
+		</action>
+
+		<action name="cstAction" class="com.example.model.Customer">
+			<result name='success'>WEB-INF/customerResult/customerInfo.jsp</result>
+			<result name='input'>CustomerForm.jsp</result>
+		</action>
+
+
+		<action name="prdAction" class="com.example.model.Product"
+			method="execute">
+			<result name='success'>WEB-INF/pages/productInfo.jsp</result>
+			<result name='input'>ProductForm.jsp</result>
+		</action>
+
+		<action name="sAction" class="com.example.model.MyStudentModelDriven" method="showallStudent">
+			<result name='success'>WEB-INF/pages/StudentRecord.jsp</result>
 		</action>
 
 	</package>

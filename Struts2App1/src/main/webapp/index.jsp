@@ -8,11 +8,17 @@
 <style>
 @import url("CSS/file1.css");
 </style>
+
 </head>
 <body>
 <div class="style1">
 
 <a href='userPage/userform.jsp'>UserForm</a><br>
+
+<a href='bookAction.action'>Book Information</a><br>
+
+
+<a href='sAction.action'>Student  Information</a><br>
 
 
 </div>
