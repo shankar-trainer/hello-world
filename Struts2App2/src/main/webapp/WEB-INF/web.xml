@@ -19,5 +19,11 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
+    <listener>
+        <listener-class>
+            org.apache.struts2.tiles.StrutsTilesListener
+        </listener-class>
+    </listener>
+    
 
 </web-app>

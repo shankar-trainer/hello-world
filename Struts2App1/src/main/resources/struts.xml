@@ -5,10 +5,8 @@
 
 <struts>
 	<constant name="struts.devMode" value="false" />
-		<constant name="struts.custom.i18n.resources"
-		value="Product" />
-		<constant name="struts.custom.i18n.resources"
-		value="Customer" />
+	<constant name="struts.custom.i18n.resources" value="Product" />
+	<constant name="struts.custom.i18n.resources" value="Customer" />
 
 	<package name="basicstruts2" extends="struts-default">
 		<interceptors>
@@ -59,9 +57,21 @@
 			<result name='input'>ProductForm.jsp</result>
 		</action>
 
-		<action name="sAction" class="com.example.model.MyStudentModelDriven" method="showallStudent">
+		<action name="sAction"
+			class="com.example.model.MyStudentModelDriven"
+			method="showallStudent">
 			<result name='success'>WEB-INF/pages/StudentRecord.jsp</result>
 		</action>
 
+	</package>
+	
+	<package name="com.example.model" extends="tiles-default">
+ 		<action name="trainingAction">
+			<result name="success" type="tiles">Training</result>
+		</action>
+	
+ 		<action name="trainingAdd">
+			<result name="success" type="tiles">TrainingData</result>
+		</action>
 	</package>
 </struts>

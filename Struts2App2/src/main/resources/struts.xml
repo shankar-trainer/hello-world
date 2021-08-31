@@ -23,6 +23,21 @@
 			<result name='input'>/StudentForm.jsp</result>
 		</action>
 
+		<action name="additionAction" class="com.example.model.Addition">
+			<exception-mapping result="fail" exception="java.lang.NumberFormatException"></exception-mapping>
+			<result>/AdditionSuccess.jsp</result>
+			
+			<result name="fail">/AdditionFail.jsp</result>
+			
+		</action>
+
+     <!--    <action name="Product_input">
+            <result name="success" type="tiles">Product</result>
+        </action>
+        <action name="Product_add">
+            <result name="success" type="tiles">Thanks</result>
+        </action>
+ -->
 
 	</package>
 </struts>

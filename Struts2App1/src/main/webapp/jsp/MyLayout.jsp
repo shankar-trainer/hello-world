@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://tiles.apache.org/tags-tiles"  prefix="tiles"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@taglib uri="/struts-tags"  prefix="s"%>
-
-Account Id is <s:property value="accountId"/><br>
-Account Name is <s:property value="accountName"/><br>
-Account Location is <s:property value="accountLocation"/><br>
+<tiles:insertAttribute name="header"/>
+<tiles:insertAttribute name="body"/>
+<tiles:insertAttribute name="footer"/>
 </body>
 </html>

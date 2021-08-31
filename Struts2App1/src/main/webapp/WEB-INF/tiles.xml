@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+   "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+   "jndi:/localhost/myapp/WEB-INF/dtd/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="Training" template="/jsp/MyLayout.jsp">
+        <put-attribute name="header" value="/jsp/header.jsp"/>
+        <put-attribute name="footer" value="/jsp/footer.jsp"/>
+        <put-attribute name="body" value="/jsp/Training.jsp"/>
+    </definition>
+    
+    <definition name="TrainingData" template="/jsp/MyLayout.jsp">
+        <put-attribute name="header" value="/jsp/header.jsp"/>
+        <put-attribute name="footer" value="/jsp/footer.jsp"/>
+        <put-attribute name="body" value="/jsp/TrainingData.jsp"/>
+    </definition>
+
+</tiles-definitions>
