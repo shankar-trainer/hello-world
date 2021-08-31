@@ -1,0 +1,19 @@
+
+create table product(prdId int primary key auto_increment, cname varchar(20), 
+prdType varchar(20), prdColor varchar(20) ,qty int ,buyPrice float(10,2), 
+sellPrice float(10,2));
+ 
+
+insert into  product (cname,prdType,prdColor,qty,buyPrice,sellPrice,sale_date) values('parle','biscuit','wheatish',200,20,22);
+insert into  product (cname,prdType,prdColor,qty,buyPrice,sellPrice,sale_date) values('ashirbad','wheat flour','white',300,200,222);
+insert into  product (cname,prdType,prdColor,qty,buyPrice,sellPrice,sale_date) values('rotomac','ballpen','white',50,8,10);
+insert into  product (cname,prdType,prdColor,qty,buyPrice,sellPrice,sale_date) values('vaishali','notebook','white',100,30,35);
+insert into  product (cname,prdType,prdColor,qty,buyPrice,sellPrice,sale_date) values('shyam ptv ltd','nailcutter','silver',40,20,25);
+ 
+ 
+
+create table product_order(order_id int primary key auto_increment, cname varchar(20), prdType varchar(20),
+ prdColor varchar(20) ,qty int ,buyPrice float(10,2), sellPrice float(10,2),sale_date date, productId int ,qty_left int, time1 time 
+,foreign key(productId) references product(prdId));
+ 
+ 
