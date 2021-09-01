@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
     
     <%@taglib uri="/struts-tags"  prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="CSS/file1.css">
 <s:head/>
@@ -15,6 +15,7 @@
 
 <div class="style1">
 <a href="cstAction.action?request_locale=en">English</a>
+<a href="cstAction.action?request_locale=hi">हिंदी</a>
 <a href="cstAction.action?request_locale=fr">French</a>
 
 <s:form action="cstAction">
