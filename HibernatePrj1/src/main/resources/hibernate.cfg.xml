@@ -18,6 +18,7 @@
 		<mapping class="org.montran.model.one_to_one.Student" />
 		<mapping class="org.montran.model.one_to_one.Address" />
 		<mapping class="org.montran.model.one_to_one.Book" />
+		<mapping class="org.montran.model.Person" />
 
 	</session-factory>
 </hibernate-configuration>
