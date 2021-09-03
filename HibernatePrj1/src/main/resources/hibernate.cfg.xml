@@ -12,13 +12,17 @@
 		<property name="hibernate.connection.password">mysql</property>
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
-		<property name="hbm2ddl.auto">update</property>
-
+		<!-- <property name="hbm2ddl.auto">update</property> -->
+ 
 		<mapping class="org.montran.model.Employee" />
 		<mapping class="org.montran.model.one_to_one.Student" />
 		<mapping class="org.montran.model.one_to_one.Address" />
 		<mapping class="org.montran.model.one_to_one.Book" />
 		<mapping class="org.montran.model.Person" />
+		<mapping class="org.montran.model.Library" />
+		
+ 	
+<!--  	<mapping resource="Lic.hbm.xml" /> -->
 
 	</session-factory>
 </hibernate-configuration>
