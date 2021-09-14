@@ -34,7 +34,6 @@ class Customer {
 		System.out.println("id is "+getCustomerId());
 	    System.out.println("name is "+getCustomerName());
 	    System.out.println("location is "+getCustomerLocation());
-	    
 	}
 	
 }
