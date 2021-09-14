@@ -5,7 +5,7 @@ public class User {
 	private int userAge;
 	private String userCountry;
 
-	public User() {
+	 User() {
 		this("nepal");
 		userAge = 44;
 		userName = "amit kumar";
@@ -13,15 +13,23 @@ public class User {
 		System.out.println("default constructor called ");
 	}
 	
-	public User(int userId, String userName, int userAge) {
+	 User(int userId, String userName, int userAge) {
+		 //this();
 		this("india");// another current class constructor 
 		this.userId = userId;
 		this.userName = userName;
 		this.userAge = userAge;
 		System.out.println("overloaded  constructor called ");
 	}
+	 User(int userId, String userName, String userCountry) {
+	     this.userId=userId;
+	     this.userName=userName;
+	     this.userCountry=userCountry;
+	     System.out.println("overloaded  constructor3 called ");
+	 }
 	
-	public User( String country) {
+	 User( String country) {
+		 this(9998,"s kumar","sri lanka");
 		this.userCountry=country;
 		System.out.println("overloaded  constructor2 called ");
 	}
