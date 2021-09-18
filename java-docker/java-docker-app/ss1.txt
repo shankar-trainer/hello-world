@@ -1,0 +1,233 @@
+
+1.without maven conianer 
+
+it requires java, maven to be installed 
+
+
+https://www.baeldung.com/dockerizing-spring-boot-application
+
+
+Dockerfile
+
+
+FROM amazoncorretto:11-alpine-jdk
+
+MAINTAINER baeldung.com
+
+COPY target/docker-message-server-1.0.0.jar message-server-1.0.0.jar
+
+ENTRYPOINT ["java","-jar","/message-server-1.0.0.jar"]
+
+
+@RestController
+
+public class DockerMessageController {
+
+  @GetMapping("/messages")
+
+  public String getMessage() {
+
+    return "Hello from Docker!";
+
+  }
+
+}
+
+
+$> mvn clean package
+
+$> java -jar target/docker-message-server-1.0.0.jar$> docker build --tag=message-server:latest .
+
+$> docker run -p8887:8888 message-server:latest
+
+
+if we run the container in detached mode, we can inspect its details, stop it, and remove it with the following commands:
+
+$> docker inspect message-server
+
+$> docker stop message-server
+
+$> docker rm message-server
+
+
+2.with maven conianer
+
+https://dzone.com/articles/build-package-and-run-spring-boot-apps-with-docker
+
+it don't  requires java, maven to be installed
+
+@RestController
+
+
+public class DockerMessageController {
+
+ @GetMapping("/messages")
+
+ public String getMessage() {
+
+  return "Hello from Docker!";
+
+ }
+
+}
+
+Dockerfile 
+
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
+
+MAINTAINER Brian Hannaway
+
+COPY pom.xml /build/
+
+COPY src /build/src/
+
+WORKDIR /build/
+
+RUN mvn package
+
+FROM openjdk:8-jre-alpine
+
+WORKDIR /app
+
+COPY --from=MAVEN_BUILD /build/target/docker-boot-intro-0.1.0.jar /app/
+
+ENTRYPOINT ["java", "-jar", "docker-boot-intro-0.1.0.jar"]
+
+
+
+docker image build -t docker-boot-intro .
+
+
+docker image history boot-docker-intro command you'll see a breakdown of the various layers in the image
+
+docker container run -p 8080:8080 docker-boot-intro
+
+Testing the Application
+
+
+$ docker-machine ip
+
+192.168.99.100
+
+curl 192.168.99.100:8080/actuator/health
+
+
+
+
+
+
+
+
+
+
+
+---------------
+
+3. Build the image
+
+docker build -t demo .
+
+4. Run the image
+
+$ docker run --rm -it demo:latest
+
+
+docker ps
+
+docker stop <containerid>
+
+docker rm <containerid>
+
+docker rmi <imageid>
+
+-----------------------------------------------
+
+2. Create a Dockerfile
+
+# Build stage
+
+#
+
+FROM maven:3.6.0-jdk-11-slim AS build
+
+COPY src /home/app/src
+
+COPY pom.xml /home/app
+
+RUN mvn -f /home/app/pom.xml clean package
+
+#
+
+# Package stage
+
+FROM openjdk:11-jre-slim
+
+COPY --from=build /home/app/target/demo-0.0.1-SNAPSHOT.jar /usr/local/lib/demo.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
+
+3. Build the image
+
+docker build -t demo .
+
+4. Run the image
+
+$ docker run --rm -it demo:latest
+
+---------
+
+Option 1: Multi-stage build
+
+This new style enables you to create more light-weight images that don't encapsulate your build tools and source code.
+
+FROM maven:3.5-jdk-8 AS build
+
+COPY src /usr/src/app/src
+
+COPY pom.xml /usr/src/app
+
+RUN mvn -f /usr/src/app/pom.xml clean package
+
+FROM gcr.io/distroless/java
+
+COPY --from=build /usr/src/app/target/helloworld-1.0.0-SNAPSHOT.jar /usr/app/helloworld-1.0.0-SNAPSHOT.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","/usr/app/helloworld-1.0.0-SNAPSHOT.jar"]
+
+# Build stage
+
+FROM maven:3.6.0-jdk-11-slim AS build
+
+COPY pom.xml /app/
+
+COPY src /app/src
+
+RUN mvn -f /app/pom.xml clean package
+
+# Run stage
+
+FROM openjdk:8-jdk-alpine # Use your target JDK here !
+
+COPY --from=build /app/target/app*.jar /app/app.jar
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/app.jar"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
