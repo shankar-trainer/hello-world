@@ -5,7 +5,6 @@ ip address
 
 it requires java, maven to be installed 
 
-
 https://www.baeldung.com/dockerizing-spring-boot-application
 
 
@@ -13,42 +12,28 @@ Dockerfile
 
 
 FROM amazoncorretto:11-alpine-jdk
-
 MAINTAINER baeldung.com
-
 COPY target/docker-message-server-1.0.0.jar message-server-1.0.0.jar
-
 ENTRYPOINT ["java","-jar","/message-server-1.0.0.jar"]
 
 
 @RestController
-
 public class DockerMessageController {
 
   @GetMapping("/messages")
-
   public String getMessage() {
-
     return "Hello from Docker!";
-
   }
-
 }
 
 
 $> mvn clean package
-
 $> java -jar target/docker-message-server-1.0.0.jar$> docker build --tag=message-server:latest .
-
 $> docker run -p8887:8888 message-server:latest
-
-
 if we run the container in detached mode, we can inspect its details, stop it, and remove it with the following commands:
 
 $> docker inspect message-server
-
 $> docker stop message-server
-
 $> docker rm message-server
 
 
@@ -59,24 +44,16 @@ https://dzone.com/articles/build-package-and-run-spring-boot-apps-with-docker
 it don't  requires java, maven to be installed
 
 @RestController
-
-
 public class DockerMessageController {
 
  @GetMapping("/messages")
-
  public String getMessage() {
-
   return "Hello from Docker!";
-
  }
-
 }
 
 Dockerfile 
-
 FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
-
 MAINTAINER Brian Hannaway
 
 COPY pom.xml /build/
@@ -95,10 +72,7 @@ COPY --from=MAVEN_BUILD /build/target/docker-boot-intro-0.1.0.jar /app/
 
 ENTRYPOINT ["java", "-jar", "docker-boot-intro-0.1.0.jar"]
 
-
-
 docker image build -t docker-boot-intro .
-
 
 docker image history boot-docker-intro command you'll see a breakdown of the various layers in the image
 
