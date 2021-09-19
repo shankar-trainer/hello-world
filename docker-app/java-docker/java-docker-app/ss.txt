@@ -1,0 +1,19 @@
+a76579a605444959a4d5926ea4b52636
+docker pull jenkins/jenkins
+docker run -p 8080:8080 --name=jenkins-master jenkins/jenkins
+sudo docker ps -a will give container id 
+sudo docker start "container id"
+
+docker images and docker image ls will gives all images 
+docker rmi imageid  -- remove image
+
+ubuntu 16
+When in GUI-mode, this will take you to text-mode (runlevel 2,3,4) on reboot. You may get a blank screen (no-gui) which is a reminder that there's no GUI :-), enter ctrlalt(F1,F2,...) to use the runlevels.
+systemctl set-default multi-user.target
+
+This will take you back to GUI boot when you are in text-mode.
+systemctl set-default graphical.target
+
+
+sudo docker pull jenkins/jenkins:jdk11
+
