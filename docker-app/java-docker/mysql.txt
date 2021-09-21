@@ -1,4 +1,16 @@
+docker pull mysql
+ docker run --name mysql1  -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1234 -d mysql:latest
 
+docker ps
+
+
+docker exec -it mysql1  bash
+
+mysql -h localhost -u root -p
+
+
+
+---------
 docker run --name mysql57 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1234 -d mysql/mysql-server:5.7
 
 docker ps
