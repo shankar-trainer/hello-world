@@ -1,5 +1,10 @@
+
 docker pull mysql
  docker run --name mysql1  -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1234 -d mysql:latest
+  next time start mysql1 container by 
+  docker start mysql1
+ stop by docker stop mysql1 
+
 
 docker ps
 
