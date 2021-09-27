@@ -27,8 +27,5 @@ class Dog  extends Animal {
 		System.out.println(animal instanceof Object);
 		System.out.println(dog instanceof Object);
 		System.out.println(dog instanceof Animal);
-		
-    		
-
 	}
 }
