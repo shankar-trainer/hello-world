@@ -14,6 +14,24 @@ interface Month {
 	int November = 11;
 	int December = 12;
 }
+class BirthDay {
+	int day;
+	int month;
+	int year;
+
+	public static void main(String[] args) {
+		BirthDay birthDay = new BirthDay();
+		birthDay.day = 11;
+		birthDay.month = Months.April;
+		birthDay.year = 1988;
+		
+		BirthDay birthDay1 = new BirthDay();
+		birthDay1.day = 11;
+		birthDay1.month = Month.April;
+		birthDay1.year = 1988;
+	}
+}
+
 
 public class Months {
 
@@ -32,23 +50,3 @@ public class Months {
 
 }
 
-class BirthDay {
-	int day;
-	int month;
-	int year;
-
-	public static void main(String[] args) {
-		BirthDay birthDay = new BirthDay();
-		birthDay.day = 11;
-		birthDay.month = Months.April;
-		birthDay.year = 1988;
-		
-		
-		BirthDay birthDay1 = new BirthDay();
-		birthDay1.day = 11;
-		birthDay1.month = Month.April;
-		birthDay1.year = 1988;
-	
-	}
-
-}
