@@ -16,8 +16,12 @@ public class WriteEmployeeObj {
 		Employee emp1 = new Employee(1001, "suresh lalit", 12000);
 		Employee emp2 = new Employee(1002, "amitesh anand", 18000);
 		Employee emp3 = new Employee(1003, "shubham anand", 75000);
+		
+		
+		Employee.country="nepal";
 
 		os.writeObject(emp1);
+		Employee.country="srilanka";
 		os.writeObject(emp2);
 		os.writeObject(emp3);
 		os.close();
