@@ -27,5 +27,19 @@ public class StringPrg5 {
 		for (String s : split)
 			System.out.print(s+" , ");
 
+		System.out.println("------");
+		
+		var = "ram-goes@to-school.we@all-have@gone-to-school";
+		System.out.println("---------");
+		split = var.split("-|@");
+		
+		for (String s : split)
+			System.out.print(s+" , ");
+		
+	String s11=	String.join(" and ", "hello","welcome","good morning");
+		System.out.println();
+		System.out.println(s11);
+		
+
 	}
 }
