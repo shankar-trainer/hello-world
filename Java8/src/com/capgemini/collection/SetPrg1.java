@@ -2,12 +2,16 @@ package com.capgemini.collection;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class SetPrg1 {
 
 	public static void main(String[] args) {
-		Set<String> productset1 = new HashSet<>();
+		Set<String> productset1 = new  LinkedHashSet<>();// ordered 
+				//TreeSet<>();// sorted
+				//HashSet<>();  // no order 
 		// no duplicate
 		// no index support not ordered
 		productset1.add("trouser");
