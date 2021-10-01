@@ -34,9 +34,7 @@ public class SetPrg1 {
 		for (String string : productset1) {
 			System.out.print(string + ", ");
 		}
-
 		productset1.clear(); // remove all elements
 		System.out.println("is empty \n" + productset1.isEmpty());
-
 	}
 }
