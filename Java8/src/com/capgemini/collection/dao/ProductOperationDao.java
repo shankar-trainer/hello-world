@@ -11,11 +11,13 @@ public class ProductOperationDao {
 	public ProductOperationDao() {
 		  productSet=new HashSet<>();
 	}
+	
+	//Add 
 	public boolean addProduct(Product prd) {
 	  productSet.add(prd);
 	  return true;
 	}
-	
+	//Retrieve
 	public Set<Product> getAllProduct(){
 		return productSet;
 	}
