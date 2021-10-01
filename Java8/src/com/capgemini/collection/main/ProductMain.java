@@ -28,6 +28,11 @@ public class ProductMain {
 		dao.addProduct(product1);
 		dao.addProduct(product2);
 		dao.addProduct(product3);
+		dao.addProduct(product1);
+		
+		dao.searchProduct(product2);
+		
+		dao.removeProduct(product1);
 		
 		Set<Product> allProduct = dao.getAllProduct();
 		
