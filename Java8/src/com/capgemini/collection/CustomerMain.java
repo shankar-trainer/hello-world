@@ -9,13 +9,12 @@ public class CustomerMain {
 
 		@Override
 		public int compare(Customer o1, Customer o2) {
-			if (o1.getId() < o2.getId())
-				return -1;
-
-			else if (o1.getId() > o2.getId())
-				return 1;
-			else
-				return 0;
+			/*
+			 * if (o1.getId() < o2.getId()) return -1;
+			 * 
+			 * else if (o1.getId() > o2.getId()) return 1; else return 0;
+			 */
+			return new Integer(o1.getId()).compareTo(new Integer(o2.getId()));
 		}
 	}
 
@@ -42,5 +41,52 @@ public class CustomerMain {
 		for (Customer customer2 : customer) {
 			System.out.println(customer2.getId() + " " + customer2.getName() + "  " + customer2.getSalary());
 		}
+
+		Comparator<Customer> comparator = new Comparator<Customer>() {
+
+			@Override
+			public int compare(Customer o1, Customer o2) {
+
+				return o1.getName().compareTo(o2.getName());
+			}
+		};
+
+		Arrays.sort(customer, comparator);
+
+		System.out.println("\nAfter sorting  by name ");
+		System.out.println();
+
+		System.out.println("Id\tName\tSalary\n");
+		for (Customer customer2 : customer) {
+			System.out.println(customer2.getId() + " " + customer2.getName() + "  " + customer2.getSalary());
+		}
+
+		Comparator<Customer> comparator1 = new Comparator<Customer>() {
+
+			@Override
+			public int compare(Customer o1, Customer o2) {
+
+				//return new Float(o1.getSalary()).compareTo(new Float(o2.getSalary()));
+				return Float.valueOf(o1.getSalary()).compareTo(Float.valueOf(o2.getSalary()));
+			}
+		};
+
+		// Arrays.sort(customer, comparator1);
+		Arrays.sort(customer, new Comparator<Customer>() {
+			@Override
+			public int compare(Customer o1, Customer o2) {
+				//return new Float(o1.getSalary()).compareTo(new Float(o2.getSalary()));
+				return Float.valueOf(o1.getSalary()).compareTo(Float.valueOf(o2.getSalary()));
+			}
+		});
+
+		System.out.println("\nAfter sorting  by salary ");
+		System.out.println();
+
+		System.out.println("Id\tName\tSalary\n");
+		for (Customer customer2 : customer) {
+			System.out.println(customer2.getId() + " " + customer2.getName() + "  " + customer2.getSalary());
+		}
+
 	}
 }
