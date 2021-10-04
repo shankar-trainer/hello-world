@@ -28,7 +28,6 @@ public class CustomerMain {
 			customer[i] = new Customer();
 			customer[i].setId(id1[i]);
 			customer[i].setName(nm[i]);
-
 			customer[i].setSalary(salary1[i]);
 		}
 
