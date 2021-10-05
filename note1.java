@@ -1772,4 +1772,46 @@ java(oop) --  jdbc --> database (sql)
 				               ddl sql 
 							   dml--select , insert , update , delete 
                                 							   
-							   
+				Statement st=connection.createStatement();
+			ResultSet rs = st.executeQuery("select * from customer");
+                	
+    rs --  pointer 
+	         beforeFirst--- default position -- no datat
+             First 
+             2
+			 3
+			 4
+			 last 
+			 afterLast
+			 
+
+			rs.next()
+			   First 
+			   
+			   
+			   Design Pattern 
+			      way to solve the problem 
+			   1. DAO Design Pattern 
+			   
+			   DAO  layer  
+			   
+			     all databse operation will be done at the dao layer 
+				
+			   2.Sigleton Design Pattern 
+                         single instance 
+
+            
+    
+
+     3 files -- 3 connection instance 
+                single instance that will be shared all the classes
+
+
+                  				
+			   	    
+			   
+			   
+			   
+			   
+			   
+			   
