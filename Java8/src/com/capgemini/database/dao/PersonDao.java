@@ -27,6 +27,36 @@ public class PersonDao {
 		st = connection.createStatement();
 	}
 
+	public boolean updatePerson(Person person) throws SQLException {
+		if (searchPerson(person.getId()) != null) {
+			pst = null;
+			pst = connection.prepareStatement("update   person  set name=?, salary=?, dob=? where  id=?");
+			pst.setString(1, person.getName());
+			pst.setFloat(2, person.getSalary());
+			pst.setDate(3, new java.sql.Date(person.getDob().getTime()));
+			pst.setInt(4, person.getId());
+
+			pst.executeUpdate();
+			return true;
+		}
+
+		return false;
+	}
+
+	public boolean removePerson(int id) throws SQLException {
+		if (searchPerson(id) != null) {
+			pst = null;
+			pst = connection.prepareStatement("delete from  person where  id=?");
+			pst.setInt(1, id);
+			pst.executeUpdate();
+
+			return true;
+
+		} else {
+			return false;
+		}
+	}
+
 	public boolean addPerson(Person person) throws SQLException {
 		if (searchPerson(person.getId()) != null) {
 			return false;
