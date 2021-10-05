@@ -8,11 +8,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import com.capgemini.database.util.DatabaseUtil;
+
 public class Program3 {
 
 	public static void main(String[] args) throws SQLException {
-		Connection connection = DriverManager
-				.getConnection("jdbc:postgresql://localhost/db1?user=postgres&password=postgres&ssl=false");
+//		Connection connection = DriverManager
+//				.getConnection("jdbc:postgresql://localhost/db1?user=postgres&password=postgres&ssl=false");
+		
+		Connection connection=DatabaseUtil.myConnection();
 		Statement st = connection.createStatement();
 
 		int id;

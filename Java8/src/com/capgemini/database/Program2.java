@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.capgemini.database.util.DatabaseUtil;
+
 public class Program2 {
 
 	public static void main(String[] args) {
@@ -23,8 +25,8 @@ public class Program2 {
 			
 //			Connection connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1/db1", "postgres",	"postgres");
 			// getConnection(url,uname,pass)
-			Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost/db1?user=postgres&password=postgres&ssl=false");
-			
+		//	Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost/db1?user=postgres&password=postgres&ssl=false");
+			Connection connection=DatabaseUtil.myConnection();	
 			if (connection != null)
 				System.out.println("connection successful");
 			else
