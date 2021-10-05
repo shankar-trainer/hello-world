@@ -1,6 +1,9 @@
 package com.capgemini.database.main;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -16,7 +19,7 @@ public class PersonMain {
 		try {
 			PersonDao dao = new PersonDao();
 			String s = "y";
-
+			Person person = null;
 			while (s.equalsIgnoreCase("y")) {
 				System.out.println("\n1.Show All Person");
 				System.out.println("2.Add Person");
@@ -40,6 +43,52 @@ public class PersonMain {
 					}
 					break;
 
+				case 2:
+					person = null;
+					person = new Person();
+
+					System.out.println("Enter id");
+					person.setId(scanner.nextInt());
+
+					System.out.println("Enter Name");
+					scanner.nextLine();
+					person.setName(scanner.nextLine());
+
+					System.out.println("Enter Salary");
+					person.setSalary(scanner.nextFloat());
+
+					System.out.println("Enter DOB in dd\\MM\\yyyy format ");
+					SimpleDateFormat dateFormat = new SimpleDateFormat("dd\\MM\\yyyy");
+					String s1 = scanner.next();
+
+					Date parse = null;
+					try {
+						parse = dateFormat.parse(s1);
+						person.setDob(parse);
+						if (dao.addPerson(person))
+							System.out.println("Person added");
+						else
+							System.out.println("Person with id already present");
+
+					} catch (ParseException e) {
+						System.err.println("DOB not  in dd\\MM\\yyyy format");
+					}
+
+					break;
+
+				case 3:
+					System.out.println("Enter id ");
+					person = null;
+					person = dao.searchPerson(scanner.nextInt());
+					if (person == null)
+						System.out.println("Person id not found");
+					else {
+						System.out.println("Person  found");
+						System.out.println(person.getId() + "\t" + person.getName() + "\t" + person.getSalary() + "\t"
+								+ person.getDob());
+					}
+
+					break;
 				default:
 					break;
 				}
@@ -49,7 +98,6 @@ public class PersonMain {
 		} catch (SQLException e) {
 			System.err.println(e);
 		}
-
 		scanner.close();
 	}
 }
