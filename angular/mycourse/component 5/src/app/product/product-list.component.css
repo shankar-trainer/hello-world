@@ -1,0 +1,14 @@
+.row {
+  padding: 10px 0; }
+.row:first-child {
+  border-bottom: 1px solid #000; }
+
+.product-list .heading-text {
+  margin-top: 0; }
+
+.product-list .product-item {
+  padding-top: 5px;
+  padding-bottom: 5px; }
+  .product-list .product-item span {
+    text-decoration: underline;
+    cursor: pointer; }

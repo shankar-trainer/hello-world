@@ -1,0 +1,17 @@
+<div class="col-md-6">
+  <h2 class="text-center">Edit User</h2>
+  <form  (ngSubmit)="onSubmit()" formGroup="studentEditForm">
+    
+    <div class="form-group">
+      <label for="studentName">Name:</label>
+      <input  placeholder="Name" formControlName="studentName" name="studentName" class="form-control" [(ngModel)]="studentName" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="studentPassword">Password:</label>
+      <input  placeholder="Password" formControlName="studentPassword" name="studentPassword" class="form-control" [(ngModel)]="studentPassword" id="name">
+    </div>
+
+    <button class="btn btn-success">Update</button>
+  </form>
+</div>

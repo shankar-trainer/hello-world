@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav" style="margin-left:auto;margin-right: auto;">
+        <li class="nav-item "><a (click)="goHome()" routerLinkActive="active" class="nav-link"
+                class="btn btn-primary active">Home</a></li>
+        <li class="nav-item "><a (click)="goCustomer()" routerLinkActive="active" class="nav-link"
+                class="btn btn-primary active" role="button">View All Customers</a></li>
+        <li class="nav-item "><a (click)="goAddCustomer()" routerLinkActive="active" class="nav-link"
+                class="btn btn-primary active" role="button">Add New Customer</a></li>
+    </ul>
+</nav>
+
+<div *ngIf="usr">
+
+    <div class="row" align="center">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <table>
+                <tr style="font-size: 30px;color: green;">
+                    <td>ID</td>
+                    <td>{{usr.id}}</td>
+                </tr>
+                <tr>
+                    <td>NAME</td>
+                    <td>{{usr.name}}</td>
+                </tr>
+                <tr>
+                    <td>EMAIL</td>
+                    <td>{{usr.email}}</td>
+                </tr>
+                <tr>
+                    <td>AGE</td>
+                    <td>{{usr.age}}</td>
+                </tr>
+                <tr>
+                    <td>GENDER</td>
+                    <td>{{usr.gender}}</td>
+                </tr>
+                <tr>
+                    <td>PHONE NO</td>
+                    <td>{{usr.phoneno}}</td>
+                </tr>
+            </table>
+            <button type="reset" (click)="gotoList()">Go Back</button>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>

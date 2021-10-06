@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<h1>New Appointment Form</h1>
+
+
+<div class="row">
+    <div class="col-sm-4" align="left">
+        <h5>Available Tests</h5>
+        <div align="center">
+            <app-mytest></app-mytest>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div [hidden]="submitted" style="width: 400px;">
+            <form (ngSubmit)="onSubmit()" style="margin-left: 55px;">
+                <div class="form-group">
+                    <label for="appointmentId" placeholder="id">Enter Appointment Id</label>
+                    <input class="form-control" id="id" required [(ngModel)]="appointment.appointmentId"
+                        name="appointmentId">
+                </div>
+                <div class="form-group">
+                    <label for="userId" placeholder="id">Enter User Id</label>
+                    <input class="form-control" id="id" required [(ngModel)]="appointment.userId" name="userId">
+                </div>
+                <div class="form-group">
+                    <label for="diagnosticCentreId" placeholder="id">Enter Diagnostic Centre Id</label>
+                    <input class="form-control" id="id" required [(ngModel)]="appointment.diagnosticCentreId"
+                        name="diagnosticCentreId">
+                </div>
+                <div class="form-group">
+                    <label for="testId" placeholder="id">Enter Test Id</label>
+                    <input class="form-control" id="id" required [(ngModel)]="appointment.testId" name="testId">
+                </div>
+                <div class="form-group">
+                    <label for="date" placeholder="id">Enter Date</label>
+                    <input class="form-control" id="id" required [(ngModel)]="appointment.date1" name="date1">
+                </div>
+                <div class="form-group">
+                    <label for="time" placeholder="id">Enter Time</label>
+                    <input class="form-control" id="id" required [(ngModel)]="appointment.time1" name="time1">
+                </div>
+                <div class="form-group">
+                    <label for="totalCost" placeholder="id">Enter Total Cost</label>
+                    <input class="form-control" id="id" required [(ngModel)]="appointment.totalCost" name="totalCost">
+                </div>
+                <div class="form-group">
+                    <label for="approved" placeholder="id">Enter if Approved</label>
+                    <input class="form-control" id="id" required [(ngModel)]="appointment.approved" name="approved">
+                </div>
+                <button type="submit" class="btn-success">Submit</button>
+                &nbsp;&nbsp;&nbsp;
+                <button type="reset" (click)="gotoList()">Go Back</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="col-sm-4" align="center">
+        <h5>Available Diagnostic Centres</h5>
+        <div align="center">
+            <app-mydiagnosticcentre></app-mydiagnosticcentre>
+        </div>
+    </div>
+</div>
+
+<div [hidden]="!submitted">
+    <h4>Appointment added Successfully!!</h4>
+</div>

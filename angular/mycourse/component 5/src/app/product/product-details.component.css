@@ -1,0 +1,5 @@
+.row:not(:first-child) {
+  padding-top: 10px; }
+
+.product-details .form-control.ng-invalid {
+  border-color: red; }

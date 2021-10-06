@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<h1> All Users</h1>
+
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav" style="margin-left:auto;margin-right: auto;">
+      <li class="nav-item "><a (click)="goHome()" routerLinkActive="active" class="nav-link"
+          class="btn btn-primary active">Home</a></li>
+      <li class="nav-item "><a (click)="goAddAdmin()" routerLinkActive="active" class="nav-link"
+          class="btn btn-primary active" role="button">Add New Admin</a></li>
+      <li class="nav-item "><a (click)="goAppointments()" routerLinkActive="active" class="nav-link"
+          class="btn btn-primary active" role="button">All Appointments</a></li>
+      <li class="nav-item "><a (click)="goAddDiagonasticCentre()" routerLinkActive="active" class="nav-link"
+          class="btn btn-primary active" role="button">New Diagnostic Centre</a></li>
+      <li class="nav-item "><a (click)="goAddTest()" routerLinkActive="active" class="nav-link"
+          class="btn btn-primary active" role="button">New Test</a></li>
+    </ul>
+  </nav>
+  <div class="row">
+    <div class="col-sm-4" align="center">
+      <h5>Available Tests</h5>
+      <app-mytest></app-mytest>
+    </div>
+    <div class="col-sm-4" align="center">
+      <h5>All Admins</h5>
+      <table width="60%">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th>UserRole</th>
+          <th>Delete</th>
+          <th>Update</th>
+          <th>View Details</th>
+        </tr>
+        <tr *ngFor="let usr1 of admin|async">
+          <td>{{usr1.id}}</td>
+          <td>{{usr1.name}}</td>
+          <td>{{usr1.gender}}</td>
+          <td>{{usr1.email}}</td>
+          <td>{{usr1.userRole}}</td>
+          <td><button (click)="deleteAdmin(usr1.id)">Delete</button></td>
+          <td><button (click)="updateAdmin(usr1.id)">Update</button></td>
+          <td><button (click)="detailsAdmin(usr1.id)">Details</button></td>
+        </tr>
+      </table>
+      <h5>All Customers</h5>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th>UserRole</th>
+          <th>Delete</th>
+          <th>Update</th>
+          <th>View Details</th>
+        </tr>
+        <tr *ngFor="let usr2 of customer|async">
+          <td>{{usr2.id}}</td>
+          <td>{{usr2.name}}</td>
+          <td>{{usr2.gender}}</td>
+          <td>{{usr2.email}}</td>
+          <td>{{usr2.userRole}}</td>
+          <td><button (click)="deleteCustomer(usr2.id)">Delete</button></td>
+          <td><button (click)="updateCustomer(usr2.id)">Update</button></td>
+          <td><button (click)="detailsCustomer(usr2.id)">Details</button></td>
+        </tr>
+      </table>
+      <button class="btn" style="background-color: coral;" type="menu" (click)="goHome()">Go Back</button>
+      <button type="menu" (click)="goAdmin()" class="btn btn-success" style="background-color: blueviolet;">Refresh
+        List</button>
+      <br><br>
+    </div>
+    <div class="col-sm-4" align="center">
+      <h5>Available Diagnostics Centres</h5>
+      <app-mydiagnosticcentre></app-mydiagnosticcentre>
+    </div>
+    </div>
+</body>

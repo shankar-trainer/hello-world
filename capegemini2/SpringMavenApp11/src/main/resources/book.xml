@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<bean id="book1" class="org.com.model.Book">
+		<property name="book_name" value="story book"></property>
+		<property name="book_isbn" value="6776766"></property>
+		<property name="book_cost" value="567"></property>
+	</bean>
+
+	<bean id="book2" class="org.com.model.Book" p:book_name="mybook"
+		p:book_isbn="788787" p:book_cost="120">
+	</bean>
+
+	<bean id="prd" class="org.com.model.Product">
+		<constructor-arg name="id" value="6577676"></constructor-arg>
+		<constructor-arg name="name" value="shirt"></constructor-arg>
+		<constructor-arg name="cost" value="657"></constructor-arg>
+	</bean>
+
+	<bean id="prd1" class="org.com.model.Product" c:id="89988"
+		c:name="pant" c:cost="899">
+
+	</bean>
+
+</beans>

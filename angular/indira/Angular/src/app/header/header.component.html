@@ -1,0 +1,20 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Online Wallet</a>
+      </div>
+     
+       <ul class="nav navbar-nav">
+        <li routerLinkActive="active" routerLinkActiveOptions="{exact:true}"><a *ngIf="loginService.isUserLoggedIn()" routerLink="/userprofile" class="nav-link">My Profile</a></li>
+        <li routerLinkActive="active" routerLinkActiveOptions="{exact:true}"><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+        <li routerLinkActive="active" routerLinkActiveOptions="{exact:true}"><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/create" class="nav-link">Register</a></li>
+        <li routerLinkActive="active" routerLinkActiveOptions="{exact:true}"><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link" class="pull-right">Logout</a></li>
+        <!-- <li routerLinkActive="active" routerLinkActiveOptions="{exact:true}"><a  routerLink="/login" class="nav-link">Login</a></li>
+        <li routerLinkActive="active" routerLinkActiveOptions="{exact:true}"><a  routerLink="/create" class="nav-link">Register</a></li> -->
+        <!-- <li><a href="#">My Wallet</a></li>
+        <li><a href="#">Add Money</a></li>
+        <li><a href="#">Transfer Money</a></li> -->
+        </ul>
+    </div>
+    
+  </nav>

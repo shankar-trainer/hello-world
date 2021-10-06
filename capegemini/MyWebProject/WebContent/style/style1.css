@@ -1,0 +1,39 @@
+label {
+	width: 180px;
+	float: left;
+	font-size: large;
+}
+
+input {
+	margin-top: 10px;
+	width: 180px;
+}
+
+form {
+margin-top:100px;
+margin-bottom:200px;
+	margin-left: 440px;
+	border: double 10px blue;
+	width: 40%;
+	height: 150px;
+	padding: 20px;
+	background-color: yellow;
+	color: blue;
+	background-image: url("../Image/img4.jpg");
+	
+}
+h1{
+background-color: silver;
+	margin-left: 500px;
+	width: 30%;
+	text-align: center;
+}
+
+input[type='submit'] {
+	width:100px;
+	margin-left: 50px;
+}
+input[type='reset'] {
+	margin-left:50px;
+	width:100px;
+}

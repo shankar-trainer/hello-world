@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		p:driverClassName="oracle.jdbc.driver.OracleDriver" p:url="jdbc:oracle:thin:@localhost:1521:XE"
+		p:username="system" p:password="manager" />
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="persistenceUnitName" value="myPersistenceUnit" />
+		<property name="persistenceProvider"
+			value="org.hibernate.ejb.HibernatePersistenceProvider" />
+
+		<property name="packagesToScan">
+			<list>
+				<value>org.com.model</value>
+			</list>
+		</property>
+
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect">"org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+			</props>
+		</property>
+
+	</bean>
+	<!-- <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 
+		<property name="packagesToScan" value="org.com.model"></property> <property 
+		name="persistenceUnitName" value="myPersistenceUnit" /> <property name="dataSource" 
+		ref="dataSource" /> <property name="persistenceProvider" value="org.hibernate.jpa.HibernatePersistenceProvider" 
+		/> <property name="jpaPropertyMap"> <map> <entry key="hibernate.dialect" 
+		value="org.hibernate.dialect.Oracle10gDialect" /> <entry key="hibernate.hbm2dll.auto" 
+		value="create" /> <entry key="hibernate.format_sql" value="true" /> </map> 
+		</property> </bean> -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactoryref="entityManagerFactory" />
+
+	<context:annotation-config />
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>
+	

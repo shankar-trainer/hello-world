@@ -1,0 +1,26 @@
+<h1>All Test Items</h1>
+
+<style>
+    table,th,td,tr{
+        border:2px solid black;
+    }
+</style>
+<table> 
+    <tr>
+        <th>Test Id</th>
+        <th>Test Title</th>
+        <th>Test Duration</th>
+        <th>Test Start Time</th>
+        <th>Test End Time</th>
+    </tr>
+    <tr *ngFor="let t of test|async">
+        <td>{{t.testId}}</td>
+        <td>{{t.testTitle}}</td>
+        <td>{{t.testDuration}}</td>
+        <td>{{t.startTime}}</td>
+        <td>{{t.endTime}}</td>
+        <td> <button (click)="deleteTest(t.testId)">Delete</button></td>
+        <td><button (click)="updateTest(t.testId)">Update</button></td>
+        <td><button>Assign Test</button></td>
+    </tr>
+</table>

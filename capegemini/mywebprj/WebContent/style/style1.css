@@ -1,0 +1,18 @@
+ label{
+   float:left;
+    width:160px;
+   }
+   input {
+   margin-bottom:2px;
+    width:120px;
+   }
+form{
+    width:40%;
+   float:left;
+   margin-left: 270px;
+   margin-top: 100px;
+   background-color: yellow;
+   color:blue;
+   padding: 1em;
+   border:inset blue 10px;
+}

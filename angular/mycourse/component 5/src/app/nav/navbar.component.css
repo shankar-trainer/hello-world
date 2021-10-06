@@ -1,0 +1,8 @@
+.products-nav {
+  border-bottom: 1px solid #d1d1d1;
+  background-color: #373737; }
+  .products-nav .top-nav-text{
+    color: #fff;
+    font-size: 24px;
+    text-decoration: underline;
+    font-weight: bold; }

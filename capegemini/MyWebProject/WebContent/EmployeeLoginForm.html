@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form enctype="multipart/formdata">
+<table align="center" bgcolor="pink">
+<tr>
+<td><label for="id">Enter Id</label></td>
+<td><input type="text" name="id" id="id"></td>
+</tr>
+
+<tr>
+<td>
+<label for="name">Enter Name</label></td>
+<td><input  name="name" id="name" size="20" maxlength="20">
+</td>
+</tr>
+
+<tr><td>
+<label for="pass">Enter Password</label></td>
+<td>
+<input type="password" name="pass" id="pass">
+</td>
+</tr>
+
+<tr>
+<td><label>Select Hobbies</label></td>
+<td>
+<input type="checkbox" name="hobbies" value="reading">Reading
+<input type="checkbox" name="hobbies" value="music">Music
+<input type="checkbox" name="hobbies" value="touring">Touring
+<input type="checkbox" name="hobbies" value="movie">Movie
+
+</td>
+</tr>
+
+<tr>
+<td><label>Select Gender</label></td>
+<td>
+<input type="radio" checked="checked" value="male" name="gender">Male
+<input type="radio" value="female" name="gender">Female
+</td>
+</tr>
+
+<tr><td><label>Select City</label></td>
+<td>
+<select name="city">
+<option value="chennai">Chennai</option>
+<option value="delhi">Delhi</option>
+<option value="banglore"  selected="selected">
+Banglore</option>
+<option value="hyderabad">Hyderabad</option>
+<option value="pune">Pune</option>
+</select>
+</td>
+</tr>
+
+<tr><td><label>Select State</label></td>
+<td>
+<select name="state" multiple="multiple">
+<option value="TamilNadu">TamilNadu</option>
+<option value="Delhi">Delhi</option>
+<option value="Karnataka"  selected="selected">
+Karnataka</option>
+<option value="Andhra Pardesh">Andhra Pardesh</option>
+<option value="Maharashtra">Maharashtra</option>
+</select>
+</td>
+</tr>
+
+<tr><td><label>Upload File</label></td>
+<td>
+<input type="file" name="upload1">
+</td>
+</tr>
+
+
+<tr><td><label>Add Comment</label></td>
+<td>
+<textarea name="comment" cols="40" rows="10">
+Employee Comment
+</textarea>
+</td>
+</tr>
+
+
+
+<tr>
+<td>
+<input type="submit" value="Login"></td>
+<td>
+<input type="reset" value="Clear" >
+</td>
+</tr>
+
+</table>
+
+</form>
+</body>
+</html>

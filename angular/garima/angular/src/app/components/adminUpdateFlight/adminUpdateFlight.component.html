@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-sm navbarC">
+    <div class="container">
+         <h2>Flight Management System</h2>
+    <ul class="navbar-nav">
+        
+        <li class="nav-item">
+             <a routerLink="/search">Flight Search</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink='/allFl'>Flight view</a>
+     </li>
+     <li class="nav-item">
+      <a routerLink='/addFlight'>Flight add</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink='/scheduledFlight/search'>Schedule Flight view</a>
+   </li>
+   <li class="nav-item">
+    <a routerLink='/scheduledFlight/add'>Add Schedule Flight</a>
+ </li>
+ <li class="nav-item">
+    <a routerLink='/scheduledFlight/viewAllF'>View All Schedule Flight</a>
+  </li>
+    </ul>
+    </div>
+  </nav>
+
+<div class="container">
+    <div class="col-md-6 offset-md-3 formDiv">
+        <h2 style="text-align: center;">Update Flight Details</h2> 
+<hr/>
+<form  #enform="ngForm" class="updateFlight">
+
+    <div class="form group">
+        <label for="Name:">Flight Number:</label>
+        <input type="Number" name="name" id="Fnumber" class="form-control" [(ngModel)]="result.flightNumber" disabled>
+    </div>
+    <div class="form group">
+        <label for="">Flight Model:</label>
+        <input type="text" name="model" id="model" class="form-control" [(ngModel)]="result.flightModel" required>
+    </div>
+    <div class="form group">
+        <label for="">Carrier name:</label>
+        <input type="text" name="cName" id="cName" class="form-control" [(ngModel)]="result.carrierName" required>
+    </div>
+    <div class="form group">
+        <label for="">Seat Capacity:</label>
+        <input type="number" name="seatC" anme="seatC" class="form-control" [(ngModel)]="result.seatCapacity" required>
+    </div>
+<br>
+<br>
+<div class="form group">
+    <input type="submit" value="Update" class="btn btn-primary" (click)="processForm()">
+</div>
+</form>
+    </div>
+  </div>

@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav" style="margin-left:auto;margin-right: auto;">
+    <li class="nav-item "><a (click)="goHome()" routerLinkActive="active" class="nav-link"
+        class="btn btn-primary active">Home</a></li>
+  </ul>
+</nav>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div  style="width: 400px;">
+        <form (ngSubmit)="onSubmit()">
+  
+          <div class="form-group">
+            <label for="userRole">User Role</label>
+            <select id="userRole"
+                    [(ngModel)]="usr.userRole" 
+                    name="userRole" 
+                    class="form-control"
+                    title="User-Role"
+                    required>
+              <option value="null">--Select User Role--</option>
+              <option value="Customer">Customer</option>
+              <option value="Admin">Admin</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="name">Customer Name</label>
+            <input type="text"
+                   id="name"  
+                   [(ngModel)]="usr.name"
+                   name="name" 
+                   class="form-control"
+                   required>
+          </div>
+          <div class="form-group">
+            <label for="password">Customer Password</label>
+            <input type="password" 
+                   id="password"
+                   [(ngModel)]="usr.password" 
+                   name="password"
+                   class="form-control" 
+                   title="Password"
+                   required>
+          </div>
+  
+          <div class="form-group">
+            <label for="email">Customer Email</label>
+            <input type="text" 
+                   id="email" 
+                   [(ngModel)]="usr.email" 
+                   name="email" 
+                   class="form-control"
+                   title="Email-Id"
+                   required>
+          </div>
+  
+          <div class="form-group">
+            <label for="age">Customer Email</label>
+            <input type="number" 
+                   id="age" 
+                   [(ngModel)]="usr.age" 
+                   name="age" 
+                   class="form-control"
+                   title="Age"
+                   required>
+          </div>
+  
+          <div class="form-group">
+            <label for="phoneno">Phone Number</label>
+            <input type="number" 
+                   id="phoneno" 
+                   [(ngModel)]="usr.phoneno" 
+                   name="phoneno" 
+                   class="form-control"
+                   title="PhoneNo"
+                   required>
+          </div>
+  
+          <div class="form-group">
+            <label for="gender">Customer Gender</label>
+            <select id="gender"
+                    [(ngModel)]="usr.gender" 
+                    name="gender" 
+                    class="form-control"
+                    title="Gender"
+                    required>
+              <option value="null">--Select Gender--</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+  
+          <button type="submit" class="btn btn-success">Update Customer</button>
+          &nbsp;&nbsp;
+          <button type="menu" (click)="goCustomer()">Cancel</button>
+          <br>
+          <br>
+          <button class="btn" style="background-color: coral;" type="reset">Reset</button>
+        </form>
+      </div>
+    </div>
+  </div>

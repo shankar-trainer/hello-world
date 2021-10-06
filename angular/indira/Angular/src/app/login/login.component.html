@@ -1,0 +1,61 @@
+
+<div class="container" style="margin-top: 70px;">
+    <h1 style="text-align: center;">Login Page</h1>
+
+<hr>
+<br>
+    <div class="row">
+<form [formGroup]="loginForm" (ngSubmit)="checkLogin()">
+   
+    <div class="container" style="width: 70%;">
+        
+        <label for="uname"><b>Login Name</b></label>
+        <input 
+        type="text" 
+        placeholder="Enter LoginName" 
+        name="loginName" 
+        id="loginName"
+        [formControl]="loginName"
+        class="form-control">
+
+        <div *ngIf = "!(loginName.valid||loginName.untouched)">
+            <div *ngIf = "loginName.hasError('required')" style="color:red">
+                <p class="alert alert-danger">Login Name is empty!</p>
+            </div>
+        </div>
+       <br>
+        <label for="psw"><b>Password</b></label>
+        <input 
+        type="password" 
+        placeholder="Enter Password" 
+        name="password"
+        id="password"
+        [formControl]="password"
+        class="form-control">
+
+        <div *ngIf = "!(password.valid||password.untouched)">
+            <div *ngIf = "password.hasError('required')" style="color:red">
+                <p class="alert alert-danger"> Password is empty!</p>
+            </div>
+        </div>
+
+        <div class="row"  *ngIf="!validLogin">
+            <div class="col-xs-12">
+              <br>
+              <p class="alert alert-danger">
+                  <strong>Login Name or Password not correct. Please try again!</strong> 
+      
+              </p>
+            </div>
+          </div>
+        <button type="submit" [disabled]="!loginForm.valid" > Login </button>
+       
+            <p>Do not have an account?</p>
+            <button (click)="onRegister()">Register </button>  
+          
+      </div>
+</form>
+</div>
+</div>
+
+

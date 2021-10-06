@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<table>
+    <tr>
+        <td>Diagnostic Centre ID</td>
+        <td>Diagnostic Centre NAME</td>
+        <td>Diagnostic Centre ADDRESS</td>
+        <td>Update</td>
+        <td>Delete</td>
+    </tr>
+    <tr *ngFor="let d of diagnosticCentre|async">
+        <td>{{d.diagnosticCentreId}}</td>
+        <td>{{d.centreName}}</td>
+        <td>{{d.centreAddress}}</td>
+        <td><button (click)="updateDiagnosticCentre(d.diagnosticCentreId)">Update</button></td>
+        <td><button (click)="deleteDiagnosticCentre(d.diagnosticCentreId)">Delete</button></td>
+        <!-- <td><button (click)="productDetail(p.prdId)">Details</button></td> -->
+    </tr>
+</table>

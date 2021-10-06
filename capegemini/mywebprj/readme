@@ -1,0 +1,38 @@
+   Servlet (Interface)
+     |
+   GenericServlet (init, public service, destroy)
+     |
+     |
+    HttpServlet 
+         (init , protected service, destroy)
+                            |
+                        doGet, doPost
+                              
+                                         1.Veg
+   (id,name, type)    type (id,name,type)2.Non-Veg
+UserForm   -------->   OrderController   3.Chinese
+                                         4.SouthIndian
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                               UserName
+                               Password                            
+                          LoginPage.html----AuthenticateServlet--->               
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+
+
+
+

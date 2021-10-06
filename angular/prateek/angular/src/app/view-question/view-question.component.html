@@ -1,0 +1,32 @@
+<section class="col-md-4 mx-auto">
+
+    <h2 class="text-center" *ngIf="viewQuestionFlag">View Question</h2>
+  
+    <table class="table table-primary table-striped table-hover col-md-8 mx-auto mt-3" >
+    <tr>
+      <th>Question Id</th>
+        <th>Option A</th>
+        <th>Option B</th>
+        <th>Option C</th>
+        <th>Option D</th>
+        <th>Answer</th>
+        <th>Question Description</th>
+        <th>Exam Id</th>
+        <th>Exam Name</th>
+        <th>Minutes</th>
+    </tr>
+    <tr *ngFor ="let e of questions">
+      
+      <td>{{e.questionId}}</td>
+      <td>{{e.optA}}</td>
+      <td>{{e.optB}}</td>
+      <td>{{e.optC}}</td>
+      <td>{{e.optD}}</td>
+      <td>{{e.answer}}</td>
+      <td>{{e.questionTitle}}</td>
+      <td>{{e.exam.examId}}</td>
+      <td>{{e.exam.examName | titlecase}}</td>
+      <td>{{e.exam.minutes }}</td>
+    </tr>
+  </table>
+  </section>

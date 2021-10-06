@@ -1,0 +1,21 @@
+body{
+    background-color: blanchedalmond;
+}
+table {
+    background-color: floralwhite;
+    font-size: small;
+}
+
+td, th {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+   
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+h1, h2, h3, h4 ,h5{
+    text-align: center;
+}

@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <table>
+            <tr>
+                <td>Test ID</td>
+                <td>Test NAME</td>
+                <td>Test DETAILS</td>
+                <td>Test COST</td>
+                <td>Update</td>
+                <td>Delete</td>
+            </tr>
+            <tr *ngFor="let t of test|async">
+                <td>{{t.testId}}</td>
+                <td>{{t.testName}}</td>
+                <td>{{t.testDetails}}</td>
+                <td>{{t.testCost}}</td>
+                <td><button (click)="updateTest(t.testId)">Update</button></td>
+                <td><button (click)="deleteTest(t.testId)">Delete</button></td>
+            </tr>
+        </table>
+        <button (click)="goAddTest()">Add New Test</button>
+        <button (click)="goAppointments()">Back to Appointments..</button>
+ 

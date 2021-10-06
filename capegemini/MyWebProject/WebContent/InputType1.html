@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form>
+
+<label>Enter Name</label>
+<input placeholder="enter name..." 
+pattern="[a-zA-Z]{3,10}\s[a-zA-Z]{3,10}"
+required="required" 
+  autocomplete="name" name="name">
+<br>
+<label>Enter Date Of Birth</label>
+<input type="date"  required="required">
+<br>
+<label>Enter Age</label>
+<input type="number" placeholder="Enter Age"  max="100" min="18" 
+required="required">
+<br>
+<br>
+<label>Enter Mail Id</label>
+<input type="email"  autofocus="autofocus" placeholder="Enter Mail"  
+required="required">
+<br>
+<label>Enter Entry Time</label>
+<input type="time" placeholder="Enter Time"  
+required="required">
+<br>
+
+Enter Country
+<input id="country_name" name="country_name" type="text" list="country" />
+<datalist id="country">
+<option value="Australia">
+<option value="Austria">
+<option value="Algeria">
+<option value="Andorra">
+<option value="Angola">
+</datalist>
+<br>
+
+Search <input type="search" id="id_search"><br>
+take value between 20-80 
+
+<input type="range"  min="20"  max="80" name="name2" value="30"><br>
+<br>
+<audio src="media/Shiv.mp3">
+
+</audio>
+<br>
+
+Run Video
+<embed src="media/Wildlife.wmv">
+</embed>
+
+<br>
+<video src="media/Wildlife.wmv" width="300" height="200">
+
+</video>
+
+<input type="submit" value="Login"/>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="emp1" class="org.com.model.Employee">
+		<property name="id" value="1001" />
+		<property name="name" value="suman kumar" />
+		<property name="salary" value="45000" />
+	</bean>
+
+	<bean id="prd" class="org.com.model.Product">
+		<constructor-arg name="prd_id" value="76766776" />
+		<constructor-arg name="prd_name" value="pizza" />
+		<constructor-arg name="prd_cost" value="450" />
+	</bean>
+</beans>		
+		

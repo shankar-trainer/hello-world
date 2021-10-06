@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="person1" class="org.com.model.Person">
+		<property name="person_id" value="5656565"></property>
+		<property name="person_location" value="banglore"></property>
+		<property name="person_name" value="manikant thakur"></property>
+		<property name="carList">
+			<list>
+				<value>Honda City </value>
+				<value>Maruti 800 </value>
+				<value>i10 </value>
+				<value>Jaguar </value>
+				<value>Maruti 800 </value>
+			</list>
+		</property>
+		<property name="mobileSet">
+			<set>
+				<value>samsung galaxy</value>
+				<value>nokia 105</value>
+				<value>RealMe c1</value>
+				<value>XioMi</value>
+				<value>nokia 105</value>
+			</set>
+		</property>
+		<property name="stateCapital">
+			<map>
+				<entry key="up" value="lucknow" />
+				<entry key="mp" value="bhopal" />
+				<entry key="ap" value="itanagar" />
+			</map>
+		</property>
+
+		<property name="countryCapital">
+			<props>
+				<prop key="india">new delhi</prop>
+				<prop key="nepal">kathmandu</prop>
+				<prop key="myamar">rangoon</prop>
+				<prop key="srilanka">colombo</prop>
+				<prop key="srilanka">1234</prop>
+			</props>
+		</property>
+	</bean>
+ 
+
+</beans>

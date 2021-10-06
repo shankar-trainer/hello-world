@@ -1,0 +1,42 @@
+<div class="product-details">
+  <div class="row product-details-heading">
+    <div class="col-md-2">
+      <h3>Product Details</h3>
+    </div>
+  </div>
+
+  <div class="product-details">
+    <!--Product Name-->
+    <div class="row">
+      <label class="control-label col-md-2">Name</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" required [(ngModel)]="item.name"/>
+      </div>
+    </div>
+
+    <!--Product Description-->
+    <div class="row">
+      <label class="control-label col-md-2">Description</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" required [(ngModel)]="item.description"/>
+      </div>
+    </div>
+
+    <!--Procudt Price-->
+    <div class="row">
+      <label class="control-label col-md-2">Price</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" required [(ngModel)]="item.price"/>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2">
+        <button type="button" class="btn btn-block btn-success" (click)="onSaveClick.emit(item)">SAVE</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-block btn-primary" (click)="onCancelClick.emit()">CANCEL</button>
+      </div>
+    </div>
+  </div>
+</div>

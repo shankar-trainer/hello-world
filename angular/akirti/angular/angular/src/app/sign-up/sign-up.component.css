@@ -1,0 +1,29 @@
+form{
+    margin-left: 350px;
+    background-color: antiquewhite;
+    width: 400px; 
+    border-width: 5px;
+       margin-top: 60px;
+       border-style: dashed;
+       position: center;margin-bottom: 200px;
+}
+
+button{
+    margin-left: 10px;
+    background-color: darkslategray;
+}
+
+input{
+    position: relative;
+    margin-left: 20px;
+    width: 200px;
+  
+}
+
+label{
+    text-align: center;
+    position: inherit;
+    left: 200px;
+    margin-left: 20px;
+   
+}

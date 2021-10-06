@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark"> 
+    <ul class="navbar-nav" style="margin-left:auto;margin-right: auto;">
+      <li class="nav-item "><a (click)="goHome()" routerLinkActive="active"  class="nav-link" class="btn btn-primary active" >Home</a></li>
+      <li class="nav-item "><a (click)="goAdmin()" routerLinkActive="active" class="nav-link" class="btn btn-primary active" role="button">View All Admins</a></li>
+      <li class="nav-item "><a (click)="goCustomer()" routerLinkActive="active" class="nav-link" class="btn btn-primary active" role="button">View All Customers</a></li>
+      <li class="nav-item "><a (click)="goAddAdmin()" routerLinkActive="active" class="nav-link" class="btn btn-primary active" role="button">Add New Admin</a></li>
+      <li class="nav-item "><a (click)="goAddCustomer()" routerLinkActive="active" class="nav-link" class="btn btn-primary active" role="button">Add New Customer</a></li>
+    </ul>  
+  </nav>
+<h2>All Admins List</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>UserRole</th>
+        <th>Delete</th>
+        <th>Update</th>
+        <th>View Details</th>
+    </tr>
+    <tr *ngFor="let usr of admin|async">
+        <td>{{usr.id}}</td>
+        <td>{{usr.name}}</td>
+        <td>{{usr.gender}}</td>
+        <td>{{usr.email}}</td>
+        <td>{{usr.userRole}}</td>
+        <td><button (click)="deleteAdmin(usr.id)">Delete</button></td>
+        <td><button (click)="updateAdmin(usr.id)">Update</button></td>
+        <td><button (click)="detailsAdmin(usr.id)">Details</button></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+</table>
+<br>
+<br>
+<table>
+        <tr><button class="btn" style="background-color: coral;" type="menu" (click)="goHome()">Go Back</button></tr>
+</table>

@@ -1,0 +1,24 @@
+<h1>New Diagnostic Centre Form</h1>
+
+<div [hidden]="submitted" style="width: 600px;">
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="diagnosticCentreId" placeholder="id">Enter Diagnostic Centre Id</label>
+            <input class="form-control" id="id" required [(ngModel)]="diagnosticCentre.diagnosticCentreId" name="diagnosticCentreId">
+        </div>
+        <div class="form-group">
+            <label for="diagnosticCentreName" placeholder="Name">Enter Diagnostic Centre Name</label>
+            <input class="form-control" id="name" required [(ngModel)]="diagnosticCentre.centreName" name="diagnosticCentreName">
+        </div>
+        <div class="form-group">
+            <label for="diagnosticCentreAddress" placeholder="Name">Enter Diagnostic Centre Address</label>
+            <input class="form-control" id="name" required [(ngModel)]="diagnosticCentre.centreAddress" name="diagnosticCentreAddress">
+        </div>
+        <button type="submit" class="btn-success" >Submit</button>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h4>Diagnostic Centre added Successfully!!</h4>
+</div>
+

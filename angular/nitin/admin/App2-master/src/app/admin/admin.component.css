@@ -1,0 +1,29 @@
+table{
+    margin-left: 200px;
+    width: 50%;
+}
+table,tr{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+td{
+    text-align: center;
+    border: chocolate solid 2px;
+    
+}
+th{
+    text-align: center;
+    background-color: darksalmon;
+}
+h1,h2,h3,h4{
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+
+}
+ul{
+    margin-left:auto;
+    margin-right: auto;
+}

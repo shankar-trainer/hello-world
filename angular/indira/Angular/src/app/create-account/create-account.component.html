@@ -1,0 +1,108 @@
+<form [formGroup]="registrationForm"(ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row"  *ngIf="showMsg">
+      <div class="col-xs-12">
+        <br>
+        <p class="alert alert-success">
+            <strong>Registration Successfull!  Please Login to your account.</strong> 
+
+        </p>
+      </div>
+    </div>
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" 
+      id="userName" 
+      name="userName"
+      placeholder="Enter Name" 
+      [formControl]="userName"
+      class="form-control">
+    </div>
+    <div *ngIf = "!(userName.valid||userName.untouched)">
+      <div *ngIf = "userName.hasError('required')" >
+          <p class="alert alert-danger"> Name is empty!</p>
+      </div>
+  </div>
+
+    <div class="form-group">
+      <label for="loginName">Login Name</label>
+      <input type="text"
+      id="loginName"
+      name="loginName"
+      placeholder="Enter Login Name"
+      [formControl]="loginName"
+      class="form-control">
+    </div>
+    <div *ngIf = "!(loginName.valid||loginName.untouched)">
+      <div *ngIf = "loginName.hasError('required')" >
+          <p class="alert alert-danger">Login Name is empty!</p>
+      </div>
+  </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password"
+      id="password"
+      name="password"
+      placeholder="Enter Password"
+      [formControl]="password"
+      class="form-control">
+    </div>
+    <div *ngIf = "!(password.valid||password.untouched)">
+      <div *ngIf = "password.hasError('required')" >
+          <p class="alert alert-danger"> Password is empty!</p>
+      </div>
+      <div *ngIf = "password.hasError('minlength')">
+        <p class="alert alert-danger"> Minimum length of Password should be 8 characters!</p>
+    </div>
+  </div>
+    <div class="form-group">
+      <label for="aadhaarNo">Aadhaar No.</label>
+      <input type="number"
+      id="aadhaarNo"
+      name="aadhaarNo"
+      placeholder="Enter Aadhaar No."
+      [formControl]="aadhaarNo"
+      class="form-control">
+    </div>
+    <div *ngIf = "!(aadhaarNo.valid||aadhaarNo.untouched)">
+      <div *ngIf = "aadhaarNo.hasError('required')" >
+          <p class="alert alert-danger"> Aadhaar Number is empty!</p>
+      </div>
+      <div *ngIf = "aadhaarNo.hasError('minlength')" >
+        <p class="alert alert-danger"> Please enter 12-digit Aadhaar Number!</p>
+    </div>
+  </div>
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="number"
+      id="phoneNumber"
+      name="phoneNumber"
+      placeholder="Enter Phone Number"
+      [formControl]="phoneNumber"
+      class="form-control">
+    </div>
+    <div *ngIf = "!(phoneNumber.valid||phoneNumber.untouched)">
+      <div *ngIf = "phoneNumber.hasError('required')" >
+          <p class="alert alert-danger"> Phone Number is empty!</p>
+      </div>
+      <div *ngIf = "phoneNumber.hasError('minlength')" >
+        <p class="alert alert-danger"> Please enter 10-digit Phone Number!</p>
+    </div>
+  </div>
+   
+
+    <button type="submit" class="registerbtn" (click)="onSubmit()">Register</button>
+    
+  </div>
+
+  <div class="container signin" *ngIf="!showMsg">
+    <p>Already have an account? 
+      <a (click)="onSignin()" style=" cursor: pointer;">Sign In</a>.</p>
+  </div>
+</form>
+ 
+ 

@@ -1,0 +1,23 @@
+.navbar-nav a{
+        padding: 20px;
+        text-decoration: none;
+    }
+    .navbarC{
+        background-color: #03002b;
+        padding: 30px;
+    }
+    .navbarC h2{
+        color: whitesmoke;
+        font-weight: bolder;
+    }
+    .navbarC a{
+        color: bisque;
+        font-weight: bolder;
+    }
+    
+    
+    .flights{
+        padding: 20px;
+        margin-top: 40px;
+        border: 1px solid #80808070;
+    }

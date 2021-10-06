@@ -1,0 +1,51 @@
+<span class="border"></span>
+<form role="form"   [formGroup]="rateForm" novalidate>
+  <div class="form-group" >
+    
+    <h3>Register User</h3>
+    <br>
+    <hr color="black">
+    
+    
+    <div class="form-group">
+    <label for="username"><b>Name</b></label>
+    <input class="form-control" formControlName="username" type="text" placeholder="Enter Name" id = "username"  required data-length="10">
+    
+    <div *ngIf="rateForm.get('username').invalid && (rateForm.get('username').dirty || rateForm.get('username').touched)"
+    class="alert alert-danger">
+    <div *ngIf="rateForm.get('username').errors.required">
+       Name is required.
+    </div>
+    <div *ngIf="rateForm.get('username').errors.minlength">
+       Name cannot be more than 30 characters long.
+    </div>
+    <div *ngIf="rateForm.get('username').errors.minlength">
+       Name must be at least 2 characters long.
+    </div>
+  </div>
+
+  </div>
+  
+  <br>
+  <div class="form-group">
+    <label for="userpassword"><b>Password</b></label>
+    <input class="form-control" type="password" formControlName="userpassword" placeholder="Enter Password" id = "userpassword" required >
+    
+    <div *ngIf="rateForm.get('userpassword').invalid && (rateForm.get('userpassword').dirty || rateForm.get('userpassword').touched)"
+    class="alert alert-danger">
+    <div *ngIf="rateForm.get('userpassword').errors.required">
+       Password is required.
+    </div>
+    
+  </div>
+
+  </div>
+     
+
+    <div class="clearfix">
+      <button type="button" id="close_add_modal" data-dismiss="modal" (click)="onCancel()" class="cancelbtn" style="height:40px;width:200px">Cancel</button>
+      <button type="button" ng-model="submitted" (click)="onSubmit()" class="signupbtn" style="height:40px;width:200px">Sign Up</button>
+    </div>
+  </div>
+</form>
+

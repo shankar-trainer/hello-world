@@ -1,0 +1,54 @@
+
+
+<h1 style="background-color:salmon"> <b> Health Care Hospital</b></h1>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark"> 
+  <ul class="navbar-nav" style="margin-left:auto;margin-right: auto;">
+    <li class="nav-item "><a (click)="goHome()" routerLinkActive="active"  class="nav-link" class="btn btn-primary active" >Home</a></li>
+    <li class="nav-item "><a (click)="goAdmin()" routerLinkActive="active" class="nav-link" class="btn btn-primary active" role="button">View All Admins</a></li>
+    <li class="nav-item "><a (click)="goAddAdmin()" routerLinkActive="active" class="nav-link" class="btn btn-primary active" role="button">Add New Admin</a></li>
+  </ul>  
+</nav>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div style="width: 400px;">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" required [(ngModel)]="usr.adminName" name="name" class="form-control"
+            title="Name">
+        </div>
+        <div class="form-group">
+          <label for="name">Password</label>
+          <input type="password" id="password" required [(ngModel)]="usr.adminPassword" name="password"
+            class="form-control" title="Password">
+        </div>
+        <div class="form-group">
+          <label for="name">Email</label>
+          <input type="text" id="email" required [(ngModel)]="usr.adminEmail" name="email" class="form-control"
+            title="Email-Id">
+        </div>
+        <div class="form-group">
+          <label for="branch">Gender</label>
+          <select id="admin_gender" required [(ngModel)]="usr.adminGender" name="admin_gender" class="form-control"
+            title="Gender">
+            <option value="null">--Select Gender--</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-success">Update Admin</button>
+        &nbsp;&nbsp;
+        <button type="reset" (click)="gotoList()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div>
+  
+  <h4>You have successfully added a new Admin!!!</h4>
+</div>

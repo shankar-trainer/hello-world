@@ -1,0 +1,77 @@
+<!--<style>
+    #box{
+      width: 50%;
+      height: 50%;
+    }
+    #opacity-3 {
+    opacity:0.6!important;
+  }
+  
+  </style>
+  <div class="view">
+  <nav class="navbar navbar-dark ">
+      <div class="navbar-brand">
+        <img src="assets/plane.jpg" width="40" height="40" class="d-inline-block align-top" alt="">
+        <b>Flight Management System</b>
+      </div>
+      <button type = "button" class ="btn btn-danger pull-right">LOGOUT</button>
+    </nav>
+    <div style="padding: 50px;" class="d-flex align-items-center justify-content-center">
+       <div class="shadow-lg p-3 mb-5 bg-dark rounded" id="box" style="opacity: 1;">   
+        <div class="container">
+          <div class="row justify-content-center">
+              <h2  class="font-weight-bold" style="color: white">Welcome Admin!!</h2>
+          </div>
+        </div><br>
+        <div class="container">
+          <div class="content-center">
+              <div class="row">
+                  <div class="col-sm-6" style="text-align: center;">
+                      <button type = "button" class = "btn btn-light" (click)="add()">Add A Flight</button><br><br>
+                      <button type = "button" class = "btn btn-light" (click)="view()">Search A Flight</button><br><br>
+                      <button type = "button" class = "btn btn-light" (click)="viewAll()">View Flights</button><br><br>
+                  </div>
+                  <div class="col-sm-6" style="text-align: center;">
+                  <button type = "button" class = "btn btn-light" (click)="addScheduledFlight()">Schedule A Flight</button><br><br>
+                  <button type = "button" class = "btn btn-light" (click)="searchScheduledFlight()">Search Scheduled Flight</button><br><br>
+                  <button type = "button" class = "btn btn-light" (click)="viewScheduledFlight()">View Scheduled Flight</button><br><br>
+                  <button type = "button" class = "btn btn-light" (click)="deleteScheduledFlight()">Delete Scheduled Flight</button><br><br>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <footer class="navbar navbar-light bg-light" style="padding: 10px;">
+      Flight Management System
+     
+  </footer>
+  </div>-->
+  <nav class="navbar navbar-expand-sm navbarC">
+    <div class="container">
+         <h2>Flight Management System</h2>
+    <ul class="navbar-nav">
+        
+        <li class="nav-item">
+             <a routerLink="/search">Flight Search</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink='/allFl'>Flight view</a>
+     </li>
+     <li class="nav-item">
+      <a routerLink='/addFlight'>Flight add</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink='/scheduledFlight/search'>Schedule Flight view</a>
+   </li>
+   <li class="nav-item">
+    <a routerLink='/scheduledFlight/add'>Add Schedule Flight</a>
+ </li>
+ <li class="nav-item">
+  <a routerLink='/scheduledFlight/viewAllF'>View All Schedule Flight</a>
+</li>
+    </ul>
+    </div>
+  </nav>
+  

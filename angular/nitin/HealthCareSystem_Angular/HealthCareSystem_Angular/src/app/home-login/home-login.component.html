@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<body>
+    <div class="row" align="center">
+        <div class="col-8">
+            <h1 style="font-family: fantasy; color: deeppink;">Today's Highlights</h1>
+            <div class="row justify-content-md-center">
+                <div class="col-sm-4">
+                    <img class="mySlides"
+                        src="https://i2-prod.hulldailymail.co.uk/article4006542.ece/ALTERNATES/s615/0_253262574.jpg"
+                        style="width: 95%; height: 95%;">
+
+                    <p>Inside Hospital</p>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <p>Corona</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4" style="background-color: rgb(223, 253, 255); ">
+            <h2>User Login</h2>
+            <div class="row" align="center">
+                <div class="col-sm-6" style="background-color: darkturquoise;">
+                    <div style="width: fit-content; ">
+                        <h3>Admin Login</h3>
+                        <div class="container">
+                            <div class="form-group">
+                                <label>User-Id: </label>&nbsp;&nbsp;&nbsp;
+                                <input name="id" id="id" [(ngModel)]="id" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Password:</label>
+                                <input type="password" name="password" id="password" [(ngModel)]="password"
+                                    class="form-control" required>
+                            </div>
+                            <button (click)="checkLogin1()" class="btn btn-success">Login</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6" align="center" style="background-color: khaki;">
+                    <div style="width: fit-content;">
+                        <h3>Customer Login</h3>
+                        <!--  <form (ngSubmit)="onSubmit()"> -->
+                        <div class="container">
+                            <div class="form-group">
+                                <label>User-Id: </label>
+                                <input name="id" id="id" class="form-control" [(ngModel)]="id" required>
+                                TODO: remove: {{id}}
+                            </div>
+                            <div class="form-group">
+                                <label>Password:</label>
+                                <input type="password" name="password" id="password" class="form-control"
+                                    [(ngModel)]="password" required>
+                            </div>
+                            <button (click)="checkLogin2()" class="btn btn-success">Login</button>
+                            &nbsp;&nbsp;
+                            <button class="btn" (click)="signUp()">Sign UP</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

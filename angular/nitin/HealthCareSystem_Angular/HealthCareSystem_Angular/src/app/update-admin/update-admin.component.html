@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav" style="margin-left:auto;margin-right: auto;">
+    <li class="nav-item "><a (click)="goHome()" routerLinkActive="active" class="nav-link"
+        class="btn btn-primary active">Home</a></li>
+    <li class="nav-item "><a (click)="goAdmin()" routerLinkActive="active" class="nav-link"
+        class="btn btn-primary active" role="button">View All Admins</a></li>
+    <li class="nav-item "><a (click)="goAddAdmin()" routerLinkActive="active" class="nav-link"
+        class="btn btn-primary active" role="button">Add New Admin</a></li>
+  </ul>
+</nav>
+
+<div class="row">
+  <div class="col-sm-4">
+    
+  </div>
+  <div class="col-sm-4">
+    <div style="width: 400px;">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="id">Admin Id</label>
+          <input type="text" id="id" class="form-control" name="id" [(ngModel)]="usr.id" required>
+          TODO: remove this: {{usr.id}}
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" [(ngModel)]="usr.name" name="name" class="form-control" title="Name" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Password</label>
+          <input type="password" id="password" required [(ngModel)]="usr.password" name="password" class="form-control"
+            title="Password">
+        </div>
+        <div class="form-group">
+          <label for="name">Email</label>
+          <input type="text" id="email" required [(ngModel)]="usr.email" name="email" class="form-control"
+            title="Email-Id" pattern="[^ @]*@[^ @]*">
+        </div>
+        <div class="form-group">
+          <label for="branch">Gender</label>
+          <select id="admin_gender" required [(ngModel)]="usr.gender" name="admin_gender" class="form-control"
+            title="Gender">
+            <option value="null">--Select Gender--</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-success">Update Admin</button>
+        &nbsp;&nbsp;
+        <button type="reset" (click)="gotoList()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

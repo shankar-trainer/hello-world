@@ -1,0 +1,116 @@
+<form [formGroup]="updateForm"(ngSubmit)="onEdit()">
+  <div class="container">
+    <div class="row"  *ngIf="showMsg">
+      <div class="col-xs-12">
+        <br>
+        <p class="alert alert-success">
+            <strong>Profile Successfully Updated!</strong> 
+
+        </p>
+      </div>
+    </div>
+    <h1>My  Profile</h1>
+    
+    <hr>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" 
+      id="userName" 
+      name="userName"
+      placeholder="Enter Name"
+      value={{this.user.userName}}
+      [formControl]="userName"
+      class="form-control"
+      [disabled]="!editMode">
+    </div>
+    <div *ngIf = "!(userName.valid||userName.untouched)">
+      <div *ngIf = "userName.hasError('required')" >
+          <p class="alert alert-danger"> Name is empty!</p>
+      </div>
+  </div>
+
+    <div class="form-group">
+      <label for="loginName">Login Name</label>
+      <input type="text"
+      id="loginName"
+      name="loginName"
+      placeholder="Enter Login Name"
+      value={{this.user.loginName}}
+      [formControl]="loginName"
+      class="form-control"
+      [disabled]="!editMode">
+    </div>
+    <div *ngIf = "!(loginName.valid||loginName.untouched)">
+      <div *ngIf = "loginName.hasError('required')" >
+          <p class="alert alert-danger">Login Name is empty!</p>
+      </div>
+  </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="text"
+      id="password"
+      name="password"
+      placeholder="Enter Password"
+      value={{this.user.password}}
+      [formControl]="password"
+      class="form-control"
+      [disabled]="!editMode">
+    </div>
+    <div *ngIf = "!(password.valid||password.untouched)">
+      <div *ngIf = "password.hasError('required')" >
+          <p class="alert alert-danger"> Password is empty!</p>
+      </div>
+      <div *ngIf = "password.hasError('minlength')">
+        <p class="alert alert-danger"> Minimum length of Password should be 8 characters!</p>
+    </div>
+  </div>
+    <div class="form-group">
+      <label for="aadhaarNo">Aadhaar No.</label>
+      <input type="number"
+      id="aadhaarNo"
+      name="aadhaarNo"
+      placeholder="Enter Aadhaar No."
+      value={{this.user.aadhaarNo}}
+      [formControl]="aadhaarNo"
+      class="form-control"
+      [disabled]="!editMode">
+    </div>
+    <div *ngIf = "!(aadhaarNo.valid||aadhaarNo.untouched)">
+      <div *ngIf = "aadhaarNo.hasError('required')" >
+          <p class="alert alert-danger"> Aadhaar Number is empty!</p>
+      </div>
+      <div *ngIf = "aadhaarNo.hasError('minlength')" >
+        <p class="alert alert-danger"> Please enter 12-digit Aadhaar Number!</p>
+    </div>
+  </div>
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="number"
+      id="phoneNumber"
+      name="phoneNumber"
+      placeholder="Enter Phone Number"
+      value={{this.user.phoneNumber}}
+      [formControl]="phoneNumber"
+      class="form-control"
+      [disabled]="!editMode">
+    </div>
+    <div *ngIf = "!(phoneNumber.valid||phoneNumber.untouched)">
+      <div *ngIf = "phoneNumber.hasError('required')" >
+          <p class="alert alert-danger"> Phone Number is empty!</p>
+      </div>
+      <div *ngIf = "phoneNumber.hasError('minlength')" >
+        <p class="alert alert-danger"> Please enter 10-digit Phone Number!</p>
+    </div>
+  </div>
+   
+
+  <button type="submit" class="registerbtn" (click)="onEdit()"  *ngIf="!editMode">Edit</button>
+  <button type="submit" class="registerbtn" (click)="onUpdate()"  *ngIf="editMode">Update</button>
+  <button type="submit" class="registerbtn" (click)="onCancel()"  *ngIf="editMode">Cancel</button>
+  <button type="submit" class="registerbtn" (click)="onDelete()">Delete</button>
+    
+  </div>
+
+</form>
+   

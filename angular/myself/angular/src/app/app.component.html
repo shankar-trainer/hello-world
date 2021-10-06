@@ -1,0 +1,31 @@
+<!-- <app-user></app-user> -->
+<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+
+            <a routerLink="myproduct" routerLinkActive="active">Product List</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="add" routerLinkActive="active">AddProduct</a>
+        </li>
+
+        <li class="nav-item">
+                <a routerLink="search" routerLinkActive="active">Search Product</a>
+         </li>
+        </ul>
+</nav>
+<br>
+
+<nav style="width:100%">
+    <span style="width:33%">
+    <a routerLink="myproduct" routerLinkActive="active">Product List</a>
+    </span>
+
+    <span style="width:33%">
+    <a routerLink="add" routerLinkActive="active">AddProduct</a>
+    </span>
+    <span style="width:33%">
+    <a routerLink="search/:id" routerLinkActive="active">Search Product</a>
+</span>
+</nav>

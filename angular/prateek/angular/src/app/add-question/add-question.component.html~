@@ -1,0 +1,59 @@
+<section class="col-md-4 mx-auto">
+    <h2 class="text-center">Add Questions</h2>
+
+    <div class="alert alert-success" *ngIf="msg!=undefined">{{msg}}</div>
+    <div class="alert alert-danger" *ngIf="errorMsg!=undefined">{{errorMsg}}</div>
+
+    <form #frm="ngForm" (ngSubmit)="addQuestion()">
+
+        <div>Question Id</div>
+        <div><input type="text" name="qid" [(ngModel)]="ques.questionId" required #modeleid="ngModel"
+                class="form-control">
+        </div>
+        
+
+        <div class="alert alert-danger" *ngIf="modeleid.invalid&&modeleid.touched">Question Id is required</div>
+
+
+        <div>Question Description</div>
+        <div><input type="text" name="eid" [(ngModel)]="ques.questionTitle" required #modeleid="ngModel"
+                class="form-control"></div>
+        <div class="alert alert-danger" *ngIf="modeleid.invalid&&modeleid.touched">Question Description is required
+        </div>
+
+        <div>Option A</div>
+        <div><input type="text" name="opt1" [(ngModel)]="ques.optA" required #modeleid="ngModel" class="form-control">
+        </div>
+        <div class="alert alert-danger" *ngIf="modeleid.invalid&&modeleid.touched">Option A is required</div>
+
+        <div>Option B</div>
+        <div><input type="text" name="opt2" [(ngModel)]="ques.optB" required #mlsal="ngModel" class="form-control">
+        </div>
+        <div class="alert alert-danger" *ngIf="mlsal.invalid&&mlsal.touched">Option B is required</div>
+
+        <div>Option C</div>
+        <div><input type="text" name="opt3" [(ngModel)]="ques.optC" required #mlsal="ngModel" class="form-control">
+        </div>
+        <div class="alert alert-danger" *ngIf="mlsal.invalid&&mlsal.touched">Option C is required</div>
+
+        <div>Option D</div>
+        <div><input type="text" name="opt4" [(ngModel)]="ques.optD" required #mlsal="ngModel" class="form-control">
+        </div>
+        <div class="alert alert-danger" *ngIf="mlsal.invalid&&mlsal.touched">Option D is required</div>
+
+        <div>Correct Answer</div>
+        <div><input type="text" name="ans" [(ngModel)]="ques.answer" required #mlsal="ngModel" class="form-control">
+        </div>
+        <div class="alert alert-danger" *ngIf="mlsal.invalid&&mlsal.touched">Correct Answer is required</div>
+
+        <div>Exam Id</div>
+        <div><input type="text" name="examid" [(ngModel)]="ques.exam.examId" required #mlsal="ngModel"
+                class="form-control"></div>
+        <div class="alert alert-danger" *ngIf="mlsal.invalid&&mlsal.touched">Exam Id is required</div>
+
+        <div class="mt-2 text-center"><input type="submit" value="Add Question" [disabled]="!frm.valid"
+                class="btn btn-danger" />
+        </div>
+
+    </form>
+</section>

@@ -1,0 +1,29 @@
+<p>
+  list-user works!
+</p>
+
+<div class="col-md-6">
+  <h2> User Details</h2>
+  
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Name</th>
+      <th>Password</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of students; index as j">
+      
+      <td class="hidden">{{student.studentId }}</td>
+      <td>{{student.studentName}}</td>
+      <td>{{student.studentPassword}}</td>
+      <td>
+        <button class="btn btn-danger" (click)="updateStudent(student.studentId)" style="margin-left: 20px;"> Update</button>
+        <button class="btn btn-danger" (click)="delete(student.studentId)" style="margin-left: 20px;"> Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

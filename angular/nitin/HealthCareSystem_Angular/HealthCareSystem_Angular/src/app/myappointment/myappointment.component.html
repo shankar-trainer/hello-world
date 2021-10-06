@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark"> 
+    <ul class="navbar-nav" style="margin-left:auto;margin-right: auto;">
+      <li class="nav-item "><a  (click)="goCustomer()" routerLinkActive="active"  class="nav-link" class="btn btn-primary active" >Home</a></li>
+      <li class="nav-item "><a (click)="goAddAppointment()" routerLinkActive="active" class="nav-link" class="btn btn-primary active" role="button">New Appointment</a></li>
+      <li class="nav-item "><a (click)="goHome()" routerLinkActive="active" class="nav-link" class="btn btn-primary active" role="button">Log Out</a></li>
+    </ul>  
+  </nav>
+
+<h2>All Appointments</h2>
+<div align="center">
+<table>
+    <tr>
+        <td>Appointment ID</td>
+        <td>User ID</td>
+        <td>Diagnostic Centre ID</td>
+        <td>Test ID</td>
+        <td>Date</td>
+        <td>Time</td>
+        <td>Total Cost</td>
+        <td>Approved</td>
+        <td>Update</td>
+        <td>Delete</td>
+
+    </tr>
+    <tr *ngFor="let a of appointment|async">
+        <td>{{a.appointmentId}}</td>
+        <td>{{a.userId}}</td>
+        <td>{{a.diagnosticCentreId}}</td>
+        <td>{{a.testId}}</td>
+        <td>{{a.date1}}</td>
+        <td>{{a.time1}}</td>
+        <td>{{a.totalCost}}</td>
+        <td>{{a.approved}}</td>
+        <td><button (click)="updateAppointment(a.appointmentId)">Update</button></td>
+        <td><button (click)="deleteAppointment(a.appointmentId)">Delete</button></td>
+        <!-- <td><button (click)="productDetail(p.prdId)">Details</button></td> -->
+    </tr>
+</table>
+&nbsp;&nbsp;&nbsp;
+        <button type="reset" (click)="gotoList()">Go Back</button>
+</div>
+<br><br><br><br>

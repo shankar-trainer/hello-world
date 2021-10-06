@@ -1,0 +1,25 @@
+body{
+    background-color: bisque;
+}
+table,tr{
+    border:coral solid 2px;
+    background-color: floralwhite;
+}
+td{
+    border:gold solid 1px;
+    background-color: azure;
+}
+th{
+    border: blueviolet solid 1px;
+    background-color: darksalmon;
+}
+h1,h2,h3,h4{
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+ul{
+    margin-left:auto;
+    margin-right: auto;
+}

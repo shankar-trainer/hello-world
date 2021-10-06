@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src='Person.js'>
+    </script>
+    <script>
+        function hello(){
+        var per1 = new Person(1001, 'ram kumar', 'delhi');
+       // alert("id is " + per1.id)
+        //alert("name is " + per1.name)
+        //alert("location is " + per1.location)
+        document.getElementById('id1').innerHTML=per1.id   
+    document.getElementById('id2').innerHTML=per1.name   
+    }
+    </script>
+</head>
+<body onload="hello()">
+Id is <span id='id1'>  
+    </span>
+<br>Name is <span id='id2'>  
+    </span>
+
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+ <!-- <div class="flight">
+    <div class="container col-md-5 offset-md-3 transfer">
+         <form [formGroup]="flightForm" #signup="ngForm" id="signup" (ngSubmit)="add(fNumber.value,fModel.value,cName.value,sCap.value,srcAir.value,destAir.value,departure.value,arrival.value)">
+        
+        <div class="form-group">
+          <label class="form-label">Flight Number:</label>
+          <input type="text" class="form-control" ngModel name="fNumber" #fNumber="ngModel" required [class.is-invalid]="fNumber.invalid && fNumber.touched">
+          <small [class.d-none]="fNumber.valid || fNumber.untouched" class="text-danger">Flight Number is Mandatory</small>
+        </div>
+    
+        <div class="form-group">
+          <label class="form-label">Flight Model:</label>
+          <input type="text" class="form-control" ngModel name="fModel" #fModel="ngModel" required [class.is-invalid]="fModel.invalid && fModel.touched">
+          <small [class.d-none]="fModel.valid || fModel.untouched" class="text-danger">Flight Model is Mandatory</small>
+        </div>
+    
+    
+        <div class="form-group">
+          <label class="form-label">Carrier name:</label>
+          <input type="text" class="form-control" ngModel name="cName" #cname="ngModel" required [class.is-invalid]="cName.invalid && cName.touched">
+          <small [class.d-none]="cName.valid || cName.untouched" class="text-danger">Carrier name is Mandatory</small>
+        </div>
+    
+    
+        <div class="form-group">
+          <label class="form-label">Seat Capacity:</label>
+          <input type="text" class="form-control" ngModel name="sCap" #sCap="ngModel" required [class.is-invalid]="sCap.invalid && sCap.touched">
+          <small [class.d-none]="sCap.valid || sCap.untouched" class="text-danger">Seat Capacity is Mandatory</small>
+        </div>
+    
+    
+        <div class="form-group">
+          <label class="form-label">Source Airport Code:</label>
+          <input type="text" class="form-control" ngModel name="srcAir" #srcAir="ngModel" required [class.is-invalid]="srcAir.invalid && srcAir.touched">
+          <small [class.d-none]="srcAir.valid || srcAir.untouched" class="text-danger">Source Airport code is Mandatory</small>
+        </div>
+    
+    
+        <div class="form-group">
+            <label class="form-label">Destination Airport Code:</label>
+            <input type="text" class="form-control" ngModel name="destAir" #destAir="ngModel" required [class.is-invalid]="destAir.invalid && destAir.touched">
+            <small [class.d-none]="destAir.valid || destAir.untouched" class="text-danger">Destination Airport code is Mandatory</small>
+          </div>
+    
+        <div class="form-group">
+          <label class="form-label">Departure:</label>
+          <input type="date" class="form-control" ngModel name="dept" #dept="ngModel" required  [class.is-invalid]="dept.invalid && dept.touched">
+          <small [class.d-none]="dept.valid || dept.untouched" class="text-danger">Departure is Mandatory</small>
+        </div>
+    
+        <div class="form-group">
+          <label class="form-label">Arrival:</label>
+          <input type="date" class="form-control" ngModel name="arrival" #arrival="ngModel" required [class.is-invalid]="arrival.invalid && arrival.touched">
+          <small [class.d-none]="arrival.valid || arrival.untouched" class="text-danger">Username is Mandatory</small>
+          
+        </div>
+    
+        <input type="submit" class="btn btn-primary" value="Add" [disabled]="signup2.form.invalid">
+      </form> 
+    </div>
+    </div>-->
+
+    <nav class="navbar navbar-expand-sm navbarC">
+      <div class="container">
+           <h2>Flight Management System</h2>
+      <ul class="navbar-nav">
+          
+          <li class="nav-item">
+               <a routerLink="/search">Flight Search</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink='/allFl'>Flight view</a>
+       </li>
+       <li class="nav-item">
+        <a routerLink='/addFlight'>Flight add</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink='/scheduledFlight/search'>Schedule Flight view</a>
+     </li>
+     <li class="nav-item">
+      <a routerLink='/scheduledFlight/add'>Add Schedule Flight</a>
+   </li>
+   <li class="nav-item">
+    <a routerLink='/scheduledFlight/viewAllF'>View All Schedule Flight</a>
+  </li>
+      </ul>
+      </div>
+    </nav>
+
+    <!--<div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-2 formo">
+             
+            <form #enForm="ngForm" class="booking">
+             
+
+              <small [class.d-none]="noError" class="text-danger">No flights found try again</small>
+              <small [class.d-none]="noError1" class="text-danger">No schedules found try again</small>
+             
+
+                <div class="form-group">
+                    <label class="form-label">Enter the Flight Number</label>
+                    <input type="bigInt" name="name" class="form-control" ngModel #flightNumber="ngModel"  required [class.is-invalid]="flightNumber.invalid && flightNumber.touched">
+                    <small [class.d-none]="flightNumber.valid || flightNumber.untouched" class="text-danger">Flight Number is mandatory</small>
+           
+                  </div>
+                div class="form-group">
+                  <label class="form-label">Enter the Flight Model</label>
+                  <input type="text" name="age" class="form-control" ngModel #FlightModel="ngModel"  required [class.is-invalid]="FlightModel.invalid && FlightModel.touched">
+                  <small [class.d-none]="FlightModel.valid || FlightModel.untouched" class="text-danger">Flight Model is mandatory</small>
+                </div>
+              <div class="form-group">
+                <label class="form-label">Enter the Carrier Name</label>
+                <input type="text" name="luggage" class="form-control" ngModel #CarrierName="ngModel"  required [class.is-invalid]="CarrierName.invalid && CarrierName.touched">
+                <small [class.d-none]="CarrierName.valid || CarrierName.untouched" class="text-danger">carrierName is mandatory</small>
+              </div>
+              <div class="form-group">
+                  <label class="form-label">Enter the Seat Capacity</label>
+                  <input type="number" name="luggage" class="form-control" ngModel #SeatCapacity="ngModel"  required [class.is-invalid]="SeatCapacity.invalid && SeatCapacity.touched">
+                  <small [class.d-none]="SeatCapacity.valid || SeatCapacity.untouched" class="text-danger">seatCapacity is mandatory</small>
+                </div>
+
+                
+
+                <div class="form-group">
+                  <label class="form-label">Enter the ScheduleId</label>
+                  <input type="number" name="luggage" class="form-control" ngModel #scheduleId="ngModel"  required [class.is-invalid]="scheduleId.invalid && scheduleId.touched">
+                  <small [class.d-none]="scheduleId.valid || scheduleId.untouched" class="text-danger">scheduleId is mandatory</small>
+                </div>
+              
+                <div class="form-group">
+                  <label class="form-label">Enter the Destination Airport Code</label>
+                  <input type="text" name="luggage" class="form-control" ngModel #destAirport="ngModel"  required [class.is-invalid]="destAirport.invalid && destAirport.touched">
+                  <small [class.d-none]="destAirport.valid || destAirport.untouched" class="text-danger">destAirport is mandatory</small>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Departure:</label>
+                  <input type="date" name="deptTime" class="form-control" ngModel #dept="ngModel" required  [class.is-invalid]="dept.invalid && dept.touched">
+                  <small [class.d-none]="dept.valid || dept.untouched" class="text-danger">Departure is Mandatory</small>
+                </div>
+            
+                <div class="form-group">
+                  <label class="form-label">Arrival:</label>
+                  <input type="date" name="arrTime" class="form-control" ngModel  #arrival="ngModel" required [class.is-invalid]="arrival.invalid && arrival.touched">
+                  <small [class.d-none]="arrival.valid || arrival.untouched" class="text-danger">Arrival is Mandatory</small>
+                  
+                </div>
+
+            <input type="button" class="btn btn-primary" value="Add scheduledFlight" (click)="add(flightNumber.value,scheduleId.value)" [disabled]="enform.form.invalid">
+      
+            </form>
+        </div>
+      </div>
+      </div>-->
+
+      <div class="container">
+        <div class="col-md-6 offset-md-3 formDiv">
+            <h2 style="text-align: center;">Update Flight Details</h2> 
+    <hr/>
+    <form  #enform="ngForm" class="updateFlight">
+    
+        <div class="form group">
+            <label for="Name:">Flight Number:</label>
+            <input type="Number" name="name" id="Fnumber" class="form-control" [(ngModel)]="flightNumber">
+        </div>
+        <div class="form group">
+            <label for="">ScheduleId:</label>
+            <input type="number" name="model" id="model" class="form-control" [(ngModel)]="scheduleId" required>
+        </div>
+        <div class="form group">
+            <label for="">Departure:</label>
+            <input type="date" name="cName" id="cName" class="form-control" [(ngModel)]="departure" required>
+        </div>
+        <div class="form group">
+            <label for="">Arrival:</label>
+            <input type="date" name="seatC" anme="seatC" class="form-control" [(ngModel)]="arrival" required>
+        </div>
+    <br>
+    <br>
+    <div class="form group">
+        <input type="submit" value="Update" class="btn btn-primary" (click)="processForm()">
+    </div>
+    </form>
+        </div>
+      </div>

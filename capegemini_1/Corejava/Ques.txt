@@ -1,0 +1,297 @@
+Question1.
+Take a number from user and display the factorial using 
+for loop.
+
+Question2.
+Take 10 number from user using for loop  and display the 
+highest and lowest number.
+
+
+Question3 .
+Make the pattern using for loop with static method pattern1(),
+pattern2().
+*
+* * 
+* * *
+* * * *
+
+A
+A B
+A B C.
+
+
+Question4.
+
+Make two two dimension array of 3X4. 
+Initialise it and display the sum.
+Use static method  
+static int[][]  sum(ar[][],ar1[][]) and disp(ar[][]).
+
+
+Question5 .
+Create a program for array sorting. Take 10 no in array and sort it 
+ with the help of static sort(int arr[]).
+ Then disply the sorted number using for each loop.
+
+Question6.
+
+Create a Employee class with attributes 
+
+id, name, salary;
+
+Make 5 objects of Employee class and initialise using
+method   employeeInput()
+
+Display the total salary, average salary.
+
+Display the employee record having  highest salary, lowest salary 
+
+
+ 
+Write a class Account with attribute 
+   float  balance
+   String accountHolderName;
+   String location;
+   
+Also write three methods with the following signature –
+
+void deposit(int amt)
+void withdraw(int amt)
+float getBalance()
+void accountInfo()
+
+withdraw method should give a message insufficient amount if the
+amount you are trying to withdraw is more than current balance
+otherwise balance need to be reduced by the amount withdrawn
+
+Create another class TestAccount and write down main method there.
+Create an object of Account class. 
+Start the account with Rs 2000.
+Add Rs 500 and withdraw Rs 1800. Then show the balance.
+Add Rs 700 and withdraw Rs 4000. Then show the balance.
+
+
+
+Question
+
+Create a class Distance with private  attributes 
+ float km;
+ float meter;
+ float centimeter;
+ float feet;
+ float inch;
+ 
+ Create two methods 
+   void convertToMeterCentimeter()
+   void convertToFeetInches()
+   
+Use  appropriate Constructor, getter and setter    
+   
+Test it with DistanceMain 
+
+Question   
+Create class Insurance with attributes 
+  private String health;  // excellent or poor
+  private int age;
+  private String gender;  // male or female
+  private String location; // city or village
+  
+  void checkInsured(){
+  }
+(1) If a person’s health is excellent and the person is between
+	25 and 35 years of age and lives in a city and is a male
+	then the premium is Rs. 4 per thousand and his policy
+	amount cannot exceed Rs. 2 lakhs.
+(2) If a person satisfies all the above conditions except that
+	the sex is female then the premium is Rs. 3 per thousand
+	and her policy amount cannot exceed Rs. 1 lakh.
+(3) If a person’s health is poor and the person is between 25
+	and 35 years of age and lives in a village and is a male
+	then the premium is Rs. 6 per thousand and his policy
+	cannot exceed Rs. 10,000.
+(4) In all other cases the person is not insured.
+	whether the person should be insured or not, his/her premium rate and maximum amount
+	for which he/she can be insured.
+
+Create InsuranceMain
+  Create object and pass all values in the constructor.
+  call checkInsured() method.  
+  Display all values
+  
+  
+ Add attribute in Book.java
+
+  String book_type;
+  float rebate;
+ 
+  computer   -- 10%
+  literature -- 30%
+  science    -- 20%
+  kids       -- 40%
+  
+  float finalPrice(){
+  } 
+
+  In bookInfo() display the actual cost and final cost
+  
+    var arguments 
+      --> Added in java5
+      --> It can accept variable number of arguments
+      --> It should the last argument.
+      --> In one method we can have one var arguments.
+      --> It supports for each loop.
+      --> denoted by ...
+      
+Question 
+Take a string from user and display whether it is palindrom or not.
+
+	a)Take a string from user and remove vowel. 
+	  Then display it.
+	  static char[] removeVowel(String s)
+
+	b)count no of vowel and print it using method
+    		static int countVowel(String s)
+    c)remove the space and print it
+            static char[] removeSpace(String s)
+
+Question Take one String array with five values. 
+         Sort it and display it  
+
+Question Take a name from user.Display abbreviation of first and second except last
+
+Ram Kumar Sharma
+R K Sharma
+
+Mohan kumar sharma illahabadi
+M k s illahabadi
+
+
+Question
+Write a program to check whether the given strings are an
+anagram or not. An anagram is a word or a phrase made by
+transposing the letters of another word or phrase; for example,
+ “Ate" is an anagram of “Eat". 
+ The program should ignore white space and punctuation.
+
+               
+  
+  
+   
+ 
+ 
+
+
+
+
+
+
+Inheritance  we can inherit methods and attribues 
+  -->public
+  -->protected
+  -->default
+  -->static 
+
+Inheritance Question  
+Create a class called Vehicle. 
+Also, in the Vehicle class constructor, initialize the variables 
+color, no of wheels and model.
+
+Create subclasses Truck, Bus and Car.
+Add common methods in the base class and specific methods in the
+corresponding subclasses. 
+Create a class called Road and create objects
+for Truck, Bus and Car and display the appropriate messages. 
+ 
+Give appropriate values for these variables from the
+invoking subclass.  
+  
+  
+  
+  Integer 
+  
+  primitive       wrapper class
+  byte             Byte
+  short            Short
+  int              Integer
+  long             Long
+  
+========================
+      Number
+      /     \ 
+     /       \
+   Float    Integer
+
+
+
+Create a class called CalcAverage that has the following method:
+
+public double avgFirstN(int N).
+
+This method receives an integer as a parameter and calculates the 
+average of first N natural numbers. If N is not a natural number, 
+throw an exception 
+
+IllegalArgumentException with an 
+appropriate message
+
+
+
+
+
+
+Utility Classes
+   Arrays   
+   
+   Collection -->Interface
+   Collections--> class
+   
+     methods 
+        sort
+        binarySearch
+        shuffle
+        frequency
+        max
+        min
+        
+   Create a file  writing program using byte stream.
+   Take string  from user using scanner 
+   and write it to the file till user enters exit123.
+   
+   
+   Create one program in java using BufferedOutPutStream .
+   Take 5 student roll, name and grade  and write it to 
+    student.csv file.
+    
+    roll, name, grade
+    
+    
+  Read the above file and display each student record
+    
+    
+    
+    
+    
+   
+   
+   
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

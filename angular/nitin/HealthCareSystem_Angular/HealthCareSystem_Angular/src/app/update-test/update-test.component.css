@@ -1,0 +1,36 @@
+table{
+    margin-left: 200px;
+    width: 50%;
+}
+table,tr{
+    border:coral solid 2px;
+    background-color: yellow;
+    margin-left: auto;
+    margin-right: auto;
+}
+td{
+    border:gold solid 1px;
+    background-color: aquamarine;
+}
+th{
+    border: blueviolet solid 1px;
+    background-color: darksalmon;
+}
+h2,h3,h4{
+    
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+h1{
+   
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+ul{
+    margin-left:auto;
+    margin-right: auto;
+}

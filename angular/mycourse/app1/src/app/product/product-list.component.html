@@ -1,0 +1,15 @@
+<div class="product-list">
+  <div class="row">
+    <div class="col-md-3">
+      <h3 class="heading-text">Products: Candy</h3>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-block btn-primary" (click)="onNewClick.emit()">CREATE NEW PRODUCT</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 product-item" *ngFor="let product of products; trackBy: trackByProducts">
+      <span (click)="onSelected.emit(product.id)">{{ product.name }}</span>
+    </div>
+  </div>
+</div>

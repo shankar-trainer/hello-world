@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages</value>
+		</property>
+	</bean>
+
+
+	<context:property-placeholder
+		location="user.properties" />
+
+	<bean id="user1" class="org.com.model.User">
+		<property name="uid" value="767767"></property>
+		<property name="uname" value="R k choudhary"></property>
+		<property name="ulocation" value="lucknow"></property>
+	</bean>
+
+	<bean id="user2" class="org.com.model.User">
+		<property name="uid" value="${u_id}"></property>
+		<property name="uname" value="${u_name}"></property>
+		<property name="ulocation" value="${u_location}"></property>
+	</bean>
+</beans>
