@@ -30,23 +30,31 @@ public class EmployeeMain {
 				return Integer.valueOf(o1.getId()).compareTo(Integer.valueOf(o2.getId()));
 			}
 		};
-		
-		Arrays.sort(emp,comparator);
-		
+
+		Arrays.sort(emp, comparator);
+
 		for (Employee employee : emp)
 			System.out.println(employee);
 
 		System.out.println("\nsorted by name ");
-		
-		Comparator<Employee> comparator1 = (k,l)-> {
-				return k.getName().compareTo(l.getName());
+
+		Comparator<Employee> comparator1 = (k, l) -> {
+			return k.getName().compareTo(l.getName());
 		};
-		
-		Arrays.sort(emp,comparator1);
-		
+
+		Arrays.sort(emp, comparator1);
+
 		for (Employee employee : emp)
 			System.out.println(employee);
-		
+
+		System.out.println("\nsorted by Salary  ");
+
+		Arrays.sort(emp, (k, l) -> {
+			return Float.valueOf(k.getSalary()).compareTo(Float.valueOf(l.getSalary()));
+		});
+
+		for (Employee employee : emp)
+			System.out.println(employee);
 
 	}
 }
