@@ -26,8 +26,10 @@ public class SupplierExample2 {
 
 	public static void main(String[] args) {
 		Supplier<List<Employee>> supplier = () -> getEmployee();
-
-		List<Employee> list = supplier.get();
+		Supplier<List<Employee>> supplier1 = SupplierExample2::getEmployee;
+		
+//		List<Employee> list = supplier.get();
+		List<Employee> list = supplier1.get();
 		for (Employee employee : list) {
 			System.out.println(employee);
 		}
