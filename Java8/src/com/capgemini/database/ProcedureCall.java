@@ -23,8 +23,8 @@ public class ProcedureCall {
 		int res = cst1.getInt(1);
 		System.out.println("result is " + res);
 		
-		/*
-		  not working
+		
+		  //not working
 		CallableStatement cst2 = con.prepareCall("call sum2(?,?,?)");
 		cst2.setInt(1, 5);
 		cst2.setInt(2, 25);
@@ -32,10 +32,7 @@ public class ProcedureCall {
 		cst2.execute();
 
 		 res = cst2.getInt(1);
-		System.out.println("sum2 result is " + res);
-*/		
-
-		
+		System.out.println("sum2 result is " + res);		
 
 	}
 }

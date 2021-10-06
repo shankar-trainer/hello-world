@@ -16,7 +16,7 @@ public class ProcedureCall1 {
 		
 		cst.setString(2, null);
 		cst.registerOutParameter(2, java.sql.Types.VARCHAR);
-		
+		//java.sql.Types.
 
 		cst.execute();
 		String name = cst.getString(1);
