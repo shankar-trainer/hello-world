@@ -1,0 +1,86 @@
+package org.com.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.com.dto.Customer;
+import org.com.service.CustomerServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/cst")
+public class CustomerController {
+
+	final String url = "/getAll";
+
+	@Autowired
+	CustomerServiceImpl service;
+
+	@RequestMapping(value = url,method=RequestMethod.GET)
+	//@GetMapping(value = url)
+	//@GetMapping("/getAll")
+	public List<Customer> getAllCustomer() {
+		return service.getAllCustomer();
+	}
+
+	
+	@GetMapping(value = url + "/{id}")
+	public Customer searchCustomer(@PathVariable("id") int id) {
+		System.out.println("get all called  "+Customer.class.getName());
+		return service.findCustomer(id);
+	}
+
+	@RequestMapping(value = url,method=RequestMethod.DELETE)
+
+	//@DeleteMapping(value = url + "/{id}")
+	public Customer deleteCustomer(@PathVariable("id") int id) {
+		return service.deleteCustomer(id);
+	}
+
+	@RequestMapping(value = url,method=RequestMethod.POST)
+	//@PostMapping(value = url )
+	public Customer addCustomer(@Valid @RequestBody Customer customer) {
+		return service.saveCustomer(customer);
+	}
+
+	
+		
+	
+	==============================
+	
+	
+	Enter id  [input]
+	Enter name  [input]
+	Enter salary  [input]
+	
+	
+	
+	
+	===================================================
+	
+	 Forum 
+       Using id  
+
+   Forum using  id 
+     on clicking serach/next   
+                     javascript validation   --- rest controller 
+                if not present display warning message at top in banner  it will reside in same page
+
+     else if will next page and display information of the searched forum
+	@RequestMapping(value = url,method=RequestMethod.PUT)
+	//@PutMapping(value = url )
+	public Customer updateCustomer(@Valid @RequestBody Customer customer) {
+		return service.changeCustomer(customer);
+	}
+
+}

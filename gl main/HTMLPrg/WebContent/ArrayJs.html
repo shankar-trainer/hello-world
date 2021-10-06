@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+//ar=new Array(11,22,33,44);
+ar=[11,22,33,44];
+alert(ar+"  "+ar.length)
+
+for (var int = 0; int < ar.length; int++) {
+	alert(ar[int])
+}
+for ( var x in ar) {
+	document.write("<br>"+ar[x])
+}
+ var s= ar.join("-")
+ document.write("<br>after join "+s)
+ var country="india china srilanka"
+ var country1=country.split(" ")
+	
+ document.write("<br>"+country1)
+ country1.push("nepal");
+ country1.push("united kingdom");
+ country1.push("usa");
+ document.write("<br>after reverse "+country1.reverse())
+ 
+ alert(country1.pop())
+ alert("splice 2,4 "+country1.slice(2, 4))
+ 
+ document.write("<br>after sort "+country1.sort())
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Example: using document.getElementsByName</title>
+
+<fieldset>
+    <legend>[*death]</legend>
+    <select name=death  style="width: 120px">
+        <option value=Dead>[*died]
+        <option value=NotDead>[*alive]
+        <option value="" selected>-
+    </select>
+</fieldset>
+
+<script>
+  var up_names = document.getElementsByName("up");
+  console.log(up_names[0].tagName); // displays "INPUT"
+  console.log(up_names[1].tagName); // displays "INPUT"
+</script>
+</html>

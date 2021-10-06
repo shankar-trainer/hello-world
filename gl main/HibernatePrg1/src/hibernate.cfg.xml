@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/gl2</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">mysql</property>
+
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<property name="show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
+
+		<mapping class="org.com.Product" />
+		
+		<mapping class="org.com.oneToOne.Person" />
+		<mapping class="org.com.oneToOne.Address" />
+		
+		<mapping class="org.com.oneToMany.Department" />
+		<mapping class="org.com.oneToMany.Employee" />
+
+		<mapping class="org.com.inheritance.singletable.Payment" />
+		<mapping class="org.com.inheritance.singletable.CashPayment" />
+		<mapping class="org.com.inheritance.singletable.CreditCardPayment" />
+
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.com</groupId>
+  <artifactId>JersyCrud</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>JersyCrud Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  
+  	<properties>
+			<jersey.version>2.12</jersey.version>
+			<jersey.scope>compile</jersey.scope>
+			<compileSource>1.8</compileSource>
+			<maven.compiler.target>1.8</maven.compiler.target>
+			<maven.compiler.source>1.8</maven.compiler.source>
+			<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		</properties>
+
+		<dependencies>
+			<dependency>
+				<groupId>org.glassfish.jersey.containers</groupId>
+				<artifactId>jersey-container-servlet-core</artifactId>
+				<version>${jersey.version}</version>
+				<scope>${jersey.scope}</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.glassfish.jersey.media</groupId>
+				<artifactId>jersey-media-json-jackson</artifactId>
+				<version>${jersey.version}</version>
+				<scope>${jersey.scope}</scope>
+			</dependency>
+		</dependencies>
+  <build>
+    <finalName>JersyCrud</finalName>
+  </build>
+</project>

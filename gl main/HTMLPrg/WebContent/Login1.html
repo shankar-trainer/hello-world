@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+<style type="text/css">
+label {
+	float: left;
+	width: 150px;
+}
+
+input {
+	margin-bottom: 5px;
+	width: 130px;
+}
+
+input[type='submit'] {
+	margin-left: 0px;
+}
+
+form {
+	margin-left: 400px;
+	margin-top: 100px;
+	background-color: yellow;
+	/* background-image: url("image/img1.jpg");
+ */
+	background-size: 300px 200px;
+	width: 30%;
+	border: double red 10px;
+	padding: 1em;
+	color: blue;
+}
+
+span {
+	color: red;
+	font-weight: bolder;
+}
+
+body {
+	background-image: url("image/img1.jpg");
+	background-attachment: fixed;
+}
+</style>
+<script type="text/javascript">
+	function validate() {
+		var id = document.getElementById("id").value
+		var name = document.getElementById("name").value
+		var gender = document.getElementsByName("gender")
+		var hobby = document.getElementsByName("hb")
+		var city = document.getElementsByName("city")
+		
+		if (id == "") {
+			//alert("id is blank")
+			document.getElementById("id_err").innerHTML = "id is blank"
+			return false
+		} else if (name == "") {
+			document.getElementById("name_err").innerHTML = "name is blank"
+			//alert("name is blank")
+			return false
+		} else if (gender[0].checked == false && gender[1].checked == false) {
+			document.getElementById("gender_err").innerHTML = "select the gender"
+
+			//alert("gender not selected")
+			return false
+		} else if (hobby[0].checked == false && hobby[1].checked == false
+				&& hobby[2].checked == false && hobby[3].checked == false) {
+			document.getElementById("hb_err").innerHTML = "select hobby"
+			//alert("select at least one hobby")
+			return false
+		} 
+		else if(city[0]=="")
+		{
+		alert("select city")
+		return false;
+			} 
+		else
+			return true
+
+	}
+</script>
+</head>
+<body>
+	<form onsubmit="return validate()" action="login.jsp" name="form">
+		<label>Enter id </label> <input id="id" name="id"> <span
+			id="id_err"></span> <br> <label>Enter Name</label> <input
+			id="name" name="name"> <span id="name_err"></span> <br>
+		<label>Select Gender</label> <br> <input type="radio" id="gender"
+			name="gender" value="male">Male <br> <input type="radio"
+			id="gender" name="gender" value="female">Female <span
+			id="gender_err"></span> <br> <label>Select Hobbies</label> <br>
+		<span id="hb_err"></span> <input type="checkbox" value="swimming"
+			name="hb">Swimming<br> <input type="checkbox"
+			value="music" name="hb">Music<br> <input type="checkbox"
+			value="dance" name="hb">Dance<br> <input type="checkbox"
+			value="movie" name="hb">Movie<br> <br> <label>Select
+			City</label> 
+			<br> <select name="city">
+			<option value="">
+			<option value="chennai">Chennai
+			<option value="madurai">Madurai
+			<option value="rameswaram">Rameswaram
+			<option value="amarnath">Amarnath
+		</select> <br> <input type="submit" value="login"> <input
+			type="reset" value="cancel">
+	</form>
+</body>
+</html>

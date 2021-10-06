@@ -1,0 +1,36 @@
+.header{
+   background-color: yellow;
+   text-align: center;
+}
+
+.left-menu{
+	width: 10%;
+	float:left;
+	background-color: pink;
+	height: 600px;
+}
+
+.right-menu{
+	float:left;
+	width: 10%;
+	background-color: black;
+	height: 600px;
+	color:white;
+}
+
+.content{
+    width: 80%;
+    float:left;
+	background-color: blue;
+	color:yellow;
+	height: 600px;
+}
+
+.footer{
+	
+   background-color: green;
+	text-align: center;
+	
+}
+
+

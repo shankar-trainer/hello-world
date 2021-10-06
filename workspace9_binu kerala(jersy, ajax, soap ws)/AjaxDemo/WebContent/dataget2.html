@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	function getdata1(file) {
+
+		var xmlhttpreq = new XMLHttpRequest();
+		xmlhttpreq.open("GET",file)
+		
+		xmlhttpreq.onreadystatechange=function(){
+			if(xmlhttpreq.readyState==4 && xmlhttpreq.status==200){
+				document.getElementById("id1").innerHTML = xmlhttpreq.responseText
+			}
+		};
+		xmlhttpreq.send(null)
+	}
+	
+	
+	function getdata2(file) {
+		var xmlhttpreq = new XMLHttpRequest();
+		xmlhttpreq.open("GET",file)
+		
+		xmlhttpreq.onreadystatechange=function(){
+			if(xmlhttpreq.readyState==4 && xmlhttpreq.status==200){
+				document.getElementById("id2").innerHTML = xmlhttpreq.responseText
+			}
+		};
+		xmlhttpreq.send(null)
+	}
+		
+</script>
+<style>
+.col{
+float: left:
+width:30%;
+margin-left: 200px;
+background: aqua;
+}
+</style>
+</head>
+<body>
+<br>
+	<span  class="col" id="id1" onclick="getdata1('file1.txt')">
+	   java 
+	</span>
+	<span   class="col" id="id2" onclick="getdata2('file2.txt')">
+	   html
+	</span>
+</body>
+</html>

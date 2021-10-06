@@ -1,0 +1,19 @@
+h2{
+	
+	background-color: black;
+	color: white;
+	margin-top: 200px;
+	margin-left: 200px;
+	border: double yellow 10px; 
+	width:40%;
+	text-align: center;
+}
+p{
+	background-image: url("../image/img1.jpg");
+	background-size: 300px 200px;
+	font-size: 30px;
+	margin-left:  200px;
+	width: 40%;
+	height: 30%;
+	color: yellow;
+}

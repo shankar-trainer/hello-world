@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+<style type="text/css">
+label {
+	float: left;
+	width: 150px;
+}
+
+input {
+	margin-bottom: 5px;
+	width: 130px;
+}
+
+input[type='submit'] {
+	margin-left: 0px;
+}
+
+form {
+	margin-left: 400px;
+	margin-top: 100px;
+	background-color: yellow;
+	/* background-image: url("image/img1.jpg");
+ */
+	background-size: 300px 200px;
+	width: 30%;
+	border: double red 10px;
+	padding: 1em;
+	color: blue;
+}
+
+span {
+	color: red;
+	font-weight: bolder;
+}
+
+body {
+	background-image: url("image/img1.jpg");
+	background-attachment: fixed;
+}
+</style>
+<script type="text/javascript">
+	function validate() {
+		var city = document.getElementsByName("city")
+	    console.log("city is "+city[0].value)//city[0] will always give selected value
+	    if(city[0].value=="")   {
+	       alert("select city")
+	     return false
+	   }
+	   /*    
+		var city1 = document.form.city
+	    console.log("city is.. "+city1.value)//city1.value will always give selected value
+
+          for(var int=0;int<city1.length;int++){
+   			if(city1.options[int].selected)
+				   console.log("..."+city1.options[int].value)
+			}
+		*/	
+		else
+	   return true;
+	}
+</script>
+</head>
+<body>
+	<form onsubmit="return validate()" action="hello.jsp"  name="form">
+		<label>Select City</label> <br> 
+		<select name="city" class="required">
+			<option value="">
+			<option value="chennai">Chennai
+			<option value="madurai">Madurai
+			<option value="rameswaram">Rameswaram
+			<option value="amarnath">Amarnath
+		</select> <br> <input type="submit" value="login"> <input
+			type="reset" value="cancel">
+	</form>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	function getvalue() {
+		date = new Date();
+		document.getElementById("id1").innerHTML = date.toDateString()
+	}
+	
+	onload=function () {
+
+		date = new Date();
+		document.getElementById("id3").innerHTML = date.toTimeString()
+
+	}
+
+	function getdata() {
+
+		var xmlhttpreq = new XMLHttpRequest();
+		xmlhttpreq.open("GET","data.txt")
+		
+		xmlhttpreq.onreadystatechange=function(){
+			if(xmlhttpreq.readyState==4 && xmlhttpreq.status==200){
+				document.getElementById("id2").innerHTML = xmlhttpreq.responseText
+				
+			}
+		};
+		xmlhttpreq.send(null)
+
+	}
+</script>
+
+</head>
+<body>
+
+	<div id="id2" onclick="getdata()">click to display the data from
+		server</div>
+
+	<br>
+	<br>
+	<br>
+	<div id="id1" onclick="getvalue()">click to display the date</div>
+	<br>
+
+	<br>
+	<div id="id3" >click to display the time</div>
+	<br>
+
+
+</body>
+</html>

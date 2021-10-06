@@ -1,0 +1,15 @@
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<uri>changetoupper</uri>
+	<tag>
+		<name>upper</name>
+		<tagclass>org.com.MyTag</tagclass>
+		<bodycontent>scriptless</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>
