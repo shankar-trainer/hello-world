@@ -318,13 +318,98 @@ select max(salary) from employee;
 select * from employee where salary=90000;
 select * from employee where salary=(select max(salary) from employee);
 
-
+-- equi join
 select c.cid,c.name,c.location, co.orderid, co.order_name,co.order_cost from 
     customer c, customer_order co where c.cid=co.customer_id;
+    
 desc customer;
 desc customer_order;
-
+-- customer who has given order
 select cid,name,location from customer where cid in  (select customer_id from customer_order);
+
+--   == will work if sub query returns 1 value , if more than 1 value it will not work
+select cid,name,location from customer where cid = (select customer_id from customer_order);
+-- customer who has not given order
+select cid,name,location from customer where cid not in  (select customer_id from customer_order);
+
+select cid,name,location from customer where    exists  (select customer_id from customer_order);
+select cid,name,location from customer where not exists  (select customer_id from customer_order);
+
+select cid,name,location from customer where cid  >= all (select customer_id from customer_order);
+select cid,name,location from customer where cid  > all (select customer_id from customer_order);
+
+select cid,name,location from customer where cid  >= any (select customer_id from customer_order);
+
+
+
+
+select customer_id from customer_order;
+-- view 
+create view all_data_customer_order as select * from customer_order;
+create view  customer_order_given as
+select cid,name,location from customer where cid in  (select customer_id from customer_order);
+
+select * from all_data_customer_order;
+ select * from customer_order_given;
+ 
+select * from employee; 
+set autocommit=0;
+insert into employee values(7977,'jack ryan',66000);
+commit;
+
+
+create table passenger(id int, name varchar(20), fare float, countrycode varchar(20), primary key(id,countrycode)); 
+-- composite key  primary key(id,countrycode)
+desc passenger;
+
+insert into passenger values(1001,'mohan kumar',12000,'in');
+insert into passenger values(1001,'mohan kumar',12000,'ne');
+
+insert into passenger values(1002,'mohan kumar',12000,'in');
+insert into passenger values(1002,'mohan kumar',12000,'uk');
+insert into passenger values(1002,'mohan kumar',12000,'us');
+insert into passenger values(1002,'mohan kumar',12000,'uk');
+insert into passenger values(1003,'mohan kumar',12000,'uk');
+
+
+
+create table myorder(o_id int primary key, o_name varchar(20), cost float);
+
+create table myproduct(p_id int primary key, p_desc varchar(20), pcost float);
+
+create table orderline(qty int, location varchar(20),o_id int, p_id int, primary key(o_id,p_id));
+
+-- composite key as foreign key
+
+create table mycustomer(c_id int primary key, c_name varchar(20));
+create table myvendor(v_id int primary key, address varchar(20));
+create table shipment(c_id int, v_id int , c_name varchar(20), primary key(c_id , v_id )  , foreign key(c_id) references mycustomer(c_id),
+foreign key(v_id) references myvendor(v_id)
+ );
+ 
+
+show tables;
+
+select * from book;
+select * from  customer;
+delimiter  //
+drop procedure CustomerSearch//
+//
+create procedure CustomerSearch(in id int,out name1 varchar(20), out location1 varchar(20))
+begin
+select name,location into name1, location1  from customer where cid=id;
+end;
+//
+call  CustomerSearch(1001,@name,@location)//
+select @name, @location//
+desc customer//
+
+
+
+
+
+
+
 
 
 
