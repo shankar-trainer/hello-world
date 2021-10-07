@@ -34,9 +34,6 @@ public class CalculatorTest {
 		assertNotNull(calculator);
 		//calculator=null;
 		assertNotNull(calculator,"calculator is  null");
-		
-		
-		
 	}
 
 }
