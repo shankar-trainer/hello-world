@@ -21,18 +21,24 @@ class CalculatorTest {
 
 	@Test
 	void testAddition() {
-
 		assertEquals(calculator.addition(12345, 12345), 24690);
+		//assertEquals(calculator.addition(2147483647, 1), 2147483648);
+	}
+	
+	@Test
+	void testSummation() {
+		assertEquals(calculator.summation(23.45f, 22.65f),46.1f );
 	}
 
 	@Test
 	void testMultiplication() {
-		assertEquals(calculator.multiplication(11, 2), 20);
+		assertEquals(calculator.multiplication(11, 2), 22);
 
 	}
 
 	@Test
 	void testDivision() {
+		
 	}
 
 }
