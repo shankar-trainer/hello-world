@@ -23,8 +23,7 @@ public class StreamExample3 {
 		
 		System.out.println("non duplicate  only 4 elements ");
 		citylist.stream().distinct().forEach(a -> System.out.print(a + ",  "));
-		
-		
+			
 		
 		System.out.println("\nnon duplicated");
 		citylist.stream().distinct().forEach(a -> System.out.print(a + "  "));

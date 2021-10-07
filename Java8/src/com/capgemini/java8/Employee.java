@@ -32,7 +32,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "\nEmployee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
 		
 	}
 	
