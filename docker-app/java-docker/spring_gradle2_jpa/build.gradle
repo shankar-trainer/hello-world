@@ -45,9 +45,16 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
 	implementation 'org.springframework.boot:spring-boot-starter-web:2.4.5'
 	
+	// https://mvnrepository.com/artifact/org.mockito/mockito-all
+testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+	
 	
 }
 
 test {
-	useJUnitPlatform()
+  useJUnitPlatform()
+   testLogging.showStandardStreams=true
+    testLogging{
+      events "passed","skipped","failed"
+    }
 }
