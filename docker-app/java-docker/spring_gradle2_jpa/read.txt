@@ -21,22 +21,7 @@ When I run the gradle build command, why does it want to download all the files 
 
 I have tried with RUN gradle clean build --info || return 0 instead of gradle dependencies, all the same.
 
-docker
-gradle
-build
-dependencies
-multistage
-Share
-Improve this question
-Follow
-asked Nov 23 '19 at 11:40
-
-Gábor DANI
-1,69922 gold badges1515 silver badges3838 bronze badges
-Add a comment
 1 Answer
-
-10
 
 The GRADLE_USER_HOME environment variable isn't set by default. You'll need to explicitly set it, and then copy over the downloaded dependencies in the next stage.
 
@@ -86,22 +71,8 @@ When I run the gradle build command, why does it want to download all the files 
 
 I have tried with RUN gradle clean build --info || return 0 instead of gradle dependencies, all the same.
 
-docker
-gradle
-build
-dependencies
-multistage
-Share
-Improve this question
-Follow
-asked Nov 23 '19 at 11:40
-
-Gábor DANI
-1,69922 gold badges1515 silver badges3838 bronze badges
-Add a comment
 1 Answer
 
-10
 
 The GRADLE_USER_HOME environment variable isn't set by default. You'll need to explicitly set it, and then copy over the downloaded dependencies in the next stage.
 
@@ -141,33 +112,14 @@ FROM openjdk:13
 ENV LANG en_US.UTF-8
 COPY --from=appbuild "/home/gradle/build/libs/frontend.jar" "/frontend.jar"
 CMD ["java", "-jar", "-Dspring.profiles.active=default", "/frontend.jar"]
+
 My aim is to prevent gradle from downloading the dependencies every time I build a docker image.
-
 The command gradle dependencies downloads all the required java libraries in case they are missing.
-
 Before the first gradle dependencies command I only copied the build.gradle in order to only download the dependencies and cache them.
-
 When I run the gradle build command, why does it want to download all the files again? They are already present in one of the layers.
-
 I have tried with RUN gradle clean build --info || return 0 instead of gradle dependencies, all the same.
 
-docker
-gradle
-build
-dependencies
-multistage
-Share
-Improve this question
-Follow
-asked Nov 23 '19 at 11:40
-
-Gábor DANI
-1,69922 gold badges1515 silver badges3838 bronze badges
-Add a comment
 1 Answer
-
-10
-
 The GRADLE_USER_HOME environment variable isn't set by default. You'll need to explicitly set it, and then copy over the downloaded dependencies in the next stage.
 
 FROM gradle:jdk13 AS cache

@@ -5,8 +5,6 @@
 #ENTRYPOINT ["java","-jar","/app.jar"]
 #./gradlew build && java -jar build/libs/gs-spring-boot-docker-0.1.0.jar
 
-
-
 #--------------
 #FROM gradle:jdk13 AS appbuild
 
@@ -25,13 +23,3 @@ RUN mkdir /app
 COPY --from=build "/home/gradle/src/build/libs/*.jar"   "/app/app.jar"
 
 ENTRYPOINT ["java","-jar","/app/app.jar"]
-
-
-
-
-
-
-
-
-
-#./gradlew build && java -jar build/libs/gs-spring-boot-docker-0.1.0.jar

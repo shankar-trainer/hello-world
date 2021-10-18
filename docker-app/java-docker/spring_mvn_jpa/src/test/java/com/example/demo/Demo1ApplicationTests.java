@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 public class Demo1ApplicationTests {
 	@Autowired
 	private MockMvc mockMvc;
-
+/*
 	@Test
 	public void getsAllPerson() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/prd/getAll").accept(MediaType.APPLICATION_JSON))
@@ -46,5 +46,5 @@ public class Demo1ApplicationTests {
 		mockMvc.perform(MockMvcRequestBuilders.post("/prd/addProduct").contentType(MediaType.APPLICATION_JSON)
 				.content(prd).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
 	}
-
+*/
 }

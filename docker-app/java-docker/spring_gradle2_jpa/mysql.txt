@@ -5,11 +5,8 @@ docker pull mysql
   docker start mysql1
  stop by docker stop mysql1 
 
-
 docker ps
 
-
 docker exec -it mysql1  bash
-
 mysql -h localhost -u root -p
 
