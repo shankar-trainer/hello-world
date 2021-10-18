@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="emp1" class="app1.Employee" init-method="empInit"
+		lazy-init="true" autowire="constructor">
+		<constructor-arg name="id" value="2009"></constructor-arg>
+		<constructor-arg name="name" value="a kumar"></constructor-arg>
+		<constructor-arg name="salary" value="45000"></constructor-arg>
+<!-- 		<constructor-arg name="dept" ref="dept1"></constructor-arg> -->
+	</bean>
+	
+	<bean id="dept1" class="app1.Department">
+		<constructor-arg name="dept_id" value="1"></constructor-arg>
+		<constructor-arg name="dept_name" value="training"></constructor-arg>
+	</bean>
+</beans>

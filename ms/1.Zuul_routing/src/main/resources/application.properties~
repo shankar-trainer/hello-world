@@ -1,0 +1,5 @@
+spring.application.name = zuulserver
+zuul.routes.products.path = /api/demo/**
+zuul.routes.products.url = http://localhost:8080/
+server.port = 8111
+timeoutInMilliseconds: 60000

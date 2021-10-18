@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="stud" class="app1.Student" autowire="byType">
+		<property name="roll" value="70000"></property>
+		<property name="name" value="amrendra"></property>
+		<!-- <property name="bday" ref="bday1"></property> -->
+	</bean>
+
+	<bean id="bday1" class="app1.Birthday">
+		<property name="localDate" value="11-09-20000"></property>
+		<property name="location" value="kanyakumari"></property>
+	</bean>
+
+
+
+
+
+
+
+
+</beans>
