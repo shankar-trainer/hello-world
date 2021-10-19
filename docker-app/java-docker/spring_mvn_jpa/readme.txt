@@ -1,3 +1,8 @@
+ip address 
+in application.properties 
+add database url ip from docker from ip address command
+
+
 docker image build -t docker-boot-intro .
 
 docker image history boot-docker-intro command you'll see a breakdown of the various layers in the image
