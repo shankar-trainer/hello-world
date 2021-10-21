@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="student1" class="org.cts.beans.Student">
+		<property name="roll" value="1"></property>
+		<property name="name" value="vimal kumar"></property>
+		<property name="marks" value="67"></property>
+		<property name="addr" ref="address1"></property>
+	</bean>
+
+	<bean id="address1" class="org.cts.beans.Address">
+		<property name="sector" value="1"></property>
+		<property name="city" value="new delhi"></property>
+		<property name="state" value="delhi"></property>
+		<property name="pin" value="110097"></property>
+	</bean>
+	
+	<bean id="student2" class="org.cts.beans.Student">
+		<property name="roll" value="2"></property>
+		<property name="name" value="paranav kumar"></property>
+		<property name="marks" value="88"></property>
+		<property name="addr">
+		
+			<bean id="address1" class="org.cts.beans.Address">
+				<property name="sector" value="2"></property>
+				<property name="city" value="noida"></property>
+				<property name="state" value="UP"></property>
+				<property name="pin" value="7677777"></property>
+			</bean>					  
+    	</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+
+	<bean id="person1" class="org.cts.beans.Person">
+		<constructor-arg name="person_Id" value="1009"></constructor-arg>
+		<constructor-arg name="person_Name"	value="pappu kumar"></constructor-arg>
+		<constructor-arg name="person_Location"	value="chennai"></constructor-arg>
+		<constructor-arg name="phone" ref="phone2"></constructor-arg>
+	</bean>
+
+	<bean id="phone2" class="org.cts.beans.Phone">
+		<constructor-arg name="phone_Type" value="home phone"></constructor-arg>
+		<constructor-arg name="phone_Number" value="6767667890"></constructor-arg>
+	</bean>
+
+</beans>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config></context:annotation-config>
+
+	<bean id="survey1" class="org.cts.model.Survey">
+		<property name="surveyId" value="888787"></property>
+		<property name="surveyName" value="literacy"></property>
+
+	</bean>
+
+	<bean id="surveyAddress" class="org.cts.model.SurveyAddress">
+		<property name="location" value="rameswaram"></property>
+		<property name="state" value="tamil nadu"></property>
+		<property name="country" value="india"></property>
+	</bean>
+
+	<bean id="emp" class="org.cts.model.Employee">
+		<property name="id" value="75577"></property>
+		<property name="name" value="p kumar"></property>
+		<property name="salary" value="90000"></property>
+	</bean>
+
+	<bean id="manager" class="org.cts.model.Manager" parent="emp">
+		<property name="location" value="chennai"></property>
+		<property name="bankName" value="hdfc"></property>
+	</bean>
+	
+	
+	
+	<bean id="user" class="org.cts.model.User">
+			<constructor-arg name="uId" value="676776"> </constructor-arg>
+			<constructor-arg name="name" value="ramendra kumar"> </constructor-arg>
+	</bean>
+	
+	
+	
+	<bean id="dept1" class="org.cts.model.Department">
+	   <constructor-arg name="deptId" value="87878"></constructor-arg>
+	   <constructor-arg name="deptName" value="training"></constructor-arg>
+	   <constructor-arg name="deptLocation" value="chennai"></constructor-arg>
+	</bean>
+	
+	<bean id="dept2" class="org.cts.model.Department">
+	   <constructor-arg name="deptId" value="87877"></constructor-arg>
+	   <constructor-arg name="deptName" value="developnent"></constructor-arg>
+	   <constructor-arg name="deptLocation" value="coimbtore"></constructor-arg>
+	</bean>
+	
+	
+	
+	
+	
+
+</beans>
