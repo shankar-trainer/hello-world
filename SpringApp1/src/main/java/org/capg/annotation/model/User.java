@@ -15,7 +15,7 @@ public class User {
 
 	@PostConstruct
 	public void initialise() {
-	  System.out.println("user initilisation called ");	
+	  System.out.println("user initialisation called ");	
 	  userId=78878;
 	  userName="pavitra";
 	  userSalary=56000;
@@ -24,7 +24,6 @@ public class User {
 	@PreDestroy
 	public void cleanup() {
 		System.out.println("user destroy called ");	
-		
 	}
 	
 	

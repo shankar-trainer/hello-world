@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+	<context:component-scan
+		base-package="org.capg.model,org.capg.dao">
+	</context:component-scan>
+
+	<bean id="user1" class="org.capg.model.User">
+		<constructor-arg name="userId" value="76766" />
+		<constructor-arg name="userName"
+			value="amitendra kumar" />
+		<constructor-arg name="userSalary" value="56000" />
+	</bean>
+
+	<bean id="user2" class="org.capg.model.User" c:userId="1"
+		c:userName="virendra kumar" c:userSalary="67000" />
+
+	<bean class="org.capg.model.AithmeticSpel" id="logical">
+		<property name="and" value="#{200 gt 100 and 10 lt 20}"></property>
+		<property name="or" value="#{200 gt 100 or 10 lt 2}"></property>
+		<property name="not" value="#{!true}"></property>
+		<property name="count" value="#{100}"></property>
+<!-- 		<property name="message" value="#{hello world}"></property> -->
+	</bean>
+
+</beans>
