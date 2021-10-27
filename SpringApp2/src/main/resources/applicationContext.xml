@@ -4,15 +4,44 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:c="http://www.springframework.org/schema/c"
-
 	xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
 
 	<context:annotation-config />
 	<context:component-scan
 		base-package="org.capg.model,org.capg.dao">
 	</context:component-scan>
+
+	<bean id="bank" class="org.capg.model.Bank">
+		<property name="bankRegNo" value="878787987"></property>
+		<property name="bankName" value="hdfc"></property>
+		<property name="bankLocation" value="pune"></property>
+	</bean>
+
+	<bean id="manager1" class="org.capg.model.Manager">
+		<property name="managerId" value="1001"></property>
+		<property name="managerName" value="amit kumar verma"></property>
+	</bean>
+	
+	<bean id="manager2" class="org.capg.model.Manager">
+		<property name="managerId" value="1002"></property>
+		<property name="managerName" value="sumit kumar verma"></property>
+	</bean>
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<bean id="user1" class="org.capg.model.User">
 		<constructor-arg name="userId" value="76766" />
@@ -29,7 +58,26 @@
 		<property name="or" value="#{200 gt 100 or 10 lt 2}"></property>
 		<property name="not" value="#{!true}"></property>
 		<property name="count" value="#{100}"></property>
-<!-- 		<property name="message" value="#{hello world}"></property> -->
+		<!-- <property name="message" value="#{hello world}"></property> -->
 	</bean>
 
+	<bean id="city1" class="org.capg.model.City">
+		<property name="name" value="new delhi"></property>
+		<property name="population" value="1200000"></property>
+		<property name="state" value="delhi"></property>
+		<property name="cityList">
+			<list>
+				<value>delhi</value>
+				<value>chennai</value>
+				<value>kolkotta</value>
+				<value>banglore</value>
+				<value>mumbai</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- <bean id="city2" p:name="chennai" p:population="3400000" p:state="tamil 
+		nadu" p:citylist-ref="citylist1"> <util:list id="citylist1" list-class="java.util.ArrayList"> 
+		<value>aorungabad</value> <value>sholapur</value> <value>pune</value> <value>madurai</value> 
+		<value>hyderabad</value> </util:list> </bean> -->
 </beans>
