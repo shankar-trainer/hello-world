@@ -1,0 +1,61 @@
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+class SortedSetEx1 {
+    static class Student implements Comparable<Student> {
+        private String firstName;
+        private String lastName;
+    
+        public Student(String firstName, String lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+    
+        @Override
+        public int compareTo(Student student) {
+            System.out.println("compared to called");
+            int hash = this.firstName.compareTo(student.firstName);
+            return hash;
+        }
+
+    
+        @Override
+        public boolean equals(Object obj) {
+            System.out.println("equals called");
+            return super.equals(obj);
+        }
+    
+        @Override
+        public String toString() {
+            return firstName + " " + lastName + "\n";
+        }
+        }
+    public static void main(String[] args) {
+        //Set<Student> set = new TreeSet<Student>();
+        Set<Student> set=new HashSet<Student>();
+       // HashSet<Student> set = new HashSet<Student>();
+        set.add(new Student("ram", "kumar"));
+        set.add(new Student("amit", "kumar"));
+        set.add(new Student("mohan", "kumar"));
+        set.add(new Student("ram", "kumar"));
+
+        System.out.println(set);
+        System.out.println(set.size());
+    }
+}
+
+/* treeset compareTo
+compared to called
+[amit kumar
+, mohan kumar
+, ram kumar
+]
+  hash set  equals
+[mohan kumar
+, ram kumar
+, amit kumar
+, ram kumar
+]
+4
+ */
