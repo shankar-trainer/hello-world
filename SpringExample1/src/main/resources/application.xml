@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="passenger1" class="org.capg.model.Passenger">
+		<property name="passengerId" value="7776"></property>
+		<property name="passengerName" value="sangeetha t"></property>
+		<property name="passengerEmail" value="sangeetha_t@gmail.com"></property>
+		<property name="cityList">
+			<list>
+				<value>chennai</value>
+				<value>madurai</value>
+				<value>rameswaram</value>
+				<value>kashi</value>
+				<value>paryag</value>
+			</list>
+		</property>
+		<property name="stateSet">
+			<set>
+				<value>Bihar</value>
+				<value>Uttar Pardesh</value>
+				<value>Tamil Nadu</value>
+				<value>Jharkhand</value>
+				<value>Karnataka</value>
+				<value>Andhra Pardesh</value>
+			</set>
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+
+	<bean id="hello" class="org.capg.model.HelloWorld">
+
+	</bean>
+
+	<bean id="emp1" class="org.capg.model.Employee" scope="prototype">
+		<property name="id" value="7676767" />
+		<property name="name" value="parmod kumar" />
+		<property name="salary" value="67000" />
+	</bean>
+
+	<bean class="org.capg.model.User" id="user1">
+		<constructor-arg name="userId" value="7767676" />
+		<constructor-arg name="userName" value="sumit kumar" />
+		<constructor-arg name="email" value="sumit@hello.com" />
+	</bean>
+
+
+	<bean id="currency1" class="org.capg.model.Currency">
+		<property name="rupees" value="20000"></property>
+		<property name="dollar" value="200"></property>
+	</bean>
+	
+	<bean id="converter1" class="org.capg.model.CurrencyConverterImpl">
+	</bean>
+	
+	
+</beans>
