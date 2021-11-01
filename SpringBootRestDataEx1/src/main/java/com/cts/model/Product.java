@@ -1,15 +1,18 @@
 package com.cts.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Product {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
-	private String cost;
+	private float cost;
 	
 	public int getId() {
 		return id;
@@ -27,10 +30,10 @@ public class Product {
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", cost=" + cost + "]";
 	}
-	public String getCost() {
+	public float getCost() {
 		return cost;
 	}
-	public void setCost(String cost) {
+	public void setCost(float cost) {
 		this.cost = cost;
 	}
 	
