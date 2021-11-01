@@ -1,6 +1,8 @@
 package org.capg.model;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 public class Passenger {
@@ -11,6 +13,22 @@ public class Passenger {
 	private String passengerEmail;
 	private List<String> cityList;
 	private Set<String> stateSet;
+	private Map<String,String> countrycapital;
+	private Properties cityTicket;
+	
+	public Map<String, String> getCountrycapital() {
+		return countrycapital;
+	}
+	public void setCountrycapital(Map<String, String> countrycapital) {
+		this.countrycapital = countrycapital;
+	}
+	public Properties getCityTicket() {
+		return cityTicket;
+	}
+	public void setCityTicket(Properties cityTicket) {
+		this.cityTicket = cityTicket;
+	}
+	
 	
 	
 	public int getPassengerId() {

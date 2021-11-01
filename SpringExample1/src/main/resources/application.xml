@@ -4,6 +4,26 @@
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="book1" class="org.capg.model.Book" init-method="init" destroy-method="cleanup"  
+	lazy-init="true">
+		<property name="isbn" value="677676767"></property>
+		<property name="bname" value="spring in action"></property>
+		<property name="cost" value="2000"></property>
+	</bean>
+
+	<bean id="person1" class="org.capg.model.Person"
+		autowire="constructor">
+		<constructor-arg name="personId" value="676776" />
+		<constructor-arg name="personName" value="smitha d" />
+		<!-- <constructor-arg name="bday" ref="birthday" /> -->
+	</bean>
+
+	<bean id="birthday" class="org.capg.model.PersonBirthday">
+		<constructor-arg name="day" value="23" />
+		<constructor-arg name="month" value="12" />
+		<constructor-arg name="year" value="1999" />
+	</bean>
+
 	<bean id="passenger1" class="org.capg.model.Passenger">
 		<property name="passengerId" value="7776"></property>
 		<property name="passengerName" value="sangeetha t"></property>
@@ -27,6 +47,26 @@
 				<value>Andhra Pardesh</value>
 			</set>
 		</property>
+
+		<property name="countrycapital">
+			<map>
+				<entry key="india" value="new delhi" />
+				<entry key="srilanka" value="cylone" />
+				<entry key="nepal" value="kathmandu" />
+				<entry key="china" value="sanghai" />
+				<entry key="japan" value="tokyo" />
+			</map>
+		</property>
+		<property name="cityTicket">
+			<props>
+				<prop key="delhi">1500</prop>
+				<prop key="banaras">1200</prop>
+				<prop key="chennai">1700</prop>
+				<prop key="banglore">1800</prop>
+				<prop key="mumbai">2000</prop>
+			</props>
+		</property>
+
 	</bean>
 
 </beans>

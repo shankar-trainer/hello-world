@@ -15,6 +15,7 @@
 		<property name="name" value="parmod kumar" />
 		<property name="salary" value="67000" />
 	</bean>
+	
 
 	<bean class="org.capg.model.User" id="user1">
 		<constructor-arg name="userId" value="7767676" />

@@ -20,6 +20,10 @@ public class PassengerMain {
 		  System.out.println("state list ");
 		  System.out.println(bean.getStateSet());
 		  
-
+		  System.out.println("country capital");
+		  System.out.println(bean.getCountrycapital());
+		  
+		  System.out.println("city ticket ");
+		  System.out.println(bean.getCityTicket());
 	}
 }
