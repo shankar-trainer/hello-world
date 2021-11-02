@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="placeHolderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="user.properties"></property>
+	</bean>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="message"></property>
+	</bean>
+
+
+	<bean id="user1" class="org.capg.model.User">
+		<property name="id" value="1001"></property>
+		<property name="name" value="aswin kumar"></property>
+	</bean>
+
+	<bean id="user2" class="org.capg.model.User">
+		<property name="id" value="${user.id}"></property>
+		<property name="name" value="${user.name}"></property>
+	</bean>
+
+
+
+	<bean id="prd1" class="org.capg.model.Product">
+		<property name="id" value="1001"></property>
+		<property name="name" value="pizza"></property>
+		<property name="cost" value="300"></property>
+	</bean>
+
+	<bean id="prd2" class="org.capg.model.Product">
+		<property name="id" value="1002"></property>
+		<property name="name" value="burger"></property>
+		<property name="cost" value="150"></property>
+	</bean>
+
+	<bean id="prd3" class="org.capg.model.Product">
+		<property name="id" value="1003"></property>
+		<property name="name" value="chilli potato"></property>
+		<property name="cost" value="80"></property>
+	</bean>
+
+	<bean id="dao1" class="org.capg.dao.ProductDao">
+	</bean>
+
+	<bean id="service" class="org.capg.service.ProductService">
+		<property name="dao" ref="dao1"></property>
+	</bean>
+
+
+</beans>
