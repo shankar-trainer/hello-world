@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
+
+	<context:annotation-config />
+
+	<context:component-scan
+		base-package="org.capg.model, org.capg.dao">
+	</context:component-scan>
+
+	<bean id="spel1" class="org.capg.model.SpelExample">
+		<property name="count" value="#{5}"></property>
+		<property name="addition" value="#{5+10}"></property>
+
+		<property name="gt" value="#{50 gt 20}"></property>
+		<property name="lt" value="#{5 lt 10}"></property>
+		<property name="multiplier" value="#{T(java.lang.Math).PI}"></property>
+
+	</bean>
+</beans>

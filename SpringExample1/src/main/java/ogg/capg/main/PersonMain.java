@@ -9,7 +9,7 @@ public class PersonMain {
 	public static void main(String[] args) {
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("application.xml");
 		
-		Person bean = ctx.getBean("person1",Person.class);
+		Person bean = ctx.getBean("person2",Person.class);
 		
 		System.out.println(bean);
 	}

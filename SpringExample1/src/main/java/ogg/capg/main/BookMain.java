@@ -11,7 +11,7 @@ public class BookMain {
 		// ClassPathXmlApplicationContext("application.xml");
 		ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("application.xml");
 
-		Book bean = ctx.getBean("book1", Book.class);
+		Book bean = ctx.getBean("book2", Book.class);
 		System.out.println(bean.getIsbn());
 		System.out.println(bean.getBname());
 		System.out.println(bean.getCost());

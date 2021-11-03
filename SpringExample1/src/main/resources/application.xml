@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="book1" class="org.capg.model.Book" init-method="init" destroy-method="cleanup"  
-	lazy-init="true">
+	<bean id="book1" class="org.capg.model.Book" init-method="init"
+		destroy-method="cleanup" lazy-init="true">
 		<property name="isbn" value="677676767"></property>
 		<property name="bname" value="spring in action"></property>
 		<property name="cost" value="2000"></property>
+	</bean>
+
+	<bean id="book2" class="org.capg.model.Book" p:isbn="87878"
+		p:bname="java beginner" p:cost="789">
+	</bean>
+
+	<bean id="person2" class="org.capg.model.Person"
+		autowire="constructor" c:personId="6565665" c:personName="amit kumar">
 	</bean>
 
 	<bean id="person1" class="org.capg.model.Person"
