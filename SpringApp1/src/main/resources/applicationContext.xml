@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+	<context:component-scan
+		base-package="org.capg.annotation.model">
+	</context:component-scan>
+	
+
+	<bean id="st1" class="org.capg.annotation.model.Student">
+		<property name="roll" value="10010"></property>
+		<property name="name" value="rama swami"></property>
+		<property name="subject" value="math"></property>
+	</bean>
+
+	<bean id="st2" class="org.capg.annotation.model.Student"
+		p:name="muthu swami" p:roll="989889" p:subject="science">
+	</bean>
+
+
+</beans>
