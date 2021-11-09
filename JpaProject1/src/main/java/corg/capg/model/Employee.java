@@ -5,10 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "emp1")
+@NamedQuery(name = "getAllEmp", query = "select e from Employee e ")
+@NamedQuery(name = "getAllEmp1", query = "select e from Employee e where e.id>1000")
 public class Employee {
 
 	@Id
@@ -56,4 +59,10 @@ public class Employee {
 		this.salary = salary;
 	}
 
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", location=" + location + "]";
+	}
+
+	
 }
