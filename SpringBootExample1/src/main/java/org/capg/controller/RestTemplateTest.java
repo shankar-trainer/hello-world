@@ -27,5 +27,7 @@ public class RestTemplateTest {
 			System.out.println("added");
 			System.out.println(p2.getId() + "  " + p2.getPrdName() + "  " + p2.getPrdCost());
 		}
+		
+		restTemplate.delete("http://localhost:9090/product/remove/1002");
 	}
 }
