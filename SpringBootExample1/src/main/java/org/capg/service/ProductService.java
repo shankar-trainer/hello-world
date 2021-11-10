@@ -40,7 +40,15 @@ public class ProductService {
 		Optional<Product> findById = dao.findById(id);
 		if (findById.isPresent())
 			return findById.get();
-
+		return null;
+	}
+	
+	public Product updateProduct(Product p) {
+		Optional<Product> findById = dao.findById(p.getId());
+		if (findById.isPresent()) {
+			return dao.save(p);
+		}
+		
 		return null;
 	}
 
