@@ -1,0 +1,142 @@
+jdk1.8  
+
+
+
+
+low level language 
+  -- structure oriented language 
+     function 
+	 variables 
+	 
+	 
+	 
+	 
+	 java 
+	     -- consists of  
+		          --> compiler  
+				  --> interpretter(jvm)
+
+             makes platform independent
+
+			 jvm    -- java virtual machine 
+			 
+			c++, python -- oop or structure programming 
+       
+java -- 
+     everything is class 
+     inherited syntax from c, c++
+
+
+
+    javac -- hello.java --- hello.class 
+    java  -- hello ----------  output 
+
+    .class -- having byte code 
+          byte code --secret of java 
+		  
+		  
+		  jre -- java runtime environment -- only interpretter
+		  jdk -- java development kit --- compiler+interpretter
+		  
+		  
+		  eclipse 
+		  
+			   
+			   java -- 
+			     primitive data types 
+				   
+				   int 
+				   
+				   float  |   decimal  
+				   double |
+			   
+			       char 
+				   
+				   boolean 
+	
+                  +  -- 2 ways 	
+		  1. arithmatic addition
+		  
+		  int z=x+y;  -- arithmatic addition 
+		  
+		  2. String concatenation
+		  	System.out.println("no1 is "+x);
+	
+	  "no1 is "+x  -- x is concatenated to string 
+	  any variable can be concatenated  to string 
+		
+		
+		
+		run application
+		
+		ctrl+ F11 
+		
+		
+    shortcut 
+			   main  --- ctrl +space 
+		       sysout  	--- ctrl +space   
+				
+				
+				decimal 
+				    float 
+					double  -- default  
+				
+			 
+			 if  else if  .. else 
+
+			 
+			 assignment operator 
+			   =
+			   
+			  comparison operator 
+              ==
+              !=
+              >
+			  <
+			  >=
+			  <=
+			  
+			  
+			   modulus operator 
+			   
+			   % -- remainde after division 
+			   
+			   division operator 
+			   
+			   / -- return quotient 
+			   
+			   AND operator
+			      all the conditions must be true 
+				  
+			   Or  Operator
+			     at least one condition should be true 
+				 
+				 
+				 AND 
+				   cond1     cond2       Result 
+				    true      true       true 
+				    true      false      false 
+				    false      true      false 
+				    false      false     false 
+
+			   Or  Operator
+  				   cond1     cond2       Result 
+				    true      true       true 
+				    true      false      true 
+				    false      true      true 
+				    false      false     false
+					
+					
+			   
+			   grade 
+			      -- 
+				      75-100 --distionction 
+					  60 -74  first
+					  50 -59  second
+					  35 -49-- third
+			        <=0 
+					 fail 
+			 
+			 
+			 
+			 
