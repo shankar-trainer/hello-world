@@ -182,12 +182,103 @@ java --
    short ----------->java.lang.Short
    int ------------->java.lang.Integer 
    long------------>  java.lang.Long
+
+
+   every int value is by default int(Integer)
+   every decimal value is by default double 
+       
+	   0 -- 255  -- ascii code
+	   
+	   
+	   
+	   increment 
+	      a=a+1;
+		  a+=1;
+		  
+		  a=a+2;
+		  a+=2;
+		  
+		  
+		  2 types 
+		    pre increment
+			post increment
+			
+	   
+	   post increment
+	     a=a+1;
+		 a+=1;
+		 a++;
+		 
+	   
+	   
+	   Loop   
+	   
+	     loop is iterative statement which follows conditions
+
+        3 types of loop 
+       1. while loop 
+           pre tested loop 
+           		   
+	   
+	       counter variable 
+		     
+			 while(counter){
+			   body 
+			   
+			 }
+	   
+	   
+	   factorial program 
+	   5 --  5*4*3*2*1
+	          1*2*3*4*5 
+			  
+			  
+Q1 take a number from user and tell if it is prime no
+
+Q2. Display all prime no between 1 -100 using method
+
+Q3. take two  number from user and  display the power of one over other.
+            
+			3
+   2,3  - 2 
    
+            5
+   4,5  - 4
+			 
+			  
+			  prime no 
+			     -- no which is divisble by 1 and itself 
+			
+   Q.Take a numebr from user. display  sum of the digits of the given no 			
+    
+	1234
+	 %
+	 /
+
+
+ Q.Take a numebr from user. Then display all number in words 
+
+  4523
+  
+  Four Five two three.
+   
+  
+  while , for loop 
+     
+	   -- odd loop 
+	   -- no counter variable 
+	   -- some sentinel/odd variable 
+	   
 						 
 					
 				 
 				 
-				 
+	for loop 
+      1.top tested loop 
+      2.easiest loop 
+      3.declaration, condition check, variable decrement/increment at one location 
+ 	  
+
 				 
 			 
 			 
