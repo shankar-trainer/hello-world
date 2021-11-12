@@ -139,4 +139,46 @@ java --
 			 
 			 
 			 
+			 variable declaration 
+			     -- inside method or main method 
+				 -- local variable 
+				 -- if using it must be initialised
+				 -- if not initialised compiler will give the error 
+				 -- local variable has no default values 
+				 
+				 
+				 variable -- entity whose values can vary 
+				 
+				 constant -- its value cannot be changed 
+				 
+				 
+				 java.lang -- package
+				    default package for jdk 
+					no need to import 
+					by default it is present to every program 
+					
+					
+					User Input 
+					  -- Scanner  -- present in java.util 
+					  
+					      scan the token
+					  
+					  nextLine()  --- read lien with multiple words 
+					  
+					  
+					  
+					
+					
+					Q1. Take distance from user in meter and centimeter 
+					     Convert to  feet  inch and kilometer
+						 
+						 
+						 
+					
+				 
+				 
+				 
+				 
+			 
+			 
 			 
