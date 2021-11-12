@@ -169,10 +169,20 @@ java --
 					  
 					
 					
+					
 					Q1. Take distance from user in meter and centimeter 
 					     Convert to  feet  inch and kilometer
 						 
-						 
+						
+    int data type 						
+					
+    primitive data    reference data type 
+	
+   byte  ----------->java.lang.Byte  
+   short ----------->java.lang.Short
+   int ------------->java.lang.Integer 
+   long------------>  java.lang.Long
+   
 						 
 					
 				 
