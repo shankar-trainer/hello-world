@@ -278,8 +278,150 @@ Q3. take two  number from user and  display the power of one over other.
       2.easiest loop 
       3.declaration, condition check, variable decrement/increment at one location 
  	  
+	  
+	  inner loop
+	  
+	    inside one loop we can have other loop 
+		
+		  table of 1 to 5 
+		  
+		  -----------------------  outer loop print row 
+		  ----------------------  inner loop give next line 
+		  
+		  
+		  *
+		  *  *
+		  *   *   * 
+		  *   *   *  *
+		  
+		  
+		  do {
+		  
+		  }
+		  while(condition)
 
-				 
+          post tested 
+             condition is checked at the last 		  
+		  
+		  n1=0
+		  n2=1;
+		  
+		  0,1,1,2,3,5
+		  
+		  
+		  palindrome program 
+		  
+		  121
+		  1221
+		  125521
+		  12321
+		  
+		  123
+		  
+		  
+
+  x=125521/10
+  x=12552;
+  1255
+  125
+  12
+  1
+
+
+leap year 
+
+   divided by 4 i.e 2012, 2016
+   not divided by 100 i.e. 2100,2200
+   not divided by 400 i.e 2000,2400    
 			 
 			 
 			 
+			 
+			 while{
+			   break;  --  come out 
+			   continue;  contintue current step 
+			 }
+			 
+			 
+			 
+			 Object -- any entity having state and behaviour 
+			         Employee 
+					    {
+						  id
+						  name
+						  salary 
+						  work(){
+						  }
+						}
+				     --is a real time entity 
+                     -- instance of class 
+
+              Class -- group of objects 
+                        
+                     Employee,
+                     Student 
+                                   {
+								     roll,
+									 name
+									 subject 
+									 study()
+									 exam()
+									}					 
+                     Laptop 
+                     Apartment
+                     Customer
+                     Movie 					 
+              
+Object -- instance of class 
+           each object is having one copy of attribut and behaviour
+		   
+		   
+		   class  Student 
+                                   {
+								     roll,
+									 name
+									 subject 
+									 study()
+									 exam()
+									}
+									
+		Object				student1 
+                            roll=10001;
+                            name="pavitra"
+                            subject="tamil"
+                               study()							
+                                exam()
+		Object				student2 
+                            roll=10002;
+                            name="shayam"
+                            subject="telugu"
+                               study()							
+                                exam()
+							
+      attribute -- > variable 
+      behaviour --> method 
+
+
+   private members are acceessible inside the class only 
+   outside the class public, default, protected 
+   
+
+   java 
+     attribute should be private in nature 
+     
+     each attribute will be used by other class using its public method 
+     
+     for each attribute will declare getter/setter method 
+      
+
+casule --- data
+
+  Encapsulation 
+     -- data/state should be private in nature 
+	 casule --- data+code  (bind data with code/method)
+	    data -- attribute
+		code-- method 
+		
+		
+       
+						

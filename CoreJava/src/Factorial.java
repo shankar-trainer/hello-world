@@ -7,7 +7,7 @@ public class Factorial {
 			 fact=fact*counter++;
 			 //counter++;
 		 }
-		 System.out.println("factoial1 is "+fact);
+		 System.out.println("factorial is "+fact);
 	}
 	
 	static void method2(int n) {
