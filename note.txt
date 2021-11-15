@@ -420,8 +420,28 @@ casule --- data
      -- data/state should be private in nature 
 	 casule --- data+code  (bind data with code/method)
 	    data -- attribute
-		code-- method 
+		code-- method
+
+
+    Student student1=new Student();
+    one reference variable 
+	one object 
+	
+	student1  -- is a reference variable.
+    
+             it contains reference/address of the object 
+				 
+				 
 		
+		constructor 
+		     - must have same name as of class 
+			 - must not return any value 
+			 - it can be private, protected, public and default
+			 - default constructor added by compiler if there is  no constructor
+			 
+			it is of two types 
+                 1. default constructor 
+                 2. overloaded 				 
 		
        
 						
