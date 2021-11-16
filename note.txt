@@ -590,6 +590,13 @@ casule --- data
 	  .equals -- check the content
 	  
 	  
+	  String -- takes less memory due to immutablity and string pool
+	  
+	  StringBuffer 
+	            -- frequent changes 
+				-- mutable 
+				-- its not string literal 
+	  
 				 
 							  
 				
