@@ -442,6 +442,156 @@ casule --- data
 			it is of two types 
                  1. default constructor 
                  2. overloaded 				 
+		     1. default constructor -- same value for all objects 
+			 
+			 2. overloaded constructor --
+			        it will initialise each object with differrent values
+					
+	-->class can have one default constructor and multiple overloaded constructor
+    --> if a class has no constructor then a default constructor is added 
+    --> if a class has overloaded constructor then no  default constructor is added 
+	
+	
+
+    static --
+	
+       -- common attributes	
+	   --  single copy is shared among all objects 
+	   -- all objects are having same copy , no differrent copy os static member 
+	   
+	   static block 
+	       -- initialise static member
+	
+       static variable 
+       static method 
+       static block 
+
+       static variable and method can be called by the class name 
+       no need of object 
 		
-       
+	   non static method or instance method
+       static method or class method 
+
+      inside instance method can use static and non static both directly 
+      inside static method can use static directly, for instance you require object  
+   	  
+	   	   
+		   static member are created before the creation of object 
+		   
+		   
+		   
+		   static import 
+		       import static members and use it directly without class name
+	   
+		
+		
+		
+		array 
+		  1d array 
+		  2d array 
+		  
+		  
+		  stack
+			      top -- add , remove 
+				  LIFO  -Last In First Out 
+			   -------6
+			   -------5
+			   -------4
+			   -------3
+			   -------2
+			   -------1
+			   
+		 Queue 
+		   
+		   1---->2--->3---->4th
+		   
+		remove at first position
+		add at last position
+           First In First Out(FIFO) 
 						
+						
+						
+		Composition 
+		    -> A class composed of ne or more class 
+            -> has a relationship
+			
+		    -> Product has order 
+			-> Product has confirmation
+			-> Product has delievery
+			-> Product has ProductService
+		   
+		   
+     public class Product {
+
+			private int productId;
+			private float productCost;
+			private int productQuantity;
+			
+			private Order order;
+		  }
+		  
+		  public class Order {
+
+				private int orderId;
+				private String  orderLocation;
+				private int  orderNumber;
+			}
+		
+    Sales -- Order 
+    Employee -- department 
+    
+  	one to one relationship  student has address
+  	one to many  relationship -- department has multiple employee
+	many to many relationship -- multiple courses has multiple students 
+	
+	
+	
+	literal 
+	    is the values assigned to the variable 
+		
+		int x=899;
+		
+		""-- string literal 
+		     string literal is the object 
+			""
+            "abc"
+            "hello"   are string objects 
+      
+	  String is immutable sequence of characters of fixed length 
+	   
+	   "hello"-- fixed length 
+	   immutable  -- it cannot  be modified 
+
+	   
+	  			
+				
+				String s1=null;
+				String s2="cognizant";
+				
+				
+				
+				String pool   -- 
+				             
+							 
+		String s1="cat";   all will refer the same object in string pool		 
+		String s2="cat";		 
+		String s3="cat";		 
+		String s4="cat";		 
+		String s5="cat";		 
+		String s6="cat";		 
+		
+		String s7="dog";  create a new object in string pool 
+ 
+  		String s6=new String("cat");	
+		
+        create a new object in outside the string pool
+    
+	  == --> it checks references 
+	  .equals -- check the content
+	  
+	  
+				 
+							  
+				
+				
+				
