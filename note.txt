@@ -598,7 +598,172 @@ casule --- data
 				-- its not string literal 
 	  
 				 
-							  
+				
+   int ----------------------> Integer 
+   float---------------------->Float 
+
+
+
+
+   Boxing --->  
+       primitive ------------->wrapper class 
+	   
+	   
+	   Number 
+	    |1.Integer
+        |2.Float 
+        |3.Double 
+        |4.Long  
+        |5.Short 
+
+
+    Number
+       parseXXX(String)--static method String to primitive data type 
+       
+      Integer.parseInt(String) -- String to primitive int	   	   
+      Float.parseFloat(String) -- String to primitive float	   
+      Double.parseDouble(String)--String to primitive double 	   
+      Long.parseLong(String)	   
+	  
+	  parseXXX   throws NumberFormatException
+	  
+	  toString() -- convert Wrapper class to String 
+	  
+	  valueOf() -static method convert primitive,String to Wrapper class 
+	  
+	  
+	  
+	  jdk4 -- 
+	       boxing  and unboxing 
+		   
+		   java5 autoboxing 
+		   
+		   autoboxing= boxing+unboxing 
+		   
+		   
+	  
+	   
+       		
+			OOP 
+			 1.Encapsulation
+			 2.Inheritance
+			 
+			   Inheritance 
+			       -- inherit feature from parent class to child class
+				   -- code reusability 
+				   
+				   
+				   parent/base/super
+				   
+				   child/derieved/subclass
+			   
+	              IS A relationship
+				    
+					Animal 
+					   |
+					   Dog 
+					   Cat
+					   Bird 
+					   
+					   Dog is a animal 
+					   
+					   super class can have unlimited no of subclasses 
+                       
+
+                       except private 
+                               public, default, static, protected are inherited
+							   
+					   
+					   
+					   Multiple Inheritance
+					   
+					   Single Inheritance
+					   
+					   Parent 
+					      |
+						   Child 
+     		
+			
+	           	    Father    Mother  
+					     \     /
+						   Child 
+     		
+	        
+
+     Constructor Inheritance/ Constructor Chaining 
+     
+       Overloaded Constructor
+        1. if no constructor present, a default constructor is added 
+        2. if there are overloaded constructor , no default constructor is 
+            added 
+        3. in default, overloaded constructor a super() is added
+
+
+
+     super -- call super class variables, methods
+     super() -- call super class default constructor	  
+     super(parameter) -- call super class overloaded constructor	  
+	
+	
+	this -- call current class variables, methods
+    this() -- call current class constructor	  
+    this(parameter) -- call current class overloaded constructor	  
 				
 				
 				
+				accessibility 
+				    public      |
+					protected   |
+					default     |
+					private     |
+					            v
+					
+					in overriding 
+					    -- we cannot reduce the accessibility 
+					
+				
+				Polymorphism 
+				
+				One entity in multiple forms 
+				    
+					Water --
+					       ice 
+						   gas 
+						   liquid 
+						   
+				  Person 
+                         -- teacher 
+                         -- passenger 
+                         -- patient 
+                         -- father 
+						 
+						 2 ways 
+						   1. overloading
+						   2. overriding 
+						   
+						 
+						 
+						 Final 
+						   1.variable as constant
+						   2.fianl method 
+						   3.final class  
+						   
+						   
+				1.   final variable -- constant
+						      must be initialised
+							    a) inline or 
+								b) constructor
+								
+								in constructor case 
+								 it is Eclipse gives blankfinal error 
+								
+						we cannot create setter for final variable
+								
+				2. final method
+				    it cannot be overriden in subclass
+				3. final class 
+                    it cannot be inherited
+					its method cannot be overriden
+					
+					   
+								
