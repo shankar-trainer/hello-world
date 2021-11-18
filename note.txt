@@ -765,5 +765,120 @@ casule --- data
                     it cannot be inherited
 					its method cannot be overriden
 					
-					   
+Package 
+    -- directory or folder to keep java files having classes, interfaces
+	-- it avoids name confliction, access permission 
+	
+	
+	jar -- collection  of classes 
+           java archieve file 
+		   
+		   
+		   System defined package
+		      java.lang - 
+			  java.sql  
+			  java.net 
+			  java.awt   
+			  
+			  
+			  
+			  
+			  if two file are present at the same package 
+			  don't need to import 
+			  
+			  
+			  
+			                 package
+			   java beans -- model 
+			    
+			    Exception  -- error
+				
+				           --  main
+						   --  sql, database 
+				
+			  
+			  
+			  if two files are present in same package no need to import 
+			  class, attribute can be default 
+			  
+			  
+			  Outside the package 
+                 --> class has to imported 
+                 --> default class cannot be imported 
+                 --> public class can ne imported in other class in other package 
+
+                 --> after import ,attribute, method  can be used by the object if it is public in nature  				 
+			  
+			  
+			    subclass
+			  
+			    --> inside same package , public class  can be extended
+			    --> inside  same package, public, protected attributes, methods   can be extended
+				
+				--> outside package  public class  can be extended
+			    --> outside package  public, protected attributes and methods   can be extended
+				
+				
+				-- Error 
+				    
+					Car -- fuel indicator 
+					Mobile --battery indicator 
+					
+					
+					
+					
+					Number
+					/    \
+				  Float  Integer 
+				  
+				  
+				  in java 
+				    data type is checked at 2 times
+					  1.compile time 
+					  2.run time 
+					  
+					   it is impossible to use incompatible type
+ 
+				
+
+
+   throw the ball--------------->catch it -------------->				
+   throw the ball--------------->---not caught-----------> break the window glass
+
+     
+
+    disp(){
+	   java -- throw Exception 
+	    make object of Exception
+		 throw it 
+	}	 
+	
+	
+	main(){
+	  catch the exception
+	  if not caught ---------------> jvm -- will give error message 
+	}
+	
+	
+	
+player1 -->	ball  -->  caught by player2
+
+player1 -->	ball  -->  not caught by player2------> player3 
+				
+				
+	
+
+one try one catch 
+one try  multiple catch 
+multiple try - multiple catch 
+
+
+  throw 
+       --- make new Exception instance anf then throw it 
+  throws
+         -- declare and handle the exception in the method 
+		 
+    
+		   
+			   
 								
