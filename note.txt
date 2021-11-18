@@ -877,7 +877,11 @@ multiple try - multiple catch
        --- make new Exception instance anf then throw it 
   throws
          -- declare and handle the exception in the method 
-		 
+
+
+
+   player1 ---- ball ---- caught by  player3----  ---->player2		 
+   player1 ---- ball ---- caught by  player3----rethrow  ---->player2		 
     
 		   
 			   
