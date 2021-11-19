@@ -885,6 +885,16 @@ multiple try - multiple catch
 
  player1 ---- ball ---- caught by  player3----rethrow  ---->player2		 
     
-		   
+
+
+var arguments 
+     -- variable number of arguments 
+     -- array, multiple arguments
+     -- denoted by three dots 
+    
+     -- in method it must be the last argument
+     --	in a single method there can be only one var argument
+
+	 
 			   
 								
