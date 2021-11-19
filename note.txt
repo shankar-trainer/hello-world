@@ -881,7 +881,9 @@ multiple try - multiple catch
 
 
    player1 ---- ball ---- caught by  player3----  ---->player2		 
-   player1 ---- ball ---- caught by  player3----rethrow  ---->player2		 
+ 
+
+ player1 ---- ball ---- caught by  player3----rethrow  ---->player2		 
     
 		   
 			   
