@@ -12,7 +12,9 @@ public class VarArgProgram {
       System.out.println("sum is "+sum);
 	}
 
-	public static void main(String[] args) {
+	//public static void main(String[] args) 
+	public static void main(String... args) 
+	{
 		display(11, 12, 1);
 		display(11, 12, 1, 2);
 		display(11, 12, 1, 2, 3);
