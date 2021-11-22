@@ -11,7 +11,8 @@ public class  Test1 {
         String sql = "select * from employee";
         Connection connection;
         try {
-            connection = DriverManager.getConnection(url, username, password);
+        	DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+        	connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             System.out.println(statement.execute(sql));
             connection.close();

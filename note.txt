@@ -897,4 +897,74 @@ var arguments
 
 	 
 			   
+			   abstract cass
+				
+    ->can have normal method and abstract method
+    ->abstract method don't have body 
+    ->abstract method can be declared inside abstract class  and interfaces
+    ->abstract class cannot be instanciated 
+	->can have constructor
+	->it can have instance, static variable 
+	
+	
+	  interface
+	  
+	    --> multiple inheritance 
+		--> one class can extends one class but can implement multiple interfaces
+		--> one interface can extends multiple interfaces
+		--> all variables are by default public static and final 
+		--> all methods are by default public and abstract 
+		
+		--> is 100% abstract class 
+		
+		--> no constructor
+		
+		
+		
+		abstract class 
+		
+		      instance and class variable 
+	          constructor allowed 
+	          abstract and non abstract methods 
+	   
+         interface 	   
+			    only class variable(public static final)
+				no constructor is allowed
+				only abstract method is allow
+		
+		
+		
+		
+		array 
+		--> fixed data type
+        --> size is fixed 
+
+        int ar[]=new ar[10];
+		
+     
+     Collection 
+           -- auto growable 
+           -- algoritham is implemented 
+		   
+		  
+		
+		
+		
+		
+		
+		
+		Mother  Father
+		\     /
+		child
+	
+	 
+  	
+   
+
+      	
+			    
+								
+								
+								
+								
 								
