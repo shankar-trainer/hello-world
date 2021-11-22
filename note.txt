@@ -968,10 +968,36 @@ var arguments
 			  -- all database operation
 			  
 		
+		    List 
+			     --subclasses 
+				    Vector 
+					ArrayList 
+					LinkedList 
+					
+				
+			    allows duplicate
+				ordered
+				index support 
 		
 		
-		
-	 
+	       Set 
+		        HashSet
+		        LinkedHashSet
+				TreeSet 
+				
+				no duplicate
+				ordered 
+				no index support 
+				
+			Map 
+                   key, value 	
+                  
+                    Entity  -- key , value 
+					
+					no duplicate key 
+					
+					
+				
   	
    
 
