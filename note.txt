@@ -932,7 +932,10 @@ var arguments
 				no constructor is allowed
 				only abstract method is allow
 		
-		
+		Mother  Father
+		\     /
+		child
+	
 		
 		
 		array 
@@ -947,16 +950,27 @@ var arguments
            -- algoritham is implemented 
 		   
 		  
+	  Collection(interface) 
+	    |
+		 List(interface) 
+		   | 
+		   Vector 
+		   ArrayList
+		   LinkedList
+	  
 		
 		
 		
 		
+		DAO -- Data Access Object 
+		
+		      --separatae layer/class 
+			  -- all database operation
+			  
 		
 		
-		Mother  Father
-		\     /
-		child
-	
+		
+		
 	 
   	
    
