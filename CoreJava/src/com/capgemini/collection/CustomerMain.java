@@ -44,19 +44,20 @@ public class CustomerMain {
 		}
 
 		Arrays.sort(customer, new CustomerSortById());
-		System.out.println("sorted by id ");
+		
+		System.out.println("\nsorted by id ");
 		for (Customer c : customer) {
 			System.out.println(c.getId() + "  " + c.getName() + "  " + c.getSalary());
 		}
 
 		Arrays.sort(customer, new CustomerSortByName());
-		System.out.println("sorted by name ");
+		System.out.println("\nsorted by name ");
 		for (Customer c : customer) {
 			System.out.println(c.getId() + "  " + c.getName() + "  " + c.getSalary());
 		}
 
 		Arrays.sort(customer, new CustomerSortBySalary());
-		System.out.println("sorted by salary ");
+		System.out.println("\nsorted by salary ");
 		for (Customer c : customer) {
 			System.out.println(c.getId() + "  " + c.getName() + "  " + c.getSalary());
 		}

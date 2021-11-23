@@ -5,6 +5,7 @@ public class Customer {
 	private int id;
 	private String name;
 	private float salary;
+	
 	public int getId() {
 		return id;
 	}
