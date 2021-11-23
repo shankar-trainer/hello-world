@@ -996,7 +996,38 @@ var arguments
 					
 					no duplicate key 
 					
-					
+              put(key,value)
+			  get(key)
+			  
+			  keySet() -- all keys in the set form 
+			  values()-- all values Collection 
+			  
+			  
+			  EntrySet -- single entry in the map having key, value
+			  
+			  
+			  Collection -- interface 
+			  
+			  Collections-- utility class 
+			  
+			  
+			  All classes like Integer String Float havae implemented sorting 
+			  
+			  Arrays.sort(elements)
+			  Collctions.sort(elements)
+			  
+			  
+			  Arrays.sort(ar) -- ar is array of integer
+			  Collctions.sort(list) -- list is list of integer
+                    Integer-- comparable 			  
+			  
+			  Arrays.sort(empList) list of employee
+			    Error   Employee has not implemented Comparabale 
+				
+			  
+			  
+
+                  					
 				
   	
    

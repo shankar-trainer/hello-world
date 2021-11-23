@@ -1,7 +1,9 @@
 package com.capgemini.collection;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class MapProgram {
@@ -26,5 +28,15 @@ public class MapProgram {
 			System.out.println(integer+"  "+emp_map.get(integer));	
 		}
 	
+		Collection<String> values = emp_map.values();
+		System.out.println(values);
+		
+	     
+		Set<Entry<Integer, String>> entrySet = emp_map.entrySet();
+		
+		for (Entry<Integer, String> entry : entrySet) {
+			System.out.println(entry.getKey()+"  "+entry.getValue());
+		}
+		
 	}
 }
