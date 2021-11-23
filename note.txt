@@ -1024,6 +1024,18 @@ var arguments
 			  Arrays.sort(empList) list of employee
 			    Error   Employee has not implemented Comparabale 
 				
+				
+		
+      class myclass1 extends Thread 
+      class myclass1 extends Applet   implemens Runnable 
+  
+     kid1 --- got pen  -- wants to book
+     kid2 -- got book  -- wants the book 
+ 	 
+
+
+	  
+				
 			  
 			  
 
