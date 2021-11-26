@@ -170,6 +170,8 @@ insert into employee1  values(1005,'parshant kumar',25000.00,'pune');
 insert into employee1  values(1006,'abadh kishor kumar',75000.00,'jaipur');
 
 set auto commit on;
+set auto commit off;
+
 
 merge into employee  e1 using  employee1   e
 	on (e1.id=e.id)
@@ -179,11 +181,46 @@ when not matched  then
 	insert  values(e.id,e.name,e.salary,e.location);
 
 
+select * from employee;
+
+insert into employee  values(1007,'arpita tomar',85000.00,'udaipur');
+savepoint a;
+
+delete from employee where id=1001;
+savepoint b;
+
+commit b;
 
 
+alter session set "_ORACLE_SCRIPT"=true;
+create user user5 identified by manager;
+grant create table,create session, unlimited tablespace to user5;
 
 
+select * from employee;
+
+insert into employee  values(1008,'sumita suman',65000.00,'udaipur');
+insert into employee  values(1009,'pallavi sharma',65000.00,'jaipur');
+insert into employee  values(&id,'&name',&salary,'&location');
+select location from employee;
+
+select distinct(location) from employee;
+select location from employee;
 
 
+-- single row function
+select lower('HELLO') from dual;
+select id,name,salary,location from employee;
+select id,upper(name) salary,upper(location) from employee;
+
+select sysdate from dual;
+select * from product;
+select prdid,initcap(name), cost, purchase_date from product;
 
 
+select concat('hello','world') from dual;
+select concat(id,name) from employee;
+
+select prdid,initcap(name),length(name) as "length of name    ", cost, purchase_date from product;
+select substr('hello world',3,6) from dual;
+select substr('hello world',3) from dual;
