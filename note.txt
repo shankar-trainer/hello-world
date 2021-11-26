@@ -1039,10 +1039,42 @@ var arguments
 			  
 			  
 
-                  					
-				
+
+
+Database 
+      data in ledger                   					
+	
+    database software 
+                    --------------------------
+                 
+                                      user1
+     database server ---------------- user2
+                                      user3 
+                                      user4
+									  
   	
-   
+	
+	  database 
+	           tables 
+			       data 
+				   
+	  DBMS -- database management system 
+            
+      RDBMS  relational  database management system 			
+                    
+					 department --- employee 
+					 student  -- examination
+                      product -- order -- delievry table 
+
+
+      RDBMS software 
+                 Oracle  -- oracle 
+                 DB2     -- ibm 
+                 SQL server -- ms 	
+               free/open source
+              MYSQL 
+              PostGreSQL
+			  
 
       	
 			    
