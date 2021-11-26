@@ -160,3 +160,8 @@ location
 
 
 
+oracle server ---->1.sqlplus tool
+                   2.sql developer
+				   
+
+

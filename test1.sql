@@ -224,3 +224,176 @@ select concat(id,name) from employee;
 select prdid,initcap(name),length(name) as "length of name    ", cost, purchase_date from product;
 select substr('hello world',3,6) from dual;
 select substr('hello world',3) from dual;
+select instr('hello world','h') from dual;
+select rpad('hello world',20,'*') from dual;
+
+select trim('   hello world  ') from dual;
+select replace('hello world ','hello','greeting') from dual;
+select chr(111)from dual;
+select ascii('a')from dual;
+
+select sysdate from sys.dual;
+
+
+select next_day(sysdate,'sunday') from sys.dual;
+select last_day(sysdate) from sys.dual;
+select add_months(sysdate,5) from dual;
+select months_between(sysdate,'26-apr-20') from dual;
+
+select sysdate from dual;
+select to_char(sysdate,'dd-mm-yy') from dual;
+select to_char(sysdate,'dd-mon-yyyy') from dual;
+select to_char(sysdate,'dd-mon-yyyy hh::mi:ss') from dual;
+select * from product;
+
+select prdid, name,cost, purchase_date from product;
+select prdid, name,nvl(cost,0),nvl2(cost,1000,999), nvl(purchase_date,sysdate) from product;
+
+select * from product;
+
+-- aggregate function 
+
+select max(cost), min(cost),sum(cost), avg(cost) from product;
+
+select max(cost) "max cost", min(cost) "min cost",sum(cost) "total cost", avg(cost) "average cost" from product;
+
+
+select count(*) "total no of rows" from product;
+select * from employee;
+
+select count(location) "total no of rows" from employee; -- 10
+select count(distinct location) "total no of rows" from employee; -- 7
+
+select * from product;
+
+select count(location), location from employee group by location;
+
+select count(location), location from employee group by location  having location='jaipur';
+
+select avg(salary), location from employee group by location;
+select avg(salary), location from employee group by location having avg(salary)>=25000 ;
+
+desc employee;
+select rowid,id, name from employee;
+
+select id, name, salary from employee;
+select id|| '     '  || name, salary from employee;
+select id|| '     '  || name "id            name", salary from employee;
+
+select sqrt(144)+12*14 from dual;
+
+select * from employee;
+select id,name,salary ,location from employee;
+
+select id,name,salary ,location,
+case   location
+   when 'madurai' then salary*1.5 
+   when 'pune' then salary*1.7
+   when 'jaipur' then salary*1.8
+   when 'mumbai' then salary*1.0
+   else 
+    salary 
+  end
+    "revised salary"
+from employee;
+
+
+select sysdate+10 from dual;
+select sysdate-10 from dual;
+desc dual;
+
+create table t1(c1 interval year(3) to  month);
+insert into t1 values(to_yminterval('01-02'));
+select * from t1;
+select dump(c1) from t1;
+
+create table  products (prdid int primary key, name varchar(20),cost float );
+create table  product_orders (order_id int primary key, location varchar(20),quantity int );
+
+insert into products values(1001,'trouser', 1200);
+insert into products values(1002,'book', 500);
+insert into products values(1003,'shirt', 800);
+insert into products values(1004,'mobile', 12000);
+insert into products values(1005,'tv', 20000);
+
+insert into product_orders values(1001,'delhi', 8);
+insert into product_orders values(1002,'noida', 8);
+insert into product_orders values(1003,'gurgaon', 8);
+insert into product_orders values(1006,'laxminagar', 8);
+insert into product_orders values(1007,'mayur vihar', 8);
+commit;
+
+select * from products;
+select * from product_orders;
+-- cross join 
+select * from products, product_orders;
+
+--select prdid,name,cost, location,quantity from   products natural join   product_orders;
+
+
+
+-- equi join with all columns of both tables
+select * from products, product_orders where products.prdid=product_orders.order_id;
+
+-- equi join with specific  columns of both tables 
+select prdid,name,cost, location,quantity from   products,  product_orders  where products.prdid=product_orders.order_id;
+
+-- equi join with specific  columns of both tables using table name
+select products.prdid,products.name,products.cost, product_orders.location,product_orders.quantity from   products,  product_orders  where products.prdid=product_orders.order_id;
+
+-- equi join with specific  columns of both tables using table alias
+select p.prdid,p.name,p.cost, o.location,o.quantity from   products p,  product_orders o where p.prdid=o.order_id;
+
+-- non equi join with specific  columns of both tables using table alias
+select p.prdid,p.name,p.cost, o.location,o.quantity from   products p,  product_orders o where p.prdid!=o.order_id;
+select p.prdid,p.name,p.cost, o.location,o.quantity from   products p,  product_orders o where p.prdid>=o.order_id;
+
+-- right outer join
+-- --list of product which are not ordered
+select p.prdid,p.name,p.cost, o.location,o.quantity from   products p,  product_orders o where p.prdid(+)=o.order_id;
+-- ansi sql
+select p.prdid,p.name,p.cost, o.location,o.quantity from   products p right outer join   product_orders o  on  p.prdid=o.order_id;
+
+
+--left outer join
+--list of product which are ordered
+select p.prdid,p.name,p.cost, o.location,o.quantity from   products p,  product_orders o where p.prdid=o.order_id(+);
+-- ansi sql
+select p.prdid,p.name,p.cost, o.location,o.quantity from   products p left outer join   product_orders o  on  p.prdid=o.order_id;
+
+-- full outer join
+select p.prdid,p.name,p.cost, o.location,o.quantity from   products p full outer join   product_orders o  on  p.prdid=o.order_id;
+
+
+
+-- self join 
+drop table emp1;
+create table emp1 (empno int primary key, ename varchar(20), mgr_id int);
+delete from emp1;
+insert into emp1 values(1, 'ravi kumar', 4);
+insert into emp1 values(2, 'suraj kumar', 3);
+insert into emp1 values(3, 'mohan kumar', 2);
+insert into emp1 values(4, 'suresh kumar', 5);
+insert into emp1 values(5, 'amit kumar', 1);
+select * from emp1;
+
+select e1.ename||' works for '||e2.ename from emp1 e1, emp1 e2 where e1.empno=e2.mgr_id;
+desc emp1;
+
+
+-- subquery 
+select * from employee1;
+-- diaply employee having highest salary 
+select max(salary) from employee1;
+select * from employee1 where salary=75000;
+
+select * from employee1 where salary=(select max(salary) from employee1);
+select * from employee1 where salary=(select min(salary) from employee1);
+
+select * from employee1 where salary > any (select salary from employee1);
+select * from employee1 where salary > all (select salary from employee1);
+select * from employee1 where salary > all (select salary from employee1 where salary<=25000);
+select * from employee1;
+select * from employee1 where location in ('madurai','pune');
+
+
