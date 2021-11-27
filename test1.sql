@@ -413,5 +413,178 @@ select * from products p  where not exists (select prdid from product_orders o w
 select * from products  where exists (select prdid from product_orders);
 select * from products  where not exists (select prdid from product_orders);
 
+-- view 
 
 
+create view product_view as select * from product;
+select * from product_view;
+create view product_view1 as select prdid,name,cost from product;
+select * from product_view1;
+create view product_ordered as select p.prdid,p.name,p.cost, o.location,o.quantity from   products p,  product_orders o where
+p.prdid=o.order_id;
+
+select * from product_ordered;
+
+select * from employee1;
+-- sequence 
+create sequence emp_seq1; -- start with 1 
+create sequence emp_seq2 start with 1007; -- start with 1007
+
+INSERT INTO employee1  VALUES
+  (emp_seq1.nextval,'&name',&salary, '&location' );
+INSERT INTO employee1  VALUES
+  (emp_seq1.nextval,'ajit sharma',34000, 'mumbai' );
+  select * from employee1;
+INSERT INTO employee1  VALUES
+  (emp_seq2.nextval,'mohit sharma',39000, 'sholapur' );
+
+  -- union -- data from both tables with out duplicate
+  select * from employee1
+  union
+  select * from employee;
+-- union all -- data from both tables with  duplicate
+  
+  select * from employee1
+  union all
+  select * from employee;
+
+--  intersect -- common data
+  select * from employee1
+  intersect
+  select * from employee;
+  
+  
+  synonym 
+     another name for database obejcts(table,view)
+	 hides the table name, its owner
+	 additional security layer 
+
+    create synonym name for tabel/view name
+	drop synonym name;
+
+  create synonym prd1 for product;
+  select * from prd1;
+  
+  -- plsql 
+  
+   set serveroutput on
+  -- code1 
+ declare 
+   id int:=1001;
+   name varchar(20):='shiv kumar';
+ begin 
+    dbms_output.put_line('hello to oracle');
+    dbms_output.put_line('id is '||id);
+    dbms_output.put_line('name is '||name);
+ end;
+
+
+  --code2 -- select 
+  --select * from employee where;
+    declare 
+     id1 int:=&id;
+     name1 varchar(20);
+     salary1 float;
+      bonus float;
+    
+     location1 varchar(20);
+     
+     begin
+      select name, salary,location into name1,salary1,location1 from employee where id=id1;
+      dbms_output.put_line('name is '||name1);
+      dbms_output.put_line('salary is '||salary1);
+      dbms_output.put_line('location is '||location1);
+      
+      select salary*0.1 into bonus  from employee where id=id1;
+      dbms_output.put_line('bonus is '||bonus);
+            
+     end;
+
+  -- calculation
+  
+   declare 
+    n1 int:=&no1;
+    n2 int:=&no2;
+    n3 int:=n1+n2;
+    n4 int:=n1-n2;
+    n5 int:=n1*n2;
+    n6 int:=n1/n2;
+     
+	 
+   begin
+      dbms_output.put_line('no1 '||n1);
+      dbms_output.put_line('no2 '||n2);
+      dbms_output.put_line('sum is  '||n3);
+      dbms_output.put_line('subtraction  of  '||n1||' and '||n2||' is '||n4);
+      dbms_output.put_line('multiplication   of  '||n1||' and '||n2||' is '||n5);
+      dbms_output.put_line('division of  '||n1||' and '||n2||' is '||n4);
+   end;
+
+ -------- %type and bind variable  
+  declare 
+     id1 employee.id%type:=&id;
+     name1 employee.name%type;
+	   name2 employee.name%type;
+    
+     salary1 employee.salary%type;
+     bonus employee.salary%type;
+    
+     location1 employee.location%type;
+     
+     begin
+      select name, salary,location into name1,salary1,location1 from employee where id=id1;
+      dbms_output.put_line('name is '||name1);
+      dbms_output.put_line('salary is '||salary1);
+      dbms_output.put_line('location is '||location1);
+      
+      select salary*0.1 into bonus  from employee where id=id1;
+      dbms_output.put_line('bonus is '||bonus);
+    
+      select name into :name2 from employee where id=id1;
+     	
+     end;
+
+   
+    print name2;
+-- nested block
+declare 
+x int:=100; -- global
+begin 
+  
+  declare 
+   y int:=200; -- local
+  begin
+   dbms_output.put_line('inside nested  ');
+   dbms_output.put_line('x is '||x);
+   dbms_output.put_line('y is '||y);
+  end;
+ 
+   dbms_output.put_line('outside nested  ');
+   dbms_output.put_line('x is '||x);
+   --dbms_output.put_line('y is '||y);
+ end;
+
+-- label 
+<<hello>>
+declare 
+dob1 date:='12-jan-1999';
+begin 
+  declare
+  dob1 date:='19-jan-1990';
+  begin
+   dbms_output.put_line('dob outer is '||hello.dob1);
+   dbms_output.put_line('dob inner is '||dob1);
+  end;
+ end;
+
+
+	select * from employee;
+	delete from employee;
+
+begin   
+ insert into employee values(1001,'prithiv chand',12000,'delhi');  
+end;
+
+
+
+	
