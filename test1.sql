@@ -581,10 +581,55 @@ begin
 	select * from employee;
 	delete from employee;
 
+-- insert.sql
 begin   
  insert into employee values(1001,'prithiv chand',12000,'delhi');  
 end;
 
+--delete.sql
+declare 
+id int:=&id;
+row_del int;
+begin   
+ delete from employee where id=id;
+  row_del:=SQL%ROWCOUNT; 
+ dbms_output.put_line('no of rows deleted '||row_del); 
+end;
 
 
+select * from employee;
+
+
+-- if 
+declare 
+x int:=100;
+begin
+ if x>=100 then 
+  dbms_output.put_line('ok '); 
+ else 
+  dbms_output.put_line('not ok'); 
+ end if;
+end ;
+
+
+-- case  
+declare 
+	id1 int:=1001;
+	salary1 employee1.salary%type;
+	grade employee1.name%type;
+
+begin
+ select salary into salary1 from employee1 where id=id1;
+  grade:=
+  case 
+   when salary1>25000 then 'very good'
+   when salary1>50000 then 'excellent'
+   else 'poor'
+  end;
+  dbms_output.put_line(salary1 ||'  '||grade) ; 
+ 
+end ;
+
+	
+	
 	
