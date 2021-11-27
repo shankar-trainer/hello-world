@@ -396,4 +396,22 @@ select * from employee1 where salary > all (select salary from employee1 where s
 select * from employee1;
 select * from employee1 where location in ('madurai','pune');
 
+select * from product;
+select * from product_orders;
+select * from employee1;
+
+-- equi join
+ -- product  order is given
+select p.prdid,p.name,p.cost, o.location,o.quantity from   products p,  product_orders o where p.prdid=o.order_id;
+-- subquery using exits 
+select * from products p  where exists (select prdid from product_orders o where p.prdid=o.order_id );
+
+-- product  order is not  given
+select * from products p  where not exists (select prdid from product_orders o where p.prdid=o.order_id );
+
+
+select * from products  where exists (select prdid from product_orders);
+select * from products  where not exists (select prdid from product_orders);
+
+
 
