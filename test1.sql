@@ -629,7 +629,263 @@ begin
   dbms_output.put_line(salary1 ||'  '||grade) ; 
  
 end ;
+-- loop
+
+-- basic  loop 
+   set serveroutput on
+  
+   declare 
+   x number:=1;
+   
+   begin
+     dbms_output.put_line('basic loop');
+     loop
+       dbms_output.put_line(x);
+      exit when x=10;
+        x:=x+1;
+     end loop;
+   end;
+   
+   
+   
+   declare 
+   id1  number:=1001;
+   name1 varchar(20);
+   salary1 employee.salary%type;
+   location1 employee.location%type;
+   
+   begin
+     loop
+	    select name,salary, location into name1,salary1, location1 from
+		employee1 where id=id1;
+		
+       dbms_output.put_line(id1||'    '||name1||'     '||salary1||'     '||location1);
+      exit when id1=1010;
+        id1:=id1+1;
+     end loop;
+   end;
+   
+-- while loop 
+
+ 
+   declare 
+   x number:=2;
+   
+   begin
+     dbms_output.put_line('while  loop');
+   while x<=20 loop 
+   dbms_output.put_line(x);
+        x:=x+2;
+     end loop;
+   end;
+   	
+  
+  declare
+   x int;  
+   id1  number;
+   --name1 varchar(20);
+   --salary1 employee.salary%type;
+   --location1 employee.location%type;
+   
+  begin
+  select max(id) into id1 from  employee;
+  x:=1;
+    while x<=3 loop 
+	   id1:=id1+1;
+       insert into employee values(id1,'&name',&salary,'&location' ) ;
+	   x:=x+1;
+	end loop;
+  end;	
+select * from employee;
+
+-- for loop 
+
+  begin 
+    for i in 1 .. 100 loop
+     dbms_output.put_line(i);
+	 /*if i>=20 then 
+	    exit;
+	 end if;	
+	 */
+	 exit when i>=20;
+	 
+    end loop;
+  end;
+ 
+  begin 
+    for i in reverse 1 .. 10 loop
+     dbms_output.put_line(i);
+    end loop;
+  end;
+  
+   begin 
+    for  i in (select * from employee) loop
+	    dbms_output.put_line(i.id||'   '||i.name||'   '||i.salary||'    '||i.location);
+    end loop;
+   end;
+   
+	
+-- nested loop 
+
+ declare 
+  x number;
+  y number;
+  begin 
+  
+    x:=10;
+	<<outer>>
+	loop 
+    dbms_output.put_line(x);
+    x:=x+10;
+    exit when x=110;
+		<<inner>>
+			y:=1;
+		loop 
+			dbms_output.put_line(y);
+			y:=y+1;
+			exit when y=10;
+		end loop inner;
+    end loop outer;
+  end;
+	
+-- cursor 
+ -- using basic loop
+
+declare 
+ emp employee%rowtype;
+ cursor c1 is select * from employee;
+
+begin 
+   open c1;
+   loop
+   fetch c1  into   emp;
+   dbms_output.put_line(emp.id||'   '||emp.name||'   '||emp.salary);
+   exit when c1%notfound;
+   end loop;
+ close c1;
+end;
+
+-- using while loop
+declare 
+ emp employee%rowtype;
+ cursor c1 is select * from employee;
+
+begin 
+   open c1;
+   fetch c1  into   emp;
+   while (c1%found) loop
+   dbms_output.put_line(emp.id||'   '||emp.name||'   '||emp.salary);
+   fetch c1  into   emp;
+   end loop;
+ close c1;
+end;
 
 	
+--select * from employee;	
+--using for loop 
+declare 
+ emp employee%rowtype;
+ cursor c1 is select * from employee;
+
+begin 
+   for emp in c1 loop
+   dbms_output.put_line(emp.id||'   '||emp.name||'   '||emp.salary);
+   end loop;
+ close c1;
+end;
+
+
+
+-- exception
+--  program1  
 	
+	declare 
+	 emp employee%rowtype;
+     
+	begin 
+	  select *  into emp from employee where id=1001;
+	  dbms_output.put_line(emp.id||'   '||emp.name||'     '||emp.salary||'    '||emp.location);
+	exception
+  
+	  when no_data_found then 
+		dbms_output.put_line('no record found for the id ');
+		
+	  when too_many_rows then 
+		dbms_output.put_line('multiple  record found for the id ');
+  	  
+	end;
 	
+-- user defined exception
+
+   declare 
+     eid employee.id%type;
+     ename employee.name%type;
+     elocation employee.location%type;
+     esalary employee.salary%type;
+     
+     sal_exception1 exception;
+     sal_exception2 exception;
+     
+   begin
+	   eid:=&id;
+	   ename:='&name';
+	   elocation:='&location';
+	   esalary:=&salary;
+	   
+	   if eid<=0 then 
+	       raise sal_exception1;
+	   elsif esalary>=100000 then 
+	       raise sal_exception2;
+	  else 
+         insert into employee values(eid,ename,eloaction,esalary);	  
+	   end if;
+   exception   
+   
+	   when sal_exception1 then 
+		  dbms_output.put_line('invalid id < 0');   
+	   
+	   when sal_exception2 then 
+		  dbms_output.put_line('salary very high >100000');   
+   end;
+   
+   -- dvivied by zero error 
+   
+declare 
+   x number;
+   y number;
+   ex exception;
+begin
+   x:=&no1;
+   y:=&no2;
+   if y=0 then 
+   raise ex;
+    else 
+   dbms_output.put_line('division is '||x/y);
+   end if;
+exception
+  when ex then 
+     dbms_output.put_line('divided by zero error  ');
+   end;
+
+ -- raise_application_error  
+   
+   declare 
+     eid employee.id%type;
+     ename employee.name%type;
+     elocation employee.location%type;
+     esalary employee.salary%type;
+     sal_exception2 exception;
+   begin
+	   eid:=&id;
+	   ename:='&name';
+	   elocation:='&location';
+	   esalary:=&salary;
+	   if eid<=0 then 
+	       raise_application_error(-20000,'invalid id < 0');
+	   elsif esalary>=100000 then 
+	           raise_application_error(-20001,'salary very high >=100000');
+	  else 
+         insert into employee values(eid,ename,elocation,esalary);	  
+	   end if;
+    end;
+
