@@ -806,13 +806,17 @@ end;
 	  select *  into emp from employee where id=1001;
 	  dbms_output.put_line(emp.id||'   '||emp.name||'     '||emp.salary||'    '||emp.location);
 	exception
-  
-	  when no_data_found then 
+    when no_data_found then 
 		dbms_output.put_line('no record found for the id ');
 		
 	  when too_many_rows then 
 		dbms_output.put_line('multiple  record found for the id ');
-  	  
+     
+	 
+	  dbms_output.put_line('sql error code is   '||sqlcode);
+      dbms_output.put_line('error message   '||sqlerrm);
+    
+  
 	end;
 	
 -- user defined exception
@@ -865,6 +869,8 @@ begin
 exception
   when ex then 
      dbms_output.put_line('divided by zero error  ');
+     dbms_output.put_line('sql error code is   '||sqlcode);
+     dbms_output.put_line('error message   '||sqlerrm);
    end;
 
  -- raise_application_error  
@@ -889,3 +895,71 @@ exception
 	   end if;
     end;
 
+-- procedure  in parameter 
+create or replace procedure 
+   addition(n1 int, n2 int )
+   is 
+   
+begin 
+  dbms_output.put_line('sum of '||n1||'  and '||n2||' is '|| (n1+n2));
+  dbms_output.put_line('subtraction of '||n1||'  and '||n2||' is '|| (n1-n2));
+  dbms_output.put_line('multiplication of '||n1||'  and '||n2||' is '|| (n1*n2));
+  dbms_output.put_line('division of '||n1||'  and '||n2||' is '|| (n1/n2));
+end;
+
+-- calling procedure 
+begin 
+  addition(11,22);
+end;
+
+-- procedure with out parameter
+
+create or replace procedure 
+   calculation(n1 int, n2 int , n3 out int,n4 out int,n5 out int,n6 out int)
+   is 
+   
+begin 
+	n3:=n1+n2;
+	n4:=n1-n2;
+	n5:=n1*n2;
+	n6:=n1/n2;
+end;
+ 
+-- calling above procedure
+declare 
+	a int;
+	b int;
+	c int;
+	d int;
+
+begin
+ calculation(10,2,a,b,c,d);
+ dbms_output.put_line('sum is '||a);
+ dbms_output.put_line('subtraction is '||b);
+ dbms_output.put_line('multiplication is '||c);
+ dbms_output.put_line('division is '||d);
+end;
+
+-- procedure in out parameter
+
+
+create or replace procedure 
+  square(n1 in out int )
+ is 
+begin 
+   n1:=n1*n1;
+end ;
+  
+-- calling inout  procedure
+  declare 
+  x int;
+  begin 
+    x:=4;
+	square(x);
+	dbms_output.put_line('square is '||x);
+  end ;
+  
+  
+  
+
+   
