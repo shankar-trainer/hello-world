@@ -1217,4 +1217,23 @@ declare
    trim(n) --remove nth element   
      
    */
+set serveroutput on
+
+-- trigger 
+-- table for backup
+--create table emp_audit(user1 varchar(20),date1 date);
+drop table emp_audit;
+create table emp_audit(user1 varchar(20),date1 timestamp);
+
+create or replace trigger emp_insert
+  after insert on employee
+ begin
+ insert into emp_audit values(user,sysdate);
+ dbms_output.put_line('Record added by '||user||' on date '||sysdate);
+ end;
+ insert into employee values(8080,'ranjit kumar',35000,'mumbai');
+ commit; 
  
+select current_timestamp from dual;
+
+
