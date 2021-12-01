@@ -906,8 +906,16 @@ begin
   dbms_output.put_line('multiplication of '||n1||'  and '||n2||' is '|| (n1*n2));
   dbms_output.put_line('division of '||n1||'  and '||n2||' is '|| (n1/n2));
 end;
-
 -- calling procedure 
+--SQL> execute addition(1,2)
+--sum of 1  and 2 is 3
+-- sql block  
+
+set serveroutput on
+execute addition(1,2);
+
+-- pl sql 
+
 begin 
   addition(11,22);
 end;
@@ -917,7 +925,7 @@ end;
 create or replace procedure 
    calculation(n1 int, n2 int , n3 out int,n4 out int,n5 out int,n6 out int)
    is 
-   
+  
 begin 
 	n3:=n1+n2;
 	n4:=n1-n2;
@@ -940,9 +948,41 @@ begin
  dbms_output.put_line('division is '||d);
 end;
 
+-- database procedure 
+select * from employee;
+
+create or replace procedure 
+	emp_query(id1 int, name1 out varchar, salary1 out employee.salary%type,location1 out employee.location%type)
+	is 
+begin
+	select name,salary, location into name1,salary1,location1 from employee where id=id1;
+exception
+  when no_data_found then 
+     dbms_output.put_line('no record found');
+  when too_many_rows then 
+		dbms_output.put_line('multiple  record found for the id ');
+end;
+
+-- calling 
+
+  declare 
+  name employee.name%type;
+  salary  employee.salary%type;
+  location  employee.location%type;
+  
+  begin 
+   
+	emp_query(1002,name,salary,location);
+	dbms_output.put_line('name is '||name);
+	dbms_output.put_line('location is '||location);
+	dbms_output.put_line('salary is '||salary);
+  end ;
+  
+
+
+
+
 -- procedure in out parameter
-
-
 create or replace procedure 
   square(n1 in out int )
  is 
@@ -961,5 +1001,220 @@ end ;
   
   
   
+-- function 
 
+create or replace function circle_area(radius int) 
+   return int 
+   is 
+   area int;   
+begin
+ area:=3.14*radius*radius;
+ return area;
+end;
+ 
+--  calling function 
+
+begin
+dbms_output.put_line('area is '||circle_area(5.5));
+end;
+
+declare 
+	area int;
+	radius int;
+begin
+	radius:=6.5;
+	area:=circle_area(6.5);
+	dbms_output.put_line('area  of circle with radius  '||radius||' is '||area);
+end;   
+
+--calling from sql prompt
+--SQL> variable result number
+--SQL> execute :result:=circle_area(55.5)
+--SQL> print result
+
+variable result number
+execute :result:=circle_area(55.5)
+print result
+
+
+create or replace function employee_average_salary 
+  return int 
+  is 
+  avg_salary int;
+  
+  begin
+     select avg(salary) into avg_salary from employee;
+	 return avg_salary;
+	 
+    exception 
+	  when no_data_found then 
+	  dbms_output.put_line('no record found ');
+	  
+	  when too_many_rows then 
+	  dbms_output.put_line('multiple record found for the id  ');
+	  
+  end;
+  
+  -- calling above function employee_average_salary
+  
+  declare 
+    avg_salary  employee.salary%type;
+  begin 
+    avg_salary:=employee_average_salary();
+	  dbms_output.put_line('average salary is '||avg_salary);
+  end;
+  
+   select id,name,salary,location, employee_average_salary() from employee;
+   select id,name,salary,location, employee_average_salary() as "average salary" from employee;
+	  
+	
+-- package 
+-- specification
+create or replace package pack is
+    total_row int;
+   procedure emp_search(id1 int);
+   function  emp_rowcount()  
+   return int;
+end;
+	-- package body
+create or replace package body pack is
+   procedure emp_search(id1 int) is
+    name1 varchar(20);
+   salary1 int;
+   location1 varchar(20);
+     begin 
+		 select name,salary,location into name1,salary1 ,location1 from employee where id=id1; 
+		 dbms_output.put_line('id is '||id1);
+		 dbms_output.put_line('name is '||name1);
+		 dbms_output.put_line('salary is '||salary1);
+		 dbms_output.put_line('location is '||location1);
+	exception
+      when no_data_found then
+	    dbms_output.put_line(' no record found');	 
+    end emp_search;
+	function emp_rowcount 
+         return int
+          is 
+         begin
+	  select count(*) into total_row from employee;
+         return total_row;	 
+	end emp_rowcount;
+end pack;
+/
+-- calling package  from SQL prompt   
+execute pack.emp_search(1002);
+-- calling package from procedure  
+create or replace procedure emp_search2(id int) is 
+begin 
+  pack.emp_search(id);
+end;
+
+execute  emp_search2(1002);
+execute  emp_search2(1001);
+
+select id, name, pack.emp_rowcount() from employee;
+
+
+-- composite data type 
+--  type Record 
+ declare
+ type emp_record is record 
+ (
+ id int,
+ name varchar(20),
+ salary int,,
+ salary int,
+ location varchar(20)
+ );
+ emp_rec emp_record;
+ begin 
+	 emp_rec.id:=100001;
+	 emp_rec.name:='ghanshyam mohan';
+	 emp_rec.salary:=34000;
+	 emp_rec.location:='thane';
+	 
+	 dbms_output.put_line(' id is '||emp_rec.id);
+	 dbms_output.put_line(' name is '||emp_rec.name);
+	 dbms_output.put_line(' salary is '||emp_rec.salary);
+	 dbms_output.put_line(' location is '||emp_rec.location);
+ end;
+
+-- index by  
+-- index by table -- associative array -- key value  
+declare 
+  type 
+  name1 is table of 
+  varchar(25)
+   index by binary_integer;
+   name name1; 
+ begin 
+    name(1):='umesh parsad';
+    name(2):='suresh parsad';
+    name(3):='parmod kumar';
+    name(4):='anil kumar';
+    name(5):='sunil kumar';
+  dbms_output.put_line(name(1));
+  dbms_output.put_line(name(2));
+  dbms_output.put_line('all values using for loop');
+   for i in name.first.. name.last loop 
+   dbms_output.put_line('roll '||i||' is '||name(i));
+   end loop;
+  end;
+/
+
+ 
    
+-- key and value
+declare 
+  type 
+  employee  is table of 
+  varchar(25)
+   index by binary_integer;
+   emp1 employee; 
+ begin 
+  emp1(1001):='ganesh kumar';
+  emp1(1002):='sarvesh kumar';
+  emp1(1003):='saumesh kumar';
+  emp1(1004):='priayasnhi verma';
+  emp1(1005):='hemlata sharma';
+  emp1(1006):='karthik ganesh';
+  
+  dbms_output.put_line(emp1(1001));
+  dbms_output.put_line(emp1(1002));
+  
+  for i in emp1.first..emp1.last loop
+    dbms_output.put_line('id '||i||'   '||emp1(i));
+  end loop;  
+ end;
+
+ -- varray 
+ declare 
+  type marks is varray(10) of integer;
+  m  marks;
+ begin
+  m:=marks(56,67,44,90,77);
+  m.extend(); -- extend size and add null value
+   m.extend(2,2);-- 99 
+    dbms_output.put_line('marks1 '||m(1));
+    --for i in m.first..m.count loop
+    for i in m.first..m.last loop
+     dbms_output.put_line(i||'---------'||m(i));
+     end loop;
+  end;
+ 
+ -- methods 
+   /*
+   first --first index of the collection
+   last --last index of the collection
+   prior -- prior index 
+   next -- next index
+   extend  -- extend and append null 
+   extend(n)-- extend and append n null values
+   extend(n,j)-- append n copies of jth element
+   delete    -- remove all elements
+   delete(n) -- remove nth element
+   trim -- remove one element  from end 
+   trim(n) --remove nth element   
+     
+   */
+ 
