@@ -1074,9 +1074,65 @@ Database
                free/open source
               MYSQL 
               PostGreSQL
-			  
+
+
+
+     Oracle Server -----  tool  -- 1.sql plus -- runs in command prompt 
+	                               2.sql developer (gui)
 
       	
+		API -- Application Program Interface 
+		           -- methods
+				   -- constructor
+				   -- interface
+				   
+				  jdbc api 
+				  awt api 
+				  
+		JDBC API 
+
+
+
+    java app1-  connect -- oracle 
+                           mysql 
+                           sql server 
+
+   1.Driver -- load the driver
+   
+   2.DriverManager  -- connectivity --using  driver name, url, username, password    						   
+				  
+   
+    Driver --- jdbc sql -- translate-- network/database protocol ---- communicate with database 
+
+
+java app -- DriverManager -- database server 
+ 
+ 
+          (lot of database driver)
+			
+html--> java web server          --->   database server  
+           middleware server
+                type3/network protocol driver 		   
+
+ojdbc8.jar 
+
+.jar -- - java archieve  -collection of classes, interfaces
+
+    
+	
+				  ResultSet -- it contains all records 
+				  
+	ResultSet has pointer for traversing records 
+	
+	 BeforeFirst -- default position- here there is no record 
+     FirstRecord  -- it has data  -- next method will move to first record
+     2
+     3
+     .
+     .
+     n
+     last record	 
+	 AfterLast			  
 			    
 								
 								

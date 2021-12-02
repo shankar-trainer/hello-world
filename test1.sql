@@ -1222,11 +1222,11 @@ set serveroutput on
 -- trigger 
 -- table for backup
 --create table emp_audit(user1 varchar(20),date1 date);
-drop table emp_audit;
+--drop table emp_audit;
 create table emp_audit(user1 varchar(20),date1 timestamp);
 
 create or replace trigger emp_insert
-  after insert on employee
+  after insert on employee,
  begin
  insert into emp_audit values(user,sysdate);
  dbms_output.put_line('Record added by '||user||' on date '||sysdate);
@@ -1234,6 +1234,121 @@ create or replace trigger emp_insert
  insert into employee values(8080,'ranjit kumar',35000,'mumbai');
  commit; 
  
-select current_timestamp from dual;
+--select current_timestamp from dual;
+ create table employee_backup as select * from employee where 1<0;
+ 
+create or replace trigger emp_delete 
+  after delete on employee for each row 
+begin
+  insert into employee_backup values(:old.id,:old.name,:old.salary,:old.location);
+end;
+  
+create or replace trigger emp_insert1
+  before  insert on employee for each row 
+   begin
+	  if(:new.id<=0) then 
+	  raise_application_error(-20006,'invalid employee id <=0');
+	  end if;
+  end;
+  
+insert into employee values(-8080,'ranjit kumar',35000,'mumbai');
+insert into employee values(8081,'ranjit kumar',35000,'mumbai');
+ 
+-- rank, dense rank
+create table employees(id int primary key, name varchar(20), salary int, city varchar(20)) ;
+INSERT INTO Employees VALUES (10001,'sudhir kumar',10000,'delhi');
+INSERT INTO Employees VALUES (10002,'mukesh kumar',24000,'noida');
+INSERT INTO Employees VALUES (10003,'dayakant kumar',250000,'delhi');
+INSERT INTO Employees VALUES (10004,'manoj kumar',30000,'grugaon');
+INSERT INTO Employees VALUES (10005,'dhiraj kumar',280000,'noida');
+INSERT INTO Employees VALUES (10006,'neeraj kumar',40000,'mathura');
+INSERT INTO Employees VALUES (10007,'pawan kumar',890000,'delhi');
+INSERT INTO Employees VALUES (10008,'radhika rawat',840000,'delhi');
+commit;
+select city, count(city), avg(salary) from employees  group by city;
+
+-- error not group by--select id,salary,city, count(city) from employees  group by city;
+select avg(salary) from employees;
+select id,name,salary,avg(salary) over(partition by city) as "avg salary", city from employees;
+select id,name,salary,avg(salary) over(partition by city order by id) as "avg salary", city from employees;
+--  not a group by expression  ---select id,name,salary,avg(salary) from employees  group by city;
+
+-- rank() function
+
+select id,name,salary, rank() over(partition by city order by id) as "rank", city from employees;
+select rownum, id,name,salary, dense_rank() over(partition by city order by id) as "rank", city from employees;
+
+-- pivot table
+-- cross tabulation
+
+desc employees;
+select * from 
+(select id,name,city from employees) 
+ pivot
+ (
+  count(city)
+  for city in('delhi','noida','mathura')
+ )
+ 
+ -- flashback table 
+ purge recyclebin; -- empty recyclebin
+ create table hello(id int primary key);
+ insert into hello values(10);
+ insert into hello values(11);
+ select * from hello;
+ 
+ drop table  hello;
+ select * from hello;
+ select * from recyclebin;
+ flashback table hello to before drop; 
+ select * from hello;
+ --
+ create  table course(courseid int , course_name varchar(20), duration int, primary key(courseid));
+ create table student(roll int primary key, name varchar(20) , age int, courseid int, foreign key(courseid) references course(courseid));
+
+ create table examination(examid int primary key,examname varchar(20),exam_date date ,courseid int, foreign key(courseid) references course(courseid));
+
+ 
+ 
+/* one to one
+                pk        fk
+      student(roll,name,couseid)
+                            |
+                     course(courseid,coursename,duration)
+			                      |
+examination(examid,examname,date,courseid);
+        PK                     FK
+
+
+one to many 
+
+person -- many cars 
+person -- many phone 
+                                
+								 FK 
+person (id, name, location,phone_id)
+                               | primary key relationship
+							   |
+                       phone(phone_id, model,cost)
+                                    PK
+									
+		PK							  FK
+person (id, name, location,phone_id,car_id)
+                                      |
+									  |          foreign key relationship
+           car(car_regno,model,cost,car_id)
+                PK                    
+
+*/ 
+ -- composite key -- pk with multiple columns
+create table passenger(passengerId varchar(10), country_code varchar(10),name varchar(20),age int,primary key(passengerId,country_code)) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 
