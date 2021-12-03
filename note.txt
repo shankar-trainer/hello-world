@@ -1125,7 +1125,7 @@ ojdbc8.jar
 	ResultSet has pointer for traversing records 
 	
 	 BeforeFirst -- default position- here there is no record 
-     FirstRecord  -- it has data  -- next method will move to first record
+     FirstRecord  -- it has data  -- next() method will move to first record
      2
      3
      .
@@ -1134,7 +1134,35 @@ ojdbc8.jar
      last record	 
 	 AfterLast			  
 			    
-								
+				
+				
+	DAO --- data access object 
+           CRUD 
+                   C- create -- sql insert
+                   R -retrieve -- sql select 
+                   U - update  -- sql update				   
+				   D - delete  -- sql delete 
+				
+				Statement 
+				ResultSet 
+				DriverManager
+				
+				  -- execute sql statement
+				  Interface 
+				Statement 
+				 |PreparedStatement
+				 |CallableStatement
+				 
+				 
+			executeQuery --  select 
+            executeUpdate -- dml(insert update delete)
+			
+			execute -- all sql statement , ddl dml select 
+			         return true -- select statement 
+					 return false -- dml(inseet update delete) and if no result 
+					 
+			
+			
 								
 								
 								
