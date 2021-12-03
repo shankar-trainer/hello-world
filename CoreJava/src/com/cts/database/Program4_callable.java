@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Scanner;
 
+import com.cts.database.util.DatabaseUtil;
+
 public class Program4_callable {
 
 	public static void main(String[] args) {
@@ -14,8 +16,12 @@ public class Program4_callable {
 		Connection connection = null;
 		try {
 			sc = new Scanner(System.in);
-			DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "manager");
+			// DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+			// connection =
+			// DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system",
+			// "manager");
+			connection = DatabaseUtil.getMyConnection();
+
 			System.out.println("Enter id ");
 			int id = sc.nextInt();
 

@@ -8,11 +8,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import com.cts.database.util.DatabaseUtil;
+
 public class Program3_Transaction {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
-		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "manager");
+		//DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+		//Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "manager");
+		
+		Connection connection=DatabaseUtil.getMyConnection();
+		
 		connection.setAutoCommit(false);
 		
 		Scanner sc = new Scanner(System.in);

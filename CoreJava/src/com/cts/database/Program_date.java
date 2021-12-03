@@ -47,6 +47,7 @@ public class Program_date {
 		} catch (ParseException e) {
 		 System.err.println("date not in format dd-mm-yyyy");
 		}
+		sc.close();
 	}
 
 }
