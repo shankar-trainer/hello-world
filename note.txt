@@ -1,0 +1,155 @@
+low level language 
+  c, fortran 
+  
+  function and variables 
+ 
+class and objects 
+      high level language
+	  c++,java,python 
+
+
+ 2 types of translator 
+ 
+ 1. compiler
+ 2. interpretter
+ 
+ compiler-- scan the whole code -- compile -- .class, .exe
+ interpretter -- no output , interpret line by line 
+ 
+  java has both   
+ compiler + interpretter 
+        platform indepedent 
+		
+		
+		compiler-- .java file-- compile -- .class 
+		interpretter -- without recompilation run .class file 
+
+
+System.out.println("");
+
++ -- arithmatic operation
+
+    int x=10;
+    int y=20;
+    int z=x+y;
+    
++ -- String concatenation 
+
+System.out.println("no1 is "+x);
+    
+	"" -- string 
+	+  - string concatenation
+	+ will append\concatene any variable with string 
+	
+	
+Text 	Editor -- notepad -- edit text 
+       notepad to make java file 
+	   
+	
+	IDE -- integrated development environment 
+	
+	Eclipse 
+	
+		
+		workspace -- location where your java project will be kept 
+		             it has location  for source code and classes 
+					 
+		
+	   
+	  
+	  
+
+class Main {  
+  public static void main(String args[]) { 
+    System.out.println("hello world");
+    
+	int x=10;
+    int y=20;
+    int z=x+y;
+    
+	System.out.println("no1 is "+x);
+    System.out.println("no2 is "+y);
+    System.out.println("sum is "+z);
+  } 
+}
+
+
+\n -- nextLine 
+\t -- tab space 
+print -- without next line 
+println -- with next line
+
+
+primitive data types
+ 
+ Integer 
+     byte 
+	 short 
+     int 
+	 long
+   
+ Decimal 
+    float 
+	double -- default 
+	
+	class Main {  
+  public static void main(String args[]) { 
+    double radius=67.566;
+    double area=3.14*radius*radius;
+    double circumference=2*3.14*radius;
+
+    System.out.println("circle radius is "+radius);
+    System.out.println("circle area is "+area);
+    System.out.println("circle circumference is "+circumference);
+       
+    } 
+}
+
+
+operator 
+  +
+  -
+  *  - multiplication
+  /  - division 
+  %  - remainder 
+  
+  
+  
+  jdk -- java development kit 
+       -- compiler
+	   -- interpretter
+	   
+	   
+jre  -- java runtime environment
+     -- interpretter	   
+	 
+	 eclipse
+        -- incremental compilation 
+		
+		
+		
+		Integer 
+		  
+		  byte -----------------> java.lang.Byte 
+		  short-----------------> java.lang.Short 
+		  int  -----------------> java.lang.Integer
+		  long -----------------> java.lang.Integer
+		  
+		  
+		  differrent number 
+		  
+		  decimal -- 0 - 9
+		  
+		  binary  --- 0 and 1
+		  
+		  hexadeciaml -- 0 - 9 and a-f 
+		  octal       -- 0 -7 
+		  
+		  
+		  
+		  local variable 
+		  
+		     variable declared inside  method , loop , block , method parameter
+             no default value 
+             it must be initialised if used			 
+		  
