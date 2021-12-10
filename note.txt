@@ -1,3 +1,18 @@
+https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
+from Trainers to All Participants:
+https://github.com/shankar-trainer/hello-world/tree/cts_dec21
+
+https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-09/R/eclipse-java-2021-09-R-win32-x86_64.zip
+
+
+
+https://www.oracle.com/in/java/technologies/javase/javase8-archive-downloads.html#license-lightbox
+open jdk 
+
+
+https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u262-b10/openlogic-openjdk-8u262-b10-windows-x32.zip
+
+-----------------
 low level language 
   c, fortran 
   
