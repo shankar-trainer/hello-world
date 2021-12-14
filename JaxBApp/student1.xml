@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<student regNo="1">
+    <marks>67.77</marks>
+    <StudentName>abhiranjan kumar</StudentName>
+    <rollNumber>10001</rollNumber>
+    <Stud_subject>Math</Stud_subject>
+</student>
