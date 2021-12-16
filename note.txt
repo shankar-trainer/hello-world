@@ -321,3 +321,85 @@ jre  -- java runtime environment
    
       15%10--  5
       15/10--  1	  
+	  
+	  
+	  
+	  Structure Programming 
+	     -- method and variables 
+	  
+	  Object Oriented Programming 
+	       
+		   object  -- real time entity having state and behaviour
+                   -- single entity from the class
+                   -- instance of the class 
+ 				   
+		   class   -- collection of objects    
+		              logical entity
+		   Employee 
+		      --state is data/attribues
+                   id, name, salary 			  
+		      -- behaviour -- operation of object 
+                     work			  
+		   Student 
+		          state -- roll, name, subject, marks 
+				  behaviour -- study, exam
+	  
+
+    class Student {
+		  roll
+		  name
+		  subject 
+		  
+		  exam()
+		  study()
+		
+	}	  
+	  
+	  st1-- object 
+	  st2-- object 
+	     st1 has one copy of attributes/methods 
+		 
+		 
+		 Feature of OOP
+		 1.Encapsulation
+		 2.Inheritance
+		 3.Polymorphism
+		 4.Abstraction
+		 
+		 Encapsulation
+		 
+		   -- all attributes should be hidden(private) from other classes
+		   -- accessible to other class by public methods(setter/getter)
+		   -- bind the data (attribues)  with the code(behaviour/method)
+		 
+		 
+		 
+		 Constructor
+		   1.Default Constructor -- no parameter/arg
+		   2.Overloaded Constructor -- parameter
+		   
+		   
+		   
+		   
+		   Array 
+		   
+		      -- sorting using array 
+			 
+
+     glass1 -- milk 
+	 glass2 -- water 
+	 glass3 empty 
+	 
+	 
+	 glass3=milk
+	 glass1 - empty 
+	 glass1=glass2(water)
+	 
+	 glass2 - empty 
+	 
+	 glass2=glass3(milk)
+	 
+	 glass2 - milk 
+	 glass1 -water 
+	 
+			 
