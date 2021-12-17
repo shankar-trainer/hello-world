@@ -401,5 +401,82 @@ jre  -- java runtime environment
 	 
 	 glass2 - milk 
 	 glass1 -water 
-	 
+	
+
+  static -- common values to be shared
+         -- common variable/method  to be shared among  all  the object  
+         -- it can be accssed by classname  dot method/variable name
+		 -- no object is required.
+		 -- static members are implicitly created before the creation of object 
+		 
+		 
+  instance variable -- all objects are having separate copy 
+  
 			 
+	class 	Employee {
+			private int id;
+			private String name;
+			private  float  salary;
+			private static String country;
+			private static String state;
+					
+		}	 
+			 
+			 
+	constructor is used for initialisation of instance variable 
+    static block is used for initialisation of static members
+	
+	
+	
+	
+	java.lang.System 
+	
+	    static  java.io.PrintStream out ;
+		
+		java.io.PrintStream  -- print()
+		                        println()
+								
+			System.out.println()
+			
+	static method()
+             -- called by class 
+             -- inside static method only static variable/methods can be called 
+			 -- instance variables can be used by the object 
+			 
+    instance/non-static  method()
+	
+	
+	
+	has relationship 
+	
+	Child has birthday
+	Child has home
+	
+	Home -- Address  
+	Address has Phone 
+	Phone -- phonenO 
+	
+	Employeee has address
+	Bank has department 
+	
+	
+	
+	
+	String 
+	     -- any string literal is string object;
+		 -- methods will not change in its content 
+         -- methods will return  the value 
+
+		 
+	
+	      
+	Product --->Payment-->Order--->Delievery
+	
+	
+	
+	
+	
+             -- static and non static both directly 	
+			
+		
+		 
