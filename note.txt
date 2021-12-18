@@ -478,5 +478,89 @@ jre  -- java runtime environment
 	
              -- static and non static both directly 	
 			
-		
+		                               Wrapper Class
+		 primitive   ---------------- reference data type 
+		 int                           Integer 
+		 float                         Float 
+		 char                          Character 
 		 
+		 no attribute            
+		 no method 
+		 
+		 
+		 Boxing   -- primitive to wrapper class 
+		               Integer z=new Integer(100);
+		 
+		 Unbxoing 
+		          wrapper to primitive 
+		                       
+		           
+		     methods 
+		     
+		     parsseXXX(String) --
+		         it is static method 
+		         it parses String value and return int, float ,double 
+		         
+		      Integer 
+		           parseInt()
+		      Float 
+		           parseFloat()        
+		          
+
+
+Constructor 
+
+  -- default constructor
+  -- overloded constructor
+  
+    default constructor
+	   -- gives default values to all instance variable to all objects
+	   
+	   
+	   -- each object should have differrent values
+	      -- overloded constructor
+		  
+		  
+		  init block 
+		  
+		  
+		  Employee has Car 
+		  Employee has Address 
+		  Employee has Phone
+		  Employee has Department 
+		  Employee has Office 
+		  
+		  
+		 class Employee{
+			  
+			  id
+			  name
+			  salary 
+			  gender (enum) -- user defined type 
+			  
+			  Address 
+			  Car 
+			  Phone 
+			  Department
+			  Office 
+			  
+		  }
+		  
+		  
+		  class  Address {
+			  
+		  }
+		  
+		  class Phone{
+			  
+			  
+		  }
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+	   
+				  
