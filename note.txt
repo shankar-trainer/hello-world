@@ -1,3 +1,5 @@
+
+
 https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
 from Trainers to All Participants:
 https://github.com/shankar-trainer/hello-world/tree/cts_dec21
@@ -547,6 +549,7 @@ Constructor
 		  }
 		  
 		  
+		  
 		  class  Address {
 			  
 		  }
@@ -556,11 +559,236 @@ Constructor
 			  
 		  }
 		  
+		  1.Encapsulation
+		  2.Inheritance
+		  
+		  one class can inherit the features(methods/variable) in other class 
+		  
+		  Parent/Base/
+		  
+		  Child/Derived class 
 		  
 		  
 		  
+		  Employee                          Bank
+		    |                                /  \
+			Manager               Current Bank       Saving Bank  
+			  |
+			  Asst Manager 
+			  
+			  
+			
+		  
+		  public, default, protected, static are inherited
+		  
+		  Constructors are not inherited 
+		  
+		  
+		  super()-- it will call super class constructor
+		  super --  it will call super class variable and methods 
+		  
+		  
+		  super -- super class instance 
+		  this  -- current class instance 
+		  
+		  inside static context(method/block) we cannot use super/this
 		  
 		  
 		  
+		  public 
+		  protected
+		  default 
+		  private 
+		  
+		  
+		  1.Encapsulation
+		  2.Inheritance
+		  3.polymorphism
+		  
+		  polymorphism
+		  
+		     -- one entity with multiple forms 
+			 -- 
+			 
+			  Water -- gas  solid liquid 
+			  
+			  implementation 
+			   in 2 ways 
+			   a.) method overloading 
+			   b.) method overriding 
+			   
+			   
+	method overloading
+	    -- one method can be represented in multiple forms
+        -- method must have differrent number of arguments or data   type 
+
+
+    
+final 
+
+   --  final variable  -- constant 
+   -- final method   -- cannot be overridden
+   -- final class    -- cannot be inherited
+				 
+	   final variable 
+	   --  local variable -- only modifier can be used is final 
+	   --  it must be initialised whether local/static/instance 
+	   --  it must be initialised  using inline, constructor, static block 
+
+       final method 
+          it cannot be overridden
+		  
+       final class 
+            -- it can  not be inherited
+			
+
+     Casting
+
+      primitive data type 
+       -> assign lower range data type to higher range
+       -> implicit casting 
+       -> widening	 
 	   
+	   
+	   1.Encapsulation
+	   2.Inheritance
+	   3.Polymorphism
+	   4.Abstraction
+	   
+	     Abstraction 
+		     -- we can have abstract/required method in the class 
+			 -- 
+			 Abstraction is implemented in 2 ways 
+			  1.Abstract class 
+			  2.Interface 
+	   
+		Abstract class 
+            -- class and instance variables
+            -- constructor
+            -- abstract and non abstract/concrete  method 
+			-- cannot be instantiated 
+	
+
+       Interface 
+            -- 100% abstract class 
+            -- only public class final variable(public static final) can be defined 
+			-- only abstract methods can be defined 
+			-- no  constructor can be defined 
+			
+			
+			-- gives multiple inheritance feature 
+			
+			-- a class can extend only one class but can implement multiple interface 
+			--an interface can extnds multiple interface 
+			
+			
+	
+Exception  
+
+  categorize the exception 
+   
+   ArithmeticException 
+   NullPointerException
+   
+   
+   
+   
+  catch(Exception e){
+	  
+	  
+  }  
+         			
+	
+                             
+Player1 --- throw ball -------->player2 ------------>player3 
+
+                                 caught at 
+Player1 --- throw ball -------->player2 ------ will not reach to ------>player3 
+
+Player1 --- throw ball -------->player2 ------ will rethrow the ball  ------>player3 
+	
 				  
+				  
+	throws -- declare the exception with methods  
+	
+	throw  -- throw new Exception Object 
+	
+	
+	
+	java.util.Date
+	    -- date and time both 
+		
+	Date  date=new Date() 
+	
+	
+	
+	Collection Framework 
+	
+	  Array ---  fixed size 
+	        ---  manual sorting, searching
+			
+			
+	  Collection  -- 
+	    -->auto growable
+		-->implemented lot of alogorithms searching , sorting
+        -->		
+		
+			
+		
+		
+		Collection interface 
+		
+		 /    \
+		Set   List (interfaces)
+	
+    Map interface 
+     -- keys and values 	
+		 
+	Set interface 
+	   no duplicate 
+	   no index 
+	   not ordered
+	
+   List  interface
+      duplicate 
+      index support 
+      ordered 
+
+
+	 List  classes 
+        -->ArrayList 
+        -->Vector 
+        -->LinkedList
+  
+   generic 
+     -- specific data type with collection to avoid run time error 
+     -- denoted by 	 <>  diamond operator 
+	 --  type safe program
+	 
+ 			
+	
+	
+	
+	set 
+       	 no duplicate 
+	   no index 
+	   not ordered
+	   
+	   
+	   
+	   Iterator interface --
+	      used to traverse elements in list, set
+		  
+		
+  Map -- 
+     key, value 
+    
+     	List -- index is key , value 
+   	 
+	 
+	 HashMap -- not ordered 
+	         allows one keys as null
+			 allows multiple values to be null
+			 
+	TreeMap -- sorted by keys 
+               does not allow key  to be null	
