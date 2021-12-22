@@ -792,3 +792,10 @@ Player1 --- throw ball -------->player2 ------ will rethrow the ball  ------>pla
 			 
 	TreeMap -- sorted by keys 
                does not allow key  to be null	
+			   
+			   
+	java.lang.Comparable 
+        sorting in ascending/natural order 
+
+    java.util.Comparator 
+ 	             sorting in other  order 
