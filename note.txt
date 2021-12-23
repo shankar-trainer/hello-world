@@ -799,3 +799,53 @@ Player1 --- throw ball -------->player2 ------ will rethrow the ball  ------>pla
 
     java.util.Comparator 
  	             sorting in other  order 
+
+
+
+JDBC 
+
+    --- database connectivity 
+	--- DriverManager --connects the java application with multiple database at a time 
+	
+	
+	java server ---------------> database server 
+	 (Network Protocol Driver)--- converts jdbc 
+	              
+	
+	
+	zip -- collectio of file 
+	jar -- collection of classes
+	
+	
+	
+	ResultSet -- contains all records 
+	
+	          --
+			  points to 
+			  
+			  beforeFirst  -- default position of resultset -- no data
+			  1st 
+			  2
+			  3
+			  .
+			  last 
+			  afterLast
+	        
+			resultset.next -- move to next 
+			
+			
+			java.sql.Statement 
+			         |
+				java.sql.PreparedStatement
+                         
+			-->sub class of statement interface
+			-->its faster than statement becoz it's pre compiled
+            --> it supports placeholder 
+			
+			
+			common connection in a project 
+			
+			static connection -- shared by all objects 
+			
+			
+	
