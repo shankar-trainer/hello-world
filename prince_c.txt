@@ -1,0 +1,239 @@
+
+
+c language 
+
+c consists of  main function()
+
+  inside main function --  
+    declare variable 
+	use differrent function
+	
+	printf() -- print message and variable to the screen
+	scanf ()  - get input from user 
+	
+	variable
+       -- entity whose values varies 
+    constant
+         -- entity whose values does not change 
+
+    data types 
+	  int  -- no deciaml 
+	  float -- decimal 
+	  char  -- character
+	  
+	  printf()--
+	      only string message   
+		      no format specifier is required 
+          for int, float , character we require format specifier 
+		  
+		  %d -- int 
+		  %f- float 
+		  %c -- character 
+		  
+		  
+		  --  one  print has to be done 10 times 
+		  -- loop -- iterative statement works with condition
+           
+		   types 
+		      3 types 
+			    a)while loop 
+				b)for loop 
+				c)do while loop 
+				
+				
+				while loop 
+				    -- top tested loop 
+					
+					
+					syntax 
+					
+					counter variable 
+					  
+					  while(condition){
+					    body 
+					  }
+					  
+					  
+					  
+					  Example 
+					  
+					  int counter=1;
+
+				while(counter<=10)
+				{
+					printf("\nhello world ");
+					counter=counter+1;
+				}
+
+               
+			   
+			   sum of 1 to 10 
+			   
+			   int counter=1;
+
+int sum=0;
+
+while(counter<=10)
+{
+ sum=sum+counter;	
+ counter=counter+1;
+}
+
+counter=1;
+        sum=sum+counter
+        sum=0+1;=1;
+
+counter=2;
+        sum=sum+counter
+        sum=1+2=3;
+		
+counter=3;
+        sum=sum+counter
+        sum=3+3=6;
+		
+counter=4;
+        sum=sum+counter
+        sum=6+4=10;
+		
+counter=5;
+        sum=sum+counter
+        sum=10+5=15;
+		
+counter=6;
+        sum=sum+counter
+        sum=15+6=21;
+		
+counter=7;
+        sum=sum+counter
+        sum=21+7=28;
+		
+counter=8;
+        sum=sum+counter
+        sum=28+8=36;
+		
+counter=9;
+        sum=sum+counter
+        sum=36+9=45;
+		
+counter=10;
+        sum=sum+counter
+        sum=45+10=55;
+		
+	
+
+factorial 
+    5 ---  5*4*3*2*1 
+            1*2*3*4*5
+			fact=1;
+			co
+			Enter a number;
+					x=5
+	
+           while(counter<=5)
+              	   counter=1;
+				    fact=fact*counter;
+					fact=1*1=1;
+					
+					counter=2;
+				    fact=fact*counter;
+					fact=1*2=2;
+					
+					counter=3;
+				    fact=fact*counter;
+					fact=2*3=6;
+					
+					counter=4;
+				    fact=fact*counter;
+					fact=6*4=24;
+					
+					counter=5;
+				    fact=fact*counter;
+					fact=24*5=120;
+					
+					counter=6;
+				    fact=fact*counter;
+					fact=120*6=720;
+					
+					
+					
+					
+					prime no 
+					  -- a number which is divisible by 1 and itself 
+					  1,3,5,7,
+					  
+					  10 -- not prime
+					    2-- (10-1)--9
+					     2 to 9 
+						 
+					  break;
+					  
+					     to get out from the loop or block 
+					  
+					  continue	 
+						   -- it will continue the loop  
+						 
+					  
+					
+					
+					
+					
+					enter number 
+					  a=6;
+					 
+                     c=2 to 6-1
+                     c=2 to 5
+					 
+					 a%2==0
+					    break;
+						
+					c=2
+                    if(c==a-1)					
+                    if(c==5)
+                       prime 
+                    else 
+					   not prime 
+                       					
+					
+						
+          for loop   					 
+	    -->top tested
+	    -->in single line all  counter variable declaration,
+		   condition checking, counter increment/decrement 
+		   
+		   syntax 
+		   
+		   for(int count=1;counter<=10;counter++){
+			   
+			   
+		   } 			  				
+					
+					
+					
+					
+					
+					
+					
+
+   		   
+			
+		
+
+		
+		
+		
+		
+		
+		
+ 		
+		   
+
+   		  
+		  
+		  
+		  
+		  
+	  
+	  
+		 
+	
+	
