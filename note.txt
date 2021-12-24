@@ -849,3 +849,12 @@ JDBC
 			
 			
 	
+	
+	    kid1 -- book 
+		    kid1 crying for pen 
+		    
+                                        -------->DeadLock 
+										
+		kid2 -- pen 
+		     kid2 crying for book
+			 
