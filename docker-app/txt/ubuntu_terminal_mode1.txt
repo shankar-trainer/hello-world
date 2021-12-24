@@ -1,0 +1,49 @@
+edit /etc/default/grub to have the next boot end up in text mode. In summary you will set these parameters:
+
+GRUB_CMDLINE_LINUX="text"
+GRUB_TERMINAL=console
+After saving changes you need to run:
+
+sudo update-grub
+sudo systemctl set-default multi-user.target
+===========
+
+If you want to make Ubuntu automatically boot into the text mode, configure grub settings by doing following steps one by one:
+
+1. Open terminal and run command to backup the configuration file:
+
+sudo cp -n /etc/default/grub /etc/default/grub.backup
+2. Edit the configuration file via command:
+
+sudo gedit /etc/default/grub
+When the file opens, do:
+
+disable GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" by adding # at the beginning.
+set GRUB_CMDLINE_LINUX="" to GRUB_CMDLINE_LINUX="text"
+remove # from the line GRUB_TERMINAL="console" to disable graphical terminal.
+
+3. Save the file and apply changes by running command:
+
+sudo update-grub
+4. One more command is required as Ubuntu now uses systemd:
+
+sudo systemctl set-default multi-user.target
+
+
+=========================
+ubuntu 16
+When in GUI-mode, this will take you to text-mode (runlevel 2,3,4) on reboot. You may get a blank screen (no-gui) which is a reminder that there's no GUI :-), enter ctrlalt(F1,F2,...) to use the runlevels.
+
+systemctl set-default multi-user.target
+
+This will take you back to GUI boot when you are in text-mode.
+
+systemctl set-default graphical.target
+
+
+
+
+
+
+
+

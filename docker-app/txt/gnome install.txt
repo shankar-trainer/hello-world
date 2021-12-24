@@ -1,0 +1,36 @@
+basic gnome
+sudo apt install gnome-session gdm3
+
+full gnome 
+
+sudo apt install ubuntu-gnome-desktop
+
+---
+ubuntu mini 
+
+sudo apt install ubuntu-unity-desktop
+
+nirmal pass 46272274
+
+=====================================================
+remove all games 
+
+sudo apt-get purge gnome-games-common gbrainy && sudo apt-get autoremove
+
+remove libre office 
+sudo apt-get remove libreoffice* 
+sudo apt-get remove --auto-remove libreoffice* 
+
+---------------------- 
+terminal removed 
+
+you can press Ctrl+Alt+F1 to get a shell. 
+sudo apt-get install python3-all
+sudo apt-get install gnome-terminal
+
+=====================
+
+
+ 
+
+
