@@ -209,7 +209,75 @@ factorial
 					
 					
 					
-					
+			sum of digit ;
+			
+			int sum=0;
+			int b=0;
+			
+			step1
+			
+				a=125
+				b=a%10--- 5
+	   			sum=sum+5=5
+				a=a/10;=12
+	
+           step 2	
+			a=12
+			
+			b=a%10;12%10; -2
+			sum=sum+2;=5+2=7
+			a=a/10;
+			=12/10--1 
+			
+		 step 3
+		 
+			
+			a=1/10;a=0;
+			sum=sum+1%10=7+1=8
+			
+			
+			
+			reverse 
+			  step 1 
+			  
+				  a=567
+				  b=a%10= 7
+				  a=a/10 =56
+				  
+              step 2 
+			  
+   				  a=56
+				  b=b*10+a%10=7*10+6=76
+				  a=a/10 =5
+				
+			 step 3 
+			    
+   				  a=5
+				  b=b*10+a%10=76*10+5=760+5=765
+				  a=a/10 =5
+				  
+             
+			 nested loop 
+			 
+			    one loop inside other loop 
+				
+				*
+				* *
+				* * *
+				* * * * 
+				
+				
+				
+
+
+
+			  
+			  
+			
+			 
+			
+			
+			
 					
 					
 					
