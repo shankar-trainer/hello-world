@@ -88,15 +88,6 @@ $ docker-machine ip
 curl 192.168.99.100:8080/actuator/health
 
 
-
-
-
-
-
-
-
-
-
 ---------------
 
 3. Build the image
