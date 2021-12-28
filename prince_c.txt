@@ -267,9 +267,30 @@ factorial
 				* * * * 
 				
 				
+				print  table  1 to 10 
 				
 
 
+    char to int conversion
+       char c='a'
+         
+	   
+	int to char conversion 
+	
+	 ASCII character 
+	       from 0 to 255 we can get all ASCII characters.
+		   
+	      
+	
+	
+	do while loop
+       -->bottom tested loop 
+	   -->it will execute at least once if false condition  
+	   
+	   
+	
+	
+     
 
 			  
 			  
