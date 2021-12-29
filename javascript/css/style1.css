@@ -1,0 +1,9 @@
+div.table{
+    background:lime;
+    color:blue;
+    border:solid 1px;
+    font-size: 24px;
+    margin-left: 300px;
+    width:150px;
+    height: 300px;
+}

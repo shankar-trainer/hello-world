@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <script>
+        function show(){
+          document.img1.src="image/img2.jpg"
+          document.img1.width=300
+          document.img1.height=150
+        }
+        function hide(){
+          document.img1.src=""
+          document.img1.width=0
+          document.img1.height=0
+        }
+
+      </script>
+</head>
+<body>
+   <img src="image/img1.jpg" name="img1">
+   <br><br><br>
+    <button type="button"  onclick="show()">change  image</button>
+    <button type="button"  onclick="hide()">hide  image</button>
+
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/calc.css'>
+    <style>
+        form {
+            width: 35%;
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+
+    <script>
+        function validate() {
+            var id = document.getElementById("empid").value
+            var name = document.getElementById("empname").value
+            try{
+            if (id == "") {
+                throw "id is blank"
+                return false
+            }
+            else if (isNaN(id)) {
+                throw  "id cannot have character value"
+                return false
+            }
+            else {
+                return true
+            }
+        }
+        catch(error){
+            console.log(error.message+"    "+error.name)
+            document.getElementById("empid_err").innerHTML = error
+        }
+
+        try{
+            if (name == "") {
+                throw "name is blank"
+                return false
+            }
+            else if (name.length<5) {
+                throw  "name length can not be less than 5 chars"
+                return false
+            }
+            else {
+                return true
+            }
+        }
+        catch(error){
+            document.getElementById("empname_err").innerHTML = error
+        }
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <form onsubmit="return validate()">
+        <label>Enter Id </label>
+        <input name="empid" id="empid">
+        <span id="empid_err"></span>
+        <br>
+
+        <label>Enter Name </label>
+        <input name="empname" id="empname">
+        <span id="empname_err"></span>
+        <br>
+
+        <br>
+
+        <input type="submit" value='send'>
+        <input type="reset" value='cancel'>
+
+    </form>
+</body>
+
+</html>

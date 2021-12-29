@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+  <script>
+    function employeereset() {
+      document.forms[0].reset();
+    }
+    function employeeform() {
+      var name = document.forms[0].elements[0].value
+      var age = document.forms[0].elements[1].value
+
+      if (name == "")
+        alert("name is blank ")
+     else  if (name.length <=5)
+        alert("name length must be >5 character")
+      else if (age == "")
+        alert("age is blank")
+
+      else if (isNaN(age))
+        alert("age must be numeric only ")
+
+      else {
+        alert("name is " + name)
+        alert("age  is " + age)
+        document.forms[0].submit();
+      }
+    }
+    function userform() {
+      alert(document.forms[1].elements[0].value)
+      alert(document.forms[1].elements[1].value)
+    }
+
+  </script>
+
+  <h1>Employee Form </h1>
+  <form action="empaction" method="GET">
+    <label>Enter name</label>
+    <input name='name'><br>
+
+    <label>Enter age</label>
+    <input name='age'><br>
+    <input type='button' value='login' onclick='employeeform()'>
+    <input type='button' value='cancel' onclick='employeereset()'>
+  </form>
+
+  <h1>User Form </h1>
+
+  <form action="useraction">
+    <label>Enter Id</label>
+    <input name='id'><br>
+
+    <label>Enter Salary</label>
+    <input name='salary'><br>
+    <input type='button' value='login' onclick='userform()'>
+
+  </form>
+
+
+</body>
+
+</html>

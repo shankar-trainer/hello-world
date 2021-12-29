@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    
+    <script>
+     function division(a,b){
+         try{
+          if(b==0)
+          throw("divided by zero error")
+          else 
+            alert("division result is "+(a/b))
+         }
+         catch(error){
+              alert("error is "+error)
+    alert("error name  is "+error.name+"\nerror message is "+error.message)
+         }
+         finally{
+             console.log('finally block')
+         }
+     }
+     division(10,2)
+     division(10,0)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

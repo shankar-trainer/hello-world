@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+
+        function myclock() {
+            document.getElementById('id1').innerHTML =  new Date().toLocaleTimeString()
+            setTimeout(myclock, 1000)
+        }
+
+    </script>
+</head>
+
+<body onload="myclock()">
+    <span id="id1">
+    </span> 
+</body>
+
+</html>

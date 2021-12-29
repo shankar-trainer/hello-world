@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/calc.css'>
+    <style>
+        form{
+            width:35%;
+       }
+       span{
+           color:red;
+       }
+</style>
+
+    <script>
+        function validate() {
+            var id = document.getElementById("empid").value
+            var name = document.getElementById("empname").value
+            var gender = document.getElementsByName("gender")
+            var gender_status = false;
+            var gender_selected
+
+            for (let x = 0; x < gender.length; x++) {
+                if (gender[x].checked) {
+                    gender_status = true;
+                    gender_selected = gender[x].value
+                    break;
+                }
+            }
+
+            if (id == "") {
+              document.getElementById("empid_err").innerHTML="id is blank"
+             return false
+            }
+            else if (isNaN(id)) {
+                document.getElementById("empid_err").innerHTML="id cannot have character value"
+                return false
+            }
+            else if (name == "") {
+                document.getElementById("empname_err").innerHTML="name is blank"
+                return false
+            }
+            else if (name.length < 5) {
+                document.getElementById("empname_err").innerHTML="name length is <5 character"
+                return false
+            }
+            else if (gender_status == false) {
+                document.getElementById("gender_err").innerHTML="select the gender"
+                return false
+            }
+            else {
+                alert("id is " + id + "\nname is " + name + "\n\ngender is " + gender_selected)
+                return true
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <form onsubmit="return validate()">
+        <label>Enter Id </label>
+        <input name="empid" id="empid">
+        <span id="empid_err"></span>
+        <br>
+
+        <label>Enter Name </label>
+        <input name="empname" id="empname">
+        <span id="empname_err"></span>
+           <br>
+           <label>Select Gender </label><br>
+           <span id="gender_err" style="margin-left:220px;"></span><br>
+        <input type="radio" name="gender" value="male" id="gender">Male<br>
+        <input type="radio" name="gender" value="female" id="gender">Female
+        
+        <br>
+
+        <input type="submit" value='send' >
+        <input type="reset" value='cancel'>
+
+    </form>
+</body>
+
+</html>

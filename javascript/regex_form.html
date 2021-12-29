@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+        function validate(){
+            var id=document.getElementById("id").value
+            var name=document.getElementById("name").value
+              if(!/^\d{5}$/.test(id)){
+                alert("id is not a number or it's not of 5 digit")  
+                return false
+              }
+              else if(!/^[a-zA-Z]+\s[a-zA-Z]+$/.test(name)){
+                alert("name must be alphabets ")  
+                return false
+              }
+              else{
+                  alert("all is well ")
+                  return true
+              }
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <label>Enter Id</label>
+        <input name="id" id="id"><br>
+        <label>Enter Name</label>
+        <input name="name" id="name"><br>
+       <input type="submit">
+    </form>
+
+</body>
+</html>

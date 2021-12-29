@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+        function changeit(){
+                 var id1=document.getElementById("id1").innerHTML
+               alert(id1)
+               document.getElementById("id1").innerHTML="<h1>Greeting</h1>"
+        }
+        
+        function changeit1(){
+                 var id1=document.getElementById("id1").innerHTML
+               alert(id1)
+               document.getElementById("id1").innerText="<h1>Greeting</h1>"
+        }
+
+        var c=1;
+        function count(){
+            document.getElementById("id1").innerHTML="<h1>Count is "+(c++)+"</h1>"
+        }
+        </script>
+
+    <div id="id1">
+        hello world 
+    </div>
+    
+    <br>
+    <input type="button" onclick="changeit()" value="changeInnerHTML">
+    <input type="button" onclick="changeit1()" value="changeInnerText">
+    
+    <div id="id2">
+        
+    </div>
+    <br>
+    <input type="button" onclick="count()" value="increment()">
+
+</body>
+</html>

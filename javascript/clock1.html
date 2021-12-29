@@ -1,0 +1,20 @@
+<html>
+<head>
+
+<script type="text/javascript">
+	function mytime() {
+		date = new Date()
+		var time = date.getHours() + ":" + date.getMinutes() + ":"
+				+ date.getSeconds()
+				document.forms[0].t1.value=time
+		setTimeout("mytime()", 1000)
+	}
+
+</script>
+</head>
+<body onload="mytime()">
+	<form>
+		Time is <input name="t1"> 
+	</form>
+</body>
+</html>

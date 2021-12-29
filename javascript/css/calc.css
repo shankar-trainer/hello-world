@@ -1,0 +1,21 @@
+ label{
+      width:120px;
+       float:left;
+       margin-bottom:3px;
+    }
+    input{
+       margin-bottom:3px;
+        width:100px;
+    }
+    form{
+        margin-left: 450px;
+        margin-top: 200px;
+        border:solid 10px blue;
+        width:25%;
+        height:140px;
+        padding:30px;
+        background:yellow;
+    }
+    body{
+        background-color: lightyellow;
+    }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        var d;
+         function showtime(){
+              d=new Date();
+              document.getElementById('id1').innerHTML=d.toLocaleTimeString()
+         } 
+    </script>
+</head>
+<body onload="showtime()">
+
+    <div id="id1">
+    </div>
+    <br>
+<input type="button"  value="refresh page" onclick="location.reload()">
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+     // [a-z]   -- small alphabets
+    // [A-Z]   -- capital alphabets
+     
+    console.log(/^[a-z]+$/.test("ramkumar"))  // +1 or more character
+     console.log(/^[a-z]+$/.test("r"))
+     console.log(/^[a-z]+$/.test(""))
+     
+     console.log(/^[a-z]+$/.test("hello"))//{5} -- must have 5 character in a-z
+     console.log(/^[a-z]+$/.test("hell1"))//{5} -- must have 5 character
+     console.log(/^[a-z]+$/.test("Hello"))//{5} -- must have 5 character
+
+     console.log(/^[a-zA-Z]+$/.test("Hello"))//{5} -- must have 5 character in A-Z or a-z
+
+     console.log(/^[a-zA-Z0-9]+$/.test("Hel21"))//{5} -- must have 5 character(alpha numeric)  in A-Z or a-z or 0-9
+
+     console.log(/^[a-zA-Z0-9]+\s[a-zA-Z0-9]+$/.test("ram kumar"))// two words(alpha numeric) with single space between them 
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

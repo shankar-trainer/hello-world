@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        // [0-9]  or \d -- number
+//  \D  -- not a number   
+//  \s -- white space 
+//  \S -- not white space
+// \w -- alpha numeric (a-zA-Z0-9])
+// \W -- not alpha numeric (a-zA-Z0-9])
+console.log(/^[0-9]+$/.test(99))
+console.log(/^\d+$/.test(99))
+
+// emp code alpha numeric a-zA-Z0-9
+console.log(/^\w+$/.test("emp877878AA"))
+console.log("hello".match(/^\w+$/))
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/calc.css'>
+    <style>
+     form{
+       width:30%;
+    height:50%;
+     }
+    </style>
+    <script src='script/empvalidate.js'>
+    </script>
+</head>
+
+<body>
+    <form name="empform">
+        <label>Enter Id </label>
+        <input name="empid"><br>
+
+        <label>Enter Name </label>
+        <input name="empname"><br>
+
+        <label>Select Gender </label><br><br>
+        <input type="radio" name="gender" value="male">Male<br>
+        <input type="radio" name="gender" value="female">Female
+        <br><br>
+        <label>Select Position</label><br><br><br>
+        <input type="checkbox" value='upper division clerk' name='position'>upper division clerk<br> 
+        <input type="checkbox" value='lower division clerk' name='position'>lower division clerk<br> 
+        <input type="checkbox" value='junior manager' name='position'>junior manager<br> 
+        <input type="checkbox" value='senior manager' name='position'>senior manager<br> 
+        <input type="checkbox" value='cashier' name='position'>cashier<br> 
+
+        <select name="city" multiple>
+            <option value="new delhi">New Delhi</option>
+            <option value="noida">Noida</option>
+            <option value="guru gram">Guru Gram</option>
+            <option value="chennai">Chennai</option>
+            <option value="madurai">Madurai</option>
+            <option value="kolkotta">Kolkotta</option>
+        </select>
+        <input type="submit" value='send' onclick="validate()">
+        <input type="reset" value='cancel'>
+
+
+    </form>
+</body>
+
+</html>
