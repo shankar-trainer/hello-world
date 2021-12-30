@@ -289,8 +289,24 @@ factorial
 	   
 	   
 	
-	
-     
+	   
+	   
+	   function 
+	        -- block of code for specific work 
+			-- can have arguments/parameter 
+			-- can return or no return 
+			
+			
+			function with no parameter, no return 
+			  syntax 
+			     
+				 void functionname()
+				 {
+				 
+				 }
+			  
+         call the function 
+		 
 
 			  
 			  
