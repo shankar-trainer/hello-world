@@ -165,3 +165,12 @@ oracle server ---->1.sqlplus tool
 				   
 
 
+
+ set1   ={a,b}
+ set2   ={c,d}
+ 
+ 
+ set1 X set2 
+     {a,c},{a,d}{b,c}{b,d}
+	 
+
