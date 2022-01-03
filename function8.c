@@ -1,7 +1,7 @@
 //	function with no parameter, no return 
 
 #include<stdio.h>
-    
+  void addition(); // function prototype declaration
 
  int main()
  {
@@ -9,8 +9,8 @@
    addition();
    return 1;
  }
-		 
-void addition()
+	
+	  void addition()
    {
    int a, b,c;	
    	printf("\nenter  1st no  ");
@@ -20,6 +20,7 @@ void addition()
    	scanf("%d",&b);
    	c=a+b;
    	printf("\nsum of %d and %d is %d ",a,b,c);
-   	}
+   }
+	 
   		
 		
