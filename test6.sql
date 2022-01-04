@@ -123,3 +123,127 @@ select replace(first_name,'A','a') from worker;
 
 select * from worker;
 select * from worker where  department='hr';
+
+
+select * from mybook;
+select * from worker where department='hr' or department='account';
+
+select * from worker where department in('hr','account');
+select * from worker where department in('hr','account','admin');
+select * from worker where department not in('hr','account');
+
+
+select worker_id ,first_name from worker ;
+
+select worker_id ||'      '|| first_name from worker ;
+
+select worker_id ||' ------------     '|| first_name from worker ;
+
+select sysdate from dual;
+select current_date from dual;
+select current_timestamp from dual;
+
+select current_date, current_timestamp from dual;
+select * from employee;
+select * from department;
+
+select * from customer;
+select * from student;
+select * from product;
+
+select * from product;
+insert into customer values(10001,'amar kumar','chennai',12000)
+insert into customer values(10002,'amit kumar','madurai',15000)
+insert into customer values(10003,'ravi kumar','chennai',22000)
+insert into customer values(10004,'devendra kumar','chennai',42000)
+insert into customer values(10005,'suranjan kumar','madurai',32000)
+insert into customer values(10006,'amrit kumar','chennai',62000)
+insert into customer values(10007,'sunayana  kumari','noida',22000)
+insert into customer values(10008,'preeti sharma','rameswaram',25000)
+
+drop table customer; 
+create table customer (cid int primary key, name varchar(20),location varchar(20),salary number);
+
+desc customer;
+commit;
+
+select cid,name, location , salary from customer;
+
+select   distinct (location) from customer;
+select   (location) from customer;
+
+
+
+select * from customer;
+
+select * from customer where location='chennai'
+union
+select * from customer where location='madurai';
+
+
+select * from customer where location='chennai'
+union all
+select * from customer where location='madurai';
+
+select bname from book
+ union 
+select bname from mybook
+
+
+select bname from book
+intersect
+select bname from mybook
+
+
+select bname from book
+minus
+select bname from mybook
+
+--delete from mybook;
+rollback;
+commit;
+insert into mybook values(10090,'practical sql',450);
+insert into mybook values(10091,'java beginner',450);
+insert into mybook values(10092,'java professional',450);
+insert into mybook values(10093,'java advanced',450);
+
+
+-- aggregate function--
+select * from book;
+select max(cost)from book;
+select min(cost)from book;
+select avg(cost) as "average cost" from book;
+select sum(cost) as "average cost" from book;
+select count(*) from book;
+
+select * from customer;
+select  count(location),location  from customer group by location;
+select  avg(salary),location  from customer group by location;
+select  max(salary),location  from customer group by location;
+select  count(location),location  from customer group by location having location='chennai';
+
+select  avg(salary),location  from customer group by location;
+select  avg(salary) from customer;
+select * from customer;
+
+
+
+
+select max(name) from employee;
+select min(name) from employee;
+
+create table survey(id int primary key, city varchar(20),state varchar(20) default 'tamil nadu');
+insert into survey values(556656,'delhi', 'delhi');
+
+insert into survey (id,city) values(556658,'chennai');
+commit;
+select * from survey;
+
+
+create table city (city_id int, name varchar(20), state varchar(20), country varchar(20),unique(name), 
+constraint con_st unique(state), constraint const_cityid primary key (city_id)
+)
+
+desc city;
+
+select * from USER_CONSTRAINTS  where TABLE_NAME='CITY';

@@ -67,11 +67,10 @@ and operator
 	  https://writexo.com/cts_sql21
 	   
 Assignment day1
+
 create table worker (worker_id int primary key ,first_name
-
-char(25),last_name char(25),salary int,joining_date date,department
-
-char(25))
+ char(25),last_name char(25),salary int,joining_date date,department
+ char(25))
 /
 
 
@@ -194,8 +193,8 @@ Department In The Descending Order.
 
 Q-24. Write An SQL Query To Print Details Of The Workers Who Are Also Managers.
 
-
-
+Assignment day2  
+https://drive.google.com/drive/folders/11d92ApGq8quPuYTzM9z5IwaSrI0LDu0O?usp=sharing
 
 create table student(roll int(8), name varchar(20) not null, subject varchar(20), marks number(6), primary key(roll))
 
@@ -323,3 +322,7 @@ DBA –
   database administrator
 
  
+
+aggregate function
+  -- it works on column and gives sum, average, min, max values  
+
