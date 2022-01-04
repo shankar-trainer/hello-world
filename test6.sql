@@ -245,5 +245,40 @@ constraint con_st unique(state), constraint const_cityid primary key (city_id)
 )
 
 desc city;
-
 select * from USER_CONSTRAINTS  where TABLE_NAME='CITY';
+
+
+create table garments(id int , type varchar(20),constraint  id_pk  primary key(id), constraint type_unq unique(type)); 
+
+desc garments;
+alter table garments add cost number(10,2);
+alter table garments  modify  (type varchar(30));
+
+create table garments_order( order_id int , order_date date, location varchar(20), garment_id int);
+alter table garments_order add constraint fk  foreign key(garment_id) references garments(id);
+commit;
+
+desc garments;
+desc garments_order;
+insert into garments_order values(9,'11-jan-2021','delhi',1);
+insert into garments  values(1,'formal trouser',1200);
+commit;
+
+insert into garments_order values(10,'11-jan-2021','delhi',2);
+rollback;
+alter table garments_order disable constraint fk;                   -- disable the constraint fk
+alter table garments_order enable constraint fk;      
+select * from garments;
+select * from garments_order;
+delete from garments_order where garment_id=2;
+commit;
+
+rename city to mycity; -- renaming the table name 
+desc mycity;
+
+select * from book;
+delete from book;  -- deleted recorsd are rollback 
+rollback;
+truncate table book; -- no rollback 
+
+

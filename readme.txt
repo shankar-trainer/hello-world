@@ -18,12 +18,21 @@ ledger
                        a)sql plus 
                        b)sql developer 
 
+oracle xe 23 
 
 https://download.oracle.com/otn-pub/otn_software/db-express/OracleXE213_Win64.zip
 
+oracle sql developer 
+
 https://www.oracle.com/tools/downloads/sqldev-downloads.html#license-lightbox
 
+oracle xe 11
+
 https://www.oracle.com/database/technologies/xe-prior-release-downloads.html#license-lightbox
+
+sql plsql slides
+https://drive.google.com/drive/folders/1k3shjoAtwXeenVmpGh3MbVNHxV8fKcAL?usp=sharing
+
 
 or operator 
          → any condition should be true 
