@@ -447,14 +447,48 @@ right outer join
 employees e 
 on d.dept_id=e.deptid;  --right outer join using ansi sql
 
+-- self join 
+  drop table emp;
+  create table emp(id int primary key, name varchar(20), mgr int);
+  
+insert into emp values(1001,'arvind kumar', 1003);
+insert into emp values(1002,'praveen kumar', 1005);
+insert into emp values(1003,'mohan kumar', 1004);
+insert into emp values(1004,'suman kumar', 1001);
+insert into emp values(1005,'ajeet kumar', 1002);
+commit;
 
+select  e1.name||'    is manager of     '||e2.name from emp e1, emp e2 where e1.id=e2.mgr;
 
--- ANSI SQL 
-select d.dept_id, d.name "department name", d.location, e.empid, e.name "emp name", e.age 
-from department d 
- equi join
-employees e 
-on d.dept_id=e.deptid; 
+create table students (roll int primary key , name varchar(20), city varchar(20));
+create table examination (roll int primary key , subject varchar(20), marks number(5,2));
+
+insert into students values(9001,'amit kumar','manglore');
+insert into students values(9002,'sumit kumar','banglore');
+insert into students values(9003,'jairam kumar','hyderabad');
+insert into students values(9007,'mohan kumar','rameswaram');
+insert into students values(9009,'sanjay kumar','chennai');
+
+insert into examination values(9001,'math',89.577);
+insert into examination values(9002,'science',69.577);
+insert into examination values(9003,'kannada',79.577);
+insert into examination values(9004,'tamil',62.577);
+insert into examination values(9005,'telugu',82.577);
+insert into examination values(9006,'history',87.577);
+
+select * from students;
+select * from examination;
 -- equi join
+  -- all students who are going to give examination
+select s.roll,s.name,s.city,e.subject,e.marks from students s, examination e where s.roll=e.roll;
+
+-- natural join if same column name 
+-- all students who are going to give examination
+select roll,name,city,subject,marks from students  natural join examination  ;
+
+-- left outer join 
+select s.roll,s.name,s.city,e.subject,e.marks from students s  left outer join examination e  on s.roll=e.roll ;
+-- right outer join 
+select s.roll,s.name,s.city,e.subject,e.marks from students s  right outer join examination e  on s.roll=e.roll ;
 
 

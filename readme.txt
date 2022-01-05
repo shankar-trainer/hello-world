@@ -74,6 +74,9 @@ and operator
 	  
   	  
 	  https://writexo.com/cts_sql21
+
+Assignment day4	 
+https://drive.google.com/file/d/1cbmvCNzDBrh4l99nvm9XE2RPHdxXByvJ/view?usp=sharing	 
 	  
 Assignment day3
 https://drive.google.com/drive/folders/1eKgOsn-ot-oH5SNcqvggpg4xDiCF_rgY?usp=sharing	  
