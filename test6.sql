@@ -281,4 +281,180 @@ delete from book;  -- deleted recorsd are rollback
 rollback;
 truncate table book; -- no rollback 
 
+---                
+  desc mybook;
+ select rowid,rownum, isbn,bname,cost from mybook;
+ -- display last two rows 
+ 
+ select  * from mybook where rownum<2;
+ 
+ select rownum, isbn,bname,cost from mybook;
+select isbn,bname, length(bname)*10,cost from mybook;
+
+select * from customer;
+-- case expression
+select  cid,name,location,salary from customer;
+
+
+select  cid,name,location,
+  case location 
+   when 'chennai' then salary*1.10
+   when 'madurai' then salary*1.15
+   when 'noida' then salary*1.08
+   else 
+   salary
+  end, 
+salary from customer;
+
+select  cid,name,location,salary,
+  case location 
+   when 'chennai' then salary*1.10
+   when 'madurai' then salary*1.15
+   when 'noida' then salary*1.08
+   else 
+   salary
+  end
+  "revised salary"
+ from customer;
+
+-- date function
+select sysdate from dual;
+
+select sysdate+5 from dual;-- add 5 days 
+select sysdate-2 from dual;-- minus 2 days 
+select * from customer;
+alter table customer add  dob date;
+desc customer;
+
+update customer set dob='01-jan-1998' where cid=10001;
+update customer set dob='02-feb-1998' where cid=10002;
+update customer set dob='10-jun-1999' where cid=10003;
+update customer set dob='21-jan-1991' where cid=10004;
+update customer set dob='22-mar-1993' where cid=10005;
+update customer set dob='11-apr-1992' where cid=10006;
+update customer set dob='12-jul-1977' where cid=10007;
+update customer set dob='18-aug-1978' where cid=10008;
+
+select  cid,name,location,salary,dob, sysdate-dob from customer;
+
+select  cid,name,location,salary,dob, (sysdate-dob)/365 "age" from customer;
+select sysdate-to_date('05-jan-2021') from dual;
+select sysdate-to_date('05-jan-2021','dd-mon-yyyy') from dual;
+
+select sysdate from dual;
+select  to_date('31-aug-2004','dd-mon-yyyy')  from dual;
+select  to_date(sysdate,'dd-mon-yyyy')  from dual;
+select  to_date(sysdate,'dd-mm-yyyy')  from dual;
+select  to_date(sysdate,'yyyy-mm-dd')  from dual;
+select  to_date(sysdate,'yyyy-mon-dd')  from dual;
+
+
+select sysdate, trunc(sysdate) from dual;
+
+select trunc(sysdate)-to_date('05-jan-2021') from dual;  -- no of days 
+select (sysdate)-to_date('05-jan-2021') from dual;
+
+select trunc((sysdate)-to_date('05-jan-2021')) from dual; -- no of days without decimal
+select (trunc(sysdate)-to_date('05-jan-2021'))/7 from dual; -- no of weeks with decimal 
+select trunc((trunc(sysdate)-to_date('05-jan-2021'))/7) from dual;---- no of weeks without decimal
+
+select  cid,name,location,salary,dob, sysdate-dob from customer;
+select  cid,name,location,salary,dob, trunc(sysdate)-dob from customer;
+select trunc(777667.67776) from dual;
+-- interval 
+create  table dateTest1 (a interval year(3) to month);
+insert into dateTest1 values(to_yminterval('01-02'));
+select * from dateTest1;
+select a "year-month" from dateTest1;
+select sysdate from dual;
+
+select sysdate+20 from dual;
+
+select add_months(sysdate,5) from dual; -- add the number of months in the given date
+
+select round(45.566) from dual;
+select round(45.896) from dual;
+
+select round(45.366) from dual;
+select round(45.366) from dual;
+
+select trunc(45.896) from dual;
+
+select  trunc(sysdate)-to_date('31-aug-2004') from dual;
+select  (sysdate)-to_date('31-aug-2004') from dual;
+
+select '01-jan-2021', to_date('01-jan-2021','dd-mm-yyyy') from dual; -- convert charater to other date  format
+select to_char(sysdate,'yyyy') from dual;-- date into character format 
+select to_char(sysdate,'mon') from dual;-- date into character format 
+select to_char(sysdate,'dd') from dual;-- date into character format 
+select to_char(sysdate,'dd-mon') from dual;-- date into character format 
+
+
+create table department(dept_id int primary key, name varchar(20), location varchar(20))
+
+create table employees(empid int primary key, name varchar(20), age int, deptid int, foreign key(deptid) references department(dept_id));  
+
+insert into department values(1,'training', 'delhi');
+insert into department values(2,'account', 'noida');
+insert into department values(3,'development', 'gurgaon');
+insert into department values(4,'hr', 'faridabad');
+
+insert into employees values(90001,'ram kumar',30,1);
+insert into employees values(90002,'amit kumar',20,2);
+insert into employees values(90003,'saurav kumar',22,1);
+insert into employees values(90004,'shivani kumari',30,1);
+insert into employees values(90005,'amita kumari',27,3);
+insert into employees values(90006,'ramdevi',38,2);
+commit;
+select * from department,employees; -- cross join 
+
+select department.dept_id, department.name, department.location, employees.empid, employees.name, employees.age, 
+employees.deptid from department,employees;  -- cross join
+
+select d.dept_id, d.name, d.location, e.empid, e.name, e.age, 
+e.deptid from department d,employees e; -- cross join
+
+select d.dept_id, d.name "department name", d.location, e.empid, e.name "emp name", e.age, 
+e.deptid from department d,employees e; -- cross join
+ --  equi join
+
+select d.dept_id, d.name "department name", d.location, e.empid, e.name "emp name", e.age, 
+e.deptid from department d,employees e where d.dept_id=e.deptid;  -- equi join
+
+select d.dept_id, d.name "department name", d.location, e.empid, e.name "emp name", e.age from department d,employees e 
+where d.dept_id=e.deptid;  -- equi join
+
+--  left  outer join
+list of employees which are  present in department
+
+select d.dept_id, d.name "department name", d.location, e.empid, e.name "emp name", e.age from department d,employees e 
+where d.dept_id=e.deptid(+);  --left outer join
+
+select d.dept_id, d.name "department name", d.location, e.empid, e.name "emp name", e.age from 
+department d
+left outer join
+employees e 
+on d.dept_id=e.deptid;  --left outer join using ansi sql
+ 
+ -- right outer join
+
+select d.dept_id, d.name "department name", d.location, e.empid, e.name "emp name", e.age from department d,employees e 
+where d.dept_id(+)=e.deptid;  --right outer join
+
+select d.dept_id, d.name "department name", d.location, e.empid, e.name "emp name", e.age from 
+department d
+right outer join
+employees e 
+on d.dept_id=e.deptid;  --right outer join using ansi sql
+
+
+
+-- ANSI SQL 
+select d.dept_id, d.name "department name", d.location, e.empid, e.name "emp name", e.age 
+from department d 
+ equi join
+employees e 
+on d.dept_id=e.deptid; 
+-- equi join
+
 

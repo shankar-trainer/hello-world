@@ -74,9 +74,16 @@ and operator
 	  
   	  
 	  https://writexo.com/cts_sql21
-	   
-Assignment day1
+	  
+Assignment day3
+https://drive.google.com/drive/folders/1eKgOsn-ot-oH5SNcqvggpg4xDiCF_rgY?usp=sharing	  
+	 
 
+Assignment day2  
+https://drive.google.com/drive/folders/11d92ApGq8quPuYTzM9z5IwaSrI0LDu0O?usp=sharing
+	 
+
+Assignment day1
 create table worker (worker_id int primary key ,first_name
  char(25),last_name char(25),salary int,joining_date date,department
  char(25))
@@ -201,9 +208,6 @@ Q-23. Write An SQL Query To Fetch The No. Of Workers For Each
 Department In The Descending Order.
 
 Q-24. Write An SQL Query To Print Details Of The Workers Who Are Also Managers.
-
-Assignment day2  
-https://drive.google.com/drive/folders/11d92ApGq8quPuYTzM9z5IwaSrI0LDu0O?usp=sharing
 
 create table student(roll int(8), name varchar(20) not null, subject varchar(20), marks number(6), primary key(roll))
 
@@ -334,4 +338,17 @@ DBA –
 
 aggregate function
   -- it works on column and gives sum, average, min, max values  
+
+
+
+cross join 
+           --   
+		   
+		    set1=(a,b)
+			set2=(c,d)
+			
+			set1 X set2 -- cross join 
+			
+			a,c  a,d  b,c b,d 
+			
 
