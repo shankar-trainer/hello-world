@@ -492,3 +492,146 @@ select s.roll,s.name,s.city,e.subject,e.marks from students s  left outer join e
 select s.roll,s.name,s.city,e.subject,e.marks from students s  right outer join examination e  on s.roll=e.roll ;
 
 
+-- subquery 
+
+select * from employee;
+
+select max(salary) from employee;
+select * from employee where salary=70000;
+select * from employee where salary=(select max(salary) from employee);
+select * from employee where salary=(select min(salary) from employee);
+
+select * from employee where exists(select name from employee where id=1001);
+select * from employee where exists(select name from employee where id=100);
+
+
+-- equi join
+select s.roll,s.name,s.city,e.subject,e.marks from students s, examination e where s.roll=e.roll;
+-- inner query 
+select * from students s  where exists(select roll from examination where examination.roll=s.roll)
+
+-- left outer join
+select s.roll,s.name,s.city,e.subject,e.marks from students s, examination e where s.roll=e.roll(+);
+-- right outer join
+select s.roll,s.name,s.city,e.subject,e.marks from students s, examination e where s.roll(+)=e.roll;
+
+-- inner query 
+select * from students s  where not exists(select roll from examination where examination.roll=s.roll)
+
+select * from students s  where roll > any(select roll from examination where examination.roll=s.roll)
+
+select * from employee where salary=(select max(salary) from employee);
+select * from employee where salary>any(select salary from employee);
+
+select * from employee where salary>all(select salary from employee); -- no record
+select * from employee where salary>all(select salary from employee);
+select * from employee where salary<all(select salary from employee where salary>10000);-- record
+select * from employee where salary>all(select salary from employee where salary>10000);--no record
+
+select * from employee where salary>all(select salary from employee where salary<30000); -- record
+select * from employee where salary>all(select salary from employee where salary>30000);
+
+
+select * from employee;
+select * from department;
+
+
+
+
+select e.empid,e.name,e.age,e.deptid,d.name,d.location from employees e,department d where e.deptid=d.dept_id(+);
+select e.empid,e.name,e.age,e.deptid,d.name,d.location from employees e,department d where e.deptid(+)=d.dept_id;
+
+select e.empid,e.name,e.age,e.deptid,d.name,d.location from employees e,department d where e.deptid=d.dept_id;
+-- list of employees related to department
+select *  from employees e where exists  (select dept_id from department d where e.deptid=d.dept_id);
+select *  from employees e where not exists  (select dept_id from department d where e.deptid=d.dept_id);
+
+-- list of  department having
+select *  from department d where exists  (select deptid from employees e where e.deptid=d.dept_id);
+select *  from department d where not exists  (select deptid from employees e where e.deptid=d.dept_id);
+
+-- correlated sub query 
+
+select *  from employee e where salary> (select avg(salary) from employee);
+
+select *  from employee e where salary= (select max(salary) from employee);
+
+desc employee;
+desc department;
+
+
+-- view
+create view empview as select * from employees;
+select * from empview;
+
+create view depview_withemployees as select *  from department d where exists  (select deptid from employees e where e.deptid=d.dept_id);
+select * from depview_withemployees;
+desc depview_withemployees;
+
+desc employees;
+desc empview;
+
+create view empview1 as select * from employee;
+select * from empview1;
+select * from empview1 where id=1001;
+insert into empview1 values(7045,'munendra kumar',34000);
+commit;
+create view empview2 as select * from employee with check option; -- no update
+insert into empview2 values(7049,'munendra kumar',34000);
+commit;
+
+create view empview3 as select * from employee with read only; -- no insert 
+insert into empview3 values(70555,'munendra kumar',34000);
+
+
+select * from mybook;
+desc mybook;
+create index  book_index on mybook(isbn);
+
+select * FROM USER_CONSTRAINTS;
+--synonym
+create synonym mybook5 for mybook;
+select * from mybook;
+select * from mybook5;
+
+--sequence 
+create sequence book_sequence;
+create sequence book_sequence1 start with 20000 increment by 10;
+desc mybook;
+insert into mybook values(book_sequence.nextval,'javascript',678.555);
+insert into mybook values(book_sequence1.nextval,'javascript',678.555);
+select * from mybook;
+
+select book_sequence.currval from dual;
+select book_sequence1.currval from dual;
+
+--- functions --
+select * from employee;
+select id,name,salary from employee;
+select id,upper(name),salary from employee;
+select id,initcap(name),salary from employee;
+
+select id,concat('mr.',name),salary from employee;
+select concat(id,name) from employee;
+select id||''||name||''||salary from employee;
+select id||'  '||name||'  '||salary from employee;
+select name, substr(name,4) from employee;
+select name, length(name) "name length " ,substr(name,2,8) "name from 2 - 8 character" from employee;
+select power(4,2) from dual;
+
+
+select name, substr(name,4),instr(name, 'kumar') from employee;
+select id,name,salary from employee;
+select id,name,lpad(name,20,'*'),salary from employee;
+select id,name,rpad(name,20,'*'),salary from employee;
+select id,name,trim('s',name)salary from employee;
+
+select ' hello world', trim(' hello world') from dual;
+
+select trunc(1000.8767676) from dual;
+select round(1000.8767676),round(1000.1767676),round(1000.4867676) from dual;
+select isbn,bname,trunc(cost) from mybook;
+select isbn,bname,cost,trunc(cost),round(cost) from mybook;
+
+
+select lpad('hello world',20,'*') from dual;

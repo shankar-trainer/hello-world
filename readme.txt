@@ -355,3 +355,9 @@ cross join
 			a,c  a,d  b,c b,d 
 			
 
+
+
+subquery 
+    -- nested query 
+	-- query inside another query 
+	
