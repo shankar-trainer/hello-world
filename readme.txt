@@ -75,6 +75,16 @@ and operator
   	  
 	  https://writexo.com/cts_sql21
 
+plsql 
+
+Assignment day1https://drive.google.com/file/d/1DiE5DYM0nRCTGRejicFFjDpRvr7OrSlc/view?usp=sharing
+
+==========================================================
+sql 
+
+Assignment day5
+https://drive.google.com/file/d/1DiE5DYM0nRCTGRejicFFjDpRvr7OrSlc/view?usp=sharing
+
 Assignment day4	 
 https://drive.google.com/file/d/1cbmvCNzDBrh4l99nvm9XE2RPHdxXByvJ/view?usp=sharing	 
 	  
