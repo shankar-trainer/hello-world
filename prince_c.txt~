@@ -1,0 +1,494 @@
+
+
+c language 
+
+c consists of  main function()
+
+  inside main function --  
+    declare variable 
+	use differrent function
+	
+	printf() -- print message and variable to the screen
+	scanf ()  - get input from user 
+	
+	variable
+       -- entity whose values varies 
+    constant
+         -- entity whose values does not change 
+
+    data types 
+	  int  -- no deciaml 
+	  float -- decimal 
+	  char  -- character
+	  
+	  printf()--
+	      only string message   
+		      no format specifier is required 
+          for int, float , character we require format specifier 
+		  
+		  %d -- int 
+		  %f- float 
+		  %c -- character 
+		  
+		  
+		  --  one  print has to be done 10 times 
+		  -- loop -- iterative statement works with condition
+           
+		   types 
+		      3 types 
+			    a)while loop 
+				b)for loop 
+				c)do while loop 
+				
+				
+				while loop 
+				    -- top tested loop 
+					
+					
+					syntax 
+					
+					counter variable 
+					  
+					  while(condition){
+					    body 
+					  }
+					  
+					  
+					  
+					  Example 
+					  
+					  int counter=1;
+
+				while(counter<=10)
+				{
+					printf("\nhello world ");
+					counter=counter+1;
+				}
+
+               
+			   
+			   sum of 1 to 10 
+			   
+			   int counter=1;
+
+int sum=0;
+
+while(counter<=10)
+{
+ sum=sum+counter;	
+ counter=counter+1;
+}
+
+counter=1;
+        sum=sum+counter
+        sum=0+1;=1;
+
+counter=2;
+        sum=sum+counter
+        sum=1+2=3;
+		
+counter=3;
+        sum=sum+counter
+        sum=3+3=6;
+		
+counter=4;
+        sum=sum+counter
+        sum=6+4=10;
+		
+counter=5;
+        sum=sum+counter
+        sum=10+5=15;
+		
+counter=6;
+        sum=sum+counter
+        sum=15+6=21;
+		
+counter=7;
+        sum=sum+counter
+        sum=21+7=28;
+		
+counter=8;
+        sum=sum+counter
+        sum=28+8=36;
+		
+counter=9;
+        sum=sum+counter
+        sum=36+9=45;
+		
+counter=10;
+        sum=sum+counter
+        sum=45+10=55;
+		
+	
+
+factorial 
+    5 ---  5*4*3*2*1 
+            1*2*3*4*5
+			fact=1;
+			co
+			Enter a number;
+					x=5
+	
+           while(counter<=5)
+              	   counter=1;
+				    fact=fact*counter;
+					fact=1*1=1;
+					
+					counter=2;
+				    fact=fact*counter;
+					fact=1*2=2;
+					
+					counter=3;
+				    fact=fact*counter;
+					fact=2*3=6;
+					
+					counter=4;
+				    fact=fact*counter;
+					fact=6*4=24;
+					
+					counter=5;
+				    fact=fact*counter;
+					fact=24*5=120;
+					
+					counter=6;
+				    fact=fact*counter;
+					fact=120*6=720;
+					
+					
+					
+					
+					prime no 
+					  -- a number which is divisible by 1 and itself 
+					  1,3,5,7,
+					  
+					  10 -- not prime
+					    2-- (10-1)--9
+					     2 to 9 
+						 
+					  break;
+					  
+					     to get out from the loop or block 
+					  
+					  continue	 
+						   -- it will continue the loop  
+						 
+					  
+					
+					
+					
+					
+					enter number 
+					  a=6;
+					 
+                     c=2 to 6-1
+                     c=2 to 5
+					 
+					 a%2==0
+					    break;
+						
+					c=2
+                    if(c==a-1)					
+                    if(c==5)
+                       prime 
+                    else 
+					   not prime 
+                       					
+					
+						
+          for loop   					 
+	    -->top tested
+	    -->in single line all  counter variable declaration,
+		   condition checking, counter increment/decrement 
+		   
+		   syntax 
+		   
+		   for(int count=1;counter<=10;counter++){
+			   
+			   
+		   } 			  				
+					
+					
+					
+			sum of digit ;
+			
+			int sum=0;
+			int b=0;
+			
+			step1
+			
+				a=125
+				b=a%10--- 5
+	   			sum=sum+5=5
+				a=a/10;=12
+	
+           step 2	
+			a=12
+			
+			b=a%10;12%10; -2
+			sum=sum+2;=5+2=7
+			a=a/10;
+			=12/10--1 
+			
+		 step 3
+		 
+			
+			a=1/10;a=0;
+			sum=sum+1%10=7+1=8
+			
+			
+			
+			reverse 
+			  step 1 
+			  
+				  a=567
+				  b=a%10= 7
+				  a=a/10 =56
+				  
+              step 2 
+			  
+   				  a=56
+				  b=b*10+a%10=7*10+6=76
+				  a=a/10 =5
+				
+			 step 3 
+			    
+   				  a=5
+				  b=b*10+a%10=76*10+5=760+5=765
+				  a=a/10 =5
+				  
+             
+			 nested loop 
+			 
+			    one loop inside other loop 
+				
+				*
+				* *
+				* * *
+				* * * * 
+				
+				
+				print  table  1 to 10 
+				
+
+
+    char to int conversion
+       char c='a'
+         
+	   
+	int to char conversion 
+	
+	 ASCII character 
+	       from 0 to 255 we can get all ASCII characters.
+		   
+	      
+	
+	
+	do while loop
+       -->bottom tested loop 
+	   -->it will execute at least once if false condition  
+	   
+	   
+	
+	   
+	   
+	   function 
+	        -- block of code for specific work 
+			-- can have arguments/parameter 
+			-- can return or no return 
+			
+			
+			function with no parameter, no return 
+			  syntax 
+			     
+				 void functionname()
+				 {
+				 
+				 }
+			  
+         call the function 
+		 
+       function prototype 
+	   
+  //	function with no parameter, no return 
+   // it will give the error 
+   // as function is declared later and used earlier 
+   // this is solved by function proptotype
+   
+
+#include<stdio.h>
+    
+
+ int main()
+ {
+   printf("\nusing function");
+   addition();
+   return 1;
+ }
+		 
+void addition()
+   {
+   int a, b,c;	
+   	printf("\nenter  1st no  ");
+   	scanf("%d",&a);
+   	
+	printf("\nenter  2nd no  ");
+   	scanf("%d",&b);
+   	c=a+b;
+   	printf("\nsum of %d and %d is %d ",a,b,c);
+   }
+  		
+	
+// this is solved by function proptotype
+   	
+
+	
+#include<stdio.h>
+void addition(); // this is function proptotype 
+    
+
+ int main()
+ {
+   printf("\nusing function");
+   addition();
+   return 1;
+ }
+		 
+void addition()
+   {
+   int a, b,c;	
+   	printf("\nenter  1st no  ");
+   	scanf("%d",&a);
+   	
+	printf("\nenter  2nd no  ");
+   	scanf("%d",&b);
+   	c=a+b;
+   	printf("\nsum of %d and %d is %d ",a,b,c);
+   }
+  			  
+			
+			 
+			
+			
+			
+		int a=0,i;
+int b=1;
+int n=11;
+int z=0;
+//0,1,1,2,3,5,8
+//0 
+for(i = 1; i <=n ; i++)
+{
+	printf("%d  ",z );
+    z=a+b;
+	
+	a=b;
+	b=z;
+}
+
+
+i=1
+	z=0
+	b=1
+	a=0
+    z=a+b=0+1=1
+	z=1
+	  
+	  print 0
+	a=b=1
+	a=1
+	b=z=0
+	b=0
+ 
+					
+					
+i=1
+	z=1
+	b=0
+	a=1
+z=a+b=0+1=1
+	z=1
+	
+	  print 0
+	a=b=1
+	a=1
+	b=z=0
+	b=0
+  
+					
+			===============
+
+
+  ternary operator 
+
+   if()
+
+   else 
+
+   ternary operator 
+
+        -- alternate of if else if 
+        -- works in a single line 
+
+
+     syntaxt 
+               (condition1?"pass":"fail")	 
+
+   		   
+		   
+		   
+			
+		
+
+		
+	array 
+      collection of data  having a single name
+      it's elements are supported by index 
+	  
+   if we required to have 10 variable of same data type then instead of declaring 10 variables we can use array 
+   
+   int a,b,c,d,e,f,g,h,i,j;
+   
+    array 
+	
+	int ar[10];  // single dimension array 
+	
+	  ar[0]
+	  ar[1]
+	  ar[2]
+	  ar[3]
+	  ar[4]
+	  ar[5]
+	  ar[6]
+	  ar[7]
+	  ar[8]
+	  ar[9]
+	  
+	  
+	  
+	  two dimension array 
+	    or 2d Array
+		
+		         // 4 X 3   4 rows 3 columns
+		int arr[][]={
+		      {1,2,3},
+			  {4,5,6},
+			  {7.8,9}
+			  {11,12,13}
+		 }
+	
+		
+		
+		
+ 		
+		   
+
+   		  
+		  
+		  
+		  
+		  
+	  
+	  
+		 
+	
+	
