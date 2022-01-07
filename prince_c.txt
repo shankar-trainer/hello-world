@@ -1,3 +1,5 @@
+
+
 c language 
 
 c consists of  main function()
@@ -448,7 +450,7 @@ z=a+b=0+1=1
    
     array 
 	
-	int ar[10];
+	int ar[10];  // single dimension array 
 	
 	  ar[0]
 	  ar[1]
@@ -461,6 +463,18 @@ z=a+b=0+1=1
 	  ar[8]
 	  ar[9]
 	  
+	  
+	  
+	  two dimension array 
+	    or 2d Array
+		
+		         // 4 X 3   4 rows 3 columns
+		int arr[][]={
+		      {1,2,3},
+			  {4,5,6},
+			  {7.8,9}
+			  {11,12,13}
+		 }
 	
 		
 		
