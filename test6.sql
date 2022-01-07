@@ -635,3 +635,180 @@ select isbn,bname,cost,trunc(cost),round(cost) from mybook;
 
 
 select lpad('hello world',20,'*') from dual;
+select mod(12,5) from dual;
+
+select sysdate from dual;
+select next_day(sysdate,'sunday') from dual;
+select next_day(sysdate,'friday') from dual;
+select last_day(sysdate) from dual;
+select add_months(sysdate,10) from dual;
+select months_between(sysdate,'09-oct-22') from dual;
+select months_between('09-oct-22',sysdate) from dual;
+
+select trunc(months_between ('09-oct-22',sysdate)) from dual;
+select trunc(sysdate) from dual;
+select sysdate,round(sysdate) from dual;
+
+select to_date('10-mar-2020') from dual;
+select to_date('10-mar-2020') from dual;
+select to_char(sysdate,'dd-mm-yyyy') from dual;
+select to_char(sysdate,'yyyy-dd-mm') from dual;
+select to_char(sysdate,'yyyy-dd-mon') from dual;
+select to_char(sysdate,'yyyy-dd-mon hh mi ss ww') from dual;
+
+select * from examination;
+select * from students;
+select * from department;
+select id,name,nvl(salary,0) from employee;
+select id,name,nvl2(salary,salary,0) from employee;
+select id,name,salary,nvl2(salary,salary*1.10,0) from employee;
+
+
+select round(sysdate) from dual;
+select round(to_date('06-jan-2022 12:22:00','dd-mon-yyyy hh:mi:ss')) from dual;
+select (to_date('06-jan-2022')),sysdate from dual;
+
+select coalesce(10001,null,null) from dual;
+select coalesce(null,76766,null) from dual;
+select coalesce(null,null,1) from dual;
+
+-- merge 
+select * from employee;
+select * from employee1;
+create table employee1 as select * from employee;
+delete from employee1 where salary is null;
+commit;
+
+merge into employee e1 using employee1 e
+on (e1.id=e.id)
+when matched then 
+ update set e1.name=e.name,e1.salary=e.salary
+when not matched then 
+ insert values (e.id,e.name,e.salary);
+
+ 
+
+
+select * from mybook; 
+
+ delete from mybook;
+  savepoint a;
+ insert into mybook values(9000,'python beginner',678);
+  savepoint b;
+ 
+ select * from mybook;
+ rollback b;
+ 
+ --DCL
+ create user user2 identified by abcd;
+ grant create table, create view,create session, unlimited tablespace  to user2;
+ 
+Table created.
+SQL> connect
+Enter user-name: user2/abcd
+Connected.
+create table test1 (id int primary key);
+
+
+ --create role manager;
+--grant create table, create view,create session, unlimited tablespace  to manager;
+--grant manager to user2;
+ 
+ 
+ -- pl sql 
+ 
+set serveroutput on
+declare
+x int:=100;
+
+begin 
+ dbms_output.put_line('hello plsql');
+ dbms_output.put_line('x is '||x);
+end;
+/
+
+
+set serveroutput on
+declare
+id1 int:=&id;
+name1 varchar(20);
+salary1 int;
+begin 
+  select name,salary into name1,salary1 from employee where id=id1;
+  dbms_output.put_line('id is '||id1);
+  dbms_output.put_line('name is '||upper(name1));
+  dbms_output.put_line('salary is '||salary1);
+end;
+/
+
+-- bind variable 
+variable name2 varchar(20)
+variable salary2 int
+
+set serveroutput on
+
+declare
+id1 employee.id%type:=&id;
+name1 employee.name%type;
+salary1 employee.salary%type;
+begin 
+  select name,salary into name1,salary1 from employee where id=id1;
+    select name,salary into :name2,:salary2 from employee where id=id1;
+  dbms_output.put_line('id is '||id1);
+  dbms_output.put_line('name is '||name1);
+  dbms_output.put_line('salary is '||salary1);
+end;
+/
+
+print name2
+print salary2
+select * from  employee;
+
+<<outer>>
+	declare 
+	 x int:=111;
+	begin 
+	   dbms_output.put_line('outer x '||x);
+	  <<inner>>
+		   declare 
+		   y int:=900;
+		   begin
+		   dbms_output.put_line('inner y '||y);
+		   dbms_output.put_line('outer x inside inner block '||x);
+		   end;
+		   --dbms_output.put_line('inner  y inside outer block '||y);
+	end;
+
+ select * from employee;  
+ select * from customer;
+ select sum(salary) from customer;
+ select sum(salary),location from customer group by location;
+ 
+ -- aggregate function
+ declare 
+  sum_salary customer.salary%type;
+ begin 
+  select sum(salary) into sum_salary from customer where location='chennai';
+  dbms_output.put_line('sum of salary for chennai location is '||sum_salary);
+ end;
+ 
+ -- insert data 
+ declare 
+	  cid1 customer.cid%type;
+	  name1 customer.name%type;
+	  location1 customer.location%type;
+	  salary1 customer.salary%type;
+	  dob1 customer.dob%type;
+ begin 
+	 cid1:=&cid;
+	 name1:='&name'; 
+	 location1:='&location';
+	 salary1:='&salary';
+	 dob1:='&date_of_birth';
+     insert into customer values(cid1,name1,location1,salary1,dob1);
+	 dbms_output.put_line(SQL%ROWCOUNT||' row added');
+ end;
+ 
+ 
+ 
+ 
