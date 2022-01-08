@@ -925,3 +925,74 @@ end;
    
   
   select * from customer;
+  
+  set serveroutput on
+  -- %rowtype 
+  
+ declare 
+  emp employees%rowtype;
+  id employees.empid%type;
+ begin 
+ id:=&emp_id;
+   select * into emp   from employees where empid=id;
+  dbms_output.put_line('empid is '||emp.empid);
+  dbms_output.put_line('name is '||emp.name);
+  dbms_output.put_line('age is '||emp.age);
+  dbms_output.put_line('department id is '||emp.deptid);
+  
+  end;
+  
+  select * from employees;
+  
+  --record (composite data type)
+  declare
+  type emp_record is record
+  (
+   empid int,
+   name varchar(20),
+   age int,
+   deptid int
+   );
+   emp1 emp_record;
+   
+   begin 
+  emp1.empid:=98998;
+   emp1.name:='arvind swamy';
+   emp1.age:=67;
+   emp1.deptid:=1;
+  
+	  dbms_output.put_line('empid is '||emp1.empid);
+	  dbms_output.put_line('name is '||emp1.name);
+	  dbms_output.put_line('age is '||emp1.age);
+	  dbms_output.put_line('department id is '||emp1.deptid);
+   end;
+  / 
+  -- exception 
+  declare 
+  emp employees%rowtype;
+  id employees.empid%type;
+ begin 
+   id:=&emp_id;
+   select * into emp   from employees where empid=id;
+    dbms_output.put_line('empid is '||emp.empid);
+    dbms_output.put_line('name is '||emp.name);
+    dbms_output.put_line('age is '||emp.age);
+    dbms_output.put_line('department id is '||emp.deptid);
+  exception 
+  when no_data_found then 
+       dbms_output.put_line('no record found for id  '||id);
+       dbms_output.put_line(' error code is     '||sqlcode);
+       dbms_output.put_line(' error message is     '||sqlerrm);	   
+  when too_many_rows  then 
+       dbms_output.put_line('multiple rows found for the id   '||id);
+  when others then 
+          dbms_output.put_line('some error    ');
+  end;
+/
+
+   
+   
+  
+  
+  
+  
