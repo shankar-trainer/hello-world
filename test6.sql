@@ -809,6 +809,119 @@ select * from  employee;
 	 dbms_output.put_line(SQL%ROWCOUNT||' row added');
  end;
  
+ --if then  end if 
+ 
+  declare 
+  hra number(5,2);
+  deptid1 employees.deptid%type;
+  empid1 employees.empid%type;
+  name1  employees.name%type;
+  age1  employees.age%type;
+ begin 
+   empid1:=&employeeid;
+   select name,age, deptid into name1,age1,deptid1 from employees where empid=empid1;
+   if deptid1=1 then 
+    hra:=0.1;
+   elsif deptid1=2 then 
+    hra:=0.8;
+   elsif deptid1=3 then 
+    hra:=0.5;
+   else 
+    hra:=0.2;
+   end if;
+   dbms_output.put_line('employee id '||empid1);
+   dbms_output.put_line('employee name '||name1);
+   dbms_output.put_line('employee age '||age1);
+   dbms_output.put_line('employee hra '||hra);
+ end;
+/
+
+ 
+ select * from mybook;
+  select * from employees; 
  
  
+  declare 
+  hra number(5,2);
+  deptid1 employees.deptid%type;
+  empid1 employees.empid%type;
+  name1  employees.name%type;
+  age1  employees.age%type;
+ begin 
+   empid1:=90001;
+   select name,age, deptid into name1,age1,deptid1
+   from employees
+
+   where empid=empid1;
+   hra:=
+  case deptid1
+  when 1 then 0.1
+  when 2 then  0.8
+  when 3 then  0.5
+  when 1 then  0.3
+  else 
+  0.1
+  end; 
+  
+   dbms_output.put_line('employee id '||empid1);
+   dbms_output.put_line('employee name '||name1);
+   dbms_output.put_line('employee age '||age1);
+   dbms_output.put_line('employee hra '||hra);
+ end;
+/
+
+
+-- loop 
+-- basic loop 
+
+declare 
+ x int:=1;
+begin 
+ loop 
+ dbms_output.put_line(x);
+ x:=x+1;
+ exit when x>=5;
+ end loop ;
  
+end;
+
+
+-- while loop 
+
+declare 
+ x int:=1;
+begin 
+ while x<=10 loop 
+ dbms_output.put_line(x);
+ x:=x+1;
+ end loop ;
+end;
+
+-- for  loop 
+begin 
+ for i in  1..10 loop 
+ dbms_output.put_line(i);
+ end loop ;
+end;
+
+begin 
+ for i in  reverse 1..10 loop 
+ dbms_output.put_line(i);
+ end loop ;
+end;
+  
+ declare 
+  cid1 int:=10;
+  
+ begin 
+ 
+ for i in  1..3 loop 
+     insert into customer values(cid1,'&name','&location',&salary,'&dob');
+	 dbms_output.put_line(SQL%ROWCOUNT||' row added');
+ cid1:=cid1+1;
+ end loop;
+ end;
+  / 
+   
+  
+  select * from customer;
