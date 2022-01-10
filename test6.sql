@@ -991,8 +991,224 @@ end;
 /
 
    
+select * from mybook;
+
+set serveroutput on
+-- user defined exception
+declare 
+	isbn_exception exception;
+	book mybook%rowtype;
+	isbn1  mybook.isbn%type;
+
+begin 
+    isbn1:=&isbn;
+    if isbn1<0 then  raise isbn_exception;
+    else
+    select  * into book from mybook where isbn=isbn1;
+   end if;
+     dbms_output.put_line(' isbn '||book.isbn);
+     dbms_output.put_line(' name '||book.bname);
+     dbms_output.put_line(' cost '||book.cost);
+    
+EXCEPTION
+
+   when isbn_exception then 
+    dbms_output.put_line('invalid isbn ');
+   when no_data_found then 
+    dbms_output.put_line('no record found  '); 
+end;
+
+
+declare 
+	book mybook%rowtype;
+	bname1  mybook.bname%type;
+
+begin 
+    bname1:='&book_name';
    
+    select  * into book from mybook where bname=bname1;
+     dbms_output.put_line(' isbn '||book.isbn);
+     dbms_output.put_line(' name '||book.bname);
+     dbms_output.put_line(' cost '||book.cost);
+    
+EXCEPTION
+
+   when no_data_found then 
+    dbms_output.put_line('no record found  '); 
+   when too_many_rows then 
+    dbms_output.put_line('multiple rows  found  for the book name  '); 
+end;
+
+-- raise_application_error 
+
+declare 
+	book mybook%rowtype;
+	isbn1 mybook.isbn%type;
+
+begin 
+    isbn1:=&book_isbn;
+   
+  delete  from mybook where isbn=isbn1;
+ 
+  if SQL%FOUND then 
+    dbms_output.put_line('record deleted');
+  elsif SQL%NOTFOUND then 
+    dbms_output.put_line('isbn not present  ');
+    raise_application_error(-20000,'isbn not found ........');
+  end if;
+end;
+
+
+
+declare 
+	book mybook%rowtype;
+	isbn1  mybook.isbn%type;
+
+begin 
+    isbn1:=&book_isbn;
+   
+    select  * into book from mybook where isbn=isbn1;
+     dbms_output.put_line(' isbn '||book.isbn);
+     dbms_output.put_line(' name '||book.bname);
+     dbms_output.put_line(' cost '||book.cost);
+    
+EXCEPTION
+
+   when no_data_found then 
+    raise_application_error(-20001,'no isbn is present');
+    --dbms_output.put_line('no record found  '); 
+end;
+ select * from mybook; 
   
+-- PRAGMA Error propagation 
+
+declare 
+ pk_violation exception;
+ PRAGMA EXCEPTION_INIT(pk_violation,-0001);
+begin
+  insert into mybook values(2,'two states',1200);
+  dbms_output.put_line('record added ');
+exception
+ when pk_violation then 
+   dbms_output.put_line('primary key error  ');
+end;
+
+
+
+  desc mybook;
+  alter table mybook modify isbn int primary key;
+  truncate table mybook;
+  select * from mybook;
   
+
+
+select * from employee;
+-- cursor 
+
+declare
+  emp employee%rowtype;
+begin
+	select *  into emp from employee where id=1;
+	if SQL%FOUND then 
+	  dbms_output.put_line('record found');
+	  dbms_output.put_line('total no of records are  '||sql%rowcount);
+	  dbms_output.put_line('id is '||emp.id);
+	  dbms_output.put_line('name is '||emp.name);
+	  dbms_output.put_line('salary is '||emp.salary);
+	end if;
+	if SQL%NOTFOUND then 
+	  dbms_output.put_line('record not present ');
+	end if ; 
   
-  
+  exception 
+   when no_data_found then 
+     dbms_output.put_line('record not found ');
+     
+end;
+
+-- cursor 1
+declare 
+	id1 employee.id%type;
+	name1 employee.name%type;
+	salary1 employee.salary%type;
+
+    cursor emp_cursor is select id,name,salary from employee;
+
+begin 
+
+   open emp_cursor;
+   loop 
+   fetch emp_cursor into id1,name1,salary1;
+   exit when emp_cursor%notfound;
+    dbms_output.put_line(id1||'   '||name1||'   '||salary1);
+   end loop;
+end ;
+
+
+-- cursor 2 using %rowtype 
+declare 
+	emp employee%rowtype;
+	
+    cursor emp_cursor is select * from employee;
+
+begin 
+
+   open emp_cursor;
+   loop 
+   fetch emp_cursor into emp;
+   
+   exit when emp_cursor%notfound;
+    dbms_output.put_line(emp.id||'   '||emp.name||'   '||emp.salary);
+   end loop;
+   close emp_cursor;
+end ;
+
+-- cursor 3 using while loop  
+declare 
+	emp employee%rowtype;
+    cursor emp_cursor is select * from employee;
+begin 
+   open emp_cursor;
+     fetch emp_cursor into emp;
+   
+    while(emp_cursor%found) loop 
+     dbms_output.put_line(emp.id||'   '||emp.name||'   '||emp.salary);
+     fetch emp_cursor into emp;
+   
+   end loop;
+   close emp_cursor;
+end ;
+
+
+
+-- cursor 3 using while loop -- by parameter  
+declare 
+	emp employee%rowtype;
+    cursor emp_cursor(id1 number) is select * from employee where id=id1;
+begin 
+   open emp_cursor(1001);
+     fetch emp_cursor into emp;
+   
+    while(emp_cursor%found) loop 
+     dbms_output.put_line(emp.id||'   '||emp.name||'   '||emp.salary);
+     fetch emp_cursor into emp;
+   
+   end loop;
+   close emp_cursor;
+end ;
+
+
+-- cursor using for loop 
+declare 
+	cursor emp_cursor is select * from employee;
+
+begin 
+
+   for i in  emp_cursor    loop 
+     dbms_output.put_line(i.id||'   '||i.name||'   '||i.salary);
+   end loop;
+ 
+end ;
+
+
+ 
