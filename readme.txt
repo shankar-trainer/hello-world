@@ -18,7 +18,7 @@ ledger
                        a)sql plus 
                        b)sql developer 
 
-oracle xe 23 
+oracle xe23 
 
 https://download.oracle.com/otn-pub/otn_software/db-express/OracleXE213_Win64.zip
 
@@ -77,9 +77,19 @@ and operator
 
 plsql 
 
-Assignment day1https://drive.google.com/file/d/1DiE5DYM0nRCTGRejicFFjDpRvr7OrSlc/view?usp=sharing
+Assignment day1
+
+https://drive.google.com/file/d/1DiE5DYM0nRCTGRejicFFjDpRvr7OrSlc/view?usp=sharing
+
+Assignment day2
+https://drive.google.com/file/d/1ZHBTUi6WfhZjL8gWJsbLb0VoQmNJFULV/view?usp=sharing
+
+Assignment day3
+https://drive.google.com/file/d/1r0ZJdwPvscAC6qfN-v5ty3V-AbzI3LL8/view?usp=sharing
 
 ==========================================================
+
+
 sql 
 
 Assignment day5
@@ -370,4 +380,22 @@ cross join
 subquery 
     -- nested query 
 	-- query inside another query 
+	
+	
+	two types 
+	   1.procedure 
+	   2.function
+	   
+	   
+	   
+	   in --input 
+	   out -- return out 
+	   
+	   in out -- in +out 
+	   
+	
+	
+	
+	subprogram 
+	
 	

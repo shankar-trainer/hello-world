@@ -1210,5 +1210,235 @@ begin
  
 end ;
 
+-- procedure 
+set serveroutput on 
+
+create or replace procedure 
+  addition(x int, y int)
+  is 
+   z int;
+  begin 
+   z:=x+y;
+   dbms_output.put_line('no1 is '||x);  
+   dbms_output.put_line('no2 is '||y);
+   dbms_output.put_line('sum is '||z);
+ end;
+  
+ -- calling procedure
+ -- using pl sql code 
+ declare 
+  x int;
+  y int;
+
+ begin 
+	 addition(11,22);
+	 
+	 x:=&no1;
+	 y:=&no2;
+	 addition(x,y);
+ end;
+
+ -- calling procedure
+ -- using  sql code  
+execute addition(11,22);
+ 
+-- procedure with out parameter 
+
+create or replace procedure 
+  calculation(x int, y in int, a out int,b out int ,c out int ,d out int  )
+  is 
+   
+  begin 
+   a:=x+y;
+   b:=x-y;
+   c:=x*y;
+   d:=x/y;
+  end;
+  
+ -- calling 
+ -- using pl sql block 
+
+declare 
+	x int;
+	y int;
+	z int;
+	p int;
+begin 
+ calculation(10,2,x,y,z,p);
+ dbms_output.put_line('addition is '||x);
+ dbms_output.put_line('subtraction is '||y);
+ dbms_output.put_line('multiplication is '||z);
+ dbms_output.put_line('division is '||p);
+end;
+ 
+
+ -- calling 
+ -- using  sql code 
+
+variable k number 
+variable l number
+variable m number 
+variable n number
+
+execute  calculation(10,2,:k,:l,:m,:n)
+
+print k
+print l
+print m
+print n
+
+
+-- procedure to update the salary 
+
+create or replace procedure update_employee_salary(id1 int) 
+ is 
+begin 
+ update employee set salary=salary+salary*0.5 where id=id1;
+ 	dbms_output.put_line('record updated ');
+exception
+	when no_data_found then 
+	dbms_output.put_line('no record found ');
+end;
+
+-- calling procedure using  pl sql 
+set serveroutput on
+declare 
+ id1 int;
+begin
+ id1:=&id;
+ update_employee_salary(id1);
+end;
 
  
+select * from employee; 
+ 
+-- procedure with in and out parameter 
+-- search employee 
+
+create or replace procedure search_employee(id1  int,  name1 out varchar, salary1 out number) 
+is 
+
+begin
+select name, salary into name1,salary1 from employee where id=id1;
+
+exception
+	when no_data_found then 
+	dbms_output.put_line('no record found ');
+end;
+
+
+-- call using  pl sql 
+declare 
+ id1 employee.id%type;
+ name1 employee.name%type;
+ salary1 employee.salary%type;
+ 
+begin
+ id1:=&id;
+ search_employee(id1,name1,salary1);
+
+ if name1 is not null then
+	 dbms_output.put_line('record found with id '||id1);
+	 dbms_output.put_line('name '||name1);
+	 dbms_output.put_line('salary '||salary1);
+end if; 
+end;
+
+
+-- call using sql 
+
+variable name1 varchar2
+variable salary1 number 
+ 
+execute search_employee(1001,:name1,:salary1)
+ print name1
+ print salary1
+
+
+-- inout 
+
+create or replace procedure square (a in out number) 
+is 
+begin 
+ a:=a*a;
+end;
+
+-- calling using pl sql 
+declare 
+ q int;
+begin 
+ q:=&no;
+square(q);
+if q is not null then 
+ dbms_output.put_line('square is '||q);
+end if;
+
+end;
+
+
+-- function 
+
+create or replace function sum1(a int, b int)
+  return number
+is
+ c int;
+begin
+ c:=a+b;
+return c;
+end;
+/
+
+-- calling function using pl sql 
+
+declare
+ p int;
+begin
+p:=sum1(1,2);
+dbms_output.put_line('sum is'||p);
+end;
+/
+
+-- calling using sql
+
+variable x number
+ execute :x:=sum1(11,22)
+print x
+
+-- database function 
+create or replace function search_emp_salary(id1 int)
+  return number
+is
+ salary1 int;
+begin 
+select salary into salary1 from employee where id=id1;
+return salary1;
+
+exception 
+ when no_data_found then 
+  dbms_output.put_line('no record present for the id '||id1);
+end;
+
+-- calling function 
+declare 
+  salary1 int;
+  id1 int;
+begin
+  id1:=&id;
+  salary1:=search_emp_salary(id1);
+  dbms_output.put_line('record found ');
+  dbms_output.put_line('salary for the id  '||id1||' is '||salary1);
+end;
+
+
+ select id,name,search_emp_salary(1001) from employee where id=1001;
+ 
+-- using sql 
+variable salary number
+execute :salary:=search_emp_salary(1001) 
+print salary
+
+
+
+ 
+
+
