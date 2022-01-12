@@ -1437,8 +1437,124 @@ variable salary number
 execute :salary:=search_emp_salary(1001) 
 print salary
 
+set serveroutput on 
+-- trigger 
+select * from employee;
+insert into employee values(7871,'bandna kumari',28000);
+
+-- trigger after insert event 
+
+create or replace trigger trg1 after insert on employee 
+begin
+ dbms_output.put_line( 'record added  by user  '||user ||' at '||systimestamp);
+end;
 
 
+create table employee_log(user1 varchar(20),date1 systimestamp);
+
+create or replace trigger trg2 after insert on employee 
+begin
+ insert into employee_log values(user,systimestamp);
+end;
+
+select * from employee_log;
+select to_char(sysdate,'dd-mm-yyyy') from dual;
+select to_char(sysdate,'dy') from dual;
+select to_char(sysdate,'HH24:MI') from dual;
+
+create or replace trigger trg3 before insert on employee 
+begin
+ if to_char(sysdate,'dy') in ('SAT','SUN')  or  (to_char(sysdate,'HH24:MI')not between '08:00' and '18:00')
+  then 
+  raise_application_error(-20001,'insert can be done on business hours');
+  end if;
+end;
+
+select user from dual;
+
+create table employee_log1(user1 varchar(20),date1 timestamp,message varchar(50));
+alter table employee_log1 modify message varchar(50);
+
+create or replace trigger trg4 before  insert or update or delete  on employee 
+begin
+ if deleting then 
+   insert into employee_log1 values(user,systimestamp,'delete record from employee table' );
+ elsif updating then 
+   insert into employee_log1 values(user,systimestamp,'update record in employee table' );
+ elsif inserting then 
+   insert into employee_log1 values(user,systimestamp,'insert  record in employee table' );
+ end if;
+end;
+
+select * from employee_log1;
+
+insert into employee values(78765,'bandn kumar',29000);
+delete from employee where id=1001;
+select * from employee;
+
+create table employee_backup as select * from employee where 1>100;
+
+create or replace trigger employee_backup_trigger after  delete  on employee 
+ for each row 
+ begin
+     insert into employee_backup values(:old.id,:old.name,:old.salary);
+ end;
  
+select * from employee_backup;
+select * from employee;
+delete from employee where id=1002;
+commit;
 
 
+set serveroutput on;
+-- package specification
+create or replace package pack1 is 
+  procedure employee_search(id1  int,  name1 out varchar, salary1 out number);
+end;  
+
+-- package body
+create or replace package body  pack1 is 
+  procedure employee_search(id1  int,  name1 out varchar, salary1 out number)  is
+    begin 
+       select name,salary into name1,salary1 from employee where id=id1;
+       exception
+	when no_data_found then 
+	dbms_output.put_line('no record found ');
+    end employee_search;
+end pack1;  
+
+--calling using pl sql 
+set serveroutput on
+
+declare 
+name1 employee.name%type;
+salary1 employee.salary%type;
+begin 
+ pack1.employee_search(1003,name1,salary1);
+ dbms_output.put_line('record found ');
+ dbms_output.put_line('name is  '||name1);
+ dbms_output.put_line('salary is  '||salary1);
+end;
+
+
+-- analytical function
+select * from customer;
+
+select  count(location) ,location from customer group by location;
+select  cid,name,location,dense_rank() over (partition by location order by cid ) from customer;
+
+
+create table person1 (id int primary key, name varchar(20), married number(1,0));
+insert into person1 values(1001,'arvind kumar',1);
+insert into person1 values(1002,'suman kumar',0);
+insert into person1 values(1003,'suman kumar',7);
+select * from person1;
+
+create table person2 (id int primary key, name varchar(20), marriage number, check (marriage in (1,0)));
+
+insert into person2 values(1001,'arvind kumar',1);
+insert into person2 values(1002,'suman kumar',0);
+insert into person2 values(1003,'suman kumar',7);
+
+
+create table person3 (id int primary key, name varchar(20), marriage number,salary int,  check (marriage in (1,0)), check (salary>=5000));
