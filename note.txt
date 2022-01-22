@@ -1,0 +1,138 @@
+slide link 
+
+corejava 
+https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
+
+java -- interpretter 
+javac  -- compiler 
+
+
+jdk -- java development kit (javac , java )
+jre -- java runtime environment (java interpretter)
+
+IDE -- integrated development environment
+
+       eclipse , intellij 
+	   
+	   eclipse -- IBM -- open source 
+	   
+	   -->incremental compilation 
+	   -->intellisense support 
+	   --> debugger
+       --> maven, gradle 
+       --> perspective   	   
+
+
+
+UserInput
+  
+  Scanner -- java.util
+    nextInt()  -- int 
+	nextFloat() -- float 
+	nextDouble()  -- double 
+    next()        -- String 
+    nextLine()    -- multi word string 
+	
+
+by default 
+   java.lang -- default package present in all classes
+     Integer
+	 Double 
+	 Float
+	 
+	 
+	Integer 
+	
+	 short ------------- java.lang.Short 
+	 byte  -------------  Byte 
+	 int --------------- java.lang.Integer
+	 long -------------- java.lang.Long 
+	 
+	Decimal 
+      float 
+       double 
+	   
+    	  
+	 
+	 
+	 class -- collection of obejcts with similar attribues and methods
+	      --  conceptial entity 
+     
+	 object -- instance of class. real entity 
+	 
+	 
+	 
+	 
+	 student1 (roll,name,subject)  |
+	 student2 (roll,name,subject)  |   Student class  
+	 
+	 student3 (roll,name,subject)  | 
+	 student4 (roll,name,subject)  |	
+	 
+	 each instance 
+	   one copy of attribue +method 
+	 
+	 
+	 
+	 Encapsulation 
+	   capsule -- content is hidden 
+	   
+	   state/data -- hidden -- private 
+	   
+	   public method -- code 
+	   
+	   bind code+data
+
+
+
+ Constructor 
+    two types 
+	   1. default constructor 
+	   2.overloaded constructor
+	   
+
+
+instance variable 
+   --> associated with object/instance 
+   --> each object has one copy of all instance variable 
+   
+   
+static/ class variable    
+  -->common variable -- to be shared by all objects    
+  --> static members are created before the creation object 
+  --> to access static members just use the class name 
+  
+   
+   
+   class Employee{
+     int id;    // instance variable 
+	 String name;
+	 float salary;
+   }
+
+   emp1, emp2 
+
+
+  java.lang -- default package 
+
+  String, Integer,Float, Math 
+
+   in Math class all variables and methods are static
+
+   
+	   
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+
+
+
+
+
+  
