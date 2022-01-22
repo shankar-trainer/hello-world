@@ -1,0 +1,97 @@
+https://github.com/shankar-trainer/hello-world/tree/lpu_batch1_22
+
+Eclipse ide 
+   integrated development environment 
+     
+
+Jdk -- java devlopment kit 
+   javac 
+   java 
+   
+JRE
+  Java Runtime Environment 
+  
+  
+  Arrays 
+  
+   initialisation 
+    1. int ar[]={1,2,3,4,5};
+	2. int ar2[]=new int[6];// initialise ecah element with zero
+	
+  
+  Structure Oriented Language 
+   variables, methods 
+   
+   
+   
+   Capsule -- content is hidden
+
+   Encapsulation 
+        data -- hidden(private ) 
+		public method(code)
+		
+    -- code (method )+ data     
+   bind the code with data 
+   
+   
+   
+   access modifier 
+      
+	  private -- only inside the class 
+	  default -- inside class, outside the class but inside package only 
+	  protected --inside class, outside the class, outside package by inheritance
+	  public  -- any where 
+	  
+	  
+	  
+
+
+
+  User Input -- java.util.Scanner  
+    Scanner 
+	     methods
+               .nextInt() -- int 		 
+               .nextFloat() -- float
+               .next()  -- String 			   
+
+
+
+Object oriented programming 
+
+object -- real entity with attribute and behaviour 
+        -- copy of attribute and behaviour
+		
+class  -- conceptual entity , collection of object 
+
+
+ student1--  roll, name   |
+ student2--  roll, name   |  \
+ student3--  roll, name   |     class 
+ student4--  roll, name   |  /
+
+
+setter -- set the values 
+	  constructor 
+	  
+	  2 types 
+	    a) default constructor  -- no arguments 
+		b) overloaded constructor (with arguments )
+
+
+  overloaded constructor 
+    -- it has parameters , so all object will be having differrent values 
+	
+	in a class 
+	  single default constructor is allowed 
+	  multiple overloaded constructor with differrent arguments is allowed
+	  
+	   using this() -- call the another constructor from the current constructor
+	   
+
+
+
+
+
+  
+  
+  
