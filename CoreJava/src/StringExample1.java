@@ -17,13 +17,13 @@ public class StringExample1 {
 		// == for checking references
 		// .equals -- for checking contents
 
-		System.out.println(s1 == s2);
-		System.out.println(s1 == s3);
+		System.out.println(s1 == s2);//true
+		System.out.println(s1 == s3);//false
 
-		System.out.println(s1.equals(s2));
-		System.out.println(s1.equals(s3));
+		System.out.println(s1.equals(s2));//true
+		System.out.println(s1.equals(s3));//true 
 
-		System.out.println("hello" == "hello");  // true  string pool
+		System.out.println("hello" == "hello");  // true  string pool same object
 		System.out.println("hello" == new String("hello"));// false
 		System.out.println("hello".equals(new String("hello")));// true
 
