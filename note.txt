@@ -3,6 +3,10 @@ slide link
 corejava 
 https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
 
+github link
+https://github.com/shankar-trainer/hello-world/tree/lpu_batch2_22
+
+
 java -- interpretter 
 javac  -- compiler 
 
