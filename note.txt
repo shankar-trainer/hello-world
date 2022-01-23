@@ -90,7 +90,101 @@ setter -- set the values
 
 
 
+   instance variable -- all objects have one copy of instance variable, methods
+   
+     common value -- to be shared 
+	 
+	 static member
+               for common variables 	 
+	    country
+		state 
+		bank interest rate 
+		
+	 for static member object is not required 
+      static members are present to the jvm before the creation of object 
+	  
+	  
+	  non static method 
+	       -- all static and non static can be used directly 
+  
+      static method 
+          -- static members can be used directly
+          -- non static members can be used using object 
+		  
+	  
 
+   Composition 
+      
+     one class consists fo other classes
+	 has a relationship 
+
+     Employee has Address 
+     Student has birthday 
+
+  String class
+    -- immutable in nature 
+	-- string literla is object itself 
+	
+	 "hello"  -- string object 
+	 
+	 
+
+   String literal -- String Pool   
+   "hello"  ---      
+   
+   indexOf -- search the given String and if found it will return position
+   
+
+   int -------------- Integer 
+   float ------------- Float 
+   char --------------- character 
+   
+   Boxing -- converting primitive to warpper class
+   
+   
+   inheritance 
+   
+    private -- not inherited 
+	
+	public, default, static  are inherited
+	
+	constructor  is not inherited 
+	
+   
+   
+
+
+
+
+
+
+
+	 
+	  
+
+
+
+
+	 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+
+
+	  
+		
+	     
+		 
+		 
+	 
+   
 
   
   
