@@ -150,8 +150,112 @@ setter -- set the values
 	
 	constructor  is not inherited 
 	
+  
+   Overriding 
+   -- changing the super class method in sub class 
+   -- static method can be inherited but not overridden
+   -- static method can be re written in the sub class 
+
+   -- rules 
+       --> overridding methods cannot have weaker access modifier  
+       --> overridding methods must have same parameter and return type 	   
    
-   
+       |private
+	   |default 
+	   |protected 
+	   |public 
+	   v
+
+
+
+  polymorphism 
+      -- water 
+	           gas,solid,cloud, liquid 
+			   
+		
+  Person 
+  
+      --Passenger
+	  --Father
+      --Husband 
+      --Employee 
+	  --Customer 
+	  
+	two types 
+      1. overloading 
+      2.overridding
+
+
+  Abstraction 
+     class should have abstract/essential methods 
+	 
+	 abstract class -- 
+	                 abstract method -- has no bod
+					 concrete method 
+					 
+				only abstract class can have abstract method 
+				abstract class cannot be instantiated 
+				abstract class can be extended and then sub class can be instantiated 
+				it has both static and non static/instance variable
+				it  has constructor
+	
+
+   interface 
+       java has no multiple inheritance.
+	   
+	   multiple inheritance is avaialable using interface 
+	   
+	   subclass can have more than one parent class
+	   interface 100% abstract class 
+	   
+	   Person    Manager  
+		|         / 
+	    |        /
+	    v       v
+	    Employee 
+		--> it gives multiple inheritance
+		--> all methods are public  and abstract 
+		--> all variables are public static final 
+		--> one interface can extends more than one interface 
+		-->one class can extends only one class but can implement multiple 
+		    interface 
+			
+		
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+        
+				
+				
+				
+				
+				
+				
+	 
+  
+  
+  
+    
+	  
+	  
+  	  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
