@@ -123,15 +123,91 @@ static/ class variable
 
    in Math class all variables and methods are static
 
-   
+
+ composition 
+   -- has a relation 
+
+   -- a class may composed of multiple   classes 
+   -- a class can be used as the component/attribue of the class 
+
+
+  class Employee {
+    int id;
+	String name;
+	
+	Address addr1;
+	Car car;
+	Birthday bday;
+  }   
+	   
+	   Employee has an Address 
+	   Employee has an car  
+	   Employee has an birthday   
+	   Employee has an phone    
+	   
+	   
+	   
+	   String 
+	         --> immutable in nature 
+	         --> immutable does not allow value to be changed 
+             --> String literal is object itself;
+			 
+	 
+	 
+	 String Pool 
+	 
+	     String literal are create 
+		 
+		 
+		    String  myname="elliot koffmain";   // String pool  obj1 
+			     myname="abc";                  // new Object obj2 
+				 
+			   String  myname1="elliot koffmain";
+			   String  myname2="elliot koffmain";
+			   String  myname3="elliot koffmain";
 	   
 	 
+
+Wrapper class 
+
+primitive ---------------- Wrapper class
+
+int             ----Integer 
+float           ----Float
+double          ----Double
+ 	 
+	 
+	 boxing -- primitive to wrapper class 
+	 unboxing --  wrapper class to primitive 
+
+  jdk1.5
+    Autoboxing=boxing+unboxing 
+	  
+	  inheritance
+	 
+	 Parent/Base class
+	 Employee(id,name,salary) 
+	     |
+		 |
+		 v
+	 Manager (id,name,salary)  	 
+		  child class 
+		 
+		 
+		 
 	 
 	 
 	 
 	 
 	 
 	 
+	 
+	 
+	 
+	 
+	 
+	 
+
 	 
 	 
 
