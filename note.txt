@@ -1,5 +1,12 @@
-slide link 
+corejava day1 assignment link
+https://drive.google.com/file/d/1k4lNH4r-b2QH6Tt7M90kxrGJSlIMviaO/view?usp=sharing 
 
+
+corejava day2 assignment link
+https://drive.google.com/file/d/1q_bn5w1KYwx8cFCQ_UYcOrFpxSys4ehw/view?usp=sharing
+
+
+slide link 
 corejava 
 https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
 
@@ -196,12 +203,72 @@ double          ----Double
 		 
 		 
 	 
+	 one -- 1
+	 three  --3 
+	 two 
+	 four
+	 five 
+	 eight
+	 
+	 132458
+	 
+	 java cmdargs  one five nine seven 
 	 
 	 
 	 
+	 final 
+	    -- declare constant variable 
+		--final  method --- cannot be overriden 
+		-- final class  ---  cannot be extended 
+		
+		local variable  can be only final 
+		
 	 
 	 
-	 
+	    Person
+		  -- Passenger 
+		  -- Manager 
+		  -- Patient
+          -- Father
+		  
+		  a class can have one default constructor and multiple overloaded constructor
+		  --> if a class have  overloaded constructor then no default constructor is added by compiler 
+		  
+		  
+		  
+		  super()  -- call super class constructor
+		  this()  -- call current class constructor
+		  
+		  
+		  super -- to call super class  variable and method  
+		  this -- call current class variable and methods
+		  
+		  
+		  abstraction feature 
+		       -- class should have abstract/essential method 
+			   
+		 in java no multiple inheritance is allowed
+
+         interface 
+
+		       -- 100% abstract class 
+			   -- all methods are public and abstract 
+			   -- allows multiple inheritance feature 
+			   -- one interface can extends more than one interface 
+			   -- a class can extend one class but can implement multiple interface
+			   
+			   -- all variables are public static final in nature 
+			   
+			   
+			   
+			   
+		  
+		  
+		  
+		  
+		  
+ 		  
+		  
 	 
 	 
 	 
