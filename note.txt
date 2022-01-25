@@ -1,4 +1,21 @@
+corejava day1 assignment link
+https://drive.google.com/file/d/1k4lNH4r-b2QH6Tt7M90kxrGJSlIMviaO/view?usp=sharing 
+
+
+corejava day2 assignment link
+https://drive.google.com/file/d/1q_bn5w1KYwx8cFCQ_UYcOrFpxSys4ehw/view?usp=sharing
+
+
+github code link
 https://github.com/shankar-trainer/hello-world/tree/lpu_batch1_22
+
+slide link 
+corejava 
+https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
+
+
+
+
 
 Eclipse ide 
    integrated development environment 
@@ -212,7 +229,8 @@ setter -- set the values
 		|         / 
 	    |        /
 	    v       v
-	    Employee 
+	interface Employee 
+		
 		--> it gives multiple inheritance
 		--> all methods are public  and abstract 
 		--> all variables are public static final 
@@ -220,10 +238,58 @@ setter -- set the values
 		-->one class can extends only one class but can implement multiple 
 		    interface 
 			
-		
+	final 
+        final variable -- constant 
+        final method -- cannot be overridden
+        final class -- can not be extended
+
+    local variable -- only one modifier is allowed  final 
+        
+
+
+	
+      	
 	   
 	   
-	   
+	
+int   --------------- Integer
+float  ---------------Float 
+char ---------------- Character 
+
+
+
+
+java program ----code --- Exception instance-- throws -------   main -- program terminate 
+
+java program ----code --- Exception instance-- throws -------   main - catch - program not  terminate 
+
+
+
+
+program -- error -- trapped  -- catch block 
+
+player1 throw ----------- palyer2--------    player3 
+
+finally block is executed
+  in either case 
+a) if there is exception
+b) if there is no exception 
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 	   
 	   
 	   
