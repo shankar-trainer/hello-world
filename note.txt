@@ -268,13 +268,25 @@ java program ----code --- Exception instance-- throws -------   main - catch - p
 
 program -- error -- trapped  -- catch block 
 
-player1 throw ----------- palyer2--------    player3 
+player1 throw ----------- palyer2--------    player3 ---  
 
 finally block is executed
   in either case 
 a) if there is exception
 b) if there is no exception 
 
+
+  throws -- declare the Exception(checked) with method 
+  throw  -- return Exception Object 
+  
+  
+  
+  two types
+    checked/unhandled exception -- checked by compiler 
+	    -- handle by try..catch or using throws 
+		
+    unchecked/handled exception -- not checked by compiler 
+	
   
 
 
