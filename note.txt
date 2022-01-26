@@ -260,7 +260,35 @@ double          ----Double
 			   -- all variables are public static final in nature 
 			   
 			   
+			   one sub class can have multiple super classes 
 			   
+			   
+
+ package - collection  of  java classes, interfaces with access permission 
+ 
+     
+	 player1 -- throw ------  caught by player2 
+	 player1 -- throw ------ not  caught by player2 ----
+	 
+	 
+	 EXception -- can catch all exceptions
+	   1.ArrayIndexOutOfBoundsException
+	   2.NullPointerException 
+	 
+     throw --  throw the exception instance 
+	 throws -- along with method to declare exception
+      two types
+
+       checked/unhandled exception	  
+     	  --checked by the compiler at compilation time 
+	     -- handled by try .. catch or throws
+       unchecked/handled exception	  
+     	  --not checked by the compiler at compilation time 
+	   
+	 
+	 
+	 
+	 
 			   
 		  
 		  
