@@ -17,9 +17,5 @@ public class EmployeeMain {
 		} catch (EmployeeException e) {
 		  System.err.println(e.getMessage());	
 		}
-		
-		
-		
-		
 	}
 }

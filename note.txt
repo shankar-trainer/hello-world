@@ -293,6 +293,40 @@ double          ----Double
 
 
   
+       array 
+	      -- has fixed length
+		  -- same data type 
+          -- no searching sorting methods		  
+			   
+			   
+		Collection -- interface 
+          -- group of objects in a single unit 
+          -- it has auto growable
+          -- searching, sorting and different algorithms are implemented
+		  
+		  
+		  Collection   
+		      interface are 
+			    List 
+				Set 
+				Map 
+			List -- generalized array 
+                   --> it support index
+                   --> ordred 
+                   --> duplicate is allowed
+              Set 
+			    --> it  doesnot support index
+                   --> it's not ordred 
+                   --> duplicate is  not allowed
+
+
+           Arrays -- java.util.Arrays 
+                   -- common array operation 		   
+				   
+			Generics 
+               -- compile type safe program
+               -- collection with same data type
+ 			   
 			   
 		  
 		  

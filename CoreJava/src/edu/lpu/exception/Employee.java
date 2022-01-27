@@ -1,5 +1,6 @@
 package edu.lpu.exception;
 
+
 public class Employee {
 
 	private int id;
@@ -46,5 +47,4 @@ public class Employee {
 		else
 			this.salary = salary;
 	}
-
 }
