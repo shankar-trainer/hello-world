@@ -287,8 +287,12 @@ double          ----Double
 	   
 	 
 	 
-	 
-	 
+	 player1 --- ball throw -------------------   --- player3 
+	                          caught by player2 
+							    re throw 
+
+
+  
 			   
 		  
 		  

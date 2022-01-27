@@ -28,7 +28,7 @@ public class InterestCalculation2 {
 		rate = scanner.nextFloat();
 
 		if (rate <= 0)
-			throw new Exception("invalidrate");
+			throw new Exception("invalid rate");
 
 		return amt * rate * time / 100;
 	}
