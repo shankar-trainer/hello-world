@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <style>
+        label {
+            float: left;
+            width: 100px;
+        }
+
+        input {
+            width: 150px;
+            margin-top: 5px;
+        }
+
+        form {
+            margin-left: 450px;
+            margin-top: 100px;
+            border: solid blue;
+            width: 25%;
+            padding: 40px;
+            background-color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function addition() {
+            var x = document.getElementById('n1').value
+            var y = document.getElementById('n2').value
+            document.getElementById('n3').value = parseFloat(x) + parseFloat(y)
+        }
+    </script>
+    <form>
+        <label>Enter no1 </label>
+        <input id="n1"><br>
+        <label>Enter no2 </label>
+        <input id="n2"><br>
+        <label>Sum </label>
+        <input id="n3" onfocus="addition()"><br>
+    </form>
+
+</body>
+
+</html>

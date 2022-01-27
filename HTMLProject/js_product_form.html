@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="style/style1.css">
+    <style>
+        label {
+            float: left;
+            width: 150px;
+        }
+    </style>
+    <script>
+        function getTotalCost() {
+
+            var cost = document.getElementById('pcost').value
+            var name = document.getElementById('pname').value
+            var count = document.getElementById('pcount').value
+
+            if (name == "")
+                alert("name  is blank")
+            else if (name.length <4)
+                alert("invalid name length  ")
+            else if (cost == "")
+                alert("cost is blank")
+            else if (isNaN(cost))
+                alert("cost is invalid")
+            else if (count == "")
+                alert("count is blank")
+            else if (isNaN(count))
+                alert("count  is invalid")
+            else {
+                var price = cost * count;
+            } document.getElementById('ptotal').value = price
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <label>Enter product name </label>
+        <input type="text" id="pname">
+        <br>
+
+        <label>Enter product cost </label>
+        <input type="text" id="pcost">
+        <br>
+        <label>Enter product count </label>
+        <input type="text" id="pcount">
+        <br>
+
+        <label>Total amount to pay </label>
+
+        <input type="text" id="ptotal" onfocus="getTotalCost()">
+        <br>
+
+    </form>
+
+</body>
+
+</html>

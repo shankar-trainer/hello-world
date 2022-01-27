@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <script>
+        function info(){
+            var id1=document.form1.id.value
+             alert("id is "+id1)
+             var id2=document.getElementById('id1').value
+             console.log('id is '+id2)
+        }
+        function cityName(){
+
+            alert(document.form1.city.options[0].value)
+            alert(document.form1.city.options[1].value)
+            alert(document.form1.city.options[2].value)
+            var city= document.getElementsByName('city')
+            console.log(city.length)     
+            for(var i in city ){
+                    console.log(city[i].value)
+                 }
+        }
+    </script>
+</head>
+<body>
+
+<form name='form1'>
+  <label>Enter id </label>
+  <input type="text" size="20" name='id'  id='id1' onblur="info()" value=""><br>
+  
+  <label>Enter name </label>
+  <input type="text" size="20" name='name'  value="s kumar"><br>
+select cities <br>
+<select name='city' multiple>
+    <option value="chennai">Chennai</option>
+    <option value="madurai">Madurai</option>
+    <option value="banglore">Banglore</option>
+    <option value="kolkotta">Kolkotta</option>
+</select>
+<br>
+<input type="button" value="city info" onclick="cityName()">
+
+</form>    
+    
+</body>
+</html>

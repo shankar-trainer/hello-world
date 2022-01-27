@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='style\style1.css'> -->
+
+   <style>
+        @import url("style/style1.css");
+    </style>
+</head>
+
+<body>
+    <script>
+        function addition() {
+            var x = document.getElementById('n1').value
+            var y = document.getElementById('n2').value
+            document.getElementById('n3').value = parseFloat(x) + parseFloat(y)
+        }
+        function subtraction() {
+            var x = document.getElementById('n1').value
+            var y = document.getElementById('n2').value
+            document.getElementById('n3').value = parseFloat(x) - parseFloat(y)
+        }
+        function multiplication() {
+            var x = document.getElementById('n1').value
+            var y = document.getElementById('n2').value
+            document.getElementById('n3').value = parseFloat(x) * parseFloat(y)
+        }
+        function division() {
+            var x = document.getElementById('n1').value
+            var y = document.getElementById('n2').value
+            document.getElementById('n3').value = parseFloat(x) / parseFloat(y)
+        }
+
+    </script>
+    <form>
+        <label>Enter no1 </label>
+        <input id="n1"><br>
+        <label>Enter no2 </label>
+        <input id="n2"><br>
+        <label>Result </label>
+        <input id="n3"><br>
+
+       <input type="button" value="addition" onclick="addition()">
+       <input type="button" value="subtraction" onclick="subtraction()">
+       <input type="button" value="multiplication" onclick="multiplication()">
+       <input type="button" value="division" onclick="division()">
+
+    </form>
+
+</body>
+
+</html>

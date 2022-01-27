@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+
+      function alarm(){
+         alert("alarm is ringing ")
+      }
+      setTimeout("alarm()",10000)
+      
+      var t=10
+      function timer(){
+          document.getElementById('id1').innerHTML="seconds "+(--t);
+        }
+        
+        function startTimer(){
+            setInterval("timer()",1000)
+        }
+        function stopTimer(){
+            clearInterval("timer()")
+        }
+       
+    </script>
+
+
+</head>
+<body>
+    <div id='id1'>
+                 
+    </div> 
+  
+    alarm will start after 10 seconds<br>
+    <button value="start" onclick="startTimer()">start</button>
+    <br>
+    <button value="stop" onclick="stopTimer()">stop</button>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="Product" template="/jsp/MyLayout.jsp">
+        <put-attribute name="pageTitle" value="Product Input"/>
+        <put-attribute name="header" value="/jsp/Header.jsp"/>
+        <put-attribute name="footer" value="/jsp/Footer.jsp"/>
+        <put-attribute name="body" value="/jsp/Product.jsp"/>
+    </definition>
+
+    <definition name="Thanks" template="/jsp/MyLayout.jsp">
+        <put-attribute name="pageTitle" value="Thank You"/>
+        <put-attribute name="header" value="/jsp/Header.jsp"/>
+        <put-attribute name="footer" value="/jsp/Footer.jsp"/>
+        <put-attribute name="body" value="/jsp/Thanks.jsp"/>
+    </definition>
+
+
+</tiles-definitions>

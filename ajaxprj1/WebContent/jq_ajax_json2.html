@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+  <script src='script/jquery-3.6.0.min.js'>
+    </script>
+</head>
+<body>
+<script>
+$(function(){
+	$('#btn1').click(
+	  function(){
+		  
+		  $.getJSON('emp.json',
+			 function(e){
+			 	  $('#id1').html("id      name     salary<br>")
+				   for(var i in e.employee){
+					   $('#id1').append(e.employee[i].empid+"  "+e.employee[i].empname+"  "+
+							   e.employee[i].salary	+"<br>")
+			   }
+			   
+		  });
+	  })
+})
+</script>
+<div id='id1'>
+</div>
+<button id='btn1'>Load data </button>
+</body>
+</html>

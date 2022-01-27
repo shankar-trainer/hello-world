@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+.col{
+  float:left;
+ width:28%;
+  border:1px double blue;
+  margin-left:10px;
+  text-align: center;
+}
+</style>
+<script type="text/javascript">
+var xhr;
+
+ function getdata(file,id1)
+  {
+	 var id=document.getElementById(id1);
+	 xhr=new  XMLHttpRequest();
+	 xhr.open("GET",file)// server 
+	 
+	 xhr.onreadystatechange=function(){
+		 if(xhr.readyState===4 && xhr.status===200){
+			 id.innerHTML=xhr.responseText;
+		 }
+	 };
+	 xhr.send(null);
+  }
+</script>
+</head>
+<body>
+
+<div id='pizza' class="col" onmouseover="getdata('pizza.txt','pizza')">
+pizza
+</div>
+
+<div id='burger' class="col"  onmouseover="getdata('burger.txt','burger')">
+burger
+</div>
+
+<div id='biryani' class="col"  onmouseover="getdata('biryani.txt','biryani')">
+biryani
+</div>
+
+
+<br>
+
+
+</body>
+</html>

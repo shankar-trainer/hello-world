@@ -1,0 +1,14 @@
+<div style='color:yellow;background:black;'>
+
+get the best pizza from domino
+<br>
+we have different varieties available 
+<br>
+<ol>
+<li>large pizza with capcicum , onion
+<li>medium pizza with chicken falvour
+<li>small pizza with mix veg
+</ol>
+
+
+</div>
