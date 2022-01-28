@@ -9,6 +9,8 @@ https://drive.google.com/file/d/1q_bn5w1KYwx8cFCQ_UYcOrFpxSys4ehw/view?usp=shari
 corejava day3 assignment link
 https://drive.google.com/drive/folders/1MTDp_W76zDNF7CCpxSppO8Gn-EpzTm6H?usp=sharing
 
+corejava day4 assignment link
+https://drive.google.com/file/d/1XrCb7dL7NiH3uubo2IGpaRlAJ-YOwKBv/view?usp=sharing
 
 github code link
 https://github.com/shankar-trainer/hello-world/tree/lpu_batch1_22
@@ -350,5 +352,57 @@ b) if there is no exception
 	   containsKey(key) -- check key -- return boolean 
 	   containsValue(key) -- check value -- return boolean 
   
-				
+
+Generics 
+         compile type safe program
+         type is denoted in angle bracket<>
+     
+      GEneric Class 
+      Generic Method
+	  
+
+
+  DAO -- Data Access Object 
+          a layer for database operation 
+		 
+
+
+  Inner class 
+  
+      class inside other class 
+	  inner class is used as the component of the given class 
+	  
+	  
+	  anonymous inner class 
+	  
+	  
+	  
+	  lambda Expression 
+	     -- java 8
+		 -- alternate of anonymous inner class having functional interface
+		 -- function interface is interface having single method
+		 
+		 Comparable interface 
+		     implemented by class like Integer,Float,Double 
+			 So we can sort array/list having Integer,Float,Double 
+		 
+		 Comparator interface  
+		   -- natural sorting 
+		   -- functional interface 
+		   
+		   
+		   class edu.lpu.collection.bean.Employee cannot be cast to class java.lang.Comparable 
+		 
+		 
+	  
+	  
+	    Stream 
+		
+		   -- of -- to create Stream from array 
+		   -- filter()
+		   -- map()
+		   -- distinct 
+		 
+
+          		 
 			 
