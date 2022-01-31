@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+</head>
+
+<body>
+
+    <form style="background-color: blanchedalmond;width:30%;padding:20px;margin-left:420px;
+    border:solid 10px;"
+     action="empform.jsp"
+    >
+        <table>
+            <tr>
+                <td><label>Enter Id</label></td>
+                <td><input type="text" name="id" required></td>
+            </tr>
+            <tr>
+                <td><label>Enter name</label></td>
+                <td><input type="text" name="name" required></td>
+            </tr>
+
+            <tr>
+                <td><label>Select Gender</label></td>
+                <td><input type="radio" name="gender" value="male">male
+                    <input type="radio" name="gender" value="female">female
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Select State</label></td>
+                <td>
+                    <select>
+                        <option value="tamilnadu">tamil nadu</option>
+                        <option value="andhra pardesh">andhra pardesh</option>
+                        <option value="karnataka">karnataka</option>
+                        <option value="kerala">kerala</option>
+                        <option value="maharastra">maharastra</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Select Language</label></td>
+                <td>
+                    <select multiple>
+                        <option value="java">Java</option>
+                        <option value="python">python</option>
+                        <option value="nodejs">nodejs</option>
+                        <option value="angular">angular</option>
+                        <option value="react">react</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Select Hobbies</label></td>
+                <td>
+                    <input type='checkbox' value="Flowering">
+                    Flowering
+                    <br>
+
+                    <input type='checkbox' value="Music">Music
+                    <br>
+                    <input type='checkbox' value="Movie">Movie
+                    <br>
+                    <input type='checkbox' value="Reading">Reading
+                    <br>
+                    <input type='checkbox' value="Marketting">Marketting
+                    <br>
+
+                </td>
+            </tr>
+            <tr>
+                <td><label>Add Comment</label></td>
+                <td>
+                    <textarea rows="10" cols="30">add ur comment</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Add Date Of Birth</label></td>
+                <td>
+                    <input type="date">
+                </td>
+            </tr>
+            <tr>
+                <td><label>Enter Age</label></td>
+                <td>
+                    <input type="number">
+                </td>
+            </tr>
+            
+            <tr>
+                <td><label>Joining Date and Time</label></td>
+                <td>
+                    <input type="datetime-local">
+                </td>
+            </tr>
+            
+            <tr>
+                <td><input type="submit" value="login"></td>
+                <td>
+                    <input type="reset" value='cancel' >
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+
+</html>

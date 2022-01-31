@@ -12,6 +12,18 @@ https://drive.google.com/drive/folders/1MTDp_W76zDNF7CCpxSppO8Gn-EpzTm6H?usp=sha
 corejava day4 assignment link
 https://drive.google.com/file/d/1XrCb7dL7NiH3uubo2IGpaRlAJ-YOwKBv/view?usp=sharing
 
+corejava day5 assignment link
+https://drive.google.com/file/d/1oktx7ecLzGB_S3dV4b176TKJb7fqwlYx/view?usp=sharing
+
+
+
+html assignment day 9 link 
+https://drive.google.com/file/d/1dllCTLE1CBMNOfWT1RMSe6orNzZ5Q4at/view?usp=sharing
+
+
+ 
+
+
 github code link
 https://github.com/shankar-trainer/hello-world/tree/lpu_batch1_22
 
@@ -19,6 +31,9 @@ slide link
 corejava 
 https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
 
+
+javascript  and html
+https://drive.google.com/drive/folders/1kNsUXW9-d351dL1O8-n_fFiSxmm8UFgl?usp=sharing
 
 
 
@@ -405,4 +420,13 @@ Generics
 		 
 
           		 
-			 
+html 
+
+    heading 
+
+   <h1> 
+   <h2>
+   .
+   .
+   <h6>
+   
