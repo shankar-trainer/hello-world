@@ -1,5 +1,7 @@
 package edu.lpu.collection;
 
+import java.util.Comparator;
+
 public class Employee {
 
 	private int id;

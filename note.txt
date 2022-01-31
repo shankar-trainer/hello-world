@@ -1,9 +1,11 @@
 corejava day1 assignment link
 https://drive.google.com/file/d/1k4lNH4r-b2QH6Tt7M90kxrGJSlIMviaO/view?usp=sharing 
 
-
 corejava day2 assignment link
 https://drive.google.com/file/d/1q_bn5w1KYwx8cFCQ_UYcOrFpxSys4ehw/view?usp=sharing
+
+corejava day3 assignment link
+https://drive.google.com/drive/folders/1MTDp_W76zDNF7CCpxSppO8Gn-EpzTm6H?usp=sharing
 
 
 slide link 
@@ -314,22 +316,69 @@ double          ----Double
                    --> it support index
                    --> ordred 
                    --> duplicate is allowed
+				   --> iterator is  supported
               Set 
 			    --> it  doesnot support index
                    --> it's not ordred 
                    --> duplicate is  not allowed
-
+                   --> iterator is supported
 
            Arrays -- java.util.Arrays 
                    -- common array operation 		   
 				   
-			Generics 
+    		Generics 
                -- compile type safe program
                -- collection with same data type
  			   
 			   
 		  
-		  
+	Inner Class 
+
+   --> A class inside other class
+   --> it can be private, protected, public
+   
+   --> inner class can be static 
+   
+   
+   Anonymous Inner Class 
+   
+   
+      Lambda Expression 
+	     -- Interface must be functional interface(single method)
+		 
+		 
+	Two Interfaces for  Comparison
+
+    Comparable  ---  implemented by String, Double Float, Integer 
+	            --- natural ordering 
+    Comparator 	  
+	 
+           -- different ordering
+	       
+   Comparator is functional Interafce 		   
+				
+	
+       
+	   HTML
+	     notepad, notepad++, geany, gedit
+		 sublime text, vscode, atom, bracket 
+       ide -- intellij idea, php storm 
+              eclipse 
+
+     			  
+		 
+		 javascript 
+		   -- client side html form validation 
+		   -- html dynamic application
+		   
+		    document.write() -- print in browser 
+			alert() -- display output in dialog box 
+			prompt() -- user input in string form  
+			
+		 
+   
+   
+   
 		  
 		  
 		  
