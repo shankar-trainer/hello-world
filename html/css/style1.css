@@ -1,0 +1,16 @@
+label{
+   width:100px;
+   float:left;   
+   
+}
+input{
+	 width:120px;
+     margin-bottom:5px;   
+}
+form{
+	margin-top:100px;
+	margin-left:450px;
+	border:double ;
+	width:25%;
+	padding:20px;
+}

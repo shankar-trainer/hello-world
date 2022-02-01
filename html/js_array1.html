@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <script language="javascript">
+          var ar=new Array()
+          var ar1=new Array(11,22,33,44,55,66,77,88,99)// 1st way declaration
+		  alert(ar1)
+		  // 2nd way declaration
+		  var ar2=["delhi","chhenai","shivkashi","kanchipuram","madurai"]
+		  alert(ar2)
+		  
+		  for(var x=0;x<ar2.length;x++)
+		  console.log(ar2[x])
+		  
+		  // for each/in loop 
+          for (i in ar1)// return index		  
+	        alert(ar1[i])
+			// for of - for each 
+		for (i of  ar1)// return element		  
+	        console.log(i)
+			
+			alert("pop "+ar1.pop())// pop -- remove last element
+			alert(ar1)
+			ar1.push(1000) // push -- add element at last position
+			alert("after push "+ar1)
+				// shift -- remove from first position
+				// unshift -- add element  at  first position
+			var s1=ar1.join("-")
+			alert("after join "+s1)
+			
+	</script>
+</head>
+<body>
+</body>
+</html>
+
+
