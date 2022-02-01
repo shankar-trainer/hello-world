@@ -11,6 +11,11 @@ form{
 	margin-top:100px;
 	margin-left:450px;
 	border:double ;
-	width:25%;
+	width:35%;
 	padding:20px;
+}
+
+span{
+	color:red;
+	
 }

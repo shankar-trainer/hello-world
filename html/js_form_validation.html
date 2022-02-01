@@ -10,13 +10,19 @@
 <body>
    <form onsubmit="return  validate()">
     <label>Enter Id</label>
-    <input id="id"><br>
+    <input id="id">
+	<span id="id_err"></span>
+	<br>
 	
 	<label>Enter Name</label>
-    <input id="name"><br>
+    <input id="name">
+	<span id="name_err"></span>
+	<br>
 	
 	<label>Enter Age</label>
-    <input id="age" type="number"><br>
+    <input id="age" type="number">
+	<span id="age_err"></span>
+	<br>
 	
 	<input type="submit">
 	<input type="reset">
