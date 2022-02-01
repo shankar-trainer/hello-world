@@ -1,3 +1,9 @@
+mysql link 
+https://dev.mysql.com/downloads/file/?id=509686
+
+tomcat 9 link 
+https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.58/bin/apache-tomcat-9.0.58-windows-x64.zip
+
 corejava day1 assignment link
 https://drive.google.com/file/d/1k4lNH4r-b2QH6Tt7M90kxrGJSlIMviaO/view?usp=sharing 
 
@@ -375,7 +381,16 @@ double          ----Double
 			alert() -- display output in dialog box 
 			prompt() -- user input in string form  
 			
-		 
+		   function 
+		      - we can create function by using function keyword followed by function name 
+			  - it can have parameter and return value 
+			  
+			  
+			  innerHTML  -- inner part of any tag/id in html form 
+			  innerText --inner part of any tag/id in text form
+			  
+			  
+			  
    
    
    

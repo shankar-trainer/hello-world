@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<style>
+label {
+	float: left;
+	width: 100px;
+}
+form {
+	margin-left: 400px;
+	margin-top: 10px;
+	color: blue;
+	background-color:yellow;
+	width: 40%;
+	padding: 20px;
+	border: double;
+}
+h3 {
+	margin-left: 500px;
+	margin-top: 10px;
+}
+span{
+color:red;
+}
+input {
+ margin-bottom: 5px;	
+}
+body{
+background: lightyellow;
+}
+</style>
+<body>
+  
+  <script>
+       function validate_form(){
+    	   console.log("function called ")
+    	   
+       var id= document.getElementById("id");    	   
+       var name= document.getElementById("name");    	   
+       var age= document.getElementById("age");    	   
+       if(id.value=="")
+    	   {
+    	  // alert("id is blank")
+    	   document.getElementById("id_err").innerHTML="id is blank" 
+    	  return false
+    	   }
+       else if(isNaN(id.value))
+	   {
+	   //alert("invalid id it must be number")
+	   document.getElementById("id_err").innerHTML="invalid id it must be number" 
+	   return false
+	   }
+    
+       else if(name.value=="")
+    	   {
+    	  // alert("name is blank")
+       document.getElementById("name_err").innerHTML="name is blank" 
+		   
+    	  return false
+    	   }
+       else if(age.value=="")
+    	   {
+    	   //alert("age is blank")
+    	  document.getElementById("age_err").innerHTML="age is blank" 
+    	   return false
+    	   }
+       else if(isNaN(age.value))
+    	   {
+    	 //  alert("invalid age it must be number")
+    	 document.getElementById("age_err").innerHTML="invalid age it must be number" 
+    	 return false
+    	   }
+       
+       return true;
+       }  
+  </script>
+
+	<h3>Employee Form</h3>
+	<form onsubmit="return validate_form()">
+		<label>Enter Id </label> <input id="id">  <span id="id_err"></span>   <br> 
+		<label>Enter Name </label> <input id="name"> <span id="name_err"></span> <br> 
+		<label>Enter Age </label> <input id="age"> <span id="age_err"></span> <br>
+        <input type="submit">
+        <input type="reset">
+	</form>
+</body>
+</html>
