@@ -1,3 +1,5 @@
+https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.58/bin/apache-tomcat-9.0.58-windows-x64.zip
+
 corejava day1 assignment link
 https://drive.google.com/file/d/1k4lNH4r-b2QH6Tt7M90kxrGJSlIMviaO/view?usp=sharing 
 
@@ -434,3 +436,47 @@ html
    .
    <h6>
    
+   
+   
+   
+   servlet lofe cycle
+   
+      -- 1.  init            initialisation -  called once 
+         2. service-- doGet   -- service -- called every time  -- process request and send the response 
+         3. destroy 		 -- once called , stop application, destroy all resources
+
+
+
+   html form---->  servlet -->process request-->result using response
+   
+http://localhost:9090/MyWebProject/EmpServlet?id=122&name=ram+kumar
+
+   
+	http://localhost:9090/MyWebProject/EmpServlet?id=122&name=ram+kumar&pass=abcdefg
+	
+	
+	html form methods 
+	
+	  get  -- all parameters are appended to the url   
+	  
+	  post --all parameters are not appended to the url, but pass through body  
+	
+	
+	html        servlet 
+	get          doGet 
+	post         doPost
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+		 
