@@ -410,6 +410,29 @@ Servlet
 		  1.get -- default -- values append to the url 
 		  2.post --   values will pass throgh body 
 		  
+		  
+		  
+		  
+		  
+		  reception -- controller 
+		  
+		  
+		  RequestDispatcher -- controller
+		  
+		  
+		  BankLogin ---  Login.html     1.saving --------- savingServlet
+		                   account type 2.current 
+		                        
+								                            1. savingServlet
+		  Login.html --------->Controller Servlet---------> 2. currentServlet 
+		  
+		                        RequestDispatcher
+								
+								
+		  
+		  
+		  
+		  
    
  		  
 		  
