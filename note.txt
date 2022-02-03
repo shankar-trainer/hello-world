@@ -1,3 +1,9 @@
+mysql link 
+https://dev.mysql.com/downloads/file/?id=509686
+
+
+https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-09/R/eclipse-java-2021-09-R-win32-x86_64.zip
+
 https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.58/bin/apache-tomcat-9.0.58-windows-x64.zip
 
 corejava day1 assignment link
@@ -27,6 +33,9 @@ https://drive.google.com/file/d/1dllCTLE1CBMNOfWT1RMSe6orNzZ5Q4at/view?usp=shari
 javascript assignment day 10 
 https://drive.google.com/file/d/1UlSPfmFQtYQv1M3AaLrrdXBaBOr7zVr3/view?usp=sharing
 
+servlet assignment day 11 
+https://drive.google.com/drive/folders/1DJT_vAJZnEXb-gc8xeh2c7lNrlGJPibP?usp=sharing
+
  
 
 
@@ -40,6 +49,9 @@ https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sha
 
 javascript  and html
 https://drive.google.com/drive/folders/1kNsUXW9-d351dL1O8-n_fFiSxmm8UFgl?usp=sharing
+
+servlet slide link 
+https://drive.google.com/drive/folders/1gKcAmfjk6FwJPKz8uZaoytG8bP07nVRp?usp=sharing
 
 
 
