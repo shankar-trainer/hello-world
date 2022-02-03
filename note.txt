@@ -435,11 +435,44 @@ Servlet
 		  
    
  		  
+		  jsp -- html, css, javascript and java tags 
 		  
+		   --> it   used for making html forms for output 
+		  --> jsp is used for the view
 	 
 	 
 	 
 	 
+	           view                                         view 
+	                                                       1. saving.jsp
+		  Login.html --------->Controller Servlet---------> 2. current.jsp 
+		  
+		                        RequestDispatcher
+								
+			jsp 3 constructs are 
+
+            1.declarative    denoted by <%!   %>
+			               -- declare variables, methods
+                           -- added to servlet outside the method 
+						   
+            2.scriptlet   -- denoted by <%  %>
+                           implicit objects like
+                             out, request, response, session
+			3.expression   --  output of variable, method 
+                               denoted by <%=%>    			
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
 	 
 
 	 
