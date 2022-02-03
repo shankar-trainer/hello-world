@@ -480,7 +480,73 @@ http://localhost:9090/MyWebProject/EmpServlet?id=122&name=ram+kumar
 	
 	
 	
+	   view                   controller                  view 
+	                                                    vegservlet
+	Order.html--->    RequestDispacher Servlet --->     non veg servlet 
+	  (                  (carries request object)       chinese servet      
+	  id,password
+	  order type
+	      veg 
+		  non veg 
+		  chinese 
+	  )
 	
+	
+	
+	sendRedirect -- it will redirect  to any url without any object 
+	
+	jsp -- view - having html, css, javascript and jsp tags 
+	jsp is used with the form and to display output 
+	
+	
+	
+	
+	jsp -- 3 constructs 
+	
+	 1. scriptlet -- <%     %> 
+	              use java code 
+				  use implicit object
+                   request
+                   response
+                   out 
+                   session 
+                   exception
+				   
+				   it is added to the service/doGet method 
+				   
+     2.Declarative --<%!     %>
+            declare variable 
+			 
+			it is added outside the service/doGet method  
+
+     3. expression 
+         <%= %>
+             print variables,
+             call method 
+			 
+			 -- servlet output 
+             --	called inside service/doGet method 
+			 
+			 
+			 
+			 Hibernate 
+			 
+			   ORM -- object Relationship Mapping 
+			                                                          database
+		class Employee      ------------hinernate -------------------> employee(id,name,salary)
+           id,name,salary 		
+			                 object employee----------- table employee 
+			            
+			   
+			   
+			   
+			 
+			 
+			 
+			 
+
+			 
+				   
 	
 	
 	

@@ -16,22 +16,33 @@ public class FoodController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
-		request.setAttribute("id",id);
+		String pass = request.getParameter("pass");
 
 		String foodtype = request.getParameter("food_type");
+		if (id == "" || id == null || id.isEmpty())
+			response.sendRedirect("FoodOrder.html");
 
-		RequestDispatcher dispatcher;
-		if (foodtype.equals("veg")) {
-			dispatcher = request.getRequestDispatcher("vegServlet");
-			dispatcher.forward(request, response);
-		} else if (foodtype.equals("nonveg")) {
-			dispatcher = request.getRequestDispatcher("nonVegServlet");
-			dispatcher.forward(request, response);
+		else if (pass == "" || pass == null || pass.isEmpty())
+			response.sendRedirect("FoodOrder.html");
 
-		} else if (foodtype.equals("chinese")) {
-			dispatcher = request.getRequestDispatcher("chineseServlet");
-			dispatcher.forward(request, response);
+		else if (foodtype == "" || foodtype == null || foodtype.isEmpty())
+			response.sendRedirect("FoodOrder.html");
+		else {
+			request.setAttribute("id", id);
 
+			RequestDispatcher dispatcher;
+			if (foodtype.equals("veg")) {
+				dispatcher = request.getRequestDispatcher("vegServlet");
+				dispatcher.forward(request, response);
+			} else if (foodtype.equals("nonveg")) {
+				dispatcher = request.getRequestDispatcher("nonVegServlet");
+				dispatcher.forward(request, response);
+
+			} else if (foodtype.equals("chinese")) {
+				dispatcher = request.getRequestDispatcher("chineseServlet");
+				dispatcher.forward(request, response);
+
+			}
 		}
 	}
 
