@@ -1,0 +1,23 @@
+label{
+	width:110px;
+	float:left;
+}
+
+form{
+	margin-left:340px;
+	margin-top:50px;
+	padding:20px;
+	background-color: lemonchiffon;
+	border:solid 2px;
+	width:30%;
+}
+input{
+	
+	width:140px;
+	margin-bottom:4px;
+	
+}
+body{
+	background: cyan;
+	
+}

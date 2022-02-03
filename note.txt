@@ -14,6 +14,7 @@ corejava day3 assignment link
 https://drive.google.com/drive/folders/1MTDp_W76zDNF7CCpxSppO8Gn-EpzTm6H?usp=sharing
 
 
+
 slide link 
 corejava 
 https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
@@ -392,11 +393,24 @@ double          ----Double
 			  
 			  
    
+Servlet 
+   -- three life cycle 
    
+    1.init -- initialisation   -- called only once
+    2.service-- doGet,doPost()  -- every time when the request comes 
+    3.destroy -- called to release memory -- called only once 
+ 	
    
 		  
 		  
+
+   servlet 
+    html form 
+	    method 2 types 
+		  1.get -- default -- values append to the url 
+		  2.post --   values will pass throgh body 
 		  
+   
  		  
 		  
 	 
