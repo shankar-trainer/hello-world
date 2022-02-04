@@ -440,9 +440,6 @@ Servlet
 		   --> it   used for making html forms for output 
 		  --> jsp is used for the view
 	 
-	 
-	 
-	 
 	           view                                         view 
 	                                                       1. saving.jsp
 		  Login.html --------->Controller Servlet---------> 2. current.jsp 
@@ -458,8 +455,38 @@ Servlet
             2.scriptlet   -- denoted by <%  %>
                            implicit objects like
                              out, request, response, session
+			
 			3.expression   --  output of variable, method 
                                denoted by <%=%>    			
+								
+								
+
+
+
+jsp is used as the 		 view 
+
+						
+	           view                                         view 
+	                                                       1. saving.jsp
+		  Login.jsp --------->Controller Servlet---------> 2. current.jsp 
+		  
+		                        RequestDispatcher
+								
+								
+			ORM  -Object Relational Mapping 
+
+
+  Employee.java ------------  Employee table 
+  
+  id(identifier)              id (p k )
+  name                        name
+  
+  emp1                     
+  emp3 
+
+
+			
+								
 								
 								
 								
