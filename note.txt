@@ -36,6 +36,10 @@ https://drive.google.com/file/d/1UlSPfmFQtYQv1M3AaLrrdXBaBOr7zVr3/view?usp=shari
 servlet assignment day 11 
 https://drive.google.com/drive/folders/1DJT_vAJZnEXb-gc8xeh2c7lNrlGJPibP?usp=sharing
 
+
+jsp  assignment day 11 
+
+https://drive.google.com/file/d/1zt2iyZEj1kPeaV_VOzIbLXGiJUsetDfe/view?usp=sharing
  
 
 
@@ -43,6 +47,10 @@ github code link
 https://github.com/shankar-trainer/hello-world/tree/lpu_batch1_22
 
 slide link 
+
+hibernate slide 
+https://drive.google.com/drive/folders/14QE5f3TPxuAR_cwVaH7jVAhLbTfuHUMV?usp=sharing
+
 corejava 
 https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
 
@@ -540,9 +548,14 @@ http://localhost:9090/MyWebProject/EmpServlet?id=122&name=ram+kumar
 			   
 			   
 			   
+			 hibernate library --  maven project 
 			 
 			 
-			 
+			 maven build tool ---  
+			                  compile 
+							  download library from internet 
+							  run the project 
+							  
 			 
 
 			 
