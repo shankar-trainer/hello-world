@@ -559,7 +559,19 @@ http://localhost:9090/MyWebProject/EmpServlet?id=122&name=ram+kumar
 			 
 
 			 
-				   
+		  hibernate 
+
+             DAO  -- data access object 
+            
+            CRUD 
+           C  -- create -- sql -- insert 
+           R  --  retrive -- sql -- select 
+		       1.show all 
+               2.search 			   
+           U  -- update   -- sql update 
+           D  -- delete   -- sql -- delete  		   
+	
+	     common session factory -- single copy will be shared by all 
 	
 	
 	
