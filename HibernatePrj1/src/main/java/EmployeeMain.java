@@ -1,5 +1,6 @@
 
 import java.util.List;
+import java.util.Scanner;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,10 +22,16 @@ public class EmployeeMain {
 		 
 		 Transaction tr = session.beginTransaction();
 		 
+		 Scanner sc=new Scanner(System.in);
+		 
 		 Employee employee=new Employee();
-		 employee.setId(10002);
-		 employee.setName("preetam kumar");
-		 employee.setSalary(78000.00f);
+		 System.out.println("Enter id ");
+		 employee.setId(sc.nextInt());
+		 System.out.println("Enter name ");
+		   sc.nextLine();
+		 employee.setName(sc.nextLine());
+		 System.out.println("Enter salary ");
+		 employee.setSalary(sc.nextFloat());
 		 
 		  session.save(employee);
 		 tr.commit();
@@ -37,6 +44,20 @@ public class EmployeeMain {
 				System.out.println(employee2.getId()+"  "+employee2.getName()+"  "+employee2.getSalary());
 			}
 		    
+		 System.out.println("Search Operation Enter Id");
+         int id=sc.nextInt();		 
 		 
+         Employee employee2 = session.get(Employee.class, id);
+         if(employee2!=null) {
+        	 System.out.println("found ");
+           System.out.println(employee2.getId()+"  "+employee2.getName()+"  "+employee2.getSalary());
+         }
+         else
+        	 System.out.println("not found ");
 	}
 }
+
+
+
+
+
