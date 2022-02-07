@@ -1,0 +1,20 @@
+label {
+	float: left;
+	width: 100px
+}
+
+input {
+	width: 120px
+}
+
+form {
+	padding: 20px;
+	margin-left: 380px;
+	background: lightyellow;
+	border: inset 10px;
+	width: 30%;
+}
+
+body {
+	background: pink;
+}

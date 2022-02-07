@@ -1,7 +1,6 @@
 mysql link 
 https://dev.mysql.com/downloads/file/?id=509686
 
-
 https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-09/R/eclipse-java-2021-09-R-win32-x86_64.zip
 
 https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.58/bin/apache-tomcat-9.0.58-windows-x64.zip
@@ -37,19 +36,18 @@ servlet assignment day 11
 https://drive.google.com/drive/folders/1DJT_vAJZnEXb-gc8xeh2c7lNrlGJPibP?usp=sharing
 
 
-jsp  assignment day 11 
-
+jsp  assignment day 12
 https://drive.google.com/file/d/1zt2iyZEj1kPeaV_VOzIbLXGiJUsetDfe/view?usp=sharing
- 
+
+
+hibernate assignment  day 13 
+https://drive.google.com/drive/folders/1IO4W9DZcep9ePTG-5zNMZUVkM40S-fOX?usp=sharing
 
 
 github code link
 https://github.com/shankar-trainer/hello-world/tree/lpu_batch1_22
 
 slide link 
-
-hibernate slide 
-https://drive.google.com/drive/folders/14QE5f3TPxuAR_cwVaH7jVAhLbTfuHUMV?usp=sharing
 
 corejava 
 https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
@@ -58,8 +56,16 @@ https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sha
 javascript  and html
 https://drive.google.com/drive/folders/1kNsUXW9-d351dL1O8-n_fFiSxmm8UFgl?usp=sharing
 
+
 servlet slide link 
 https://drive.google.com/drive/folders/1gKcAmfjk6FwJPKz8uZaoytG8bP07nVRp?usp=sharing
+
+jsp slide link 
+https://drive.google.com/drive/folders/18fD-r8sBAgNKSjusA6HY3kZAVk1Ulmba?usp=sharing
+
+
+hibernate slide 
+https://drive.google.com/drive/folders/14QE5f3TPxuAR_cwVaH7jVAhLbTfuHUMV?usp=sharing
 
 
 
@@ -576,10 +582,54 @@ http://localhost:9090/MyWebProject/EmpServlet?id=122&name=ram+kumar
 	
 	
 	
+	Servlet --- is java api to interact with static html page and can connect 
+	            with database 
+				
+				
+				
+EmployeeForm.html------  request ------> Web Server--> Servlet Container-- > database 
+                   		<--------response <-------
 	
 	
 	
+     Servlet 	interface
+	  |
+	  v
+	 Generic Servlet  -- general work (smpt, http, fpt)
+     Http Servlet     -- http protocol 
+	 
+	    methods
+		
+		    init     --  servlet initialisation 
+		   
+     		            1.doGet 
+			service --  2.doPost 
+			
+			destroy -- clean up 
+			
+			
+	web server --- apache tomcat  
+	 
+	 
+	  
+	
+	
+	html form  --- servlet -- process -- result to the browser 
+	  id
+	  name
+	
+    html form has two types  of methods 
+	
+	  get  -- default method -- all values are appended to the url 
+	       -- for this servlet has doGet()
+			 
+	  post -- all values are not appended to the url, it pass through body 
+	          for this servlet has doPost()
+	  
 
 
+    
+	index.html  -- starter or welcome page 
+	index.jsp 
 	
 		 
