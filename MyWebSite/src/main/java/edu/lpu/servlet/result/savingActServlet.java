@@ -17,7 +17,7 @@ public class savingActServlet extends HttpServlet {
 	 Object id=request.getAttribute("id");
 	 Object city=request.getAttribute("city");
 	 
-	 out.print("<h2>Welcome to Saving Page</h2>");
+	 out.print("<h2>Welcome to Saving Account Page</h2>");
 	 out.print("<br>Id is "+id);
 	 out.print("<br>City is "+city);
 	}

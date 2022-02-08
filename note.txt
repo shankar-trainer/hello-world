@@ -652,7 +652,43 @@ BankAccount_Login.html ----> id, password ------->ServletController ----------->
 
 
 		
+		servlet -- html inside java code 
 		
+		jsp          java inside html code 
+		             view (html form , last page output)
+		           -- it is html file , can use css, javascript 
+		           we have jsp tags thta is used inside html code 
+    
+               jsp has impicit  objects
+                     out 
+                     request
+                     response
+                     exception  					 
         		
+				jsp has three constructs 
+				
+				   1.declaration
+				   2.scriptlet
+				   3.expresion
+				   
+				   
+				   declaration
+				              -- denoted by <%!   %>
+							  -- declare variables, methods
+							  -- all code is added to inside class outside methods(service)
+            
+			     scriptlet
+				              -- denoted by <%   %>
+							  -- declare local variables
+							  -- use  impicit objects like request, response,out 
+						
+                expression 
+				             -- denoted by <%= %>
+							 -- use it to output variable, expresion, method call 
+							 
+	           						  
+							  
+							  
+				
 	
 		 
