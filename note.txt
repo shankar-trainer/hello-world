@@ -632,4 +632,27 @@ EmployeeForm.html------  request ------> Web Server--> Servlet Container-- > dat
 	index.html  -- starter or welcome page 
 	index.jsp 
 	
+	
+	
+	RequestDispacher  --interface to dispatach the request, response from one page to other page
+
+    it has two methods 
+        include -- include the request,response of another page to the current page 
+        forward -- forward  the request,response of current  page to the other  page 
+		
+		
+		RequestDispacher object is retrived from request object and from servletcontext object 
+
+        RequestDispacher is used as controller 
+
+                                                    RequestDispacher- types     1.SavingAccount
+BankAccount_Login.html ----> id, password ------->ServletController ----------->2.CurrentAccount 
+                             account types            forward
+							                          include
+
+
+		
+		
+        		
+	
 		 
