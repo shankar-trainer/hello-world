@@ -28,6 +28,9 @@ div.class1 {
 	<div class="class1">
 		You have last logged at is  <%=session.getId()%><br> Session Interval is<%=new Date(session.getCreationTime())%><br>
 		<br>
+		<% 
+		session.setMaxInactiveInterval(10);
+		%>
 		Session Max Inactive Interval is<%=session.getMaxInactiveInterval()%>
 
 		<br>
