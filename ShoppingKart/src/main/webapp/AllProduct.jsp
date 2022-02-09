@@ -17,6 +17,7 @@ div.class1 {
 
 </head>
 <body>
+	<span style="float:right"><a href="Logout.jsp">LogOut</a></span>
 	<%
 	if(session.isNew()){
      out.print("<h2>Your Session is Expired </h2>");
