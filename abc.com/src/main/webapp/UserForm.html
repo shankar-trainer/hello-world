@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+ @import url("css/style1.css");
+</style>
+<script type="text/javascript" src="script/script1.js"></script>
+</head>
+<body>
+
+<form action="UserServlet" method="post" onsubmit="form_validate()">
+<label>Enter Id </label>
+<input type="text" name="id" id="id"><br>
+
+<label>Enter Name </label>
+<input type="text" name="name" id="name"><br>
+
+<label>Enter Password </label>
+<input type="password" name="pass" id="pass"><br>
+
+<label>Select languages  </label><br><br><br>
+<input type="checkbox" name="language" value="java">Java<br>
+<input type="checkbox" name="language" value="javascript">JavaScript<br>
+<input type="checkbox" name="language" value="nodejs">NodeJs<br>
+<input type="checkbox" name="language" value="angular">Angular<br>
+<input type="checkbox" name="language" value="reactjs">ReactJs<br>
+<input type="checkbox" name="language" value="redux">Redux<br>
+
+
+
+<input type="submit" value="ok">
+<input type="reset" value="cancel">
+</form>
+</body>
+</html>

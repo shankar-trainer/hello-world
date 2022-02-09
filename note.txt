@@ -485,11 +485,143 @@ jsp is used as the 		 view
   emp3 
 
 
+
+  build tool maven 
+    
+
+
+  servlet --
+
+    is java technology to make the dynamic web application
+    is interacts with html and get input from it, then processes it 
+    it is interacting with database then gives the result 
+
+
+ html page -------> request ---> java web server -- servlet container---> database  
+  html page     <-------- response <----
+   	
+								
+								
+								
+	java ee web server 
+  
+  apache -- server + sun -- servlet engine ---- apache tomcat server 
+  
+    fastest running java server 
+	
+	
+	
+	
+	Servlet(javax.servlet) interface 
+	 |
+	 GenericServlet -- http, smtp, fpt protocol, no session  
+	 HttpServlet    -- http ,session, 
+  
+  methods of http servlet are 
+      1.init         --called  only once , used to initialisation of the servlet  
+	  
+	  2. service-->a. doGet  -- process request , give result using resposne(called every time on request)  
+	               b.doPost 
+				   
+	 3. destroy method 	    -- release the resources, called when application gets stopped 		   
+     
+	 
+	 
+	 
+	   browser
+	 html form --  id, name ---------- servlet --- request.getParameter("parameter name")--->
+	  browser      <-------------- -- print output response 
+							
+
+
+   html forms have two types of  method 
+     get   -- default  -- values are appended with  names on url
+     post 	              values are sent via body, it's not appended 
+	 
+      get html method --   doGet servlet method        	 
+      post html method --   doPost servlet method     
+
+
+    response 
+	      method sendRedirect
+		  redirect servlet to the given url or page 
+		  
+   RequestDispatcher  interface 		  
+		    --- dispatches the request, response obejct  to other  page
+            --- works as controller 
+             
+		   creating object 
+		         1. HttpServlet request object 
+				 2. HttpServlet context object 
+				 
 			
+			RequestDispatcher dispatcher=request.getRequestdispatcher();
+			
+			
+			                                        savingAccountServlet
+			                                      / 
+	    BankAccount.html--------ControllerServlet 
+		        id                                \ currentAccountServlet
+				password 
+				
+				customer type 
+				 1.savingAccount Customer
+				 1.currentAccount Customer
+				 
+				 
+				 
+				 
+				 Hibernate 
+				 
+				 POJO   plain old java object 
+				 
+				 ORM -- Object Relational Mapping 
+				   jpa, ibatis 
+				 
+				 java (POJO)                               SQL 
+				                        mapping 
+				  Employee.java -------------------  Employee table  
+				   id,                                  id (pk)
+				   name,                                 name
+				   salary                              salary 
+				   
+				    using hibernate in java 
+					  save object  ----------------- insert           
+					  remove obejct -----------------delete
+					  search object -----------------select
+					  update object -----------------update 
+					  
+					 mapping 
+                                use annotaion 
+								@Entity  -- with class level -- it makes the class persistent entity 
 								
-								
-								
-								
+								@Id      -- with field level -- it makes filed as  Identifier
+								                             -- in sql it will map with primary key 
+
+
+
+
+Hibernate Project -- different library 
+                  download the library , put it in classpath of the project 
+				  
+
+Maven  -- java build tool
+          
+		  * it will build/compile the whole project using eclipse/intellij/command mode
+		  * it will download required libraryies from maven store 
+		  
+		  
+				  
+ 
+
+															 
+          					 
+					  
+
+					  
+
+    	  
+  
 								
 								
 								
