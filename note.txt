@@ -553,19 +553,28 @@ http://localhost:9090/MyWebProject/EmpServlet?id=122&name=ram+kumar
 			            
 			   
 			   
-			   
-			 hibernate library --  maven project 
+			 hibernate is not from sun/oracle .
+             its from open source.
+              
+			  hibernate libraries can be added in 2 ways 
+			  
+			 1.download the libraries and add to the classpath/buildpath 
+			 
+			 2.Create   maven project and add hibernate dependencies 
 			 
 			 
 			 maven build tool ---  
+			                  create project 
 			                  compile 
 							  download library from internet 
 							  run the project 
 							  
-			 
+			 maven project can be created using command prompt, eclipse, intellij, netbeans 
 
 			 
 		  hibernate 
+        POJO -- plain old java objects 
+		     
 
              DAO  -- data access object 
             
@@ -578,6 +587,16 @@ http://localhost:9090/MyWebProject/EmpServlet?id=122&name=ram+kumar
            D  -- delete   -- sql -- delete  		   
 	
 	     common session factory -- single copy will be shared by all 
+	
+	    states of hibernate 
+		   1.transient state  -- Employee emp1=new Employee()
+		   2.persistent state  -- session.save(emp1)
+		   3.detached state    -- session.delete(emp1) -- detached state 
+		   
+		   
+		   
+		   
+		   
 	
 	
 	
@@ -686,9 +705,44 @@ BankAccount_Login.html ----> id, password ------->ServletController ----------->
 				             -- denoted by <%= %>
 							 -- use it to output variable, expresion, method call 
 							 
-	           						  
+	     
+
+               jsp form 
+
+               html form----              other jspform 
+                  add form elments         request.getParameter("")
+                  css 
+                  javascript 				  
 							  
-							  
+						jsp implict objects are 
+                         request 
+                         response
+                         out 
+                         session 
+                         exception
+	        jsp has three constructs
+               1.declaration
+			   2.scriptlet
+			   3.expression
+			   
+			   1.declaration
+			      * it is denoted by <%! %>
+				  * here you can declare instance/static variable 
+				  * this code is added servlet file declaration part 
+			   2. scriptlet
+                  * it is denoted by <% %>
+                  * you can use implicit objects here
+				  * all code is added to the service method 
+				  * you can declare local variable here
+				  
+				  
+			  3.expression 
+			         * this is denoted by <%= %> 
+					 * you can use  variables, methods , expressions wihtout out object 
+                     * all code written will be the part of out object 
+					 
 				
 	
-		 
+	        jsp is used as  the view  as form input and last output
+			
+			
