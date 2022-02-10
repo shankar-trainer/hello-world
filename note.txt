@@ -569,22 +569,34 @@ jsp is used as the 		 view
 				 1.currentAccount Customer
 				 
 				 
-				 
-				 
-				 Hibernate 
-				 
+				
+                ORM -- Object Relational Mapping 
+				
 				 POJO   plain old java object 
 				 
-				 ORM -- Object Relational Mapping 
-				   jpa, ibatis 
-				 
-				 java (POJO)                               SQL 
+				  JDBC -- sql code 
+
+                   java (POJO)                               SQL 
 				                        mapping 
 				  Employee.java -------------------  Employee table  
 				   id,                                  id (pk)
-				   name,                                 name
-				   salary                              salary 
+				   name,                                name
+				   salary                               salary 
 				   
+				   
+				   CRUD          SQL 
+				   C -- create    insert 
+				   R --retrival    select 
+                   U -- Update    update
+                   D  -- delete   delete 
+				   
+				   
+								
+				 
+				 Hibernate -- ORM Framework 
+				 
+				   jpa, ibatis 
+				 
 				    using hibernate in java          sql 
 					
 					  save object  ----------------- insert           
@@ -600,18 +612,21 @@ jsp is used as the 		 view
 								                             -- in sql it will map with primary key 
 
 
+project creation in 2 ways
 
-
-Hibernate Project -- different library 
-                  download the library , put it in classpath of the project 
+1.
+	Hibernate Project -- different library 
+                     download the library , put it in classpath of the project 
 				  
-
-Maven  -- java build tool
-          
+2.
+	Maven  -- java build tool
+          * it create project 
 		  * it will build/compile the whole project using eclipse/intellij/command mode
-		  * it will download required libraryies from maven store 
+		  * it will download required libraries from maven store  by dependencies 
 		  
 		  
+				  
+				  
 				  
  
 
