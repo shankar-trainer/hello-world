@@ -585,17 +585,18 @@ jsp is used as the 		 view
 				   name,                                 name
 				   salary                              salary 
 				   
-				    using hibernate in java 
+				    using hibernate in java          sql 
+					
 					  save object  ----------------- insert           
 					  remove obejct -----------------delete
 					  search object -----------------select
 					  update object -----------------update 
 					  
-					 mapping 
-                                use annotaion 
-								@Entity  -- with class level -- it makes the class persistent entity 
+	mapping 
+            use annotaion 
+			@Entity  -- with class level -- it makes the class persistent entity 
 								
-								@Id      -- with field level -- it makes filed as  Identifier
+			@Id      -- with field level -- it makes filed as  Identifier
 								                             -- in sql it will map with primary key 
 
 

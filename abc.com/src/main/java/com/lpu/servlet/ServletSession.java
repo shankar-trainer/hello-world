@@ -14,16 +14,19 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/ServletSession")
 public class ServletSession extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	HttpSession session=request.getSession();
-	
-     PrintWriter out=		response.getWriter();
-	out.println("session id is "+session.getId());
-	out.println("<br>session max inactive interval is "+session.getMaxInactiveInterval());
-	out.println("<br>session creation time  is "+new Date(session.getCreationTime()));
-	out.println("<br>last logged in  time  is "+new Date(session.getLastAccessedTime()));
-	session.setAttribute("prd1", "java book");
-	session.setAttribute("prd1cost", 1567.90f);
-     	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
+		PrintWriter out = response.getWriter();
+		out.println("session id is " + session.getId());
+		session.setMaxInactiveInterval(5);
+		out.println("<br>session max inactive interval is " + session.getMaxInactiveInterval());
+		out.println("<br>session creation time  is " + new Date(session.getCreationTime()));
+		out.println("<br>last logged in  time  is " + new Date(session.getLastAccessedTime()));
+		session.setAttribute("prd1", "java book");
+		session.setAttribute("prd1cost", 1567.90f);
+	}
 
 }

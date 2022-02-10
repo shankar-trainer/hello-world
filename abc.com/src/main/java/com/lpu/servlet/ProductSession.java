@@ -13,14 +13,21 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/ProductSession")
 public class ProductSession extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();
-		
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+
+		PrintWriter out = response.getWriter();
+		out.println("<br>session id is " + session.getId());
+		out.println("<br>");
+		out.println("<br>");
+
 		Object product1 = session.getAttribute("prd1");
 		Float cost = (Float) session.getAttribute("prd1cost");
-		   PrintWriter out=		response.getWriter();
-  out.print("product1 is "+product1);			
-  out.print("<br>product cost  is "+cost);			
-}
+		out.print("product1 is " + product1);
+		out.print("<br>product cost  is " + cost);
+	}
 
 }
