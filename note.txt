@@ -625,7 +625,12 @@ project creation in 2 ways
 		  * it will download required libraries from maven store  by dependencies 
 		  
 		  
-				  
+			
+      hibernate methods
+        save            save(object)  --save object 
+        delete()         
+        update()
+        get()     -- search using id and classname		
 				  
 				  
  
