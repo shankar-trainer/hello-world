@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="customer1" class="edu.lpu.model.Customer">
+		<property name="id" value="10001"></property>
+		<property name="name" value="arvind swami"></property>
+		<property name="salary" value="90000"></property>
+	</bean>
+
+	<bean class="edu.lpu.model.Person" id="person1">
+		<constructor-arg name="id" value="10001"></constructor-arg>
+		<constructor-arg name="name" value="suresh sharma"></constructor-arg>
+		<constructor-arg name="salary" value="60000"></constructor-arg>
+	</bean>
+
+</beans>
