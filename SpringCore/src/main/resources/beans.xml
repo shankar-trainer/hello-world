@@ -5,13 +5,37 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<bean id="customer1" class="edu.lpu.model.Customer">
+	<bean id="customer1" class="edu.lpu.model.Customer"
+		scope="prototype">
 		<property name="id" value="10001"></property>
 		<property name="name" value="arvind swami"></property>
 		<property name="salary" value="90000"></property>
+		<property name="cities">
+			<set>
+				<value>delhi</value>
+				<value>chennai</value>
+				<value>madurai</value>
+				<value>chennai</value>
+				<value>aagra</value>
+				<value>ooty</value>
+			</set>
+		</property>
+
+		<property name="mobiles">
+			<list>
+				<value>samsung</value>
+				<value>xiomi</value>
+				<value>redmi</value>
+				<value>realme</value>
+				<value>motrolla</value>
+				<value>samsung</value>
+			</list>
+		</property>
 	</bean>
 
-	<bean class="edu.lpu.model.Person" id="person1">
+	<bean class="edu.lpu.model.Person" id="person1"
+		init-method="startup" destroy-method="cleanup" lazy-init="true"
+		scope="singleton">
 		<constructor-arg name="id" value="10001"></constructor-arg>
 		<constructor-arg name="name" value="suresh sharma"></constructor-arg>
 		<constructor-arg name="salary" value="60000"></constructor-arg>

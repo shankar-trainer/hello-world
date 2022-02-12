@@ -12,6 +12,15 @@ public class Person {
 		this.salary = salary;
 	}
 	
+	public void startup() {
+		System.out.println("init/startup called ");
+	}
+	
+	public void cleanup() {
+		
+		System.out.println("cleanup called ");
+	}
+	
 	@Override
 	public String toString() {
 		return "Person [id=" + id + ", name=" + name + ", salary=" + salary + "]";
