@@ -633,19 +633,117 @@ project creation in 2 ways
         get()     -- search using id and classname		
 				  
 				  
- 
+            SQL  -- HQL 
+			       Hibernate Query Language 
+				    
 
-															 
+     Project 
+	 
+	 
+	   UI   -- using html , css,          ---------->servlet,jsp ---- hibernate --- mysql  
+ 	           validation  -- javascript 
+			   
+			   
+			   
+			   DFD   
+			   ER -- database
+			   
+				synopsis of project 
+				
           					 
 					  
 
 					  
-
+      Desktop application -- desktop 
+	  
+	  
+	  Web Application --- Server 
     	  
+  hibernate relationship 
   
+one to one 
+   -- relation from one entity to another entity 
+   -- annotation used is @OnetoOne 
+
+Student has one address 
+Student has one course  
+
+
+one to many 
+   -- relation from one entity to multiple another entity 
+   -- annotation used is @OnetoMany 
+
+  Employee has multiple cars
+  Customer has multiple phones 
+  
+   In many case just use the collection
+                    Set 
+                    List 
+                    Map 
+ 
+ 
+
+ 
+
+class Student {
+ 
+
+}
+	  
 								
-								
-								
+				
+
+   3 types of application 
+   
+    a) Desktop application
+	b) web application -- running on web server (servlet and jsp)
+	c) Enterprise Application 
+	            -- lot of branches , each branch has specific work 
+				-- one branch wants to call other branch 
+				-- these facilities are done  by Enterprise application
+				
+				
+				-- remote calling facility, transaction, messging facility 
+				
+				
+				
+				first Enterprise solution has been given to the world using java EJB 
+				
+				EJB -- complex application , requires application server to run 
+				
+				
+				
+				one of the architect of EJB was rod johnson 
+				
+				he was knowing all the flaws  of ejb 
+				
+				he has given easy and open source solution in the form of spring 
+				
+				
+				
+				corejava 
+				
+				    -- object in main method 
+					
+					-- spring object will be created by the container
+
+
+
+        hibernate core
+        hibernate entity manager  -- libraries 
+
+
+      spring core 
+      spring context libraries   -- from maven 	  
+		
+
+     singleton bean 
+                 -- single static bean object -
+                 -- single object will be shared 				 
+				
+
+
+				
 								
 								
 								
