@@ -10,6 +10,7 @@ public class BookMain {
 		Book bean = beanFactory.getBean("book1",Book.class);
 		
 		Book bean1 = beanFactory.getBean("book1",Book.class);
+		
 		bean1.setIsbn(88787789);
 		bean1.setBname("spring for beginner");
 		bean1.setCost(12000);

@@ -4,18 +4,33 @@
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!-- 	<bean id="book1" class="org.lpu.model.Book" scope="singleton">
- -->	
- <bean id="book1" class="org.lpu.model.Book" scope="prototype">
+	<!-- <bean id="book1" class="org.lpu.model.Book" scope="singleton"> -->
+	<bean id="book1" class="org.lpu.model.Book" scope="prototype">
 		<property name="isbn" value="979878997" />
 		<property name="bname" value="spring in action" />
 		<property name="cost" value="2400" />
 	</bean>
+	
+	<bean id="stud1" class="org.lpu.model.Student" >
+		<property name="roll" value="97" />
+		<property name="name" value="noor jaha" />
+		<property name="marks" value="78.67f" />
+		<property name="address"  ref="addr" />
+	</bean>
+	
+	<bean id="addr" class="org.lpu.model.Address">
+		<property name="addr_id" value="979878997" />
+		<property name="sector" value="24 A" />
+		<property name="city" value="gr noida" />
+	</bean>
 
-	<bean class="org.lpu.model.User" id="user">
+	<bean class="org.lpu.model.User" id="user" init-method="startup"
+		destroy-method="clean">
 		<constructor-arg name="name" value="amit verma" />
 		<constructor-arg name="salary" value="80000" />
 		<constructor-arg name="id" value="7676677" />
 	</bean>
+
+
 
 </beans>
