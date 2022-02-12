@@ -739,7 +739,15 @@ class Student {
 
      singleton bean 
                  -- single static bean object -
-                 -- single object will be shared 				 
+                 -- single object will be shared 
+
+
+   spring -- lot of configuration using either xml or annotation.
+
+   spring boot -- less or no  configutaion, fast work.
+   
+   spring boot application using sts ide or online tool spring initialiser 
+   
 				
 
 

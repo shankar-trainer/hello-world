@@ -10,14 +10,42 @@
 		<property name="bname" value="spring in action" />
 		<property name="cost" value="2400" />
 	</bean>
-	
-	<bean id="stud1" class="org.lpu.model.Student" >
+
+	<bean id="stud1" class="org.lpu.model.Student">
 		<property name="roll" value="97" />
 		<property name="name" value="noor jaha" />
 		<property name="marks" value="78.67f" />
-		<property name="address"  ref="addr" />
+		<property name="address" ref="addr" />
+		<property name="books">
+			<set>
+				<value>math</value>
+				<value>science</value>
+				<value>math</value>
+				<value>english</value>
+				<value>tamil</value>
+			</set>
+		</property>
+
+		<property name="exams">
+			<list>
+				<value>First Term</value>
+				<value>Second Term</value>
+				<value>First Term</value>
+				<value>Third Term</value>
+			</list>
+		</property>
+
+		<property name="fee">
+			<map>
+				<entry key="first term" value="10000"></entry>
+				<entry key="first term" value="12000"></entry>
+				<entry key="second term" value="15000"></entry>
+				<entry key="third term" value="18000"></entry>
+			</map>
+		</property>
+
 	</bean>
-	
+
 	<bean id="addr" class="org.lpu.model.Address">
 		<property name="addr_id" value="979878997" />
 		<property name="sector" value="24 A" />

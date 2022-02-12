@@ -23,5 +23,10 @@ public class StudentMain {
 		System.out.println("\t sector "+address.getSector());
 		System.out.println("\t city "+address.getCity());
 		
+		
+		System.out.println("set of books "+st1.getBooks());
+		System.out.println("list  of exams "+st1.getExams());
+		System.out.println("map   of fees "+st1.getFee());
+		
 	}
 }
