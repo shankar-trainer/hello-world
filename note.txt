@@ -595,6 +595,11 @@ http://localhost:9090/MyWebProject/EmpServlet?id=122&name=ram+kumar
 		   
 		   
 		   
+		   Methods 
+		     save(object) -- insert object into database
+			 get(object, id)  -- search and get object 
+			 delete(object)-- delete the object 
+			 
 		   
 		   
 	
@@ -746,3 +751,78 @@ BankAccount_Login.html ----> id, password ------->ServletController ----------->
 	        jsp is used as  the view  as form input and last output
 			
 			
+			     Enterprise application 
+	                    enterprise -- multiple branches 
+						
+         call one branch module from other branch 
+         
+         application running at different location 
+         
+          Enterprise Application is running at different/distributd location    		 
+								
+	  First Enterprise Solution have been given by the java  -- EJB 
+
+
+   one of the architect of ejb was rod johnson 
+   
+    rod johnson has desined a new solution as the alternate of ejb 
+	  -- spring framework 
+	  
+	  
+	  
+	  
+	  spring 
+	  
+	     spring container
+                   manage all services 
+                    -- create object
+                    -- set and get values 
+                    -- life cycle        
+		beans.xml -- for managing all services 
+
+
+      IOC 
+             declare the services ( object creation, setting/getting vlaues ) in xml
+             container will create object and maintain the life cycle 
+            
+			 two intefaces 
+			 
+        BeanFactory -- basic services 
+        ApplicationContext -- advanced services 
+
+    DI 
+       
+	     dependency  injection 
+		  is done in 3 ways 
+		    1. setter/getter 
+			2. constructor
+			3. methods 
+		  
+       	 	
+spring 
+    limitation 
+      -->lot of configuration 
+ 
+
+springboot -- advanced version of spring with low configuration 
+ 
+ 
+ 
+ java appl --   ---- >   c++ application 
+              webservice 
+		        1.soap
+				2.rest 
+				
+				
+				servlet --- html, servlet jsp 
+				
+				
+		 html -- ui -- front end -- angular, react -- consume json  
+                                       |
+                                       |
+									   v
+									       data in json 
+									 springBoot Rest   
+                                    									   
+				
+
