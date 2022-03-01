@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      label{
+           width:140px;
+           float:left;
+      }
+      input{
+        width:110px;
+      }
+      form{
+           margin-left:470px;
+           margin-top:50px;
+            padding:20px;
+            border:solid blue 2px;
+            width:30%;
+            background:yellow;
+        }
+    </style> 
+    <script>
+   function calculate(){
+       var prd=document.getElementById('prd1').value
+       var prdno=document.getElementById('prdno').value
+       var cost=document.getElementById('cost').value
+       if(prd=="")
+         alert("product name is blank")
+         
+       else if(cost=="")
+         alert("product cost is blank")
+         
+       else if(isNaN(cost))
+         alert("product cost is not a number ")
+       
+       else if(prdno=="")
+         alert("product no  is blank")
+         
+       else if(isNaN(prdno))
+         alert("product no  is not a number ")
+       
+        else{
+   document.getElementById('total').innerHTML=	prdno*cost		
+		} 
+        
+    }
+</script>
+
+</head>
+<body>
+<form>
+ 
+ <h2>Product form</h2>
+ <label>Enter Product  Name </label>
+ <input id="prd1">
+ <br>
+ 
+ <label>Enter Product  Cost </label>
+ <input id="cost">
+ <br>
+ 
+ <label>Enter No Of Product</label>
+ <input id="prdno">
+ <br>
+ 
+ <label>Total Cost</label>
+ <span id="total"></span>
+ <br>
+ <input type='button' value='calculate' onclick='calculate()'>
+</form>    
+</body>
+</html>
+

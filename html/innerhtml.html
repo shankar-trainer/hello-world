@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<script>
+  function change(){
+  var id=document.getElementById('id1')
+  alert(id.innerHTML)
+  //id.innerHTML="<h1>welcome to javascript<h1>"
+  id.innerText="<h2>welcome to javascript</h2>"
+  }
+</script>    
+    <div id="id1">
+ hello world 
+</div>
+<br>
+<input type='button' value='changeit' onclick='change()'>
+
+</body>
+</html>
