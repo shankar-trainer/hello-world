@@ -298,8 +298,19 @@ initialisation    of array is done in 2 ways
 
 	 
 	  
-	  
-	  
+	instance -- separate attributes/methods 
+             -- all object is having separate copy 
+       id
+       name
+
+  static -- common attributes--single copy  shared by all the objects 
+         -- each object is sharing the single copy 
+   city  	   
+  country name 
+  interest rate 
+
+  bus 
+  
 	  
        
 	
