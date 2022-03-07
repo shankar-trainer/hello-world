@@ -30,8 +30,8 @@ public class ArrayOfObjects {
 	     float cost1[]= {1200,15000,700};
 		
 		Book book[]=new Book[3];// array of 3 book elements  
-      // array -- []
-		// object   ()
+      // array --create by  []
+		// object  created by  ()
    		for (int i = 0; i < book.length; i++) {
 	         book[i]=new Book(isbn1[i],bname1[i] , cost1[i], author1[i]);  // object creation		
 		}
