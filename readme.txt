@@ -312,5 +312,39 @@ initialisation    of array is done in 2 ways
   bus 
   
 	  
-       
+    
+constructor types 
+
+   2 types 
+     a) default constructor 
+            has no arguments 
+			initialise each object with same values 
+     b) overloaded constructor 
+            has arguments
+			initialise each object with differrent values
+
+
+
+
+
+
+Question 
+
+ Write a  program to implement BankAccount.
+ Write a class with constructor to initialise accountNo, customerName,transactionType,
+ tran_amount, balanace amount.
+
+  Add two member method to update the balance  based on the type of transaction
+   (withdraw, deposit).
+   
+  Display the customer Information with balace amount 
+  
+  
+  in a class we can have one deafult(no argument) constructor and many overloaded constructor
+  
+  
+    
+			
+			
+			
 	
