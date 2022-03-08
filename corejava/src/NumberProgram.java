@@ -27,6 +27,29 @@ public class NumberProgram {
     	System.out.println("max is "+max);
     	System.out.println("min is "+min);
     }
+    
+	static void  sorting(int ar[]) {
+		int temp;
+		for (int i = 0; i < ar.length; i++) {
+			for (int j = 0; j <ar.length-1-i; j++) {
+				if(ar[j]>ar[j+1]) {
+					temp=ar[j];
+					ar[j]=ar[j+1];
+					ar[j+1]=temp;
+				}
+			}
+		}
+		System.out.println("sorted in ascending order");
+		for (int i = 0; i < ar.length; i++) {
+			System.out.print(ar[i]+",");
+		}
+		System.out.println("\nsorted in descending order");
+		for (int i = ar.length-1 ; i>=0; i--) {
+			System.out.print(ar[i]+",");
+		}
+	}
+
+    
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		
@@ -48,7 +71,9 @@ public class NumberProgram {
 		System.out.println("Enter no to search");
 		int p=sc.nextInt();
 		search(ar,p);
-	  hi_low(ar);	
+	    hi_low(ar);	
+	    sorting(ar);
+	    
 		// find a given no in array , if present then display the position  -- use method 
 		// display the highest and lowest no without sorting       -- use method
 		// display all number in ascending and descending order  -- use method
