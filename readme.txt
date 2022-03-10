@@ -343,8 +343,129 @@ Question
   in a class we can have one deafult(no argument) constructor and many overloaded constructor
   
   
+  
+  in any constructor in first line either we can use super or this 
+    super() -- calling super class constructor
+	this()  -- call current class constructor 
+	
+	
+	
+	
+	Method overloading 
+	
+	   -- you can have one method in multiple forms with differrent argument 
+	   -- methods can be overloaded with different argument 
     
-			
+	Wrapper Class 
+  primitive         class 
+     int -------   Integer 
+     float 	       Float 
+	 short -------Short 
+	 
+	 
+	 
+	 Boxing   -- primitive to wrapper 
+	 Unboxing -- wrapper to primitive 
+	 
+	 
+	 autoboxing -- boxing+unboxing 
+	 
 			
 			
 	
+	
+	System.out.println();
+	
+		// java.lang.System
+		
+		    public static final PrintStream out = null;
+			
+System.out.println()
+
+java.io.PrintStream
+  println()
+  print()
+  
+  
+ static import 
+
+  import static members 
+   -- after import write static methods, variable without class name
+   
+   
+   java.lang.Object 
+     |
+   Animal -- super, base, parent   class 
+     |
+	Dog   -- child , derieved, subclass, extended  class 
+	
+	Dog is a Animal 
+	
+	
+	Employee 
+	 |
+	Manager 
+   
+    Manager is a Employee 
+	
+	oveeriding 
+	  equal or higher access modifier 
+	
+	private 
+	default 
+	protected 
+	public 
+	
+	
+	
+	oop features
+	
+	  encapsulation
+	  inheritance
+	  ploymorphism
+	  
+	     -- one interface with multiple forms 
+		      -- compile time ploymorphism
+			overloading
+			  -- one method in multiple forms 
+			  
+			  
+			water -- liquid, gas, solid 
+
+
+            run time ploymorphism
+             --- Patient
+             --- Passenegr
+   Person 	 --- Father
+             --- Employee 
+			 
+			 
+			 
+			 this and super 
+			 
+			 -->this is used as current class reference 
+			 -->using this you can call instance variable, instance method  
+			 
+			 super 
+			     -- super class variable and methods 
+				 
+	
+      Exception 
+
+        try 
+         catch 
+
+        finally block 
+        after try and catch we can add finally block 
+        it is executed every time if there is exception or no exception
+
+       if some resouces/connection must be closed  add it to the finally block 
+
+
+
+
+
+	   
+   
+   
+   
