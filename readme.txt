@@ -461,11 +461,27 @@ java.io.PrintStream
 
        if some resouces/connection must be closed  add it to the finally block 
 
+      throws 
+	     -- declare the exceptions present in the methods
+      throw 
+          -- throw new Exception Object (optionally with message )
 
 
 
 
-	   
+                                   caught by 
+   player1 -----------------------player2-------------------------->player3		  
+                                    rethrow 
+
+    input --------------------------->main  
+    input  (caught exception) ------XXXXXXXX--------------------->main 
+	
+    input  (caught exception) ------re throw exception--------------------->main  
+      	   
+   
+   
+   
+   
    
    
    
