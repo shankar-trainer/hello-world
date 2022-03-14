@@ -1,3 +1,12 @@
+slide link 
+corejava 
+https://drive.google.com/file/d/1MDUPD1dTC05weGJ6LmO-in2YvevNoKD7/view?usp=sharing
+https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
+
+
+
+git link 
+
 https://github.com/shankar-trainer/hello-world/tree/capg_feb22_gcp/corejava/src
 
 jdk   java development kit (javac + java )

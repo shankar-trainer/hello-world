@@ -1,7 +1,12 @@
 package com.capg.beans;
 
 public interface Phone {
-	void call();
+	void call(); // method are public and abstract by default
+//	String    country;// error 
+	String    country="india"; 
+	// variables are public static and final by default
+	
+	//Phone(){	}// no constructor is allowed
 }
 
 interface BasicPhone extends Phone {

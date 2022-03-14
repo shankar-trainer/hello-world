@@ -24,8 +24,5 @@ public class Student {
 	public void setMarks(float marks) {
 		this.marks = marks;
 	}
-
-	
-	
 	
 }

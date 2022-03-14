@@ -42,10 +42,16 @@ public class SmartPhone  extends AndroidPhone implements Phone, basicMobile,Basi
      phone.call();
      phone.message();
      phone.banking();
+     
      phone.gpsTracking();;
      phone.playAudio();
      phone.videoChat();
      phone.videoPlay();;
      phone.voiceChat();
+     System.out.println(country);
+     
+     System.out.println(Phone.country);
+     //Phone.country="uk";//error 
+     
 	}
 }
