@@ -481,7 +481,108 @@ java.io.PrintStream
    
    
    
+     build tool -- ant, maven, gradle(c, c++ android java groovy)   
+	    -- build the whole application
+		-- compile, execute the application
+		-- create project, set classpath 
+		-- dependency management () 
+		
+		
+		
+		jar --- java archive-- collection of classes 
+        war -- web archive 	 	collection of classes , html ,.js, css
+		
+		
+	String class
+         -- immutable  in nature 
+         -- fixed character length 
+        
+
+    String name="ram kumar";
+	"".
+		
+   STring literal   -- "" "hi"
+               are object 
+			   
+		
+		
+		
+   Integer 
    
+   byte 
+   short
+   int 
+   long 
+   
+   
+   Decimal 
+     float 
+	 double 
+	 
+	 
+
+
+Reference Casting 
+
+    follows inheritance hierarchy 
+
+
+     
+ Employee 
+     -- salary() {   ------------- 
+	    System.out.println()
+	 }
+
+ Manager  extends Employee 
+        -- override salary()
+ Clerk  extends Employee
+        -- override salary()
+ 
+ 
+ Employee 
+     void salary() ;  // abstract method with no body  
+
+Absract class 
+    abstraction -- essential methods should be decaled as abstract methods in the class
+
+  abstract class can contain both methods abstract and normal/concrete methods 
+  
+ 
+ abstract method 
+    required method with no body 
+	 
+	--> abstract methods can be defined in abstract class 
+
+ Normal class cannot have abstract method
+   -- abstract inherited method must be oveeriden in sub class 
+   
+ 
+interface 
+     -- extended form of abstract class 
+	 -- 100% abstract class
+	 -- all methods are abstract, public in nature by default
+     -- multiple inheritance 
+     -- all variables are by default public static and final 
+     --  implements keyword is used to extends the interface 
+     -- one interface can extends multiple interface 
+     -- a class can extends only one class but can implement multiple classes 
+  	 
+	 
+	 
+multiple inheritance
+    -- one subclass has more than one parent class 
+	
+	
+	
+Mother    Father 	 
+	 \     /  
+	 Student
+	 
+	 
+
+
+  	 
+	
    
    
    
