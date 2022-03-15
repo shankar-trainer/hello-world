@@ -36,7 +36,7 @@ public class ICalculatorTest {
 	void testMultiply() {
 		calculator.multiply(3, 4);
 		when(calculator.multiply(3, 4)).thenReturn(12);//stubbing
-		verify(calculator).add(3, 4);
+		verify(calculator).multiply(3, 4);
 	}
 	
 	@Test
