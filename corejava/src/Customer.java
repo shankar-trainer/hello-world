@@ -7,7 +7,8 @@ public class Customer {
 	}
 
 	public void setName(String name) {
-		if(name.isEmpty() || name.isBlank())
+		if(name.isEmpty() //|| name.isBlank()
+				)
 			System.out.println("name is blank");
 		else if(name.length()<=5)
 			System.out.println("invalid name length ");
