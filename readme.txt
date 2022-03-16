@@ -587,11 +587,96 @@ Mother    Father
 	 \     /  
 	 Student
 	 
-	 
+	
 
 
-  	 
+String 
+   -- a constant  sequence of character 	
+   -- String literal is also object 
+   -- immutable (not modfiable)
+
+String objects are   
+ ""   -- it has methods and attributes
+ "a"
+"abc" 
+ 
+ String literal  --- object in string pool 
+	
+	
+	String s1="hello"      -- string pool -- obj1
+	String s2="hello"      -- string pool obj1
+ 	
+
+
+	String s3=new String("hello") -- outside string pool -- obj2
+	
+   s1, s2 -- referes same object 
+    s3 refers  differrent object 
+
+  ==   -- double equal  checks references
+  .equals -- checks content   
 	
    
+   java.util.Date
+   
+   Date  --
    
    
+   
+   
+   
+   Objects 
+   
+       in a table 
+	   
+	     each object has hashCode
+		 
+		 
+ARRAY  -- HAS FIXED SIZE 
+         same data type 
+
+Collection -- group of objects  as a single unit 
+              transfer gr of objects from one class/methods to other class/methods
+			  
+          -- size not fixed 
+		  -- auto growable 
+		  
+
+
+java 5 
+
+
+  generics 
+   
+   Collection should be generilised with specific data type 
+   
+   
+   List  interface 
+        -- ArrayList 
+		-- Vector
+        -- LinkedList-- 
+
+        -- ordered 
+		-- duplicated
+		-- index 
+		
+		
+  Set 
+      -- not ordered 
+	  -- no index support 
+	  -- no duplicate 
+	  -- no get method 
+	  -- support of for each, iterator 
+	  
+
+   		
+
+		
+  
+
+
+
+
+
+			  
+		 
