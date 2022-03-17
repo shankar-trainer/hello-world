@@ -4,8 +4,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-public class BackedCollection_
-MapPrg1 {
+public class BackedCollection_MapPrg1 {
 
 	public static void main(String[] args) {
 		
