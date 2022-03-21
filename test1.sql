@@ -544,11 +544,6 @@ Indexes:
     "passenger_pkey" PRIMARY KEY, btree (id, country_code)
 Access method: heap
 
-
-db4-# insert into passenger values(10001,'jitendra kumar',67,'in');
-ERROR:  syntax error at or near "dt"
-LINE 1: dt+ passenger
-        ^
 db4=# insert into passenger (id,name,age,country_code) values(10001,'jitendra kumar',67,'in');
 INSERT 0 1
 db4=# insert into passenger (id,name,age,country_code) values(10001,'jitendra kumar',67,'ne');
@@ -562,11 +557,6 @@ db4=# insert into passenger (id,name,age,country_code) values(10002,'amitendra k
 INSERT 0 1
 db4=# insert into passenger (id,name,age,country_code) values(10002,'amitendra kumar',67,'uk');
 INSERT 0 1
-db4=#
-db4=#
-db4=#
-db4=#
-db4=#
 db4=#
 db4=# create table product (prdid int primary key, name varchar(20), mfd date, cost float);
 CREATE TABLE
@@ -616,4 +606,288 @@ DETAIL:  Key (prdid)=(2) is not present in table "product".
 db4=# insert into product_return values(9001,'2022-03-30','new delhi',1) ;
 INSERT 0 1
 db4=#
+	
+date and time   3 main data types 
+
+date 
+time
+timestamp
+
+functions are
+
+  current_date 
+  current_time
+  now()  -- date and time both  with time zone
+  localtime -- -- date and time both  without  time zone
+  
+db4=# select current_date;
+ current_date
+--------------
+ 2022-03-21
+(1 row)
+
+
+db4=# select current_time();
+ERROR:  syntax error at or near ")"
+LINE 1: select current_time();
+                            ^
+db4=# select current_time;
+     current_time
+-----------------------
+ 12:32:00.677804+05:30
+(1 row)
+
+
+db4=# select now;
+ERROR:  column "now" does not exist
+LINE 1: select now;
+               ^
+db4=#
+db4=#
+db4=# create table survey(id int primary key , survey_date date, location varchar(20), surevy_time time);
+CREATE TABLE
+db4=# insert into survey values(1001,current_date,'mathura',current_time);
+INSERT 0 1
+db4=# insert into survey values(1002,'2022-03-28','delhi','11:30:33');
+INSERT 0 1
+db4=# select * from survey;
+  id  | survey_date | location |   surevy_time
+------+-------------+----------+-----------------
+ 1001 | 2022-03-21  | mathura  | 12:39:51.163503
+ 1002 | 2022-03-28  | delhi    | 11:30:33
+(2 rows)
+
+
+               ^
+db4=# select now();
+               now
+----------------------------------
+ 2022-03-21 12:43:19.594813+05:30
+(1 row)
+
+db4=# select localtime;
+    localtime
+-----------------
+ 12:44:12.754623
+(1 row)
+
+db4=#
+db4=#
+db4=# select * from employee;
+   id   |      name      | salary |    dob
+--------+----------------+--------+------------
+  10001 | ram kumar      |  12000 | 1998-01-30
+  10002 | amit kumar     |  19000 | 1991-03-30
+  10003 | shyam kumar    |  80000 | 1992-10-10
+  10004 | sunil kumar    |  34000 | 2001-12-29
+  10005 | firoaz alam    |  82000 | 1991-01-10
+  10006 | amina sekh     |  52000 | 1999-01-10
+  10007 | parvin jaiswal |  82000 | 1999-01-11
+  10009 |                |  52000 | 1999-01-10
+ 100010 |                |  52000 | 1999-01-10
+ 100011 | devendra kumar |        | 1991-01-10
+ 100012 | devendra kumar |        | 1991-01-11
+(11 rows)
+
+
+db4=# update employee set name='ramesh kumar' where id=10001;
+UPDATE 1
+db4=# update employee set name='imran khan', salary=90000 where id=10005;
+UPDATE 1
+db4=# select * from employee;
+   id   |      name      | salary |    dob
+--------+----------------+--------+------------
+  10002 | amit kumar     |  19000 | 1991-03-30
+  10003 | shyam kumar    |  80000 | 1992-10-10
+  10004 | sunil kumar    |  34000 | 2001-12-29
+  10006 | amina sekh     |  52000 | 1999-01-10
+  10007 | parvin jaiswal |  82000 | 1999-01-11
+  10009 |                |  52000 | 1999-01-10
+ 100010 |                |  52000 | 1999-01-10
+ 100011 | devendra kumar |        | 1991-01-10
+ 100012 | devendra kumar |        | 1991-01-11
+  10001 | ramesh kumar   |  12000 | 1998-01-30
+  10005 | imran khan     |  90000 | 1991-01-10
+(11 rows)
+
+
+db4=# delete from employee where id=10002;
+DELETE 1
+db4=# select * from employee;
+   id   |      name      | salary |    dob
+--------+----------------+--------+------------
+  10003 | shyam kumar    |  80000 | 1992-10-10
+  10004 | sunil kumar    |  34000 | 2001-12-29
+  10006 | amina sekh     |  52000 | 1999-01-10
+  10007 | parvin jaiswal |  82000 | 1999-01-11
+  10009 |                |  52000 | 1999-01-10
+ 100010 |                |  52000 | 1999-01-10
+ 100011 | devendra kumar |        | 1991-01-10
+ 100012 | devendra kumar |        | 1991-01-11
+  10001 | ramesh kumar   |  12000 | 1998-01-30
+  10005 | imran khan     |  90000 | 1991-01-10
+(10 rows)
+
+
+db4=# select * from employee;
+   id   |      name      | salary |    dob
+--------+----------------+--------+------------
+  10003 | shyam kumar    |  80000 | 1992-10-10
+  10004 | sunil kumar    |  34000 | 2001-12-29
+  10006 | amina sekh     |  52000 | 1999-01-10
+  10007 | parvin jaiswal |  82000 | 1999-01-11
+  10009 |                |  52000 | 1999-01-10
+ 100010 |                |  52000 | 1999-01-10
+ 100011 | devendra kumar |        | 1991-01-10
+ 100012 | devendra kumar |        | 1991-01-11
+  10001 | ramesh kumar   |  12000 | 1998-01-30
+  10005 | imran khan     |  90000 | 1991-01-10
+(10 rows)
+
+
+db4=# select id,name,salary, dob  from employee;
+   id   |      name      | salary |    dob
+--------+----------------+--------+------------
+  10003 | shyam kumar    |  80000 | 1992-10-10
+  10004 | sunil kumar    |  34000 | 2001-12-29
+  10006 | amina sekh     |  52000 | 1999-01-10
+  10007 | parvin jaiswal |  82000 | 1999-01-11
+  10009 |                |  52000 | 1999-01-10
+ 100010 |                |  52000 | 1999-01-10
+ 100011 | devendra kumar |        | 1991-01-10
+ 100012 | devendra kumar |        | 1991-01-11
+  10001 | ramesh kumar   |  12000 | 1998-01-30
+  10005 | imran khan     |  90000 | 1991-01-10
+(10 rows)
+
+
+db4=# select id as "employee id", name as "empname",salary as "emp salary", dob as "date of birth"  from employee;
+ employee id |    empname     | emp salary | date of birth
+-------------+----------------+------------+---------------
+       10003 | shyam kumar    |      80000 | 1992-10-10
+       10004 | sunil kumar    |      34000 | 2001-12-29
+       10006 | amina sekh     |      52000 | 1999-01-10
+       10007 | parvin jaiswal |      82000 | 1999-01-11
+       10009 |                |      52000 | 1999-01-10
+      100010 |                |      52000 | 1999-01-10
+      100011 | devendra kumar |            | 1991-01-10
+      100012 | devendra kumar |            | 1991-01-11
+       10001 | ramesh kumar   |      12000 | 1998-01-30
+       10005 | imran khan     |      90000 | 1991-01-10
+(10 rows)
+
+
+db4=# select id as "employee id", name as "empname",salary as "emp salary", salary-(salary*0.05) ,dob as "date of birth"  from employee;
+ employee id |    empname     | emp salary | ?column? | date of birth
+-------------+----------------+------------+----------+---------------
+       10003 | shyam kumar    |      80000 |    76000 | 1992-10-10
+       10004 | sunil kumar    |      34000 |    32300 | 2001-12-29
+       10006 | amina sekh     |      52000 |    49400 | 1999-01-10
+       10007 | parvin jaiswal |      82000 |    77900 | 1999-01-11
+       10009 |                |      52000 |    49400 | 1999-01-10
+      100010 |                |      52000 |    49400 | 1999-01-10
+      100011 | devendra kumar |            |          | 1991-01-10
+      100012 | devendra kumar |            |          | 1991-01-11
+       10001 | ramesh kumar   |      12000 |    11400 | 1998-01-30
+       10005 | imran khan     |      90000 |    85500 | 1991-01-10
+(10 rows)
+
+
+db4=# select id as "employee id", name as "empname",salary as "emp salary", salary-(salary*0.05) as "gross salary" ,dob as "date of birth"  from employee;
+ employee id |    empname     | emp salary | gross salary | date of birth
+-------------+----------------+------------+--------------+---------------
+       10003 | shyam kumar    |      80000 |        76000 | 1992-10-10
+       10004 | sunil kumar    |      34000 |        32300 | 2001-12-29
+       10006 | amina sekh     |      52000 |        49400 | 1999-01-10
+       10007 | parvin jaiswal |      82000 |        77900 | 1999-01-11
+       10009 |                |      52000 |        49400 | 1999-01-10
+      100010 |                |      52000 |        49400 | 1999-01-10
+      100011 | devendra kumar |            |              | 1991-01-10
+      100012 | devendra kumar |            |              | 1991-01-11
+       10001 | ramesh kumar   |      12000 |        11400 | 1998-01-30
+       10005 | imran khan     |      90000 |        85500 | 1991-01-10
+(10 rows)
+
+
+db4=#
+db4=# select * from employee limit 1,3;
+ERROR:  LIMIT #,# syntax is not supported
+LINE 1: select * from employee limit 1,3;
+                               ^
+HINT:  Use separate LIMIT and OFFSET clauses.
+db4=# select id,name,salary, dob  from employee;
+   id   |      name      | salary |    dob
+--------+----------------+--------+------------
+  10003 | shyam kumar    |  80000 | 1992-10-10
+  10004 | sunil kumar    |  34000 | 2001-12-29
+  10006 | amina sekh     |  52000 | 1999-01-10
+  10007 | parvin jaiswal |  82000 | 1999-01-11
+  10009 |                |  52000 | 1999-01-10
+ 100010 |                |  52000 | 1999-01-10
+ 100011 | devendra kumar |        | 1991-01-10
+ 100012 | devendra kumar |        | 1991-01-11
+  10001 | ramesh kumar   |  12000 | 1998-01-30
+  10005 | imran khan     |  90000 | 1991-01-10
+(10 rows)
+
+
+db4=# select sum(salary)  from employee;
+  sum
+--------
+ 454000
+(1 row)
+
+
+db4=# select sum(salary), max(salary)  from employee;
+  sum   |  max
+--------+-------
+ 454000 | 90000
+(1 row)
+
+
+db4=# select sum(salary), max(salary) ,min(salary)  from employee;
+  sum   |  max  |  min
+--------+-------+-------
+ 454000 | 90000 | 12000
+(1 row)
+
+
+db4=# select sum(salary), max(salary) ,min(salary),avg(salary)  from employee;
+  sum   |  max  |  min  |  avg
+--------+-------+-------+-------
+ 454000 | 90000 | 12000 | 56750
+(1 row)
+
+
+db4=# select count(*) from employee;
+ count
+-------
+    10
+(1 row)
+
+db4=# select count(id) from employee;
+ count
+-------
+    10
+(1 row)
+
+
+db4=# select count(name) from employee;
+ count
+-------
+     8
+(1 row)
+
+
+db4=#
+
+
+
+
+
+
+
+
+
+
 		 
