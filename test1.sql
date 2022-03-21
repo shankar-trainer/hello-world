@@ -884,10 +884,608 @@ db4=#
 
 
 
+ JOin 
+ 
+ 
+ cartesian product 
+ 
+  A -- {a,b}
+  B    {c,d}
+
+
+A X B = {a,c},{a,d},{b,c},{b,d}
 
 
 
+db4=# select count(*) from employee;
+ count
+-------
+    10
+(1 row)
+
+
+db4=# select *  from employee;
+   id   |      name      | salary |    dob     | location |     job
+--------+----------------+--------+------------+----------+-------------
+ 100010 |                |  52000 | 1999-01-10 | delhi    | developer
+ 100012 | devendra kumar |        | 1991-01-11 | delhi    | developer
+  10003 | shyam kumar    |  80000 | 1992-10-10 | delhi    | developer
+  10004 | sunil kumar    |  34000 | 2001-12-29 | delhi    | designer
+  10006 | amina sekh     |  52000 | 1999-01-10 | delhi    | team leader
+  10007 | parvin jaiswal |  82000 | 1999-01-11 | noida    | architect
+  10009 |                |  52000 | 1999-01-10 | noida    | developer
+ 100011 | devendra kumar |        | 1991-01-10 | gt noida | designer
+  10001 | ramesh kumar   |  12000 | 1998-01-30 | gurgaon  | designer
+  10005 | imran khan     |  90000 | 1991-01-10 | gurgaon  | team leader
+(10 rows)
+
+
+db4=# select count(job)  from employee group by job;
+ count
+-------
+     3
+     1
+     4
+     2
+(4 rows)
+
+
+db4=# select count(job), job  from employee group by job;
+ count |     job
+-------+-------------
+     3 | designer
+     1 | architect
+     4 | developer
+     2 | team leader
+(4 rows)
+
+
+db4=# select count(job), job, location  from employee group by job;
+ERROR:  column "employee.location" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select count(job), job, location  from employee group by job...
+                                ^
+db4=# select count(job), job, location  from employee group by location;
+ERROR:  column "employee.job" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select count(job), job, location  from employee group by loc...
+                           ^
+db4=# select count(location), job  from employee group by job;
+ count |     job
+-------+-------------
+     3 | designer
+     1 | architect
+     4 | developer
+     2 | team leader
+(4 rows)
+
+
+db4=# select count(location), job  from employee group by location;
+ERROR:  column "employee.job" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select count(location), job  from employee group by location...
+                                ^
+db4=# select count(location), location  from employee group by location;
+ count | location
+-------+----------
+     2 | noida
+     5 | delhi
+     2 | gurgaon
+     1 | gt noida
+(4 rows)
+
+
+db4=# select count(location), job from employee group by location;
+ERROR:  column "employee.job" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select count(location), job from employee group by location;
+                                ^
+db4=# select count(location), job from employee group by job;
+ count |     job
+-------+-------------
+     3 | designer
+     1 | architect
+     4 | developer
+     2 | team leader
+(4 rows)
+
+
+db4=# select count(location), location  from employee group by job;
+ERROR:  column "employee.location" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select count(location), location  from employee group by job...
+                                ^
+db4=# select count(location), location  from employee group by location;
+ count | location
+-------+----------
+     2 | noida
+     5 | delhi
+     2 | gurgaon
+     1 | gt noida
+(4 rows)
+
+
+db4=# select count(location), location,   from employee group by location having location='noida';
+ERROR:  syntax error at or near "from"
+LINE 1: select count(location), location,   from employee group by l...
+                                            ^
+db4=# select count(location), location   from employee group by location having location='noida';
+ count | location
+-------+----------
+     2 | noida
+(1 row)
+
+
+db4=# select count(location), job  from employee group by location;
+ERROR:  column "employee.job" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select count(location), job  from employee group by location...
+                                ^
+db4=# select count(job), job, location  from employee group by location;
+ERROR:  column "employee.job" must appear in the GROUP BY clause or be used in an aggregate function
+LINE 1: select count(job), job, location  from employee group by loc...
+                           ^
+db4=# select count(job), job  from employee group by job;
+ count |     job
+-------+-------------
+     3 | designer
+     1 | architect
+     4 | developer
+     2 | team leader
+(4 rows)
+
+
+db4=# select count(job), job  from employee group by job having job='designer';
+ count |   job
+-------+----------
+     3 | designer
+(1 row)
+
+
+db4=# select count(location), job  from employee group by job having job='designer';
+ count |   job
+-------+----------
+     3 | designer
+(1 row)
+
+
+db4=# select count(location), location,job  from employee group by job having job='designer';
+                                ^
+db4=# select count(location), job  from employee group by job having job='designer';
+ count |   job
+-------+----------
+     3 | designer
+(1 row)
+
+
+db4=# select count(location), location   from employee group by job having job='designer';
+                                ^
+db4=# select count(job), job  from employee group by job;
+ count |     job
+-------+-------------
+     3 | designer
+     1 | architect
+     4 | developer
+     2 | team leader
+(4 rows)
+
+
+db4=# select count(job),max(salary) job  from employee group by job;
+ count |  job
+-------+-------
+     3 | 34000
+     1 | 82000
+     4 | 80000
+     2 | 90000
+(4 rows)
+
+
+db4=# select count(job),max(salary), min(salary) job  from employee group by job;
+ count |  max  |  job
+-------+-------+-------
+     3 | 34000 | 12000
+     1 | 82000 | 82000
+     4 | 80000 | 52000
+     2 | 90000 | 52000
+(4 rows)
 
 
 
-		 
+db4=# select count(location),max(salary), min(salary),avg(salary), job  from employee group by job;
+ count |  max  |  min  |        avg         |     job
+-------+-------+-------+--------------------+-------------
+     3 | 34000 | 12000 |              23000 | designer
+     1 | 82000 | 82000 |              82000 | architect
+     4 | 80000 | 52000 | 61333.333333333336 | developer
+     2 | 90000 | 52000 |              71000 | team leader
+(4 rows)
+
+
+-- using arrays
+
+create table doctor(id int primary key, name varchar(20),salary float,location varchar(20), wokdays int [])
+db4-# \d+ doctor
+                                           Table "public.doctor"
+  Column  |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+----------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ id       | integer               |           |          |         | plain    |              |
+ name     | character varying(20) |           |          |         | extended |              |
+ salary   | double precision      |           |          |         | plain    |              |
+ location | character varying(20) |           |          |         | extended |              |
+ wokdays  | integer[]             |           |          |         | extended |              |
+Access method: heap
+
+
+db4=# select * from doctor;
+  id   |      name       | salary | location |     wokdays
+-------+-----------------+--------+----------+-----------------
+ 10001 | dr arvind swami | 120000 | chennai  | {1,0,1,0,0,1,1}
+(1 row)
+
+
+db4=# insert into doctor (id,name,salary,location,wokdays) values(10002,'dr suman rangnathan',130000,'madurai','{0,0,1,1,0,1,1}');
+INSERT 0 1
+db4=# insert into doctor (id,name,salary,location,wokdays) values(10003,'dr prakash ayyar ',135000,'rameswaram','{0,1,1,1,1,1,1}');
+INSERT 0 1
+db4=# select * from doctor;
+  id   |        name         | salary |  location  |     wokdays
+-------+---------------------+--------+------------+-----------------
+ 10001 | dr arvind swami     | 120000 | chennai    | {1,0,1,0,0,1,1}
+ 10002 | dr suman rangnathan | 130000 | madurai    | {0,0,1,1,0,1,1}
+ 10003 | dr prakash ayyar    | 135000 | rameswaram | {0,1,1,1,1,1,1}
+(3 rows)
+
+
+db4=# create table book_store (book_id int primary key, type varchar(20), bname varchar[20][]);
+CREATE TABLE
+
+db4=# \d+  book_store
+                                        Table "public.book_store"
+ Column  |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+---------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ book_id | integer               |           | not null |         | plain    |              |
+ type    | character varying(20) |           |          |         | extended |              |
+ bname   | character varying[]   |           |          |         | extended |              |
+Indexes:
+    "book_store_pkey" PRIMARY KEY, btree (book_id)
+Access method: heap
+
+db4=# insert into book_store (book_id,type,bname)  values  (1000001,'computer', '{java,php,c,python,hadoop}');
+INSERT 0 1
+
+db4=# insert into book_store (book_id,type,bname)  values  (1000002,'literatur', '{story,poem,essay,humour,lecture}');
+INSERT 0 1
+
+db4=# insert into book_store (book_id,type,bname)  values  (1000002,'history', '{ancient history,history of indian,glimpse of india,moder history,history of freedom}');
+
+db4=# insert into book_store (book_id,type,bname)  values  (1000003,'history', '{ancient history,history of indian,glimpse of india,moder history,history of freedom}');
+INSERT 0 1
+db4=#
+db4=#
+db4=# select * from book_store;
+ book_id |   type    |                                              bname
+---------+-----------+-------------------------------------------------------------------------------------------------
+ 1000001 | computer  | {java,php,c,python,hadoop}
+ 1000002 | literatur | {story,poem,essay,humour,lecture}
+ 1000003 | history   | {"ancient history","history of indian","glimpse of india","moder history","history of freedom"}
+(3 rows)
+
+
+                                                        ^
+db4=# select array_append(ARRAY[1,2,3],77);
+ array_append
+--------------
+ {1,2,3,77}
+(1 row)
+
+db4=# select book_id, type, bname, array_append(bname,'jython') from book_store  where type='computer';
+ book_id |   type   |           bname            |           array_append
+---------+----------+----------------------------+-----------------------------------
+ 1000001 | computer | {java,php,c,python,hadoop} | {java,php,c,python,hadoop,jython}
+(1 row)
+
+db4=# select book_id, type, bname, array_append(bname,'jython') from book_store  where type='computer';
+ book_id |   type   |           bname            |           array_append
+---------+----------+----------------------------+-----------------------------------
+ 1000001 | computer | {java,php,c,python,hadoop} | {java,php,c,python,hadoop,jython}
+(1 row)
+
+
+db4=# select array_length(ARRAY[1,2,3],77);
+ array_length
+--------------
+(1 row)
+
+
+db4=# select book_id, type, bname, array_append(bname,'jython') from book_store ;
+ book_id |   type    |                                              bname                                              |                                              array_append
+---------+-----------+-------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------
+ 1000001 | computer  | {java,php,c,python,hadoop}                                                                      | {java,php,c,python,hadoop,jython}
+ 1000002 | literatur | {story,poem,essay,humour,lecture}                                                               | {story,poem,essay,humour,lecture,jython}
+ 1000003 | history   | {"ancient history","history of indian","glimpse of india","moder history","history of freedom"} | {"ancient history","history of indian","glimpse of india","moder history","history of freedom",jython}
+(3 rows)
+
+
+db4=# select array_length(ARRAY[1,2,3],77);
+ array_length
+--------------
+
+(1 row)
+
+
+db4=# select array_length(ARRAY[1,2,3],77);
+ array_length
+--------------
+
+(1 row)
+
+
+db4=# select array_lower(ARRAY[1,2,3],77);
+ array_lower
+-------------
+(1 row)
+
+
+db4=# select array_upper(ARRAY[1,2,3],77);
+ array_upper
+-------------
+(1 row)
+
+db4=# create table sweets_shop( id int primary key, name varchar(20), cost float);
+CREATE TABLE
+db4=#
+db4=# create table sweets_order(orderid int primary key, location varchar(20), sweetid int);
+CREATE TABLE
+db4=#
+db4=# \d+ sweets_shop
+                                       Table "public.sweets_shop"
+ Column |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+--------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ id     | integer               |           | not null |         | plain    |              |
+ name   | character varying(20) |           |          |         | extended |              |
+ cost   | double precision      |           |          |         | plain    |              |
+Indexes:
+    "sweets_shop_pkey" PRIMARY KEY, btree (id)
+Access method: heap
+
+
+db4=# \d+ sweets_order
+                                        Table "public.sweets_order"
+  Column  |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+----------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ orderid  | integer               |           | not null |         | plain    |              |
+ location | character varying(20) |           |          |         | extended |              |
+ sweetid  | integer               |           |          |         | plain    |              |
+Indexes:
+    "sweets_order_pkey" PRIMARY KEY, btree (orderid)
+Access method: heap
+
+
+                    ^
+db4=# insert into sweets_shop values(1001,'chamcham',340);
+INSERT 0 1
+db4=# insert into sweets_shop values(1002,'rasogulla',270);
+INSERT 0 1
+db4=# insert into sweets_shop values(1004,'jalebi',200);
+INSERT 0 1
+db4=# insert into sweets_shop values(1006,'laddu',200);
+INSERT 0 1
+db4=# insert into sweets_shop values(1007,'dhokala',200);
+INSERT 0 1
+db4=# insert into sweets_shop values(1009,'litti chokha',50);
+INSERT 0 1
+db4=# select * from sweets_shop;
+  id  |     name     | cost
+------+--------------+------
+ 1001 | chamcham     |  340
+ 1002 | rasogulla    |  270
+ 1004 | jalebi       |  200
+ 1006 | laddu        |  200
+ 1007 | dhokala      |  200
+ 1009 | litti chokha |   50
+(6 rows)
+
+
+db4=# \d+ sweets_order
+                                        Table "public.sweets_order"
+  Column  |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+----------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ orderid  | integer               |           | not null |         | plain    |              |
+ location | character varying(20) |           |          |         | extended |              |
+ sweetid  | integer               |           |          |         | plain    |              |
+Indexes:
+    "sweets_order_pkey" PRIMARY KEY, btree (orderid)
+Access method: heap
+
+
+db4=# insert into sweets_order values(1,'delhi',1001);
+INSERT 0 1
+db4=# insert into sweets_order values(2,'noida',1002);
+INSERT 0 1
+db4=# insert into sweets_order values(3,'delhi',1003);
+INSERT 0 1
+db4=# insert into sweets_order values(4,'gurgaon',1004);
+INSERT 0 1
+db4=# insert into sweets_order values(5,'noida',1005);
+INSERT 0 1
+db4=# insert into sweets_order values(5,'faridabad',1006);
+ERROR:  duplicate key value violates unique constraint "sweets_order_pkey"
+DETAIL:  Key (orderid)=(5) already exists.
+db4=# insert into sweets_order values(6,'faridabad',1006);
+INSERT 0 1
+db4=#
+db4=#
+db4=#
+db4=# select * from sweets_order;
+ orderid | location  | sweetid
+---------+-----------+---------
+       1 | delhi     |    1001
+       2 | noida     |    1002
+       3 | delhi     |    1003
+       4 | gurgaon   |    1004
+       5 | noida     |    1005
+       6 | faridabad |    1006
+(6 rows)
+
+
+db4=# select * from sweets_shop;
+  id  |     name     | cost
+------+--------------+------
+ 1001 | chamcham     |  340
+ 1002 | rasogulla    |  270
+ 1004 | jalebi       |  200
+ 1006 | laddu        |  200
+ 1007 | dhokala      |  200
+ 1009 | litti chokha |   50
+(6 rows)
+-- cartesian  join 
+
+db4=# select * from sweets_shop, sweets_order;
+  id  |     name     | cost | orderid | location  | sweetid
+------+--------------+------+---------+-----------+---------
+ 1001 | chamcham     |  340 |       1 | delhi     |    1001
+ 1002 | rasogulla    |  270 |       1 | delhi     |    1001
+ 1004 | jalebi       |  200 |       1 | delhi     |    1001
+ 1006 | laddu        |  200 |       1 | delhi     |    1001
+ 1007 | dhokala      |  200 |       1 | delhi     |    1001
+ 1009 | litti chokha |   50 |       1 | delhi     |    1001
+ 1001 | chamcham     |  340 |       2 | noida     |    1002
+ 1002 | rasogulla    |  270 |       2 | noida     |    1002
+ 1004 | jalebi       |  200 |       2 | noida     |    1002
+ 1006 | laddu        |  200 |       2 | noida     |    1002
+ 1007 | dhokala      |  200 |       2 | noida     |    1002
+ 1009 | litti chokha |   50 |       2 | noida     |    1002
+ 1001 | chamcham     |  340 |       3 | delhi     |    1003
+ 1002 | rasogulla    |  270 |       3 | delhi     |    1003
+ 1004 | jalebi       |  200 |       3 | delhi     |    1003
+ 1006 | laddu        |  200 |       3 | delhi     |    1003
+ 1007 | dhokala      |  200 |       3 | delhi     |    1003
+ 1009 | litti chokha |   50 |       3 | delhi     |    1003
+ 1001 | chamcham     |  340 |       4 | gurgaon   |    1004
+ 1002 | rasogulla    |  270 |       4 | gurgaon   |    1004
+ 1004 | jalebi       |  200 |       4 | gurgaon   |    1004
+ 1006 | laddu        |  200 |       4 | gurgaon   |    1004
+ 1007 | dhokala      |  200 |       4 | gurgaon   |    1004
+ 1009 | litti chokha |   50 |       4 | gurgaon   |    1004
+ 1001 | chamcham     |  340 |       5 | noida     |    1005
+ 1002 | rasogulla    |  270 |       5 | noida     |    1005
+ 1004 | jalebi       |  200 |       5 | noida     |    1005
+ 1006 | laddu        |  200 |       5 | noida     |    1005
+ 1007 | dhokala      |  200 |       5 | noida     |    1005
+ 1009 | litti chokha |   50 |       5 | noida     |    1005
+ 1001 | chamcham     |  340 |       6 | faridabad |    1006
+ 1002 | rasogulla    |  270 |       6 | faridabad |    1006
+ 1004 | jalebi       |  200 |       6 | faridabad |    1006
+ 1006 | laddu        |  200 |       6 | faridabad |    1006
+ 1007 | dhokala      |  200 |       6 | faridabad |    1006
+ 1009 | litti chokha |   50 |       6 | faridabad |    1006
+(36 rows)
+
+
+db4=#
+db4=#
+db4=#
+db4=#
+db4=# \d+ sweets_shop
+                                       Table "public.sweets_shop"
+ Column |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+--------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ id     | integer               |           | not null |         | plain    |              |
+ name   | character varying(20) |           |          |         | extended |              |
+ cost   | double precision      |           |          |         | plain    |              |
+Indexes:
+    "sweets_shop_pkey" PRIMARY KEY, btree (id)
+Access method: heap
+
+
+db4=# \d+ sweets_order
+                                        Table "public.sweets_order"
+  Column  |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+----------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ orderid  | integer               |           | not null |         | plain    |              |
+ location | character varying(20) |           |          |         | extended |              |
+ sweetid  | integer               |           |          |         | plain    |              |
+Indexes:
+    "sweets_order_pkey" PRIMARY KEY, btree (orderid)
+Access method: heap
+
+-- equi join 
+db4=# select * from sweets_shop, sweets_order where id=sweetid;
+  id  |   name    | cost | orderid | location  | sweetid
+------+-----------+------+---------+-----------+---------
+ 1001 | chamcham  |  340 |       1 | delhi     |    1001
+ 1002 | rasogulla |  270 |       2 | noida     |    1002
+ 1004 | jalebi    |  200 |       4 | gurgaon   |    1004
+ 1006 | laddu     |  200 |       6 | faridabad |    1006
+(4 rows)
+
+-- equi join 
+
+db4=# select * from sweets_shop, sweets_order where id=sweetid;
+  id  |   name    | cost | orderid | location  | sweetid
+------+-----------+------+---------+-----------+---------
+ 1001 | chamcham  |  340 |       1 | delhi     |    1001
+ 1002 | rasogulla |  270 |       2 | noida     |    1002
+ 1004 | jalebi    |  200 |       4 | gurgaon   |    1004
+ 1006 | laddu     |  200 |       6 | faridabad |    1006
+(4 rows)
+
+
+db4=#
+db4=#
+db4=# select id,name,cost,orderid,location from sweets_shop, sweets_order where id=sweetid;
+  id  |   name    | cost | orderid | location
+------+-----------+------+---------+-----------
+ 1001 | chamcham  |  340 |       1 | delhi
+ 1002 | rasogulla |  270 |       2 | noida
+ 1004 | jalebi    |  200 |       4 | gurgaon
+ 1006 | laddu     |  200 |       6 | faridabad
+(4 rows)
+
+
+db4=# select ss.id,ss.name,ss.cost, so.orderid,so.location from sweets_shop ss, sweets_order so  where id=sweetid;
+  id  |   name    | cost | orderid | location
+------+-----------+------+---------+-----------
+ 1001 | chamcham  |  340 |       1 | delhi
+ 1002 | rasogulla |  270 |       2 | noida
+ 1004 | jalebi    |  200 |       4 | gurgaon
+ 1006 | laddu     |  200 |       6 | faridabad
+(4 rows)
+
+-- inner join 
+db4=# select ss.id,ss.name,ss.cost, so.orderid,so.location from sweets_shop ss inner join  sweets_order so  on  id=sweetid;
+  id  |   name    | cost | orderid | location
+------+-----------+------+---------+-----------
+ 1001 | chamcham  |  340 |       1 | delhi
+ 1002 | rasogulla |  270 |       2 | noida
+ 1004 | jalebi    |  200 |       4 | gurgaon
+ 1006 | laddu     |  200 |       6 | faridabad
+(4 rows)
+
+db4=# select ss.id,ss.name,ss.cost, so.orderid,so.location from sweets_shop ss inner join  sweets_order so  on  id=sweetid;
+  id  |   name    | cost | orderid | location
+------+-----------+------+---------+-----------
+ 1001 | chamcham  |  340 |       1 | delhi
+ 1002 | rasogulla |  270 |       2 | noida
+ 1004 | jalebi    |  200 |       4 | gurgaon
+ 1006 | laddu     |  200 |       6 | faridabad
+(4 rows)
+
+-- left join 
+db4=# select ss.id,ss.name,ss.cost, so.orderid,so.location from sweets_shop ss left  join  sweets_order so  on  id=sweetid;
+  id  |     name     | cost | orderid | location
+------+--------------+------+---------+-----------
+ 1001 | chamcham     |  340 |       1 | delhi
+ 1002 | rasogulla    |  270 |       2 | noida
+ 1004 | jalebi       |  200 |       4 | gurgaon
+ 1006 | laddu        |  200 |       6 | faridabad
+ 1009 | litti chokha |   50 |         |
+ 1007 | dhokala      |  200 |         |
+(6 rows)
+
+-- right join
+db4=# select ss.id,ss.name,ss.cost, so.orderid,so.location from sweets_shop ss right  join  sweets_order so  on  id=sweetid;
+  id  |   name    | cost | orderid | location
+------+-----------+------+---------+-----------
+ 1001 | chamcham  |  340 |       1 | delhi
+ 1002 | rasogulla |  270 |       2 | noida
+      |           |      |       3 | delhi
+ 1004 | jalebi    |  200 |       4 | gurgaon
+      |           |      |       5 | noida
+ 1006 | laddu     |  200 |       6 | faridabad
+(6 rows)
+
