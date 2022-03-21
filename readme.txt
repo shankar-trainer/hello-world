@@ -651,32 +651,123 @@ java 5
    Collection should be generilised with specific data type 
    
    
-   List  interface 
+   List  interface
+        sub classes    
         -- ArrayList 
 		-- Vector
         -- LinkedList-- 
 
+      featues:  
         -- ordered 
 		-- duplicated
 		-- index 
 		
 		
   Set 
+      featues:
       -- not ordered 
 	  -- no index support 
 	  -- no duplicate 
 	  -- no get method 
 	  -- support of for each, iterator 
 	  
-
+     subclass 
+	     -- hashset 
+         -- treeset 
+         --LinkedHashset 	
+		 
    		
 
+		Map -- java.util.Map 
 		
+		    it works on key and value 
+			 
+			 
+			 a -- apple 
+			 b ---boy 
+			 
+       -- classes are 
+	      -- hashMap 
+		  
+		  
+		  
+		  
+		  Functional Interfaces
+		  
+		   Function<T,R>  -- it accepts input as T and return as R 
+		   
+		   IntFunction<R> --it accepts only integer and return R 
+		   DoubleFunction<R> --it accepts only double and return R 
+		   
+		   ToIntFunction<T>-- accepts T type but return only integer 
+
+
+Database Management System(dbms) 
+
+Database -- to keep the data  in table 
+
+      table -- name 
+               fields 
+               record -- horizontal data 
+
+     
+Employee -----  Department ----- Transaction 
   
 
 
 
+		   
+
+    
+	
+	inner class 
+	      -->a class inside other class 
+		  -->inner class works as members of outer class 
+		  --> inner class can access the member of  outer class
+		  --> inner class can be private, protected, public 
+		  
+		  it's of 4 types 
+		     a.inner class 
+			 b.static inner class/nested class 
+			 c.local inner class 
+			 d.anonymous inner class 
+			 
+			 
+			1. inner class 
+			2. static inner class 
+			        inner class having static member must be static 
+			3.Local Inner class
+			
+			4.Anonymous Inner class 
+			
+			
+			
+			lambda expression 
+			   --- extended form of anonymous inner class using interface 
+			   --- interface having single method (functionl interface)
+      			   is  used as lambda expression
+				   
+				   
+				   
+			Runnable Interface is Functional Interface 
+			
+			Comparator Interface 
+			
 
 
-			  
-		 
+   Thread 
+      --- Thread can be created in 2 ways 
+	       1. extends Thread class
+		   2. implements Runnable interfce 
+                   Runnable  -- single method run 
+				   
+				   Thread  --- start, stop, 
+dead lock 
+
+
+    pen 
+	ball
+
+kid 1   got ball and crying for pen 
+kid 2   got pen and crying for ball 
+
