@@ -1489,3 +1489,458 @@ db4=# select ss.id,ss.name,ss.cost, so.orderid,so.location from sweets_shop ss r
  1006 | laddu     |  200 |       6 | faridabad
 (6 rows)
 
+
+
+
+alter commands
+
+to modify column 
+
+db4=# alter table employee alter column  name type  varchar(40);
+
+to add column 
+
+db4=# alter table employee  add  country varchar(40);
+
+drop column 
+
+db4=# alter table employee drop column country ;
+
+
+rename column 
+db4=# alter table employee rename column dob to date_of_birth;
+
+
+rename table 
+
+db4=#  alter table employee rename  to  bank_employee
+
+
+
+join 
+
+   -- used to join two or more than two tables using some common column name 
+   
+   
+
+
+
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Password for user postgres:
+psql (13.4)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# \c db4
+You are now connected to database "db4" as user "postgres".
+db4=# \dt
+             List of relations
+ Schema |      Name      | Type  |  Owner
+--------+----------------+-------+----------
+ public | book_store     | table | postgres
+ public | customer       | table | postgres
+ public | customer1      | table | postgres
+ public | employee       | table | postgres
+ public | labour         | table | postgres
+ public | passenger      | table | postgres
+ public | product        | table | postgres
+ public | product_order  | table | postgres
+ public | product_return | table | postgres
+ public | survey         | table | postgres
+ public | sweets_order   | table | postgres
+ public | sweets_shop    | table | postgres
+ public | tourist        | table | postgres
+(13 rows)
+
+
+db4=# \d+ employee
+                                          Table "public.employee"
+  Column  |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+----------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ id       | integer               |           | not null |         | plain    |              |
+ name     | character varying(20) |           |          |         | extended |              |
+ salary   | double precision      |           |          |         | plain    |              |
+ dob      | date                  |           |          |         | plain    |              |
+ location | character varying(20) |           |          |         | extended |              |
+ job      | character varying(20) |           |          |         | extended |              |
+Indexes:
+    "employee_pkey" PRIMARY KEY, btree (id)
+Access method: heap
+
+
+db4=# insert into employee values(8080,'maharaj prthvi raj chauhan',56000,'1756-12-12','rajsthan','king');
+ERROR:  value too long for type character varying(20)
+db4=# qalter table employee modify name varchar(40);
+ERROR:  syntax error at or near "qalter"
+LINE 1: qalter table employee modify name varchar(40);
+        ^
+db4=# alter table employee modify name varchar(40);
+ERROR:  syntax error at or near "modify"
+LINE 1: alter table employee modify name varchar(40);
+                             ^
+db4=# alter table employee change name varchar(40);
+ERROR:  syntax error at or near "change"
+LINE 1: alter table employee change name varchar(40);
+                             ^
+db4=# alter table employee  add  country varchar(40);
+ALTER TABLE
+db4=# \d+ employee
+                                          Table "public.employee"
+  Column  |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+----------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ id       | integer               |           | not null |         | plain    |              |
+ name     | character varying(20) |           |          |         | extended |              |
+ salary   | double precision      |           |          |         | plain    |              |
+ dob      | date                  |           |          |         | plain    |              |
+ location | character varying(20) |           |          |         | extended |              |
+ job      | character varying(20) |           |          |         | extended |              |
+ country  | character varying(40) |           |          |         | extended |              |
+Indexes:
+    "employee_pkey" PRIMARY KEY, btree (id)
+Access method: heap
+
+
+db4=# alter table employee alter name varchar(40);
+ERROR:  syntax error at or near "varchar"
+LINE 1: alter table employee alter name varchar(40);
+                                        ^
+db4=# alter table employee alter column  name type  varchar(40);
+ALTER TABLE
+db4=# \d+ employee
+                                          Table "public.employee"
+  Column  |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+----------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ id       | integer               |           | not null |         | plain    |              |
+ name     | character varying(40) |           |          |         | extended |              |
+ salary   | double precision      |           |          |         | plain    |              |
+ dob      | date                  |           |          |         | plain    |              |
+ location | character varying(20) |           |          |         | extended |              |
+ job      | character varying(20) |           |          |         | extended |              |
+ country  | character varying(40) |           |          |         | extended |              |
+Indexes:
+    "employee_pkey" PRIMARY KEY, btree (id)
+Access method: heap
+
+
+db4=# insert into employee values(8080,'maharaj prthvi raj chauhan',56000,'1756-12-12','rajsthan','king');
+INSERT 0 1
+db4=#
+db4=#
+db4=# alter table employee drop column country ;
+ALTER TABLE
+db4=# \d+ employee
+                                          Table "public.employee"
+  Column  |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+----------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ id       | integer               |           | not null |         | plain    |              |
+ name     | character varying(40) |           |          |         | extended |              |
+ salary   | double precision      |           |          |         | plain    |              |
+ dob      | date                  |           |          |         | plain    |              |
+ location | character varying(20) |           |          |         | extended |              |
+ job      | character varying(20) |           |          |         | extended |              |
+Indexes:
+    "employee_pkey" PRIMARY KEY, btree (id)
+Access method: heap
+
+
+db4=# alter table employee rename column dob to date_of_birth;
+ALTER TABLE
+db4=# db4=# alter table employee rename  bank_employee;
+ERROR:  syntax error at or near "db4"
+LINE 1: db4=# alter table employee rename  bank_employee;
+        ^
+db4=#  alter table employee rename  bank_employee;
+ERROR:  syntax error at or near ";"
+LINE 1: alter table employee rename  bank_employee;
+                                                  ^
+db4=#  alter table employee rename  to  bank_employee;
+ALTER TABLE
+db4=#
+db4=#
+db4=#
+db4=#
+db4=# \dt
+             List of relations
+ Schema |      Name      | Type  |  Owner
+--------+----------------+-------+----------
+ public | bank_employee  | table | postgres
+ public | book_store     | table | postgres
+ public | customer       | table | postgres
+ public | customer1      | table | postgres
+ public | labour         | table | postgres
+ public | passenger      | table | postgres
+ public | product        | table | postgres
+ public | product_order  | table | postgres
+ public | product_return | table | postgres
+ public | survey         | table | postgres
+ public | sweets_order   | table | postgres
+ public | sweets_shop    | table | postgres
+ public | tourist        | table | postgres
+(13 rows)
+
+
+db4=# create table student (roll int primary key, name varchar(20), className varchar(20));
+CREATE TABLE
+db4=# create table examination (roll int primary key, subject varchar(20), exam_date date);
+CREATE TABLE
+db4=# insert into student values(10001, 'ram kumar','seven'),(10002,'mahesh kumar','six'),(10004,'sita sharma','eight');
+INSERT 0 3
+db4=# insert into student values(10006, 'umehs kumar','six'),(10007,'mahesh kumar','five'),(10009,'sita sharma','six');
+INSERT 0 3
+db4=# insert into examination values(10001,'math','2022-03-12'),(10002,'science','2022-03-21'),(10003,'english','2022-03-01');
+INSERT 0 3
+db4=# insert into examination values(10005,'hindi','2022-03-11'),(10007,'telugu','2022-03-21'),(10008,'tamil','2022-03-01');
+INSERT 0 3
+db4=# select * from student;
+ roll  |     name     | classname
+-------+--------------+-----------
+ 10001 | ram kumar    | seven
+ 10002 | mahesh kumar | six
+ 10004 | sita sharma  | eight
+ 10006 | umehs kumar  | six
+ 10007 | mahesh kumar | five
+ 10009 | sita sharma  | six
+(6 rows)
+
+
+db4=# select * from examination;
+ roll  | subject | exam_date
+-------+---------+------------
+ 10001 | math    | 2022-03-12
+ 10002 | science | 2022-03-21
+ 10003 | english | 2022-03-01
+ 10005 | hindi   | 2022-03-11
+ 10007 | telugu  | 2022-03-21
+ 10008 | tamil   | 2022-03-01
+(6 rows)
+
+
+db4=# select * from student,examination;
+ roll  |     name     | classname | roll  | subject | exam_date
+-------+--------------+-----------+-------+---------+------------
+ 10001 | ram kumar    | seven     | 10001 | math    | 2022-03-12
+ 10002 | mahesh kumar | six       | 10001 | math    | 2022-03-12
+ 10004 | sita sharma  | eight     | 10001 | math    | 2022-03-12
+ 10006 | umehs kumar  | six       | 10001 | math    | 2022-03-12
+ 10007 | mahesh kumar | five      | 10001 | math    | 2022-03-12
+ 10009 | sita sharma  | six       | 10001 | math    | 2022-03-12
+ 10001 | ram kumar    | seven     | 10002 | science | 2022-03-21
+ 10002 | mahesh kumar | six       | 10002 | science | 2022-03-21
+ 10004 | sita sharma  | eight     | 10002 | science | 2022-03-21
+ 10006 | umehs kumar  | six       | 10002 | science | 2022-03-21
+ 10007 | mahesh kumar | five      | 10002 | science | 2022-03-21
+ 10009 | sita sharma  | six       | 10002 | science | 2022-03-21
+ 10001 | ram kumar    | seven     | 10003 | english | 2022-03-01
+ 10002 | mahesh kumar | six       | 10003 | english | 2022-03-01
+ 10004 | sita sharma  | eight     | 10003 | english | 2022-03-01
+ 10006 | umehs kumar  | six       | 10003 | english | 2022-03-01
+ 10007 | mahesh kumar | five      | 10003 | english | 2022-03-01
+ 10009 | sita sharma  | six       | 10003 | english | 2022-03-01
+ 10001 | ram kumar    | seven     | 10005 | hindi   | 2022-03-11
+ 10002 | mahesh kumar | six       | 10005 | hindi   | 2022-03-11
+ 10004 | sita sharma  | eight     | 10005 | hindi   | 2022-03-11
+ 10006 | umehs kumar  | six       | 10005 | hindi   | 2022-03-11
+ 10007 | mahesh kumar | five      | 10005 | hindi   | 2022-03-11
+ 10009 | sita sharma  | six       | 10005 | hindi   | 2022-03-11
+ 10001 | ram kumar    | seven     | 10007 | telugu  | 2022-03-21
+ 10002 | mahesh kumar | six       | 10007 | telugu  | 2022-03-21
+ 10004 | sita sharma  | eight     | 10007 | telugu  | 2022-03-21
+ 10006 | umehs kumar  | six       | 10007 | telugu  | 2022-03-21
+ 10007 | mahesh kumar | five      | 10007 | telugu  | 2022-03-21
+ 10009 | sita sharma  | six       | 10007 | telugu  | 2022-03-21
+ 10001 | ram kumar    | seven     | 10008 | tamil   | 2022-03-01
+ 10002 | mahesh kumar | six       | 10008 | tamil   | 2022-03-01
+ 10004 | sita sharma  | eight     | 10008 | tamil   | 2022-03-01
+ 10006 | umehs kumar  | six       | 10008 | tamil   | 2022-03-01
+ 10007 | mahesh kumar | five      | 10008 | tamil   | 2022-03-01
+ 10009 | sita sharma  | six       | 10008 | tamil   | 2022-03-01
+(36 rows)
+
+
+db4=#
+db4=#
+db4=#
+db4=#
+db4=#
+db4=#
+db4=#
+db4=#
+db4=# \d+ student
+                                           Table "public.student"
+  Column   |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+-----------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ roll      | integer               |           | not null |         | plain    |              |
+ name      | character varying(20) |           |          |         | extended |              |
+ classname | character varying(20) |           |          |         | extended |              |
+Indexes:
+    "student_pkey" PRIMARY KEY, btree (roll)
+Access method: heap
+
+
+db4=# \d+ examination
+                                         Table "public.examination"
+  Column   |         Type          | Collation | Nullable | Default | Storage  | Stats target | Description
+-----------+-----------------------+-----------+----------+---------+----------+--------------+-------------
+ roll      | integer               |           | not null |         | plain    |              |
+ subject   | character varying(20) |           |          |         | extended |              |
+ exam_date | date                  |           |          |         | plain    |              |
+Indexes:
+    "examination_pkey" PRIMARY KEY, btree (roll)
+Access method: heap
+
+
+db4=# select * from student,examination where student.roll=examination.roll;
+ roll  |     name     | classname | roll  | subject | exam_date
+-------+--------------+-----------+-------+---------+------------
+ 10001 | ram kumar    | seven     | 10001 | math    | 2022-03-12
+ 10002 | mahesh kumar | six       | 10002 | science | 2022-03-21
+ 10007 | mahesh kumar | five      | 10007 | telugu  | 2022-03-21
+(3 rows)
+
+
+db4=# select student.roll,student.name,student.classname,examination.subject, examination.exam_date from student,examination where student.roll=examination.roll;
+ roll  |     name     | classname | subject | exam_date
+-------+--------------+-----------+---------+------------
+ 10001 | ram kumar    | seven     | math    | 2022-03-12
+ 10002 | mahesh kumar | six       | science | 2022-03-21
+ 10007 | mahesh kumar | five      | telugu  | 2022-03-21
+(3 rows)
+
+
+db4=# select s.roll,s.name,s.classname,e.subject, e.exam_date from student s,examination e where s.roll=e.roll;
+ roll  |     name     | classname | subject | exam_date
+-------+--------------+-----------+---------+------------
+ 10001 | ram kumar    | seven     | math    | 2022-03-12
+ 10002 | mahesh kumar | six       | science | 2022-03-21
+ 10007 | mahesh kumar | five      | telugu  | 2022-03-21
+(3 rows)
+
+
+db4=# select * from student;
+ roll  |     name     | classname
+-------+--------------+-----------
+ 10001 | ram kumar    | seven
+ 10002 | mahesh kumar | six
+ 10004 | sita sharma  | eight
+ 10006 | umehs kumar  | six
+ 10007 | mahesh kumar | five
+ 10009 | sita sharma  | six
+(6 rows)
+
+
+db4=# select * from examination;
+ roll  | subject | exam_date
+-------+---------+------------
+ 10001 | math    | 2022-03-12
+ 10002 | science | 2022-03-21
+ 10003 | english | 2022-03-01
+ 10005 | hindi   | 2022-03-11
+ 10007 | telugu  | 2022-03-21
+ 10008 | tamil   | 2022-03-01
+(6 rows)
+
+
+db4=# select s.roll,s.name,s.classname,e.subject, e.exam_date from student s,examination e where s.roll(+)=e.roll;
+ERROR:  syntax error at or near ")"
+LINE 1: ...am_date from student s,examination e where s.roll(+)=e.roll;
+                                                              ^
+db4=# select s.roll,s.name,s.classname,e.subject, e.exam_date from student s,examination e where s.roll=e.roll;
+ roll  |     name     | classname | subject | exam_date
+-------+--------------+-----------+---------+------------
+ 10001 | ram kumar    | seven     | math    | 2022-03-12
+ 10002 | mahesh kumar | six       | science | 2022-03-21
+ 10007 | mahesh kumar | five      | telugu  | 2022-03-21
+(3 rows)
+
+
+db4=# select s.roll,s.name,s.classname,e.subject, e.exam_date from student s inner join examination e on  s.roll=e.roll;
+ roll  |     name     | classname | subject | exam_date
+-------+--------------+-----------+---------+------------
+ 10001 | ram kumar    | seven     | math    | 2022-03-12
+ 10002 | mahesh kumar | six       | science | 2022-03-21
+ 10007 | mahesh kumar | five      | telugu  | 2022-03-21
+(3 rows)
+
+
+db4=# select s.roll,s.name,s.classname,e.subject, e.exam_date from student s left  join examination e on  s.roll=e.roll;
+ roll  |     name     | classname | subject | exam_date
+-------+--------------+-----------+---------+------------
+ 10001 | ram kumar    | seven     | math    | 2022-03-12
+ 10002 | mahesh kumar | six       | science | 2022-03-21
+ 10007 | mahesh kumar | five      | telugu  | 2022-03-21
+ 10009 | sita sharma  | six       |         |
+ 10004 | sita sharma  | eight     |         |
+ 10006 | umehs kumar  | six       |         |
+(6 rows)
+
+
+db4=# select * from student;
+ roll  |     name     | classname
+-------+--------------+-----------
+ 10001 | ram kumar    | seven
+ 10002 | mahesh kumar | six
+ 10004 | sita sharma  | eight
+ 10006 | umehs kumar  | six
+ 10007 | mahesh kumar | five
+ 10009 | sita sharma  | six
+(6 rows)
+
+
+db4=# select s.roll,s.name,s.classname,e.subject, e.exam_date from student s right  join examination e on  s.roll=e.roll;
+ roll  |     name     | classname | subject | exam_date
+-------+--------------+-----------+---------+------------
+ 10001 | ram kumar    | seven     | math    | 2022-03-12
+ 10002 | mahesh kumar | six       | science | 2022-03-21
+       |              |           | english | 2022-03-01
+       |              |           | hindi   | 2022-03-11
+ 10007 | mahesh kumar | five      | telugu  | 2022-03-21
+       |              |           | tamil   | 2022-03-01
+(6 rows)
+
+
+db4=# select * from examination;
+ roll  | subject | exam_date
+-------+---------+------------
+ 10001 | math    | 2022-03-12
+ 10002 | science | 2022-03-21
+ 10003 | english | 2022-03-01
+ 10005 | hindi   | 2022-03-11
+ 10007 | telugu  | 2022-03-21
+ 10008 | tamil   | 2022-03-01
+(6 rows)
+
+
+db4=# select e.roll,s.name,s.classname,e.subject, e.exam_date from student s,examination e where s.roll(+)=e.roll;
+ERROR:  syntax error at or near ")"
+LINE 1: ...am_date from student s,examination e where s.roll(+)=e.roll;
+                                                              ^
+db4=# select s.roll,s.name,s.classname,e.subject, e.exam_date from student s right  join examination e on  s.roll=e.roll;
+ roll  |     name     | classname | subject | exam_date
+-------+--------------+-----------+---------+------------
+ 10001 | ram kumar    | seven     | math    | 2022-03-12
+ 10002 | mahesh kumar | six       | science | 2022-03-21
+       |              |           | english | 2022-03-01
+       |              |           | hindi   | 2022-03-11
+ 10007 | mahesh kumar | five      | telugu  | 2022-03-21
+       |              |           | tamil   | 2022-03-01
+(6 rows)
+
+
+db4=# select e.roll,s.name,s.classname,e.subject, e.exam_date from student s right  join examination e on  s.roll=e.roll;
+ roll  |     name     | classname | subject | exam_date
+-------+--------------+-----------+---------+------------
+ 10001 | ram kumar    | seven     | math    | 2022-03-12
+ 10002 | mahesh kumar | six       | science | 2022-03-21
+ 10003 |              |           | english | 2022-03-01
+ 10005 |              |           | hindi   | 2022-03-11
+ 10007 | mahesh kumar | five      | telugu  | 2022-03-21
+ 10008 |              |           | tamil   | 2022-03-01
+(6 rows)
+
+
+db4=#

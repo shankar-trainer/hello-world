@@ -771,3 +771,143 @@ dead lock
 kid 1   got ball and crying for pen 
 kid 2   got pen and crying for ball 
 
+
+
+
+  100 developer in project 
+      
+	  code by each developer -- keep on central location 
+	  
+	  
+
+
+git configuration 
+
+
+git config -l    --- it will list all configuration 
+
+set these values 
+
+C:\Users\admin>git config --global  user.name "ram56667"
+C:\Users\admin>git config --global  user.email "ram@gmail.com"
+
+-- steps after new repository 
+
+create a new repository on the command line
+echo "# capg2022" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/shankar-trainer/capg2022.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/shankar-trainer/capg2022.git
+git branch -M main
+git push -u origin main
+
+
+
+===========
+master is the main branch on your local system
+origin is the main branch at cvs(remote/server)
+
+
+
+ steps done
+ 
+ step0
+  $git init 
+  
+ step1 
+ $notepad README.md
+ 
+ step2 
+ $git add README.md
+ 
+ step3 
+ $git remote add origin https://github.com/shankar-trainer/capg2022.git
+ 
+ step4 
+ $git commit -m "readme.md"
+ 
+ step5 
+ $git push origin master 
+ 
+ 
+
+git pull -- pull the files from the cvs 
+
+clone -- make the clone of repository to local system and it will initilise repository and pull
+
+clone= init+remote add+pull
+
+
+
+git branch --> the current  local branch name 
+git branch -r --> show all remote branches 
+
+
+
+git branch branch_name --> this will create a new branch 
+
+git checkout branchname -->it will change the branch to given name 
+
+
+  new created branch will inherit all files from master branch 
+   add new files to the branch 
+   
+   commit it 
+   
+  steps  
+  
+  git  branch corejava
+  git  branch adv_java
+  
+  git checkout corejava -->switch branch to corejava 
+  notepad factorial.java 
+  git add *
+  git commit -m "factorial"
+  git push origin corejava 
+  
+ --> pull files  in same branch
+     git pull origin master  
+  
+  --> pull the branch 
+  
+   git pull origin corejava --> it will pull the branch corejava 
+   
+   delete branch 
+   
+   git branch -d branch_name 
+   
+   
+===   merging  the branch ===
+   
+   checkout to master branch 
+   git merge branch_name 
+   
+  
+   git branch 
+     --> *corejava 
+         master 
+
+   git checkout master --> switch to master branch 
+   git merge corejava  --> merge the corejava into master branch 
+   
+   
+   git diff ---> show the difference in content  of the previous stage and current stage of the file 
+   
+   
+   
+   
+   
+    
+   
+  
+  
+  
+
+
+
+
