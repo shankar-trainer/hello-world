@@ -28,11 +28,12 @@ public class EmployeeMain {
 		emp1.setName("hari harana kumar");
 		emp1.setSalary(35000);
 */
-		System.out.println("Enter id name and salary");
+		System.out.println("Enter id, name, salary and location");
 		emp1.setId(sc.nextInt());
 		sc.nextLine();
 		emp1.setName(sc.nextLine());
 		emp1.setSalary(sc.nextFloat());
+		emp1.setLocation(sc.next());
 		
 		transaction.begin();
 		em.persist(emp1);
@@ -44,7 +45,7 @@ public class EmployeeMain {
 	    List<Employee> resultList = qr.getResultList();
 	    
 	    for(Employee e:resultList)
-	    	System.out.println(e.getId()+"\t"+e.getName()+"\t"+e.getSalary());
+	    	System.out.println(e.getId()+"\t"+e.getName()+"\t"+e.getSalary()+"\t"+e.getLocation());
 	    
 		em.close();
 		emf.close();
