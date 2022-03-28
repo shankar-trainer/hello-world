@@ -905,8 +905,35 @@ git checkout branchname -->it will change the branch to given name
     
    
   
+jdbc 
+
+CRUD 
+
+             sql 
+C-- Create   -- insert 
+R-- Retrieve -- select
+U-- Update   -- update 
+D-- Delete   -- delete 
+
+
+
+
+ ResultSet -- after execute query itr contains records 
+ 
+      -- before first -- default position -- no data  
+	     1st   -- data  
+		 2nd 
+		 3rd 
+		 
+		 .
+		 last 
+		 afterLast 
+      
+
   
   
+
+
 
 
 
