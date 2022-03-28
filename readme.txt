@@ -977,6 +977,17 @@ D -- delete     -- delete
 
 
 
+layered application 
+
+		layered application  architecture 
+		
+		dao layer 
+		service layer 
+		exception layer 
+		client layer 
+
+    
+
 
 
 
