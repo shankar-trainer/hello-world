@@ -30,11 +30,8 @@ public class CustomerMain {
 		
 		customer.setName(sc.nextLine());
 		String s=sc.next();
-
 		
 		 DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		 //dateTimeFormatter.
-		 
 		 LocalDate date1 = LocalDate.parse(s, dateTimeFormatter);
 		
           customer.setDob(date1);		
@@ -44,9 +41,7 @@ public class CustomerMain {
           transaction.commit();
           System.out.println("Record added ");
           
-
   	    Query qr = em.createQuery("from Customer");	
-		
   	    List<Customer> resultList = qr.getResultList();
   	    
   	    for(Customer c:resultList)

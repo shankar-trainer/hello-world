@@ -935,6 +935,49 @@ D-- Delete   -- delete
 
 
 
+ORM --- Object Relational Mapping 
+
+    
+	mapping of java object ---- with relational database 
+	
+	
+	
+	
+	Employee.java  ------ orm ------ Employee table  
+	   id                              id
+	   name                            name
+	   salary                          salary 
+
+    emp1 
+	
+	
+	90% database problem is solved by orm 
+	
+	
+DAO layer 
+	
+main method file is client file 
+client file should be light weight 
+
+all database operation should be done in a separate file having interface and its implementation
+
+this is called as DAO layer 
+
+dao layer can be callled by any application any no of times.
+
+dao layer is having all CRUD operation
+                  sql 
+C  -- create  -- insert 
+R --  retrieve -- select 
+U --   update   -- update 
+D -- delete     -- delete 
+
+
+
+
+
+
+
 
 
 

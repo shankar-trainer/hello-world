@@ -46,6 +46,34 @@ public class EmployeeMain {
 	    
 	    for(Employee e:resultList)
 	    	System.out.println(e.getId()+"\t"+e.getName()+"\t"+e.getSalary()+"\t"+e.getLocation());
+	    System.out.println("Enter id to find employee");
+	    int id1=sc.nextInt();
+	    
+	    Employee find = em.find(Employee.class, id1);
+	    
+	    if(find!=null) {
+	    	System.out.println("Employee found with id "+id1);
+	       System.out.println(find.getId()+"\t"+find.getName()+"\t"+find.getSalary()+"\t"+find.getLocation());	
+	    }
+	    else
+	    System.out.println("Employee not  found with id "+id1);
+	    
+	    
+	    System.out.println("Enter id to delete employee");
+	    id1=sc.nextInt();
+	    
+	    find = em.find(Employee.class, id1);
+	    
+	    if(find!=null) {
+	    	System.out.println("Employee found with id "+id1);
+	    	transaction.begin();
+	    	em.remove(find);
+	    	transaction.commit();
+	    	System.out.println("Employee  with id "+id1+" is deleted ");
+	    }
+	    else
+	    System.out.println("Employee not  found with id "+id1);
+	    
 	    
 		em.close();
 		emf.close();
