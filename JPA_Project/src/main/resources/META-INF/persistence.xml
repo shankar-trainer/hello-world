@@ -4,6 +4,8 @@
              version="2.0">
    <persistence-unit name="sample" transaction-type="RESOURCE_LOCAL">
     <class>com.capg.bean.Employee</class>
+    <class>com.capg.bean.Customer</class>
+    <class>com.capg.bean.Person</class>
       <properties>
       <property name="hibernate.connection.url" value="jdbc:postgresql://localhost/db5"/>
       <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
@@ -11,7 +13,7 @@
       <property name="hibernate.connection.password" value="postgres"/>
       
          <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-         <!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
+         <!-- <property name="hibernate.hbm2ddl.auto" value="update"/>  -->
          <property name="hibernate.show_sql" value="true"/>
       </properties>
    </persistence-unit>
