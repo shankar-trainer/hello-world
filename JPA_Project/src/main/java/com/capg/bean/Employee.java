@@ -3,10 +3,15 @@ package com.capg.bean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="emp2")
+
+@NamedQuery(name="getallemp",query = "select e from Employee e")
+@NamedQuery(name="query1",query = "select e from Employee e where e.salary>60000")
+
 public class Employee {
 	@Id
 	@Column(name = "empid")
@@ -43,6 +48,10 @@ public class Employee {
 	}
 	public void setSalary(float salary) {
 		this.salary = salary;
+	}
+	@Override
+	public String toString() {
+		return "Employee \n\tid=" + id + ", name=" + name + ", salary=" + salary + ", location=" + location;
 	}
 
 	
