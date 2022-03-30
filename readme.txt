@@ -1,7 +1,22 @@
 slide link 
+all capg slides
+
+https://drive.google.com/drive/folders/1zghlY-5zxokVE_tzrgDZoMhXHL3kVwUC
+
+
 corejava 
 https://drive.google.com/file/d/1MDUPD1dTC05weGJ6LmO-in2YvevNoKD7/view?usp=sharing
 https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
+
+
+agile slide 
+https://drive.google.com/drive/folders/1RO8vAlkgbyaE3Lt-2rEvuoeu4pBGYkm9?usp=sharing
+
+mysql 
+https://drive.google.com/drive/folders/1NZCsd6FEd-cZkeaso8d87FaggBJaMdJG?usp=sharing
+
+jenkin git/svn 
+https://drive.google.com/drive/folders/1GnMAflZ3PcwNX_OV0Wygy5W1o0dAXEex?usp=sharing 
 
 
 
@@ -990,5 +1005,16 @@ layered application
 
 
 
+   @oneToOne
+book --- author
 
+   @oneToMany
+book --- bookorder
 
+table 
+  -- 1. book 
+  -- 2. author 
+  -- 3. bookorder 
+  -- 4. book_bookorder ()
+  
+  
