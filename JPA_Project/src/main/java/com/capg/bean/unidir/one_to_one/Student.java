@@ -1,9 +1,12 @@
 package com.capg.bean.unidir.one_to_one;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,7 +19,8 @@ public class Student {
 	private String name;
 	private String subject;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name = "addressId")
 	private Address address;
 	
 	
