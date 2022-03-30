@@ -24,8 +24,6 @@ public class tablePerConcreeteClass_CardMain {
 		card.setBalance(1000);
 		card.setPayment("by cheque payment");
 		
-		
-		
 		creditCard.setBalance(10000);
 		creditCard.setPayment("by online credit card payment");
 		creditCard.setLimit(30000);
