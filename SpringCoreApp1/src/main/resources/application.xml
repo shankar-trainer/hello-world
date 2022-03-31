@@ -29,8 +29,31 @@
 			</set>
 		</property>
 
+		<property name="BookCollection">
+			<map>
+				<entry key="a kumar" value="java beginner" />
+				<entry key="b kumar" value="java professional" />
+				<entry key="chetan bhagat" value="two states" />
+				<entry key="amish tripathi" value="the oath of vayuputra" />
+				<entry key="amish tripathi" value="the immortal of  meluha" />
+
+			</map>
+		</property>
+
+	</bean>
+	<bean class="com.capgemini.beans.Student" autowire="byName">
+		<property name="roll" value="88787"></property>
+		<property name="name" value="anand kumar"></property>
+		<property name="subject" value="math"></property>
+		<!-- <property name="address" ref="addr"></property> -->
 	</bean>
 
+	<bean class="com.capgemini.beans.Address" id="address">
+		<property name="addrId" value="1"></property>
+		<property name="location"  value="laxminagar"></property>
+		<property name="city" value="new delhi"></property>
+		<property name="pin" value="10001"></property>
+	</bean>
 
 
 </beans>

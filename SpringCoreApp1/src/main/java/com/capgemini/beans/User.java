@@ -1,6 +1,7 @@
 package com.capgemini.beans;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class User {
@@ -10,7 +11,14 @@ public class User {
 	private float salary;
 	private List<String> hobbies;
 	private Set<String> bike;
+	private  Map<String,String> BookCollection;
 	
+	public Map<String, String> getBookCollection() {
+		return BookCollection;
+	}
+	public void setBookCollection(Map<String, String> bookCollection) {
+		BookCollection = bookCollection;
+	}
 	public int getId() {
 		return id;
 	}
