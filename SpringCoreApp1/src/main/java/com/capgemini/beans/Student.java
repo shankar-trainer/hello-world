@@ -7,6 +7,18 @@ public class Student {
 	private String subject;
 	private Address address;
 	
+	public void startup() {
+		this.roll=88888;
+		this.name="kamal partap";
+		this.subject="telugu";
+		System.out.println("startup called ");
+	}
+	
+	public void cleanup() {
+		System.out.println("destroy  called ");
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Student roll=" + roll + ", name=" + name + ", subject=" + subject + ", address=" + address;

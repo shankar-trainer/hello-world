@@ -41,7 +41,8 @@
 		</property>
 
 	</bean>
-	<bean class="com.capgemini.beans.Student" autowire="byName">
+	<bean class="com.capgemini.beans.Student" autowire="byName"
+		init-method="startup" destroy-method="cleanup">
 		<property name="roll" value="88787"></property>
 		<property name="name" value="anand kumar"></property>
 		<property name="subject" value="math"></property>
@@ -50,10 +51,15 @@
 
 	<bean class="com.capgemini.beans.Address" id="address">
 		<property name="addrId" value="1"></property>
-		<property name="location"  value="laxminagar"></property>
+		<property name="location" value="laxminagar"></property>
 		<property name="city" value="new delhi"></property>
 		<property name="pin" value="10001"></property>
 	</bean>
 
+
+	<!-- <bean class="com.capgemini.beans.Product" scope="singleton"> -->
+	<bean class="com.capgemini.beans.Product" scope="prototype">
+
+	</bean>
 
 </beans>
