@@ -1018,3 +1018,31 @@ table
   -- 4. book_bookorder ()
   
   
+
+      Account 
+       accountid, location
+	    actType-- discriminator 
+		
+Saving     Current
+
+
+Spring 
+
+    Enterprise Solution 
+	
+	 ejb is first enterprise solution 
+	 
+	 
+	 ejb is complex 
+	 ejb requires heavy application server to run 
+	 no unit testing 
+	 
+	 client forced  to use ejb 
+	 
+	 ejb server like oracle server, weblogic, web sphere   charge very high 
+	 
+	 
+	 ejb architect  rod johnson 
+	   -- simple solution having all failities of ejb in the form of spring 
+	   
+	   
