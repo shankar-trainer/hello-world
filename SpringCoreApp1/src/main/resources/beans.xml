@@ -15,9 +15,16 @@
 		<property name="salary" value="89000.00f" />
 
 	</bean>
-	<bean class="com.capgemini.beans.CurrencyConverterImpl"	id="converter">
+	<bean class="com.capgemini.beans.CurrencyConverterImpl"
+		id="converter">
 		<property name="amount" value="700"></property>
 		<property name="exchangeRate" value="0.44"></property>
+	</bean>
+
+	<bean class="com.capgemini.beans.Customer" >
+		<constructor-arg name="customerId" value="7878878" />
+		<constructor-arg name="customerName" value="harendra kumar" />
+		<constructor-arg name="customerSalary" value="890000" />
 	</bean>
 
 
