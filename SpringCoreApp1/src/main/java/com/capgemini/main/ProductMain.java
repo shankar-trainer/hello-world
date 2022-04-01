@@ -1,13 +1,15 @@
 package com.capgemini.main;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.capgemini.beans.Product;
 
 public class ProductMain {
 	public static void main(String[] args) {
-		ApplicationContext beanfactory = new ClassPathXmlApplicationContext("application.xml");
+		//ApplicationContext 
+	ConfigurableApplicationContext	beanfactory = new ClassPathXmlApplicationContext("application.xml");
 		Product prd1 = beanfactory.getBean(Product.class);
 		Product prd2 = beanfactory.getBean(Product.class);
 
@@ -22,5 +24,7 @@ public class ProductMain {
 		
 		System.out.println(prd1);
 		System.out.println(prd2);
+		
+		beanfactory.close();
 	}
 }

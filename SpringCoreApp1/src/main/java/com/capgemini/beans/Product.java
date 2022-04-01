@@ -11,6 +11,7 @@ public class Product {
 	public String toString() {
 		return "Product prdId=" + prdId + ", prdName=" + prdName + ", prdCost=" + prdCost;
 	}
+	
 	public void setPrdId(int prdId) {
 		this.prdId = prdId;
 	}

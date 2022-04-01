@@ -3,6 +3,26 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="placeHolderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="department.properties"></property>
+	</bean>
+
+	<bean class="com.capgemini.beans.Department" id="department">
+		<constructor-arg name="departmentId" value="7676767" />
+		<constructor-arg name="departmentName"
+			value="training" />
+		<constructor-arg name="departmentLocation"
+			value="pune" />
+	</bean>
+
+	<bean class="com.capgemini.beans.Department" id="dept1">
+		<constructor-arg name="departmentId" value="${deptId}" />
+		<constructor-arg name="departmentName"
+			value="${deptName}" />
+		<constructor-arg name="departmentLocation"
+			value="${deptLocation}" />
+	</bean>
 
 
 
