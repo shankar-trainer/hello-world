@@ -13,8 +13,16 @@ public class Address {
 	private int addrId;
 	private String addrCity;
 	private String addrStreet;
+	private List<String> stateList;
 	private int addrPhNo;
-	public List<String> stateList;
+	public List<String> getStateList() {
+		return stateList;
+	}
+
+	public void setStateList(List<String> stateList) {
+		this.stateList = stateList;
+	}
+
 
 	@PostConstruct
 	public void init() {
