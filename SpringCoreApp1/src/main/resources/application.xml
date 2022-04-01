@@ -3,11 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
 	<bean id="placeHolderConfig"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="department.properties"></property>
 	</bean>
 
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="message"></property>
+	</bean>
+	
 	<bean class="com.capgemini.beans.Department" id="department">
 		<constructor-arg name="departmentId" value="7676767" />
 		<constructor-arg name="departmentName"
@@ -23,8 +29,6 @@
 		<constructor-arg name="departmentLocation"
 			value="${deptLocation}" />
 	</bean>
-
-
 
 	<bean class="com.capgemini.beans.User">
 		<property name="id" value="8788787"></property>

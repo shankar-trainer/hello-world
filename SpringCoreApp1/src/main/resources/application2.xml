@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> 
+<context:annotation-config/> 
+
+       
+	<bean class="com.capgemini.beans.annotation.Book">
+		<property name="isbn" value="766776"></property>
+		<!-- <property name="bname" value="immortal of meluha"></property> -->
+		<property name="cost" value="450.000f"></property>
+	</bean>
+	<bean class="com.capgemini.beans.annotation.Chapter">
+	   <property name="chapterId" value="1"></property>
+	   <property name="chapterName" value="introduction"></property>
+	   <property name="chapterPageNo" value="12"></property>
+	</bean>
+
+</beans>

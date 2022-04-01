@@ -11,6 +11,23 @@ public class Department {
 		this.departmentName = departmentName;
 		this.departmentLocation = departmentLocation;
 	}
+	
+	
+	public int getDepartmentId() {
+		return departmentId;
+	}
+
+
+	public String getDepartmentName() {
+		return departmentName;
+	}
+
+
+	public String getDepartmentLocation() {
+		return departmentLocation;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Department departmentId=" + departmentId + ", departmentName=" + departmentName
