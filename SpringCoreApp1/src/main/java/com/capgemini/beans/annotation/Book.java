@@ -1,6 +1,8 @@
 package com.capgemini.beans.annotation;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
@@ -11,7 +13,8 @@ public class Book {
 	private String bname;
 	private float cost;
 	
-	@Autowired
+	//@Autowired
+	@Resource
 	private Chapter chapter;
 	
 	public Chapter getChapter() {
@@ -29,6 +32,11 @@ public class Book {
 		this.bname="life beyond";
 		this.cost=678.00f;
 	} 
+	
+	@PreDestroy
+	public void cleaup() {
+	System.out.println("clean up called ");	
+	}
 	
 	public int getIsbn() {
 		return isbn;

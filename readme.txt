@@ -1046,3 +1046,55 @@ Spring
 	   -- simple solution having all failities of ejb in the form of spring 
 	   
 	   
+	   <bean class="com.capgemini.beans.HelloWorld" id="hello1">
+    
+    </bean>
+	
+	
+	HelloWorld hello1=new HelloWorld();
+	
+	   
+	   @Repository 
+	   
+	       -- this is used to create the object of dao layer 
+		   
+	  @Service 
+           -- this is used to create the object of service layer 
+
+
+
+
+
+    DAO   --- layer having all database operation  
+	SERVICE -- layer  uses dao and give the services to the client 
+	
+	
+	
+	Pizza----
+
+      DAO           \               -- kitchen
+       |             \
+       | Exception      -- Bean
+	       |          /
+	  SERVICE --   	/              -- counter 
+	   |         can throw   error 
+	   |
+       |	   
+	Presentation Layer(Client) -- user input / display output 
+	
+		   
+	   
+	   
+	   Railway Ticket 
+	   
+	     \     
+		paytm  amazon irctc 
+		
+		
+		
+		
+		DAO     -- @Repository 
+		SERVICE -- @Service 
+		Bean    -- @Component 
+		
+	   

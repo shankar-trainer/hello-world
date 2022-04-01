@@ -6,6 +6,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> 
 <context:annotation-config/> 
 
+<context:component-scan base-package="com.capgemini.beans.annotation"></context:component-scan>
        
 	<bean class="com.capgemini.beans.annotation.Book">
 		<property name="isbn" value="766776"></property>

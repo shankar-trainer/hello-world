@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> 
+<context:annotation-config/> 
+
+<context:component-scan base-package="com.capgemini.beans.annotation.spel"></context:component-scan>
+
+<bean id="teacher" class="com.capgemini.beans.Teacher">
+ <property name="id" value="787887"></property>
+ <property name="name" value="ashis choudhary"></property>
+ <property name="salary" value="80000"></property>
+</bean>       
+
+<bean id="school1" class="com.capgemini.beans.School">
+ <property name="schoolRegNo" value="787887"></property>
+ <property name="schoolName" value="vanasthali public school"></property>
+ <property name="schoolLocation" value="delhi"></property>
+</bean>       
+
+
+<bean id="school2" class="com.capgemini.beans.School">
+ <property name="schoolRegNo" value="787881"></property>
+ <property name="schoolName" value="delhi public school"></property>
+ <property name="schoolLocation" value="anand vihar"></property>
+</bean>       
+
+
+</beans>
