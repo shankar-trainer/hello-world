@@ -1,3 +1,6 @@
+software link 
+https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.62/bin/apache-tomcat-9.0.62-windows-x64.zip
+
 slide link 
 all capg slides
 
@@ -1097,4 +1100,41 @@ Spring
 		SERVICE -- @Service 
 		Bean    -- @Component 
 		
-	   
+	Install  Eclipse Plugin 
+	 Eclipse Enterprise Java and Web Developer Tool 
+	 
+	 
+	 
+	 
+	 Corejava application -- it runs in command prompt 
+	 
+	 WEB Application 
+	 
+	    html, css, javascript -- web component 
+		java , jsp 
+		
+		maven -- war file (web archieve)
+		
+		it will run on tomcat server -- using browser 
+
+
+
+
+     to create dynamic web application   
+        servlet/jsp 
+
+
+   spring -- spring mvc
+
+
+   MVC 
+M  --model -- java file 
+View  -- html jsp (java server pages )
+C     -- Controller
+
+
+
+
+Client-- html -------------- request ---->>>> Server(process) 
+   client  --- <<<------    response<<<----- 
+		
