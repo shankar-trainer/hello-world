@@ -1138,3 +1138,13 @@ C     -- Controller
 Client-- html -------------- request ---->>>> Server(process) 
    client  --- <<<------    response<<<----- 
 		
+		
+		
+		
+client(html)----------->request --- Controller(Dispatcher Servlet)---request->handlerMapping 		
+		
+		
+		
+	index.jsp -- welcome file -- first file to run 
+	
+		
