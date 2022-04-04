@@ -17,26 +17,29 @@ public class Employee {
 	@NotNull(message = "salary is null")
 	@Digits(integer = 5,fraction = 2,message = "salary must of 5 digits and 2 fractions" )
 	private Float salary;
-	
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public float getSalary() {
+
+	public Float getSalary() {
 		return salary;
 	}
-	public void setSalary(float salary) {
+
+	public void setSalary(Float salary) {
 		this.salary = salary;
 	}
-	
-	
 	
 }

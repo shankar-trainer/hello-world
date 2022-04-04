@@ -16,6 +16,7 @@ public class EmployeeController {
 	@RequestMapping("/empform")
 	public String empForm(ModelMap map) {
 		Employee emp=new Employee();
+		
 		//map.put("emp",emp);
 		map.addAttribute("emp", emp);
 		return "EmployeeForm";

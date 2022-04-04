@@ -7,14 +7,17 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <style>
-	form:label{
+	label{
 	 float:left;
 	 width:120px;
+	 
 	}
 	
-	form:input{
-	width:100px;
+	input{
+	width:120px;
+	margin-top:5px;
 	}
+	
 	form{
 	 background:yellow; 
 	 margin-left:400px;
