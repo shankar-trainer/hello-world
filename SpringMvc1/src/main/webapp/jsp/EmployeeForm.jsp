@@ -6,6 +6,32 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+	form:label{
+	 float:left;
+	 width:120px;
+	}
+	
+	form:input{
+	width:100px;
+	}
+	form{
+	 background:yellow; 
+	 margin-left:400px;
+	 margin-top:200px;
+	 border:solid;
+	 width:30%;
+	 padding:40px;
+	}
+	body{
+	background:lightyellow;
+	}
+	form:errors{
+   color:red;
+   font-weight: bold;	
+	}
+</style>
+
 </head>
 <body>
 
