@@ -13,7 +13,6 @@ public class UserController {
 
 	@RequestMapping("/form")
 	public String gotoUserForm() {
-		System.out.println("going to  form");
 		return "UserForm";
 	}
 	

@@ -1148,3 +1148,4 @@ client(html)----------->request --- Controller(Dispatcher Servlet)---request->ha
 	index.jsp -- welcome file -- first file to run 
 	
 		
+		request ------- interceptor ---------- Controller(Dispatcher Servlet)

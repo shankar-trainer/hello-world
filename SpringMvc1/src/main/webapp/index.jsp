@@ -8,6 +8,7 @@
 </head>
 <body>
 <h1>Welcome file </h1>
-<a href='http://localhost:8080/SpringMvc1/user/form'>User Form </a>
+<a href='http://localhost:8080/SpringMvc1/user/form'>User Form </a><br><br>
+<a href='http://localhost:8080/SpringMvc1/employee/empform'>Employee Form </a><br><br>
 </body>
 </html>
