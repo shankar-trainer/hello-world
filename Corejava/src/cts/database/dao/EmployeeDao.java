@@ -36,7 +36,6 @@ public class EmployeeDao {
 			pst.setFloat(3, employee1.getSalary());
 
 			if (pst.executeUpdate() == 1)
-
 				return true;
 			else
 				return false;

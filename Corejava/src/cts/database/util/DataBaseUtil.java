@@ -19,7 +19,7 @@ public class DataBaseUtil {
 
 	public static Connection myConnection() throws SQLException {
 		if (connection == null)
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db2", "root", "mysql");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db1", "root", "mysql");
 		return connection;
 
 	}
