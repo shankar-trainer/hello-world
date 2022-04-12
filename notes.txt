@@ -1,4 +1,6 @@
+git link  
 
+https://github.com/shankar-trainer/hello-world/tree/cts_april_22/INTCDB22DX048_CoreJava/
 
 structure oriented programming 
    --> variables 
@@ -380,9 +382,41 @@ Collection
 			        -- faster 
 					 -- precompiled 
 					 --placeholder 
-			  
+			 
+
+        Procedure 
+            1. without argument 
+             2. with argument 
+           Procedure doesnot return any values 
+		   
+		   get Values using out parameter 
+		   
+		   
 	  
-	  
+	
+maven  -- is a build tool,
+  using it you can compile 
+
+
+ant---> maven -- build+project management tool 
+               -- download the libraries using dependencies 
+               -- set classpath, compile, run , test 
+
+   gradle -- multi languga e support 
+
+
+   maven  -- java  
+
+
+J2EE   
+
+  java 2 Enterprise application 
+
+     
+	 ejb is first world's enterprise application
+	 
+	 
+	 
 	  
 	  
 	
