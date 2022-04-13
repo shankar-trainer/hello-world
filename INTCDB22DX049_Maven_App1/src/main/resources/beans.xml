@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="h" class="com.cognizant.model.HelloWorld">
+
+	</bean>
+
+	<bean id="emp1" class="com.cognizant.model.Employee" scope="prototype">
+		<property name="id" value="10001"></property>
+		<property name="name" value="ram kumar"></property>
+		<property name="salary" value="89000"></property>
+	</bean>
+	
+	<bean  class="com.cognizant.model.Customer">
+		<constructor-arg name="id" value="10002"></constructor-arg>
+		<constructor-arg name="name" value="mohan kumar"></constructor-arg>
+		<constructor-arg name="salary" value="55000"></constructor-arg>
+	</bean>
+
+
+</beans>

@@ -417,6 +417,50 @@ J2EE
 	 
 	 
 	 
+	 
+	 
+	 Maven 
+	 
+	     build tool +project management tool
+		 
+		 ant
+		 
+		 maven , gradle 
+		 
+		 apache maven 
+		 
+		 eclipse, netbeans, intellij
+	
+
+      maven life cycle 
+
+      clean --- delete the target folder, download the dependency 
+
+      compile -
+      package
+      test 
+     install 	  -- install the packaged applicatiion (jar) to the local repository
+	 
+	 
+	 
+	 local repository -- after downloading dependency are added in local system 
+	 remote repository
+	 
+	 
+	 
+	 Web Application 
+	 Enterprise Application 
+	      -- ejb 
+		      -- heavy server 
+			  -- paid by weblogic, ibm 
+			
+
+     rod johnson -- architect of ejb 
+
+          spring 
+		  
+	 
+	 
 	  
 	  
 	
