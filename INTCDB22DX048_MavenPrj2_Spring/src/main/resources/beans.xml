@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="hello" class="edu.example.model.HelloWorld">
+
+	</bean>
+
+	<bean id="worker1" class="edu.example.model.IWorkerImpl">
+
+	</bean>
+
+	<bean id="emp9" class="edu.example.model.Employee" p:name="ram kumar" p:id="1877876" p:salary="45000" p:pf="0.065f"
+		>
+		
+	</bean>
+
+
+
+
+	<bean id="emp1" class="edu.example.model.Employee"
+		init-method="startup" destroy-method="clean" scope="prototype">
+		<property name="id" value="10001"></property>
+		<property name="name" value="ram kumar"></property>
+		<property name="salary" value="20000"></property>
+		<property name="pf" value="0.02"></property>
+	</bean>
+
+
+	<bean class="edu.example.model.User">
+		<constructor-arg name="userId" value="7887878"></constructor-arg>
+		<constructor-arg name="userName"
+			value="pankaj tripathi"></constructor-arg>
+		<constructor-arg name="userSalary" value="67000"></constructor-arg>
+	</bean>
+
+
+
+</beans>

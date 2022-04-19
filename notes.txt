@@ -464,6 +464,23 @@ J2EE
 	Autowiring 
        -- automatically injection of the beans  should be autowired
 	   
-	  
+
+
+
+   build tool 
+     ant 
+     maven tool 
+        -- build tool 
+        -- project management tool
+		
+		-- command mode, eclipse, intellij
+		
+		-- create project, add dependencies, compile, set classpath, run, test
+		
+		
+		
+		
+
+     gradle -- java, python, c, c++  		
 	
 	
