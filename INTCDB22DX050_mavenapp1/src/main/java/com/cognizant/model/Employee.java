@@ -6,6 +6,14 @@ public class Employee {
 	private String name;
 	private float salary;
 	
+	private Address address;
+	
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	public int getId() {
 		return id;
 	}

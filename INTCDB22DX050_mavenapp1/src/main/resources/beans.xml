@@ -9,13 +9,44 @@
 	<bean id="h" class="com.cognizant.model.HelloWorld">
 
 	</bean>
-	<bean id="emp1" class="com.cognizant.model.Employee" scope="prototype">
+
+	<!-- injecting dependent object without innder bean -->
+	<bean id="emp1" class="com.cognizant.model.Employee"
+		scope="prototype">
 		<property name="id" value="10001"></property>
 		<property name="name" value="suresh kumar"></property>
 		<property name="salary" value="678899.556f"></property>
+		<property name="address" ref="addr2"></property>
 	</bean>
-	
-	<bean id="emp2" class="com.cognizant.model.Employee" scope="prototype" p:id="7887887" p:name="ram murthi" p:salary="45000" >
+
+	<bean id="addr2" class="com.cognizant.model.Address">
+		<property name="addrId" value="8"></property>
+		<property name="addrLocation" value="thorai pakkam"></property>
+		<property name="addrPin" value="898989"></property>
+	</bean>
+
+	<!-- injecting dependent object using inner bean -->
+
+	<bean id="emp3" class="com.cognizant.model.Employee">
+		<property name="id" value="10001"></property>
+		<property name="name" value="suresh kumar"></property>
+		<property name="salary" value="678899.556f"></property>
+		<property name="address">
+		
+			<!-- inner bean -->
+		
+			<bean id="addr1" class="com.cognizant.model.Address">
+				<property name="addrId" value="8"></property>
+				<property name="addrLocation" value="thorai pakkam"></property>
+				<property name="addrPin" value="898989"></property>
+			</bean>
+		</property>
+	</bean>
+
+
+
+	<bean id="emp2" class="com.cognizant.model.Employee"
+		scope="prototype" p:id="7887887" p:name="ram murthi" p:salary="45000">
 	</bean>
 
 
