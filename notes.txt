@@ -461,7 +461,9 @@ J2EE
 		  
 	 
 	 
-	  
+	Autowiring 
+       -- automatically injection of the beans  should be autowired
+	   
 	  
 	
 	
