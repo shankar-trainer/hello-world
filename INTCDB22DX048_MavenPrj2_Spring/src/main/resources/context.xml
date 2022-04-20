@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="passenger" class="edu.example.model.Passenger"
+		init-method="init">
+		<property name="passengerId" value="10001">
+		</property>
+		<property name="passengerName" value="neel kanth">
+		</property>
+		<property name="passengerAge" value="30">
+		</property>
+
+		<property name="placesList">
+			<list>
+				<value>rameswaram</value>
+				<value>kanchipuram</value>
+				<value>mathura</value>
+				<value>rameswaram</value>
+				<value>vrindawan</value>
+				<value>aagra</value>
+			</list>
+
+		</property>
+		<property name="carSet">
+			<set>
+				<bean id="car1" class="edu.example.model.Car">
+					<property name="regNo" value="1"></property>
+					<property name="carModel" value="maruti"></property>
+					<property name="cost" value="500000"></property>
+				</bean>
+				<bean id="car2" class="edu.example.model.Car">
+					<property name="regNo" value="2"></property>
+					<property name="carModel" value="celario"></property>
+					<property name="cost" value="700000"></property>
+				</bean>
+				<bean id="car1" class="edu.example.model.Car">
+					<property name="regNo" value="1"></property>
+					<property name="carModel" value="maruti"></property>
+					<property name="cost" value="500000"></property>
+				</bean>
+				<bean id="car3" class="edu.example.model.Car">
+					<property name="regNo" value="4"></property>
+					<property name="carModel" value="alto"></property>
+					<property name="cost" value="550000"></property>
+				</bean>
+				<bean id="car4" class="edu.example.model.Car">
+					<property name="regNo" value="4"></property>
+					<property name="carModel" value="bmw"></property>
+					<property name="cost" value="300000"></property>
+				</bean>
+			</set>
+		</property>
+	</bean>
+	<bean id="bus1" class="edu.example.model.Bus">
+		<property name="regNo" value="98998"></property>
+		<property name="busType" value="AC Volvo"></property>
+		<property name="fare" value="1000"></property>
+		<property name="driver" ref="driver1">
+		</property>
+	</bean>
+	<bean id="driver1" class="edu.example.model.Driver">
+		<property name="id" value="677"></property>
+		<property name="name" value="ramanand sharma"></property>
+		<property name="age" value="41"></property>
+		<property name="salary" value="25000"></property>
+	</bean>
+
+	<bean id="bus2" class="edu.example.model.Bus">
+		<property name="regNo" value="98991"></property>
+		<property name="busType" value="AC Tata Bus"></property>
+		<property name="fare" value="1200"></property>
+		<property name="driver">
+			<bean class="edu.example.model.Driver">
+				<property name="id" value="671"></property>
+				<property name="name" value="ram uchit sharma"></property>
+				<property name="age" value="40"></property>
+				<property name="salary" value="28000"></property>
+			</bean>
+		</property>
+	</bean>
+	
+	
+	
+	
+
+</beans>

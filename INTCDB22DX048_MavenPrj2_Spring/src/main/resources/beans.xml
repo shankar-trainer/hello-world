@@ -2,7 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -14,13 +13,8 @@
 
 	</bean>
 
-	<bean id="emp9" class="edu.example.model.Employee" p:name="ram kumar" p:id="1877876" p:salary="45000" p:pf="0.065f"
-		>
-		
+	<bean id="emp9" class="edu.example.model.Employee" p:name="ram kumar" p:id="1877876" p:salary="45000" p:pf="0.065f">
 	</bean>
-
-
-
 
 	<bean id="emp1" class="edu.example.model.Employee"
 		init-method="startup" destroy-method="clean" scope="prototype">
