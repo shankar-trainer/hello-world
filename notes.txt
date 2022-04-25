@@ -484,3 +484,47 @@ J2EE
      gradle -- java, python, c, c++  		
 	
 	
+	=========
+	
+	injecting object in beans 
+	
+	  
+	  Employee   -- Address 
+	
+	
+	
+	layered architecture 
+	
+	
+	  dao       \   
+	    |       model  
+	  service  /
+	  
+	  --- client  
+	  
+	  
+	  spring container 3 ways 
+	    1. using xml spring container
+	    2. using annotation spring container
+	    3. using java configuration spring container
+		
+		
+		
+		
+		
+		Layered architecture
+		
+		
+		
+		       @Repository
+			 DAO Layer      -- all database operation 
+		/		 |
+model   		 |
+		\	@Service 
+		     Service layer  -- can  have exception  
+			  |
+			 	  
+			Client   
+					
+					
+					
