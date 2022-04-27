@@ -2,17 +2,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.cognizant</groupId>
-	<artifactId>INTCDB22DX049_Maven_App1</artifactId>
+	<groupId>com.congizant</groupId>
+	<artifactId>INTCDB22DX050_mavenapp1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-
 	<dependencies>
-		<dependency>
-			<groupId>cts.com</groupId>
-			<artifactId>INTCDB22DX049_Maven_App</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -25,6 +19,7 @@
 			<artifactId>spring-context</artifactId>
 			<version>5.3.14</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
 		<dependency>
 			<groupId>javax.annotation</groupId>
 			<artifactId>javax.annotation-api</artifactId>

@@ -9,8 +9,6 @@
 	<context:property-placeholder
 		location="employee.properties" />
 
-
-
 	<bean id="h" class="com.cognizant.model.HelloWorld">
 
 	</bean>

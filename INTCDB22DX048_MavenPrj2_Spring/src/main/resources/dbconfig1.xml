@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- using properties file -->
+	<bean class="com.cognizant.DbApp.model.DBConfig" id="config">
+		<property name="driver" value="${database.driver}"></property>
+		<property name="uname" value="${database.user}"></property>
+		<property name="password" value="${database.pass}"></property>
+		<property name="url" value="${database.url}"></property>
+	</bean>
+	<!-- using auto wire -->
+
+	<bean class="com.cognizant.DbApp.dao.EmployeeDao" id="dao"
+		autowire="byName">
+
+	</bean>
+
+	<context:property-placeholder
+		location="db.properties" />
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan
+		base-package="com.cognizant.annotation.model">
+	</context:component-scan>
+</beans>

@@ -8,6 +8,20 @@
 
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>5.3.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.6</version>
+			<!-- <scope>runtime</scope> -->
+		</dependency>
+
 		<dependency>
 			<groupId>cts.com</groupId>
 			<artifactId>INTCDB22DX049_Maven_App</artifactId>
