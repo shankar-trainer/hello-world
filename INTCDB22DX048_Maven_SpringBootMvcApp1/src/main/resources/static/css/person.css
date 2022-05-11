@@ -1,0 +1,18 @@
+label{
+float:left;
+width:100px;
+}
+
+input{
+
+width:120px;
+}
+
+form{
+
+	color:blue;
+	background: pink;
+	padding: 10px;
+	border: solid;
+	width:30%;
+}
