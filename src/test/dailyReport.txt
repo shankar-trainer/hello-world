@@ -1,0 +1,43 @@
+Fetching data by daily
+    SELECT
+        DATE(created) AS date,
+        COUNT(click) AS click,
+        COUNT(DISTINCT(ip)) AS unique_click
+    FROM  product_analytic 
+    WHERE created BETWEEN '2016-01-01 00:00:00' AND '2016-01-31 23:59:59'
+    GROUP BY date
+    ORDER BY date
+
+
+Fetching data by weekly
+    SELECT
+        DATE_FORMAT(created, '%X-%V') AS date,
+        COUNT(click) AS click,
+        COUNT(DISTINCT(ip)) AS unique_click
+    FROM  product_analytic 
+    WHERE created BETWEEN '2016-01-01 00:00:00' AND '2016-01-31 23:59:59'
+    GROUP BY date
+    ORDER BY date
+
+ ==============
+    
+Assuming your timestamp field is named ts, you can do something like this:
+
+SELECT COUNT(*), DAY(ts), MONTH(ts), YEAR(ts) FROM tableName
+       GROUP BY YEAR(ts), MONTH(ts), DAY(ts);
+How to generate daily reports for individual people
+Ok this is what you really wanted. Let's draw a sample table with some records:
+
+ts                      person         sales
+2011-12-01 10:00:00     John           10
+2011-12-01 10:30:00     Mary           25
+2011-12-01 11:00:00     John           20
+2011-12-02 14:00:00     John           40
+To get the daily totals for a particular person, you would do:
+
+SELECT SUM(sales), DAY(ts), MONTH(ts), YEAR(ts) FROM tableName
+       WHERE person='John'
+       GROUP BY YEAR(ts), MONTH(ts), DAY(ts);
+This is selecting records where person is John, grouped by unique days, and summing the sales value for those records. If you want reports for every person combined, just remove the WHERE clause.
+
+    

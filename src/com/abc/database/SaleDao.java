@@ -32,8 +32,7 @@ public class SaleDao {
 	public List<String> salesReport() throws SQLException {
 		st = con.createStatement();
 		rs3 = st.executeQuery
-		// ("select order_id, sale_date, po.cname,po.prdtype, sum(po.qty) ,p.qty, sum(po.qty)*po.sellprice-sum(po.qty)*po.buyprice  from product_order po, product p  where po.productid=p.prdid group by po.prdType having  po.sale_date=current_date");
-		("select order_id, sale_date, po.cname,po.prdtype, sum(po.qty) ,p.qty, sum(po.qty)*po.sellprice-sum(po.qty)*po.buyprice  from product_order po, product p  where po.productid=p.prdid group by po.prdType having  po.sale_date='2021-08-30'");
+		("select order_id, sale_date, po.cname,po.prdtype, sum(po.qty) ,p.qty, sum(po.qty)*po.sellprice-sum(po.qty)*po.buyprice  from product_order po, product p  where po.productid=p.prdid group by po.prdType having  po.sale_date=current_date()");
 		list1 = null;
 		list1 = new ArrayList<>();
 		while (rs3.next()) {

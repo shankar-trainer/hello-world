@@ -51,7 +51,7 @@ public class SaleReport extends JFrame {
 		add("South",sc);
 		
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		//setSize(300, 200);
 		pack();
 	}

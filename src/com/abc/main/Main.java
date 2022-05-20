@@ -23,9 +23,9 @@ public class Main extends JFrame {
 		b2.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 
 		setLayout(new GridLayout(3, 1));
+		add(new JLabel());
 		add(b1);
 		add(new JLabel());
-		//add(b2);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
