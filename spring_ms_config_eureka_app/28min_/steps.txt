@@ -1,0 +1,17 @@
+1.start spring-cloud-config-server
+2.start limits-service
+
+---- for eureka server and client
+
+1.start netflix-eureka-naming-server
+2.start currency-exchange-service
+3.
+run currency-exchange-service another instance on port 8001
+java  -Dserver.port=8001   -jar  currency-exchange-service-0.0.1-SNAPSHOT.jar 
+
+4.start spring-boot-microservice-currency-conversion-service
+    //feign loadbalancing
+
+5.start netflix-zuul-api-gateway-server 
+
+
