@@ -10,20 +10,18 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cognizant</groupId>
-	<artifactId>INTCDB22DX049_SpringBootApp1</artifactId>
+	<artifactId>SpringBootApp1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>INTCDB22DX049_SpringBootApp1</name>
+	<name>SpringBootApp1</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
-		<dependency>
+	<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
