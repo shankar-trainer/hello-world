@@ -18,7 +18,6 @@ public class ShoppingKartValidator  implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		
-		
 		/*ValidationUtils.rejectIfEmpty(errors, "prdId", "prdId.requied","product id is empty");
 		ValidationUtils.rejectIfEmpty(errors, "prdName", "prdName.requied","product name is empty");
 		ValidationUtils.rejectIfEmpty(errors, "prdCost", "prdCost.requied","product cost is empty");
@@ -29,8 +28,5 @@ public class ShoppingKartValidator  implements Validator{
 		ValidationUtils.rejectIfEmpty(errors, "prdName", "prdName.requied");
 		ValidationUtils.rejectIfEmpty(errors, "prdCost", "prdCost.requied");
 		ValidationUtils.rejectIfEmpty(errors, "prdLocation", "prdLocation.requied","product location is empty");
-	
-		
 	}
-	
 }

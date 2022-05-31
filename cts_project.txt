@@ -1,0 +1,79 @@
+eclipse
+
+database mysql8
+
+spring boot mvc 
+    -- UI -- jsp, css, bootstrap  
+    -- java code 
+        src\main\java
+       --- layered 
+               1.dao(database connectivity)-- jdbcTemplate
+               2.service( handle exception)
+               3.controller --- client(html, jsp)
+               4.exception
+    src\main\test
+             -- test code 
+                junit, mockito 
+
+    .sql -- sql code
+
+
+
+  maven -- spring boot dependencies 
+               -- jdbc template
+               -- spring core
+               -- spring context 
+               -- mysql connector 
+               -- spring web 
+               -- mockito
+               
+
+
+      com.cts.model
+              Book.java 
+ 
+      com.cts.dao 
+               BookDao (interface)
+               @Repository
+               BookDaoImpl -- class 
+                       -- jdbcTemplate 
+                        addBoook,
+                        viewBook
+                        updateBook
+                        issueBook
+            
+        com.cts.service
+ 
+                 BookService (interface)
+               @Service
+               BookServiceImpl -- class 
+                        
+                   @Autowire 
+                   BookDaoImpl  dao
+
+                        saveBook -- > dao.addBoook()-- throw BookException
+                        searchBook()-- dao.viewBook()-- throw BookException
+                        updateBook()-->dao.updateBook()--throw BookException
+                        issueBook
+
+        com.cts.web(controller)
+                    @Controller
+                  --BookController.java
+ 
+                   @Autowire 
+                   BookServiceImpl  service
+                                          
+                            -- saveBook() --> service.saveBook()
+                                         true-- result.jsp
+                                         false-- error.jsp
+
+                 
+
+       src/main
+             webapp
+                WEB-INF        
+                   jsp-- all jsp 
+    src/main/test
+                     -- all test cases 
+                
+
