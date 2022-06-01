@@ -1,0 +1,250 @@
+
+
+
+
+
+  tool 
+     eclipse oxygen
+     java 8
+     mysql 8
+     
+     
+     Project -- maven project 
+      
+            project\src
+                      |
+                       main|
+                            java 
+                            |
+                            test 
+                            
+                            resources
+                            
+                            
+                            
+                        java -- java code 
+                        test -- junit/mockito test
+                        
+                        
+                        
+                        
+                        
+                        com.cognizant.model 
+                                           Customer.java(getter, setter)
+                                           
+                        com.congnizant.dao
+                                          CustomerDao(interface)
+                                          CustomerDaoImpl(class)
+                                                JDBCTemplate
+                                               
+                                               class CustomerDaoImpl
+                                                  
+                                                  addCustomer()
+                                                  removeCustomer()
+                                                  updateUcostomer()
+                                                  searchCustomer()
+                                                  showAllCustomer()
+                                                  
+                       com.cognizant.exception
+
+                                            CustomerException					   
+                       com.cognizant.service
+                                            CustomerService(interface)
+                                            CustomerServiceImpl(class)
+                                            
+                                            CustomerServiceImpl{
+                                             
+											 @Autowire
+                                              CustomerDaoImpl dao;
+                                              
+                                            
+											   saveCustomer(Customer customer) throws CustomerException {
+												    dao.addCustomer(customer)
+												   
+											   }
+                                                  deleteCustomer(){
+													  dao.removeCustomer();
+												  }
+                                                  updateUcostomer()
+                                                  searchCustomer()
+                                                  showAllCustomer()
+											
+                                            
+                                            }
+                                            
+                                            
+                                               
+                        com.cognizant.controller 
+                                                CustomerController 
+                      @Controller
+                      @RequestMapping("/customer")					  
+                     class CustomerController{
+						 
+						 @Autowire
+						 CustomerServiceImpl service;
+						 
+						 
+						 public void addCustomer(){
+							 service.saveCustomer()
+							 
+						 }
+						 
+					 }													  
+                                       
+
+     src/main/test 
+         -- all test cases for daop, service layer 
+		 
+                                                  
+MavenApp                                                   
+└───src
+    ├───main
+    │   ├───java
+    │   │   └───com
+    │   │       └───cognizant
+    │   │           ├───controller
+    │   │           ├───error
+    │   │           └───model
+    │   ├───resources
+    │   │   └───static
+    │   └───webapp
+    │       └───WEB-INF
+    │           └───jsp
+    └───test
+        ├───java
+        └───resources
+                           
+                                                
+                                                
+                                  
+                                  
+                                  
+                                                     
+                        
+                 =================
+
+
+Spring Boot MVC (jdbcTemplate)
+                                                  
+MavenApp                                                   
+└───src
+    ├───main
+    │   ├───java
+    │   │   └───com
+    │   │       └───cognizant
+    │   │           ├───controller
+    │   │           ├───error
+    │   │           └───model
+    │   ├───resources
+    │   │   └───static
+    │   └───webapp
+    │       └───WEB-INF
+    │           └───jsp
+    └───test
+        ├───java
+        └───resources
+                           
+    │
+    └pom.xml                                                
+            
+
+     pom.xml 
+              dependencies --
+			  
+        spring-boot-starter
+		spring-boot-jdbctemplate
+		mysql
+		spring-web
+         		
+                
+   src\main\java 
+   
+   
+        dao (database)
+		 |
+        service (exception)
+	      |
+        web(controller)
+          |
+         view 		  
+   	
+ step1 	
+                com.cognizant 
+				        App.java 
+						
+						     SpringApplication.run() -- run the application on tomcat server 
+							 
+step2. model							 
+			   com.cognizant.model  
+				
+                Book.java 
+               
+step 3. dao			   
+			   com.cognizant.dao
+                  BookDao -- interface 
+                        Book  addBook(Book book)
+                        Book  updateBook(Book book)
+                        Book  ViewBook(int isbn)
+
+                        List<Book>  issuedBook(Book book)
+						  
+             BookDaoImpl -- class
+	
+    @Repository	
+     public class    BookDaoImpl implements BookDao{
+		 
+		 JdbcTemplate jdbcTemplate;
+		 
+                        Book  addBook(Book book){
+							
+							jdbcTemplate.insert()
+							
+						}
+                        Book  updateBook(Book book)
+                        Book  ViewBook(int isbn)
+                        List<Book>  issuedBook(Book book)
+						  
+	 }
+
+step 4. service 
+			 
+			   BookService -- interface 
+                        Book  saveBook(Book book)
+                        Book  changeBook(Book book)
+                        Book  SearchBook(int isbn)
+                                  
+               BookServiceImpl -- interface 
+    
+			@Service 	
+			class BookServiceImpl{
+				
+				@Autowire 
+				BookDaoImpl dao 
+				
+				Book  saveBook(Book book){
+					
+					dao.addBook(book);
+				}
+                        Book  changeBook(Book book)
+                        Book  SearchBook(int isbn)
+				
+			}
+							  
+                                                     
+ step5.
+      WEb (controller)
+
+    com.cognizant.web 
+
+      @Controller 
+     class BookController{
+		 
+		 @Autowire 
+		 BookServiceImpl service;
+		 
+		 
+	 }	
+                        
+                        
+                            
+                            
