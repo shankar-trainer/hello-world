@@ -17,13 +17,18 @@ import com.cognizant.model.Employee;
 @Controller
 @RequestMapping("/emp")
 public class EmployeeController {
-
+//https://github.com/shankar-trainer/hello-world/tree/cts_april_22
+//https://github.com/shankar-trainer/hello-world/tree/cts_april_22/SpringBootjdbcTemplate
 	@Autowired
 	private EmployeeDaoImpl dao;
 
 	@RequestMapping("/empForm")
 	public String EmployeeForm(Model model) {
 		Employee employee = new Employee();
+		employee.setId(null);
+		employee.setName(null);
+		employee.setSalary(null);
+		
 		model.addAttribute("employee", employee);
 		return "EmployeeForm";
 	}
@@ -31,19 +36,26 @@ public class EmployeeController {
 	@RequestMapping("/EmployeeAction")
 	public String EmployeeFormProcess(@ModelAttribute("employee") @Valid Employee employee, BindingResult result,
 			@RequestParam("submit") String submit, ModelMap map) {
-		if (result.hasErrors())
-			return "EmployeeForm";
-		else {
+		
+			map.put("submit", submit);
 			switch (submit) {
 			case "Add Employee":
-				if (dao.addEmployee(employee))
+				if (result.hasErrors())
+					return "EmployeeForm";
+				
+				else if (dao.addEmployee(employee))
 					map.put("result", "Record Added");
-
-				if (!dao.addEmployee(employee))
+				else if (!dao.addEmployee(employee))
 					map.put("result", "Record Already Present");
 
 				break;
 
+			case "ShowAll Employee":
+				
+			map.put("list", dao.showAllEmployee());
+				
+				break;
+				
 			default:
 				break;
 			}
@@ -51,4 +63,4 @@ public class EmployeeController {
 		}
 	}
 
-}
+

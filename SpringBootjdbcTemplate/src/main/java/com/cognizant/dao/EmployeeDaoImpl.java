@@ -26,7 +26,6 @@ class EmpRowMapper implements RowMapper<Employee> {
 
 public class EmployeeDaoImpl implements EmployeeDao {
 	private JdbcTemplate jdbcTemplate;
-	
 
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
@@ -37,12 +36,19 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	public boolean addEmployee(Employee emp) {
-		int x = jdbcTemplate.update(
-				"insert into employee values(" + emp.getId() + ",'" + emp.getName() + "'," + emp.getSalary() + ")");
-		if (x == 1)
-			return true;
-		else
-			return false;
+		int x = 0;
+		try {
+			x = jdbcTemplate.update(
+					"insert into employee values(" + emp.getId() + ",'" + emp.getName() + "'," + emp.getSalary() + ")");
+			if (x == 1)
+				return true;
+			else
+				return false;
+		} catch (DataAccessException e) {
+			System.out.println("record not present " + e);
+
+		}
+		return false;
 	}
 
 	public boolean removeEmployee(int id) {
@@ -61,18 +67,22 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public Employee searchEmployee(int id1) {
 		emp = null;
 		try {
-		emp = jdbcTemplate.queryForObject("select * from employee where id=?",new Object[]{id1} ,new EmpRowMapper());
-
-		return emp;
-		}
-		catch(EmptyResultDataAccessException e) {
+			emp = jdbcTemplate.queryForObject("select * from employee where id=?", new Object[] { id1 },
+					new EmpRowMapper());
+			return emp;
+		} catch (EmptyResultDataAccessException e) {
 			return null;
 		}
 	}
 
 	public boolean updateEmployee(Employee emp) {
-		// TODO Auto-generated method stub
-		return false;
+		if (searchEmployee(emp.getId()) == null)
+			return false;
+		else {
+			jdbcTemplate.update("update employee set salary=" + emp.getSalary() + ", name='" + emp.getName()
+					+ "' where id=" + emp.getId() + "");
+			return true;
+		}
 	}
 
 	Employee emp;
@@ -89,9 +99,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 			emp.setId(Integer.parseInt(String.valueOf(map1.get("id"))));
 			emp.setName(map1.get("name").toString());
-
 			emp.setSalary(Float.parseFloat(String.valueOf(map1.get("salary"))));
-
 			empList.add(emp);
 		}
 

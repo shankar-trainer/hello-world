@@ -1,6 +1,5 @@
 package com.cognizant;
 
-import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -67,9 +66,7 @@ public class Application implements CommandLineRunner {
 		Employee emp[] = new Employee[] {
 
 				new Employee(8001, "rajesh kumar", 56000.0f), new Employee(8002, "umesh kumar", 86000.0f),
-				new Employee(8003, "barjesh kumar", 56000.0f) }
-
-		;
+				new Employee(8003, "barjesh kumar", 56000.0f) }	;
 
 		dao.addEmployee(emp[0]);
 		dao.addEmployee(emp[1]);
@@ -78,7 +75,17 @@ public class Application implements CommandLineRunner {
 		System.out.println("after adding all records are \n");
 		dao.showAllEmployee()
 				.forEach(emp1 -> System.out.println(emp1.getId() + "\t" + emp1.getName() + "\t" + emp1.getSalary()));
-		
+	
+		if(dao.updateEmployee(new Employee(8001, "muthu anannd", 96000.0f)))
+			System.out.println("Record updated for id 8001");
+		else
+			System.out.println("Record not present for id 8001");
+			
+	
+		System.out.println("\n=========after update all records are ===========\n");
+		dao.showAllEmployee()
+				.forEach(emp1 -> System.out.println(emp1.getId() + "\t" + emp1.getName() + "\t" + emp1.getSalary()));
+	
 	}
 
 }
