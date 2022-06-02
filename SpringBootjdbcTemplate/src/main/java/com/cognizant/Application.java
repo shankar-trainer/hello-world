@@ -13,7 +13,8 @@ import com.cognizant.dao.EmployeeDaoImpl;
 import com.cognizant.model.Employee;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class Application// implements CommandLineRunner
+{
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -37,7 +38,7 @@ public class Application implements CommandLineRunner {
 		ds.setUsername("root");
 		return ds;
 	}
-
+/*
 	@Autowired
 	EmployeeDaoImpl dao;
 
@@ -87,5 +88,5 @@ public class Application implements CommandLineRunner {
 				.forEach(emp1 -> System.out.println(emp1.getId() + "\t" + emp1.getName() + "\t" + emp1.getSalary()));
 	
 	}
-
+*/
 }
