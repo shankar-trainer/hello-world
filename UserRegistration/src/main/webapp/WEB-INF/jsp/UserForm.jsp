@@ -1,67 +1,11 @@
 <html>
 <head>
 <script>
-
-function validate(){
-   var id=document.getElementById('id').value
-   var fname=document.getElementById('fname').value
-   var lname=document.getElementById('lname').value
-   
-   if(id=="")
-     {
-     alert("id is blank")
-     return false
-     }
- else   if(fname=="")
-     {
-     alert("first name  is blank")
-     return false
-     }
-   else if(lname=="")
-     {
-     alert("last name is blank")
-     return false
-     }
-     else{
-     return true
-     }
-}
+<script type="text/javascript" src="../../validate.js">
 
 </script>
 <style>
-label{
-	width:120px;
-	float:left;
-    margin-right:5px;
-}
-input{
-	width:140px;
-}
-input[type='submit']{
-	width:130px;
-	margin-bottom:1px;
-}
-input[type='reset']{
-	width:130px;
-	margin-bottom:1px;
-}
-errors,span{
-  color:red;
-  font-weight:bold;
-}
-form{
-	background:yellow;
-	border:solid blue 12px;
-	width:40%;
-	padding:20px;
-	margin-top:100px;
-	margin-left:300px;
-	color:blue;
-}
-
-body{
- background:yellowlight;	
-}
+ @import url("../../style.css")
 </style>
 </head>
 
@@ -84,9 +28,6 @@ body{
  	<input type="submit"  value="login">
  	<input type="reset"  value="cancel">
 
-
 </form:form>
-
-
 </body>
 </html>
