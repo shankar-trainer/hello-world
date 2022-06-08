@@ -12,7 +12,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
 
 <form:form action="userRegistration" modelAttribute="user" onsubmit='return validate()'>
-
+<h2> User Registration Form</h2>	
 	<form:label path="id">Enter Id</form:label>
 	<form:input path="id" id="id"/>
 	<form:errors path="id"/><br>

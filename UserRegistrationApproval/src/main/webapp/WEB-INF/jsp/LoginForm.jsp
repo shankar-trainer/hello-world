@@ -4,10 +4,12 @@
 	
 </script>
 <style>
-@import
-url("../../style.css")
+/* @import url("../../style.css") */
+ @import url("/style.css"); 
+
 </style>
-<script type="text/javascript" src="../../validate.js">
+<!-- <script type="text/javascript" src="../../validate.js"> -->
+<script type="text/javascript" src="/validate.js">
 	
 </script>
 </head>
@@ -15,9 +17,8 @@ url("../../style.css")
 <body>
 	<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-	<form:form action="loginAction" modelAttribute="admin"
-		onsubmit='return validate1()'>
-
+	<form:form action="loginAction" modelAttribute="admin" onsubmit='return validate1()'>
+         <h2>Admin Login Form</h2>
 		<form:label path="id">Enter Id</form:label>
 		<form:input path="id" id="id" />
 		<form:errors path="id" />
