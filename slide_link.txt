@@ -7,8 +7,20 @@ https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u262-b10/openlogic-o
 
 mysql link 
 https://dev.mysql.com/downloads/file/?id=509686
+eclipse 2021
 
 https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-09/R/eclipse-java-2021-09-R-win32-x86_64.zip
+
+eclipse 
+2022 -06
+java eclipse 
+https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2022-06/M3/eclipse-java-2022-06-M3-win32-x86_64.zip
+web eclipse
+https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2022-06/M3/eclipse-jee-2022-06-M3-win32-x86_64.zip
+
+
+
+tomcat 9 
 
 https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.58/bin/apache-tomcat-9.0.58-windows-x64.zip
 
