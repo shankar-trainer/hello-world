@@ -23,7 +23,7 @@ public class NetflixZuulApiGatewayServerApplication {
 	}
 }
 //http://localhost:8001/currency-exchange/from/USD/to/INR
-// take spring.applocation.name from currency-exchange application i.e currency-exchange-service
+// take spring.application.name from currency-exchange application i.e currency-exchange-service
 // append currency-exchange-service to the url http://localhost:8001/currency-exchange/from/USD/to/INR
 // and change port to 8765
 //http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/INR
