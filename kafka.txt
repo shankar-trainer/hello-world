@@ -30,5 +30,19 @@ starting kafka
   ==============================================
 
 kafka topics 
-
+  open new terminal
+  
+  set jdk1.8 path
+  
+  shankar@DESKTOP-E0M6G9S C:\kafka_2.11-0.9.0.0\bin\windows
+  $ kafka-topics.bat
+			Create, delete, describe, or change a topic.
+		Option                                  Description
+		------                                  -----------
+		--alter                                 Alter the number 
+		
+		
+  create topic with name first_topic 
+  
+  $ kafka-topics.bat --zookeeper 127.0.0.1:2181 --topic first_topic --create --partitions 3 --replication-factor 1
    
