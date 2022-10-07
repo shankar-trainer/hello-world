@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <script src='script/jquery-3.6.0.min.js'>
+    </script>
+</head>
+<body>
+    <script>
+        $(function () {
+            $('#btn1').click(
+                function () {
+                    alert('button is clicked ')
+                    alert($('#id1').text())
+                    $('#id1').text('hello world')
+                }
+            )
+        })
+        
+        $(function () {
+            $('#btn2').dblclick(
+                function () {
+                    alert('button is double clicked ')
+                }
+            )
+        })
+
+    </script>
+    <br>
+    <input type="button" value="button1" id='btn1'><br>
+    <input type="button" value="button2" id='btn2'>
+    <div id="id1">
+                  its blank 
+    </div>    
+</body>
+
+</html>

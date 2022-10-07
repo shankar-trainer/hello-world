@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='script/jquery-ui.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='script/jquery-ui.theme.css'>
+    <script src='script/jquery.js'></script>
+    <script src='script/jquery-ui.js'></script>
+    <style>
+        div.ui-datepicker-header {
+            font-size: 15px;
+            font-family: Verdana
+        }
+        table.ui-datepicker-calendar {
+            font-size: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif
+        }
+    </style>
+</head>
+
+<body>
+    <h3>datepicker</h3>
+    Enter date <input id='d1'>
+    </input>
+    <script>
+        //$('#d1').datepicker()
+//        $('input#d1').datepicker()
+        $('input#d1').datepicker(
+            {numberOfMonths:[2,2]}
+        )
+    </script>
+</body>
+
+</html>

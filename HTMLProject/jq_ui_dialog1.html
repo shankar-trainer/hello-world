@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='script/jquery-ui.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='script/jquery-ui.theme.css'>
+    <script src='script/jquery.js'></script>
+    <script src='script/jquery-ui.js'></script>
+</head>
+<body>
+    <div id='id1' title='title 1'>
+      hello1
+     <div>  
+   <input type="button" value="open" id="open">
+   <input type="button" value="close" id="close">
+     </div>
+         <script>
+         $('#id1').dialog(
+             {
+                 autoOpen:true
+             }
+         ) 
+         $('#open').click(function(){
+             if($('#id1').dialog("isOpen"))
+             alert("already open")
+             else 
+             $('#id1').dialog("open")
+         });
+         $('#close').click(function(){
+             if($('#id1').dialog("isOpen"))
+             alert("already close")
+             else 
+             $('#id1').dialog("close")
+         });
+
+         </script> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

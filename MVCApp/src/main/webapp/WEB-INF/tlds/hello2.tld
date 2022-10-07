@@ -1,0 +1,11 @@
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.1</jsp-version>
+	<uri> datetags
+	</uri>
+	<tag>
+		<name>date</name>
+		<tag-class>edu.abc.tag.MyDate</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
+</taglib>

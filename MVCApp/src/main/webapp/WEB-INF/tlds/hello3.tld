@@ -1,0 +1,15 @@
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.1</jsp-version>
+	<uri> dateformat
+	</uri>
+	<tag>
+		<name>df</name>
+		<tag-class>edu.abc.tag.MyDateFormat</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>format</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+</taglib>

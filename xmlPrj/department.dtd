@@ -1,0 +1,13 @@
+<!ELEMENT departments (department)+> 
+<!ELEMENT department (id,name,location,state,pin,dept_info)> 
+<!ELEMENT id  (#PCDATA)> 
+<!ELEMENT name  (#PCDATA)> 
+<!ELEMENT location  (#PCDATA)> 
+<!ELEMENT state  (#PCDATA)> 
+<!ELEMENT pin  (#PCDATA)> 
+<!ELEMENT dept_info  (#PCDATA)> 
+<!ATTLIST state state_id CDATA #REQUIRED>
+
+<!ENTITY copyright "Copy Right Montran">
+<!ENTITY writer "s kumar">
+

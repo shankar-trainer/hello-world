@@ -1,0 +1,19 @@
+plugins {
+    id 'java-library'
+    id 'war'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+}
+dependencies {
+   implementation 'com.google.guava:guava:28.0-jre'
+    testImplementation 'junit:junit:4.12'
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+    implementation group: 'org.apache.struts', name: 'struts2-core', version: '2.3.31'
+   
+
+    testImplementation 'junit:junit:4.12'
+}

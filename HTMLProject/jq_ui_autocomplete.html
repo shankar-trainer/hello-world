@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='script/jquery-ui.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='script/jquery-ui.theme.css'>
+    <script src='script/jquery.js'></script>
+    <script src='script/jquery-ui.js'></script>
+
+<body>
+    <label>Enter City </label>
+    <input id="city">
+
+    <script>
+        var cities = [
+            "delhi", "chennai", "mumbai", "sholapur", "nasik", "nagpur", "patna", "noida", "kolkotta", "hyderabad",
+            "banglore"
+        ];
+        $('#city').autocomplete({source:cities})
+    </script>
+
+</body>
+
+</html>

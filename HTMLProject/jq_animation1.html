@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    
+    <script src='script/jquery-3.6.0.min.js'>
+    
+
+    </script>
+    <style>
+        p{
+        margin-top:300px;
+        width:50%;
+        background-color: yellow;
+        border: double;
+        height:100px
+        }
+        </style>
+</head>
+<body>
+    <script>
+        $(function(){
+            $('#btn3').click(function(){
+                $('p').slideUp();
+            })
+        })
+        
+        $(function(){
+            $('#btn4').click(function(){
+                $('p').slideDown();
+            })
+        })
+        $(function(){
+            $('#btn5').click(function(){
+                $('p').slideToggle();
+            })
+        })
+
+
+    </script>
+
+    <p style=""> This is paragraph.This is paragraph.This is paragraph.This is paragraph.This is paragraph.This is paragraph.
+<br><br><br><br><br><br><br><br><br><br><br>
+<input type="button" id='btn3' value="slide up">
+<input type="button" id='btn4' value="slide down">
+<input type="button" id='btn5' value="slide toggle">
+
+<br>
+
+</body>
+</html>
