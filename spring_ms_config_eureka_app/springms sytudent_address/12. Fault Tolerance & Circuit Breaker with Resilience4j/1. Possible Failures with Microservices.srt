@@ -1,0 +1,75 @@
+1
+00:00:00,330 --> 00:00:03,190
+Hello and welcome back.
+
+2
+00:00:03,750 --> 00:00:05,190
+For the upcoming lectures.
+
+3
+00:00:05,400 --> 00:00:13,050
+We will be focusing on the tolerance and circuit breaker for our micro services and for that we are
+
+4
+00:00:13,050 --> 00:00:16,670
+going to use resilience for the micro services.
+
+5
+00:00:17,070 --> 00:00:20,400
+But before that, you need to understand a few concepts.
+
+6
+00:00:21,370 --> 00:00:24,010
+Now, let's first see the problem scenario.
+
+7
+00:00:24,950 --> 00:00:31,730
+Let's see what are the failures that can be possible with our micro services, so in our example, we
+
+8
+00:00:31,730 --> 00:00:35,090
+know that student service is calling the address service.
+
+9
+00:00:36,180 --> 00:00:40,150
+Now, it may be possible that a drug service itself is down.
+
+10
+00:00:41,010 --> 00:00:44,810
+The second thing is that a drug service is having high failure rate.
+
+11
+00:00:45,240 --> 00:00:49,580
+There can be any reasons for a drug service to have high failure rate.
+
+12
+00:00:49,980 --> 00:00:57,060
+It may be possible that a drug service has some issue while connecting to a database or any other reason.
+
+13
+00:00:57,060 --> 00:00:59,910
+And because of that, it's a high failure rate.
+
+14
+00:01:01,010 --> 00:01:05,600
+Now, this kind of illness can be possible to any of your micro services.
+
+15
+00:01:06,680 --> 00:01:09,950
+So now the question is how to deal with this kind of.
+
+16
+00:01:10,940 --> 00:01:16,880
+So that's what we are going to cover in the upcoming elections and we are going to use resilience for
+
+17
+00:01:17,120 --> 00:01:20,810
+hour micro services to handle this kind of failures.
+
+18
+00:01:21,950 --> 00:01:26,030
+So that's all for now will proceed further in the next lecture.
+
+19
+00:01:26,570 --> 00:01:27,470
+Thank you very much.

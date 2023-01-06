@@ -1,0 +1,223 @@
+1
+00:00:00,720 --> 00:00:03,310
+Hello and welcome back.
+
+2
+00:00:03,960 --> 00:00:11,220
+Now our student and addressed micro services are ready, so here for the student, we are having the
+
+3
+00:00:11,220 --> 00:00:12,210
+address details.
+
+4
+00:00:12,660 --> 00:00:18,030
+So we need to call the address service from the student service to get the address details.
+
+5
+00:00:18,660 --> 00:00:24,990
+So the scenario is we need to call the address service from our student service now in Springwood to
+
+6
+00:00:24,990 --> 00:00:26,100
+make the right calls.
+
+7
+00:00:26,100 --> 00:00:32,850
+Generally, we use rest template, but from spring five onwards, it's not recommended to use race template
+
+8
+00:00:33,090 --> 00:00:37,620
+because Spring itself stated that in the future it will get depreciated.
+
+9
+00:00:38,250 --> 00:00:42,810
+So here it's recommended to use the Web client instead of rest template.
+
+10
+00:00:43,020 --> 00:00:45,720
+And that's what we are going to use in this class.
+
+11
+00:00:46,200 --> 00:00:51,570
+So to use the Web client, we need to add one dependency in the bombed out example of student service,
+
+12
+00:00:51,810 --> 00:00:54,150
+and that is Springwood Flux.
+
+13
+00:00:54,300 --> 00:00:58,800
+So make sure you are adding this dependency in the bombed out similar student service.
+
+14
+00:00:59,130 --> 00:01:02,100
+Now let's create the pin of Web client.
+
+15
+00:01:02,430 --> 00:01:03,570
+So you never mean class.
+
+16
+00:01:03,570 --> 00:01:05,280
+That is student service application.
+
+17
+00:01:05,760 --> 00:01:08,660
+Let's create one being of that client.
+
+18
+00:01:08,760 --> 00:01:09,330
+So.
+
+19
+00:01:10,640 --> 00:01:11,120
+Lynette.
+
+20
+00:01:12,180 --> 00:01:14,490
+Just this one from the reactive package.
+
+21
+00:01:15,540 --> 00:01:16,530
+Web client.
+
+22
+00:01:18,530 --> 00:01:20,090
+Market with at been.
+
+23
+00:01:23,400 --> 00:01:28,090
+Now, to make the call to address service, we need to have you are a lot better service, right?
+
+24
+00:01:28,350 --> 00:01:35,040
+So let's go to the application or properties of certain service and here, say a prayer service.
+
+25
+00:01:35,040 --> 00:01:35,610
+You are El.
+
+26
+00:01:37,600 --> 00:01:39,070
+Equal to localhost.
+
+27
+00:01:43,720 --> 00:01:44,780
+Ejiro, it, too.
+
+28
+00:01:45,310 --> 00:01:51,900
+This is the port on which our address, Microsoft Office, will run in our local Muzzin Sless AIPA sless
+
+29
+00:01:52,000 --> 00:01:52,610
+address.
+
+30
+00:01:53,170 --> 00:01:56,050
+So this is the you are a local address, Microsoft Office.
+
+31
+00:01:56,450 --> 00:02:02,100
+Now let's read this property in our main class using the add value annotation.
+
+32
+00:02:02,770 --> 00:02:03,850
+So that is.
+
+33
+00:02:05,460 --> 00:02:06,440
+Address.
+
+34
+00:02:08,040 --> 00:02:09,380
+Service, you are a.
+
+35
+00:02:11,380 --> 00:02:13,930
+Let's import it value and here.
+
+36
+00:02:15,790 --> 00:02:17,910
+Let's provide this property.
+
+37
+00:02:18,570 --> 00:02:24,400
+Now we will use this model to create the meaning of that land so that client.
+
+38
+00:02:28,350 --> 00:02:37,230
+Equal to the blind dot and call the metal builder here, you will see one method that is builder.
+
+39
+00:02:38,040 --> 00:02:40,240
+Now we need to say don't because you are right.
+
+40
+00:02:40,620 --> 00:02:46,910
+So we will set this one that we are reading from the application DOT properties and call the builder
+
+41
+00:02:46,920 --> 00:02:47,280
+matter.
+
+42
+00:02:47,850 --> 00:02:50,860
+So this will give us the object of the client.
+
+43
+00:02:51,000 --> 00:02:52,130
+Let's return it.
+
+44
+00:02:52,590 --> 00:02:57,270
+And this is what we are going to use throughout this student service application.
+
+45
+00:02:57,810 --> 00:03:02,710
+So let's have been of this web outlined in our student service.
+
+46
+00:03:03,450 --> 00:03:07,350
+So in this room service, let's automate this.
+
+47
+00:03:10,080 --> 00:03:14,300
+So using this line, we will make the rest calls to our address service.
+
+48
+00:03:14,890 --> 00:03:19,170
+Also, you can use this web design to make wrist calls to other services as well.
+
+49
+00:03:19,410 --> 00:03:24,450
+You just need to create another Benoff Web client and provider you all of that service.
+
+50
+00:03:24,990 --> 00:03:29,160
+So this Web client is the same kind of thing that we are using race template.
+
+51
+00:03:30,000 --> 00:03:35,670
+It's just that rich template is going to be deprecated and Web client is recommended to use.
+
+52
+00:03:36,000 --> 00:03:38,550
+So that's why we are using the Web client in the schools.
+
+53
+00:03:38,880 --> 00:03:43,770
+Now, in the next lecture, we will see how to use this Web client to make the rest calls.
+
+54
+00:03:43,920 --> 00:03:47,330
+In our example, it is called to address Microsoft Office.
+
+55
+00:03:48,270 --> 00:03:52,530
+So that's all for now, will proceed further in the next lecture.
+
+56
+00:03:52,800 --> 00:03:53,730
+Thank you very much.

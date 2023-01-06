@@ -1,0 +1,223 @@
+1
+00:00:00,760 --> 00:00:03,460
+Hello and welcome back.
+
+2
+00:00:04,000 --> 00:00:10,870
+So now we are ready with the Eureka server and our micro services, so let's run the Eureka server first.
+
+3
+00:00:11,320 --> 00:00:13,880
+So let's start the Eureka server Springwood application.
+
+4
+00:00:14,110 --> 00:00:16,270
+Now, you need to remember this order.
+
+5
+00:00:16,600 --> 00:00:20,950
+We first need to start the Eureka server and then our micro services.
+
+6
+00:00:21,890 --> 00:00:24,870
+So what happens when you start your micro services, right?
+
+7
+00:00:25,010 --> 00:00:30,560
+It will read this property, whatever you are, you provided for your Rijeka server and it will try
+
+8
+00:00:30,560 --> 00:00:33,320
+to connect and register with this Utica's server.
+
+9
+00:00:34,010 --> 00:00:35,750
+So this is not running.
+
+10
+00:00:35,990 --> 00:00:39,720
+Then it will not be able to register with the Eureka server.
+
+11
+00:00:40,130 --> 00:00:45,400
+So after starting the Eureka server, let's start over student and address micro services.
+
+12
+00:00:46,040 --> 00:00:49,420
+So let's wait for them to get started.
+
+13
+00:00:51,370 --> 00:00:53,110
+Until then, let's go to Browsr.
+
+14
+00:00:54,510 --> 00:00:56,450
+Let's hit the Utica when you are.
+
+15
+00:00:56,800 --> 00:01:00,450
+That is localhost and eight, seven, six, one.
+
+16
+00:01:01,350 --> 00:01:08,220
+See, this is the judicature again here you see that what are the services and its instances are registered
+
+17
+00:01:08,220 --> 00:01:09,310
+with the Utica.
+
+18
+00:01:09,570 --> 00:01:13,330
+You see this address service running on the port eight zero eight two.
+
+19
+00:01:13,680 --> 00:01:16,110
+This is the student service running on the port.
+
+20
+00:01:16,110 --> 00:01:17,330
+Ejiro Ejiro.
+
+21
+00:01:17,850 --> 00:01:23,280
+So this is the address name coming from the application DOT properties file whatever we have right.
+
+22
+00:01:23,280 --> 00:01:25,110
+For the particular micro service.
+
+23
+00:01:26,380 --> 00:01:32,380
+So our micro services have registered themselves with the Eureka server, but look at this, this is
+
+24
+00:01:32,380 --> 00:01:33,970
+the Eureka server application.
+
+25
+00:01:34,210 --> 00:01:35,910
+This is not our Microsoft Web site.
+
+26
+00:01:36,190 --> 00:01:41,230
+But here what happens, Eureka server itself registered with the Eurekas.
+
+27
+00:01:41,230 --> 00:01:41,560
+Edward.
+
+28
+00:01:42,540 --> 00:01:48,340
+So this is not we want to have right, we don't want to register UDCA server itself with the Eureka
+
+29
+00:01:48,360 --> 00:01:54,270
+server because this is not the Microsoft Office, so we don't want to have Discovery for our Eureka
+
+30
+00:01:54,270 --> 00:01:55,490
+server like this.
+
+31
+00:01:55,830 --> 00:01:59,640
+So what we need to do let's go back to the application.
+
+32
+00:02:00,030 --> 00:02:02,700
+Let's stop all the services and all the.
+
+33
+00:02:03,800 --> 00:02:05,840
+Things including the Utica's.
+
+34
+00:02:08,620 --> 00:02:14,950
+Now, let's open the application or properties file for Unica server, and if you remember in one of
+
+35
+00:02:14,950 --> 00:02:18,010
+the previous lectures when we created this Eureka server, right.
+
+36
+00:02:18,220 --> 00:02:22,000
+I told you that we will come here back for the two properties.
+
+37
+00:02:22,000 --> 00:02:29,290
+And this is the reason that we want to exclude UDCA server from registering with the Eureka server itself.
+
+38
+00:02:29,920 --> 00:02:34,660
+So here what we will do, we will set the properties you record outlined.
+
+39
+00:02:36,470 --> 00:02:42,410
+Let's stop all the things, make sure nothing is running after you register.
+
+40
+00:02:45,990 --> 00:02:50,640
+Eureka, equal to falls, so this property we need to set.
+
+41
+00:02:51,710 --> 00:02:54,290
+The next is Ulrika Klein.
+
+42
+00:02:55,790 --> 00:02:56,510
+FEG.
+
+43
+00:02:57,840 --> 00:02:58,730
+Registry.
+
+44
+00:03:00,450 --> 00:03:01,650
+Equal to falls.
+
+45
+00:03:05,070 --> 00:03:07,200
+Here is the table, let's correct it out.
+
+46
+00:03:07,950 --> 00:03:14,070
+So this is what we are saying that don't register this service with the Utica and don't fit the registry.
+
+47
+00:03:14,530 --> 00:03:21,810
+Now, let's start the Utica server after that address my groceries and student, my groceries.
+
+48
+00:03:22,740 --> 00:03:24,510
+Let's wait for them to get started.
+
+49
+00:03:30,620 --> 00:03:33,920
+Let's go to Browsr, let's reloader Utica.
+
+50
+00:03:35,000 --> 00:03:40,700
+Address reservist that we see what the service is now registered with the Utica and we don't see the
+
+51
+00:03:40,700 --> 00:03:47,060
+Utica survey, so we excluded the Utica Sarovar from registering with the Utica Sarovar itself.
+
+52
+00:03:47,330 --> 00:03:53,960
+And hence we need to provide these two properties in the application or properties file for our Utica
+
+53
+00:03:53,960 --> 00:03:54,530
+server.
+
+54
+00:03:55,880 --> 00:04:00,060
+So this is how micro services will get registered with the Utica.
+
+55
+00:04:00,620 --> 00:04:05,120
+So that's all for now, will proceed further in the next lecture.
+
+56
+00:04:05,540 --> 00:04:06,500
+Thank you very much.

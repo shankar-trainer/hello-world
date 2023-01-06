@@ -1,0 +1,251 @@
+1
+00:00:00,420 --> 00:00:03,150
+Hello and welcome back.
+
+2
+00:00:03,600 --> 00:00:09,990
+In the previous lecture, we noted this matter using the annotation as a circuit breaker and we provided
+
+3
+00:00:09,990 --> 00:00:11,280
+the instance Naem.
+
+4
+00:00:12,030 --> 00:00:16,270
+Now here we are making the RESCALE to address service now.
+
+5
+00:00:16,680 --> 00:00:23,310
+For example, our address service is getting some error or Sipson, be it for four or five hundred internal
+
+6
+00:00:23,310 --> 00:00:24,040
+server error.
+
+7
+00:00:24,310 --> 00:00:27,970
+OK, so we are not getting the proper response from address service.
+
+8
+00:00:28,260 --> 00:00:34,230
+So in that case, we need to provide the fallback method and instead the fallback method will return
+
+9
+00:00:34,230 --> 00:00:35,700
+the dummy response.
+
+10
+00:00:36,240 --> 00:00:42,630
+So here we need to provide another attribute that is Folbigg matter and we need to provide the name
+
+11
+00:00:42,630 --> 00:00:43,730
+of Folbigg method.
+
+12
+00:00:44,400 --> 00:00:46,260
+So let's provide like this.
+
+13
+00:00:47,340 --> 00:00:54,170
+Folbigg and get addressed by Idy You can give any name, you can just give meaningfully.
+
+14
+00:00:55,080 --> 00:00:59,280
+So we need to create this method that is basically our fallback method.
+
+15
+00:00:59,700 --> 00:01:06,120
+Now, by creating the Folbigg method, you need to remember one thing that it must have the same method
+
+16
+00:01:06,120 --> 00:01:10,940
+signature as your method on which you have a circuit breaker a.D.A.
+
+17
+00:01:11,400 --> 00:01:14,790
+So in our case, this is the method get addressed by Idy.
+
+18
+00:01:15,630 --> 00:01:20,480
+Let me copy all the things from here and put me over here.
+
+19
+00:01:21,270 --> 00:01:22,530
+This is the method name.
+
+20
+00:01:23,830 --> 00:01:29,620
+Now we are good and here we need to return the dummy response, so, for example, we are returning
+
+21
+00:01:30,010 --> 00:01:32,830
+new object of interest response.
+
+22
+00:01:33,110 --> 00:01:34,110
+You can return anything.
+
+23
+00:01:34,120 --> 00:01:35,890
+OK, this is Dommy response.
+
+24
+00:01:35,890 --> 00:01:36,250
+Why?
+
+25
+00:01:36,670 --> 00:01:40,200
+Because we are not getting the proper response from the service.
+
+26
+00:01:40,480 --> 00:01:46,140
+So it will go to our fallback method and will return the dummy response, whatever we want to return.
+
+27
+00:01:46,560 --> 00:01:53,440
+Another example, we are just returning the new object of interest response and it must have the same
+
+28
+00:01:53,440 --> 00:01:58,860
+method signature as your method on which you have a circuit breaker annotation.
+
+29
+00:01:59,590 --> 00:02:05,500
+Now, one more parameter you can set in the method and that is optional and that is provable.
+
+30
+00:02:07,000 --> 00:02:12,520
+Like this, so this will give you the exception if you want to log so that we will see in the upcoming
+
+31
+00:02:12,520 --> 00:02:12,890
+lectures.
+
+32
+00:02:12,910 --> 00:02:14,630
+OK, but this is a personal one.
+
+33
+00:02:15,010 --> 00:02:21,430
+This is much because it shouldn't matter what method signature for this matter on which we have a circuit
+
+34
+00:02:21,430 --> 00:02:22,480
+breaker annotation.
+
+35
+00:02:23,110 --> 00:02:24,940
+And here we provided the fallback method.
+
+36
+00:02:25,390 --> 00:02:27,220
+And this is our fallback method.
+
+37
+00:02:28,760 --> 00:02:30,740
+Now say the speed is closer.
+
+38
+00:02:31,100 --> 00:02:37,130
+So here it will try to call the address service using the faint light and say, for example, it is
+
+39
+00:02:37,130 --> 00:02:39,470
+returning, though, find it internal server error.
+
+40
+00:02:39,830 --> 00:02:43,390
+So it will come forward for dark matter and it will return the dummy response.
+
+41
+00:02:43,610 --> 00:02:46,010
+It will not fail, though, student service.
+
+42
+00:02:46,220 --> 00:02:50,300
+Instead of that, it will return the dummy response from the fallback method.
+
+43
+00:02:50,450 --> 00:02:52,610
+Whatever we provided no set.
+
+44
+00:02:52,610 --> 00:02:58,080
+For example, switch is open, so no calls are allowed from student to address service.
+
+45
+00:02:58,490 --> 00:03:04,440
+So this matter will not get executed because we are not allowed to make the calls to address service.
+
+46
+00:03:04,670 --> 00:03:09,650
+So this piece of code, basically whatever we have in this matter will not get executed.
+
+47
+00:03:09,920 --> 00:03:15,560
+Instead of that, it will directly come to our fallback method and will return the dummy response.
+
+48
+00:03:16,170 --> 00:03:16,940
+The same applies.
+
+49
+00:03:16,940 --> 00:03:21,620
+What happens data is, well, we are allowing five calls in the open state.
+
+50
+00:03:22,010 --> 00:03:25,610
+And so, for example, Edra Service is giving some exception.
+
+51
+00:03:25,970 --> 00:03:29,730
+So it will come to our fallback and will return the dummy response.
+
+52
+00:03:30,260 --> 00:03:36,050
+So the bottom line is, whatever the state the suite is having, it will always come to our fallback
+
+53
+00:03:36,050 --> 00:03:36,500
+method.
+
+54
+00:03:36,740 --> 00:03:41,390
+If a service is giving some error, exception doesn't matter.
+
+55
+00:03:41,690 --> 00:03:43,390
+Whatever state you have for your switch.
+
+56
+00:03:43,790 --> 00:03:49,310
+If a service is having some issue, it will come to your fallback method and it will return the dummy
+
+57
+00:03:49,310 --> 00:03:49,940
+response.
+
+58
+00:03:50,210 --> 00:03:52,430
+So that's the use of fallback method.
+
+59
+00:03:53,930 --> 00:04:00,400
+The fallback method must need to have the same method signature as like your method on which you have
+
+60
+00:04:00,410 --> 00:04:06,260
+a circuit breaker and descent and you can use this optional one trouble to lock the exception.
+
+61
+00:04:06,740 --> 00:04:09,050
+So this is the use of Fulbeck method.
+
+62
+00:04:10,360 --> 00:04:14,710
+So that's all for now will proceed further in the next lecture.
+
+63
+00:04:15,460 --> 00:04:16,390
+Thank you very much.

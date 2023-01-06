@@ -1,0 +1,175 @@
+1
+00:00:00,600 --> 00:00:03,270
+Hello and welcome back.
+
+2
+00:00:03,690 --> 00:00:07,710
+So now we are all set with our spring cloud getaway.
+
+3
+00:00:08,160 --> 00:00:13,110
+So let's start with the Eureka server and then we will start the gateway.
+
+4
+00:00:13,800 --> 00:00:21,330
+And after that, we will start our micro services to run my groceries and now address Microsoft Office.
+
+5
+00:00:21,810 --> 00:00:23,280
+Lets them do Eureka.
+
+6
+00:00:23,850 --> 00:00:24,990
+Let's reload this.
+
+7
+00:00:26,610 --> 00:00:28,260
+EPA gateway has registred.
+
+8
+00:00:29,880 --> 00:00:31,530
+Wait for the migrant services.
+
+9
+00:00:38,290 --> 00:00:44,620
+Yes, now we are good, our micro services, along with the EPA, we have registered themselves with
+
+10
+00:00:44,620 --> 00:00:47,320
+the Utica now lets them do the postman.
+
+11
+00:00:48,550 --> 00:00:54,520
+So now we have used this, you are allowed to hate our student service because of a student service
+
+12
+00:00:54,520 --> 00:00:59,350
+is running on the board a zero eight zero, and now we are not going to use this.
+
+13
+00:00:59,370 --> 00:01:03,370
+You instead of this, we will use the you are not Ed Gateway.
+
+14
+00:01:03,640 --> 00:01:07,930
+And we know that Be Gateway is running on the point nine zero nine zero.
+
+15
+00:01:08,170 --> 00:01:10,930
+And then we need to provide the name of service.
+
+16
+00:01:10,930 --> 00:01:13,630
+So in our case, student service.
+
+17
+00:01:14,960 --> 00:01:17,080
+Now, let's get idea.
+
+18
+00:01:20,190 --> 00:01:27,780
+See, we got the response, so this you are we hit up Gateway, but actually we are down student service,
+
+19
+00:01:27,780 --> 00:01:31,350
+but we are not using the you are a student service.
+
+20
+00:01:31,660 --> 00:01:37,650
+Earlier we were using the you are a student service, but now we are using the you are an up gateway
+
+21
+00:01:37,650 --> 00:01:39,720
+to hit our student service.
+
+22
+00:01:40,970 --> 00:01:46,940
+Now, it may be possible that when you hit this giddap right, or any other Epper, you will get four
+
+23
+00:01:46,940 --> 00:01:47,400
+zero four.
+
+24
+00:01:48,080 --> 00:01:48,910
+That's obvious.
+
+25
+00:01:49,070 --> 00:01:49,740
+Don't worry.
+
+26
+00:01:50,090 --> 00:01:53,780
+Give the EPA, get the application a minute and then try again.
+
+27
+00:01:53,810 --> 00:01:57,650
+Because what happens when you start to appreciate the application, right.
+
+28
+00:01:57,840 --> 00:02:01,120
+It will affect all the services from the Eureka server.
+
+29
+00:02:01,460 --> 00:02:02,970
+So this will take some time.
+
+30
+00:02:03,110 --> 00:02:05,990
+Sometimes it may be 30 seconds to one minute.
+
+31
+00:02:06,110 --> 00:02:06,860
+So don't worry.
+
+32
+00:02:07,040 --> 00:02:09,100
+Wait for a minute and then try again.
+
+33
+00:02:10,580 --> 00:02:15,800
+So now this is the you are all for our student service and this you are all you need to provide to your
+
+34
+00:02:15,950 --> 00:02:18,110
+consumers, not this one.
+
+35
+00:02:18,410 --> 00:02:22,040
+That is the actual you are all of your student service localhost.
+
+36
+00:02:22,080 --> 00:02:26,510
+Ejiro, Ed, you should not give this you out to your consumers.
+
+37
+00:02:26,750 --> 00:02:33,530
+Instead of that, you need to give that you all of your EP Gateway and slash your microscopist name.
+
+38
+00:02:34,580 --> 00:02:40,940
+So now here, Ippei Gateways routing this particular gate request to our student service and hence we
+
+39
+00:02:40,940 --> 00:02:43,700
+are getting the response and this is expected.
+
+40
+00:02:43,910 --> 00:02:44,990
+We have already seen.
+
+41
+00:02:46,270 --> 00:02:52,630
+So this is how you can use sprinklered, cloud, API, gateway for your micro services along with your
+
+42
+00:02:52,630 --> 00:02:53,360
+Akazawa.
+
+43
+00:02:53,800 --> 00:02:58,120
+So that's all for now, will proceed further in the next lecture.
+
+44
+00:02:58,720 --> 00:02:59,680
+Thank you very much.

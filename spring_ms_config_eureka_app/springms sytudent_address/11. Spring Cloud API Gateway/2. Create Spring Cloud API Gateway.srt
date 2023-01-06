@@ -1,0 +1,127 @@
+1
+00:00:00,390 --> 00:00:03,150
+Hello and welcome back.
+
+2
+00:00:03,600 --> 00:00:10,370
+In this lecture, we will create the API Gateway application, so that is basically a springboard application.
+
+3
+00:00:10,650 --> 00:00:12,750
+So let's create the new springboard application.
+
+4
+00:00:15,660 --> 00:00:18,810
+And give the name is Epper Gateway.
+
+5
+00:00:20,800 --> 00:00:27,280
+Provide the group as common as Cloud Artefact, a gateway server API gateway.
+
+6
+00:00:27,520 --> 00:00:29,770
+This is the package we want to click on the next.
+
+7
+00:00:30,810 --> 00:00:38,940
+Now, to add the gateway dependency, just search for Gateway and add this dependency, Solier Spring
+
+8
+00:00:38,940 --> 00:00:43,640
+was providing a gateway that is all, but now it's in the maintenance more.
+
+9
+00:00:43,860 --> 00:00:45,510
+So we are going to use the latest one.
+
+10
+00:00:45,510 --> 00:00:47,860
+That is Spring Cloud API Gateway.
+
+11
+00:00:47,970 --> 00:00:50,260
+So select this one now.
+
+12
+00:00:50,370 --> 00:00:56,480
+But it'd be a gateway application will use the Eureka server to allow the request to appropriate service.
+
+13
+00:00:56,760 --> 00:01:01,720
+So for that we need to register our API Gateway application to Eureka server.
+
+14
+00:01:01,980 --> 00:01:07,350
+So for that, we need to add the Eureka discovery line to this Gateway application.
+
+15
+00:01:07,540 --> 00:01:09,960
+Now just click on the next and finish.
+
+16
+00:01:12,390 --> 00:01:16,890
+Now, let's open the application properties of our EPA, get the application.
+
+17
+00:01:18,530 --> 00:01:25,490
+So first thing we will said the Salvador report is nine zero nine zero, because we are going to run
+
+18
+00:01:25,490 --> 00:01:30,480
+this EPA Goodway application on board nine zero nine zero one local Muzzin.
+
+19
+00:01:31,100 --> 00:01:33,050
+Now, the next is application nine.
+
+20
+00:01:36,280 --> 00:01:38,230
+The EPA gateway.
+
+21
+00:01:39,770 --> 00:01:44,870
+Now we need to register this gateway application to Eureka server so that we know, right, what we
+
+22
+00:01:44,870 --> 00:01:49,670
+need to do in the main class, we need to annotate with enable.
+
+23
+00:01:50,880 --> 00:01:51,930
+Yurick, our client.
+
+24
+00:01:53,530 --> 00:02:00,610
+And we need to provide that you are a of Eureka server application DOT properties file, so let's copy
+
+25
+00:02:00,610 --> 00:02:02,740
+it from one of our micro services.
+
+26
+00:02:03,700 --> 00:02:08,620
+So let me copy this, you are a Eureka server and provide what here?
+
+27
+00:02:09,820 --> 00:02:15,220
+So this is what we have done, we created the EPA get the application, we set the port application
+
+28
+00:02:15,220 --> 00:02:20,770
+name and we registered it with Eureka Server by providing you all of Eureka.
+
+29
+00:02:21,100 --> 00:02:23,470
+And we enable it in our meaningless.
+
+30
+00:02:24,960 --> 00:02:31,710
+Now, furthermore, the configuration we will see in the next lecture, so that's all for now, will
+
+31
+00:02:31,710 --> 00:02:33,990
+proceed further in the next lecture.
+
+32
+00:02:34,560 --> 00:02:35,490
+Thank you very much.

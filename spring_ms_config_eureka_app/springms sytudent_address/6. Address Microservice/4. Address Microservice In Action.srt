@@ -1,0 +1,95 @@
+1
+00:00:00,300 --> 00:00:02,940
+Hello and welcome back.
+
+2
+00:00:03,540 --> 00:00:10,210
+So now our address, micro service is ready, so let's run the address micro surveys and test it out.
+
+3
+00:00:10,920 --> 00:00:13,310
+So here is our main class.
+
+4
+00:00:13,530 --> 00:00:16,170
+Let's run it as a springboard application.
+
+5
+00:00:17,500 --> 00:00:21,660
+So this will take some time and it will get started on board eight zero eight two.
+
+6
+00:00:21,820 --> 00:00:22,930
+Yes, it got started.
+
+7
+00:00:23,200 --> 00:00:28,080
+Now let's turn to Posman and here we will create the new address.
+
+8
+00:00:28,810 --> 00:00:34,540
+So this is a way to address Sless create.
+
+9
+00:00:35,910 --> 00:00:39,660
+And in the body will pass in the format of Jizan.
+
+10
+00:00:41,950 --> 00:00:42,460
+St..
+
+11
+00:00:45,790 --> 00:00:48,220
+See any street?
+
+12
+00:00:51,770 --> 00:00:52,460
+City.
+
+13
+00:00:54,060 --> 00:00:54,960
+Say, Mumbai.
+
+14
+00:00:56,130 --> 00:00:58,440
+Now, let's say this post-paid.
+
+15
+00:01:00,050 --> 00:01:06,190
+See, the address has been created with it equal to three, we can verify in our address table as well,
+
+16
+00:01:06,530 --> 00:01:07,370
+it got created.
+
+17
+00:01:07,760 --> 00:01:10,580
+Now let's try this by Idy.
+
+18
+00:01:10,640 --> 00:01:16,400
+So address get by ID and I'd call to three.
+
+19
+00:01:16,940 --> 00:01:18,420
+ID this Gadsby.
+
+20
+00:01:19,820 --> 00:01:26,200
+We got the response, so these are the address, ladies, whether it equal to three, so now I would
+
+21
+00:01:26,210 --> 00:01:32,780
+address my groceries is ready now in the upcoming lectures, we will see Student Micro Microcircuits.
+
+22
+00:01:33,470 --> 00:01:35,030
+So that's all for now.
+
+23
+00:01:35,370 --> 00:01:37,910
+Will proceed further in the next lecture.
+
+24
+00:01:38,270 --> 00:01:39,200
+Thank you very much.

@@ -1,0 +1,203 @@
+1
+00:00:00,530 --> 00:00:03,180
+Hello and welcome back.
+
+2
+00:00:03,590 --> 00:00:09,200
+In this lecture, we will configure our faint line to achieve the client side load balancing in the
+
+3
+00:00:09,350 --> 00:00:16,100
+student service support that we need to add this dependency in the bombed out example of student service.
+
+4
+00:00:16,400 --> 00:00:20,450
+And the dependency is spinning loud starter load balancer.
+
+5
+00:00:20,720 --> 00:00:25,970
+So make sure you are adding this dependency in the bombed out example of your student service.
+
+6
+00:00:27,200 --> 00:00:32,840
+Now to make the rest call from student service to address service, we have the faint line and that
+
+7
+00:00:32,840 --> 00:00:34,300
+is address faint line.
+
+8
+00:00:34,400 --> 00:00:40,250
+We have already seen this right and using the Eureka server, we are providing the service name or here.
+
+9
+00:00:41,810 --> 00:00:46,530
+So now let's configure this vent line to use the spring cloud load balancer.
+
+10
+00:00:46,940 --> 00:00:50,000
+So here, let's create a new class for the configuration.
+
+11
+00:00:51,740 --> 00:00:54,830
+Let me give the name as address service.
+
+12
+00:00:56,530 --> 00:01:00,430
+Load balancer config I'm giving in the short form.
+
+13
+00:01:01,550 --> 00:01:02,450
+Click on the Finniss.
+
+14
+00:01:03,890 --> 00:01:08,330
+Now we need to annotate this class with the load balancer client.
+
+15
+00:01:11,350 --> 00:01:14,740
+Now, in England, we have provided this value, right?
+
+16
+00:01:14,770 --> 00:01:16,470
+That is the name of the service.
+
+17
+00:01:16,720 --> 00:01:23,320
+So same thing we need to provide with this annotation as well so that it will identify that this is
+
+18
+00:01:23,320 --> 00:01:26,240
+the load balancer for this particular faint client.
+
+19
+00:01:26,590 --> 00:01:31,050
+So make sure you are giving the same value as you have in your phone line.
+
+20
+00:01:31,120 --> 00:01:36,730
+So in our case, this is the name of the service because we are using the Eureka server.
+
+21
+00:01:37,880 --> 00:01:41,230
+So now what happens when we will start the student service?
+
+22
+00:01:41,390 --> 00:01:46,720
+It will create the Benoff front line, so at the time we need to configure the load balancing.
+
+23
+00:01:47,030 --> 00:01:52,790
+So what we will do here is that let's create the being of Fien.
+
+24
+00:01:54,120 --> 00:01:56,370
+Dart builder, see?
+
+25
+00:01:57,270 --> 00:01:58,110
+Famed builder.
+
+26
+00:02:01,460 --> 00:02:02,360
+Let's return.
+
+27
+00:02:05,340 --> 00:02:07,740
+Fiend, art builder, this matter.
+
+28
+00:02:08,730 --> 00:02:15,720
+So this is the being we are creating in our student service will start now here we need to tell that
+
+29
+00:02:15,720 --> 00:02:17,360
+we want to have load balancing.
+
+30
+00:02:17,370 --> 00:02:20,310
+So mark this with at Lower Peninsula.
+
+31
+00:02:20,550 --> 00:02:23,500
+So what will happen when we will start our student service?
+
+32
+00:02:23,670 --> 00:02:26,010
+It will configure this vein builder.
+
+33
+00:02:26,160 --> 00:02:30,900
+At the time we are seeing that this is load balancer and for which ringland?
+
+34
+00:02:31,050 --> 00:02:33,440
+That is what we provided here with the value.
+
+35
+00:02:33,630 --> 00:02:37,660
+This is for the service and for that we have this address front line.
+
+36
+00:02:37,920 --> 00:02:38,940
+So what will happen?
+
+37
+00:02:39,150 --> 00:02:44,550
+Whenever you will use the instance of this address being lined, it will get load balancer.
+
+38
+00:02:44,710 --> 00:02:49,650
+It doesn't matter where you are using here we are using in the student service so that also it will
+
+39
+00:02:49,650 --> 00:02:51,990
+get automatically load balancer.
+
+40
+00:02:52,140 --> 00:02:58,110
+If you are using in any of the other packages or other classes you are using the instance of this particular
+
+41
+00:02:58,410 --> 00:03:02,700
+line, it will automatically get lower peninsula here if you open.
+
+42
+00:03:04,130 --> 00:03:10,940
+Here, we don't need to change anything, we don't need to change anything, just our class where we
+
+43
+00:03:10,940 --> 00:03:13,280
+are configuring and providing the name of the service.
+
+44
+00:03:14,300 --> 00:03:19,640
+In our case, we have a service and we are saying that this is load bearing the faint line.
+
+45
+00:03:19,850 --> 00:03:20,530
+That's it.
+
+46
+00:03:20,930 --> 00:03:26,510
+This is all you need to do to configure the sprinklered load balancing in your student service.
+
+47
+00:03:27,890 --> 00:03:32,180
+Now we are all set with our client and spring cloud load balancer.
+
+48
+00:03:32,560 --> 00:03:35,110
+We will test it out in the next lecture.
+
+49
+00:03:35,660 --> 00:03:37,130
+So that's all for now.
+
+50
+00:03:37,430 --> 00:03:39,860
+Will proceed further in the next lecture.
+
+51
+00:03:40,550 --> 00:03:41,480
+Thank you very much.

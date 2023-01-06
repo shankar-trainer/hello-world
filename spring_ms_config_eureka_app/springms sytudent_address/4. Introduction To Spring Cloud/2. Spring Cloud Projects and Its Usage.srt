@@ -1,0 +1,355 @@
+1
+00:00:00,560 --> 00:00:03,210
+Hello and welcome back.
+
+2
+00:00:03,800 --> 00:00:08,870
+Let's have an overview of sprinklered projects that are covered in this course.
+
+3
+00:00:09,810 --> 00:00:17,310
+So the first is sprinklered upon Fien, so what happens over micro services can communicate with each
+
+4
+00:00:17,310 --> 00:00:23,880
+other with different methods, like using the ATP Protocol, say, for example, of a student micro
+
+5
+00:00:23,880 --> 00:00:30,900
+service is calling the receptors up, address microcircuits or any other microcircuits beed examination
+
+6
+00:00:31,050 --> 00:00:32,250
+result microcircuits.
+
+7
+00:00:32,640 --> 00:00:39,510
+Another is using the DU or accent mechanism like a project to MQ or Rabbitt MQ.
+
+8
+00:00:39,840 --> 00:00:46,380
+But generally micro services can talk with each other in a TDP protocol using the rest DPAs.
+
+9
+00:00:46,770 --> 00:00:53,400
+So we need an easy way to integrate this so that our micro services can communicate with each other
+
+10
+00:00:53,580 --> 00:00:54,050
+and we.
+
+11
+00:00:54,060 --> 00:00:55,470
+How is integration?
+
+12
+00:00:55,740 --> 00:00:58,650
+So that comes to sprinklered upon Fien.
+
+13
+00:00:59,800 --> 00:01:06,670
+The next is Sprinklered, Cloud, Netflix, Eureka, as I said that we can how thousands of micro services,
+
+14
+00:01:06,670 --> 00:01:06,940
+right.
+
+15
+00:01:07,210 --> 00:01:10,780
+And if we were micro services are communicating with each other.
+
+16
+00:01:10,990 --> 00:01:17,170
+And if we have a change in you all for any of the micro services, then it will be a big problem for
+
+17
+00:01:17,170 --> 00:01:17,380
+us.
+
+18
+00:01:17,560 --> 00:01:18,790
+And we need to change that.
+
+19
+00:01:18,800 --> 00:01:22,400
+You are all in all the micro services, so don't worry.
+
+20
+00:01:22,600 --> 00:01:26,970
+Here comes the Eureka server, which is service this Korean registry.
+
+21
+00:01:27,310 --> 00:01:28,360
+So what happens?
+
+22
+00:01:28,630 --> 00:01:36,130
+Each of our micro surveys will register itself with the Utica and it will be having the unique ID or
+
+23
+00:01:36,130 --> 00:01:36,440
+name.
+
+24
+00:01:36,850 --> 00:01:37,780
+So what happens?
+
+25
+00:01:37,870 --> 00:01:43,330
+Our micro service will communicate with another micro service using the service name.
+
+26
+00:01:43,480 --> 00:01:46,990
+It will not use the you are allowed another micro service.
+
+27
+00:01:47,260 --> 00:01:48,350
+So it is very easy.
+
+28
+00:01:48,580 --> 00:01:55,330
+Say, for example, you are migrating from Amazon cloud to as you now you are not dependent on the you
+
+29
+00:01:55,330 --> 00:01:58,140
+are because you have UDCA server.
+
+30
+00:01:58,450 --> 00:01:59,770
+So what happens?
+
+31
+00:01:59,770 --> 00:02:07,030
+Your micro services will use the service name and with that it will communicate with other micro services
+
+32
+00:02:07,150 --> 00:02:08,860
+and it is not dependent on that.
+
+33
+00:02:09,040 --> 00:02:10,990
+You are a micro services.
+
+34
+00:02:11,890 --> 00:02:14,830
+Just imagine if micro service is using that.
+
+35
+00:02:14,830 --> 00:02:17,920
+You are to love another micro service and you have change in.
+
+36
+00:02:17,920 --> 00:02:21,700
+You all say you are migrating from Amazon cloud to your.
+
+37
+00:02:21,910 --> 00:02:25,870
+Then it will be a big problem for you and it's a big task for you.
+
+38
+00:02:27,030 --> 00:02:33,780
+The next is spring cloud load balancer, several student micro is calling addressed Microsoft Office.
+
+39
+00:02:33,930 --> 00:02:38,130
+Now, we can have multiple instances for our Microsoft Office right now.
+
+40
+00:02:38,370 --> 00:02:42,620
+For example, we have two instance for our address, Microsoft Office.
+
+41
+00:02:42,840 --> 00:02:49,020
+So we need some kind of load balancing between those instances, whatever requests are coming right.
+
+42
+00:02:49,260 --> 00:02:52,560
+We need to have some kind of load balancing mechanism.
+
+43
+00:02:52,800 --> 00:02:57,680
+So here our student micro service is calling the address Microsoft Office.
+
+44
+00:02:58,470 --> 00:03:01,170
+So here, Student Micro Services client.
+
+45
+00:03:01,350 --> 00:03:07,380
+So Spring Cloud Load Balancer is providing a way to have blindsight load balancing.
+
+46
+00:03:08,540 --> 00:03:16,130
+The next is Spring Cloud API, Gateway API Gateway is the entry point for each of the micro services,
+
+47
+00:03:16,430 --> 00:03:22,790
+whatever requests coming to each of the micro services will first come to Epper Gateway so that we can
+
+48
+00:03:22,790 --> 00:03:26,120
+perform some common things like authentication.
+
+49
+00:03:26,360 --> 00:03:32,840
+If you want to put some request headers, response headers or logging, whatever you want to do, whatever
+
+50
+00:03:32,840 --> 00:03:38,080
+requests are coming to your micro services will first come to your Epper Gateway.
+
+51
+00:03:38,540 --> 00:03:41,030
+Here you can perform some common operations.
+
+52
+00:03:42,310 --> 00:03:49,540
+The next is for tolerance, say you're one microscopist is down now, it should not have impact on other
+
+53
+00:03:49,540 --> 00:03:50,730
+micro services, right?
+
+54
+00:03:51,010 --> 00:03:53,230
+So there comes the fault tolerance.
+
+55
+00:03:54,600 --> 00:03:57,530
+In migrant services, pricing is very important.
+
+56
+00:03:58,110 --> 00:04:01,420
+For example, one request is coming to your student service.
+
+57
+00:04:01,740 --> 00:04:08,610
+Now, student service internally calls the address service address service, calls to examination service
+
+58
+00:04:08,970 --> 00:04:12,220
+and examination service, calls to reserve service.
+
+59
+00:04:12,510 --> 00:04:16,680
+So like this, you can how many calls between your micro services.
+
+60
+00:04:16,980 --> 00:04:22,820
+So what happens if anything goes wrong and you want to trace it down, then it will be a problem.
+
+61
+00:04:23,220 --> 00:04:23,980
+So don't worry.
+
+62
+00:04:24,000 --> 00:04:25,470
+Here comes the --.
+
+63
+00:04:26,070 --> 00:04:32,040
+So using this --, you can transfer the request where it is going and how your micro services are
+
+64
+00:04:32,040 --> 00:04:32,910
+communicating.
+
+65
+00:04:33,120 --> 00:04:34,770
+You are getting the complete flow.
+
+66
+00:04:35,220 --> 00:04:41,700
+Zipkin is the UI tool to see this complete flow that from where to where your request is going, you
+
+67
+00:04:41,700 --> 00:04:46,920
+can see that, OK, from student micro surveys to address micro servers and from there it is going to
+
+68
+00:04:46,920 --> 00:04:48,600
+examination and so on.
+
+69
+00:04:49,610 --> 00:04:54,530
+So basically, you can trace it down the requests that are coming to your micro services.
+
+70
+00:04:55,690 --> 00:05:00,430
+Now you have some common set of properties for each of your micro services.
+
+71
+00:05:00,910 --> 00:05:07,210
+For example, database properties, right, database, username, password, you warrell database,
+
+72
+00:05:07,210 --> 00:05:09,250
+Nimoy's or schema and other things.
+
+73
+00:05:09,730 --> 00:05:15,340
+So you have this set of properties for each of the environmental integration brought and so on.
+
+74
+00:05:15,640 --> 00:05:19,900
+And hundreds of micro services that you have will use these properties.
+
+75
+00:05:20,170 --> 00:05:24,960
+Now, say, for example, you have change in some credentials.
+
+76
+00:05:25,390 --> 00:05:31,200
+So why do you need to do is that you need to go in for each of the micro surveys, basically your application
+
+77
+00:05:31,210 --> 00:05:35,430
+dot properties file and you need to change in each of those files.
+
+78
+00:05:35,650 --> 00:05:37,600
+So that's a hectic task, right.
+
+79
+00:05:38,080 --> 00:05:40,690
+So there comes the configuration server.
+
+80
+00:05:41,720 --> 00:05:47,030
+We can store these common properties at some place, you can help get people as well, whatever you
+
+81
+00:05:47,030 --> 00:05:51,930
+prefer, from there, each of your micro surveys will read those properties.
+
+82
+00:05:52,220 --> 00:05:54,020
+So what happens in the future?
+
+83
+00:05:54,140 --> 00:05:59,420
+If you have a change in property, you just need to change in your target reports, for example, and
+
+84
+00:05:59,420 --> 00:06:03,320
+all your micro surveys will use that updated property.
+
+85
+00:06:03,710 --> 00:06:09,950
+Just update at the one place and all your micro services will get the updated property value.
+
+86
+00:06:10,640 --> 00:06:13,610
+So this is the uses of configuration server.
+
+87
+00:06:15,120 --> 00:06:22,110
+So this is an overview of sprinklered, projects that are covered in this course that's all for now,
+
+88
+00:06:22,470 --> 00:06:24,930
+will proceed further in the next lecture.
+
+89
+00:06:25,650 --> 00:06:26,550
+Thank you very much.

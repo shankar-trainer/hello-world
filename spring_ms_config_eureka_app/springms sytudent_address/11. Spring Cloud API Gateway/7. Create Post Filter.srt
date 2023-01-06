@@ -1,0 +1,283 @@
+1
+00:00:00,420 --> 00:00:03,190
+Hello and welcome back.
+
+2
+00:00:03,720 --> 00:00:11,190
+In this lecture, we will create the post filter now here using the statement API get to withdraw the
+
+3
+00:00:11,190 --> 00:00:13,440
+request to appropriate Microsoft Microcircuits.
+
+4
+00:00:13,740 --> 00:00:20,700
+Now post filter will get executed after our micro service gives the response back to API Gateway and
+
+5
+00:00:20,700 --> 00:00:24,800
+before our API gateway passes that response to the consumer.
+
+6
+00:00:25,080 --> 00:00:26,880
+So that's the in-between state.
+
+7
+00:00:26,880 --> 00:00:31,290
+You can see now here to have the possibility that we will use the Lamela.
+
+8
+00:00:31,380 --> 00:00:34,950
+So let's modify like this then and use the model.
+
+9
+00:00:37,730 --> 00:00:44,930
+D'Arte from Runnable and using the Labrada, let's the post filter like this.
+
+10
+00:00:51,160 --> 00:00:56,620
+Now, here, whatever we decide that will be ever possible that we can do anything, whatever we want
+
+11
+00:00:56,620 --> 00:01:04,930
+to do, just before I get passes, the response back to consumer, say, for example, we want to be
+
+12
+00:01:04,930 --> 00:01:05,760
+responsible.
+
+13
+00:01:05,960 --> 00:01:06,370
+Right.
+
+14
+00:01:06,580 --> 00:01:08,920
+About Microsoft is giving the response.
+
+15
+00:01:08,930 --> 00:01:16,370
+So we want to log what is the response called entity B response would basically be to interrogate for
+
+16
+00:01:16,370 --> 00:01:19,410
+over 500 internal server, whatever it is.
+
+17
+00:01:19,420 --> 00:01:19,650
+Right.
+
+18
+00:01:19,840 --> 00:01:21,930
+We want to log that response code.
+
+19
+00:01:22,240 --> 00:01:25,360
+So here we will use this object of exchange.
+
+20
+00:01:26,110 --> 00:01:29,440
+So exchange dot, get a response.
+
+21
+00:01:30,280 --> 00:01:31,240
+And here.
+
+22
+00:01:34,180 --> 00:01:36,340
+Server, ATP Response.
+
+23
+00:01:39,920 --> 00:01:43,550
+Let's import the Sahuarita response from this one.
+
+24
+00:01:44,820 --> 00:01:51,030
+Now let's log the ATP status code, so Lowgar Dot info.
+
+25
+00:01:53,130 --> 00:01:55,890
+Post filter equal to.
+
+26
+00:02:01,260 --> 00:02:02,700
+Response get.
+
+27
+00:02:04,750 --> 00:02:05,380
+Status quo.
+
+28
+00:02:05,650 --> 00:02:06,110
+That's it.
+
+29
+00:02:06,310 --> 00:02:11,000
+So this is our first filter, so we have one debate point over here.
+
+30
+00:02:11,020 --> 00:02:12,800
+Let's one other point out here.
+
+31
+00:02:13,300 --> 00:02:21,310
+Now let's run our API, get replication in debug mode and UDCA server and other micro services are already
+
+32
+00:02:21,310 --> 00:02:21,610
+running.
+
+33
+00:02:22,610 --> 00:02:23,450
+Ignore this one.
+
+34
+00:02:24,770 --> 00:02:31,870
+So we have to debug points out here, one port filter, one port and another one in our student service.
+
+35
+00:02:32,450 --> 00:02:34,460
+So let's have Unica.
+
+36
+00:02:34,580 --> 00:02:35,870
+Yeah, that's running fine.
+
+37
+00:02:37,480 --> 00:02:38,760
+Let's say this, Gadsby.
+
+38
+00:02:41,520 --> 00:02:42,910
+So execution came over here.
+
+39
+00:02:42,930 --> 00:02:49,950
+That is our prefill done, let me clear the logs, but before that, let's take over here, see authorities
+
+40
+00:02:49,950 --> 00:02:50,740
+and equal the ABC.
+
+41
+00:02:50,970 --> 00:02:52,590
+So let's not clear the logs.
+
+42
+00:02:52,870 --> 00:02:53,970
+Just click on David.
+
+43
+00:02:55,490 --> 00:02:57,320
+Now we are inside the room service.
+
+44
+00:02:58,250 --> 00:03:01,250
+And let's go to the logs of EPA Gateway.
+
+45
+00:03:03,160 --> 00:03:04,240
+Just click on David.
+
+46
+00:03:05,930 --> 00:03:13,730
+See the execution game in our post filter and still we don't have a response to our request and let's
+
+47
+00:03:13,730 --> 00:03:14,420
+do it.
+
+48
+00:03:16,150 --> 00:03:24,130
+See the possibility equal to 200, OK, so this is our filter, then the request is going into the service
+
+49
+00:03:24,370 --> 00:03:30,550
+and then coming back to our post filter and after that, a bigot is giving the response back to the
+
+50
+00:03:30,550 --> 00:03:32,740
+consumer who is hitting over Epis.
+
+51
+00:03:34,000 --> 00:03:39,820
+Now, let's go back to our filters, so this filter will be executed for all the requests coming to
+
+52
+00:03:39,820 --> 00:03:41,410
+our all micro services.
+
+53
+00:03:41,690 --> 00:03:48,460
+Now say, for example, you want to have some specific code for only some of the services or any particular
+
+54
+00:03:48,460 --> 00:03:48,870
+service.
+
+55
+00:03:49,040 --> 00:03:55,510
+So, for example, we want to have some specific condition inside of a pre filter for student service.
+
+56
+00:03:55,510 --> 00:03:58,290
+Only then how we can add to that.
+
+57
+00:03:58,300 --> 00:03:59,660
+Let's see that part as well.
+
+58
+00:04:00,100 --> 00:04:04,660
+So here we will put one condition like this, that request.
+
+59
+00:04:07,090 --> 00:04:08,890
+Not get you, are I?
+
+60
+00:04:12,280 --> 00:04:17,380
+Two string, and it contains Sless API.
+
+61
+00:04:19,550 --> 00:04:20,120
+Student.
+
+62
+00:04:22,510 --> 00:04:28,150
+Then do something, whatever you want to have for the student microcircuits, you can put this piece
+
+63
+00:04:28,150 --> 00:04:33,140
+of Cawdor here or whatever, so this will be applicable to only student service.
+
+64
+00:04:33,460 --> 00:04:38,650
+Likewise, you can have other conditions for your address service or for any other micro service.
+
+65
+00:04:39,850 --> 00:04:44,710
+So this will be specific to particular service, if you put conditions like this using the part of a
+
+66
+00:04:44,710 --> 00:04:48,670
+particular micro service, otherwise this will get executed.
+
+67
+00:04:48,880 --> 00:04:54,380
+But all the requests coming to your all micro services and same applies for our post request.
+
+68
+00:04:54,400 --> 00:04:59,020
+This will get executed for all requests coming to our all micro services.
+
+69
+00:05:00,740 --> 00:05:08,180
+So this is how you can have crosscutting concerns in the API gateway using pre and post filter, so
+
+70
+00:05:08,180 --> 00:05:12,260
+that's all for now, will proceed further in the next lecture.
+
+71
+00:05:12,770 --> 00:05:13,670
+Thank you very much.

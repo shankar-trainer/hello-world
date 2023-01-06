@@ -1,0 +1,111 @@
+1
+00:00:00,390 --> 00:00:03,060
+Hello and welcome back.
+
+2
+00:00:03,600 --> 00:00:10,590
+So now we know that our API Gateway application will work with Unica Server to allow the request to
+
+3
+00:00:10,620 --> 00:00:14,940
+appropriate Microsoft Office, but for that, we need to configure it.
+
+4
+00:00:15,210 --> 00:00:19,700
+So let's enable the discovery locator for our API Gateway application.
+
+5
+00:00:20,190 --> 00:00:21,650
+So we need to set properties.
+
+6
+00:00:21,650 --> 00:00:22,650
+Spring cloud.
+
+7
+00:00:23,810 --> 00:00:24,530
+Gateway.
+
+8
+00:00:25,840 --> 00:00:29,560
+That discovery locator enabled a call to prove.
+
+9
+00:00:31,430 --> 00:00:38,000
+Now, let's go to the Eureka server here, you see the application name in the press, but if we actually
+
+10
+00:00:38,000 --> 00:00:44,150
+look in the application, the properties of our micro service, then we have provided in the lowercase.
+
+11
+00:00:44,360 --> 00:00:47,840
+But Yanagisawa is residing in the upper case.
+
+12
+00:00:48,140 --> 00:00:55,060
+So we need to tell this to our API Gateway application that look for the micro services in lowercase.
+
+13
+00:00:55,550 --> 00:00:59,810
+So for that, we need to define the property in our gateway application as.
+
+14
+00:01:01,520 --> 00:01:02,150
+Out cloud.
+
+15
+00:01:04,300 --> 00:01:12,340
+Gateway thought this Cody locator and then lower case service I'd call to through.
+
+16
+00:01:14,180 --> 00:01:20,290
+So now even the Utica server is providing the service name in the upper case to over a period of application,
+
+17
+00:01:20,510 --> 00:01:25,250
+it will look for the Lorqess service name or you can say service ID.
+
+18
+00:01:26,630 --> 00:01:29,570
+You can read this documentation as well, what it is saying.
+
+19
+00:01:34,050 --> 00:01:40,970
+Option to Lorqess, the service that pretty useful with Unica when it automatically abacuses service
+
+20
+00:01:40,990 --> 00:01:44,590
+idee or you can say application mean or you cancel service name.
+
+21
+00:01:44,970 --> 00:01:50,550
+So my service would magids less my service from uppercase to Lorqess.
+
+22
+00:01:52,280 --> 00:01:57,500
+I don't know, for some reason, this is giving Iran even we provided a boolean value, so we will ignore
+
+23
+00:01:57,500 --> 00:01:57,860
+this.
+
+24
+00:01:58,190 --> 00:02:04,160
+So this is the configuration we need to do and now we are ready with our Epper Gateway application.
+
+25
+00:02:04,640 --> 00:02:06,990
+So in the next lecture, we will test it out.
+
+26
+00:02:07,430 --> 00:02:08,930
+So that's all for now.
+
+27
+00:02:09,230 --> 00:02:11,720
+Will proceed further in the next lecture.
+
+28
+00:02:12,290 --> 00:02:13,280
+Thank you very much.

@@ -1,0 +1,179 @@
+1
+00:00:00,500 --> 00:00:03,210
+Hello and welcome back.
+
+2
+00:00:03,800 --> 00:00:10,550
+In this lecture, we'll create the address, micro surveys out of this university monolithic application,
+
+3
+00:00:10,760 --> 00:00:13,410
+and that will be a springboard application.
+
+4
+00:00:13,730 --> 00:00:14,750
+So let's go for it.
+
+5
+00:00:15,920 --> 00:00:19,920
+Just click on the file new and spin starter project.
+
+6
+00:00:20,450 --> 00:00:23,300
+So here you are, the name is Address Service.
+
+7
+00:00:24,670 --> 00:00:32,180
+So this is our address microcircuits and group is coming to us, cloud whatever you want to give artifact
+
+8
+00:00:32,350 --> 00:00:38,380
+his address service, this copson address service and this is the picture, click on the next.
+
+9
+00:00:38,800 --> 00:00:41,500
+And here will select the dependencies.
+
+10
+00:00:41,500 --> 00:00:44,860
+Bicycle drivers, spring and spring.
+
+11
+00:00:45,640 --> 00:00:52,330
+This is because our address microcircuits will have the recipes and it will connect to MySQL database
+
+12
+00:00:52,480 --> 00:00:54,480
+using the spring data G.P.A..
+
+13
+00:00:55,330 --> 00:00:58,150
+This is the Springwood version I'm using because this is the latest.
+
+14
+00:00:58,150 --> 00:01:01,870
+When I'm recording this lecture, just click on the next and finish.
+
+15
+00:01:03,120 --> 00:01:08,670
+It may take a few seconds or a minute to download the dependencies now let let's first configure our
+
+16
+00:01:09,000 --> 00:01:15,200
+application dot properties so from our monolithic application, let's copy the database properties.
+
+17
+00:01:15,630 --> 00:01:18,650
+So this will be used by sprint data --.
+
+18
+00:01:19,440 --> 00:01:24,870
+Now for each Migros service, we will provide a name to that particular microcircuits and that will
+
+19
+00:01:24,870 --> 00:01:28,190
+be unique across all of our micro services.
+
+20
+00:01:28,500 --> 00:01:33,090
+So here we will use spring dot application.
+
+21
+00:01:36,540 --> 00:01:40,650
+Not name and will give it as address service.
+
+22
+00:01:42,430 --> 00:01:47,860
+Now we are going to run a couple of micro services in our local Muzzin and also we are going to run
+
+23
+00:01:47,860 --> 00:01:49,770
+the sprinklered cloud projects as well.
+
+24
+00:01:49,990 --> 00:01:52,030
+So we will run this address.
+
+25
+00:01:52,040 --> 00:01:58,210
+Microsoft is on board eight zero eight two in our local machine so that we will do using the server
+
+26
+00:01:58,210 --> 00:02:01,900
+DOT board and provide a value is Ejiro data.
+
+27
+00:02:02,680 --> 00:02:05,390
+So these are the Maseko database properties.
+
+28
+00:02:05,410 --> 00:02:11,260
+This is the Microsoft Office name and this is board on which this Microsoft Office will run in our local
+
+29
+00:02:11,260 --> 00:02:11,590
+machine.
+
+30
+00:02:12,910 --> 00:02:16,260
+Now, let's create a couple of packages inside the Assad regime in.
+
+31
+00:02:17,170 --> 00:02:20,110
+So let's first start with controller.
+
+32
+00:02:21,020 --> 00:02:30,560
+So-called dart in was thought controller and let me copy this part, because we will create a couple
+
+33
+00:02:30,560 --> 00:02:35,300
+of models as well and the next is service.
+
+34
+00:02:41,810 --> 00:02:48,380
+Another one is entity that will be having over, and it is for the spring data, Gibeah and.
+
+35
+00:02:51,580 --> 00:02:57,250
+We will be having one more package for the repository for spring data repositories.
+
+36
+00:03:00,580 --> 00:03:07,090
+Now we will be having two packages for request and response model classes for our address microcircuits.
+
+37
+00:03:11,260 --> 00:03:13,640
+So these packages as up now are blank.
+
+38
+00:03:13,660 --> 00:03:17,170
+Now let's go to our main class that is addressed service application.
+
+39
+00:03:18,340 --> 00:03:25,620
+And we will copy from our monolithic application this complete thing for the configuration components
+
+40
+00:03:25,630 --> 00:03:34,230
+can and and enable repositories because we have the same kind of structure for the packages controller
+
+41
+00:03:34,240 --> 00:03:37,740
+and service inside the components, skin and scandal.
+
+42
+00:03:38,050 --> 00:03:44,650
+And it is inside this package and enable the repositories that we have inside this particular package.
+
+43
+00:03:45,600 --> 00:03:49,380
+So here is the structure of our address service is ready.
+
+44
+00:03:49,950 --> 00:03:54,480
+So that's all for now, will proceed further in the next lecture.
+
+45
+00:03:54,870 --> 00:03:55,830
+Thank you very much.

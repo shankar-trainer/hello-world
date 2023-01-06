@@ -1,0 +1,163 @@
+1
+00:00:00,570 --> 00:00:03,160
+Hello and welcome back.
+
+2
+00:00:03,660 --> 00:00:10,620
+Let's proceed further with our address microcircuits, so from our monolithic application, let's copy
+
+3
+00:00:11,050 --> 00:00:13,470
+the glass that is addressed, not Java.
+
+4
+00:00:14,010 --> 00:00:18,060
+And let's inside our address microcircuits.
+
+5
+00:00:19,550 --> 00:00:24,810
+We don't need to put those two into the glass inside the address my groceries, because this and the
+
+6
+00:00:24,830 --> 00:00:30,170
+glass will go to Student Microcircuits and that we will see in the upcoming lectures.
+
+7
+00:00:30,350 --> 00:00:36,620
+Now, let Scoppetta address repository from here and put inside this package OPOWER.
+
+8
+00:00:36,740 --> 00:00:38,040
+Address my groceries.
+
+9
+00:00:38,390 --> 00:00:39,860
+Now let's create the.
+
+10
+00:00:40,960 --> 00:00:45,850
+One model calls for the request to create the address to create address request.
+
+11
+00:00:47,820 --> 00:00:53,550
+So here we will put the couple of attributes like Private String St..
+
+12
+00:00:58,060 --> 00:00:59,140
+And city.
+
+13
+00:01:00,180 --> 00:01:03,060
+So this is all required to create the address.
+
+14
+00:01:04,180 --> 00:01:08,110
+Let's go getters and setters for these two fields.
+
+15
+00:01:09,750 --> 00:01:16,620
+Now, let's have one response class to return the address details, and that is a response.
+
+16
+00:01:18,350 --> 00:01:21,470
+That will be having the same set of attributes.
+
+17
+00:01:24,950 --> 00:01:27,860
+And one more that is address ID.
+
+18
+00:01:33,340 --> 00:01:35,610
+Let's get us insiders for this as well.
+
+19
+00:01:40,040 --> 00:01:43,700
+And we will be having one constructor for this.
+
+20
+00:01:45,050 --> 00:01:53,180
+To convert the object of a dress into the glass to this model glass that is a dress response, not Jawa,
+
+21
+00:01:53,690 --> 00:02:02,550
+let's import the address and here will do address I'd call to address dard gaited.
+
+22
+00:02:03,790 --> 00:02:04,390
+And.
+
+23
+00:02:05,590 --> 00:02:09,520
+This large, critical to address, does not get straight.
+
+24
+00:02:11,150 --> 00:02:12,720
+This Darte CD.
+
+25
+00:02:15,700 --> 00:02:16,930
+Address DOT gets get.
+
+26
+00:02:17,950 --> 00:02:23,920
+This is to give the response back to the consumer from over entity class, we cannot return this entity
+
+27
+00:02:23,920 --> 00:02:24,400
+class, right?
+
+28
+00:02:24,420 --> 00:02:27,910
+So we need the model class and this is what it is converting.
+
+29
+00:02:28,570 --> 00:02:32,590
+Now, let's move ahead and let's go to the remote controller.
+
+30
+00:02:33,960 --> 00:02:36,930
+See a dress controller.
+
+31
+00:02:38,920 --> 00:02:41,650
+Let's market with raised controller.
+
+32
+00:02:43,560 --> 00:02:45,360
+At the request mapping.
+
+33
+00:02:46,500 --> 00:02:55,530
+See Sless address, less Epper or let's say Sless AIPA, less address.
+
+34
+00:02:57,610 --> 00:03:04,570
+Let's import risk, so here we will develop the risk types for the address microcircuits so that we
+
+35
+00:03:04,570 --> 00:03:06,190
+will see in the next lecture.
+
+36
+00:03:06,490 --> 00:03:09,040
+Now let's create a service.
+
+37
+00:03:13,680 --> 00:03:16,140
+Let's market with a service in addition.
+
+38
+00:03:17,930 --> 00:03:24,920
+So now our address microcircuits is almost ready, we just need to have restabilize inside our address
+
+39
+00:03:24,920 --> 00:03:28,220
+controller and that we will see in the next lecture.
+
+40
+00:03:28,970 --> 00:03:33,320
+So that's all for now, will proceed further in the next lecture.
+
+41
+00:03:33,680 --> 00:03:34,610
+Thank you very much.

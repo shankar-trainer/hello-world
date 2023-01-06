@@ -1,0 +1,147 @@
+1
+00:00:00,360 --> 00:00:02,830
+Hello and welcome back.
+
+2
+00:00:03,300 --> 00:00:07,640
+Now we are all set with our pre filter, so let's test it out.
+
+3
+00:00:08,040 --> 00:00:14,920
+But before that, let's put one point in our filter or here and one point in our student controller.
+
+4
+00:00:14,940 --> 00:00:16,980
+So this is inside our student service.
+
+5
+00:00:17,200 --> 00:00:24,450
+Now, first, we need to start the Eureka server and we will start the EPA gateway in debug mode and
+
+6
+00:00:24,450 --> 00:00:26,810
+also student service in the department.
+
+7
+00:00:27,360 --> 00:00:29,640
+And let's start the address service.
+
+8
+00:00:30,240 --> 00:00:31,180
+Ignore this error.
+
+9
+00:00:31,620 --> 00:00:35,390
+Let's start the service and wait for few seconds.
+
+10
+00:00:36,360 --> 00:00:37,560
+Let's jump to Eureka.
+
+11
+00:00:39,840 --> 00:00:42,140
+So just now, get with your let's reload.
+
+12
+00:00:42,720 --> 00:00:48,210
+Now we are all set, let's jump to both men and this is our goodbye for this one.
+
+13
+00:00:48,540 --> 00:00:52,170
+So in the headlines, we will put authorities on.
+
+14
+00:00:54,920 --> 00:00:56,870
+See, the value is ABC.
+
+15
+00:00:57,200 --> 00:01:00,560
+OK, just let me tell you, I am passing now on the same.
+
+16
+00:01:01,770 --> 00:01:08,580
+Let's go to see here it is coming and let's check the logs for our Epper Gateway, what we are seeing.
+
+17
+00:01:11,900 --> 00:01:17,750
+So we have type over here authorization, so let's correct it out, this one.
+
+18
+00:01:19,200 --> 00:01:21,460
+What here and here as well.
+
+19
+00:01:22,080 --> 00:01:23,680
+Let's ignore this one.
+
+20
+00:01:24,600 --> 00:01:26,030
+Let's stop the EPA gateway.
+
+21
+00:01:29,260 --> 00:01:32,200
+Let's start it, we are gaining the department.
+
+22
+00:01:32,710 --> 00:01:34,180
+This was the typo, so ignore it.
+
+23
+00:01:37,940 --> 00:01:40,470
+Let's turn to Eureka and see if we are all good.
+
+24
+00:01:40,490 --> 00:01:42,970
+Yes, now let's hit this request again.
+
+25
+00:01:45,100 --> 00:01:46,690
+And let's take the logs.
+
+26
+00:01:48,730 --> 00:01:55,990
+We are getting the ABC see now just click on the effort to pass the request to next point.
+
+27
+00:01:57,400 --> 00:02:02,640
+Now we are getting into the student service, you see the control coming to this particular gate mapping
+
+28
+00:02:02,650 --> 00:02:05,660
+that is inside our student service now.
+
+29
+00:02:05,680 --> 00:02:06,790
+Just click on the effort.
+
+30
+00:02:08,090 --> 00:02:10,010
+We got the response here.
+
+31
+00:02:12,000 --> 00:02:18,180
+So what we did over here is that we have this briefing tour before the EPA gets around the request to
+
+32
+00:02:18,180 --> 00:02:18,810
+our students.
+
+33
+00:02:19,030 --> 00:02:20,720
+So this is our three filter.
+
+34
+00:02:20,970 --> 00:02:23,890
+Now, in the next lecture, we will see the post filter.
+
+35
+00:02:24,390 --> 00:02:25,950
+So that's all for now.
+
+36
+00:02:26,260 --> 00:02:28,770
+Will proceed further in the next lecture.
+
+37
+00:02:29,250 --> 00:02:30,210
+Thank you very much.

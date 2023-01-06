@@ -1,0 +1,107 @@
+1
+00:00:00,510 --> 00:00:03,160
+Hello and welcome back.
+
+2
+00:00:03,630 --> 00:00:09,960
+Now we are ready with our very first feel, inclined to make the call to address service from the student
+
+3
+00:00:09,960 --> 00:00:10,380
+service.
+
+4
+00:00:10,680 --> 00:00:14,040
+So now let's run the micro services in our local mussy.
+
+5
+00:00:14,610 --> 00:00:18,240
+So let's start the student service and at the service.
+
+6
+00:00:19,300 --> 00:00:24,300
+Now lets them to Posman and let's call DeSapio to get the student body.
+
+7
+00:00:27,140 --> 00:00:28,100
+We got the response.
+
+8
+00:00:28,160 --> 00:00:34,220
+See, we are getting the address details as well, but now this time this address details are coming
+
+9
+00:00:34,400 --> 00:00:38,310
+using the open thing that we have Usrah in the student service.
+
+10
+00:00:38,690 --> 00:00:43,250
+This is what we are calling and this is actually calling the address service.
+
+11
+00:00:43,250 --> 00:00:45,020
+Using this, you are a lot better service.
+
+12
+00:00:45,320 --> 00:00:46,720
+And this you are right.
+
+13
+00:00:47,180 --> 00:00:49,040
+And that's why we are getting the address.
+
+14
+00:00:49,070 --> 00:00:50,920
+It is for that particular student.
+
+15
+00:00:51,500 --> 00:00:57,080
+So this is how we can use the phone line, the springboard application to make the rest calls to other
+
+16
+00:00:57,080 --> 00:00:58,190
+services now.
+
+17
+00:00:58,400 --> 00:01:01,290
+So, for example, you want to call another service.
+
+18
+00:01:01,290 --> 00:01:02,180
+So what do you need to do?
+
+19
+00:01:02,180 --> 00:01:08,000
+Is that just create another front line that is basically an interface or here inside the package and
+
+20
+00:01:08,240 --> 00:01:09,530
+do the mapping like this?
+
+21
+00:01:09,560 --> 00:01:11,570
+That's it for another Microsoft Office.
+
+22
+00:01:11,840 --> 00:01:14,260
+Or it can be any third party service as well.
+
+23
+00:01:14,300 --> 00:01:15,110
+It doesn't matter.
+
+24
+00:01:15,260 --> 00:01:21,110
+You just need you are all mapping and attitude matter like this in the declaratively.
+
+25
+00:01:22,250 --> 00:01:28,850
+So this is all about sprinklered, open-faced and how to use in the spring wood application, so that's
+
+26
+00:01:28,850 --> 00:01:32,510
+all but now will proceed further in the next lecture.
+
+27
+00:01:33,080 --> 00:01:33,980
+Thank you very much.

@@ -1,0 +1,255 @@
+1
+00:00:00,550 --> 00:00:03,140
+Hello and welcome back.
+
+2
+00:00:03,640 --> 00:00:11,350
+In this lecture, we will see what is microcircuits, so let's divide this micro and service that means
+
+3
+00:00:11,620 --> 00:00:15,850
+small service or you can say small springboard application.
+
+4
+00:00:17,150 --> 00:00:23,240
+Here I am taking the context of Springwood, because this course is all about micro services with Springwood
+
+5
+00:00:23,240 --> 00:00:29,900
+and sprinklered, but this concept of micro service is applicable for any of the programming language
+
+6
+00:00:30,170 --> 00:00:38,720
+or you are using any weapon work like start drop visored or any other sport python that promotes the
+
+7
+00:00:38,720 --> 00:00:40,820
+concept of micro service is seen.
+
+8
+00:00:42,330 --> 00:00:45,310
+So here is our university monolithic application.
+
+9
+00:00:45,630 --> 00:00:51,740
+So what we can do is that each of these components we can make as separate spring boot application,
+
+10
+00:00:52,050 --> 00:00:54,000
+so that will be microcircuits.
+
+11
+00:00:54,270 --> 00:00:56,910
+So, you know, example, we have six components.
+
+12
+00:00:56,910 --> 00:00:57,840
+So what will happen?
+
+13
+00:00:58,020 --> 00:01:05,370
+Student micro surveys address Microsoft Office and same like for faculty Professor Examinees unresolved.
+
+14
+00:01:05,610 --> 00:01:12,270
+And if any other component is that the same is applicable, each of these components will become separate
+
+15
+00:01:12,270 --> 00:01:16,260
+spring boot application, and that is called as microcircuits.
+
+16
+00:01:17,390 --> 00:01:20,820
+So we can say like we have student service at service and so on.
+
+17
+00:01:21,230 --> 00:01:28,310
+So likewise you can have hundreds of or thousands of micro services divided from the monolithic application.
+
+18
+00:01:29,210 --> 00:01:35,510
+So over monolithic application will be divided into small, small spring application that is called
+
+19
+00:01:35,510 --> 00:01:36,710
+as micro service.
+
+20
+00:01:37,340 --> 00:01:43,940
+Now let's see how this micro service concept is resolving the drawbacks of the monolithic application.
+
+21
+00:01:44,900 --> 00:01:46,940
+So the first is called complexity.
+
+22
+00:01:47,180 --> 00:01:48,230
+So what happens now?
+
+23
+00:01:48,240 --> 00:01:51,000
+We have a small, small springboard applications, right?
+
+24
+00:01:51,200 --> 00:01:54,610
+So we have small Corbis in the particular Microsoft Office.
+
+25
+00:01:54,890 --> 00:02:01,400
+So it is very easy to handle for the developer or for the team who is working on that particular Microsoft
+
+26
+00:02:01,400 --> 00:02:01,700
+Office.
+
+27
+00:02:02,720 --> 00:02:08,290
+If you have a change in one micro service, you just need to test that particular microcircuits, only
+
+28
+00:02:08,480 --> 00:02:15,530
+you don't need to test all the micro services so each developer or the team of the developers can focus
+
+29
+00:02:15,530 --> 00:02:17,720
+on the different different micro services.
+
+30
+00:02:18,140 --> 00:02:23,690
+Now, let's come to the second drawback of monolithic application, and that is tight coupling of the
+
+31
+00:02:23,690 --> 00:02:26,960
+components now here in the microcircuits architecture.
+
+32
+00:02:26,970 --> 00:02:27,680
+What happens?
+
+33
+00:02:27,890 --> 00:02:31,970
+We have a small, small springboard applications, right, running separately.
+
+34
+00:02:32,240 --> 00:02:33,080
+So what happens?
+
+35
+00:02:33,080 --> 00:02:39,610
+Say your student service is down, then your examination and result service will not have any impact.
+
+36
+00:02:39,890 --> 00:02:41,760
+Those services are still running.
+
+37
+00:02:42,500 --> 00:02:44,450
+So what happens in monolithic application?
+
+38
+00:02:44,450 --> 00:02:47,600
+Your complete application is going down while here.
+
+39
+00:02:47,610 --> 00:02:48,260
+What happens?
+
+40
+00:02:48,470 --> 00:02:52,150
+Just one micro service is going down, but others are running.
+
+41
+00:02:52,430 --> 00:02:56,450
+So you can focus on the particular service that is down and you can bring it up.
+
+42
+00:02:56,750 --> 00:03:00,840
+Till then, either micro services are running and are in function mode.
+
+43
+00:03:01,580 --> 00:03:07,250
+So here in micro services architecture, you don't have tight coupling between the micro services.
+
+44
+00:03:07,850 --> 00:03:09,210
+The is scalability.
+
+45
+00:03:09,590 --> 00:03:15,110
+So it's there, for example, at the decision time you can scale up the student service to handle the
+
+46
+00:03:15,110 --> 00:03:16,000
+huge traffic.
+
+47
+00:03:16,190 --> 00:03:21,950
+You don't need to scale other micro services like address, faculty examination or result.
+
+48
+00:03:21,950 --> 00:03:28,430
+Also on in the same way, when university is taking the examination, you just need to scale up your
+
+49
+00:03:28,430 --> 00:03:30,470
+examination, micro surveys.
+
+50
+00:03:30,680 --> 00:03:36,470
+And we know right in the cloud it's very easy to scale up or scale down the services.
+
+51
+00:03:37,280 --> 00:03:43,940
+Doesn't matter if you are using Amazon cloud, Microsoft major or Portal Cloud Foundry or any other
+
+52
+00:03:43,940 --> 00:03:44,840
+cloud platform.
+
+53
+00:03:45,620 --> 00:03:51,170
+In the same way, when university is announcing the results, you can scale down the other micro services
+
+54
+00:03:51,170 --> 00:03:57,620
+like student examination, and you can scale up the result Microsoft Office to handle the huge traffic
+
+55
+00:03:57,740 --> 00:03:59,210
+for that particular period.
+
+56
+00:03:59,930 --> 00:04:04,400
+So here you are not scaling up and scaling down all the Microsoft offices.
+
+57
+00:04:04,820 --> 00:04:06,320
+What happens in the monolithic?
+
+58
+00:04:06,320 --> 00:04:10,310
+You need to scale up complete application so all the components.
+
+59
+00:04:10,580 --> 00:04:16,430
+So here in the case of Microsoft architecture, you are just scaling up and scaling down the particular
+
+60
+00:04:16,430 --> 00:04:17,510
+micro services.
+
+61
+00:04:17,660 --> 00:04:23,300
+And by that you are saving the cost because we know that increasing the instances will cost you.
+
+62
+00:04:24,050 --> 00:04:29,320
+So these are the advantages of the Microsoft Office or the monolithic application.
+
+63
+00:04:30,080 --> 00:04:34,280
+So that's all for now will proceed further in the next lecture.
+
+64
+00:04:34,640 --> 00:04:35,570
+Thank you very much.

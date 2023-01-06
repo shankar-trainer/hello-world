@@ -1,0 +1,203 @@
+1
+00:00:00,330 --> 00:00:07,770
+Hello and welcome back for the upcoming lectures, Will this spring cloud open open-faced?
+
+2
+00:00:08,460 --> 00:00:15,330
+Now, before we jump to that, let's first understand what is spring cloud open-faced and why we need
+
+3
+00:00:15,330 --> 00:00:17,850
+to use innervate spring board application.
+
+4
+00:00:18,480 --> 00:00:22,230
+So here Open-Faced is restraint to make the right calls.
+
+5
+00:00:22,230 --> 00:00:23,850
+But what spring would application?
+
+6
+00:00:24,390 --> 00:00:30,210
+So using the open-faced, we can make wrist calls to other services, but almost spring board application.
+
+7
+00:00:30,840 --> 00:00:35,510
+Other services can be our micro services or any other third party service.
+
+8
+00:00:35,520 --> 00:00:36,400
+It doesn't matter.
+
+9
+00:00:36,960 --> 00:00:42,600
+So in the previous lectures, we have seen how to use vaped line to make the calls, but a springboard
+
+10
+00:00:42,600 --> 00:00:43,320
+application.
+
+11
+00:00:43,650 --> 00:00:49,260
+So you may be thinking that why we need to go with open vein when we can do the same thing with Verplank.
+
+12
+00:00:49,800 --> 00:00:56,100
+So that advantage of using the open is that it's providing a declaratively and it is making our life
+
+13
+00:00:56,100 --> 00:01:00,000
+very easy to make the race calls from what springboard application.
+
+14
+00:01:00,910 --> 00:01:05,330
+Now, let me explain you the declarative method that we have in Open-Faced.
+
+15
+00:01:05,610 --> 00:01:07,610
+Now let's go to one controller.
+
+16
+00:01:07,920 --> 00:01:11,550
+So this is our controller in any of this being good applications, right.
+
+17
+00:01:11,820 --> 00:01:16,230
+We have Riklis mapping on the controller level and then we have different mappings.
+
+18
+00:01:16,470 --> 00:01:18,810
+Get mapping, Boice mapping, input, mapping.
+
+19
+00:01:18,810 --> 00:01:19,070
+Right.
+
+20
+00:01:19,090 --> 00:01:19,910
+Whatever we have.
+
+21
+00:01:20,190 --> 00:01:25,660
+And here we are providing the path variable or if you have any query bottoms then we use at request.
+
+22
+00:01:25,660 --> 00:01:26,430
+But I'm an addition.
+
+23
+00:01:26,640 --> 00:01:32,190
+And if you have any request payload that is coming into the request in the format of Jizan, then we
+
+24
+00:01:32,190 --> 00:01:34,250
+use at request buddhi annotation.
+
+25
+00:01:34,590 --> 00:01:38,310
+So this is declaratively we are providing that TDP matter.
+
+26
+00:01:38,310 --> 00:01:44,310
+We are providing that you are a part variable all with the annotations and we are using in the method.
+
+27
+00:01:45,280 --> 00:01:51,590
+So open pain provides the same kind of declarative metal to make the response, yes, you heard it right.
+
+28
+00:01:52,000 --> 00:01:55,350
+This is the steps that the consumers are calling, right.
+
+29
+00:01:55,370 --> 00:01:59,200
+Whatever incoming requests basically to this particular springboard application.
+
+30
+00:01:59,260 --> 00:02:05,050
+Now, we can have the same kind of declarative declaratively that we have in our controller to make
+
+31
+00:02:05,050 --> 00:02:07,090
+the race calls to other services.
+
+32
+00:02:07,240 --> 00:02:11,380
+It can be our own micro services or any other third party service.
+
+33
+00:02:11,710 --> 00:02:17,620
+We will use the same kind of annotation because then also we are making the get call or call.
+
+34
+00:02:17,620 --> 00:02:21,730
+We are also passing the part variable request from credit parameters.
+
+35
+00:02:21,730 --> 00:02:22,810
+You can see on.
+
+36
+00:02:22,810 --> 00:02:25,890
+We are also passing the request in or in the format up decent.
+
+37
+00:02:26,320 --> 00:02:29,950
+We have already seen or hear right using the reply and we are passing this.
+
+38
+00:02:29,950 --> 00:02:30,540
+You are right.
+
+39
+00:02:30,730 --> 00:02:35,110
+And this part variable and this we can do with this kind of mapping is it.
+
+40
+00:02:35,500 --> 00:02:37,570
+And that's what Open-Faced provides.
+
+41
+00:02:37,570 --> 00:02:40,750
+And this is the advantage of Sprint out of one thing.
+
+42
+00:02:40,990 --> 00:02:45,910
+And that's what we are going to implement in the upcoming lectures in the student service.
+
+43
+00:02:46,850 --> 00:02:52,430
+To make you understand that, why, Open-Faced, we need to use we have already implemented this wetland
+
+44
+00:02:52,610 --> 00:02:58,610
+so that you will get the idea that how open open-faced makes our life very easy and you can easily compare
+
+45
+00:02:58,610 --> 00:03:00,240
+vaped lined with open fields.
+
+46
+00:03:01,130 --> 00:03:03,530
+So this is an overview of open field.
+
+47
+00:03:03,740 --> 00:03:09,260
+And in the upcoming lectures, we will use the open field in our student service to make the rest calls
+
+48
+00:03:09,260 --> 00:03:10,550
+to address service.
+
+49
+00:03:11,300 --> 00:03:12,770
+So that's all for now.
+
+50
+00:03:13,110 --> 00:03:15,650
+Will proceed further in the next lecture.
+
+51
+00:03:16,070 --> 00:03:16,940
+Thank you very much.

@@ -1,0 +1,143 @@
+1
+00:00:00,450 --> 00:00:03,210
+Hello and welcome back.
+
+2
+00:00:03,720 --> 00:00:06,390
+In this lecture, we will configure slewed.
+
+3
+00:00:07,230 --> 00:00:14,730
+Now, in our case, we have logs in our micro services and also we have logs in API Gateway application,
+
+4
+00:00:15,360 --> 00:00:18,650
+but we don't have any logs in Eureka server.
+
+5
+00:00:18,840 --> 00:00:24,830
+So basically we want to trace our request in our micro services as well as in API Gateway.
+
+6
+00:00:25,320 --> 00:00:31,530
+So we need to add the dependency in our micro services along with API Gateway application.
+
+7
+00:00:31,920 --> 00:00:34,630
+So that's what we are going to do in this lecture.
+
+8
+00:00:35,520 --> 00:00:40,280
+So here is the slewed dependency that is sprinklered starter sleuth.
+
+9
+00:00:40,830 --> 00:00:43,860
+So we need to add this dependency in our address service.
+
+10
+00:00:44,680 --> 00:00:50,840
+Also, we need to add this dependency on our student service as well as in our API Gateway application.
+
+11
+00:00:51,630 --> 00:00:58,620
+So make sure you are adding dependency in all your micro services along with the API Gateway application.
+
+12
+00:00:58,870 --> 00:01:04,400
+We don't need to add this in our Eureka server now for our micro services.
+
+13
+00:01:04,530 --> 00:01:11,340
+We don't need to do anything apart from adding the dependency, but for our API gateway, we just need
+
+14
+00:01:11,340 --> 00:01:14,930
+to do one configuration in our application properties file.
+
+15
+00:01:15,780 --> 00:01:19,010
+So let's turn to the application properties for our gateway.
+
+16
+00:01:19,350 --> 00:01:29,850
+And here we need to set one property for slewed and that is spring dot, slewed dot reactor instrumentation
+
+17
+00:01:29,850 --> 00:01:30,240
+type.
+
+18
+00:01:30,660 --> 00:01:34,320
+And here we need to satyrs decorate on each.
+
+19
+00:01:34,680 --> 00:01:35,220
+That's it.
+
+20
+00:01:35,650 --> 00:01:39,600
+So this is just required for our API Gateway application only.
+
+21
+00:01:39,870 --> 00:01:43,590
+We don't need to add this dependency for our micro services.
+
+22
+00:01:43,890 --> 00:01:49,710
+So make sure apart from adding the dependencies, you are adding this property in your application.
+
+23
+00:01:49,710 --> 00:01:56,370
+DOT properties file for API Gateway application and this is just required for our API Gateway application.
+
+24
+00:01:56,760 --> 00:02:00,330
+We don't need to add this dependency for micro services.
+
+25
+00:02:01,560 --> 00:02:07,380
+So these are the things we need to do to configure slewed now just for testing purpose.
+
+26
+00:02:07,470 --> 00:02:12,150
+I waited one long statement inside this metal of student service class.
+
+27
+00:02:12,570 --> 00:02:18,010
+It's just a simple statement that it is inside the students get by ID.
+
+28
+00:02:18,690 --> 00:02:20,310
+This is simple long statement.
+
+29
+00:02:20,520 --> 00:02:22,870
+I read it for testing purposes only.
+
+30
+00:02:23,580 --> 00:02:25,680
+So now we are ready with the slewed.
+
+31
+00:02:25,680 --> 00:02:27,150
+We have done the configuration.
+
+32
+00:02:27,540 --> 00:02:29,880
+So in the next lecture we will test it out.
+
+33
+00:02:30,000 --> 00:02:30,450
+Slewed.
+
+34
+00:02:31,830 --> 00:02:33,480
+So that's all for now.
+
+35
+00:02:33,780 --> 00:02:35,220
+We'll see you in the next lecture.
+
+36
+00:02:35,790 --> 00:02:36,720
+Thank you very much.

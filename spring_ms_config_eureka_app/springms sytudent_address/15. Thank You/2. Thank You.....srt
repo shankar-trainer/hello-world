@@ -1,0 +1,31 @@
+1
+00:00:00,480 --> 00:00:07,470
+Oh, yes, you have successfully completed the course, that is micro services with spring boot and
+
+2
+00:00:07,470 --> 00:00:08,290
+spring cloud.
+
+3
+00:00:09,150 --> 00:00:15,180
+Thank you so much for taking the calls and please don't forget to leave your feedback for the course.
+
+4
+00:00:16,090 --> 00:00:21,520
+If you have any question or suggestion, then please feel free to posting this question and answer board
+
+5
+00:00:21,670 --> 00:00:24,080
+and I will get back to you again.
+
+6
+00:00:24,340 --> 00:00:26,270
+Thank you so much for taking the course.
+
+7
+00:00:26,680 --> 00:00:27,590
+We'll see you soon.
+
+8
+00:00:27,880 --> 00:00:31,540
+Till then, happy learning and happy godding.

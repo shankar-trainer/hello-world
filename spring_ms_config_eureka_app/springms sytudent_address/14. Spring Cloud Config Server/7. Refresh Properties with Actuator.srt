@@ -1,0 +1,295 @@
+1
+00:00:00,600 --> 00:00:03,270
+Hello and welcome back.
+
+2
+00:00:03,870 --> 00:00:10,230
+In this lecture, we will see how about Microsoft, we can get the updated value for the property without
+
+3
+00:00:10,230 --> 00:00:14,300
+restarting it and for that we are going to use actuator.
+
+4
+00:00:14,850 --> 00:00:20,970
+So first thing is we need to add the springboard starter actuator dependency in the palm cortex, email
+
+5
+00:00:21,420 --> 00:00:22,670
+address microsatellites.
+
+6
+00:00:23,310 --> 00:00:28,140
+So make sure you are adding the actual dependency in the Palm TotEx email for the address.
+
+7
+00:00:28,140 --> 00:00:31,920
+Microcircuits now lets them do the properties.
+
+8
+00:00:33,040 --> 00:00:39,340
+So here we are going to use actuator to repossess the property values, and for that we need to expose,
+
+9
+00:00:39,410 --> 00:00:46,180
+reference and point and hence we don't need to restart our microscopist to get the updated values so
+
+10
+00:00:46,180 --> 00:00:47,990
+far that we need to set when property.
+
+11
+00:00:48,310 --> 00:00:50,290
+And that is management.
+
+12
+00:00:52,500 --> 00:00:54,080
+DOT points.
+
+13
+00:00:58,430 --> 00:01:04,880
+Dot web dot exposer dot include equal to difference.
+
+14
+00:01:06,230 --> 00:01:10,980
+So using the repressor endpoint update to order, we will replace the property values.
+
+15
+00:01:11,340 --> 00:01:13,470
+Now let's turn to address controller.
+
+16
+00:01:13,790 --> 00:01:15,650
+And here we are reading the property, right.
+
+17
+00:01:15,860 --> 00:01:19,430
+That is addressed, the test using the value annotation.
+
+18
+00:01:19,730 --> 00:01:26,180
+Now, whatever place you are using that value, in addition to read the property on that glass you need
+
+19
+00:01:26,180 --> 00:01:29,240
+to use the notation is at a different school.
+
+20
+00:01:29,630 --> 00:01:32,750
+So here at a different school.
+
+21
+00:01:33,840 --> 00:01:36,030
+So this annotation you need to mark.
+
+22
+00:01:36,360 --> 00:01:40,110
+So here we are reading that this property inside our address controls.
+
+23
+00:01:40,120 --> 00:01:42,530
+So we need to annotate with ATRISCO.
+
+24
+00:01:43,050 --> 00:01:48,390
+And if you look at this annotation, then this is coming from the sprinklered config.
+
+25
+00:01:48,690 --> 00:01:52,260
+OK, so this is the notation you need to mark.
+
+26
+00:01:52,920 --> 00:02:00,030
+The first thing you need to do is add to the dependency and expose the rephrasing point and mark the
+
+27
+00:02:00,030 --> 00:02:05,430
+controller with a different scope, annotation or whatever place you are reading the property using
+
+28
+00:02:05,430 --> 00:02:06,780
+at value annotation.
+
+29
+00:02:07,320 --> 00:02:09,040
+So that's all we need to do.
+
+30
+00:02:09,390 --> 00:02:12,820
+Now our config server and unica server.
+
+31
+00:02:13,560 --> 00:02:16,290
+OK, so let's start the address service.
+
+32
+00:02:17,750 --> 00:02:21,910
+Now for this profile, this address, the testing will do testing value.
+
+33
+00:02:22,160 --> 00:02:28,570
+OK, so let's wait for the address to get started and once that get started, will change this value.
+
+34
+00:02:29,330 --> 00:02:31,640
+So let's see in the logs.
+
+35
+00:02:31,650 --> 00:02:33,410
+Yes, order service got started.
+
+36
+00:02:34,380 --> 00:02:36,650
+Now, let's take the test.
+
+37
+00:02:37,380 --> 00:02:43,470
+Yes, we are getting the testing value now let's change it to change the value.
+
+38
+00:02:44,570 --> 00:02:48,740
+OK, now we will get testing, that's fine.
+
+39
+00:02:48,800 --> 00:02:51,890
+OK, this is what we want to resolve using the actuator.
+
+40
+00:02:52,370 --> 00:02:59,040
+So what we need to do in our address, micro surveys, OK, this is the model of a micro service, a
+
+41
+00:02:59,140 --> 00:03:00,860
+product less actuator.
+
+42
+00:03:02,500 --> 00:03:06,830
+It's less rigorous and this will be a deadbeat matter.
+
+43
+00:03:07,050 --> 00:03:10,040
+You don't need to pass anything else, just click on the same.
+
+44
+00:03:11,540 --> 00:03:16,040
+See, it is saying that this property value has been changed to address the noticed.
+
+45
+00:03:16,200 --> 00:03:24,380
+OK, now let's hit this gate to get the property value that is addressed to test and see if our address
+
+46
+00:03:24,380 --> 00:03:27,290
+Microsoft is now getting the updated value or not.
+
+47
+00:03:27,660 --> 00:03:31,420
+Just click on this and see now we are getting the change of the value.
+
+48
+00:03:31,700 --> 00:03:34,370
+We haven't restarted our address microsatellites.
+
+49
+00:03:34,670 --> 00:03:38,020
+Still, we got the updated value for this particular property.
+
+50
+00:03:38,450 --> 00:03:38,870
+Why?
+
+51
+00:03:39,200 --> 00:03:45,800
+Because we have used an actuator and we have used the attorney for desktop annotation that is provided
+
+52
+00:03:45,800 --> 00:03:47,300
+by sprinklered config.
+
+53
+00:03:48,140 --> 00:03:54,210
+So two things you need to do whenever you have a change in the property, first thing is hit this post
+
+54
+00:03:54,230 --> 00:03:59,990
+you order that is less refresh on the equator and that will show you what are the properties for those.
+
+55
+00:04:00,200 --> 00:04:06,080
+The value has been changed and then you can get updated value, whatever places you are using.
+
+56
+00:04:07,040 --> 00:04:14,030
+So let's remind what things we have done in this lecture at The Dependancy explores the difference and
+
+57
+00:04:14,030 --> 00:04:18,020
+point and whatever places you are hitting the property using to add value.
+
+58
+00:04:18,020 --> 00:04:22,260
+In addition, use the reference copy annotation or that class.
+
+59
+00:04:22,820 --> 00:04:28,280
+Now, after that, whenever you have a change in the property value, the first thing you need to do
+
+60
+00:04:28,280 --> 00:04:32,980
+is hit the actuator, refresh and point as a matter.
+
+61
+00:04:33,440 --> 00:04:34,550
+That's all you need to do.
+
+62
+00:04:35,150 --> 00:04:41,780
+After that, your micro service will get updated value for whatever properties you have changed up here.
+
+63
+00:04:41,780 --> 00:04:43,610
+We just changed one property value.
+
+64
+00:04:43,880 --> 00:04:50,210
+But if you change the multiple property values, that will be also get considered and your MIKOLA service
+
+65
+00:04:50,210 --> 00:04:53,120
+will get the updated value for all the properties.
+
+66
+00:04:54,250 --> 00:05:00,310
+Here, just for example, we took one property value, but this is applicable to multiple properties
+
+67
+00:05:00,310 --> 00:05:00,670
+as well.
+
+68
+00:05:01,300 --> 00:05:08,170
+You can change values for your multiple properties in one shot and then it does represent point that's
+
+69
+00:05:08,170 --> 00:05:08,980
+completely fine.
+
+70
+00:05:09,130 --> 00:05:14,080
+Actuator will work and you will get the updated property values for Microsoft's.
+
+71
+00:05:15,550 --> 00:05:22,320
+So this is how our micro surveys can get the updated value of property without restarting it using actuator,
+
+72
+00:05:22,960 --> 00:05:24,490
+so that's all for now.
+
+73
+00:05:24,730 --> 00:05:26,200
+We'll see you in the next lecture.
+
+74
+00:05:26,740 --> 00:05:27,670
+Thank you very much.

@@ -1,0 +1,95 @@
+1
+00:00:00,330 --> 00:00:02,910
+Hello and welcome back.
+
+2
+00:00:03,570 --> 00:00:10,680
+So now we are ready with our student and address services, so let's run the both services in the local
+
+3
+00:00:10,680 --> 00:00:15,720
+Muzzin, so let's start the address service and student service.
+
+4
+00:00:16,990 --> 00:00:24,640
+Wait for a few seconds till it get started and let them do Posman, so here will hit out the student
+
+5
+00:00:24,640 --> 00:00:28,420
+service, getting the student by ID and past ideas one.
+
+6
+00:00:28,810 --> 00:00:31,270
+Now, let's call this giddap.
+
+7
+00:00:32,080 --> 00:00:33,130
+We got the response.
+
+8
+00:00:33,400 --> 00:00:34,120
+Check it out.
+
+9
+00:00:34,450 --> 00:00:36,670
+See, along with the student it is.
+
+10
+00:00:36,940 --> 00:00:39,160
+We are getting the address details as well.
+
+11
+00:00:39,670 --> 00:00:46,290
+The reason is that inside our student service, we are calling the address service, using the Web client
+
+12
+00:00:46,420 --> 00:00:52,890
+and that's what we are populating while giving back the student details in this particular model class.
+
+13
+00:00:53,140 --> 00:00:57,790
+And if you want to check it out, then just go to the address service logs.
+
+14
+00:00:58,000 --> 00:01:03,010
+And here you can see it is going inside the gate by ID.
+
+15
+00:01:03,010 --> 00:01:07,390
+And the idea of address is one that is basically address ID equal to one.
+
+16
+00:01:08,490 --> 00:01:14,550
+So here we are calling the student service and internal student service is calling the address service,
+
+17
+00:01:14,550 --> 00:01:19,240
+using the vaped line and that's why we are seeing these logs of address service.
+
+18
+00:01:19,740 --> 00:01:23,810
+So this is how our micro services can communicate with each other.
+
+19
+00:01:24,060 --> 00:01:25,470
+You can use this template.
+
+20
+00:01:25,470 --> 00:01:28,520
+If you are familiar with, then you can use Web client as well.
+
+21
+00:01:28,800 --> 00:01:33,600
+But there is a more efficient way and more easy way to do this as well.
+
+22
+00:01:33,870 --> 00:01:37,450
+And that's what we are going to do in the upcoming lectures.
+
+23
+00:01:38,340 --> 00:01:42,690
+So that's all for now, will proceed further in the next lecture.
+
+24
+00:01:43,380 --> 00:01:44,310
+Thank you very much.

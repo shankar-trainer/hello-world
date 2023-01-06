@@ -1,0 +1,119 @@
+1
+00:00:00,600 --> 00:00:05,370
+Hello and welcome back for the upcoming lectures.
+
+2
+00:00:05,640 --> 00:00:12,660
+We will see how to use sprinklered open FEEN in the student service to make the rest calls to address
+
+3
+00:00:12,660 --> 00:00:13,130
+service.
+
+4
+00:00:13,800 --> 00:00:20,010
+So let's start by adding the sprinklered open-faced dependancy in the bombed out Zemel of student service.
+
+5
+00:00:20,550 --> 00:00:25,100
+Now, here we are going to use the spring cloud Vasan as three zero one.
+
+6
+00:00:25,530 --> 00:00:28,320
+This is the letters were done when I'm recording this lecture.
+
+7
+00:00:28,740 --> 00:00:34,410
+Whatever letters Vasan is available for you when you are watching this lecture, you can go for it in
+
+8
+00:00:34,410 --> 00:00:34,920
+this schools.
+
+9
+00:00:35,070 --> 00:00:40,440
+Whatever dependencies we are going to add for the spring cloud, this will be the version here.
+
+10
+00:00:40,560 --> 00:00:47,100
+I read it this vasan in the properties so that we don't need to repeat vasan in each and every dependancy.
+
+11
+00:00:47,340 --> 00:00:53,190
+And whenever we want to update Deverson, we can easily update by just putting the letters were sent
+
+12
+00:00:53,190 --> 00:00:53,720
+over here.
+
+13
+00:00:53,970 --> 00:00:55,380
+Now let's come down.
+
+14
+00:00:55,680 --> 00:00:58,170
+And this is the dependancy for sprinklered.
+
+15
+00:00:58,170 --> 00:00:58,920
+Open Feen.
+
+16
+00:00:59,400 --> 00:01:02,010
+This is sprinklered starter open-faced.
+
+17
+00:01:02,250 --> 00:01:04,110
+And this is the first entry zero one.
+
+18
+00:01:04,110 --> 00:01:07,290
+This is coming from the property that we added or here.
+
+19
+00:01:08,440 --> 00:01:16,270
+This one now, after the dependancy, let's create a separate package for the faint line, so let's
+
+20
+00:01:16,270 --> 00:01:22,390
+say the packages come in, people start faint lines.
+
+21
+00:01:23,980 --> 00:01:29,260
+Now, using this package, we need to enable the faint lines.
+
+22
+00:01:29,270 --> 00:01:34,480
+So let's go to our main class and we will use the annotation as enable.
+
+23
+00:01:38,390 --> 00:01:45,920
+Faint lines and provide the package, that's it, so by using this holiday season, we are seeing that
+
+24
+00:01:46,130 --> 00:01:49,520
+we are going to use the front lines in this spring season.
+
+25
+00:01:49,790 --> 00:01:53,030
+And this is the package that we have over faint lines.
+
+26
+00:01:53,420 --> 00:01:59,180
+So Fenland is basically an interface and that's what we are going to create in the next lecture.
+
+27
+00:01:59,510 --> 00:02:04,700
+This is the configuration part that we have done, adding the dependancy, creating the package and
+
+28
+00:02:04,700 --> 00:02:08,060
+enabling the front lines in our spring board application.
+
+29
+00:02:09,100 --> 00:02:13,330
+So that's all for now will proceed further in the next lecture.
+
+30
+00:02:13,960 --> 00:02:14,860
+Thank you very much.

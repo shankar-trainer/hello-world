@@ -1,0 +1,295 @@
+1
+00:00:00,390 --> 00:00:08,760
+Hello and welcome back for the upcoming lectures, we are going to focus on the blind side load balancing.
+
+2
+00:00:09,950 --> 00:00:15,800
+So for clients, I'd load balancing spring provides spring cloud load balancer, and that's what we
+
+3
+00:00:15,800 --> 00:00:18,470
+are going to implement in the upcoming lectors.
+
+4
+00:00:19,360 --> 00:00:25,090
+But before that, let's first understand what is Clydeside load balancing and why we need it.
+
+5
+00:00:25,960 --> 00:00:30,450
+So we know these are the micro services, we have student and address service.
+
+6
+00:00:30,790 --> 00:00:38,220
+So, for example, the two instances where our address service, one running on the Ejiro to port and
+
+7
+00:00:38,220 --> 00:00:39,820
+the other one is running on the port.
+
+8
+00:00:39,820 --> 00:00:41,020
+Ejiro, 80.
+
+9
+00:00:42,410 --> 00:00:46,660
+Now, we know, for example, student service is making the right call to address service.
+
+10
+00:00:47,090 --> 00:00:52,820
+For example, there are a thousand requests per second going from the student service to address service.
+
+11
+00:00:53,150 --> 00:00:59,120
+So what will happen if all the thousand requests will go to this particular instance, which is running
+
+12
+00:00:59,120 --> 00:01:00,850
+on the point eight zero eight two?
+
+13
+00:01:01,190 --> 00:01:03,880
+It will obviously slow down the performance of this instance.
+
+14
+00:01:03,890 --> 00:01:04,160
+Right.
+
+15
+00:01:04,520 --> 00:01:09,430
+So for this particular instance, it will be hard to handle this many requests per second.
+
+16
+00:01:09,650 --> 00:01:14,920
+So obviously, Edra service will take some more time to respond back to student service.
+
+17
+00:01:15,320 --> 00:01:21,320
+Now, on the other hand, this instance, which is running on the Port, Ejiro, 83, is the ideal and
+
+18
+00:01:21,320 --> 00:01:22,090
+doing nothing.
+
+19
+00:01:22,550 --> 00:01:28,330
+So thousand requests are going to this instance, but nothing is going on this particular instance.
+
+20
+00:01:29,150 --> 00:01:31,220
+So this is not what we wanted to have.
+
+21
+00:01:31,220 --> 00:01:31,550
+Right.
+
+22
+00:01:31,820 --> 00:01:35,360
+We want to help load balancing between these two instances.
+
+23
+00:01:35,750 --> 00:01:41,210
+Hundred requests coming from student service to address service is called as load number of requests
+
+24
+00:01:41,210 --> 00:01:41,510
+coming.
+
+25
+00:01:41,510 --> 00:01:41,810
+Right.
+
+26
+00:01:42,050 --> 00:01:47,690
+So what we want to have is that 500 requests should go to this particular instance and another five
+
+27
+00:01:47,690 --> 00:01:52,640
+requests would go to this particular instance, which is running on the port a 083.
+
+28
+00:01:53,090 --> 00:01:59,480
+So here we are balancing the load across all the instances of the particular micro service.
+
+29
+00:01:59,660 --> 00:02:06,770
+So this is load balancing our requests coming is you can see his load and we are balancing across all
+
+30
+00:02:06,770 --> 00:02:09,770
+the instances for our micro service here.
+
+31
+00:02:09,770 --> 00:02:14,900
+We have to we can have three, five, 10 instances for our micro services.
+
+32
+00:02:16,130 --> 00:02:22,910
+So dividing total load, total request coming to our Miklós service across all the instances, we are
+
+33
+00:02:22,910 --> 00:02:24,770
+calling it as load balancing.
+
+34
+00:02:25,660 --> 00:02:31,060
+Now, here, a student service is calling the address service so we can say that student services on
+
+35
+00:02:31,060 --> 00:02:37,630
+that line site and if we implement this load balancing in the student service, then we can see it as
+
+36
+00:02:37,750 --> 00:02:39,390
+blindsight load balancing.
+
+37
+00:02:39,670 --> 00:02:43,210
+And for that, spring provides spring cloud load balancer.
+
+38
+00:02:44,520 --> 00:02:50,340
+Now we know that we are having the Eureka server, so each of our micro surveys will register itself
+
+39
+00:02:50,340 --> 00:02:53,700
+with the Eureka server, so that part we have already seen.
+
+40
+00:02:54,030 --> 00:03:00,660
+So here, what happens to that micro service with the help of Eureka server will identify that there
+
+41
+00:03:00,660 --> 00:03:02,820
+are two instances of address service.
+
+42
+00:03:03,060 --> 00:03:10,410
+And now using the cloud load balancer, it will divide the request, basically the load across the instances
+
+43
+00:03:10,410 --> 00:03:11,660
+of the address service.
+
+44
+00:03:11,670 --> 00:03:13,980
+In our case, we have two instances.
+
+45
+00:03:13,980 --> 00:03:15,210
+Port address service.
+
+46
+00:03:16,360 --> 00:03:22,360
+So the law that basically the request will get divided across these two instances, 500 will go to this
+
+47
+00:03:22,360 --> 00:03:28,810
+one and another 500 will go to this one, and that will be done using the help of spring cloud load
+
+48
+00:03:28,810 --> 00:03:31,510
+balancer along with Udei Castevet.
+
+49
+00:03:32,950 --> 00:03:37,150
+So here the spring cloud load balancer follows the Round-Robin matter.
+
+50
+00:03:37,390 --> 00:03:42,730
+So, for example, there are four requests per second going from the student surveys to address surveys.
+
+51
+00:03:43,000 --> 00:03:43,900
+So what will happen?
+
+52
+00:03:44,120 --> 00:03:50,350
+The first request will go to this instance, which is running on the way to the second will go on this
+
+53
+00:03:50,350 --> 00:03:51,430
+one again.
+
+54
+00:03:51,430 --> 00:03:57,670
+The third one will go to the first, this one and fourth will go to this particular instance and it
+
+55
+00:03:57,670 --> 00:03:58,580
+will repeat again.
+
+56
+00:03:58,720 --> 00:04:01,000
+So this is Round-Robin here.
+
+57
+00:04:01,000 --> 00:04:02,050
+We have two instances.
+
+58
+00:04:02,230 --> 00:04:05,350
+So, for example, if we have three instances, then what will happen?
+
+59
+00:04:05,680 --> 00:04:11,060
+The first request will go to first node, or you can say first instance, the second will go to second,
+
+60
+00:04:11,080 --> 00:04:15,430
+third will go to third and again, fourth will go to first instance.
+
+61
+00:04:17,080 --> 00:04:22,620
+Now, we know that in the student service, we are using the open phone to call the address service,
+
+62
+00:04:22,960 --> 00:04:28,420
+so we need to implement the spring cloud load balancer in the student service along with the spring
+
+63
+00:04:28,420 --> 00:04:29,520
+cloud open-faced.
+
+64
+00:04:29,710 --> 00:04:33,010
+And that's what we are going to do in the upcoming lectures.
+
+65
+00:04:33,290 --> 00:04:39,520
+We need to configure our open screen along with the spring cloud load balancer so that we can achieve
+
+66
+00:04:39,520 --> 00:04:45,190
+the client side load balancing in our student service while calling our address micro service.
+
+67
+00:04:46,420 --> 00:04:52,300
+Atleo sprinklered was providing the ribbon, but now it's being deprecated and we are not going to use
+
+68
+00:04:52,300 --> 00:04:58,240
+that incident that we are going to implement, the latest one that is bringing cloud load balancer.
+
+69
+00:04:59,440 --> 00:05:05,320
+So this is the client side load balancing and why we need it and how to implement this in our micro
+
+70
+00:05:05,320 --> 00:05:05,890
+services.
+
+71
+00:05:06,120 --> 00:05:09,110
+That's what we are going to start from the next lecture.
+
+72
+00:05:09,550 --> 00:05:11,140
+So that's all for now.
+
+73
+00:05:11,360 --> 00:05:13,780
+Will proceed further in the next lecture.
+
+74
+00:05:14,320 --> 00:05:15,250
+Thank you very much.

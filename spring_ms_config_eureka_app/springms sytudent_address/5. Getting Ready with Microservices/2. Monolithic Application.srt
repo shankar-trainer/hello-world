@@ -1,0 +1,263 @@
+1
+00:00:00,550 --> 00:00:03,260
+Hello and welcome back.
+
+2
+00:00:04,030 --> 00:00:09,360
+In this lecture, we will have an overview of our university monolithic application.
+
+3
+00:00:10,150 --> 00:00:16,670
+So in the upcoming lectures, we will create the micro services out of this university monolithic application.
+
+4
+00:00:17,020 --> 00:00:21,740
+But before that, let's have a quick overview of this monolithic application.
+
+5
+00:00:22,270 --> 00:00:26,730
+So this is a springboard application, and I'm using the version as two for two.
+
+6
+00:00:27,310 --> 00:00:28,420
+This is the latest version.
+
+7
+00:00:28,420 --> 00:00:33,460
+When I'm recording this lecture, you can use the latest version, whatever is available when you are
+
+8
+00:00:33,460 --> 00:00:34,730
+watching this lecture.
+
+9
+00:00:35,200 --> 00:00:37,280
+And here we have a couple of dependencies.
+
+10
+00:00:37,600 --> 00:00:43,150
+This is Web dependency because our monolithic application is having the right steps and spinning data
+
+11
+00:00:43,660 --> 00:00:45,400
+to connect our MySQL database.
+
+12
+00:00:45,760 --> 00:00:51,310
+We will use the data to connect to our MySQL database and we have Mystikal Connector.
+
+13
+00:00:51,550 --> 00:00:56,620
+And that's obvious because we are going to connect to MySQL database from our spring boot application.
+
+14
+00:00:56,950 --> 00:00:59,530
+Now let's go to the application properties.
+
+15
+00:01:00,870 --> 00:01:06,210
+So this is having the properties to connect over MySQL database that is running in our local machine
+
+16
+00:01:06,390 --> 00:01:09,930
+on board three three zero six and the schema is university.
+
+17
+00:01:10,530 --> 00:01:13,100
+Now, let's turn to our coding part.
+
+18
+00:01:13,590 --> 00:01:16,530
+So here we have our main class.
+
+19
+00:01:17,500 --> 00:01:23,500
+So this is another tidbit at Springwood application, we have components for our controller and service
+
+20
+00:01:23,500 --> 00:01:24,030
+packages.
+
+21
+00:01:24,340 --> 00:01:30,880
+We have this and it is going to scan our GPS and it is and one package for our GPS repository.
+
+22
+00:01:30,890 --> 00:01:33,690
+So we have enabled Gibeah repositories as well.
+
+23
+00:01:34,480 --> 00:01:39,220
+Now for the rest, because obviously we need some model classes or you can support your classes.
+
+24
+00:01:39,220 --> 00:01:40,910
+Right, for the request and response.
+
+25
+00:01:41,380 --> 00:01:45,010
+So here we have one model class to create that student.
+
+26
+00:01:45,020 --> 00:01:47,230
+So it's having some feel for the student to create.
+
+27
+00:01:47,470 --> 00:01:54,190
+So this is basically our design that we are going to pass as request payload and we are returning the
+
+28
+00:01:54,190 --> 00:01:59,290
+student details using this model class back to the consumer with hitting our three steps.
+
+29
+00:01:59,560 --> 00:02:01,960
+So this will get converted into the Gissen.
+
+30
+00:02:02,620 --> 00:02:07,630
+Here we have a repository for address and student and we have ended classes.
+
+31
+00:02:08,290 --> 00:02:15,130
+So this is addressing entity class map to arrestable that we have in our database and map the corresponding
+
+32
+00:02:15,130 --> 00:02:15,670
+columns.
+
+33
+00:02:16,060 --> 00:02:19,930
+And here is our student entity, class map to student table.
+
+34
+00:02:20,290 --> 00:02:28,180
+And we have one to one mapping from our student to address entity because we have a relationship between
+
+35
+00:02:28,180 --> 00:02:32,020
+student and address table that we have in our school database.
+
+36
+00:02:33,050 --> 00:02:37,440
+Now, let's go to the controller to look at the apps that we have.
+
+37
+00:02:37,790 --> 00:02:39,730
+So here we have two apps.
+
+38
+00:02:40,280 --> 00:02:46,460
+First is to create the second, and the second is to get the student by now here while creating the
+
+39
+00:02:46,460 --> 00:02:46,910
+student.
+
+40
+00:02:47,000 --> 00:02:52,380
+We will get the request details in this model class and we'll pass it to overservice later.
+
+41
+00:02:53,240 --> 00:02:59,000
+Here we are first inserting into the address table and we are obtaining the primary job at this table
+
+42
+00:02:59,000 --> 00:03:02,200
+and then we are inserting the new recording to the student table.
+
+43
+00:03:02,420 --> 00:03:07,970
+So this is a very simple operation to create the student along with the address details here we are
+
+44
+00:03:07,970 --> 00:03:10,340
+using the address in student repository.
+
+45
+00:03:10,610 --> 00:03:14,000
+Now, our second option is to get this done by Idy.
+
+46
+00:03:14,480 --> 00:03:19,760
+And here we are using student repository to find the student body and using this model.
+
+47
+00:03:19,760 --> 00:03:23,670
+Plus we are returning back to the consumer in the format of Jason.
+
+48
+00:03:24,380 --> 00:03:26,460
+So this is very basic springboard application.
+
+49
+00:03:26,480 --> 00:03:33,560
+You can see having the dependencies, the properties to connect to MySQL database using this data and
+
+50
+00:03:33,560 --> 00:03:36,320
+Kappelhoff configuration controller in services.
+
+51
+00:03:36,650 --> 00:03:39,530
+Now let's run this monolithic application.
+
+52
+00:03:41,460 --> 00:03:42,090
+Wait for it.
+
+53
+00:03:43,150 --> 00:03:44,950
+Now let's turn to paceman.
+
+54
+00:03:45,900 --> 00:03:54,940
+So here, the student able to get the student by ID, so let's see, we got the student details were
+
+55
+00:03:54,940 --> 00:03:57,890
+added equal to one along with the address details.
+
+56
+00:03:58,680 --> 00:04:04,140
+So here we are, good with our monolithic application that is universally monolithic application.
+
+57
+00:04:04,350 --> 00:04:10,960
+Now, in the upcoming lectures, we will create the micro services out of this monolithic application.
+
+58
+00:04:11,520 --> 00:04:16,740
+So here we are going to create two micro services out of this monolithic application.
+
+59
+00:04:16,760 --> 00:04:20,990
+One is addressed micro service, and second is student micro service.
+
+60
+00:04:21,420 --> 00:04:24,810
+So that's what we are going to do in the upcoming lectures.
+
+61
+00:04:26,060 --> 00:04:29,870
+You will get this university application along with this lecture.
+
+62
+00:04:30,170 --> 00:04:36,140
+So download the source code and importing your ideas and just have a look, because this is very simple,
+
+63
+00:04:36,430 --> 00:04:37,510
+good application.
+
+64
+00:04:38,180 --> 00:04:39,680
+So that's all for now.
+
+65
+00:04:39,890 --> 00:04:42,320
+Will proceed further in the next lecture.
+
+66
+00:04:42,680 --> 00:04:43,610
+Thank you very much.

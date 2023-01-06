@@ -1,0 +1,83 @@
+1
+00:00:00,450 --> 00:00:03,010
+Hello and welcome back.
+
+2
+00:00:03,480 --> 00:00:08,880
+Let's have a look at the database structure that we are going to use in the upcoming lecture's.
+
+3
+00:00:10,370 --> 00:00:18,110
+So here we have one schema that is university, and inside that we have two tables, address and student.
+
+4
+00:00:18,800 --> 00:00:22,460
+So this is our address table and here we are having three columns.
+
+5
+00:00:23,270 --> 00:00:29,570
+This is basically the primary Geof address table and auto increment by my secretaries and other two
+
+6
+00:00:29,570 --> 00:00:29,990
+columns.
+
+7
+00:00:29,990 --> 00:00:32,660
+We have street and city now.
+
+8
+00:00:32,750 --> 00:00:35,150
+And another table we have is student table.
+
+9
+00:00:35,570 --> 00:00:38,620
+And here we have a couple of columns like Student ID.
+
+10
+00:00:38,960 --> 00:00:42,220
+So this is primarily an auto increment by MySQL database.
+
+11
+00:00:42,500 --> 00:00:46,210
+We have a first name column, last name, email and address ID.
+
+12
+00:00:46,580 --> 00:00:51,470
+So this is basically Fortensky and this is primary of our address table.
+
+13
+00:00:52,680 --> 00:00:58,620
+So here student is having addressed and that is the relationship between our student and address table
+
+14
+00:00:59,250 --> 00:01:03,100
+as of now, what the tables are having two rows in the address table.
+
+15
+00:01:03,120 --> 00:01:07,040
+We have two rows and in student table as well, we have two rows.
+
+16
+00:01:07,320 --> 00:01:09,240
+So we have two students.
+
+17
+00:01:09,240 --> 00:01:13,860
+And it's details in our database and the schema is university.
+
+18
+00:01:14,310 --> 00:01:19,180
+So this is our MySQL database that we are going to use in the upcoming lectures.
+
+19
+00:01:19,740 --> 00:01:21,270
+So that's all for now.
+
+20
+00:01:21,420 --> 00:01:23,910
+Will proceed further in the next lecture.
+
+21
+00:01:24,120 --> 00:01:25,050
+Thank you very much.
