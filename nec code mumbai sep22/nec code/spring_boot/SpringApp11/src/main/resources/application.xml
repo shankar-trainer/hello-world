@@ -1,0 +1,79 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="user" class="com.abc.UserInfo">
+		<property name="userId" value="8778878"></property>
+		<property name="userName" value="arvind kumar"></property>
+		<property name="userLocation" value="bhilwara"></property>
+	</bean>
+
+	<bean id="user1" class="com.abc.UserInfo" p:userId="1001"
+		p:userName="mohammad aarif" p:userLocation="mumbai">
+
+	</bean>
+
+	<bean class="com.abc.Book">
+		<property name="isbn" value="67677676"></property>
+		<property name="bname" value="Spring In Action"></property>
+		<property name="author" value="Craig Wall"></property>
+		<property name="cost" value="2400"></property>
+		<property name="address" ref="address1"></property>
+	</bean>
+
+	<bean id="address1" class="com.abc.PublicationAddress">
+		<property name="addId" value="78877887"></property>
+		<property name="city" value="pune"></property>
+		<property name="pin" value="456666"></property>
+		<property name="state" value="maharastra"></property>
+	</bean>
+
+
+	<bean class="com.abc.Product">
+		<property name="productId" value="70002"></property>
+		<property name="productName" value="Vehicle"></property>
+		<property name="productLocation" value="mumbai"></property>
+
+		<property name="prdList">
+			<list>
+				<value>yamaha bike</value>
+				<value>Honda shine</value>
+				<value>Honda scooty</value>
+				<value>Yamaha Pulsar</value>
+				<value>Royal Enfield Bullet</value>
+				<value>KTM</value>
+				<value>hayabhusa</value>
+				<value>Royal Enfield Bullet</value>
+			</list>
+		</property>
+
+		<property name="prdSet">
+			<set>
+				<value>Atlas cycle</value>
+				<value>Avon cycle</value>
+				<value>Neelam cycle</value>
+				<value>Atlas cycle</value>
+			</set>
+		</property>
+		<property name="prdMap">
+			<map>
+				<entry key="500000" value="alto"></entry>
+				<entry key="700000" value="maruti suzuki"></entry>
+				<entry key="500000" value="celario"></entry>
+				<entry key="400000" value="maruti 800"></entry>
+				<entry key="100000" value="tata nano"></entry>
+			</map>
+		</property>
+	</bean>
+
+
+</beans>

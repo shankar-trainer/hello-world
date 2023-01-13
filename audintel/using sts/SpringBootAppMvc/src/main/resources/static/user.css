@@ -1,0 +1,25 @@
+label{
+  float:left;	
+ width:120px;	
+}
+
+input{
+   width:100px;
+}
+form{
+	padding: 2em;
+	border:solid;
+	width:30%;
+	color:black;
+	background-color:yellow;
+}
+body{
+	background-color: lightyellow;
+}
+table, th, td {
+	width:40%;
+	margin-left:200px;
+	 background-color: yellow;
+	 color:blue;
+  border: 1px solid red;
+}
