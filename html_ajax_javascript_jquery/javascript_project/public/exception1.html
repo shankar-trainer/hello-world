@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+</head>
+<body>
+<script type="text/javascript">
+	function division(a,b){
+
+		try{
+           if(b==0)
+           	throw('can not be divided by zero')
+           else
+           	alert('division is '+(a/b))
+		}
+
+		catch(error){
+          alert('error is '+error)
+		}
+	}
+
+ //division(11,2)
+ //division(11,0)
+
+function division1(){
+  var n1 = document.getElementById('n1').value
+  var n2 = document.getElementById('n2').value
+  var errn1 = document.getElementById('err_n1')
+  var errn2 = document.getElementById('err_n2')
+       
+       if (n1== '' || n1 <= 0) {
+    errn1.innerHTML='no1  is blank or zero'
+    return false
+     }
+
+     else   if (isNaN(n1)) {
+    errn1.innerHTML=n1+' is not a number'
+    return false
+     }
+     
+     /*else  if (n2== '' || n2 <= 0) {
+    errn2.innerHTML='no2  is blank or zero'
+    return false
+     }*/
+     
+     else   if (isNaN(n2)) {
+    errn2.innerHTML=n2+' is not a number'
+    return false
+     }
+     
+    else {
+
+		try{
+           if(n2==0)
+           	//throw('can not be divided by zero')
+           	throw new Error('can not be divided by zero')
+           else
+           	//alert('division is '+(n1/n2))
+           document.getElementById('n3').value=n1/n2
+		}
+
+		catch(error){
+          alert('error is '+error)
+          alert(error.name+' ---- '+error.message)
+		}
+		finally{
+			alert('finally block called')
+		}
+	}
+}
+
+</script>
+<form action="" onsubmit="return validate()" name="form">
+     <label>Enter No1</label>
+     <input id="n1"/>
+     <span id='err_n1'></span>
+     <br>
+
+     <label>Enter No2</label>
+     <input id="n2"/>
+     <span id='err_n2'></span>
+     <br>
+     
+     <label>Result</label>
+     <input id="n3"/>
+     <br>
+     <input type="button" value='division' onclick="division1()">
+     <br>
+     
+    
+
+</body>
+</html>

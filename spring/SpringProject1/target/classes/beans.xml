@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="hello1" class="org.tvscredit.model.Hello"
+		lazy-init="true">
+
+	</bean>
+
+	<!-- <bean id="emp1" class="org.tvscredit.model.Employee" scope="singleton"> -->
+	<bean id="emp1" class="org.tvscredit.model.Employee"
+		init-method="startup" scope="singleton" autowire="byName"
+		lazy-init="true">
+		<property name="empId" value="10011"></property>
+		<property name="empName" value="virendra kumar"></property>
+		<property name="empsalary" value="90000"></property>
+		<!-- <property name="address" ref="addr" ></property> -->
+	</bean>
+
+	<!-- <bean id="addr" class="org.tvscredit.model.Address"> -->
+	<bean id="address" class="org.tvscredit.model.Address">
+		<property name="addrId" value="1"></property>
+		<property name="addrStreet" value="sector21"></property>
+		<property name="addrCity" value="noida"></property>
+		<property name="addrPin" value="7878878"></property>
+	</bean>
+
+
+	<bean id="book1" class="org.tvscredit.model.Book">
+		<constructor-arg index="0" name="isbn" value="67766"></constructor-arg>
+		<constructor-arg index="1" name="bname"
+			value="java for beginner"></constructor-arg>
+		<constructor-arg index="2" name="author"
+			value="p k sharma"></constructor-arg>
+		<constructor-arg index="3" name="cost" value="450.0f"></constructor-arg>
+	</bean>
+
+
+</beans>

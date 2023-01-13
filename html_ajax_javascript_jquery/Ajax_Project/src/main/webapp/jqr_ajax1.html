@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#id1').mouseover(function(){
+			$.ajax({
+				url : 'hello.txt',
+				success : function(result) {
+					$('#id1').html(result)
+				}
+			})
+
+		})
+
+	})
+</script>
+</head>
+<body>
+
+	<div id='id1'>click here</div>
+</body>
+</html>

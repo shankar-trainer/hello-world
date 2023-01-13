@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.col {
+	float: left;
+	width: 28%;
+	border: solid 1px blue;
+	text-align: center;
+	height: 300px;
+}
+</style>
+<script>
+	function getData1() {
+		console.log('data1 called')
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "apple.txt")
+
+		xhr.onreadystatechange = function() {
+			console.log('onreadystatechange called')
+
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				document.getElementById('id1').innerHTML = xhr.responseText
+			}
+		};
+		xhr.send(null)
+	}
+	function getData2() {
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "orange.txt")
+
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				document.getElementById('id2').innerHTML = xhr.responseText
+			}
+		}
+		xhr.send(null)
+
+	}
+	function getData3() {
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "banana.txt")
+
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				document.getElementById('id3').innerHTML = xhr.responseText
+			}
+		}
+		xhr.send(null)
+
+	}
+</script>
+</head>
+<body>
+		<div class='col'> 
+		<img src='image/apple.jpg' width='200'			height='150' />
+			<div id='id1' onmouseover="getData1()">
+			  click here for detail
+			</div>
+		</div> 
+		
+		<div class='col'> <img src='image/orange.jpg' width='200' height='150' />
+			<div id='id2' onmouseover="getData2()">
+			click here for detail
+			</div>
+		</div> 
+		
+		<div class='col'> <img src='image/banana.jpg' width='200'
+			height='150' />
+			<div id='id3' onmouseover="getData3()">
+			click here for detail
+			</div>
+		</div>
+
+</body>
+</html>

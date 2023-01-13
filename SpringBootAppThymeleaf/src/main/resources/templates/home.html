@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" media="all" 
+          th:href="@{/style1.css}" />
+<head>
+<title>Title of the document</title>
+</head>
+<body>
+<h1>User page </h1>
+	<form action="#" th:action="@{register}" method="post">
+	<h1>User Form</h1>
+		<label>Enter Id</label>
+		<input th:value="${userId}"  name="userId"><br>
+		
+		<label>Enter Name</label>
+		<input th:value="${userName}" name="userName"><br>
+		
+		<label>Enter Salary</label>
+		<input th:value="${userSalary}" name="usersalary"><br>
+		<input type='submit' value='Login'>
+		<input type='reset' value='Cancel'>
+	
+	</form>
+</body>
+</html>
+

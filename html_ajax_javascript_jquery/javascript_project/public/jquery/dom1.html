@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+				$('#btn1').click(function(){
+                  $('li').css('color','blue')
+                  $('li').parent().css('background','red')
+                  $('li').parent().css('width','20%')
+                  $('li').parent().css('padding','20px')
+                  })})
+
+		$(function(){
+				$('#btn2').click(function(){
+                  $('div').css('border','double red 20px')
+                  $('p').siblings().css('border','solid  10px')
+                  })})
+
+              </script>
+</head>
+<body>
+<div>
+<p>This is paragraph1
+	<br>
+<p>this is paragraph2	
+<ul>
+	<li>linux os</li>
+	<li>mac os</li>
+	<li>unix os</li>
+	<li>window os</li>
+</ul>
+
+<span>cities are </span>
+
+<ol>
+  	<li>chennai</li>
+  	<li>madurai</li>
+  	<li>kolkotta</li>
+  	<li>mumbai</li>
+  </ol>	
+
+</div>
+
+<button id='btn1'>change list</button>
+<button id='btn2'>change div</button>
+</body>
+</html>

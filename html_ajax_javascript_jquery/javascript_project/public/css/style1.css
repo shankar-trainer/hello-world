@@ -1,0 +1,15 @@
+label{
+    float:left;
+    width:120px;
+ }
+ input{
+    width:110px;
+    margin-bottom: 5px;
+ }
+ form{
+   margin-left: 200px;
+   margin-top:100px;
+   border:solid 5px;
+   padding:30px;
+   width:40%;
+ }

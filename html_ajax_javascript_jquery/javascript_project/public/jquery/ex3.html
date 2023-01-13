@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		@import url('../css/style1.css')
+	</style>
+	<style type="text/css">
+		form{
+			background:yellow;
+			width:25%;
+		}
+		body{
+			background-color: lightyellow;
+		}
+	</style>
+	<title></title>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+    $(function(){
+    	$('#n1').click(
+               function(){
+               	alert("no1 is "+$('#n1').val())
+               }
+    		)
+    })
+    $(function(){
+    	$('#n2').click(
+               function(){
+               	alert("no2 is "+$('#n2').val())
+               }
+    		)
+    })
+
+ $(function(){
+    	$('#addition').click(
+               function(){
+               	var a=$('#n1').val()
+               	var b=$('#n2').val()
+ $('#n3').val(parseFloat(a)+parseFloat(b))
+               }
+    		)
+    })
+
+ $(function(){
+    	$('#subtraction').click(
+               function(){
+               	var a=$('#n1').val()
+               	var b=$('#n2').val()
+ $('#n3').val(parseFloat(a)-parseFloat(b))
+               }
+    		)
+    })
+
+ $(function(){
+    	$('#multiplication').click(
+               function(){
+               	var a=$('#n1').val()
+               	var b=$('#n2').val()
+ $('#n3').val(parseFloat(a)*parseFloat(b))
+               }
+    		)
+    })
+
+ $(function(){
+    	$('#division').click(
+               function(){
+               	var a=$('#n1').val()
+               	var b=$('#n2').val()
+ $('#n3').val(parseFloat(a)/parseFloat(b))
+               }
+    		)
+    })
+
+</script>
+</head>
+<body>
+	<form>
+		<label>Enter no1</label>
+		<input type="text" name="" id='n1' value='0'>
+		<br>
+
+        <label>Enter no2</label>
+		<input type="text" name="" id='n2' value="0">
+		<br>
+
+        <label>Result</label>
+		<input type="text" name="" id='n3' value="0">
+		<br>
+
+        <input type='button' value='addition' id='addition'>
+        <input type='button' value='subtraction' id='subtraction'><br>
+
+        <input type='button' value='multiplication' id='multiplication'>
+        <input type='button' value='division' id='division'><br>
+        
+
+	</form>
+</body>
+</html>

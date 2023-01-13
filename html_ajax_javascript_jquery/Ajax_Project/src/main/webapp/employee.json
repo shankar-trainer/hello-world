@@ -1,0 +1,42 @@
+[
+	{
+		"userName": "Frontend",
+		"jobTitleName": "Frontend Developer",
+		"employeeCode": "E1",
+		"techstack": [
+			"React",
+			"javascript",
+			"html",
+			"css"
+		],
+		"emailAddress": "fe@gmail.com",
+		"image": "https://www.oracle.com/webfolder/technetwork/jet/Images/dvt/10.png"
+	},
+	{
+		"userName": "Backend",
+		"jobTitleName": "Backend Developer",
+		"employeeCode": "E2",
+		"techstack": [
+			"React",
+			"Node",
+			"php"
+		],
+		"emailAddress": "be@gmail.com",
+		"image": "https://www.oracle.com/webfolder/technetwork/jet/Images/dvt/2.png"
+	},
+	{
+		"firstName": "Fullstack",
+		"lastName": "Developer",
+		"employeeCode": "E3",
+		"techstack": [
+			"React",
+			"javascript",
+			"node",
+			"php",
+			"html",
+			"css"
+		],
+		"emailAddress": "fs@gmail.com",
+		"image": "https://www.oracle.com/webfolder/technetwork/jet/Images/dvt/3.png"
+	}
+]

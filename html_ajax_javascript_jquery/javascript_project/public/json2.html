@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		table{
+			border:5px solid;
+			margin: 200px;
+			padding:20px;
+		}
+		tr,td,th{
+			border:solid blue;
+		}
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+var emp=	
+  [
+      {
+         "userName":"Frontend",
+         "jobTitleName":"Frontend Developer",
+         "employeeCode":"E1",
+         "techstack":[
+            "React",
+            "javascript",
+            "html",
+            "css"
+         ],
+         "emailAddress":"fe@gmail.com",
+         "image": "https://www.oracle.com/webfolder/technetwork/jet/Images/dvt/10.png"
+      },
+      {
+         "userName":"Backend",
+         "jobTitleName":"Backend Developer",
+         "employeeCode":"E2",
+         "techstack":[
+            "React",
+            "Node",
+            "php"
+         ],
+         "emailAddress":"be@gmail.com",
+         "image": "https://www.oracle.com/webfolder/technetwork/jet/Images/dvt/2.png"
+      },
+      {
+         "firstName":"Fullstack",
+         "lastName":"Developer",
+         "employeeCode":"E3",
+         "techstack":[
+            "React",
+            "javascript",
+            "node",
+            "php",
+            "html",
+            "css"
+         ],
+         "emailAddress":"fs@gmail.com",
+         "image": "https://www.oracle.com/webfolder/technetwork/jet/Images/dvt/3.png"
+      }
+   ]
+
+console.log(JSON.stringify(emp))
+document.write(JSON.stringify(emp))
+
+document.write("<hr>")
+
+document.write("<table>")
+document.write("<tr><th>User Name</th><th>Job Title</th><th>Employee Code</th><th>Email Address</th><th>Profile Image</th><th>Tech Stack</th></tr>")
+
+for( var i in emp)
+{
+document.write("<tr><td>"+emp[i].userName+"</td><td>"+emp[i].jobTitleName+"</td><td>"+emp[i].employeeCode+"</td><td>"+emp[i].emailAddress+"</td><td><img src="+emp[i].image+"/></td>")
+    var t=""
+    for(var x in emp[i].techstack)
+	{
+	t=t+emp[i].techstack[x]+'<br>'
+	}
+
+	document.write("<td>"+t+"</td></tr>");
+}
+document.write("</table>")
+</script>
+
+
+</body>
+</html>

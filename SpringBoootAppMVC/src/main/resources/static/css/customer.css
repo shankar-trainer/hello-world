@@ -1,0 +1,23 @@
+label{
+float:left;
+width:130px;
+}
+
+input{
+width:120px;
+margin-bottom:4px;
+}
+
+form,.style1{
+ margin:auto;
+ margin-top:100px;
+ padding:20px;
+ border:solid blue;
+ background:yellow;
+width:30%; 
+}
+
+body{
+background:lightyellow;
+}
+
