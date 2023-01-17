@@ -1,0 +1,33 @@
+change delimiter from ; to //
+mysql> delimiter //
+mysql> select * from employee;
+    -> //
+    
+    create procedure  without argument
+    
+mysql> create procedure allemployee()
+    -> begin
+    -> select * from employee;
+    -> end;
+    -> //
+Query OK, 0 rows affected (0.23 sec)
+
+ calling procedure 
+ 
+
+mysql> call allemployee()//
+
+
+create procedure with argument 
+  mysql> create procedure searchemployee(id1 int,out name1 varchar(20),out salary1 float )
+    -> begin
+    -> select name,salary into name1,salary1 from employee  where id=id1;
+    -> end;
+    -> //
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> call searchemployee(1001,@myname,@mysalary)//
+
+print value 
+
+mysql> select @myname,@mysalary//

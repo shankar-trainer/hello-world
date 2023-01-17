@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+  @import url("css/style1.css");  
+</style>
+<script>
+ function validate(){
+	 var id=document.getElementById('id').value 
+	 var name=document.getElementById('name').value 
+	 var password=document.getElementById('pass').value 
+	 var hobbies=document.getElementsByName('hobbies')
+	 
+	 var status=false;
+	 for (let hb of hobbies) {
+		 //console.log("values "+hb.value)
+	    if(hb.checked){
+	    	status=true
+	     break;
+	    }
+	 }
+      
+	 if(id==""){
+		 alert('id is blank')
+		 return false;
+	 }
+	 else  if(isNaN(id)){
+		 alert('id is not a number')
+		 return false;
+	 }
+	 else if(name==""){
+		 alert('name is blank')
+		 return false;
+	 }
+	 else if(name.length<10){
+		 alert('name must of 10 character length')
+		 return false;
+	 }
+	 else if(password==""){
+		 console.log('password is blank ')
+		 alert('password is blank')
+		 return false;
+	 }
+	 else if(status==false)
+	   {
+		 alert('select hobbies')
+		 return false;
+		 
+	   }
+	 else{
+	  return true	 
+	 } 
+ }
+</script>
+</head>
+<body>
+<form action="CustomerAction" onsubmit="return validate()" method="post">
+
+<h1>CustomerForm</h1>
+<label>Enter Id</label>
+<input name='id' id='id'><br>
+
+<label>Enter Name</label>
+<input name='name' id='name'><br>
+<label>Enter Password</label>
+<input name='pass' id='pass' type='password'><br>
+
+<label>Select Hobbies</label>
+<br>
+<input type='checkbox' id='hobbies'  name='hobbies' value='cricket'>Cricket<br>
+<input type='checkbox' id='hobbies'  name='hobbies' value='music'>Music<br>
+<input type='checkbox' id='hobbies'   name='hobbies' value='touring'>Touring<br>
+<input type='checkbox' id='hobbies'  name='hobbies' value='movie'>Movie<br>
+<input type='checkbox' id='hobbies'  name='hobbies' value='web series'>Web Series<br>
+
+<input type='submit' value='Login'>
+<input type='reset' value="Cancel">
+
+</form>
+</body>
+</html>
