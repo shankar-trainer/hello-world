@@ -1,6 +1,7 @@
 package com.pathinfotech.main;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.pathinfotech.model.Account;
@@ -10,7 +11,8 @@ public class DepartmentMain {
 
 	public static void main(String[] args) {
 		
-		ApplicationContext ctx=new ClassPathXmlApplicationContext("application.xml");
+		//ApplicationContext ctx=new ClassPathXmlApplicationContext("application.xml");
+		ConfigurableApplicationContext ctx=new ClassPathXmlApplicationContext("application.xml");
 	
 		Account act = ctx.getBean("account",Account.class);
 		
@@ -26,5 +28,6 @@ public class DepartmentMain {
 		System.out.println("\tdept id "+department.getDepartmentId());
 		System.out.println("\tdept name "+department.getDepartmentName());
 		System.out.println("\tdept no of employee  "+department.getDepartmentNoOfEmployee());
+		ctx.close();
 	}
 }

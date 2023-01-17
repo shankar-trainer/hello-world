@@ -8,6 +8,18 @@ public class Account {
 	private String accountState;
 	
 	private Department department;
+	
+	public void cleanup() {
+		System.out.println("destroy called");
+	}
+	
+	public void init() {
+		System.out.println(getClass()+" init called  ");
+		this.accountId=787887;
+		this.accountName="transport account";
+		this.accountLocation="gurgaon";
+		this.accountState="haryana";
+	}
 
 	public int getAccountId() {
 		return accountId;

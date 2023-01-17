@@ -1,26 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:p="http://www.springframework.org/schema/p"
-xmlns:jee="http://www.springframework.org/schema/jee"
-xmlns:aop="http://www.springframework.org/schema/aop"
-xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
-    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<bean id="account" class="com.pathinfotech.model.Account" p:accountId="67676767"
-p:accountName="employeeAccount" p:accountLocation="new delhi" p:accountState="delhi"
->
-<property name="department" ref="dept">
-</property>   
-</bean>
+	<!-- <bean id="account" class="com.pathinfotech.model.Account" p:accountId="67676767" 
+		p:accountName="employeeAccount" p:accountLocation="new delhi" p:accountState="delhi"> 
+		<property name="department" ref="dept"> </property> </bean> <bean id="dept" 
+		class="com.pathinfotech.model.Department" p:departmentId="678678" p:departmentName="salaryDepartmwent" 
+		p:departmentNoOfEmployee="30"> </bean> -->
 
-<bean id="dept" class="com.pathinfotech.model.Department" p:departmentId="678678" p:departmentName="salaryDepartmwent"
- p:departmentNoOfEmployee="30">
+	<context:property-placeholder
+		location="bank.properties" />
 
-</bean>
+	<bean class="com.pathinfotech.model.Bank">
+		<property name="bankId" value="${bank.id}"></property>
+		<property name="bankName" value="${bank.name}"></property>
+		<property name="bankLocation" value="${bank.location}"></property>
+	</bean>
+
+
+
+	<bean class="com.pathinfotech.model.Training">
+		<property name="id" value="78788778" />
+		<property name="name" value="java training" />
+		<property name="cost" value="5000" />
+		<property name="list">
+			<list>
+				<value>corejava</value>
+				<value>servlet</value>
+				<value>jsp</value>
+				<value>struts</value>
+				<value>spring</value>
+			</list>
+		</property>
+		<property name="locationset">
+			<set>
+				<value>delhi</value>
+				<value>mumbai</value>
+				<value>chennai</value>
+				<value>coimbtore</value>
+				<value>delhi</value>
+				<value>kolkotta</value>
+				<value>hyderabad</value>
+			</set>
+		</property>
+		<property name="capitalStateMap">
+			<map>
+				<entry key="chennai" value="tamilnadu"></entry>
+				<entry key="new delhi" value="delhi"></entry>
+				<entry key="kolkotaa" value="west bengal"></entry>
+				<entry key="hyderbad" value="telengana"></entry>
+				<entry key="mumbai" value="maharastra"></entry>
+			</map>
+		</property>
+	</bean>
+
+
+	<bean id="account" class="com.pathinfotech.model.Account"
+		p:accountId="67676767" p:accountName="employeeAccount"
+		p:accountLocation="new delhi" p:accountState="delhi" autowire="byName"
+		init-method="init" destroy-method="cleanup">
+	</bean>
+
+	<bean id="department" class="com.pathinfotech.model.Department"
+		p:departmentId="678678" p:departmentName="salaryDepartmwent"
+		p:departmentNoOfEmployee="30">
+
+	</bean>
 
 </beans>
