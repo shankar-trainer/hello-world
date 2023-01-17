@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:jee="http://www.springframework.org/schema/jee"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:util="http://www.springframework.org/schema/util"
+
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="account" class="com.pathinfotech.model.Account" p:accountId="67676767"
+p:accountName="employeeAccount" p:accountLocation="new delhi" p:accountState="delhi"
+>
+<property name="department" ref="dept">
+</property>   
+</bean>
+
+<bean id="dept" class="com.pathinfotech.model.Department" p:departmentId="678678" p:departmentName="salaryDepartmwent"
+ p:departmentNoOfEmployee="30">
+
+</bean>
+
+</beans>
