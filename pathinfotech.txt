@@ -1,0 +1,271 @@
+
+class Insurance {
+  
+	
+	public Insurance(){
+	 insuranceMap=new TreeMap();
+	 list1=new ArrayList<>();    
+	}
+	
+	void addPolicyDetails(int id,String name){
+	  insuranceMap.put(id,name)
+	}
+	
+ArrayList<Integer>	searchBasedOnPolicyType(String name){
+		for(int key:insuranceMap.keySet())
+		{
+		   String name=insuranceMap.get(key);
+		   if(name.contains(search))
+			   list1.add(key);
+		}
+  return list1;
+	}
+ 
+}
+
+
+class InsuranceMain{
+
+ public 
+
+
+}
+ add --
+
+| Policy ID | Policy names |
+| --------- | ------------ |
+| 10654 | Max Bupa Health Insurance |
+| 10321 | SBI Health Insurance |
+| 20145 | IFFCO Tokio Two Wheeler Insurance |
+| 20165 | New India Assurance Two Wheeler Insurance |
+| 10110 | Reliance Health Insurance |
+
+search 
+
+Enter the policy type to be searched
+    Two Wheeler
+    20145
+    20165
+
+
+ResultSet executeQuery = createStatement.executeQuery("select * from  book");
+
+     ResultSet has pointer 
+	 
+	     beforeFirst -- default position for ResultSet -- no record
+	      1st --- record is present 
+		  2
+		  3
+		  
+		  last 
+		  afterLast
+		  
+		  
+		  
+		  java.sql.Statement
+		  
+		     executeQuery()--  for select  -- returns records -- ResultSet
+			 
+			 
+			 insert,update,delete --- executeUpdate() method 
+			 
+			 3 type of Statement
+			 a)Statement           
+                 |
+                 V				 
+			 b)PreparedStatement  -- placeholder , pre compiled 
+                 |
+				 v
+			 c)CallableStatement	-- placeholder, stored procedure 		 
+			 
+          
+       Connection -- new connection --
+                  50 connection-- overload to the mysql database 
+
+                 singleton connection 
+                             static connection 
+                       							 
+		  
+		  
+		  
+		  dao -- database connection operation 
+		          CRUD              sql
+				  C --  create -- insert 
+				  R --  Retrieve -- select 
+				  U -- Update    -- update
+				  D -- delete    --delete 
+				  
+		  
+		  
+		  statement 
+		      executeQuery -- select 
+			  executeUpdate  -- insert , update, delete 
+			  execute -- ddl 
+			  
+			  
+			  
+			  
+			  
+			  
+			  Transacation ---- credit+debit 
+			                     1.credit
+                                 2.debit
+ 
+                                
+
+                          in mysql by default   -- autocommit 
+                             rollback
+                             commit 							
+
+                           jdbc -- by default -- autocommit operation 
+                                       
+                                    .rollback()
+                                    .commit()
+
+									
+			  
+			  beforeFirst()
+			  first
+			  2
+			  3
+			  4
+			  5
+			  last
+			  afterLast()
+			  
+			  
+			  
+ createStatement(1st arg,2nd arg)
+ 1st argument 
+  resultSetType a result set type; 
+    
+	one of ResultSet.TYPE_FORWARD_ONLY, -- default  
+	ResultSet.TYPE_SCROLL_INSENSITIVE,  
+	or ResultSet.TYPE_SCROLL_SENSITIVE
+ 
+ 
+ 2nd argument
+ 
+   resultSetConcurrency a concurrency type; 
+      one of ResultSet.CONCUR_READ_ONLY 
+	  or ResultSet.CONCUR_UPDATABLE
+ 
+
+
+
+
+      dateFormat --
+	             1.DateFormat    -- system defined date format 
+				 2.SimpleDateFormat  -- user defined date format 
+				 
+				 
+				 
+				 
+				 
+				 mysql date methods 
+				 
+				 
+mysql> select current_date();
+    
++----------------+
+| current_date() |
++----------------+
+| 2023-01-16     |    yyyy-MM-dd 
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 12:26:20       |   hh:mm:ss
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2023-01-16 12:26:28 |
++---------------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> alter table employee add dob date;
+
+mysql> alter table employee add in_time time;    
+
+     mysql date and time data type 
+	 	 
+	 mysql> desc employee;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| salary  | float(10,2) | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| in_time | time        | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into employee values(777878,'kamal kumar',12000,current_date,current_time);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into employee values(777879,'vimal kumar',17000,'1999-12-20','10:10:56');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from employee;
++--------+-------------+----------+------------+----------+
+| id     | name        | salary   | dob        | in_time  |
++--------+-------------+----------+------------+----------+
+| 777878 | kamal kumar | 12000.00 | 2023-01-16 | 12:31:28 |
+| 777879 | vimal kumar | 17000.00 | 1999-12-20 | 10:10:56 |
++--------+-------------+----------+------------+----------+
+2 rows in set (0.00 sec)
+
+
+
+
+.
+1.Write a java program to display the first 5 records from the table Emp.
+2.
+Write a java program to find number of records in the table Emp.
+3.
+Write a java program which accept empno and verify whether employee exists or
+not.
+
+4.
+Write a java programs as follows:
+Accept the empno from the user.
+Write a method display( ) which takes the empno as parameter and displays the
+detail information of the employee.
+if employee with the empno does not exits display appropriate message to user.
+
+5.
+Write a java program as follows:
+Accept the empno from the user.
+Write a method update which takes the empno as a parameter.
+Displays the current salary and updates the salary enterd by user.
+If employee with the empno does not exits display appropriate message
+to user.
+
+6.
+Write a java program as follows:
+Accepts the empno from the user.
+Delete the record of the employee whose empno is entered.
+If employee with the entered empno doesn't exists ask for the new empno
+without terminating the program.
+
+Emp Table.
+create table emp
+( EMPNO NOT NULL NUMBER(4),
+ENAME VARCHAR2(10) ,
+JOB VARCHAR2(9),
+MGR NUMBER(4),
+HIREDATE DATE,
+SAL NUMBER(7,2),
+COMM NUMBER(7,2),
+DEPTNO NUMBER(2)
+);
