@@ -1,0 +1,11 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.pathinfotech.model.Account" >
+    <id name="actId" type="java.lang.Integer" >
+    
+    </id>
+    <property name="actName" type="string" ></property>
+    <property name="actSalary" type="java.lang.Float"></property>
+    </class>
+</hibernate-mapping>
