@@ -21,6 +21,9 @@ public class Calculator {
 	}
 	
 	public double division(double a, double b) {
+		if(b==0)
+			throw new IllegalArgumentException("divided by zero error");
+		
 		System.out.println("division of "+a+" and "+b+" is "+(a/b));
 		return a/b;
 	}
