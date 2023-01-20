@@ -8,7 +8,8 @@
 		<action name="userAction"
 			class="com.pathinfotech.model.User">
 			<result name='success'>userpage/UserResult.jsp</result>
-			<result name='error'>userpage/UserError.jsp</result>
+<!-- 			<result name='error'>userpage/UserError.jsp</result> -->
+			<result name='error'>UserForm.jsp</result>
 		</action>
 	</package>
 	
