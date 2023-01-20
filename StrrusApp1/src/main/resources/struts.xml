@@ -7,7 +7,8 @@
 	<package name="basicstruts2" extends="struts-default">
 		<action name="userAction"
 			class="com.pathinfotech.model.User">
-			<result name='success'>UserResult.jsp</result>
+			<result name='success'>userpage/UserResult.jsp</result>
+			<result name='error'>userpage/UserError.jsp</result>
 		</action>
 	</package>
 	

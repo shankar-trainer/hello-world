@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div style="border:solid;background:lightyellow;margin:auto;padding:20px;">
 <s:form action="userAction">
 <s:textfield label="Enter Id" name="userId"/><br>
 <s:textfield label="Enter Name"  name="userName"/><br>
@@ -15,5 +16,6 @@
 <s:submit/>
 <s:reset/>
 </s:form>
+</div>
 </body>
 </html>

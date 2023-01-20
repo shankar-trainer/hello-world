@@ -28,6 +28,9 @@ public class User  extends ActionSupport{
 	
 	@Override
 	public String execute() throws Exception {
+		if(getUserSalary()<=0||  getUserId()<=0|| getUserName().isEmpty())
+			return ERROR;
+		
 		return SUCCESS;
 	}
 }
