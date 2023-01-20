@@ -1,0 +1,17 @@
+#form error 
+id.error=ID invalide
+name.error=nom incorrect
+salary.error=salaire invalide
+
+
+
+#form entry 
+user.id=entrez l'identifiant
+user.name=entrez le nom
+user.salary=entrer le salaire
+
+
+
+id.output=l'identifiant est 
+name.output=nom est 
+salary.output=le salaire est 
