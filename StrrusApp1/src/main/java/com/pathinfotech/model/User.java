@@ -68,13 +68,13 @@ public class User extends ActionSupport {
 //		}
 		if (getUserId() <= 0) {
 			addFieldError("userId", getText("id.required"));
-			return ERROR;
+			return LOGIN;
 		} else if (getUserName().isEmpty()) {
 			addFieldError("userName", getText("name.required"));
-			return ERROR;
+			return LOGIN;
 		} else if (getUserSalary() <= 0) {
 			addFieldError("userSalary", getText("salary.required"));
-			return ERROR;
+			return LOGIN;
 		}
 
 		return SUCCESS;
