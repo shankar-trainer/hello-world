@@ -6,6 +6,34 @@ public class User extends ActionSupport {
 	private int userId;
 	private String userName;
 	private float userSalary;
+	private String gender;
+	private String hobbies[];
+	private String city[];
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String[] getHobbies() {
+		return hobbies;
+	}
+
+	public void setHobbies(String[] hobbies) {
+		this.hobbies = hobbies;
+	}
+
+	public String[] getCity() {
+		return city;
+	}
+
+	public void setCity(String[] city) {
+		this.city = city;
+	}
+
 
 	public int getUserId() {
 		return userId;
