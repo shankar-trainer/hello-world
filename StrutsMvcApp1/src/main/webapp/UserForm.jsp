@@ -10,12 +10,12 @@
 </head>
 <body>
 
-<s:url  action="Main1"     var="eng">
-<s:param name='request_locale'>english</s:param>
+<s:url  action="Main1"   namespace="/"   var="eng">
+<s:param name='request_locale'>en</s:param>
 </s:url>
 
-<s:url action="Main1" var="fr">
-<s:param name='request_locale'>french</s:param>
+<s:url action="Main1" var="fr" namespace="/">
+<s:param name='request_locale'>fr</s:param>
 </s:url>
 
 <s:a href="%{eng}">english</s:a>
