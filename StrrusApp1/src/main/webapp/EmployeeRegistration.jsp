@@ -27,7 +27,6 @@
 			 <s:submit value="Search Employee" action="searchEmpAction" />
 			 <s:submit value="ShowAll Employee" action="showAllEmpAction" />
 			 <s:submit value="update Employee"  action="updateMpAction" />
-			</span>
 		</s:form>
 	</div>
 </body>

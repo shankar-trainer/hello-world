@@ -19,7 +19,8 @@ table,tr,td{
 	<div style="border: inset blue 30px; background: cyan; color: blue; margin: auto; padding: 40px; width: 30%; margin-top: 100px">
 
    <% 
-      List<Employee> empList=  session.getAttribute("list1");
+      List<Employee> empList=(List<Employee>)  session.getAttribute("list1");
+   System.out.println("Result page "+empList.size()+" no of total  record");
     %>
     <table>
     <%     

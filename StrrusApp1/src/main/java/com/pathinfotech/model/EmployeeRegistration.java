@@ -16,6 +16,8 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public class EmployeeRegistration  extends ActionSupport implements ModelDriven<Employee>,SessionAware{
 
+	List<Employee> emplist;
+
 	Employee employee;
 	Connection connection;
 	PreparedStatement pst;
@@ -25,6 +27,7 @@ public class EmployeeRegistration  extends ActionSupport implements ModelDriven<
 	public EmployeeRegistration() throws SQLException {
 	 employee=new Employee();
 	 connection=DatabaseUtil.myDatabaseConnection();
+	 emplist=new ArrayList<>();
 
 	}
 	
@@ -35,21 +38,39 @@ public class EmployeeRegistration  extends ActionSupport implements ModelDriven<
 
 	@Override
 	public String execute() throws Exception {
-		System.out.println("excute called ");
-		if(employee.getEmpId()<=0) {
-		addActionError("invalid employee id ");
-		return  INPUT;
+		System.out.println("execute called ");
+		//System.out.println("showall  employee works");
+		st=connection.createStatement();
+		rs=null;
+		
+		rs=st.executeQuery("select * from employee");
+		while(rs.next()) {
+			System.out.println("it has data ");
+			employee=null;
+			employee=new Employee();
+			employee.setEmpId(rs.getInt(1));
+			employee.setEmpName(rs.getString(2));
+			employee.setEmpSalary(rs.getFloat(3));
+			emplist.add(employee);
 		}
-		else if(employee.getEmpName().isEmpty()) {
-			addActionError("invalid employee name ");
-		return  INPUT;
-		}
-		else if(employee.getEmpSalary()<=0) {
-			addActionError("invalid employee salary ");
-		return  INPUT;
-		}
-		else 
-			return  SUCCESS;
+		System.out.println(emplist.size()+" total no of records ");
+		return  SUCCESS;
+
+
+		//		if(employee.getEmpId()<=0) {
+//		addActionError("invalid employee id ");
+//		return  INPUT;
+//		}
+//		else if(employee.getEmpName().isEmpty()) {
+//			addActionError("invalid employee name ");
+//		return  INPUT;
+//		}
+//		else if(employee.getEmpSalary()<=0) {
+//			addActionError("invalid employee salary ");
+//		return  INPUT;
+//		}
+//		else 
+//			return  SUCCESS;
 	}
 	
 	public String addEmployee() throws Exception {
@@ -73,30 +94,31 @@ public class EmployeeRegistration  extends ActionSupport implements ModelDriven<
 		return  SUCCESS;
 		
 	}
-	List<Employee> emplist;
-	public String showAllEmployee() throws Exception {
-		System.out.println("showall  employee works");
-		st=connection.createStatement();
-		rs=null;
-		
-		rs=st.executeQuery("select * from employee");
-		 emplist=new ArrayList<>();
-		while(rs.next()) {
-			employee=null;
-			employee=new Employee();
-			employee.setEmpId(rs.getInt(1));
-			employee.setEmpName(rs.getString(2));
-			employee.setEmpSalary(rs.getFloat(3));
-			emplist.add(employee);
-		}
-		return  SUCCESS;
-	}
+//	public String showAllEmployee() throws Exception {
+//		System.out.println("showall  employee works");
+//		st=connection.createStatement();
+//		rs=null;
+//		
+//		rs=st.executeQuery("select * from employee");
+//		 emplist=new ArrayList<>();
+//		while(rs.next()) {
+//			employee=null;
+//			employee=new Employee();
+//			employee.setEmpId(rs.getInt(1));
+//			employee.setEmpName(rs.getString(2));
+//			employee.setEmpSalary(rs.getFloat(3));
+//			emplist.add(employee);
+//		}
+//		return  SUCCESS;
+//	}
 
 	Map<String, Object> map1;
 	
 	@Override
 	public void setSession(Map<String, Object> session) {
      map1=session;
+		System.out.println(emplist.size()+" total no of records  inside setSession..... ");
+
      map1.put("list1", emplist);
 	}
 }

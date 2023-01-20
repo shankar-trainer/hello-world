@@ -11,6 +11,7 @@
  			<result name='error'>userpage/UserError.jsp</result>
 			<result name='login'>UserForm.jsp</result>
 		</action>
+		
 		 <action name="empAction" class="com.pathinfotech.model.EmployeeRegistration">
 				<result name='success'>employeeResult/EmployeeResult.jsp</result>
 				<result name='input'>EmployeeRegistration.jsp</result>
@@ -19,12 +20,13 @@
 		<action name="addEmpAction" class="com.pathinfotech.model.EmployeeRegistration" method="addEmployee">
 				<result name='success'>employeeResult/EmployeeResult.jsp</result>
 		</action>
+		
 		<action name="searchEmpAction" class="com.pathinfotech.model.EmployeeRegistration" method="searchEmployee">
 				<result name='success'>employeeResult/EmployeeResult.jsp</result>
 		</action>
 		<action name="updateEmpAction" class="com.pathinfotech.model.EmployeeRegistration" method="updateEmployee">
 				<result name='success'>employeeResult/EmployeeResult.jsp</result>
-		</action>
+		</action>     
 		<action name="showAllEmpAction" class="com.pathinfotech.model.EmployeeRegistration" method="showAllEmployee">
 				<result name='success'>employeeResult/EmployeeResult.jsp</result>
 		</action>
