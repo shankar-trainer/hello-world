@@ -1,0 +1,28 @@
+label{
+	float:left;
+	width:100px;
+}
+
+input{
+	width:110px;
+}
+
+form{
+ margin:auto;	
+ background:khaki;
+ padding:20px;
+ width:40%;
+ border:solid 10px;
+}
+
+span.error{
+	color:red;
+	font-weight:bold;
+}
+.style1{
+ margin:auto;	
+ background:khaki;
+ padding:20px;
+ width:30%;
+ border:solid 10px;
+}

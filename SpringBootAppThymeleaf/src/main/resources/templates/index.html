@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Title of the document</title>
+</head>
+    <link th:rel="stylesheet" th:href="@{css/style1.css}"/>
+
+</head>
+<body>
+
+<form action="#" th:action="@{/userAction}" method="post" th:object='${user}'>
+<h1>Welcome to User Page</h1>
+	<label>Enter Id</label>
+	<input th:field="*{userId}"  >
+		<span class="error"  th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">User Id error message</span>
+			
+	<br>
+	
+	<label>Enter Name</label>
+	<input th:field="*{userName}" >
+	<span class="error" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">User Name error message</span>
+	
+	<br>
+	
+	<label>Enter Salary</label>
+	<input th:field="*{userSalary}">
+	<span  class="error" th:if="${#fields.hasErrors('userSalary')}" th:errors="*{userSalary}">User Salary error message</span>
+	
+	<br>
+	
+	<input type='submit'>
+	</form>	
+</body>
+</html>
