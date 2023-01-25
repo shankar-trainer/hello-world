@@ -1,0 +1,51 @@
+<table>
+    <caption>User Data</caption>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Salary</th>
+    </tr>
+    <tr *ngFor="let u of user">
+        <td>{{u.userId}}</td>
+        <td>{{u.userName}}</td>
+        <td>{{u.userSalary}}</td>
+    </tr>
+
+</table>
+<h2>Ng If salary>2000</h2>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Salary</th>
+    </tr>
+    <tr *ngFor="let u of user">
+        <p *ngIf="u.userSalary>20000;">
+            <td>{{u.userId}}</td>
+            <td>{{u.userName}}</td>
+            <td>{{u.userSalary}}</td>
+        </p>
+    </tr>
+
+</table>
+<h2>Ng Switch Case</h2>
+<table>
+    <tr *ngFor="let u of user">
+        <div [ngSwitch]="u.userSalary">
+            <div *ngSwitchCase="20000">
+                <td>{{u.userId}}</td>
+                <td>{{u.userName}}</td>
+                <td>{{u.userSalary}}</td>handsome salary
+            </div>
+
+            <div [ngStyle]="{background:'black',color:'white'}">
+            <div *ngSwitchCase="10000">
+                    <td>{{u.userId}}</td>
+                    <td>{{u.userName}}</td>
+                    <td>{{u.userSalary}}</td>good salary
+                </div>
+            </div>
+        </div>
+    </tr>
+
+</table>

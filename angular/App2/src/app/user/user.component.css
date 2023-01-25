@@ -1,0 +1,14 @@
+table{
+margin:auto;
+background:lemon;
+padding:20px;
+border:double 10px;
+width:40%;
+}
+
+tr,th,td{
+    border:solid  blue;
+}
+body{
+    background:khaki;
+}
