@@ -1,0 +1,64 @@
+three layer 
+
+   dao layer -- database - @Repository
+
+   |
+service layer -- exception --@Service 
+  |
+web layer   --client -- @RestController--  json file --- react/angular 
+
+
+
+association
+
+  unidirectional 
+ @onetoOne
+ @oneytomany
+
+ bidirectional 
+   
+Customer -->Address 
+   
+customer -->save address
+address -->save customer
+
+mappedBy -- attribute 
+
+
+   
+
+    shopping web service
+       account
+       order
+       payment  ===? monolithic webservice 
+       delievery
+       return  
+
+
+shopping web service  -- microservice
+       account ------------ account microservice
+	     ||
+		 v
+       order   ------------ order microservice
+       payment ------------ payment microservice
+       delievery------------ delievery microservice
+       return  ------------  return microservice
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
