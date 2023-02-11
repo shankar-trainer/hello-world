@@ -23,6 +23,7 @@ import MainPage from './props/MainPage';
 import ValidateProps from './props/ValidateProps';
 import UserForm from './forms/UserForm';
 import PersonForm from './forms/PersonForm ';
+import EmployeeForm from './forms/EmployeeForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -48,7 +49,8 @@ root.render(
     {/* <MainPage></MainPage> */}
     {/* <ValidateProps></ValidateProps> */}
     {/* <UserForm></UserForm> */}
-    <PersonForm></PersonForm>
+    {/* <PersonForm></PersonForm> */}
+    <EmployeeForm></EmployeeForm>
   </React.StrictMode>
 );
 
