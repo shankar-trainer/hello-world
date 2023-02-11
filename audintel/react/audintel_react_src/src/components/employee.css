@@ -1,0 +1,25 @@
+.style1{
+    border:solid 10px;
+    width: auto;
+    margin: auto;
+    height: auto;
+    background-color: deepskyblue;
+    border-radius: 30px;
+    margin-bottom: 50px;
+    padding: 20px;
+    text-align: center;
+   
+}
+table{
+    border:solid 10px ;
+    width:90%;
+    text-align: center;
+    margin-left: 50px;
+}
+
+tr,td,th{
+    border: solid;
+}
+th{
+    font-weight: bold;
+}

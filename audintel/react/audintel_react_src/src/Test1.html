@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const user={
+        id:10001,
+        name:'surendra kumar'
+    } 
+    function Hello(){
+          return(
+            <div>
+                <h1>User Information</h1>
+                Id is {user.id}<br></br>
+                name is {user.name}<br></br>
+             </div>   
+          )
+    }
+    ReactDOM.render(<Hello/>,document.getElementById('id1'))
+</script>
+</head>
+<body>
+
+<div id="id1">
+ 
+</div>    
+</body>
+</html>
