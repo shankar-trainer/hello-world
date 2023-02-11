@@ -1,0 +1,18 @@
+h1{
+    text-align: center;
+    border: solid;
+    width:30%;
+    margin: auto;
+}
+
+.style1{
+   background-color: lightyellow;
+   color:blue;
+   width: 70%;
+   margin-left: 200px;
+   border: double 20px red;
+   
+   margin: auto;
+   text-align: left;
+
+}

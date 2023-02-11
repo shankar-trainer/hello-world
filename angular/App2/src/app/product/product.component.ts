@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { product } from './product';
+import { ProductService } from './product.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -13,7 +14,7 @@ export class ProductComponent {
   prdImageHeight: number;
 
   prdImageArr: string[];
-  constructor() {
+  constructor(service:ProductService) {
     this.prdImageArr = [
       'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
       'https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -33,19 +34,21 @@ export class ProductComponent {
     this.prd.prdname = 'mobile';
     this.prd.prdcost = 10000;
 
-    this.prd1 = [
-      { prdid: 10001, prdname: 'java book', prdcost: 1200 },
-      { prdid: 10002, prdname: 'spring in action', prdcost: 1800 },
-      { prdid: 10003, prdname: 'java for beginner', prdcost: 1100 },
-      { prdid: 10004, prdname: 'nodejs book', prdcost: 600 },
-      { prdid: 10005, prdname: 'microservice for beginner', prdcost: 1300 },
-      { prdid: 10006, prdname: 'Freeze', prdcost: 18000 },
-      { prdid: 10007, prdname: 'television', prdcost: 20000 },
-      { prdid: 10008, prdname: 'bike', prdcost: 190000 },
-      { prdid: 10009, prdname: 'car', prdcost: 120000 },
-      { prdid: 100010, prdname: 'table', prdcost: 4000 },
-      { prdid: 100011, prdname: 'gas stove', prdcost: 3000 }
-    ]
+    // this.prd1 = [
+    //   { prdid: 10001, prdname: 'java book', prdcost: 1200 },
+    //   { prdid: 10002, prdname: 'spring in action', prdcost: 1800 },
+    //   { prdid: 10003, prdname: 'java for beginner', prdcost: 1100 },
+    //   { prdid: 10004, prdname: 'nodejs book', prdcost: 600 },
+    //   { prdid: 10005, prdname: 'microservice for beginner', prdcost: 1300 },
+    //   { prdid: 10006, prdname: 'Freeze', prdcost: 18000 },
+    //   { prdid: 10007, prdname: 'television', prdcost: 20000 },
+    //   { prdid: 10008, prdname: 'bike', prdcost: 190000 },
+    //   { prdid: 10009, prdname: 'car', prdcost: 120000 },
+    //   { prdid: 100010, prdname: 'table', prdcost: 4000 },
+    //   { prdid: 100011, prdname: 'gas stove', prdcost: 3000 }
+    // ]
+    this.prd1=service.getProduct();
+    
   }
   method1(){
     alert('product id '+this.prd.prdid+'\nproduct name '+this.prd.prdname+'\nproduct cost'+this.prd.prdcost)

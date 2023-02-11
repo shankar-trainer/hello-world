@@ -1,0 +1,21 @@
+form,
+.myform {
+    border: solid;
+    margin: auto;
+    padding: 20px;
+    width: 40%;
+    margin: auto;
+    background-color: aliceblue;
+}
+.myform{
+    margin-top: 20px;
+    background-color: khaki;
+}
+label {
+    float: left;
+    width: 170px;
+}
+
+input {
+    width: 150px;
+}
