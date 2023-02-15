@@ -1,19 +1,30 @@
-import React from 'react';
-import './App.css';
-function MyApp1() {
-    const greeting = "greeting";
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+
+class MyApp1 extends Component {
+  constructor() {
+    super()
+    this.state = {
+      name: 'React',
+      isLiked: false
+    }
+  }
+  handleBtnClick = () => {
+    this.setState({
+      isLiked: !this.state.isLiked
+    })
+  }
+  render () {
     return (
-        <div className="container">
-            <ul>
-                <li>
-                    <button
-                        onClick={event => alert(event.target.id)}>my button1</button>
-                </li>
-                <li>
-                    <button onClick={event => alert(event.target.id)}>mybutton2</button>
-                </li>
-            </ul>
-        </div>
-    )
+      <div>
+        <h1>welcome to{this.state.name}world</h1>
+        <button onClick={this.handleBtnClick}>
+          {
+            this.state.isLiked ? '❤️cancellation' : 'collection'
+          }
+        </button>
+      </div>
+  	)
+  }
 }
 export default MyApp1;
