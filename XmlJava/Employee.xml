@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Employees>
+	<Employee>
+		<id>10001</id>
+		<name>mohan kumar</name>
+		<location>New Delhi</location>
+	</Employee>
+	
+	<Employee>
+		<id>10002</id>
+		<name>rohan kumar</name>
+		<location>Chennai</location>
+	</Employee>
+	
+	<Employee>
+		<id>10003</id>
+		<name>sohan kumar</name>
+		<location>Madurai</location>
+	</Employee>
+	
+	<Employee>
+		<id>10004</id>
+		<name>ram kumar</name>
+		<location>Mumbai</location>
+	</Employee>
+	
+	<Employee>
+		<id>10005</id>
+		<name>arvind kumar</name>
+		<location>kanchipuram</location>
+	</Employee>
+	
+	<Employee>
+		<id>10006</id>
+		<name>amit kumar</name>
+		<location>perumbadur</location>
+	</Employee>
+	
+
+</Employees>
