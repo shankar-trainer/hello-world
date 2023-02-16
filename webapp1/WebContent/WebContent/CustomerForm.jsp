@@ -20,16 +20,13 @@
 	   alert('name is blank')
 	   return false
    }
-	   
    else   if(name.length<10){
 	   alert('name must of 10 chars ')
 	   return false
    }
    else
 	   return true
-	   
  }
-
 </script>
 </head>
 <body>
