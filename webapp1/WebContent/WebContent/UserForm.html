@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+@import url("css/style1.css");
+</style>
+</head>
+<body>
+
+	<form action="UserServlet" method="post">
+	<h1>User Form</h1>
+	<label>Enter Id</label>
+	<input name='id'><br>
+	
+	<label>Enter Name</label>
+	<input name='name'><br>
+	
+	<label>Enter Password</label>
+	<input type='password' name='pass'><br>
+	<br>
+	
+	<label>Enter DOB</label>
+	<input type='date' name='dob'><br>
+	<br>
+	
+	<label>Enter Phone No</label>
+	<input type='number' name='phone'><br>
+	<br>
+	
+	<label>Select Gender</label>
+	<input type='radio' name='gender' value="male">Male<br>
+	<input type='radio' name='gender' value="female">Female<br>
+	<br>
+	
+	<br>
+	<label>Select Educational Qualification</label>
+	<select name='qualification'>
+	<option></option>
+	<option value="bca">BCA</option>
+	<option value="mca">MCA</option>
+	<option value="b.tech">B.Tech</option>
+	<option value="m.tech">M.Tech</option>
+	<option value="bba">BBA</option>
+	<option value="mba">MBA</option>
+	</select>
+	
+	<br><br>
+	<span>Select Languages You Knows:</span><br><br>
+	<input type="checkbox" name="language" value="english">English<br>
+	<input type="checkbox" name="language" value="tamil">Tamil<br>
+	<input type="checkbox" name="language" value="telugu">Telugu<br>
+	<input type="checkbox" name="language" value="hindi">Hindi<br>
+	<input type="checkbox" name="language" value="maithili">Maithili<br>
+	
+	<input type='submit' value='Login'>
+	<input type='reset' value="Cancel">
+	
+	</form>
+
+</body>
+</html>

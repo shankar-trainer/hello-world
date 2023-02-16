@@ -1,0 +1,20 @@
+label{
+	float:left;
+	width:120px;
+	
+}
+
+input{
+	
+	width:120px;
+}
+form{
+	margin-left:350px;
+	border:solid;
+	width:40%;
+	padding:20px;
+	background:lime;
+}
+h1{
+	color:blue;
+}
