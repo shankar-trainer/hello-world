@@ -20,7 +20,7 @@ public class EmployeeDataServlet extends HttpServlet {
 	Connection connection;
 	Statement st;
 	ResultSet rs;
-
+//C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib
 	@Override
 	public void init() throws ServletException {
 		try {

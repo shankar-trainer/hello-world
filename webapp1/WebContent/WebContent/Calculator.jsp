@@ -32,13 +32,11 @@
 	 %>
 	 
 	 <div class="mystyle">
-	
 	 <% 
 	 if(n1!=null && n2!=null)
 	 {
 	 int p1=Integer.parseInt(n1);
 	 int p2=Integer.parseInt(n2);
-	 
 	 out.println("<br>Addition is "+(p1+p2));
 	 out.println("<br>Subtraction is "+(p1-p2));
 	 out.println("<br>Multiplication is "+(p1*p2));
