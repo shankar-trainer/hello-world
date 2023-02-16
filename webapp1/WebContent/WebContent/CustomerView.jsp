@@ -13,8 +13,24 @@
 <body>
 	<div class="mystyle">
 		Id is
+		<!--    below is expression  -->
 		<%=request.getParameter("id")%><br> Name is
 		<%=request.getParameter("name")%><br>
+
+		<!--    below is scriptlet  -->
+		<%
+			String id1 = request.getParameter("id");
+			String name1 = request.getParameter("name");
+
+			out.println("Id is " + id1);
+			out.println("<br>Name is " + name1);
+		%>
+
+		<!--    below is expression  -->
+
+		<br> Id is
+		<%=id1%><br> Name is
+		<%=name1%><br>
 	</div>
 </body>
 </html>
