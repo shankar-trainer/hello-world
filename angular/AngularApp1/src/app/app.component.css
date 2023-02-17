@@ -1,0 +1,15 @@
+h1{
+    color: tomato;
+    background-color: aqua;
+    width:30%;
+    text-align: center;
+    margin: auto;
+}
+h2{
+    color:blue;
+    background-color: khaki;
+    width:30%;
+    text-align: center;
+    margin: auto;
+    margin-top: 5px;
+}
