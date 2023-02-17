@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+
+    <script>
+
+        function myclock() {
+            date = new Date()
+            document.getElementById('id1').innerHTML = date.toLocaleTimeString()
+            //setTimeout(myclock, 1000)
+        }
+
+        setInterval(myclock, 1000)
+
+    </script>
+</head>
+
+<body onload="myclock()">
+
+
+    <div id="id1">
+
+
+    </div>
+</body>
+
+</html>

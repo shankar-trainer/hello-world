@@ -9,7 +9,13 @@ export default class PersonForm extends Component {
             age: '',
             comment: '',
             city: '',
-            hobbies: false
+            hobbies: {
+                music: true,
+                movie: false,
+                flowering: true,
+                shopping: false,
+                reading:false
+            }
         }
     }
     formSubmit = (event) => {
@@ -49,11 +55,10 @@ export default class PersonForm extends Component {
         )
     }
     hobbiesChange = (event) => {
-        this.setState(
-            {
-                hobbies: event.target.value
-            }
-        )
+        let obj=this.state.checkBoxGroup
+        obj[event.target.value] = event.target.checked
+        this.setState({hobbies:obj})
+        console.log("hobbies change ", event.target.value, event.target.checked)
     }
     idChange = (event) => {
         this.setState(
@@ -114,15 +119,15 @@ export default class PersonForm extends Component {
                     <div class="form-check">
                         <label class="form-check-label" >Hobbies:</label><br></br>
                         <input type='checkbox'
-                            name='hobbies' checked={this.state.hobbies} onChange={this.hobbiesChange} class="form-check-input"></input>Music<br></br>
+                            name='hobbies' checked={this.state.hobbies['music']} onChange={this.hobbiesChange} class="form-check-input"></input>Music<br></br>
                         <input type='checkbox'
-                            name='hobbies' checked={this.state.hobbies} onChange={this.hobbiesChange} class="form-check-input"></input>Movie<br></br>
+                            name='hobbies' checked={this.state.hobbies['movie']} onChange={this.hobbiesChange} class="form-check-input"></input>Movie<br></br>
                         <input type='checkbox'
-                            name='hobbies' checked={this.state.hobbies} onChange={this.hobbiesChange} class="form-check-input"></input>Reading<br></br>
+                            name='hobbies' checked={this.state.hobbies['reading']} onChange={this.hobbiesChange} class="form-check-input"></input>Reading<br></br>
                         <input type='checkbox'
-                            name='hobbies' checked={this.state.hobbies} onChange={this.hobbiesChange} class="form-check-input"></input>Flowering<br></br>
+                            name='hobbies' checked={this.state.hobbies['flowering']} onChange={this.hobbiesChange} class="form-check-input"></input>Flowering<br></br>
                         <input type='checkbox'
-                            name='hobbies' checked={this.state.hobbies} onChange={this.hobbiesChange} class="form-check-input"></input>Shopping<br></br>
+                            name='hobbies' checked={this.state.hobbies['shopping']} onChange={this.hobbiesChange} class="form-check-input"></input>Shopping<br></br>
                     </div>
 
                     <div class="form-group">

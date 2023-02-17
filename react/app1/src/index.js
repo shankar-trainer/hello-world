@@ -24,6 +24,7 @@ import ValidateProps from './props/ValidateProps';
 import UserForm from './forms/UserForm';
 import PersonForm from './forms/PersonForm ';
 import EmployeeForm from './forms/EmployeeForm';
+import UserForm1 from './forms/UserForm1';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -49,8 +50,9 @@ root.render(
     {/* <MainPage></MainPage> */}
     {/* <ValidateProps></ValidateProps> */}
     {/* <UserForm></UserForm> */}
-    {/* <PersonForm></PersonForm> */}
-    <EmployeeForm></EmployeeForm>
+     <PersonForm></PersonForm>
+    {/* <EmployeeForm></EmployeeForm> */}
+    <UserForm1></UserForm1>
   </React.StrictMode>
 );
 
