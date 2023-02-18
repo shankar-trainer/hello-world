@@ -19,9 +19,6 @@ class UserForm1 extends Component {
             name: ''
         }
     }
-//18003159999 lg c care
-//01149124063
-
     onChangeId = (event) => {
         this.setState({ id: event.target.value })
     }

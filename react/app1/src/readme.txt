@@ -1,3 +1,9 @@
+npm i react-router@5.3.4
+npm i react-router-dom@5.3.4
+
+npm i react-table
+
+
 import logo from './logo.svg';
 import './App.css';
 

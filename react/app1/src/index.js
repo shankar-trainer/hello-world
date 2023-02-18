@@ -9,7 +9,7 @@ import Car from './car';
 import Employee from './employee';
 import Student from './student';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Counter from './Counter';
+import Counter from './hook/counter1';
 import Book from './book';
 import Shopping from './shopping/shopping';
 import Product from './shopping/product';
@@ -25,7 +25,15 @@ import UserForm from './forms/UserForm';
 import PersonForm from './forms/PersonForm ';
 import EmployeeForm from './forms/EmployeeForm';
 import UserForm1 from './forms/UserForm1';
-
+import MultiplState from './hook/multiplsState';
+import UseEffectExample from './hook/UseEffectExample';
+//import FriendStatus from './hook/FriendStatus';
+import Hello from './hello';
+import Table1 from './mytable/table1';
+import Table3 from './mytable/table3';
+import MyPage from './routing-component/MyPage';
+import CustomerForm from './forms/CustomerForm';
+import Demo4 from './Demo4';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -44,15 +52,29 @@ root.render(
     {/* <SurveyData></SurveyData>  */}
     {/* <Clock1></Clock1> */}
     {/* <Greeting isLoggedIn='false'></Greeting> */}
-    {/* <LoginControl></LoginControl> */}
+          {/* <LoginControl></LoginControl>  */}
     {/* <Map1></Map1> */}
     {/* <Greeting isLoggedIn={false} /> */}
     {/* <MainPage></MainPage> */}
     {/* <ValidateProps></ValidateProps> */}
     {/* <UserForm></UserForm> */}
-     <PersonForm></PersonForm>
-    {/* <EmployeeForm></EmployeeForm> */}
-    <UserForm1></UserForm1>
+    {/* <PersonForm></PersonForm>  */}
+    {/* <EmployeeForm></EmployeeForm>  */}
+   <CustomerForm></CustomerForm> 
+    {/* <UserForm1></UserForm1> */}
+    {/* <UserForm></UserForm> */}
+    {/* <Counter></Counter> */}
+    {/* <UseEffectExample></UseEffectExample> */}
+    {/* <FriendStatus></FriendStatus> */}
+    {/* <Hello></Hello> */}
+    {/* <Table1></Table1> */}
+    {/* <Table2></Table2> */}
+    {/* <Table3></Table3> */}
+    {/* <MyPage>
+ 
+</MyPage> */}
+    {/* <MultiplState></MultiplState> */}
+<Demo4></Demo4>
   </React.StrictMode>
 );
 
