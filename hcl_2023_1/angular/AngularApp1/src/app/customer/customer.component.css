@@ -1,0 +1,20 @@
+table {
+    width: 50%;
+    border: double;
+    background-color: black;
+    color: white;
+    width: 70%;
+    margin-left: 200px;
+}
+
+tr,
+th,
+td {
+    border: solid;
+}
+
+.myjson {
+    display: inline-block;
+    background-color: chartreuse;
+    color: blue;
+}

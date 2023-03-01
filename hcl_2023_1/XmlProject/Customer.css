@@ -1,0 +1,19 @@
+Customer{
+	 width:100px;
+	 padding:40px;
+	 border:double;
+	 background-color:yellow;
+     display:block;
+     margin:auto;
+     width:40%;
+    
+}
+
+id,name,salary{
+	display:block;
+		 border:solid blue;
+	padding:5px;
+	margin-top:30px;
+	margin-bottom:30px;
+	
+}

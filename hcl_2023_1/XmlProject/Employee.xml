@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+	<employee emp_id='676767'>
+		<emp_salary>78000</emp_salary>
+		<emp_name>ram kumar</emp_name>
+	</employee>
+
+	<_emplo-yee>
+		<empid>676761</empid>
+		<empname>shyam kumar</empname>
+		<empsalary>68000</empsalary>
+		<address></address>
+		<department/>
+	<!-- 	<hello></hello> -->
+	</_emplo-yee>
+
+	<employee>
+		<empid>676765</empid>
+		<empname>suresh kumar</empname>
+		<empsalary>18000</empsalary>
+	</employee>
+
+	<employee>
+		<empid>676767</empid>
+		<empname>ram kumar</empname>
+		<empsalary>78000</empsalary>
+	</employee>
+
+</employees>

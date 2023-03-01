@@ -1,0 +1,16 @@
+label{
+    float:left;
+    width:120px;
+}
+
+input{
+    width:120px;
+}
+form,div{
+    margin-left:300px;
+    width:30%;
+    padding: 40px;
+    color:blue;
+    background-color: aliceblue;
+    border: solid;
+}

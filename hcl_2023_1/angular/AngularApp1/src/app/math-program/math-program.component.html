@@ -1,0 +1,35 @@
+<div [ngClass]="'style1'">
+    <h1>math- sqrt program </h1>
+
+    No is {{n1}}
+    <br>
+
+    Square Root of {{n1}} is {{n1|sqrt}}
+    <br><br><br>
+    <label>Enter No</label><br>
+    <input type="text" [(ngModel)]="n1" name="n1" />
+    <br><br><br>
+    Square Root of {{n1}} is {{n1|sqrt}}
+    <br>
+
+</div>
+
+
+<div [ngClass]="'style1'">
+    <h1>math- exponent program </h1>
+    No is {{n2}} <br>
+    Power is {{n3}} <br>
+    Exponent of {{n2}} power {{n3}} is {{n2|exponent:n3}}
+
+    <hr>
+    <br><br><br>
+    <label>Enter No1(base)</label>
+    <input type="text" [(ngModel)]="n2" name="n2" />
+    <br>
+    
+    <label>Enter No2(power)</label>
+    <input type="text" [(ngModel)]="n3" name="n3" />
+    <br>
+    Exponent of {{n2}} power {{n3}} is {{n2|exponent:n3}}
+
+</div>

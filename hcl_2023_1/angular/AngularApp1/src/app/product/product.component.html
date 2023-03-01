@@ -1,0 +1,19 @@
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Stock</th>
+        <th>Action</th>
+    </tr>
+
+    <tr *ngFor="let p of product;let i=index;">
+        <td id="name{{i+1}}">{{p.name}}</td>
+        <td id="price{{i+1}}">{{p.price}}</td>
+        <td id="img{{i+1}}"><img [src]=p.imageUrl width="150"  height="100" ></td>
+        <td id="stock{{i+1}}">{{p.stock}}</td>
+        <td *ngIf="p.stock>0" id="buy{{i+1}}" ><button type="button">Buy</button></td>
+        <td *ngIf="p.stock<=0"  id="disabled"><button type="button" disabled>Disabled</button></td>
+    </tr>
+
+</table>
