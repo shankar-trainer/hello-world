@@ -15,7 +15,7 @@ export default class CustomerForm extends Component {
 
     }
     changeVisible = (e) => {
-       this.setState({ visible: !this.state.visible });
+        this.setState({ visible: !this.state.visible });
     }
     changeId = (e) => {
         if (e.target.value <= 0) {
@@ -85,17 +85,17 @@ export default class CustomerForm extends Component {
                     <button type="reset" value="send" className="button button-primary" >Cancel</button>
 
                     <div>
-                        
+
                         {
                             this.state.visible && (<div>
-                        <h1>User Infortmation  </h1>
-                        Id is {this.state.id}<br></br>
-                        Name is {this.state.name}<br></br>
-                        Marks is {this.state.marks}
-                        </div>
-                         )
+                                <h1>User Infortmation  </h1>
+                                Id is {this.state.id}<br></br>
+                                Name is {this.state.name}<br></br>
+                                Marks is {this.state.marks}
+                            </div>
+                            )
                         }
-                          </div>
+                    </div>
                 </form >
             </div >
         )

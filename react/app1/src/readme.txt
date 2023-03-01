@@ -2,6 +2,15 @@ npm i react-router@5.3.4
 npm i react-router-dom@5.3.4
 
 npm i react-table
+npm i react-animations
+
+--below not required
+
+--npm install react-addons-css-transition-group
+
+--npm install react-transition-group
+
+npm i react-hoc
 
 
 import logo from './logo.svg';

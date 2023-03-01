@@ -54,12 +54,12 @@ export default class PersonForm extends Component {
             }
         )
     }
-    hobbiesChange = (event) => {
-        let obj=this.state.checkBoxGroup
-        obj[event.target.value] = event.target.checked
-        this.setState({hobbies:obj})
-        console.log("hobbies change ", event.target.value, event.target.checked)
-    }
+    // hobbiesChange = (event) => {
+    //     let obj=this.state.checkBoxGroup
+    //     obj[event.target.value] = event.target.checked
+    //     this.setState({hobbies:obj})
+    //     console.log("hobbies change ", event.target.value, event.target.checked)
+    // }
     idChange = (event) => {
         this.setState(
             {
@@ -116,7 +116,7 @@ export default class PersonForm extends Component {
                     </div>
 
 
-                    <div class="form-check">
+                    {/* <div class="form-check">
                         <label class="form-check-label" >Hobbies:</label><br></br>
                         <input type='checkbox'
                             name='hobbies' checked={this.state.hobbies['music']} onChange={this.hobbiesChange} class="form-check-input"></input>Music<br></br>
@@ -128,7 +128,7 @@ export default class PersonForm extends Component {
                             name='hobbies' checked={this.state.hobbies['flowering']} onChange={this.hobbiesChange} class="form-check-input"></input>Flowering<br></br>
                         <input type='checkbox'
                             name='hobbies' checked={this.state.hobbies['shopping']} onChange={this.hobbiesChange} class="form-check-input"></input>Shopping<br></br>
-                    </div>
+                    </div> */}
 
                     <div class="form-group">
 
@@ -160,7 +160,7 @@ export default class PersonForm extends Component {
                     <label>Id : {this.state.id}</label><br></br>
                     <label>Name : {this.state.name}</label><br></br>
                     <label>Age : {this.state.age}</label><br></br>
-                    <label>Hobbies : {this.state.hobbies}</label><br></br>
+                    {/* <label>Hobbies : {this.state.hobbies}</label><br></br> */}
                     <label>Comment : {this.state.comment}</label><br></br>
                     <label>City : {this.state.city}</label><br></br>
 
