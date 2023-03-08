@@ -1,0 +1,41 @@
+table{
+    width:60%;
+    border:solid green;
+ padding:30px;
+ margin: auto;
+ background-color:darkgreen;
+ color:white;
+ text-align: center;     
+}
+     
+    tr,th,td{
+        border:solid;
+    }
+
+    .distinction{
+        color:black;
+        background-color: yellow;
+    }
+    
+    .first{
+        color:black;
+        background-color: skyblue;
+    }
+    .second{
+        color:black;
+        background-color: pink;
+    }
+    .third{
+        color:black;
+        background-color: lightgoldenrodyellow;
+    }
+    .fail{
+        color:white;
+        background-color: red;
+    }
+    
+    .invalid{
+        color:white;
+        background-color: grey;
+    }
+

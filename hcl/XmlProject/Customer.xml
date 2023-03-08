@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Customers SYSTEM "customer.dtd" >
+<?xml-stylesheet type='text/css' href="Customer.css"?>
+<Customers>
+	<Customer ssn="0009">
+		<id>1001</id>
+		<name>mohan kumar</name>
+		<salary>12000</salary>
+		<copyright>&lt;abc.com&gt;</copyright>
+		<comment>
+		<![CDATA[
+		  String var="hello";
+		]]>
+
+		</comment>
+	</Customer>
+
+	<Customer>
+		<id>1002</id>
+		<name>mohan kumar</name>
+		<salary>12000</salary>
+		<copyright>&lt;abc.com&gt;</copyright>
+		<comment>
+		<![CDATA[
+		  document.write('hello world')
+		  alert('welcome')
+		]]>
+
+		</comment>
+	</Customer>
+
+
+	<Customer ssn="sr0067">
+		<id>1003</id>
+		<name>mohan kumar</name>
+		<salary>12000</salary>
+		<copyright>&lt;abc.com&gt;</copyright>
+		<comment></comment>
+
+	</Customer>
+
+
+</Customers>

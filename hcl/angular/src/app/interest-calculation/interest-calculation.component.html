@@ -1,0 +1,14 @@
+<form>
+<h1>Interest Calculation Application</h1>
+<label>Enter Amount</label>
+<input [(ngModel)]="amount" name="amount"><br>
+
+<label>Enter Rate</label>
+<input [(ngModel)]="rate" name="rate"><br>
+
+<label>Enter Time</label>
+<input [(ngModel)]="time" name="time"><br>
+</form>
+<div>
+  Interest is {{(rate/100)*amount*time}}<br>
+ g </div>

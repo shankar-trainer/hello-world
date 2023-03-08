@@ -1,0 +1,12 @@
+.style1{
+    background-color: maroon;
+    color: white;
+    border:inset 30px;
+    padding:40px;
+    margin: auto;
+    width:40%;
+    font-weight: bold;
+    font-style: oblique;
+    text-transform: uppercase;
+    text-transform: capitalize;
+}
