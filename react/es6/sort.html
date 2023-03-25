@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+      const ar=[111,2,33,4,50,12,10]
+      document.write('unsorted array<br>')
+      document.write(ar)
+      ar.sort(function(a,b){
+        return a-b
+      })
+      document.write('<br>sorted array<br>')
+      document.write(ar)
+      document.write("<br>sort by => function<br>"+ar.sort((a,b)=>{
+        return a-b
+      }))
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        function disp() {
+            var i='';
+            for (const a of array) {
+                i = i  + a+ ",  "
+            }
+            document.getElementById('id1').innerHTML = i
+
+
+            document.getElementById('id2').innerHTML = array.filter(function(a){
+                return  a%2===0;
+            })
+
+            document.getElementById('id3').innerHTML = array.filter(
+                 (a)=> a%2!==0
+            )
+
+             console.log(array.filter(function(a){
+                return  a%2===0;
+            }))
+
+            ar1=array.filter(
+                 (a)=> a%2!==0
+            )
+  console.log(ar1)
+        }
+
+    </script>
+</head>
+
+<body onload="disp()">
+
+    All Array elements are 
+    <div id="id1">
+    </div>
+  Only Even elements are 
+    <div id="id2">
+    </div>
+</body>
+  Only Odd Elements Are 
+    <div id="id3">
+    </div>
+</body>
+
+</html>
