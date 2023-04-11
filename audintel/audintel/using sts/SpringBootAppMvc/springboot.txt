@@ -1,0 +1,37 @@
+Spring Initializer
+Download & Install STS IDE
+Spring Boot Hello world Example
+Introduction to Spring Boot Annotations
+
+Spring Boot Annotations
+@SpringBootApplication
+@Controller
+@RequestMapping
+@RequestParam
+@Autowired
+
+
+CrudRepository
+@Entity
+ @Id
+CrudRepository Query Method (JPQL)
+@ResponseBody
+JpaRepository
+@PathVariable
+Spring Boot JPA 
+H2 Database
+
+Spring Boot Database
+Spring Boot JDBC
+Spring Boot JDBC Example
+Spring Boot CRUD Operations
+
+@RestController
+@PostMapping
+@GetMapping
+@DeleteMapping
+@PutMapping
+@RequestBody
+DataRest
+application.properties
+Maven Repository
