@@ -1,0 +1,297 @@
+https://download.oracle.com/java/20/latest/jdk-20_windows-x64_bin.exe
+
+
+
+
+set path=%path%;C:\Program Files\Java\jdk-20\bin
+
+
+
+
+java supports all primitive data types of c langauge
+
+
+Integer 
+   int 
+  
+   
+Decimal 
+   float 
+   double  -- default for decimal 
+   
+Variable -  
+       entity whose value can vary 
+	   
+	 Variable Declaration 
+
+     data type     variable name 
+
+      int   x;
+	      x=10;
+		  x=20; 
+		  
+	  
+Integer  cannot have decimal values
+
+ "" -- String 
+ using + with "" append variable with string
+ 
+ 
+ local variable 
+ 
+    -- inside any method variable declared are local variable
+    -- local variable has no default value
+	-- it must be initilised before use.
+	
+	
+	
+	
+	operator 
+	
+	    +
+		-
+		*  multiplication
+		/  division
+		%  modulus 
+		
+		
+
+		control statement 
+		
+		  if 
+		  if else if else 
+		    
+if(condition)
+{
+
+}			
+else if(condition){
+
+
+}
+else 
+
+   comparision 
+
+     == 
+     != 
+      >
+      <
+      >=
+      <=	  
+		     
+		  
+	logical operator 
+
+       OR        
+      AND 
+       XOR 
+	   
+	   OR -- if either of the condition is true it will be true 
+	   
+	    
+	 
+Integer 
+
+   byte ------------------- java.lang.Byte 
+   short------------------- java.lang.Short 
+   int  -------------------- java.lang.Integer
+   long  ------------------  java.lang.Long 
+   
+
+   in decimal 
+      by default all decimal are double 
+	  
+   in integer 
+      by default all are int 
+
+      long l1=7677676L;
+
+
+
+  function ---  
+       -->set of code for specific work with given name.
+	   --> it can have parameter(arguments) and it can return values.
+	   
+	   void hello(){
+	   
+	   }
+	   
+	  
+	      System.out.prinf()
+		     %d -- int 
+			 %f -- float 
+	   
+	   User Input 
+	   java.util.Scanner
+	   
+	       next() -- String 
+		   nextLine()  -- multi string 
+		   nextInt()   -- int 
+		   nextFloat()  -- float 
+		   nextDouble() -- double 
+		   
+	   Employee.java 
+	   
+	     User Input 
+		   int id 
+		  String 	name 
+		 String 	location
+		 float 	salary 
+		 float 	pf
+	    
+		static void  employeeInfo(){
+		
+		}
+		
+		if(condition){
+			
+			statement
+		}
+		else if(condition){
+			
+			
+		}
+		else {
+			
+			statement
+		}
+		
+   Loop 
+
+    -- it is iterative statement based on condition 
+	
+	
+	3 types 
+	    1. while loop 
+		
+		
+		 syntax 
+		    while(condition){
+				
+				 statement
+				
+			}
+			
+			-- top tested loop 
+			
+			
+	 Example 
+	        int counter=1;
+			
+			 while(counter<=10){
+				 System.out.println(counter);
+				 counter=counter+1;
+			 }
+   
+     
+   
+   Question 
+   
+    Take 10 no from user and display the sum using addition method.
+	
+	Call the addition method in main and display the sum.
+
+		
+	Question 
+      Take 10 no from user using while loop and display lowest and highest no among them 
+
+	  
+	  
+	  int -----> char   code (ascii code )
+	  char    -----> int 
+	  
+	  
+	  0  - 255
+	  
+	    charatcter   --    
+	  
+	  
+	  
+	  A --- Z
+	  
+	 65  to 90 
+	 
+	 a- z
+	  97 - 120 
+	  
+
+65 - 91  A -Z
+
+97 -120 a -z 
+	  
+	  
+	  infinite loop 
+	  
+	  condition which is always true 
+	  
+	  
+	  while(1>0){
+		  
+		  
+	  }
+	  while(true){
+		  
+		  
+	  }
+	  
+	  
+	  break ;    
+	   inside the loop or block you can come out using break statement;
+	   
+	   continue ;
+	   
+	   inside the loop or block you want to execute the
+	   given step again  
+
+ --->for loop 
+        =>This is easiest loop 
+        =>counter variable declaration, condition check,  decrement/increment at one place 
+        => top tested loop 
+
+  Syntax 
+    for(variable declaration;condition;decrement/increment )  
+	{
+		
+		
+	}
+   
+	  
+ factorial 
+      4 ---- 4*3*2*1
+           	 1*2*3*4 
+			 
+			 
+  Question.
+   Take a number and factor from user. display power value  of the given no.
+    Use for loop 
+	
+	2
+	3 
+	
+	2*2*2 =8 
+	
+	3 
+	2 
+	3*3 =9 
+	
+	
+	
+   Question 
+    Take a number from user and display the sum of digits 
+
+    1234 -->1+2+3+4 =10 
+
+	
+	
+   
+	  
+		
+
+
+
+		
+
+
+
+

@@ -1,9 +1,11 @@
 class OddOrEven{
 	static boolean evenOrOdd(int n){
-		if(n%2==0)
+		return (n%2==0);
+
+		/*if(n%2==0)
 			return true;
 		else
-		return false;
+		return false;*/
 	}
 	public static void main(String args[]){
 		System.out.println("Enter no to check even or odd");
