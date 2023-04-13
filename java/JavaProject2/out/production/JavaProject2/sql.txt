@@ -1,0 +1,291 @@
+
+					
+					
+       	 
+		 Database --  collection of data in oragnized way 
+		 
+		            table --- a tabular structure where we can keep data in the form of rows and columns 
+					
+					
+					DBMS --- database management system 
+					
+					RDBMS--- relational database management system
+					
+					        all tables are connected to each other using relationship 
+							
+					
+
+                
+				mysql command
+				
+				
+				
+
+mysql> select user();
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_date()
+    -> ;
++----------------+
+| current_date() |
++----------------+
+| 2023-03-25     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2023-03-25 05:52:05 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> create database mydatabase;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| db1                |
+| db2                |
+| db3                |
+| information_schema |
+| mydatabase         |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+8 rows in set (0.02 sec)
+
+mysql> use mydatabase;
+Database changed
+mysql> show tables;
+Empty set (0.01 sec)
+
+mysql> create table student(roll int primary key, name varchar(20), subject varchar(20), marks float(5,2));
+Query OK, 0 rows affected, 1 warning (0.12 sec)
+
+mysql> describe student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll    | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| subject | varchar(20) | YES  |     | NULL    |       |
+| marks   | float(5,2)  | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_mydatabase |
++----------------------+
+| student              |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into student values(10001,'umesh kumar','math',67.5677);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into student values(10002,'suresh kumar','science',97.677);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student values  (10003,'prince kumar','hindi',56.67),(10004,'lalan kumar','socila science',45.677);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++-------+--------------+----------------+-------+
+| roll  | name         | subject        | marks |
++-------+--------------+----------------+-------+
+| 10001 | umesh kumar  | math           | 67.57 |
+| 10002 | suresh kumar | science        | 97.68 |
+| 10003 | prince kumar | hindi          | 56.67 |
+| 10004 | lalan kumar  | socila science | 45.68 |
++-------+--------------+----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select roll from student;
++-------+
+| roll  |
++-------+
+| 10001 |
+| 10002 |
+| 10003 |
+| 10004 |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select roll,name from student;
++-------+--------------+
+| roll  | name         |
++-------+--------------+
+| 10001 | umesh kumar  |
+| 10002 | suresh kumar |
+| 10003 | prince kumar |
+| 10004 | lalan kumar  |
++-------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select roll,name,subject from student;
++-------+--------------+----------------+
+| roll  | name         | subject        |
++-------+--------------+----------------+
+| 10001 | umesh kumar  | math           |
+| 10002 | suresh kumar | science        |
+| 10003 | prince kumar | hindi          |
+| 10004 | lalan kumar  | socila science |
++-------+--------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student;
++-------+--------------+----------------+-------+
+| roll  | name         | subject        | marks |
++-------+--------------+----------------+-------+
+| 10001 | umesh kumar  | math           | 67.57 |
+| 10002 | suresh kumar | science        | 97.68 |
+| 10003 | prince kumar | hindi          | 56.67 |
+| 10004 | lalan kumar  | socila science | 45.68 |
++-------+--------------+----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student where marks>90;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where name='suresh kumar';
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where marks>=50 or marks<=70;
++-------+--------------+----------------+-------+
+| roll  | name         | subject        | marks |
++-------+--------------+----------------+-------+
+| 10001 | umesh kumar  | math           | 67.57 |
+| 10002 | suresh kumar | science        | 97.68 |
+| 10003 | prince kumar | hindi          | 56.67 |
+| 10004 | lalan kumar  | socila science | 45.68 |
++-------+--------------+----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student where marks>=50 and marks<=70;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10003 | prince kumar | hindi   | 56.67 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where marks between 50 and 70;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10003 | prince kumar | hindi   | 56.67 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name='umesh kumar' or roll=10001;
++-------+-------------+---------+-------+
+| roll  | name        | subject | marks |
++-------+-------------+---------+-------+
+| 10001 | umesh kumar | math    | 67.57 |
++-------+-------------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where name='umesh kumar' or roll=10002;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name='umesh kumar' and  roll=10002;
+Empty set (0.00 sec)
+
+mysql> show columns from student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll    | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| subject | varchar(20) | YES  |     | NULL    |       |
+| marks   | float(5,2)  | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show create table  student;
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                          |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| student | CREATE TABLE `student` (
+  `roll` int NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `subject` varchar(20) DEFAULT NULL,
+  `marks` float(5,2) DEFAULT NULL,
+  PRIMARY KEY (`roll`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table student add dob date;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll    | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| subject | varchar(20) | YES  |     | NULL    |       |
+| marks   | float(5,2)  | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into student values(10009,'priyanshu kumar','science',67.677,'2020-01-12');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-------+-----------------+----------------+-------+------------+
+| roll  | name            | subject        | marks | dob        |
++-------+-----------------+----------------+-------+------------+
+| 10001 | umesh kumar     | math           | 67.57 | NULL       |
+| 10002 | suresh kumar    | science        | 97.68 | NULL       |
+| 10003 | prince kumar    | hindi          | 56.67 | NULL       |
+| 10004 | lalan kumar     | socila science | 45.68 | NULL       |
+| 10009 | priyanshu kumar | science        | 67.68 | 2020-01-12 |
++-------+-----------------+----------------+-------+------------+
+5 rows in set (0.00 sec)
+
+
+				
+					

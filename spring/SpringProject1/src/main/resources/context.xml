@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- bean definitions here -->
+    <context:annotation-config></context:annotation-config>
+    <context:component-scan base-package="org.abc.model"></context:component-scan>
+    <context:component-scan base-package="org.abc.service"></context:component-scan>
+
+
+    <bean class="org.abc.model.Movie">
+        <property name="movieId" value="656776"></property>
+        <property name="movieName" value="black adam"></property>
+        <property name="movieCost" value="200000000"></property>
+    </bean>
+
+
+    <bean id="actor1" class="org.abc.model.Actor">
+        <property name="actorId" value="1001"></property>
+        <property name="actorName" value="p kumar"></property>
+        <property name="actorAge" value="40"></property>
+    </bean>
+
+
+    <bean id="actor2" class="org.abc.model.Actor">
+        <property name="actorId" value="1002"></property>
+        <property name="actorName" value="k kumar"></property>
+        <property name="actorAge" value="45"></property>
+    </bean>
+
+
+</beans>

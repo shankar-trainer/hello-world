@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.abc.model.Product" id="prd1">
+        <property name="prdId" value="656565"></property>
+        <property name="prdName" value="java book"></property>
+        <property name="prdCost" value="678"></property>
+        <property name="bookList">
+            <list>
+                <value>java beginner</value>
+                <value>java advanced</value>
+                <value>java beginner</value>
+                <value>spring in action</value>
+                <value>spring beginner</value>
+                <value>spring in action</value>
+            </list>
+        </property>
+        <property name="movieList">
+            <set>
+                <value>avtar</value>
+                <value>avtar2</value>
+                <value>black adam</value>
+                <value>fall</value>
+                <value>godzilla</value>
+                <value>fall</value>
+            </set>
+        </property>
+
+        <property name="bikeCollection">
+            <map>
+                <entry key="4455" value="honda shine"></entry>
+                <entry key="4459" value="honda shine"></entry>
+                <entry key="4456" value="honda shine"></entry>
+                <entry key="4455" value="glamour"></entry>
+                <entry key="4457" value="dukati"></entry>
+            </map>
+        </property>
+        <property name="order1">
+
+            <bean class="org.abc.model.Order">
+                <property name="orderId" value="1"></property>
+                <property name="orderName" value="book order"></property>
+            </bean>
+
+
+        </property>
+
+    </bean>
+
+
+</beans>

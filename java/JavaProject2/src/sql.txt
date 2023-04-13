@@ -1,0 +1,480 @@
+
+					
+					
+       	 
+		 Database --  collection of data in oragnized way 
+		 
+		            table --- a tabular structure where we can keep data in the form of rows and columns 
+					
+					
+					DBMS --- database management system 
+					
+					RDBMS--- relational database management system
+					
+					        all tables are connected to each other using relationship 
+							
+					
+
+                
+				mysql command
+				
+				
+				
+
+mysql> select user();
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_date()
+    -> ;
++----------------+
+| current_date() |
++----------------+
+| 2023-03-25     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2023-03-25 05:52:05 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> create database mydatabase;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| db1                |
+| db2                |
+| db3                |
+| information_schema |
+| mydatabase         |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+8 rows in set (0.02 sec)
+
+mysql> use mydatabase;
+Database changed
+mysql> show tables;
+Empty set (0.01 sec)
+
+mysql> create table student(roll int primary key, name varchar(20), subject varchar(20), marks float(5,2));
+Query OK, 0 rows affected, 1 warning (0.12 sec)
+
+mysql> describe student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll    | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| subject | varchar(20) | YES  |     | NULL    |       |
+| marks   | float(5,2)  | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_mydatabase |
++----------------------+
+| student              |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into student values(10001,'umesh kumar','math',67.5677);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into student values(10002,'suresh kumar','science',97.677);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student values  (10003,'prince kumar','hindi',56.67),(10004,'lalan kumar','socila science',45.677);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++-------+--------------+----------------+-------+
+| roll  | name         | subject        | marks |
++-------+--------------+----------------+-------+
+| 10001 | umesh kumar  | math           | 67.57 |
+| 10002 | suresh kumar | science        | 97.68 |
+| 10003 | prince kumar | hindi          | 56.67 |
+| 10004 | lalan kumar  | socila science | 45.68 |
++-------+--------------+----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select roll from student;
++-------+
+| roll  |
++-------+
+| 10001 |
+| 10002 |
+| 10003 |
+| 10004 |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select roll,name from student;
++-------+--------------+
+| roll  | name         |
++-------+--------------+
+| 10001 | umesh kumar  |
+| 10002 | suresh kumar |
+| 10003 | prince kumar |
+| 10004 | lalan kumar  |
++-------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select roll,name,subject from student;
++-------+--------------+----------------+
+| roll  | name         | subject        |
++-------+--------------+----------------+
+| 10001 | umesh kumar  | math           |
+| 10002 | suresh kumar | science        |
+| 10003 | prince kumar | hindi          |
+| 10004 | lalan kumar  | socila science |
++-------+--------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student;
++-------+--------------+----------------+-------+
+| roll  | name         | subject        | marks |
++-------+--------------+----------------+-------+
+| 10001 | umesh kumar  | math           | 67.57 |
+| 10002 | suresh kumar | science        | 97.68 |
+| 10003 | prince kumar | hindi          | 56.67 |
+| 10004 | lalan kumar  | socila science | 45.68 |
++-------+--------------+----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student where marks>90;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where name='suresh kumar';
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where marks>=50 or marks<=70;
++-------+--------------+----------------+-------+
+| roll  | name         | subject        | marks |
++-------+--------------+----------------+-------+
+| 10001 | umesh kumar  | math           | 67.57 |
+| 10002 | suresh kumar | science        | 97.68 |
+| 10003 | prince kumar | hindi          | 56.67 |
+| 10004 | lalan kumar  | socila science | 45.68 |
++-------+--------------+----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student where marks>=50 and marks<=70;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10003 | prince kumar | hindi   | 56.67 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where marks between 50 and 70;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10003 | prince kumar | hindi   | 56.67 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name='umesh kumar' or roll=10001;
++-------+-------------+---------+-------+
+| roll  | name        | subject | marks |
++-------+-------------+---------+-------+
+| 10001 | umesh kumar | math    | 67.57 |
++-------+-------------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where name='umesh kumar' or roll=10002;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name='umesh kumar' and  roll=10002;
+Empty set (0.00 sec)
+
+mysql> show columns from student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll    | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| subject | varchar(20) | YES  |     | NULL    |       |
+| marks   | float(5,2)  | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show create table  student;
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                          |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| student | CREATE TABLE `student` (
+  `roll` int NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `subject` varchar(20) DEFAULT NULL,
+  `marks` float(5,2) DEFAULT NULL,
+  PRIMARY KEY (`roll`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table student add dob date;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll    | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| subject | varchar(20) | YES  |     | NULL    |       |
+| marks   | float(5,2)  | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into student values(10009,'priyanshu kumar','science',67.677,'2020-01-12');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-------+-----------------+----------------+-------+------------+
+| roll  | name            | subject        | marks | dob        |
++-------+-----------------+----------------+-------+------------+
+| 10001 | umesh kumar     | math           | 67.57 | NULL       |
+| 10002 | suresh kumar    | science        | 97.68 | NULL       |
+| 10003 | prince kumar    | hindi          | 56.67 | NULL       |
+| 10004 | lalan kumar     | socila science | 45.68 | NULL       |
+| 10009 | priyanshu kumar | science        | 67.68 | 2020-01-12 |
++-------+-----------------+----------------+-------+------------+
+5 rows in set (0.00 sec)
+
+
+				
+					
+					
+					
+					
+	update statement 
+
+       make changes in  the existing data
+        
+		 update table set fieldname=value where condition 
+		               if no where then it will update all record 
+					   
+            		
+	   mysql> update student set dob='1995-11-20', name='srinivas kumar' where roll=50001;
+	   
+	   making calculation in table 
+	   
+	   mysql> select roll,name,subject,marks,(marks+marks*5/100), dob from student;
+	   
+	   mysql> select roll,name,subject,marks,(marks+marks*5/100) as 'updated marks', dob from student;
+	   
+	   
+	   sort the record by using order by 
+	       by default it is ascending order 
+		   
+	     
+	   mysql> select * from student order by name;
+	   mysql> select * from student order by name asc; // same result 
+	   
+	   descending order 
+	   
+	   mysql> select * from student order by name desc; // same result 
+	   
+	   
+	   
+	   aggregate function 
+	   
+	       -- sum, max, min, avg 
+	   
+	   
+	   mysql> select sum(marks), avg(marks), min(marks), max(marks) from student;
+	   
+	   select sum(marks) 'total marks', avg(marks) 'average marks', min(marks) 'minimun marks', max(marks) 'maximum marks' from student;
+
++-------------+---------------+---------------+---------------+
+| total marks | average marks | minimun marks | maximum marks |
++-------------+---------------+---------------+---------------+
+|      749.78 |     68.161818 |         45.68 |         97.68 |
++-------------+---------------+---------------+---------------+
+
+
+count of all or column values excluding null 
+
+mysql> select  count(*) from student;
++----------+
+| count(*) |
++----------+
+|       12 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select  count(marks) from student;
++--------------+
+| count(marks) |
++--------------+
+|           11 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select  count(dob) from student;
++------------+
+| count(dob) |
++------------+
+|          4 |
++------------+
+1 row in set (0.00 sec)
+
+
+
+  group by 
+  
+    will group the values using aggregate function and gives result 
+	
+	mysql> select  subject, count(subject) from student group by subject;
++----------------+----------------+
+| subject        | count(subject) |
++----------------+----------------+
+| math           |              3 |
+| science        |              3 |
+| hindi          |              1 |
+| socila science |              1 |
+| physics        |              1 |
+| chemistry      |              1 |
+| history        |              2 |
++----------------+----------------+
+7 rows in set (0.00 sec)
+
+  
+  
+  
+  student ---- course 
+          ---- address 
+          ---- transport 
+		  
+		  
+		  
+		  join --------------
+		  
+		  
+		  mysql> select * from address;
++-------+------------+-----------+---------+---------+
+| roll  | sector     | city      | state   | pin     |
++-------+------------+-----------+---------+---------+
+| 10001 | sector 1   | lucknow   | up      | 8778878 |
+| 10002 | sector 16  | gurgao    | haryana | 5665656 |
+| 10003 | sector 134 | noida     | up      |  656556 |
+| 60001 | sector 1   | new delhi | delhi   | 7677678 |
+| 60008 | sector 15  | noida     | up      | 7665556 |
+| 70001 | sector 10  | new delhi | delhi   | 4344334 |
++-------+------------+-----------+---------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student;
++-------+-----------------+----------------+-------+------------+
+| roll  | name            | subject        | marks | dob        |
++-------+-----------------+----------------+-------+------------+
+| 10001 | pankaj kumar    | math           | 67.57 | NULL       |
+| 10002 | suresh kumar    | science        | 97.68 | NULL       |
+| 10003 | prince kumar    | hindi          | 56.67 | NULL       |
+| 10004 | lalan kumar     | socila science | 45.68 | NULL       |
+| 10006 | sarthak kumar   | science        | 67.69 | 1996-10-12 |
+| 10007 | vipul kumar     | physics        |  NULL | NULL       |
+| 10008 | kamal partap    | chemistry      | 78.56 | NULL       |
+| 10009 | priyanshu kumar | science        | 67.68 | 2020-01-12 |
+| 12345 | suresh shankar  | math           | 67.80 | NULL       |
+| 50001 | srinivas kumar  | math           | 67.00 | 1995-11-20 |
+| 50003 | vidyut sharma   | history        | 67.89 | 1996-12-20 |
+| 60001 | savita devi     | history        | 65.56 | NULL       |
++-------+-----------------+----------------+-------+------------+
+		  
+		  
+		  equi join  -- it will give you records that is present in both the tables
+		  
+		  
+		    old syntax
+		  mysql> select * from student, address where student.roll=address.roll;
+		  
+		  new sql syntax 
+		  
+		  mysql> select * from student inner join address on student.roll=address.roll;
+		  
+		  
+		  using table name 
+		  
+		  mysql> select student.roll, student.name, student.subject, student.marks,student.dob, address.sector,address.city,address.state,address.pin  from student inner join address on student.roll=address.roll
+		  
+		  
+		  left join -- display all values which are present in left table 
+		  
+		  
+		  mysql> select student.roll, student.name, student.subject, student.marks,student.dob, address.sector,address.city,address.state,address.pin  from student left join address on student.roll=address.roll
+    
+	     right join - display all values which are present in right table 
+		 
+		 
+		 mysql> select student.roll, student.name, student.subject, student.marks,student.dob, address.sector,address.city,address.state,address.pin  from student right  join address on student.roll=address.roll
+    
+	
+	
+	
+	   sub query -- nested query 
+	          
+			  
+
+			  two parts 
+			      outer query --- and inner query 
+				      first inner query will get executed and return result then
+                       using the result outer query will get executed
+
+					   
+		                 outer query                  inner query 
+        mysql> select * from student where marks=(select min(marks)from student);
++-------+-------------+----------------+-------+------+
+| roll  | name        | subject        | marks | dob  |
++-------+-------------+----------------+-------+------+
+| 10004 | lalan kumar | socila science | 45.68 | NULL |
+
+		  
+		  
+		  
+		  

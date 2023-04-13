@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hello" class="org.abc.model.Hello">
+
+    </bean>
+
+    <bean id="emp1" class="org.abc.model.Employee" scope="prototype" autowire="byName">
+        <property name="empId" value="6776766"></property>
+        <property name="empName" value="ram kumar"></property>
+        <property name="empSalary" value="200000"></property>
+        <!--<property name="address" ref="addr1"></property>-->
+    </bean>
+
+    <!--<bean id="addr1" class="org.abc.model.Address">-->
+    <bean id="address" class="org.abc.model.Address">
+        <property name="addrId" value="1"></property>
+        <property name="addrLocation" value="sector4 laxminagar"></property>
+        <property name="addrCity" value="new delhi"></property>
+
+    </bean>
+
+
+    <bean id="user1" class="org.abc.model.User" init-method="init" lazy-init="true" destroy-method="cleanup">
+        <constructor-arg value="66776" name="userId"></constructor-arg>
+        <constructor-arg value="mohan kumar" name="userName"></constructor-arg>
+        <constructor-arg value="80000" name="userSalary"></constructor-arg>
+    </bean>
+</beans>

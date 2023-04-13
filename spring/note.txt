@@ -1,0 +1,1669 @@
+high level programming language 
+  -- class and object 
+  
+low level 
+    method and variable 
+
+
+
+os independent 
+  --- 
+     window 
+     in c -- compiler --
+	    -- .obj,.exe 
+		    os can run .exe 
+			
+	mac os 
+     	 cannot run .exe 
+		 compile it again 
+		  a.out 
+		  
+		  
+		  
+	 java -- both compiler and interpretter 
+              compiler -- .java -- .class	 
+
+
+	          interpretter -- .class -- run 
+
+              interpretter for every os 
+			  
+			  
+			  javac -- java compile
+			  java -- java interpretter
+			  
+			  
+
+
+
+
+
+
+                     data type 
+                int   -- integer --  0,1,2,3,4, -1,-2,-3,-4 but no decimal 
+						   
+                     variable -- whose values can vary 
+					 
+					 constant -- whose values can not  vary, its fixed   
+					 
+					 variable declaration 
+					    syntax 
+						       data_type variable name 
+							   
+							   int a; 
+							   float b;
+							   
+							   +  -- works in 2 ways 
+							       1. arithmatic addition 
+								   2. string concatenation 
+								   
+								   
+							int x=10;
+							int y=20;
+                           int z=x+y; //+  is used as arithmatic addition 
+
+
+                             char  -- single character 
+							        denoted by ''
+									      'a'
+										  'b'
+                             string is collection of character 	
+                                       denoted in double quote 
+									   
+									   "hello"
+									   
+								in string we can concatenate or add any variable using + sign 
+
+                                   "hello"+x---> "hellox"								
+                                   "hello "+x---> "hello x"
+                                   "hello  "+x---> "hello  x"
+								   
+									   
+									   
+								4/5 -- zero 
+                                 5/4 -- 1
+                                  4/4 -- 1
+								   9/10 --0 
+								   10/9 -1
+								   9/9 -1
+								  
+								  
+								  
+								  
+								  in notepad 
+								       type the code 
+									   error after compilation 
+									   
+									   
+									   
+						IDE -- integrated development environment 
+                                     
+                                         compilation itself 
+										 intelligence
+                                       intgrated jdk 
+									   
+								eclipse , intellij , netbeans 
+								
+								
+								
+			eclipse -- working folder -- workspace 
+                        create java project 
+                        do the code 
+						
+								
+                         eclipse has its own compiler  and jre 									   
+										 
+				  jdk -- compiler +interpretter(java development kit)
+                  jre     interpretter (java runtime environment) 
+				  
+				  
+				  
+				  
+				  ctrl+space -- main shortcut 
+				  
+				  main -- ctr+space 
+	              sysout -- ctrl+space 
+				  
+				  
+								  
+								  
+				  decimal -- float and double(default) 
+				  
+				  boolean --- true and false 
+				  
+				  
+				              
+				  if --- single condition 
+				  if else -- two condition 
+				  
+				  if else if else  mutiple condition 
+				  
+				  
+				  software link eclipse  
+				  https://www.eclipse.org/downloads/packages/release/oxygen/3a/eclipse-ide-java-developers
+				  
+				  jdk 19 link 
+				  https://www.oracle.com/in/java/technologies/downloads/#jdk19-windows
+				  open jdk 
+				  https://jdk.java.net/
+
+                 intellij link 				  
+				  
+				 https://www.jetbrains.com/idea/download/#section=windows
+				 https://download.jetbrains.com/idea/ideaIC-2022.3.2.win.zip?_gl=1*1ytyfa9*_ga*MTU3MzI5MTI1Ni4xNjc3NjMzOTU2*_ga_9J976DJZ68*MTY3NzYzOTQwMS4yLjEuMTY3NzYzOTQwMy41OC4wLjA.&_ga=2.208988818.1882465549.1677633956-1573291256.1677633956
+				  
+				  
+				  
+				  
+				  
+				  
+				  and operator 
+				  
+				  or operator 
+				  
+				  
+				  AND operator (&&) works as per truth table 
+				  
+				  AND truth table 
+				  
+				  cond1	 	cond2     result
+                   T         T          T
+                   F		 F		    F
+				   F         T          F
+				   T         F          F 
+
+				   
+				   OR Operartor( || ) 
+				   
+				   Cond1	Cond2	Result
+				   T         T       T
+				   T         F       T
+				   F         T       T
+				   F         F       F
+				   
+				  
+				  
+				  
+				  
+				  
+				  numbers 
+				      integer -- no decimal -4,-3,-2,-1 0 ,1,2,3,
+                          int 					  
+					  decimal 
+                              double 
+                              float 
+                             all decimals are double 
+                              33.5 -- double 							 
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  +variable name 
+				  
+				  
+				  c language 
+				      format specifier 
+					     %f -- float annd double 
+						 %s   -- string 
+						 %c    -- character 
+						 %d    -- integer 
+						 
+				  
+				  
+				  
+				  conditional operator 
+				  
+				  if 
+				  if else 
+				  nested if 
+				     if else if else if else 
+					 
+					 
+					 and operator -- && 
+					 or operator  -- ||
+					 
+					 
+					 if else if alternate 
+					    ternary operator 
+						    syntax  
+							    ('condition'?'true result':'false result')
+
+
+				  
+				    
+          user input 
+                    
+					Scanner -- java.util
+					
+					   nextInt() --- int 
+					   nextFloat() -- float 
+					   nextDouble() -- double 
+					   next()       --string 
+					   nextLine()   -- multi string 
+					   
+                		  
+
+
+      Interest Calculation program 
+	  
+	  
+	      prt/100 
+		  
+		  
+					 
+			Switch case 
+                  
+                   alternate of if else if with const values(no comparison)
+				   
+				   used with int, char, string, byte, 
+				   
+				   
+					 
+				ascii code 	 
+					 
+				 char   ---  to int 
+				 
+                            
+                 int to char 
+ 				 
+				  
+				  
+				  
+				  loop 
+				       --> iterative statement till condition 
+					   --> counter 
+					   
+					   
+					   while loop
+					        
+							 syntax
+							 
+							 while(condition)
+							 {
+							  statement 
+							  counter incremnent/decrement 
+							  
+							 }
+					   
+					   
+					   
+		int counter=1;
+		       true
+		while(counter<=4) {
+			System.out.println(counter);
+			counter=counter+1;
+		}
+					   
+					   
+					   
+		counter=1
+              print 1
+              counter=counter+1;
+              counter=1+1;
+			  counter=2
+			  
+     	counter=2
+              print 2
+              counter=counter+1;
+              counter=2+1;
+			  counter=3
+		
+		counter=3
+              print 3
+              counter=counter+1;
+              counter=3+1;
+			  counter=4
+		
+		counter=4
+              print 4
+              counter=counter+1;
+              counter=4+1;
+			  counter=5
+				  
+					   
+					   
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+	  	int counter=1;
+		int p=2;
+         condition counter<=10 
+		 
+		 counter=1
+		 condition counter<=10 
+		 print(p*counter)-->2*1--->2
+		 counter=counter+1
+		 counter=1+1;=2
+		 
+		 
+		 condition counter(2)<=10 
+		 print(p*counter)-->2*2--->4
+		 counter=counter+1
+		 counter=2+1;=3
+		 
+		 condition counter(3)<=10 
+		 print(p*counter)-->2*3--->6
+		 counter=counter+1
+		 counter=3+1;=4
+		 
+		 
+		 
+		 
+		 
+		 sum=0
+		 counter=1;
+		 sum=sum+counter
+		 
+		 
+		 counter=1
+		 sum=0+1=1
+		 
+		 
+		 counter=2
+		 sum=1+2=3
+		 
+		 counter=3
+		 sum=3+3=6
+		 
+		 counter=4
+		 sum=6+4=10
+		 
+		 counter=5
+		 sum=10+5=15
+		 		 
+		 counter=6
+		 sum=15+6=21
+		 
+		 counter=7
+		 sum=21+7=28
+		 
+		 counter=8
+		 sum=28+8=36
+		 
+		 counter=9
+		 sum=36+9=45
+		 
+		 counter=10
+		 sum=45+10=55
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 counter=counter+1;
+		 
+		 
+		 pre increment -- ++counter -- increment and assign
+		 post increment -- counter++ -- increment but not assign
+		 
+		 pre decrement
+		 post decrement 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 loop 
+		 
+		  1. while loop 
+		       
+			   -- top tested loop 
+		 
+		        syntax
+
+                  counter 
+                    
+                  while(condition) // condition checked at top 
+                       {
+					    body
+						counter incremnent/decrement
+					   }				  
+		 
+		 
+		   2. for loop 
+		         ->simplest loop 
+				 ->top tested
+				 
+				 syntax
+	for(counter declaration/initialization ;condition; counter incremnent/decrement)
+	{
+	 body
+	}			  
+				  
+				  
+				  
+				  
+				  
+				  
+				factorial ==
+                  
+                    5  === 1*2*3*4*5
+                           5*4*3*2*1					
+				  
+				  
+				  
+				  
+				  nested loop 
+				  
+				  one loop inside other loop 
+				  
+				  table of 1 to 5 
+				  
+				  
+				  1    2    3   
+				  2	   4    6 
+				  3    6    9
+				  4    8    12
+				  5    10   15
+				  6    12   18
+				  7    14   21
+				  8    16   24
+				  9    18   27
+				  10   20   30
+				  
+				  
+		
+		variable -- entity whose value can be changed 
+		a=10
+		a=20
+		
+		constant -- entity whose value can not be changed 
+		b=20
+		b=40 // error 
+		
+		
+		variable and constant data type 
+		   
+		   integer --   values will be not decimal  -100,-99, -98,...-5,-4,-3,-2,-1,0,1,2,3,4,5...98,99,100 
+		   decimal --     -inifinity -99.0,-98.0....-5.0,-4.0,-3.0,-2.0,-1.0,0.0,1.0,2,0.....infinity
+		   character  -- single character -- 'a','b','1' ,, denoted by ''
+		   string    -- collection of characters , denoted by double quote "" 
+		   
+		   
+		   integer 
+		       int 
+		       
+		   decimal 
+		           double   default high range   
+		           float    low range 
+		   character
+		         char 
+		         
+		   string
+		       String 
+		       
+		       variable declaration 
+		       
+		       data type variable name 
+		       
+		       int a,         
+		       int b
+		       char grade 
+		       String name
+		       double salary
+		       float rate 
+		   
+		   
+		   + 
+		   
+		      -- used in 2 ways 
+		          mathematical addition-- 2+3    a+b
+		          string concatenation  "no1 is "+a  
+		          
+		          2+3
+		          
+		          string can be concatenated with any variable 
+		          
+		                            
+		   constant is declared with final key word along with declaration 
+		   
+		   int c; variable 
+		   final int d --  constant 
+		   
+		                
+		   
+		   
+		   
+		
+		  
+				  palindrome 
+				  
+				  1221
+				  
+				  bab --- reverse -- bab
+				  
+				  hello ---- olleh
+				  
+				  
+				  
+				  
+				  
+				  		int x = sc.nextInt();
+		int x1 = x;
+		int x2 = 0;
+
+		while (x > 0) {
+			x2 = x2*10 + x % 10;
+			x = x / 10;
+		}
+		
+		
+		x=121 
+		x1=x
+		x1=121
+		
+		
+		
+		x2= x2*10 + x % 10;
+		x2=0*10+121%10
+		x2=0+1
+		x2=1
+		x=x/10
+		x=121/10
+		x=12
+		
+		x2= x2*10 + x % 10;
+		x2=1*10+12%10
+		x2=10+2
+		x2=12
+		x=12/10
+		x=1
+		
+		x2= x2*10 + x % 10;
+		x2=12*10+1%10
+		x2=120+1
+		x2=121
+		x=1/10
+		x=0
+		
+		
+		x1==x2 
+		121 ==211 
+		
+		
+		
+		
+		
+				
+		
+		
+
+				  
+				  
+				  
+				  
+				  
+				  
+		reverse of no
+
+     	int x = sc.nextInt();
+		int x1 = x;
+		
+         int reverse=0;
+		 
+		while (x > 0) {
+		     reverse=x % 10;
+			reverse = reverse*10 +reverse ;
+			x = x / 10;
+		}
+				
+				  
+				  
+				  
+				  
+				  
+				  
+				 while loop 
+                 for loop 
+                  
+
+                     while  
+					 
+					    counter 
+						
+						 while(condition) 
+						    --       it is pretested  loop 
+							
+					    for(variable dec;condition;inc/dec){
+						         -- it is pretested loop
+						}
+						
+						
+						
+						do while loop 
+						   -- post tested 
+						   
+						   test is checked in last 
+						   
+						   
+						   syntax 
+						       counter
+						      do {
+							     statement
+							     
+							  }
+							  while(condition)
+						
+						
+						  do while loop it will execute at least once 
+						  
+						  
+						  
+						  
+						  nested loop 
+						  
+						  
+						  table of 1 to 10 
+						  
+						     for ()--  row 
+							   for -- column 
+							   
+						  
+						  
+						  
+						  * 
+						  *  *
+						  *  *  *
+						  *  *  *   *
+						  
+						  
+						  
+						  int a1,a2,a3,a4 ...  a10 
+						  
+						  
+						  array 
+						      collection of elements with same name but differrent index 
+							  
+							  denoted by [] 
+							  
+							  int a[]=new int[10];// declared 10 variable
+							       a[0]=0
+								   a[1]=0
+								   a[2]=0
+								   a[3]=0
+								   a[4]=0
+								   a[5]=0
+								   a[6]=0
+								   a[7]=0
+								   a[8]=0
+								   a[9]=0
+								   
+								   
+							 int ar[]={1,2,3,4,5};
+                                ar[0]=1;
+                                ar[1]=2;
+                                ar[2]=3;
+                                ar[3]=4;
+                                ar[4]=5;
+								
+								
+                                
+								
+								
+								
+								   
+						 class -- group of objects with same attribute and behaviour 
+
+
+                                employee class 
+								student class 
+								customer
+								laptop
+								country 
+								
+								
+								employee class
+								    
+									  each employee has id, name, salary 
+									    attribute
+										          id, name, salary 
+												  
+										behaviour
+                                            work()
+
+
+											
+
+
+
+                                 any object is instance of class
+
+                                    each employee is object 
+                                      
+                                     ram is an employee 
+									   id
+									   name 
+									   salary 
+									   
+									 
+
+
+                               customer 
+                                 id, name, ssn ,salary , location  							   
+
+
+
+
+          Encapsulation 
+		       --->all attribute(state) is private 
+			   --->behaviour(method) is exposed to outer world
+			   --->each attribute has getter and setter method
+			   --->all getter, setter methods are public 
+			   
+			   --->code(behaviour)+data(attribute)  -- bind code with data
+ 
+
+ 
+   four feature of object oriented programming(oop)
+   
+        -- Encapsulation
+		-- Inheritance
+		-- Polymorphism
+		-- Abstraction
+		
+		
+		
+		
+
+
+    Constructor 
+	     --> is a special method having same name as of class 
+		 --> no return even void 
+         --> used to initialization of all instance variable
+         --> automatically called when object is created 
+		
+        it is of two types 
+          --> 1.default constructor 
+          --> 2.overloaded constructor
+
+
+             default constructor
+                --> it has no argument
+                --> it will initialize same value for all objects 
+
+             overloaded constructor
+               --> it is having arguments
+               --> it will initialize differrent value for differrent object 
+			   
+			   
+			   static -- common to be shared among all obejcts 
+			   
+			     static variable--\
+				                     -- directly using class name     
+				 static method  --/
+				 
+				 static block 
+				 
+				 
+				 -- static memmbers are created before the creation of object 
+				 
+
+
+
+instance variable  and instance method
+        * variable and methods having no static keyword
+        * these belong to the object 
+		* object have one copy of instance variable and instance method
+		* it is created when object is created 
+
+static variable and static method
+
+      * variable and methods having  static keyword
+      * these belong to the class 
+	  * single copy is shared to all objects
+	  * it is create before the object creation 
+	  * it can be called without object 
+	  
+	  * it is used with common work 
+	  
+
+
+
+						 
+						  
+			package - is a collection of classes and interfaces 
+			
+			
+			
+			   class to be used outside the package must be public 
+			   class to be used inside the package can be default 
+
+
+              variable and methdso to be used outside the package must be public or protected 
+
+			  
+			   
+		
+      --->constructor is not inherited 
+      --->super class constructor is called by super keyword added inside constructor
+      ---> inside constructor super and this keyword must be in first line 
+ 	  
+		
+		
+		
+		Exception Handling 
+		
+		
+		    Exception
+			  -- 2 types 
+			        a) unchecked exception 
+					b) checked exception
+					
+					unchecked exception
+					    ---  not checked by compiler 
+						---  not forced by the compiler to handle it 
+						   arithmeticexception
+						   nullpointer exception
+						   
+						   
+					checked exception
+                        it is checked by the compiler 
+                        it forces to handle it 
+
+
+				throw  ---- used to throw new Exception Object
+checked exception handledd by
+  1.throws
+  2.try/catch
+
+
+
+						   caugth    rethrow
+		player1----------->player2--------------------------->player3
+
+
+		java.lang.Object --- super class of all the classes
+		  all classes directly or indirectly inherit all methods of Object class
+
+
+
+
+
+
+
+
+         abstract class 
+		       -- super class with abstract methods 
+			   -- cannot be instantiated 
+			   -- only can be extended 
+			   -- all methods in super class must not have implementation/body 
+			   --  required methods which are supposed to be overridden in subclass mus be declared as abstract methods
+			   
+			   
+			subclass which extends abstract class must implements all abstract methods of the super class
+
+			
+			
+	    in java one class  can extend only one class 
+
+        in java  -- single inheritance feature 
+
+
+        multiple inheritance
+
+         interface 
+              -- 100 % abstract class 
+              -- it can have only abstract methods
+              -- all methods are public and abstract 			  
+              -- all variables are public static and final   			  
+		
+			  -- one interface can extrends mutiple interface 
+			  -- one class can  extends only one class but implements multiple interface
+
+              using interface we get multiple inheritance feature 
+              now sub class can have more than one super class 
+
+
+                         
+						 Account(abstract class)     banking interface , address interface 
+						 
+						     
+							   class UserAccount  extends Account implements banking, address 
+							   
+						 
+						       Account
+							   Banking
+							   Address 
+							    |
+								v
+						      UserAccount
+						    
+                    
+					
+					
+	 Collection Framework 
+
+        framework have predefinbed struture and data flow 
+
+        array -- group of entities 
+        
+        array have fiexed size 
+        
+       collection is auto growable, algorithams (searching, sorting )
+
+
+        Collection -- interface 
+          |
+			Set interface  -- no duplicate, no index, ordered
+            List interface  -- duplicate, indexed , ordered
+            Map interface   -- (key,value) , unique key  
+			
+			
+			Set
+	          -- no duplicate
+			   
+			List 
+                -- duplicate
+                -- index 
+                  
+                  Sub class
+                     Vector   --   jdk1.0 , synchronized 
+                     ArrayList  ---- not synchronized, faster 
+                     LinkedList 
+
+
+                    ArrayList 
+					       methods 
+						    add 
+							remove 
+							
+							supports for each loop 
+							
+							
+			
+          Set 
+              no duplicate
+              no index 
+
+              sub class
+                  HashSet 
+                  TreeSet  -- all elements are sorted 
+				   
+				   no index so no support of for loop 
+				   support foreach, iterator for traversing elements 
+				   
+		  Map -- 
+                  key,value 
+                    key -any object 
+                    value - any object 
+
+                subclass 
+                     HashMap 
+                     TreeMap 
+					 
+
+
+         Arrays class
+                works with array 
+                 use ful static method 
+                   -->toString
+                   -->equals 	
+                   -->sort 
+				   -->binarySearch -- it will search after array is sorted 
+				   
+		Collections--
+                    work with List 
+                    sort, binarySearch,
+					
+					
+					
+					
+					
+		List of custom classes
+        Arrays of custom classes
+		
+ 					
+
+    Comparable Interface 
+     All classes like String, float, Integer have implemented Comparable interface 
+      
+    It has one method compareTo 
+    Allows the natural ordering 
+
+
+     Comparator 
+         -- custom ordering 
+         has Compare(Object o1, Object o2)
+		 
+  				   
+				   
+				   
+				   multi threading 
+				  
+				    -- multiple threads will control your program
+					
+					
+					two ways 
+					  1. extends Thread class 
+					  2. implement the Runnable interface 
+					  
+					  Thread class methods 
+					    start 
+						stop 
+						suspend
+						resume 
+						
+					Runnable Interface 
+                           -- single method 
+                             run()
+							 
+					 
+    java is synchronous in nature 
+	    
+		     execute one by one 
+			 execute in blocking manner 
+			   
+			   if blocked at any step program will hang 
+			   
+	asynchronous
+                  	execute non blocking way 
+					
+					
+					
+					
+					round robin schduling algorithm
+					
+					
+					p1 
+					p2
+					p3 
+					
+					p1,p3,p2 
+					
+					
+					
+					
+       	 
+		 Database --  collection of data in oragnized way 
+		 
+		            table --- a tabular structure where we can keep data in the form of rows and columns 
+					
+					
+					DBMS --- database management system 
+					
+					RDBMS--- relational database management system
+					
+					        all tables are connected to each other using relationship 
+							
+					
+
+                
+				mysql command
+				
+				
+				
+C:\bat>"c:\mysql-8.0.29-winx64\bin\mysqld.exe"
+
+C:\bat>"c:\mysql-8.0.29-winx64\bin\mysql.exe" -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.29 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select user();
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_date()
+    -> ;
++----------------+
+| current_date() |
++----------------+
+| 2023-03-25     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2023-03-25 05:52:05 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> create database mydatabase;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| db1                |
+| db2                |
+| db3                |
+| information_schema |
+| mydatabase         |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+8 rows in set (0.02 sec)
+
+mysql> use mydatabase;
+Database changed
+mysql> show tables;
+Empty set (0.01 sec)
+
+mysql> create table student(roll int primary key, name varchar(20), subject varchar(20), marks float(5,2));
+Query OK, 0 rows affected, 1 warning (0.12 sec)
+
+mysql> describe student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll    | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| subject | varchar(20) | YES  |     | NULL    |       |
+| marks   | float(5,2)  | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_mydatabase |
++----------------------+
+| student              |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into student values(10001,'umesh kumar','math',67.5677);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into student values(10002,'suresh kumar','science',97.677);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student values  (10003,'prince kumar','hindi',56.67),(10004,'lalan kumar','socila science',45.677);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++-------+--------------+----------------+-------+
+| roll  | name         | subject        | marks |
++-------+--------------+----------------+-------+
+| 10001 | umesh kumar  | math           | 67.57 |
+| 10002 | suresh kumar | science        | 97.68 |
+| 10003 | prince kumar | hindi          | 56.67 |
+| 10004 | lalan kumar  | socila science | 45.68 |
++-------+--------------+----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select roll from student;
++-------+
+| roll  |
++-------+
+| 10001 |
+| 10002 |
+| 10003 |
+| 10004 |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select roll,name from student;
++-------+--------------+
+| roll  | name         |
++-------+--------------+
+| 10001 | umesh kumar  |
+| 10002 | suresh kumar |
+| 10003 | prince kumar |
+| 10004 | lalan kumar  |
++-------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select roll,name,subject from student;
++-------+--------------+----------------+
+| roll  | name         | subject        |
++-------+--------------+----------------+
+| 10001 | umesh kumar  | math           |
+| 10002 | suresh kumar | science        |
+| 10003 | prince kumar | hindi          |
+| 10004 | lalan kumar  | socila science |
++-------+--------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student;
++-------+--------------+----------------+-------+
+| roll  | name         | subject        | marks |
++-------+--------------+----------------+-------+
+| 10001 | umesh kumar  | math           | 67.57 |
+| 10002 | suresh kumar | science        | 97.68 |
+| 10003 | prince kumar | hindi          | 56.67 |
+| 10004 | lalan kumar  | socila science | 45.68 |
++-------+--------------+----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student where marks>90;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where name='suresh kumar';
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where marks>=50 or marks<=70;
++-------+--------------+----------------+-------+
+| roll  | name         | subject        | marks |
++-------+--------------+----------------+-------+
+| 10001 | umesh kumar  | math           | 67.57 |
+| 10002 | suresh kumar | science        | 97.68 |
+| 10003 | prince kumar | hindi          | 56.67 |
+| 10004 | lalan kumar  | socila science | 45.68 |
++-------+--------------+----------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student where marks>=50 and marks<=70;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10003 | prince kumar | hindi   | 56.67 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where marks between 50 and 70;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10003 | prince kumar | hindi   | 56.67 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name='umesh kumar' or roll=10001;
++-------+-------------+---------+-------+
+| roll  | name        | subject | marks |
++-------+-------------+---------+-------+
+| 10001 | umesh kumar | math    | 67.57 |
++-------+-------------+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where name='umesh kumar' or roll=10002;
++-------+--------------+---------+-------+
+| roll  | name         | subject | marks |
++-------+--------------+---------+-------+
+| 10001 | umesh kumar  | math    | 67.57 |
+| 10002 | suresh kumar | science | 97.68 |
++-------+--------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student where name='umesh kumar' and  roll=10002;
+Empty set (0.00 sec)
+
+mysql> show columns from student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll    | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| subject | varchar(20) | YES  |     | NULL    |       |
+| marks   | float(5,2)  | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show create table  student;
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                          |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| student | CREATE TABLE `student` (
+  `roll` int NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `subject` varchar(20) DEFAULT NULL,
+  `marks` float(5,2) DEFAULT NULL,
+  PRIMARY KEY (`roll`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table student add dob date;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll    | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| subject | varchar(20) | YES  |     | NULL    |       |
+| marks   | float(5,2)  | YES  |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into student values(10009,'priyanshu kumar','science',67.677,'2020-01-12');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++-------+-----------------+----------------+-------+------------+
+| roll  | name            | subject        | marks | dob        |
++-------+-----------------+----------------+-------+------------+
+| 10001 | umesh kumar     | math           | 67.57 | NULL       |
+| 10002 | suresh kumar    | science        | 97.68 | NULL       |
+| 10003 | prince kumar    | hindi          | 56.67 | NULL       |
+| 10004 | lalan kumar     | socila science | 45.68 | NULL       |
+| 10009 | priyanshu kumar | science        | 67.68 | 2020-01-12 |
++-------+-----------------+----------------+-------+------------+
+5 rows in set (0.00 sec)
+
+
+				
+					
+					
+					
+				jdbc 
+                            java database connectivity  api 
+                       
+				ResultSet -- contains multiple data 
+
+
+                ResultSet has pointer to keep the position of record 
+             
+			 By Default  it has position at beforeFirst 
+
+             
+			 BeforeFirst --- default position -- no record 
+             First 
+              2
+              3
+              .
+			  .
+             Last 
+             AfterLast 			 
+			 
+			 ResultSet navigation Methods 
+			     next()
+				 previous()
+				 
+				 first()
+				 last()
+				 
+			ResultSet Field methods 
+                      getInt()
+                       getString()
+                       getFloat()
+					   
+			 
+			 
+			 
+			 
+			 connectivity 
+			 
+			 java ---->mysql 
+			 
+			      Driver 
+				  
+				  mysql java driver 
+				                  -- mysql-connector-java-8.0.28.jar 
+								  -- jar -- java archive 
+								     jar compressed file of java classes 
+									 
+				mysql-connector-java-8.0.28.jar is required to connect with database 
+				
+	            mysql-connector-java-8.0.28.jar is added in java project classpath 
+
+
+            steps
+                   1. load the driver  ---   class.forName() or DriverManager.registerDriver() 
+               	   2. get connection   --    DriverManager.getConnection("url","user","password") 
+                   3. execute sql code  --   Connection.createStatement()-- Statement 
+				                             Statement.executeQuery(select query)
+                   4. get result 				   
+				   
+				   
+				 executeQuery -- select statement
+                 executeUpdate()  -- insert update and delete statement				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 build tool 
+				     --- build application
+					      build --- compile all files , make dependencies , run 
+                          run 
+
+
+                  maven 
+                   gradle 
+				      
+					      more than build tool 
+						    
+							it is build tool + project management 
+							
+							
+					--- download all dependencies 
+                    --- add all dependencies into project classpath 
+                    --- compile all files ,
+                    --- integrate all .class files , 
+                    --- run it 
+                    -- test it 
+
+                  clean
+                  compile 
+                  package 
+                  install 
+
+
+        maven project   pom.xml 
+                              
+							  
+							  
+					in java two dates are present
+                       
+                     1. java.util.Date
+                     2. java.sql.Date 
+					 
+
+
+
+
+  Statement  -- append java variables using ' and " and + sign 
+  
+  
+  PreparedStatement    -- sub class of Statement 
+                        pre compiled 
+						works faster 
+						
+						add java variable using placeholder ? ? 
+						
+
+
+						
+  
+    ResultSet --- it keeps all records 
+	
+	ResultSetMetadata --- it gives table information like column count, column name 
+	
+	
+	
+	
+	  EnterPrise Application 
+	  
+	      -- Transaction 
+		  -- messaging 
+          -- Remote Calling 
+
+   
+
+    ORM 
+
+      Object Relational Mapping 
+	  
+                 --   it makes relationship  of java class with sql table 
+
+                         java class 
+                     Employee ------------------ Employee Table in database 
+                        id --------------------- id(pk)
+						name-------------------- name 
+						salary------------------ salary 		 
+  
+                         
+						emp1 object 
+                         .save(emp1) ------------- inserted into table 
+
+
+
+                 read hibernate.cfg.xml
+				     Configuration.configure()
+					
+         Sessionfactory -- 
+         Session		 
+						 
+
+
+
+
+
+
+
+
+
+
+
+
+
+							  has description , all dependencies , all plugins 		
+                   
+				   
+				   
+				   
+				   states of hibernate object
+				     1. transient   -- new Account() --- hibernate not aware 
+					 2.persistent state     --- save(), update() -- hibernate aware with object 
+                     3. removed state        --- delete(object) -- cannot go back to persistent state
+ 					 4. detached state       -- session.close, evict , hibernate notw aware but can reattach to persistent state 
+					 
+					 
+					 
+					
+
+                     DAO    -- data access object layer 
+                                all database operation 
+								
+                        					 
+											 
+					
+         Relationship
+		 
+		         --   between two entities (two or more tables )
+				 
+				 
+				     types
+                          one to one   -  employee -- address  
+                          one to many  - department has multiple employee 
+
+                           @onetoone   
+                            @onetomany  -- many will have collection (list, set )	
+							
+							
+				direction-- unidirectional  -- from one direction can be controlled 
+                            bidirectional   -- from both direction can be controlled
+							
+							
+							
+							
+							customer --- order 
+							 
+							 customerId           orderId
+							 customerName         orderName
+							 customerSalary       orderCost
+
+
+ cascade operation 
+      
+							 
+							 
+							 Inheritance in hibernate 
+							  table per  class -- each class will have separate table
+							  
+							  single table 
+							               -- single table for the sub class 
+										   
+										   
+										   Payment 
+										       id,name,amt
+											   
+											   |
+											   |
+											    1.cashpayment   -- discriminator
+												2.creditcardpayment -- discriminator 
+							
+							
+							
+							          table 
+									        payment       
+											id    name  amt   type 
+							                1      sk   1000   cash 
+							                2      pk   2000   credit
+
+											
+					simple application(desktop app )	
+                    web application       ---  web site (servlet jsp, struts ,jsf )
+                    enterprise application  ejb-- remoting, transaction, messaging, security 
+
+
+
+   one of architect of ejb -- rod johnsons 
+                            flaws in ejb 
+							
+							
+							spring -- all facilities that of ejb 
+							         -- web application 
+                                     -- orm facility is also integrated 
+									 
+
+ 					
+							
+							
+					 
+		 
+		 
+											 
