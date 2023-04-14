@@ -24,7 +24,7 @@ public class Product {
 System.out.println(product[i].prdId+"\t"+product[i].prdName+"\t"+product[i].prdCost);
 		}	
 
-	      System.out.println("\n************using  for  each loop******************* ");
+     System.out.println("\n************using  for  each loop******************* ");
 
          for (Product product2 : product) {
 	       System.out.println(product2.prdId+"\t"+product2.prdName+"\t"+product2.prdCost);

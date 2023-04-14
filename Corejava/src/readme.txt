@@ -48,5 +48,19 @@ Book.java
        
            
 
+   this --- 
+       this.instance variable 
+       
+       this.prdId = prdId;
+		this.prdName = prdName;
+		this.prdCost = prdCost;
+		
+		--- this is making difference between local variable and instance variable
+		
+      this(argument)       -- calling another constructor 
+      
+      
+      
+      
    
 
