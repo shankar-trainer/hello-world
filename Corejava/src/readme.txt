@@ -35,5 +35,18 @@ Using constructor initialize all instance variable
            
            
                
+Book.java 
+
+    float discount;
+    String type ;
+    
+       type        discount 
+       computer     40%
+       literature   50%
+       kids         30%
+       law          20 
+       
+           
+
    
 
