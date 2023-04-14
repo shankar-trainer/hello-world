@@ -9,8 +9,31 @@ public class Library {
 		libraryId=989898;
 		libraryName="java library";
 		libraryCapacity=100;
-	  System.out.println("constructor called");
+	  System.out.println("default constructor called");
 	}
+
+	void libraryInfo() {
+		System.out.println("----- library information-------");
+		System.out.println("\tid is "+libraryId);
+		System.out.println("\tname is "+libraryName);
+		System.out.println("\tcapacity is "+libraryCapacity);
+	}
+	
+	public Library(long libraryId, String libraryName) {
+		  System.out.println("overloaded constructor  with 2 arguments ");	
+		  this.libraryId=libraryId;
+		  this.libraryName=libraryName;
+	}
+	
+	public Library(long libraryId, String libraryName, int libraryCapacity) {
+		System.out.println("overloaded constructor  with 3 arguments ");	
+	
+		  this.libraryId=libraryId;
+		  this.libraryName=libraryName;
+		  this.libraryCapacity=libraryCapacity;
+	
+	}
+	
 	
 	public static void main(String[] args) {
 	  Library library1=new Library();
