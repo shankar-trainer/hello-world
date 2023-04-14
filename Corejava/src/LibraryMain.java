@@ -4,7 +4,9 @@ public class LibraryMain {
 	public static void main(String[] args) {
 		
 		Library library1=new Library();
+		
 		Library library2=new Library(776788, "hindi library");
+		
 		Library library3=new Library(776781, "science library",76);
 		
 		
