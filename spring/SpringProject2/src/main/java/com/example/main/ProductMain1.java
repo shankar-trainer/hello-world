@@ -1,5 +1,6 @@
 package com.example.main;
 
+import com.example.exception.ProductException;
 import com.example.service.ProductService;
 import com.example.dao.ProductDao;
 import com.example.model.Product;
@@ -15,16 +16,38 @@ public class ProductMain1 {
         ApplicationContext ctx=new AnnotationConfigApplicationContext(ProductService.class);
         ProductService service = ctx.getBean(ProductService.class);
 
-        System.out.println("service add operation");
-        service.saveProduct(new Product(677676,"pizza",500));
-        service.saveProduct(new Product(677677,"biryani",700));
-        service.saveProduct(new Product(677678,"burger",200));
-        service.saveProduct(new Product(677679,"chicken tikka",300));
+        try {
+            System.out.println("service find all operation");
+            for (Product p : service.findAllProduct())
+                System.out.println(p);
+        }
+        catch (ProductException e){
+            System.err.println(e.getMessage());
+        }
+         try{
+            System.out.println("service add operation");
+            service.saveProduct(new Product(677676, "pizza", 500));
+            service.saveProduct(new Product(677677, "biryani", 700));
+            service.saveProduct(new Product(677678, "burger", 200));
+            service.saveProduct(new Product(677679, "chicken tikka", 300));
 
-        System.out.println("service find all operation");
-        for(Product p: service.findAllProduct())
-            System.out.println(p);
+            System.out.println("service find all operation");
+            for (Product p : service.findAllProduct())
+                System.out.println(p);
 
+            service.saveProduct(new Product(677679, "chicken tikka", 300));
 
+        }
+        catch (ProductException e){
+            System.out.println(e.getMessage());
+        }
+        try{
+            Product product = service.findProduct(new Product(677679, "chicken tikka", 300));
+            System.out.println("product found \n"+product);
+        }
+
+        catch (ProductException e){
+            System.out.println(e.getMessage());
+        }
    }
 }
