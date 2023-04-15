@@ -1,0 +1,42 @@
+cp -r "C:\Users\shankar\eclipse-workspace_chitkara\Corejava\src" Corejava
+
+git add * && git commit -m "added" && git push origin chitkara_april23
+
+
+==============
+
+
+git commnads 
+
+force push 
+git push -f origin java_usa_23
+
+Delete Local Branch
+git branch -d <branch_name>
+
+
+delete branch remotely 
+git push origin -d   chitkara_april123
+
+
+I deleted a file but didn’t commit
+$ git checkout HEAD <filename>
+
+
+
+I deleted a file and committed the deletion
+$ git reset --hard HEAD~1
+
+
+I committed the deletion and then I did more commits
+$ git log -- <filename>
+$ git checkout <commit hash> -- <filename>
+$ git checkout <deletion commit hash>~1 -- <filename>
+
+
+I deleted a file, committed and pushed
+$ git revert --no-commit <commit>
+
+
+
+
