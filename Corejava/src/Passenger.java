@@ -1,4 +1,3 @@
-
 public class Passenger {
 
 	private int passengerId;  // instance variable
@@ -32,6 +31,15 @@ public class Passenger {
 	public static void setCountry(String country) {
 		Passenger.country = country;
 	}
+	
+	void passengerDetails() {
+		System.out.println("============= Passenger Details======  ");
+	     System.out.println("\tid "+passengerId);
+	     System.out.println("\tname "+passengerName);
+	     System.out.println("\tage "+passengerAge);
+	     System.out.println("\tcountry  "+country);
+	}
+	
 
 	public static void main(String[] args) {
      Passenger passenger=new Passenger();
