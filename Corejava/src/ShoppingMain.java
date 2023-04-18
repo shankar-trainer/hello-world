@@ -12,7 +12,13 @@ public class ShoppingMain {
       System.out.println("id\tname\tcost\ttype\tdiscount\tfinal cost");
       
       for (Shopping shopping2 : shopping) {
-		System.out.println(shopping2.getProductId()+"  "+shopping2.getProductName()+"   "+shopping2.getProductCost()+" "+shopping2.getProductType()+" "+shopping2.getProductDiscount()+"  "+(shopping2.getProductCost()-(shopping2.getProductCost()*shopping2.getProductDiscount())));
+		System.out.println(shopping2.getProductId()+"  "
+      +shopping2.getProductName()+"   "
+				+shopping2.getProductCost()+" "
+				+shopping2.getProductType()+" "
+      +shopping2.getProductDiscount()+"  "
+				+(shopping2.getProductCost()-
+(shopping2.getProductCost()*shopping2.getProductDiscount())));
 	}
       
 	}
