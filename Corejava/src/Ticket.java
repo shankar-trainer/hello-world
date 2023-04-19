@@ -1,4 +1,3 @@
-
 public class Ticket {
 
 	private int ticketid;
