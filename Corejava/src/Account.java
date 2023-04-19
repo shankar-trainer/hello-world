@@ -1,4 +1,6 @@
 public class Account {
+	Department department;
+	
 	private float balance;
 
 	public float getBalance() {
