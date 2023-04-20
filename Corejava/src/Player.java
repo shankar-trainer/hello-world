@@ -39,7 +39,6 @@ public class Player {
 		System.out.println("\t\t address id " + address2.getAddrId());
 		System.out.println("\t\t address city " + address2.getAddrCity());
 		System.out.println("\t\t address state  " + getAddress().getAddrState());
-
 	}
 
 }
