@@ -1,4 +1,5 @@
 public class Developer {
+	Department department;
   private int developerId;
   private int developerName;
   //private   final   String  developerConmpany="HCL";
