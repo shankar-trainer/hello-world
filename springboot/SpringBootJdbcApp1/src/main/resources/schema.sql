@@ -1,0 +1,1 @@
+create table book(isbn int primary key, name varchar(20), author varchar(20),cost float);
