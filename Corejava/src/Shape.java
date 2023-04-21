@@ -12,7 +12,7 @@ public class Shape {
 class Circle1 extends Shape {
 	 public Circle1(String color, float radius) {
 	   super(color);
-	   this.color=color;
+	   this.radius=radius;
 	 }
 	float radius;
 }
