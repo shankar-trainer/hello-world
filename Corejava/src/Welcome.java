@@ -5,8 +5,7 @@ protected	void show(String s) {
 }
 
 public class Welcome extends Greeting {
-
-	@Override
+@Override
 //private
   //protected
  public  void show(String s) {
@@ -15,7 +14,6 @@ public class Welcome extends Greeting {
 	
 	public static void main(String[] args) {
 		 Welcome welcome=new Welcome();
-		 welcome.show();
-
+		 welcome.show("");
 	}
 }
