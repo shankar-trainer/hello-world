@@ -2,15 +2,12 @@ public class MethodOverLoading {
 	public int addition(int a, int b ) {
   		return a+b;
 	}
-
 	public int addition(int a, int b, int c ) {
   		return a+b+c;
 	}
-
 	public float addition(float a, float b ) {
   		return a+b;
 	}
-
 	public String addition(String a, String b ) {
   		return a+b;
 	}
