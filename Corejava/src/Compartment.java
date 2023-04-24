@@ -3,7 +3,6 @@ public class Compartment {
 	  System.out.println("compartment class");
   }
 }
-
 class FirstClass extends Compartment{
 	@Override
 	void notice() {
@@ -29,6 +28,14 @@ class  ComparmentMain{
 	 compartment[0]=new FirstClass();
 	 compartment[1]=new LadiesClass();
 	 compartment[2]=new LauggageClass();
+	 compartment[3]=new FirstClass();
+	 compartment[4]=new LauggageClass();
+	 compartment[5]=new LadiesClass();
+	 compartment[6]=new LauggageClass();
+	 compartment[8]=new LauggageClass();
+	 compartment[7]=new FirstClass();
+	 compartment[9]=new LauggageClass();
+	 
 	 
 	for(Compartment c:compartment) {
 		c.notice();
