@@ -1,4 +1,3 @@
-
 public class Compartment {
   void notice() {
 	  System.out.println("compartment class");
