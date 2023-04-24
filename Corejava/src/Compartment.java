@@ -21,7 +21,6 @@ class LauggageClass extends Compartment{
 		System.out.println("Luggage  class ");
 	}
 }
-
 class  ComparmentMain{
   public static void main(String[] args) {
 	Compartment compartment[]=new Compartment[10];
@@ -35,8 +34,6 @@ class  ComparmentMain{
 	 compartment[8]=new LauggageClass();
 	 compartment[7]=new FirstClass();
 	 compartment[9]=new LauggageClass();
-	 
-	 
 	for(Compartment c:compartment) {
 		c.notice();
 	} 
