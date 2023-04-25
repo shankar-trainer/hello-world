@@ -4,8 +4,7 @@ public class AccountManager {
 	void create(int n, BankAccount account[]) {
 		this.account = new BankAccount[n];
 		for (int i = 0; i < account.length; i++) {
-			this.account[i] = new BankAccount(account[i].accountNumber,
-					account[i].balance,account[i].ownerName);
+		this.account[i] = account[i];
 		}
 	}
 
