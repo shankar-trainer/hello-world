@@ -2,9 +2,10 @@ public class AccountManager {
 	BankAccount account[];
 
 	void create(int n, BankAccount account[]) {
-		account = new BankAccount[n];
+		this.account = new BankAccount[n];
 		for (int i = 0; i < account.length; i++) {
-			this.account[i] = account[i];
+			this.account[i] = new BankAccount(account[i].accountNumber,
+					account[i].balance,account[i].ownerName);
 		}
 	}
 
@@ -21,5 +22,4 @@ public class AccountManager {
 	void withdraw(float amt, BankAccount act) {
 		act.subtract(amt);
 	}
-
 }
