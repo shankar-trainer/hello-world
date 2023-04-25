@@ -44,10 +44,11 @@ public class BookServiceImpl implements  BookService {
 
     @Override
     public Book removeBook(int isbn) throws BookException {
-        if(bookDao.removeBook(isbn)==null)
+       Book b1= bookDao.removeBook(isbn);
+        if(b1==null)
             throw new BookException("Book not present with isbn "+isbn);
         else {
-            return bookDao.removeBook(isbn);
+            return b1;
         }
     }
 

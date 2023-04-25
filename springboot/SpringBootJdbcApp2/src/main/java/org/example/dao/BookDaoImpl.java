@@ -71,8 +71,10 @@ public class BookDaoImpl implements BookDao {
             return null;
         else {
             int update = jdbcTemplate.update("delete from book where isbn=" + isbn);
-            if (update == 1)
+            if (update == 1) {
+               // System.out.println("dao delete " + book);
                 return book;
+            }
         }
         return null;
     }

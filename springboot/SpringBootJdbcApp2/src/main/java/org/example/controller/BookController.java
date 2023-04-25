@@ -27,13 +27,12 @@ public class BookController {
     @GetMapping("/all")
     public ResponseEntity<List<Book>> getAllBook(){
         try {
-            return new ResponseEntity<List<Book>>(bookService.getAllBook(), HttpStatus.OK);
+            return new ResponseEntity<List<Book>>(bookService.getAllBook(), HttpStatus.FOUND);
         }
         catch(BookException e){
-            return new ResponseEntity(e.getMessage(), HttpStatus.OK);
+            return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
-
 
     @DeleteMapping("/delete/{isbn}")
     public ResponseEntity<Book> deleteBook(@PathVariable("isbn") int isbn)
@@ -47,7 +46,7 @@ public class BookController {
         @GetMapping("/search/{isbn}")
     public ResponseEntity<Book> searchBook(@PathVariable("isbn") int isbn){
         try {
-            return  new ResponseEntity<Book>(bookService.searchBook(isbn), HttpStatus.OK);
+            return  new ResponseEntity<Book>(bookService.searchBook(isbn), HttpStatus.FOUND);
         } catch (BookException e) {
             return  new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
@@ -67,7 +66,7 @@ public class BookController {
     @PutMapping("/update")
     public ResponseEntity<Book> updateBook(@RequestBody Book b){
         try {
-            return  new ResponseEntity<Book>(bookService.updateBook(b), HttpStatus.OK);
+            return  new ResponseEntity<Book>(bookService.updateBook(b), HttpStatus.CREATED);
         } catch (BookException e) {
             return  new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
