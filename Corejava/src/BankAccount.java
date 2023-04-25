@@ -1,4 +1,3 @@
-
 public class BankAccount {
 	int accountNumber;
 	float balance;
@@ -11,12 +10,15 @@ public class BankAccount {
 		this.ownerName = ownerName;
 	}
 
-	void add(float amt) {
+	 void add(float amt) {
 		balance = balance + amt;
 	}
 	void subtract(float amt) {
 		balance = balance - amt;
 	}
 
+	float balance() {
+		return balance;
+	} 
      
 }
