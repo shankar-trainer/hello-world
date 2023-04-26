@@ -52,7 +52,6 @@ public class EmployeeDao {
 
     public List<Employee> getAllEmployee(){
      return entityManager.createQuery("from Employee").getResultList();
-
   }
 
 
