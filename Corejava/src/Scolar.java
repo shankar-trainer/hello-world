@@ -1,8 +1,6 @@
-
 public class Scolar {
 	static int[] sum(int ar[][]) {
 		int arr1[] = new int[5];
-
 		for (int i = 0; i < ar.length; i++) {
 			for (int j = 0; j < ar[i].length; j++) {
 				arr1[i] = arr1[i] + ar[i][j];
