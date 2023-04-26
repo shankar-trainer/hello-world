@@ -1,16 +1,12 @@
-
 public class Flight {
-
 	int flightId;
 	String flighName;
 	
 	@Override
 	public String toString() {
-		return "Flight Information\n"+
-	     "\tId is "+flightId+
-	     "\n\tName  is "+flighName;
+		return "Flight [flightId=" + flightId + ", flighName=" + flighName + "]";
 	}
-	
+
 	public Flight(int flightId, String flighName) {
 		this.flightId = flightId;
 		this.flighName = flighName;
@@ -18,8 +14,11 @@ public class Flight {
 	
 	public static void main(String[] args) {
 		Flight flight=new Flight(434343, "indigo");
-		//System.out.println(flight.toString());
 		System.out.println(flight);
+
+		//System.out.println(flight.toString());
+		
+		
 //  Object class toString -->  getClass().getName() + '@' + Integer.toHexString(hashCode())
 		 
 
