@@ -11,12 +11,12 @@ public class TradeFair extends Fair {
 
 	@Override
 	public String toString() {
-
 		return  super.toString() +"\nTradeFair [pincode=" + pincode + ", state=" + state + "]";
 	}
 
 	public static void main(String[] args) {
-	  TradeFair fair=new TradeFair(65656, "book fair ", "chandigarh", 7667676, "punjab");	
+	  TradeFair fair=new TradeFair
+(65656, "book fair ", "chandigarh", 7667676, "punjab");	
 	System.out.println(fair);
 	}
 	
