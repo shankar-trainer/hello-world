@@ -1,0 +1,39 @@
+install angular cli 
+open terminal 
+npm i -g @angular/cli
+
+
+then create angular application 
+ 
+open terminal
+create directory 
+inside that directory give command 
+
+   ng new App_Name
+   
+   after that go inside App_Name
+   open in any editor(vscode)
+   in terminal 
+     ng serve   -- it will start the live server
+
+
+	 
+	 Create component
+
+    ng generate component  employee
+    ng g  c  employee
+	
+	generate class using 
+	ng g class classname 
+	
+	
+  source code execution 
+	
+install angular cli 
+open terminal 
+npm i -g @angular/cli
+
+extract source code 
+ go inside 
+ npm install 
+   
