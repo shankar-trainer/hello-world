@@ -11,7 +11,6 @@ public class User1 extends User2 {
 	   System.out.println("User1 static block called");
    }
 	private int userId;
-	
 	public User1() {
 	 System.out.println("User1 constructor called ");
 		this.userId=10003;
