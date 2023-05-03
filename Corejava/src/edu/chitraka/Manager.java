@@ -9,7 +9,6 @@ public class Manager extends Employee {
 		this.location = location;
 		this.state = state;
 	}
-
 	@Override
 	public void empInfo() {
 		System.out.println("Manager values ");
