@@ -9,6 +9,10 @@ public class SavingsAccount extends Account {
 
 	@Override
 	public boolean withdraw(double amount) {
+		if(balance-amount>balance) {
+			balance=balance-amount;
+			return true;
+		}
 		return false;
 	}
 }
