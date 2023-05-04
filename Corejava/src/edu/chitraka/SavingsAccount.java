@@ -1,15 +1,17 @@
 package edu.chitraka;
 
 public class SavingsAccount extends Account {
-	public SavingsAccount(int accountNumber, Customer customerObj, double balance) {
+
+	public SavingsAccount(int accountNumber, Customer customerObj, double balance, double minimumBalance) {
 		super(accountNumber, customerObj, balance);
+		this.minimumBalance = minimumBalance;
 	}
 
 	double minimumBalance;
 
 	@Override
 	public boolean withdraw(double amount) {
-		if(balance-amount>balance) {
+		if(balance-amount>minimumBalance) {
 			balance=balance-amount;
 			return true;
 		}
