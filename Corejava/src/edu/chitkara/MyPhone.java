@@ -1,7 +1,5 @@
 package edu.chitkara;
 
-import edu.chitraka.Customer;
-
 interface BasicPhone {
 	// String country;// all variable are by default public static final
 	public static final String country = "India";
