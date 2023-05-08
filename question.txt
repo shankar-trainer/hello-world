@@ -29,7 +29,7 @@ For this make one static boolean
  
 Question 
  Take a multi words String from user and display
- the count of vowel and space  
+ the count of vowel and space.  
     For this make method 
     int [] countVowelSpace(String s)
 
