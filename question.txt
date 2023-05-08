@@ -21,5 +21,18 @@ Explanation
 Divisors of 6 are 1,2,3 and 6. 1+2+3+6=12.
 
 
+Question 
+ Take a String from user and check whether 
+    it is palindrome.
+For this make one static boolean 
+   checkPalindrome(String s) method.
+ 
+Question 
+ Take a multi words String from user and display
+ the count of vowel and space  
+    For this make method 
+    int [] countVowelSpace(String s)
+
+  
 
   
