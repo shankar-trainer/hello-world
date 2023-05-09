@@ -1,0 +1,101 @@
+I also faced the same issue with new version kafka_2.12-3.0.0. Sorted out by using lower version kafka_2.12-2.8.1
+
+kafka 
+
+   messaging application 
+   linkedin -- donated to open source -- apache kafka 
+
+start zookeeper
+
+cd C:\kafka_2.11-0.9.0.0\bin\windows
+ $ zookeeper-server-start.bat ..\..\config\zookeeper.properties
+
+start kafka server 
+cd   C:\kafka_2.11-0.9.0.0\bin\windows
+$ kafka-server-start.bat ..\..\config\server.properties
+
+-- list of topics 
+ $ kafka-topics.bat --zookeeper 127.0.0.1 --list
+
+   C:\kafka_2.11-0.9.0.0\bin\windows>kafka-topics.bat  --list --zookeeper 127.0.0.1:2181
+first_topic
+second_topic
+
+-- create topic
+C:\kafka_2.11-0.9.0.0\bin\windows>kafka-topics.bat --zookeeper 127.0.0.1:2181 --topic second_topic --create --partitions 3 --replication-factor 1
+
+-- describe the topic
+
+C:\kafka_2.11-0.9.0.0\bin\windows>kafka-topics.bat   --zookeeper 127.0.0.1:2181 --topic first_topic --describe
+
+--delete 
+ $ kafka-topics.bat --zookeeper 127.0.0.1:2181 --topic tt_topic --delete
+
+kafka console producer
+  one terminal 
+  $ kafka-console-producer.bat --broker-list 127.0.0.1:9092 --topic second_topic1
+
+kafka console consumer
+  second terminal 
+  kafka-console-consumer.bat --bootstrap-server  127.0.0.1:9092 --topic second_topic1 --zookeeper 127.0.0.1:2181
+
+
+---- 
+
+
+third terminal  from-beginning 
+
+kafka-console-consumer.bat --bootstrap-server  127.0.0.1:9092 --topic second_topic1 --zookeeper 127.0.0.1:2181 --from-beginning
+
+
+--grouping of messages 
+=========================================================================
+kafka new version 
+-- create
+kafka-topics.bat --create --topic first_topic --bootstrap-server localhost:9092  -- single partition 
+
+  3 partition
+
+$ kafka-topics.bat --bootstrap-server localhost:9092  --topic second_topic --create --partitions 3 --replication-factor 1
+
+
+--list 
+
+  $ kafka-topics.bat  --bootstrap-server localhost:9092  --list
+
+
+--describe 
+$ kafka-topics.bat    --bootstrap-server localhost:9092  --topic first_topic --describe
+
+Producer
+
+$ kafka-console-producer.bat --broker-list 127.0.0.1:9092 --topic second_topic
+
+
+Consumer 
+ 
+ $ kafka-console-consumer.bat --bootstrap-server  127.0.0.1:9092 --topic second_topic
+
+ $ kafka-console-consumer.bat --bootstrap-server  127.0.0.1:9092 --topic second_topic --from-beginning
+
+  using group 
+    use in three terminal 
+    $ kafka-console-consumer.bat --bootstrap-server  127.0.0.1:9092 --topic second_topic --group group1
+
+
+example wordcount 
+
+
+kafka-topics \
+  --bootstrap-server localhost:9092 \
+  --topic sentences \
+  --replication-factor 1 \
+  --partitions 1 \
+  --create
+
+kafka-topics \
+  --bootstrap-server localhost:9092 \
+  --topic word-count \
+  --replication-factor 1 \
+  --partitions 1 \
+  --create
