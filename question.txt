@@ -33,10 +33,5 @@ Question
  the count of vowel and space.  
     For this make method 
     int [] countVowelSpace(String s)
-
-  
-
-  
   
     ball    -----------> player1 --------->player2
-  
