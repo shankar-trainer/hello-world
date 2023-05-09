@@ -3,7 +3,6 @@ package edu.chitkara;
 public class StringMethodIndex {
 
 	public static void main(String[] args) {
-
 		// indexOf() -- gives the position of search value
 
 		String var = "we are learning java. java is in good demand";
