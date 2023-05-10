@@ -11,11 +11,9 @@ public class ExceptionQuestion1 {
 			int x = scanner.nextInt();
 			int y = scanner.nextInt();
 			System.out.println(x / y);
-		} catch (InputMismatchException e) {
-			System.err.println(e.getClass());
-		} catch (ArithmeticException e) {
-			System.err.println(e.getClass());
-		}
+		} catch (InputMismatchException|ArithmeticException e) {
+			System.err.println(e);
+		} 
 		scanner.close();
 
 	}
