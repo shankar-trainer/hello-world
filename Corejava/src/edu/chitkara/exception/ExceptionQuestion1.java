@@ -16,7 +16,7 @@ public class ExceptionQuestion1 {
 		} catch (ArithmeticException e) {
 			System.err.println(e.getClass().getName());
 		}
-		p
+		
 
 	}
 }
