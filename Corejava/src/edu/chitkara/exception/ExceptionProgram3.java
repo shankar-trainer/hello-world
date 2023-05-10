@@ -26,7 +26,7 @@ System.out.println("language 5th char is  " + language.charAt(4));
 			e.printStackTrace();
 		}
 		 finally {
-			System.out.println(); 
+			System.out.println("finally block "); 
 		 }
 
 	}
