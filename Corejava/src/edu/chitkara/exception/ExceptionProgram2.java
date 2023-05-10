@@ -14,7 +14,7 @@ public class ExceptionProgram2 {
 		try {
 			System.out.println(ar[5]);
 			System.out.println("length is "+s.length());
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			System.out.println(" array index error");
 			System.err.println(" array index error");
 		}
