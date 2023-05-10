@@ -98,5 +98,5 @@ Sample Output:
 java.lang.Exception: n and p should not be zero.
 java.lang.Exception: n or p should not be negative.
 java.lang.Exception: n or p should not be negative.	
-
+     
 	
