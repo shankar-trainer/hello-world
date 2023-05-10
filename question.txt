@@ -103,4 +103,8 @@ java.lang.Exception: n or p should not be negative.
 	                       catch
 	palyer1 --------------palyer2----------------palyer3
 	                         re throw  
+							 
+							 
+							 
+							 
 	
