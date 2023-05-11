@@ -1,5 +1,6 @@
 package edu.chitkara.exception;
        // java beans -- encapsulation -- bind code(method)+data(attribute) together
+      
 public class User {
     private int id;
     private String name;
