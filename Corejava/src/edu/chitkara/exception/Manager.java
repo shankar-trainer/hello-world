@@ -24,7 +24,6 @@ throw new ManagerException("id must be between 1000 - 10000");
 		this.name = name;
 	}
 
-
 	public String getName() {
 		return name;
 	}
