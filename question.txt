@@ -128,16 +128,16 @@ Note : The player is eligible to participate in IPL when their age is 19 and abo
  
  Use appropriate exception handling mechanisms to handle these exceptions  
 Sample  Input/Output 1:
-Enter the player name
-Albie Morkel
-Enter the player age
-35
-Player name : Albie Morkel
-Player age : 35
+	Enter the player name
+	Albie Morkel
+	Enter the player age
+	35
+	Player name : Albie Morkel
+	Player age : 35
  
 Sample  Input/Output 2:
-Enter the player name
-Ishan Kishan
-Enter the player age
-16
-CustomException: InvalidAgeRangeExceptio	
+	Enter the player name
+	Ishan Kishan
+	Enter the player age
+	16
+	CustomException: InvalidAgeRangeException	
