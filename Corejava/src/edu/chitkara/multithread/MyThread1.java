@@ -13,9 +13,12 @@ public class MyThread1 implements Runnable {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		MyThread1 myThread1 = new MyThread1();
-		new Thread(myThread1, "work1").start();
+		Thread thread1 = new Thread(myThread1, "work1");
+		thread1.start();
+		thread1.join();
+		
 		new Thread(myThread1, "work2").start();
 		new Thread(myThread1, "work3").start();
 
