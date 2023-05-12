@@ -18,7 +18,6 @@ public class ThreadQuestion1 extends Thread {
 
 	public static void main(String[] args) {
 		Thread t = new ThreadQuestion1();
-		// t.start();
 		t.setName("MyThread");
 		t.start();
 	}
