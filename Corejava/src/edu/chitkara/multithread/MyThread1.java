@@ -9,7 +9,7 @@ public class MyThread1 implements Runnable {
 	public void run() {
 		for (int i = 0; i < city.length; i++) {
 			t1 = Thread.currentThread();
-			System.out.println(i + " " + t1.getName() + " " + city[i]);
+	System.out.println(i + " " + t1.getName() + " " + city[i]);
 		}
 	}
 

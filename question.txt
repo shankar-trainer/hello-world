@@ -141,3 +141,15 @@ Sample  Input/Output 2:
 	Enter the player age
 	16
 	CustomException: InvalidAgeRangeException	
+	
+	
+Thread Question
+Question1.
+Write a program to assign the current thread to t1. Change the name of the thread to MyThread.
+Display the changed name of the thread. 
+
+Also it should display the current time. 
+Put the thread to sleep for 10 seconds and display the time again.
+
+	
+	
