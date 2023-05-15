@@ -14,7 +14,7 @@ public class VectorFunctionality {
 		for (int i = 1; i <=10; i++) {
 	        vector.add(new Random().nextInt())	;	
 		}
-		vector.add(1111);
+		//vector.add(1111);
 		System.out.println("now size "+vector.size());
 		System.out.println("now  capacity "+vector.capacity());
 			
