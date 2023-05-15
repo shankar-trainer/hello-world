@@ -19,6 +19,15 @@ public class LibraryManagement {
 			return b;
 		return null;
 	}
+	
+	public boolean removeBook(Book b) {
+		if (blist.contains(b)) {
+			blist.remove(b);
+		 return true;
+		}
+		return false;
+	}
+	
 	public List<Book> getAllBook(){
 		return blist;
 	}
