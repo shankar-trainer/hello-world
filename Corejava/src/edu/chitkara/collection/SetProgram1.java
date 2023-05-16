@@ -19,9 +19,13 @@ public class SetProgram1 {
 		
 		Iterator<String> iterator = stateSet.iterator();
 	    
+		System.out.println("using iterator \n");
 		while(iterator.hasNext())
-			System.out.println(iterator.next());
+			System.out.print(iterator.next()+", ");
 
-		
+		System.out.println("\nusing for each loop  \n");
+               for (String string : stateSet) {
+				System.out.print(string+", ");
+			}		
 	}
 }
