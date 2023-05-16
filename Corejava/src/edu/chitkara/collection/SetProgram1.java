@@ -2,13 +2,17 @@ package edu.chitkara.collection;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class SetProgram1 {
 
 	public static void main(String[] args) {
 		
-		Set<String> stateSet=new HashSet<String>();
+		Set<String> stateSet=new LinkedHashSet<String>(); 
+				//TreeSet<String>();// sorted
+				//HashSet<String>(); // not ordered
 		stateSet.add("punjab");
 		stateSet.add("haryana");
 		stateSet.add("delhi");
