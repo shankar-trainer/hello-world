@@ -26,5 +26,8 @@ public class Sorting1 {
 		System.out.println("sorted array \n");
 		System.out.println(set1);
 		
+	    if(set1.isEmpty())
+	    	System.out.println("it is empty ");
+		
 	}
 }

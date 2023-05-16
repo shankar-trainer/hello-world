@@ -151,5 +151,13 @@ Display the changed name of the thread.
 Also it should display the current time. 
 Put the thread to sleep for 10 seconds and display the time again.
 
+
+
+  Collection Questions
+  
+  Question1
+  
+  Write a program to add list of student names to ArrayList and it should find a particular name whether it exists or not in the list.
+
 	
 	
