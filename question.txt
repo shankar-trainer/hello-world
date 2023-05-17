@@ -213,10 +213,64 @@ Sample Output 2:
 2  
 
 	
-  
-  
-  
-  
+String   -- immutable 
+         
+         String s="hello";
+                s.concat("world");
+				
+				 any method of string doesnot allow to make changes in its won value.
+				 
+	     String s1="hello";  -- same object
+	     String s2="hello";  -- same object
+		 
 
+		 StringBuffer    is mutable 
+		  -- not accepts string literal 
+          -- everytime create   object           						  
+StringBuffer   sb="hello"; 	// it will not work 
+	 
+	 
+	 
+	 
+	 Thread 
+	 
+	      synchronized 
+		        single threaded 
+				
+		        puts a lock over the object 
+				
+			    StringBuffer -- a lock is added 	
+	 
+	 
+	     StringBuilder -- unsynchronized
+                          multi threaded
+						  faster 
+
+        Vector -- synchronized
+        ArrayList -- unsynchronized		
+		
+		
+		
+		Mammal 
+		/  \   
+     Cat    Rabbit 
+     
+	 
+	 Number 
+	 /    \
+  Float    Integer 
+    
+	Reference Casting
+      
+	   sub class can be assigned to super class 
+	   super class can not be assigned to sub class
+       same level cannot be assigned or casted 
+       
+	   cat=rabbit // not work
+	   rabbit=cat // not work 
+	   mammal=cat 
+	   mammal=rabbit
+  	   
+	   
 	
 	
