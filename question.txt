@@ -169,7 +169,7 @@ Put the thread to sleep for 10 seconds and display the time again.
     Remove duplicate, sort it and display it .
 	
 Removing Keys from HashMap	
-  Question3
+Question3
 Given a method with a HashMap<Integer,string> as input. Write code to remove all the entries having keys multiple of 4 and return the size of the final hashmap.
 
 Include a class UserMainCode with a static method sizeOfResultandHashMap which accepts hashmap as input.
