@@ -11,7 +11,7 @@ public class CollectionsProgram1 {
 
 		list1.add("birds");
 		list1.add("flower");
-		list1.add("animal");
+		list1.add("animal"); 
 		list1.add("insects");
 		list1.add("land");
 		list1.add("agriculture");
@@ -20,6 +20,8 @@ public class CollectionsProgram1 {
 		System.out.println(list1);
 		System.out.println(Collections.max(list1));
 		System.out.println(Collections.min(list1));
+		Collections.shuffle(list1);
+		System.out.println("after shuffle elements are \n"+list1);
 
 		int binarySearch = Collections.binarySearch(list1, "flower");
 		if(binarySearch>=0)
