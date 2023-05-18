@@ -11,7 +11,6 @@ public class EmployeeMain {
 	}
 
 	public static void main(String[] args) {
-
 		Employee employee[] = new Employee[4];
 		employee[0] = new Employee(5343434, "surendra kumar", 90000);
 		employee[1] = new Employee(5343432, "amit kumar", 60000);
