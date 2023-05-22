@@ -46,7 +46,5 @@ public class UserMain {
 		for (User u : list1)
 			System.out.println(u.getUserId() + "\t" + u.getUserName() + "\t" + u.getUsersalary());
 		
-
 	}
-
 }
