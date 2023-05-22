@@ -20,6 +20,13 @@ public class StackPrg1 {
 
 	 System.out.println(stack1.search(1));
 	 System.out.println(stack1.search(10));
+	 System.out.println(stack1.firstElement());
+	 
+	 for(Integer i:stack1)
+		 System.out.println(i);
+	 
+	 
+	 
 	 
 	 
 	}
