@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 class sortByName implements Comparator<User>{
 	@Override
 	public int compare(User o1, User o2) {
 		return o1.getUserName().compareTo(o2.getUserName());
 	}
 }
-
+class sortBySalary implements Comparator<User>{
+	@Override
+	public int compare(User o1, User o2) {
+		return Float.valueOf(o1.getUsersalary()).
+				compareTo(Float.valueOf(o2.getUsersalary()));
+	}
+}
 public class UserMain {
 
 	public static void main(String[] args) {
@@ -34,6 +41,11 @@ public class UserMain {
 		for (User u : list1)
 			System.out.println(u.getUserId() + "\t" + u.getUserName() + "\t" + u.getUsersalary());
 
+		System.out.println("sort by salary");
+		Collections.sort(list1,new sortBySalary());
+		for (User u : list1)
+			System.out.println(u.getUserId() + "\t" + u.getUserName() + "\t" + u.getUsersalary());
+		
 
 	}
 
