@@ -13,10 +13,8 @@ public class Test2 {
 	}
 }
 /*
- warning -- and 
-
- ABCD
-1
-Thread[Thread-0,5,main]
-
-*/
+ * warning -- and
+ * 
+ * ABCD 1 Thread[Thread-0,5,main]
+ * 
+ */
