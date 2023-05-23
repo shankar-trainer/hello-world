@@ -279,3 +279,22 @@ https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0
 	
 	
 	
+	ResultSet ---- keeps all records 
+	-->ResultSet has pointer to retrieve record 
+	  first()
+	  next()
+	
+beforeFirst  --- ResultSet default position-- norecord 
+     First  -- record
+	 2
+	 3
+	 4
+	 last   -- record
+	 afterLast -- no record 
+	  
+         
+	 
+	
+	
+	
+	
