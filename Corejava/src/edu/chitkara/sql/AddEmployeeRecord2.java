@@ -27,7 +27,8 @@ public class AddEmployeeRecord2 {
 
 			System.out.println("add operation ");
 			Statement st = connection.createStatement();
-			PreparedStatement pst = connection.prepareStatement("insert into employee values(?,?,?)");
+			PreparedStatement pst = connection.prepareStatement
+					("insert into employee values(?,?,?)");
 			pst.setInt(1, id);
 			pst.setString(2, name);
 			pst.setDouble(3, salary);

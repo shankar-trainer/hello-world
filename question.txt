@@ -310,7 +310,17 @@ ResultSet --- returned by        executeQuery("select statement")
 			   
   int updaterow= executeUpdate("insert/update/delete")
 
-			   
+		
+File/IO 
+
+Question 
+
+	Write a program to add 5 lines to the file.
+	Take 5 lines from the user.
+	Use FileOutputStream in your program 
+ 
+
+		
 	  
 	  
 
