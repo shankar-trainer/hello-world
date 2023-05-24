@@ -292,8 +292,34 @@ beforeFirst  --- ResultSet default position-- norecord
 	 last   -- record
 	 afterLast -- no record 
 	  
-         
-	 
+     Connection Interface 
+                 3 Types of statement interface 
+
+                    a) Statement 
+                    b) PreparedStatement 
+					c) CallableStatement 
+
+      Statement Interface
+					 get object of statement by the connection 
+					 
+	  Statement st=connection.createStatement();
+      -->using Statement we can execure SQL Query
+	  --> 
+	      statement has methods 
+ResultSet --- returned by        executeQuery("select statement")
+			   
+  int updaterow= executeUpdate("insert/update/delete")
+
+			   
+	  
+	  
+
+	  
+					 
+					
+	
+
+	
 	
 	
 	
