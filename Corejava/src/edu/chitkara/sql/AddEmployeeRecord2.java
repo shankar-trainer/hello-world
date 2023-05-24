@@ -25,8 +25,9 @@ public class AddEmployeeRecord2 {
 			name = scanner.nextLine();
 			salary = scanner.nextDouble();
 
+			System.out.println("add operation ");
 			Statement st = connection.createStatement();
-PreparedStatement pst = connection.prepareStatement("insert into employee values(?,?,?)");
+			PreparedStatement pst = connection.prepareStatement("insert into employee values(?,?,?)");
 			pst.setInt(1, id);
 			pst.setString(2, name);
 			pst.setDouble(3, salary);
@@ -35,12 +36,24 @@ PreparedStatement pst = connection.prepareStatement("insert into employee values
 			if (x == 1)
 				System.out.println(x + " Record added");
 
+			System.out.println("delete operation ");
+			System.out.println("Enter id");
+			id = scanner.nextInt();
+			pst = connection.prepareStatement
+					("delete from  employee where id=?");
+			pst.setInt(1, id);	
+			x = pst.executeUpdate();
+
+			if (x == 1)
+				System.out.println(x + " Record deleted ");
+
 			ResultSet rs = st.executeQuery("select * from employee");
 			while (rs.next())
 				System.out.println(rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getDouble(3));
 
 		} catch (ClassNotFoundException | SQLException e) {
 			System.err.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }
