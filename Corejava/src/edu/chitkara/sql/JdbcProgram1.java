@@ -12,8 +12,9 @@ public class JdbcProgram1 {
 		// 1st way to load driver
 		// DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 //2nd way to load driver    
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitkara", "root", "mysql");
+		//Class.forName("com.mysql.cj.jdbc.Driver");
+		//Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitkara", "root", "mysql");
+		Connection connection =DatabaseUtil.myConnection(); 
 		if (connection != null)
 			System.out.println("connection established");
 		else
