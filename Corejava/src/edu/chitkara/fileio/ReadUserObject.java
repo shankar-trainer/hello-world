@@ -13,6 +13,7 @@ public class ReadUserObject {
 		User user = (User) inputStream.readObject();
 		System.out.println("id " + user.getId());
 		System.out.println("name " + user.getName());
+
 		System.out.println("salary " + user.getSalary());
 	}
 }
