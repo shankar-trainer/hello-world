@@ -22,5 +22,4 @@ public class FileCopyProgram1 {
 		write(ar);
 		fileReader.close();
 	}
-
 }
