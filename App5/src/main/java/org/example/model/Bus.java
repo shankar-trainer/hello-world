@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
 public class Bus {
 
     @Value("67676776")
- private int busId;
+    private int busId;
     @Value("punjab bus service")
- private String busName;
+    private String busName;
     @Value("70")
- private  float busfare;
+    private float busfare;
 
 }
