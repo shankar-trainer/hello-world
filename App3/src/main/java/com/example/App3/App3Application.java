@@ -60,16 +60,16 @@ public class App3Application  implements CommandLineRunner {
 		for(User u:user)
 			dao.addUser(u);
 
+		System.out.println("=================all user operation ");
 		Map<Integer, User> allUser = dao.getAllUser();
 		Set<Map.Entry<Integer, User>> entries = allUser.entrySet();
 		System.out.println();
 		System.out.println("size "+entries.size());
 
-		System.out.println("=================all user operation ");
 		for (Map.Entry<Integer,User> entry:	entries		 ) {
 			System.out.println(entry.getValue());
 		}
-
+		System.out.println("======================= search operation ==========================");
 		User user1 = dao.searchUser(1001);
         if(user1==null)
 			System.out.println("user not present ");

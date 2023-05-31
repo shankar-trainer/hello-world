@@ -22,6 +22,14 @@ public class UserDao {
         else
             return null;
     }
+    public User updateUser(User user) {
+        if (searchUser(user.getUserId()) != null) {
+            userMap.put(user.getUserId(), user);
+            return  user;
+        }
+        else
+            return null;
+    }
     public User removeUser(int id) {
         if (searchUser(id) != null) {
            return  userMap.remove(id);
