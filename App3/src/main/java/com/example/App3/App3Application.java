@@ -94,5 +94,13 @@ public class App3Application  implements CommandLineRunner {
 			User user3 = dao.getAllUser().get(k);
 			System.out.println(user3.getUserId() + "\t" + user3.getUserName() + "\t" + user3.getUserSalary());
 		}
+
+		System.out.println("================== update operation ===================");
+		user[2]=new User(10003,"thomas cook",78000);
+		User user3 = dao.updateUser(user[2]);
+		if(user3==null)
+			System.out.println("user not found ");
+		else
+			System.out.println("updated \n updated value "+user3);
 	}
 }
