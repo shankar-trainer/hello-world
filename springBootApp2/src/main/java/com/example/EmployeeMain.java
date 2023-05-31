@@ -12,7 +12,7 @@ import java.util.Set;
 
 @SpringBootApplication
 public class EmployeeMain {
-
+// gradle bootRun
     public static void main(String[] args) {
         ConfigurableApplicationContext bean = SpringApplication.run(EmployeeMain.class, args);
         Employee employee = bean.getBean(Employee.class);

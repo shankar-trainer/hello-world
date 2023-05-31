@@ -1,7 +1,8 @@
 plugins {
-	id 'java'
+  	id 'java'
 	id 'org.springframework.boot' version '3.1.0'
 	id 'io.spring.dependency-management' version '1.1.0'
+    id 'application'
 }
 
 group = 'com.example'
@@ -28,3 +29,8 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.named("bootJar") {
+  mainClassName = 'com.example.EmployeeMain'
+}
+

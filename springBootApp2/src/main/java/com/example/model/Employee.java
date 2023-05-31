@@ -21,21 +21,21 @@ public class Employee {
     private Set<Car> carSet;
 
     @PostConstruct
-    public void employeeInit(){
-       this.id=677676;
-       this.name="joerge fernades";
-       this.salary=900000;
+    public void employeeInit() {
+        this.id = 677676;
+        this.name = "joerge fernades";
+        this.salary = 900000;
 
-        System.out.println("car set "+carSet.size());
+        System.out.println("car set " + carSet.size());
 
-        carSet.add(new Car(45454,"ferari",780000));
-       carSet.add(new Car(45455,"jaguar",1080000));
-       carSet.add(new Car(45456,"celario",7000000));
+        carSet.add(new Car(45454, "ferari", 780000));
+        carSet.add(new Car(45455, "jaguar", 1080000));
+        carSet.add(new Car(45456, "celario", 7000000));
 
-        System.out.println("car set "+carSet.size());
-       address.setAddr_id(1);
-       address.setAddr_city("chennai");
-       address.setAddr_location("thoraipakkam");
+        System.out.println("car set " + carSet.size());
+        address.setAddr_id(1);
+        address.setAddr_city("chennai");
+        address.setAddr_location("thoraipakkam");
     }
 
 }
