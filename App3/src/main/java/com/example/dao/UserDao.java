@@ -22,6 +22,13 @@ public class UserDao {
         else
             return null;
     }
+    public User removeUser(int id) {
+        if (searchUser(id) != null) {
+           return  userMap.remove(id);
+        }
+        else
+            return null;
+    }
 
     public User searchUser(int id) {
         if (userMap.containsKey(id))
