@@ -11,7 +11,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Map;
 import java.util.Set;
-
+// client calling dao app directly
 @SpringBootApplication(scanBasePackages = {"com.example.model","com.example.dao"})
 public class App3Application  implements CommandLineRunner {
 

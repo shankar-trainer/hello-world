@@ -267,6 +267,27 @@ build tool
 							  Employee has address and car 
 							  
 							  
+							  
+							  
+							  
+							  
+							  dao  --model 
+							   |
+							   client 
+							  
+							  
+							  dao  --model 
+							   |
+							   service -- model, exceptin 
+							     |
+								client 
+								
+							  
+							  
+							  
+							  
+							  
+							  
 								
                            								 
 								 
