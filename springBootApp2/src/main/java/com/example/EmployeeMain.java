@@ -6,11 +6,14 @@ import com.example.model.Employee;
 import com.example.model.Product;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Set;
 
-@SpringBootApplication
+@SpringBootApplication()
+
 public class EmployeeMain {
 // gradle bootRun
     public static void main(String[] args) {

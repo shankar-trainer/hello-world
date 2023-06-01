@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Data
 @AllArgsConstructor
 //@RequiredArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Car {
     private int regNo;
     private String model;

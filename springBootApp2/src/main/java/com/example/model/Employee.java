@@ -37,5 +37,4 @@ public class Employee {
         address.setAddr_city("chennai");
         address.setAddr_location("thoraipakkam");
     }
-
 }
