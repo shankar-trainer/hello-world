@@ -19,5 +19,8 @@ public class Main implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println(bus);
+        System.out.println("bus id : "+bus.getBusId());
+        System.out.println("bus name :"+bus.getBusName());
+        System.out.println("bus fare :"+bus.getBusfare());
     }
 }
