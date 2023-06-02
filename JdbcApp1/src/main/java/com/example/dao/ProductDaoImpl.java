@@ -44,7 +44,7 @@ public class ProductDaoImpl implements Productdao {
     @Override
     public Product removeProduct(int id) {
         Product product = searchProduct(id);
-        if(product!=null) {
+        if (product != null) {
             int update = jdbcTemplate.update("delete from product where id=" + id);
             return product;
         }
@@ -64,11 +64,10 @@ public class ProductDaoImpl implements Productdao {
     @Override
     public Product updateProduct(Product product) {
         int update = jdbcTemplate.update("update product set pname='" + product.getName() + "',cost=" + product.getCost() + " where id=" + product.getId() + "  ");
-     if(update==1)
-     {
-         return  searchProduct(product.getId());
-     }
-     return null;
+        if (update == 1) {
+            return searchProduct(product.getId());
+        }
+        return null;
     }
 
     Product prd;
