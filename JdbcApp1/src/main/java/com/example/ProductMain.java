@@ -27,10 +27,47 @@ public class ProductMain {
         product.setName(scanner.next());
         product.setCost(scanner.nextFloat());
 
+
         Product product1 = dao.addProduct(product);
         System.out.println("product added is \n");
         System.out.println("\t" + product1.getId() + "\t" + product1.getName() + "\t" + product1.getCost());
 
+        System.out.println("All Data Records are");
+        dao.getAllProduct().forEach(a -> System.out.println(a.getId() + "\t" + a.getName() + "\t" + a.getCost()));
+
+        System.out.println("\nProduct Search operation");
+        System.out.println("Enter product id to be searched ");
+        int id = scanner.nextInt();
+        Product product2 = dao.searchProduct(id);
+        if (product2 != null)
+            System.out.println("product found \n" + product2.getId() + "\t" + product2.getName() + "\t" + product2.getCost());
+        else
+            System.out.println("product not found with id " + id);
+
+        System.out.println("\nremove operation");
+
+        System.out.println("Enter product id to be removed ");
+        id = scanner.nextInt();
+        Product removedProduct = dao.removeProduct(id);
+        if (removedProduct != null)
+            System.out.println(" product is removed \n" + removedProduct);
+        else
+            System.out.println("id not present");
+
+        System.out.println("\n================== update operation ===================");
+        Product product4 = new Product();
+        System.out.println("Enter product id name and cost");
+        product4.setId(scanner.nextInt());
+        product4.setName(scanner.next());
+        product4.setCost(scanner.nextFloat());
+
+        Product product3 = dao.updateProduct(product4);
+
+        if(product3!=null){
+            System.out.println("product updated "+product3);
+        }
+        else
+            System.out.println("product not present");
     }
 
     @Bean
