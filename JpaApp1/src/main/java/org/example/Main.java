@@ -2,10 +2,8 @@ package org.example;
 
 import org.example.model.Employee;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,13 +14,17 @@ public class Main {
         EntityTransaction transaction = entityManager.getTransaction();
 
         Employee employee=new Employee();
-        employee.setId(10001);
-        employee.setName("john clark");
-        employee.setSalary(20000);
+        employee.setId(10003);
+        employee.setName("arnold methew");
+        employee.setSalary(50000);
+        employee.setDoj(LocalDate.of(2022,12,12));
 
         transaction.begin();
          entityManager.persist(employee);
         transaction.commit();
+        System.out.println("record added ");
 
+        Query from_employee = entityManager.createQuery("from Employee");
+        from_employee.getResultList().forEach(a->System.out.println(a));
     }
 }
