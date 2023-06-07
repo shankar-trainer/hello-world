@@ -1,6 +1,5 @@
 package com.example;
 
-import com.example.exception.PersonException;
 import com.example.model.Address;
 import com.example.model.Mobile;
 import com.example.model.Person;
@@ -17,10 +16,10 @@ import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
-public class SpringBootJpa1Application implements CommandLineRunner {
+public class SpringBootJpa1Application1 implements CommandLineRunner {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootJpa1Application.class, args);
+        SpringApplication.run(SpringBootJpa1Application1.class, args);
     }
 
     @Autowired
@@ -99,14 +98,14 @@ public class SpringBootJpa1Application implements CommandLineRunner {
         person2.setMobileSet(set2);
 
 
-        for (Mobile m : set1)
-            mobileService.addMobile(m);
-        addressService.addAddress(address1);
+//        for (Mobile m : set1)
+//            mobileService.addMobile(m);
+//        addressService.addAddress(address1);
         service.addPerson(person1);
-
-        for (Mobile m : set2)
-            mobileService.addMobile(m);
-        addressService.addAddress(address2);
+//
+//        for (Mobile m : set2)
+//            mobileService.addMobile(m);
+//        addressService.addAddress(address2);
         service.addPerson(person2);
 /*
         try {

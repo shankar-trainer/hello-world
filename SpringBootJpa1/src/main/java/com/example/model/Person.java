@@ -1,24 +1,34 @@
 package com.example.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.annotation.Lazy;
+
+import java.util.Set;
 
 @Entity
 @Data
 //@AllArgsConstructor
 @NoArgsConstructor
 //@RequiredArgsConstructor
+
 public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int personId;
-    @NonNull
+    //@NonNull
     private String personName;
-    @NonNull
+    //@NonNull
     private int personSalary;
+
+    @OneToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name="addressId")
+    Address address;
+
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST}   )
+    Set<Mobile> mobileSet;
+
 
 }
