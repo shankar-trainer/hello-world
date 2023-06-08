@@ -101,6 +101,7 @@ public class SpringBootJpa1Application1 implements CommandLineRunner {
 //        for (Mobile m : set1)
 //            mobileService.addMobile(m);
 //        addressService.addAddress(address1);
+        // cascade operation no need to save child class
         service.addPerson(person1);
 //
 //        for (Mobile m : set2)
