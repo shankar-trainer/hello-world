@@ -17,7 +17,7 @@ public class EmployeeController {
             empList=new ArrayList<>();
             empList.add(new Employee(1001,"john clark",40000));
             empList.add(new Employee(1002,"john abraham",49000));
-            empList.add(new Employee(1003,"mathem ronald",74000));
+            empList.add(new Employee(1003,"mathew ronald",74000));
             empList.add(new Employee(1004,"tiger woods",24000));
             empList.add(new Employee(1005,"pele edision",14000));
             empList.add(new Employee(1006,"torrent disel",47000));
@@ -40,14 +40,26 @@ public class EmployeeController {
         return emp;
     }
 
+    @RequestMapping(value = "/empDelete/{id}",method = RequestMethod.DELETE)
+    public Employee delEmployee(@PathVariable("id") int id ){
+
+         for(Employee emp1:empList){
+             if(emp1.getEmpId()==id) {
+                empList.remove(emp1);
+                 return emp1;
+             }
+         }
+        return  null;
+
+    }
 
     @RequestMapping("/emp/{id}")
     public Employee getEmployee(@PathVariable("id") int id ){
 
-         for(Employee emp1:empList){
-             if(emp1.getEmpId()==id)
-                 return  emp1;
-         }
+        for(Employee emp1:empList){
+            if(emp1.getEmpId()==id)
+                return  emp1;
+        }
         return  null;
 
     }
