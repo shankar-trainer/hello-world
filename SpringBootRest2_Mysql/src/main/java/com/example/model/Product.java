@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Table(name="prd2")
 public class Product {
     @Id
-    @GeneratedValue
+   // @GeneratedValue
     @Column(name="prdId")
     private int productId;
     @Column(name="prdName",length = 20,nullable = false)
