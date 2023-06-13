@@ -26,7 +26,7 @@ public class ProductController {
             return  new ResponseEntity(service.getAllProduct(),HttpStatus.OK);
         }
         catch (ProductException e){
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(e.getMessage(),HttpStatus.NOT_FOUND);
         }
     }
 
@@ -36,7 +36,7 @@ public class ProductController {
             return  new ResponseEntity<>(service.addProduct(p), HttpStatus.CREATED);
         }
         catch (ProductException e){
-            return  new ResponseEntity(HttpStatus.NOT_FOUND);
+            return  new ResponseEntity(e.getMessage(),HttpStatus.NOT_FOUND);
         }
     }
     @GetMapping("/searchProduct/{id}")
@@ -45,7 +45,7 @@ public class ProductController {
            return new ResponseEntity<>(service.searchProduct(id),HttpStatus.FOUND);
        }
        catch (ProductException e){
-           return  new ResponseEntity(HttpStatus.NOT_FOUND);
+           return  new ResponseEntity(e.getMessage(),HttpStatus.NOT_FOUND);
        }
     }
 
@@ -55,7 +55,7 @@ public class ProductController {
            return new ResponseEntity<>(service.deleteProduct(id),HttpStatus.OK);
        }
        catch (ProductException e){
-           return  new ResponseEntity(HttpStatus.NOT_FOUND);
+           return  new ResponseEntity(e.getMessage(),HttpStatus.NOT_FOUND);
        }
     }
 
