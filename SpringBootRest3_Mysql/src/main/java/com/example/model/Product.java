@@ -24,4 +24,7 @@ public class Product {
     private float productCost;
     @Column(name="mfd",nullable = false)
     private LocalDate productMfd;
+
+    @OneToMany
+    public Set<Order> orderSet;
 }

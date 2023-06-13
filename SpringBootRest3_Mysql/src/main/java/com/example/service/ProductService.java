@@ -1,7 +1,9 @@
 package com.example.service;
 
+import com.example.dao.OrderRepository;
 import com.example.dao.ProductRepository;
 import com.example.exception.ProductException;
+import com.example.model.Order;
 import com.example.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +16,16 @@ public class ProductService {
     @Autowired
     ProductRepository repository;
 
+    @Autowired
+    OrderRepository repository1;
+
     public Product addProduct(Product p) throws ProductException {
         Product product = searchProduct1(p.getProductId());
         if (product != null)
             throw new ProductException("product already present");
         else {
+            for(Order o:p.getOrderSet())
+             repository1.save(o);
 
             return repository.save(p);
         }
@@ -42,10 +49,8 @@ public class ProductService {
 
     public Product searchProduct1(int id) throws ProductException {
         Optional<Product> byId = repository.findById(id);
-        if (byId.isPresent()) {
-            System.out.println("present...");
+        if (byId.isPresent())
             return byId.get();
-        }
         else
             return null;
     }
@@ -55,6 +60,8 @@ public class ProductService {
         if (product == null)
             throw new ProductException("product not  present");
         else {
+            for(Order o:product.getOrderSet())
+                repository1.delete(o);
             repository.delete(product);
             return product;
         }
