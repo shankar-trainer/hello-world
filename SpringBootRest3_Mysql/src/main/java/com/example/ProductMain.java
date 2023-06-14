@@ -14,50 +14,54 @@ import java.util.HashSet;
 import java.util.Set;
 
 @SpringBootApplication
-public class ProductMain implements CommandLineRunner {
+public class ProductMain //implements CommandLineRunner
+{
     public static void main(String[] args) {
         SpringApplication.run(ProductMain.class, args);
     }
-
-    @Autowired
-    ProductRepository repository;
-
-    @Autowired
-    OrderRepository repository1;
-
-    @Override
-    public void run(String... args) throws Exception {
-        Product product[] = new Product[5];
-        Order order[] = new Order[3];
-
-        order[0]=new Order();
-        order[0].setOrderName("pizza");
-        order[0].setOrderLocation("delhi");
-
-        order[1]=new Order();
-        order[1].setOrderName("grocerry");
-        order[1].setOrderLocation("chennai");
-
-        order[2]=new Order();
-        order[2].setOrderName("book");
-        order[2].setOrderLocation("kolkotta");
-
-        Set<Order> orderSet = new HashSet<Order>();
-        for (Order order1 : order)
-            orderSet.add(order1);
-
-
-        product[0] = new Product(10001, "pant", 2000, LocalDate.now(), orderSet);
-//        product[1]=new Product(10002,"shirt",1700, LocalDate.of(2022,11,20));
-//        product[2]=new Product(10003,"chocalate",500, LocalDate.of(2022,12,25));
-//        product[3]=new Product(10004,"pizza",800, LocalDate.of(2021,8,20));
-//        product[4]=new Product(10005,"burger",560, LocalDate.of(2022,3,30));
-
-        for (Order order1 : order)
-             repository1.save(order1);
-
-            //     for (Product p:product             ) {
-        repository.save(product[0]);
-        //}
-    }
+//
+//    @Autowired
+//    ProductRepository repository;
+//
+//    @Autowired
+//    OrderRepository repository1;
+//
+//    @Override
+//    public void run(String... args) throws Exception {
+//        Product product[] = new Product[5];
+//        Order order[] = new Order[3];
+//
+//        order[0]=new Order();
+//        order[0].setOrderId(1);
+//        order[0].setOrderName("pizza");
+//        order[0].setOrderLocation("delhi");
+//
+//        order[1]=new Order();
+//        order[1].setOrderId(2);
+//        order[1].setOrderName("grocerry");
+//        order[1].setOrderLocation("chennai");
+//
+//        order[2]=new Order();
+//        order[2].setOrderId(3);
+//        order[2].setOrderName("book");
+//        order[2].setOrderLocation("kolkotta");
+//
+//        Set<Order> orderSet = new HashSet<Order>();
+//        for (Order order1 : order)
+//            orderSet.add(order1);
+//
+//
+//        product[0] = new Product(10001, "pant", 2000, LocalDate.now(), orderSet);
+////        product[1]=new Product(10002,"shirt",1700, LocalDate.of(2022,11,20));
+////        product[2]=new Product(10003,"chocalate",500, LocalDate.of(2022,12,25));
+////        product[3]=new Product(10004,"pizza",800, LocalDate.of(2021,8,20));
+////        product[4]=new Product(10005,"burger",560, LocalDate.of(2022,3,30));
+//
+//        for (Order order1 : order)
+//             repository1.save(order1);
+//
+//            //     for (Product p:product             ) {
+//        repository.save(product[0]);
+//        //}
+//    }
 }

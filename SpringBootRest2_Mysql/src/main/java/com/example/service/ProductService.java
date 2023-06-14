@@ -43,7 +43,6 @@ public class ProductService {
     public Product searchProduct1(int id) throws ProductException {
         Optional<Product> byId = repository.findById(id);
         if (byId.isPresent()) {
-            System.out.println("present...");
             return byId.get();
         }
         else

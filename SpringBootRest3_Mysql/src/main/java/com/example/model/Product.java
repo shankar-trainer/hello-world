@@ -15,7 +15,7 @@ import java.util.Set;
 //@Table(name="prd2")
 public class Product {
     @Id
-     @GeneratedValue
+     //@GeneratedValue
     @Column(name="prdId")
     private int productId;
     @Column(name="prdName",length = 20,nullable = false)
@@ -25,6 +25,6 @@ public class Product {
     @Column(name="mfd",nullable = false)
     private LocalDate productMfd;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     public Set<Order> orderSet;
 }

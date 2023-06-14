@@ -3,7 +3,9 @@ package com.example.web;
 import ch.qos.logback.core.status.Status;
 import com.example.dao.ProductRepository;
 import com.example.exception.ProductException;
+import com.example.model.Order;
 import com.example.model.Product;
+import com.example.service.OrderService;
 import com.example.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,9 @@ public class ProductController {
     @Autowired
     ProductService service;
 
+    @Autowired
+    OrderService service1;
+
     @GetMapping("/allProduct")
     public ResponseEntity getAllProduct() throws ProductException {
         try {
@@ -33,8 +38,10 @@ public class ProductController {
     @PostMapping("/addProduct")
     public ResponseEntity addProduct(@RequestBody Product p)  {
         try {
-
-            return  new ResponseEntity<>(service.addProduct(p), HttpStatus.CREATED);
+           // for(Order o:p.getOrderSet())
+             //service1.addOrder(o);
+            Product product = service.addProduct(p);
+            return  new ResponseEntity<>(product, HttpStatus.CREATED);
         }
         catch (ProductException e){
             return  new ResponseEntity(e.getMessage(),HttpStatus.NOT_FOUND);

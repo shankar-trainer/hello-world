@@ -15,7 +15,7 @@ import java.time.LocalDate;
 
 public class Order {
     @Id
-    @GeneratedValue
+    //@GeneratedValue
     private int orderId;
     private String orderName;
     private String orderLocation;

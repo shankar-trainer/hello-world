@@ -7,7 +7,6 @@ import com.example.model.Order;
 import com.example.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -20,13 +19,16 @@ public class ProductService {
     OrderRepository repository1;
 
     public Product addProduct(Product p) throws ProductException {
+        System.out.println("add product called ...");
         Product product = searchProduct1(p.getProductId());
-        if (product != null)
-            throw new ProductException("product already present");
+        if (product != null) {
+            System.out.println("product is ..."+product);
+            throw new ProductException("product already present....");
+        }
         else {
-            for(Order o:p.getOrderSet())
-             repository1.save(o);
-
+            for(Order o:p.getOrderSet()) {
+                repository1.save(o);
+            }
             return repository.save(p);
         }
     }
@@ -48,9 +50,11 @@ public class ProductService {
     }
 
     public Product searchProduct1(int id) throws ProductException {
+        System.out.println("searchProduct1 called .....");
         Optional<Product> byId = repository.findById(id);
-        if (byId.isPresent())
+        if (byId.isPresent()) {
             return byId.get();
+        }
         else
             return null;
     }
@@ -58,7 +62,7 @@ public class ProductService {
     public Product deleteProduct(int id) throws ProductException {
         Product product = searchProduct1(id);
         if (product == null)
-            throw new ProductException("product not  present");
+            throw new ProductException("product not present");
         else {
             for(Order o:product.getOrderSet())
                 repository1.delete(o);

@@ -45,7 +45,7 @@ public class ProductController {
        }
     }
 
-    @DeleteMapping("/deleteProduct{id}")
+    @DeleteMapping("/deleteProduct/{id}")
     public ResponseEntity deleteProduct(@PathVariable int id) throws ProductException {
        try {
            return new ResponseEntity<>(service.deleteProduct(id),HttpStatus.OK);

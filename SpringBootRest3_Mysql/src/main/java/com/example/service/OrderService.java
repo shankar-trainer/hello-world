@@ -20,9 +20,9 @@ public class OrderService {
     public Order addOrder(Order o) throws ProductException {
         Order order = searchOrder1(o.getOrderId());
         if (order != null)
-            throw new ProductException("product already present");
-
-        return repository.save(order);
+            throw new ProductException("order already present..");
+        else
+        return repository.save(o);
     }
 
     public Order updateProduct(Order o) throws OrderException, ProductException {
@@ -43,8 +43,9 @@ public class OrderService {
 
     public Order searchOrder1(int id) throws ProductException {
         Optional<Order> byId = repository.findById(id);
-        if (byId.isPresent())
+        if (byId.isPresent()) {
             return byId.get();
+        }
         else
             return null;
     }
