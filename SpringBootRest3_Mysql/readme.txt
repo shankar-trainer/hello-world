@@ -2,7 +2,7 @@ postman
 http://localhost:9090/product/addProduct
 "error": "Bad Request",
 
-[
+
     {
         "productId": 11,
         "productName": "pant",
@@ -16,7 +16,7 @@ http://localhost:9090/product/addProduct
             },
             {
                 "orderId": 2,
-                "orderName": "grocerry",
+                "orderName": "grocery",
                 "orderLocation": "chennai"
             },
             {
@@ -26,4 +26,3 @@ http://localhost:9090/product/addProduct
             }
         ]
     }
-]
