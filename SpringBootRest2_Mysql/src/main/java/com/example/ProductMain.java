@@ -6,15 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
 @SpringBootApplication
-public class ProductMain //implements CommandLineRunner
-        //
-        {
+//@EnableSwagger2
+
+public class ProductMain {
     public static void main(String[] args) {
         SpringApplication.run(ProductMain.class, args);
     }
