@@ -1,0 +1,42 @@
+1.start spring-cloud-config-server
+2.start limits-service
+
+---- for eureka server and client
+
+1.start netflix-eureka-naming-server
+   http://localhost:8761/
+
+2.start currency-exchange-service
+   http://localhost:8000/currency-exchange/from/USD/to/INR
+
+3. start currency-conversion-service (using currency-exchange)
+http://localhost:8100/currency-converter/from/USD/to/INR/quantity/20
+
+4.
+run currency-exchange-service another instance on port 8001
+java  -Dserver.port=8001   -jar  currency-exchange-service-0.0.1-SNAPSHOT.jar 
+
+
+5.start netflix-zuul-api-gateway-server 
+
+    //feign loadbalancing
+    
+http://localhost:8100/currency-converter-feign/from/USD/to/INR/quantity/200
+  refresh will show port 8000 and 8001
+  // api-gateway-server    
+  
+   http://localhost:8001/currency-exchange/from/USD/to/INR
+take spring.application.name from currency-exchange application i.e currency-exchange-service
+ and append currency-exchange-service to the url http://localhost:8001/currency-exchange/from/USD/to/INR
+  and change port to 8765
+ http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/INR
+
+
+
+//similarly change url to below one http://localhost:8100/currency-converter-feign/from/USD/to/INR/quantity/200
+ to 
+
+http://localhost:8765/currency-conversion-service/currency-converter-feign/from/USD/to/INR/quantity/200
+
+    
+
