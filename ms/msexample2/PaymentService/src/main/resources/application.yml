@@ -1,8 +1,0 @@
-server:
-  port: 9091
-spring:
-  h2:
-   console:
-     enabled: true
-application:
-   name: order-service
