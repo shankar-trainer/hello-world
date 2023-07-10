@@ -1,0 +1,176 @@
+all primitive data type is supported here 
+
+Integer 
+ 
+   byte 
+   short 
+   int    -- default 
+   long 
+   
+Decimal 
+   float 
+   double -- default      
+  
+
+User Input 
+
+  java.util.Scanner 
+      .nextInt() --- integer
+	  .nextFloat()  -- float 
+	  .nextDouble() -- double 
+	  .next()       -- single string 
+	  .nextLine()   -- multi line string 
+	  
+
+  and -- && 
+  or  -- ||
+         And -- all condition must be true 
+
+		 AND Truth table 
+	 con1     con2     result 
+  
+      T        T         T 
+	  T        F         F
+	  F        T         F
+      F        F         F 
+	  
+		 OR Truth table 
+	 con1     con2     result 
+  
+      T        T         T 
+	  T        F         T
+	  F        T         T
+      F        F         F 
+	  
+
+	  
+	  Student 
+	  
+	  m1 ,m2 
+	  
+	  avg 
+	  
+	  75- 100 -- distinction 
+	  60 -74      A
+	  50 -59      B
+	  35 -49      C
+	  0 - 34      Fail 
+	  
+	  m1<=34 , m2<=34 -- Fail
+	  
+	  
+	  
+	  java.lang.System 
+	  
+	    -- public static final PrintStream out = null;
+	  
+	  System.out
+	  	  
+	  package java.io
+	     class PrintStream
+		                println() method 
+						
+	  System.out.println()   
+	  
+	  
+	  static import 
+	      import all static variables and methods from the given class
+		  
+		  
+		  
+		  
+		  
+public class Shape {
+	void area() {
+		System.out.println("area of shape");
+	}
+}
+
+
+    Shape 
+     | area()
+	 |
+	 v
+	Circle,Rectnagle  
+
+	
+	Access Modifier 
+	
+  | public
+  | protected  
+  v default 	
+	private
+	
+	
+	local variable 
+	   -- declared inside method and as method argument
+	   -- local variable has no default value.
+	   -- it must be initialized before use.
+	
+	   -- local variable cannot be private, public, protected and static
+	   -- it can be only final.
+	   
+	   
+	   constructor 
+	    init block -- initialization of instance variable 
+	               -- finally called to constructor
+	                 
+	   
+	   static method cannot be overridden
+	   static method can be re written
+	   
+	   
+	   
+	   Number n1;
+	  /     \ 
+	 Float  Integer 
+	 
+	   
+	   
+	   var arguments 
+	   -- variable no of arguments 
+	   -- denoted by ...
+	   -- in any method only one var argument is allowed
+	   -- in any method var argument is last argument
+	   -- it supports for each loop 
+	  
+	  
+	  throw ---  throw the Exception Object 
+	  throws -- declare the exception with method  
+	  
+	  
+	  Employee.java -- model 
+	  
+	   
+	   DAO --- data access object 
+	   
+	   EmployeeOperation 
+	   
+	    addEmployee
+	    
+	    searchEmployee
+	    
+	    removeEmployee
+	    
+	   
+	   ResultSet 
+	     -- all records 
+	     -- cursor 
+	     
+	     beforeFirst-- default cursor -- no record 
+	     1
+	     2
+	     3
+	     last
+	     afterLast
+	     
+	       .next() -- move to next position
+	     
+	     
+	   
+	          
+	   
+	   
+	   
+	   
+	   
