@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+
+        function alarm() {
+            alert('alarm is ringing ')
+        }
+
+        setTimeout(alarm, 5000)// setTimeout two argument, first is function, 2nd is time
+
+        document.write('alarm will be called after 5 second')
+
+        function clock(){
+          document.getElementById('id1').innerHTML=new Date().toLocaleTimeString();
+          setTimeout(clock,1000);
+        }
+
+        function clock1(){
+          document.getElementById('id2').innerHTML=new Date().toLocaleTimeString();
+        }
+
+        function alarm1() {
+            alert('alarm1 is ringing ')
+        }
+
+       // setInterval(alarm1,3000);
+        setInterval(clock1,1000);
+
+    </script>
+</head>
+
+<body onload="clock()">
+    Time is 
+ <div id="id1">
+ </div>
+    Time is 
+ <div id="id2">
+ </div>
+
+
+</body>
+
+</html>

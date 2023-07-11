@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style/style1.css'>
+    <script>
+
+        function validate() {
+            var id1 = document.getElementById('id').value
+            var pass1 = document.getElementById('pass').value
+            var name1 = document.getElementById('name').value
+            var gender1 = document.getElementsByName('gender')
+            var city1 = document.getElementById('city').value
+            
+            var genderstatus = false;
+            
+            var statestatus = false;
+            var state = document.getElementsByName('state')
+
+            for (var index = 0; index < gender1.length; index++) {
+                if (gender1[index].checked)
+                    genderstatus = true;
+            }
+
+            for (var index = 0; index <state.length; index++) {
+                if (state[index].checked)
+                    statestatus = true;
+            }
+
+            if (id1 == "") {
+                alert("id is blank")
+                return false;
+            }
+            else if (pass1 == "") {
+                alert("password is blank")
+                return false;
+            }
+            else if (name1 == "") {
+                alert("name is blank")
+                return false;
+            }
+            else if (genderstatus == false) {
+                alert("select the gender")
+                return false;
+            }
+            else if (city1 == "") {
+                alert("select the city")
+                return false;
+            }
+            else if (statestatus ==false) {
+                alert("select the state")
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <form onsubmit="return validate()">
+        <div>
+            <input id="id" placeholder="Enter Id">
+        </div>
+        <div>
+            <input id="pass" type="password" placeholder="Enter Password">
+        </div>
+        <div>
+            <input id="name" placeholder="Enter Name"><br>
+        </div>
+        <div>
+            <div> Select Gender</div>
+            <div>
+                <input name="gender" id="gender" type="radio" value="male">Male
+            </div>
+            <div>
+                <input name="gender" id="gender" type="radio" value="female">Female<br>
+            </div>
+            <div style="margin-top: 10px;"> Select City
+                <select id="city">
+                    <option value=""></option>
+                    <option value="delhi">New Delhi</option>
+                    <option value="noida">Noida</option>
+                    <option value="mathura">Mathura</option>
+                    <option value="agra">Agra</option>
+                </select>
+            </div>
+            <div style="margin-top: 10px;">
+                <div>Select States</div>
+                <div><input type="checkbox" value="up" name="state" >Up</div>
+                <div><input type="checkbox" value="up" name="state">Mp </div>
+                <div><input type="checkbox" value="up" name="state">Hp</div>
+                <div><input type="checkbox" value="up" name="state">Ap</div>
+                <div><input type="checkbox" value="tamil nadu" name="state">Tamil Nadu</div>
+                <div> <input type="checkbox" value="west bengal" name="state">West Bengal</div>
+            </div>
+
+            <div style="margin-top: 10px;"><input type="submit"><input type="reset"></div>
+
+        </div>
+    </form>
+</body>
+
+</html>

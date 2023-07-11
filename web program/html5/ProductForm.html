@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style/style1.css'>
+    <style>
+        h1 {
+            margin-left: 10px;
+            text-transform: capitalize;
+        }
+        span{
+            color:red;
+        }
+    </style>
+    <script>
+        function validate() {
+            var id = document.getElementById('prdid');
+            var name = document.getElementById('prdname');
+            var cost = document.getElementById('prdcost');
+            var no = document.getElementById('prdno');
+            var total = document.getElementById('prdtotal');
+            
+            if (id.value <= 0) {
+                document.getElementById('err_id').innerHTML = 'id is blank or -ve'
+                //document.getElementById('err_id').css('border','solid red');
+            }
+            else if (isNaN(id.value)) {
+                document.getElementById('err_id').innerHTML = 'id is not a number'
+            }
+            else if (name.value =="") {
+                document.getElementById('err_name').innerHTML = 'name is blank '
+            }
+            else if (name.value.length<5) {
+                document.getElementById('err_name').innerHTML = 'product name must of 5 characters '
+            }
+            else if (cost.value=="") {
+                document.getElementById('err_cost').innerHTML = 'product cost can not be blank  '
+            }
+            
+            else if (cost.value<=0) {
+                document.getElementById('err_cost').innerHTML = 'product cost can not be  zero or -ve '
+            }
+            
+            else if (no.value<=0) {
+                document.getElementById('err_no').innerHTML = 'product number can not be blank or zero or -ve '
+            }
+            
+            else {
+                document.getElementById('prdtotal').value =  (no.value*cost.value)
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <h1>Product Page</h1>
+        <div>
+            <input placeholder="Enter Product Id" id="prdid" >
+            <span id="err_id"></span>
+        </div>
+        <div style="margin-top: 10px;">
+            <input placeholder="Enter Product Name" id="prdname">
+            <span id="err_name"></span>
+        </div>
+        <div style="margin-top: 10px;">
+            <input placeholder="Enter Product Cost" id="prdcost" type="number">
+            <span id="err_cost"></span>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <input placeholder="Enter No Of Product" id="prdno" type="number">
+            <span id="err_no"></span>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <input placeholder="TotalCost" id="prdtotal">
+        </div>
+        <div style="margin-top: 10px;">
+            <input type="button" value="calculate" onclick="validate()">
+            <input type="reset">
+        </div>
+    </form>
+</body>
+
+</html>
