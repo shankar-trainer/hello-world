@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <script src='script\jquery-3.7.0.min.js'>
+
+  </script>
+  <script>
+    window.onbeforeunload=function(){
+      return "";
+    }
+
+    $(function () {
+      $('#addition').click(function () {
+        alert(eval($('#n1').val() )+ eval($('#n2').val()))
+        $('#result').val(eval($('#n1').val() )+ eval($('#n2').val()))
+      })
+    })
+
+    
+    $(function () {
+      $('#subtraction').click(function () {
+        alert(parseFloat($('#n1').val() )- parseFloat($('#n2').val()))
+        $('#result').val(parseFloat($('#n1').val() )- parseFloat($('#n2').val()))
+      })
+    })
+
+    $(function () {
+      $('#multiplication').click(function () {
+        alert(parseFloat($('#n1').val() )* parseFloat($('#n2').val()))
+        $('#result').val(parseFloat($('#n1').val() )* parseFloat($('#n2').val()))
+      })
+    })
+
+    $(function () {
+      $('#division').click(function () {
+        alert(parseFloat($('#n1').val() )/ parseFloat($('#n2').val()))
+        $('#result').val(parseFloat($('#n1').val() )/ parseFloat($('#n2').val()))
+      })
+    })
+// validation
+    $(function(){
+        $('#result').focusin(function(){
+          if($('#n1').val()==""){
+           //alert("no1 is blank")
+           $('#n1_err').css('border','solid red').text(' no1 is blank  ')
+          }
+          else if($('#n2').val()=="")
+           //alert("no2 is blank")
+           $('#n2_err').css('border','solid red').text(' no2 is blank ')
+        })
+              
+    })
+
+  </script>
+  <style>
+    @import url('style/style1.css');
+  </style>
+</head>
+
+<body>
+  <form>
+    <div>
+      <input placeholder="enter no1" id="n1" value="0"><span id="n1_err"></span>
+    </div>
+    <div>
+      <input placeholder="enter no2" id="n2" value="0"><span id="n2_err"></span>
+    </div>
+    <div>
+      <input placeholder="result" id="result" value="0">
+    </div>
+    <div>
+      <button id="addition">Addition</button>
+      <button id="subtraction">Subtraction</button>
+      <button id="multiplication">Multiplication</button>
+      <button id="division">Division</button>
+
+    </div>
+
+  </form>
+</body>
+
+</html>
