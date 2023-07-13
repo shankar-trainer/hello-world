@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -23,12 +24,17 @@ public class UserServlet extends HttpServlet {
 	int userId;
 	String userName;
 	String country;
+	String company_name;
 
+	ServletContext ctx;
+	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 	country=	config.getInitParameter("country");
 		userId = Integer.parseInt(config.getInitParameter("id"));
 		userName = config.getInitParameter("name");
+		ctx=config.getServletContext();
+		company_name = ctx.getInitParameter("company");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,6 +45,7 @@ public class UserServlet extends HttpServlet {
 		writer.print("<br>User Id " + userId);
 		writer.print("<br>User Name " + userName);
 		writer.print("<br>User Country " + country);
+		writer.print("<br>Cmpany name  " + company_name);
 
 	}
 

@@ -1,0 +1,6 @@
+<web-app>
+  <context-param>
+  <param-name>company</param-name>
+  <param-value>coforge</param-value>
+  </context-param>
+</web-app>
