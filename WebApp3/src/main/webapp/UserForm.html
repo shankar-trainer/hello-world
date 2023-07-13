@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style>
-	@IMPORT url("css/user.css") 
-</style>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<style>
+		@IMPORT url("css/user.css")
+	</style>
+	<script src="script/user.js">
+
+	</script>
+
 </head>
+
 <body>
 
-<form action="MyServlet1" method="post">
-	<div>
-	<input name="id" placeholder="Enter Id">
-	</div>
-	
-	<div>
-	<input name="password" name="password" type="password"placeholder="Enter Password">
-	</div>
-	
-	<div>
-	<input name="name" placeholder="Enter Name">
-	</div>
-	
-	<div>
-	  <input type="submit" value="Send">	
-	  <input type="reset" value="Cancel">	
-	</div>
-</form>
+	<form action="MyServlet1" method="post" onsubmit="return validate()">
+		<div>
+			<input name="id" placeholder="Enter Id" id="id"><br>
+		</div>
+
+		<div>
+			<input name="password" id="password" name="password" type="password" placeholder="Enter Password"><br>
+
+		</div>
+
+		<div>
+			<input name="name" id="name" placeholder="Enter Name">
+		</div>
+
+		<div>
+			<div>
+				<span>Select Hobbies</span>
+			</div>
+			<div>
+				<input type="checkbox" value="flowering" name="hb" id="hb" placeholder="select hobby">Flowering
+			</div>
+			<div>
+				<input type="checkbox" value="music" name="hb" id="hb" placeholder="select hobby">Music
+			</div>
+			<div>
+				<input type="checkbox" value="reading" name="hb" id="hb" placeholder="select hobby">Reading
+			</div>
+			<div>
+				<input type="checkbox" value="movie" name="hb" id="hb" placeholder="select hobby">Movie
+			</div>
+		</div>
+		<div>
+			<input type="submit" value="Send">
+			<input type="reset" value="Cancel">
+		</div>
+
+	</form>
 
 </body>
+
 </html>
