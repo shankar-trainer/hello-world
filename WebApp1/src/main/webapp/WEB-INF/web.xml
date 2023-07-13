@@ -1,0 +1,16 @@
+<web-app>
+
+	<servlet>
+		<servlet-name>MyServlet1</servlet-name>
+		<servlet-class>com.coforge.servlet.MyServlet1</servlet-class>
+	</servlet>
+	
+
+	<servlet-mapping>
+		<servlet-name>MyServlet1</servlet-name>
+		<url-pattern>/MyServlet1</url-pattern>
+	
+	</servlet-mapping>
+
+
+</web-app>

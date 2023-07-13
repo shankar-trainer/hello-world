@@ -1,0 +1,14 @@
+input{
+	size: 120px;
+}
+
+form{
+	margin-left: 450px;
+	margin-top: 100px;
+	padding: 20px;
+	
+	border: solid;
+	background-color: greenyellow;
+	width: 30%;
+	
+}
