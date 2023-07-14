@@ -12,15 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/MySearchEngine")
 public class MySearchEngine extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		PrintWriter writer = response.getWriter();
-		
+
 		String parameter = request.getParameter("engine");
-		
+
 		switch (parameter) {
 		case "google": {
-			   response.sendRedirect("https://www.google.com/");
+			response.sendRedirect("https://www.google.com/");
 			break;
 		}
 		case "bing": {
@@ -31,18 +32,17 @@ public class MySearchEngine extends HttpServlet {
 			response.sendRedirect("https://in.search.yahoo.com/");
 			break;
 		}
-		
+
 		case "duckduckgo": {
 //			response.sendRedirect("https://duckduckgo.com/");
 			response.sendRedirect("bbc");
-			//response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			// response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			break;
 		}
-		
+
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + parameter);
 		}
 	}
-
 
 }

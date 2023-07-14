@@ -1,6 +1,12 @@
+label{
+	float:left;
+	width: 120px;
+	
+}
 input{
 	size: 120px;
 	margin-bottom: 5px;
+	width: 120px;
 }
 
 form{
@@ -11,7 +17,6 @@ form{
 	border: solid;
 	background-color: greenyellow;
 	width: 30%;
-	
 	
 }
 span{
