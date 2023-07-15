@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+
+        function addition(a, b) {
+            return a + b;
+        }
+        console.log(addition(1, 2));
+
+        console.log("arrow function");
+        addition1 = (x, y) => x + y;
+        console.log(addition1(1, 2));
+
+        ar1 = [1, 2, 3, 4]
+        let ar2 = ar1.map(a => a * a);
+        console.log(ar1 + " \n" + ar2);
+
+        let sum = ar1.reduce((a, b) => a + b)
+        console.log(ar1 + " \nsum " + sum);
+        
+        let ar3=ar1.filter(a=> a%2==0)
+        console.log(ar1 + " \nafter filter   " + ar3);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

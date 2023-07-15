@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+
+        function square(a) {
+            return a * a;
+        }
+
+        var ar1 = [1, 2, 3, 4, 5]
+
+        for (const a of ar1) {
+            console.log(a + " " + square(a));
+        }
+
+        console.log('using map')
+        let ar2 = ar1.map(function (a) {
+            return a * a;
+        })
+        console.log(ar1)
+        console.log(ar2)
+        var ar3 = ar1.filter(function (a) {
+            return (a % 2 == 0)
+        })
+        console.log(ar3);
+
+
+        var sum = ar1.reduce(function (a, b) {
+            return a + b;
+        })
+        console.log(sum);
+
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
