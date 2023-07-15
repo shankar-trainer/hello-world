@@ -1,36 +1,38 @@
 mysql 
-
 https://drive.google.com/drive/folders/1NZCsd6FEd-cZkeaso8d87FaggBJaMdJG?usp=sharing
 
 
-
 java slide link
-
 https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
 
 
-
 git link 
-
 https://github.com/shankar-trainer/hello-world/tree/coforge_23
 
 
 
 jquery link 
-
 https://drive.google.com/drive/folders/1WO6Dh2xhhmPzvFQ4S8eInOHarAP3fdAJ?usp=sharing
 
 
 
 javascript link 
-
 https://drive.google.com/drive/folders/1YK7nr_yqOPwHLR6xgx_XFnMyNDe14fT3?usp=sharing
 
 
 
 html link
-
 https://drive.google.com/drive/folders/1QQOyhCahMQIhSa_pHxIhF2Gllm9vxmf9?usp=sharing
+
+
+
+servlet,jsp slide
+https://drive.google.com/drive/folders/1dltroT1T_scV5IOl0po0p03N3c-ME-oS?usp=sharing
+
+
+
+node express link
+https://drive.google.com/drive/folders/1D4xKdxqfNupCVCYvqGIGTE8_cOgDf_2E?usp=sharing
 
 
 
