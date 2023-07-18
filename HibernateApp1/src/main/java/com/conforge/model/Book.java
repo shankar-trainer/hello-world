@@ -5,8 +5,15 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+//@NamedQuery(name = "getall",query = "from Book")
+//@NamedQuery(name = "findbyisbn",query = "from Book  b where b.isbn=?1")
+
+@NamedQueries(value = { @NamedQuery(name = "getall", query = "from Book"),
+		@NamedQuery(name = "findbyisbn", query = "from Book  b where b.isbn=?1") })
 public class Book {
 	@Id
 	@GeneratedValue
@@ -52,5 +59,4 @@ public class Book {
 		return "Book [isbn=" + isbn + ", bname=" + bname + ", cost=" + cost + ", publishedDate=" + publishedDate + "]";
 	}
 
-	
 }

@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.conforge.model.Book;
+import com.conforge.util.SessionFactoryUtil;
 
 public class BookDao {
 
@@ -17,7 +18,8 @@ public class BookDao {
 	List<Book> bookList;
 
 	public BookDao() {
-		factory = new Configuration().configure().buildSessionFactory();
+		//factory = new Configuration().configure().buildSessionFactory();
+		factory=SessionFactoryUtil.getSessionFactory();
 		session = factory.openSession();
 		transaction = session.getTransaction();
 	}
@@ -58,6 +60,12 @@ public class BookDao {
 		bookList = session.createQuery("from Book").list();
 		return bookList;
 	}
+	
+	public List<Book> getAllBook1() {
+		List<Book> resultList = session.createNamedQuery("getall").getResultList();
+		return resultList;
+	}
+	
 
 	public Book searchBook(int isbn) {
 		Book find = session.find(Book.class, isbn);

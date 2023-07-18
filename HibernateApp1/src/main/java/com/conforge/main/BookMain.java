@@ -63,7 +63,10 @@ public class BookMain {
 				break;
 
 			case 3:
-				dao.getAllBook().forEach(b -> System.out
+//				dao.getAllBook().forEach(b -> System.out
+//						.println(b.getIsbn() + "\t" + b.getBname() + "\t" + b.getCost() + "\t" + b.getPublishedDate()));
+//				
+				dao.getAllBook1().forEach(b -> System.out
 						.println(b.getIsbn() + "\t" + b.getBname() + "\t" + b.getCost() + "\t" + b.getPublishedDate()));
 				break;
 
