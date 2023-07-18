@@ -1,8 +1,6 @@
 package com.conforge.dao;
 
 import java.util.List;
-import java.util.Map;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -28,6 +26,29 @@ public class BookDao {
 		if (searchBook(book.getIsbn()) == null) {
 			transaction.begin();
 			session.save(book);
+			transaction.commit();
+			return true;
+		}
+		return false;
+	}
+
+	public boolean updateBook(Book book) {
+		if (searchBook(book.getIsbn()) != null) {
+			transaction.begin();
+			session.update(book);
+			transaction.commit();
+			return true;
+		}
+		return false;
+	}
+
+	public boolean removeBook(int isbn) {
+
+		Book b1 = searchBook(isbn);
+
+		if (b1 != null) {
+			transaction.begin();
+			session.delete(bookList);
 			transaction.commit();
 			return true;
 		}

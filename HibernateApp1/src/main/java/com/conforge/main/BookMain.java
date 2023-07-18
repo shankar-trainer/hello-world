@@ -18,7 +18,7 @@ public class BookMain {
 		Scanner scanner = new Scanner(System.in);
 		BookDao dao = new BookDao();
 		Book book;
-		List<Book> blist;
+
 
 		do {
 			System.out.println("1.Add Book");
@@ -54,6 +54,12 @@ public class BookMain {
 				break;
 
 			case 2:
+				System.out.println("enter isbn to remove book");
+				if(dao.removeBook(scanner.nextInt()))
+					System.out.println("book removed ");
+				else
+					System.out.println("book not present ");
+					
 				break;
 
 			case 3:
@@ -62,9 +68,38 @@ public class BookMain {
 				break;
 
 			case 4:
+				System.out.println("enter isbn to search");
+				book=dao.searchBook(scanner.nextInt());
+				if(book!=null) {
+					System.out.println("book found ");
+					System.out.println(book.getIsbn()+"\t"+book.getBname()+"\t"+book.getCost()+"\t"+book.getPublishedDate());
+				}
+				else
+				System.out.println("book not  found ");
+				
 				break;
 
 			case 5:
+				System.out.println("enter book isbn name cost and date");
+				book = null;
+				book = new Book();
+				book.setIsbn(scanner.nextInt());
+				scanner.nextLine();
+				book.setBname(scanner.nextLine());
+				book.setCost(scanner.nextFloat());
+				LocalDate date1;
+				DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+				System.out.println("Enter date in dd-mm-yyyy format");
+
+				date1 = LocalDate.parse(scanner.next(), dateTimeFormatter1);
+				book.setPublishedDate(date1);
+
+				if (dao.updateBook(book)) {
+					System.out.println("book updated");
+				} else
+					System.out.println("book not present");
+
+				
 				break;
 
 			default:
