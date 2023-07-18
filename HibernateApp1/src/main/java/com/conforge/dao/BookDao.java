@@ -43,7 +43,6 @@ public class BookDao {
 	}
 
 	public boolean removeBook(int isbn) {
-
 		Book b1 = searchBook(isbn);
 
 		if (b1 != null) {

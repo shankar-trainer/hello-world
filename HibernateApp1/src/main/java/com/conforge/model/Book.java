@@ -47,4 +47,10 @@ public class Book {
 		this.publishedDate = publishedDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Book [isbn=" + isbn + ", bname=" + bname + ", cost=" + cost + ", publishedDate=" + publishedDate + "]";
+	}
+
+	
 }
