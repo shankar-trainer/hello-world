@@ -13,30 +13,34 @@ public class Order {
 	private int orderId;
 	private String orderLocation;
 	private float totalCost;
-	
+
 	public int getOrderId() {
 		return orderId;
 	}
+
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
+
 	public String getOrderLocation() {
 		return orderLocation;
 	}
+
 	public void setOrderLocation(String orderLocation) {
 		this.orderLocation = orderLocation;
 	}
+
 	public float getTotalCost() {
 		return totalCost;
 	}
+
 	public void setTotalCost(float totalCost) {
 		this.totalCost = totalCost;
 	}
+
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", orderLocation=" + orderLocation + ", totalCost=" + totalCost + "]";
 	}
-	
-	
-	
+
 }

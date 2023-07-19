@@ -19,8 +19,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-//@NoArgsConstructor
 
 public class Order {
 	@Id

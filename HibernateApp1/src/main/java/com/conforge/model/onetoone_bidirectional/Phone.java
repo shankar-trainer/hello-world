@@ -14,7 +14,7 @@ public class Phone {
 	private String phoneModel;
 	private float phoneCost;
 	
-	@OneToOne(mappedBy = "phone",cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "phone")
 	Person person;
 
 	public Person getPerson() {
