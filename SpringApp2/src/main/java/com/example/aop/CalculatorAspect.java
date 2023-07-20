@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,11 @@ public class CalculatorAspect {
 	@AfterReturning(pointcut="execution(* com.example.aop.Calculator.addition(..))",returning="result")
 	public void afterReturnAddition(JoinPoint jp,Object result) {
 		System.out.println("after return  addition called "+jp.getSignature().getName()+" starts with "+Arrays.toString(jp.getArgs())+"return result is "+result);
+	}
+	
+	@AfterThrowing(pointcut="execution(* com.example.aop.Calculator.division(..))",throwing="e")
+	public void divsionException(JoinPoint jp,Throwable e) {
+		System.out.println("There is error  "+e+" starts with "+Arrays.toString(jp.getArgs()));
 	}
 
 	

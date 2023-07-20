@@ -16,6 +16,9 @@ public class CalculatorAspectMain {
 		Calculator calculator = ctx.getBean(Calculator.class);
 		
 		calculator.addition(11, 22);
+		calculator.subtraction(11, 22);
+		calculator.multiplication(11, 22);
+		calculator.division(11, 0);
 		
 		
 	}
