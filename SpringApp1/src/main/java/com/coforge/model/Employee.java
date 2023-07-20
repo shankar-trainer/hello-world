@@ -2,6 +2,6 @@ package com.coforge.model;
 
 public interface Employee {
 
-	public void employeeInfo(); 
-	
+	public void employeeInfo();
+
 }
