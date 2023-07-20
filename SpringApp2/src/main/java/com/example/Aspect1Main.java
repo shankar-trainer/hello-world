@@ -3,18 +3,18 @@ package com.example;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.example.aop.Program1;
 import com.example.model.Software;
 
-public class SoftwareMain {
+public class Aspect1Main {
 
 	public static void main(String[] args) {
 		
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("beans.xml");
 		
-	//	Software bean = ctx.getBean(Software.class);
-		Software bean = ctx.getBean("software1",Software.class);
+		Program1 program1 = ctx.getBean(Program1.class);
 		
-		System.out.println(bean);
+		program1.display();
 		
 		
 	}

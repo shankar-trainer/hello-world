@@ -6,6 +6,20 @@
 	<artifactId>SpringApp1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>6.0.11</version>
+		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>6.0.11</version>
+		</dependency>
+
 		<!--
 		https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
 		<dependency>
