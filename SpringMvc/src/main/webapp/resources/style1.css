@@ -1,0 +1,17 @@
+form{
+    border: solid blue 10px;
+    
+    background-color: lightgoldenrodyellow;
+}
+
+label{
+	float: left;
+	width: 120px;
+}
+
+input{
+	width: 120px;
+}
+h1{
+	color:blue;
+}

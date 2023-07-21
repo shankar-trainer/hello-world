@@ -16,21 +16,32 @@ public class MyController {
 	public String greeting() {
 		return "welcome";
 	}
-	
+
 	@RequestMapping("/empResult")
-	public String employeeResult(@RequestParam("id") int id,@RequestParam("name") String name,
-			@RequestParam("salary") float salary, ModelMap map
-			) {
+	public String employeeResult(@RequestParam("id") int id, @RequestParam("name") String name,
+			@RequestParam("salary") float salary, ModelMap map) {
+
+		Employee employee = new Employee();
+		employee.setId(id);
+		employee.setName(name);
+		employee.setSalary(salary);
+
+		map.addAttribute("employee", employee);
+		return "result";
+	}
+	
+	@RequestMapping("/empResult1")
+	public ModelAndView employeeResult1(@RequestParam("id") int id, @RequestParam("name") String name,
+			@RequestParam("salary") float salary, ModelMap map) {
 		
-		Employee employee=new Employee();
+		Employee employee = new Employee();
 		employee.setId(id);
 		employee.setName(name);
 		employee.setSalary(salary);
 		
 		map.addAttribute("employee", employee);
-		return "result";
+		ModelAndView modelAndView=new ModelAndView("result", map);
+		return modelAndView;
 	}
-	
 
-	
 }

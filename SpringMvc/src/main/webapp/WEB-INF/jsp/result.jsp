@@ -8,6 +8,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<div>
+<h2>Using EL (Expression Language)</h2>
+Id is ${employee.id} 
+</div> 
+<div>
+Name is ${employee.name} 
+</div> 
+<div>
+salary  is ${employee.salary} 
+</div> 
+
+<hr>
 	<%
 	Employee emp = (Employee) request.getAttribute("employee");
 	%>
