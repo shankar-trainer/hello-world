@@ -19,9 +19,9 @@ public class PersonController {
 	@RequestMapping("/pform")
 	public String personForm(ModelMap model) {
 		Person person = new Person();
-		person.setPersonId(0);
+		person.setPersonId(null);
 		person.setPersonName(null);
-		person.setPersonSalary(0.0f);
+		person.setPersonSalary(null);
 		model.addAttribute("person", person);
 		return "PersonForm";
 	}
