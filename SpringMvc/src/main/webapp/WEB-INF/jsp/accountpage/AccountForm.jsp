@@ -22,7 +22,7 @@ form {
 <body>
 	<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
-	<f:form>
+	<f:form modelAttribute="account"  >
 
 		<div>
 			<f:label path="name">Enter Name</f:label>
@@ -40,6 +40,28 @@ form {
 			<f:label path="equityAllocation">Enter Equity Allocation</f:label>
 			<f:input path="equityAllocation" />
 			<f:errors path="equityAllocation" cssClass="error"></f:errors>
+		</div>
+		
+		<div>
+			<f:label path="accountCreationDate">Enter Account Creation Date</f:label>
+			<f:input path="accountCreationDate" />
+			<f:errors path="accountCreationDate" cssClass="error"></f:errors>
+		</div>
+		
+		<div>
+			<f:label path="gender">Select Gender</f:label>
+			<f:radiobuttons  path="gender" items="${gender}" delimiter="<br>"  />
+			<f:errors path="gender" cssClass="error"></f:errors>
+		</div>
+		
+		<div>
+			<f:label path="acttype">Select Account Type</f:label>
+			<f:checkboxes  path="acttype" items="${acttype}" delimiter="<br>"  />
+			<f:errors path="acttype" cssClass="error"></f:errors>
+		</div>
+		<div>
+		<input type="submit">
+		<input type="reset">
 		</div>
 
 	</f:form>
