@@ -12,10 +12,13 @@
 	href='<spring:url value="/resources/style1.css"/>' />
 <style>
 form {
-	width: 40%;
-	margin-left: 400px;
+	width: 50%;
+	margin-left: 360px;
 	margin-top: 100px;
 	padding: 30px;
+}
+.id1{
+ margin-top: 20px;
 }
 </style>
 </head>
@@ -42,13 +45,13 @@ form {
 			<f:errors path="equityAllocation" cssClass="error"></f:errors>
 		</div>
 		
-		<div>
+		<div class="id1">
 			<f:label path="accountCreationDate">Enter Account Creation Date</f:label>
 			<f:input path="accountCreationDate" />
 			<f:errors path="accountCreationDate" cssClass="error"></f:errors>
 		</div>
 		
-		<div>
+		<div class="id1">
 			<f:label path="gender">Select Gender</f:label>
 			<f:radiobuttons  path="gender" items="${gender}" delimiter="<br>"  />
 			<f:errors path="gender" cssClass="error"></f:errors>

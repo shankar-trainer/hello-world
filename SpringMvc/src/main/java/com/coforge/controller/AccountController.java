@@ -1,5 +1,9 @@
 package com.coforge.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -34,5 +38,16 @@ public class AccountController {
 	  else 
 		  return "accountpage/AccountResult";
 	}
+	
+	@ModelAttribute("gender")
+	public List<String> getGenderList(){
+		 return Arrays.asList(new String[] {"male","female"});
+	}
+	
+	@ModelAttribute("acttype")
+	public List<String> getAccountList(){
+		return Arrays.asList(new String[] {"saving","current","demate"});
+	}
+	
 	
 }
