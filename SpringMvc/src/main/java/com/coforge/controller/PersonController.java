@@ -31,6 +31,7 @@ public class PersonController {
 
 	public String personForm(@ModelAttribute("person") @Valid Person person, BindingResult result) {
 		if (result.hasErrors()) {
+			System.out.println("there is error");
 			return "PersonForm";
 		}
 		return "result/PersonResult";

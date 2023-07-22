@@ -1,3 +1,4 @@
+ <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -5,25 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style>
-form {
-	border: solid blue 10px;
-	background-color: lightgoldenrodyellow;
-}
-
-label {
-	float: left;
-	width: 120px;
-}
-
-input {
-	width: 120px;
-}
-
-h1 {
-	color: blue;
-}
-</style>
+<link rel="stylesheet" href='<spring:url value="/resources/style1.css"/>' />
+ 
 </head>
 <body>
 	<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>

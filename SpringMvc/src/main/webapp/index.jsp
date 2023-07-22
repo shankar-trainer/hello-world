@@ -1,3 +1,5 @@
+ <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -5,9 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style type="text/css">
-@import url("css/style1.css");
-</style>
+<%-- <link rel="stylesheet" href='<spring:url value="/resources/style1.css"/>' />
+ --%>
 </head>
 <body>
 	<h1>Welcome Page</h1>
