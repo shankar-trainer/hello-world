@@ -54,7 +54,7 @@ form {
 
 		<div class="id1">
 			<f:label path="accountCreationDate">Enter Account Creation Date</f:label>
-			<f:input path="accountCreationDate"  />
+			<f:input path="accountCreationDate"   />
 			<f:errors path="accountCreationDate" cssClass="error"></f:errors>
 		</div>
 
