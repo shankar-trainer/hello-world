@@ -23,17 +23,18 @@ public class PersonController {
 		person.setPersonName(null);
 		person.setPersonSalary(null);
 		model.addAttribute("person", person);
-		return "PersonForm";
+		return "personview/PersonForm";
 	}
 
-	@RequestMapping(value = "/personAction", method = RequestMethod.POST)
+	//@RequestMapping(value = "/personAction", method = RequestMethod.POST)
 	// @PostMapping(value = "/personAction")
+	 @PostMapping(value = "/pform")
 
 	public String personForm(@ModelAttribute("person") @Valid Person person, BindingResult result) {
 		if (result.hasErrors()) {
-			return "PersonForm";
+			return "personview/PersonForm";
 		}
-		return "result/PersonResult";
+		return "personview/PersonResult";
 	}
 
 }

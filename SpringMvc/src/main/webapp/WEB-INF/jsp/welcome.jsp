@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<link rel="stylesheet" href='<spring:url value="/resourses/style1.css"/>' />
-
+<link rel="stylesheet" href='<spring:url value="/resources/style1.css"/>' />
 
 </head>
 <body>
