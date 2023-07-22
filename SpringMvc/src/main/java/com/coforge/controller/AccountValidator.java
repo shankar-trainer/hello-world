@@ -49,7 +49,6 @@ public class AccountValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		
-		
 		ValidationUtils.rejectIfEmpty(errors, "name", "name.required");
 		ValidationUtils.rejectIfEmpty(errors, "balance", "balance.required");
 		ValidationUtils.rejectIfEmpty(errors, "equityAllocation", "equityAllocation.required");
