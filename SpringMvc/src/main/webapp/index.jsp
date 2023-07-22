@@ -36,7 +36,7 @@
 		</div>
 		
 		<div id="id1">
-			<a href="actform">Account Form</a>
+			<a href="account/actform">Account Form</a>
 		</div>
 	</div>
 </body>
