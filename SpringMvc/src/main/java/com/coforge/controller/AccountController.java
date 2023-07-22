@@ -1,6 +1,5 @@
 package com.coforge.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,13 +17,12 @@ import com.coforge.model.Account;
 @Controller
 @RequestMapping("/account")
 public class AccountController {
+	
 
 	@RequestMapping("/actform")
 	public String form(ModelMap map) {
 		Account account=new Account();
-		
 		map.addAttribute("account", account);
-	
 		return "accountpage/AccountForm";
 	}
 	
@@ -32,7 +30,6 @@ public class AccountController {
 	public String accountexecute(@ModelAttribute("account") @Valid Account account, 
 			BindingResult result) {
 	  if(result.hasErrors()) {
-		  
 		  return "accountpage/AccountForm";
 	  }
 	  else 
