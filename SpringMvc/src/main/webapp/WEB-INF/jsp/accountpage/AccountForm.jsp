@@ -53,7 +53,7 @@ form {
 		</div>
 
 		<div class="id1">
-			<f:label path="accountCreationDate">Enter Account Creation Date</f:label>
+			<f:label path="accountCreationDate">Enter Account Creation Date(dd-MM-yyyy)</f:label>
 			<f:input path="accountCreationDate"   />
 			<f:errors path="accountCreationDate" cssClass="error"></f:errors>
 		</div>
