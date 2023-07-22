@@ -29,9 +29,7 @@ public class MyWebMVCConfig extends WebMvcConfigurerAdapter {
 	   @Bean
 	   public MessageSource messageSource() {
 	      ResourceBundleMessageSource source = new ResourceBundleMessageSource();
-	    //  source.setBasename("messages");
-	      source.setBasename("/WEB-INF/classes/messages");
-
+	      source.setBasename("message");
 	      return source;
 	   }
 
