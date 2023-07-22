@@ -24,7 +24,6 @@ public class MyWebMVCConfig extends WebMvcConfigurerAdapter {
 		return viewResolver;
 	}
 	
-
 	@Override
 	public Validator getValidator() {
 		LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
