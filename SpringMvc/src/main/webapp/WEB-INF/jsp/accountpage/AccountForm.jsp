@@ -22,9 +22,7 @@ form {
 <body>
 	<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
-<%-- 	<f:form modelAttribute="account"  >
- --%>	
- <f:form  >
+	<f:form modelAttribute="account"  >
 
 		<div>
 			<f:label path="name">Enter Name</f:label>
