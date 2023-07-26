@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.model.Book;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/")
 public class BookController {
 	List<Book> blist;
 
