@@ -47,7 +47,7 @@ public class EmployeeService {
 			return null;
 	}
 
-	public List<Employee> getAllEmployee(Employee employee) {
+	public List<Employee> getAllEmployee() {
 		return dao.findAll();
 	}
 }
