@@ -1,10 +1,10 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +20,7 @@ import com.example.model.Book;
 public class BookController {
 	List<Book> blist;
 
-	BookController() {
+	public BookController() {
 		Book b[] = new Book[5];
 		b[0] = new Book(344443, "two states", 600);
 		b[1] = new Book(344444, "gaban", 500);
@@ -28,7 +28,10 @@ public class BookController {
 		b[3] = new Book(344446, "java for beginner", 1100);
 		b[4] = new Book(344447, "three mistake in my life", 800);
 
-		blist = Arrays.asList(b);
+		blist = new ArrayList<>();
+		for (Book b1 : b)
+			blist.add(b1);
+		System.out.println("total book is " + blist.size());
 	}
 
 //	//@RequestMapping("/book/isbn")
@@ -43,7 +46,6 @@ public class BookController {
 //		return null;
 //	}
 //	
-	
 
 	@GetMapping("/book/{isbn}")
 	public ResponseEntity<Book> searchBook(@PathVariable int isbn) {
@@ -54,15 +56,12 @@ public class BookController {
 		}
 		return new ResponseEntity<Book>(HttpStatus.NOT_FOUND);
 	}
-	
+
 	@PostMapping("/addbook")
 	public ResponseEntity<Book> addBook(@RequestBody Book b) {
 		blist.add(b);
-		return new ResponseEntity<Book>(b,HttpStatus.CREATED);
+		return new ResponseEntity<Book>(b, HttpStatus.CREATED);
 	}
-	
-	
-
 
 //	@RequestMapping("/allbook")
 	@GetMapping("/allbook")
