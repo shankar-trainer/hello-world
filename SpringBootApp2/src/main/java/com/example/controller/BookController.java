@@ -2,8 +2,10 @@ package com.example.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +25,18 @@ public class BookController {
 		b[4] = new Book(344447, "three mistake in my life", 800);
 
 		blist = Arrays.asList(b);
+	}
+
+	//@RequestMapping("/book/isbn")
+	@GetMapping("/book/{isbn}")
+	public Book searchBook(@PathVariable int isbn) {
+		System.out.println("isbn is "+isbn);
+
+		for (Book b : blist) {
+			if (b.getIsbn() == isbn)
+				return b;
+		}
+		return null;
 	}
 
 //	@RequestMapping("/allbook")
