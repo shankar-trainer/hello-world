@@ -31,7 +31,6 @@ public class EmployeeService {
 			return findById.get();
 		else
 			throw new EmployeeException("employee not  present");
-
 	}
 
 	public Employee updateEmployee(Employee emp) throws EmployeeException {
