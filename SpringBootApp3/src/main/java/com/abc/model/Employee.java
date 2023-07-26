@@ -10,10 +10,9 @@ import lombok.Data;
 public class Employee {
 
 	@Id
-	@GeneratedValue
+	// @GeneratedValue
 	private int empId;
 	private String empName;
 	private float empSalary;
-	
-	
+
 }
