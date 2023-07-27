@@ -10,12 +10,15 @@
 </style>
 </head>
 <body>
+
 	<%@page isErrorPage="true"%>
 	<div class='error1'>
 		<h1>Employee Error page</h1>
 		<div>
 			<%=exception.getMessage()%>
 		</div>
+		
+		
 	</div>
 </body>
 </html>

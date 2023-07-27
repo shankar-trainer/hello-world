@@ -1,5 +1,6 @@
 package com.abc.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,20 +10,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.abc.exception.EmployeeException;
 import com.abc.model.Employee;
+import com.abc.service.EmployeeService;
 
 @Controller
 @RequestMapping("/")
 public class EmployeeController {
 
+	@Autowired
+	EmployeeService service;
+	
 	@GetMapping("/form")
 	public String employeeForm() {
 		return "EmployeeForm";
 	}
-
-	@ExceptionHandler(value = EmployeeException.class)
-	public String handleError() {
-		return "error1";
-	}
+//
+//	@ExceptionHandler(value = EmployeeException.class)
+//	public String handleError() {
+//		return "error1";
+//	}
+//	
+//	@ExceptionHandler(value =Exception.class)
+//	public String handleError1() {
+//		return "error1";
+//	}
 
 	@GetMapping("/empAction")
 	public String empFormProcess(ModelMap map, @RequestParam("id") int id, @RequestParam("name") String name,
@@ -51,6 +61,8 @@ public class EmployeeController {
 			employee.setSalary(salary);
 			map.addAttribute("employee", employee);
 
+			service.addEmployee(employee);
+			
 			return "EmployeeResult";
 		}
 	}
