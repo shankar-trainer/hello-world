@@ -1,0 +1,25 @@
+form{
+	
+	border:outset blue 20px;
+	width:30%;
+	
+	margin-left: 390px;
+	
+	padding: 30px;
+	margin-top: 100px;
+	
+}
+
+label{
+	width: 120px;;
+	float:left;
+	color: darkblue;
+}
+
+input{
+	width: 120px;;
+	margin-top:5px;
+}
+body{
+	background-color: lightgoldenrodyellow;
+}
