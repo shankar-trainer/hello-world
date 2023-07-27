@@ -11,8 +11,7 @@
 </head>
 <body>
 
-
-	<form>
+	<form action="empAction">
 	<h1>Employee Form</h1>
 		<div>
 			<label>Enter Id</label> <input name="id">
