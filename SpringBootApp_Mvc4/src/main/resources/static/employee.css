@@ -33,3 +33,12 @@ body {
 	color: red;
 	font-weight: bold;
 }
+
+table{
+	border:  blue inset 20px;
+	width:60%;
+	margin-left: 300px;
+}
+tr,td,th {
+	border: solid;
+}

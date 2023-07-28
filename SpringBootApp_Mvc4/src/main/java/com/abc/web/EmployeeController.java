@@ -60,8 +60,11 @@ public class EmployeeController {
 			employee.setName(name);
 			employee.setSalary(salary);
 			map.addAttribute("employee", employee);
+			
 
 			service.addEmployee(employee);
+			map.addAttribute("list", service.getAllEmployee());
+			
 			
 			return "EmployeeResult";
 		}

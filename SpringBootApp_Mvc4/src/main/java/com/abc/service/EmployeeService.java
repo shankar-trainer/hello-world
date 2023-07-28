@@ -1,5 +1,6 @@
 package com.abc.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,14 @@ public class EmployeeService {
 			dao.save(employee);
 			return true;
 		}
-		throw new EmployeeException("employee already present"); 
-		//return false;
+		throw new EmployeeException("employee already present");
+		// return false;
+	}
+
+	public List<Employee> getAllEmployee() throws EmployeeException {
+		if (dao.findAll().size() == 0)
+			throw new EmployeeException("list is empty");
+		else
+			return dao.findAll();
 	}
 }
