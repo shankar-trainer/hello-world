@@ -14,6 +14,7 @@ public class EmployeeController {
 	
 	@RequestMapping("/employee")
 	public Employee getEmployee() {
+		System.out.println("employee "+employee.getId()+"\t"+employee.getName());
 		return employee;
 	}
 }

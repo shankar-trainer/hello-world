@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 @ConfigurationProperties(prefix = "employee-service")
 public class Employee {
+	
  
 	private int id;
 	private  String name;
