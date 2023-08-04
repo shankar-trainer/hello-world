@@ -1,0 +1,17 @@
+.class1 {
+    border: inset blueviolet 20px;
+    background-color: chartreuse;
+    width: 30%;
+    height: 200px;
+    margin-left: 390px;
+    margin-top: 130px;
+    padding: 20px;
+    
+}
+nav{
+    margin-left: 230px;
+    margin-right: 240px;
+}
+li{
+    margin-left: 30px;
+}

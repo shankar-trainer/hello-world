@@ -1,0 +1,14 @@
+<table 
+class="table table-striped table-bordered bg-info text-dark" style="width:70%;margin-left:100px;">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Cost</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of prdlist|async">
+            <td>{{p.id}} </td>
+            <td>{{p.name}}</td>
+            <td>{{p.cost}}</td>
+    </tbody>
+</table>

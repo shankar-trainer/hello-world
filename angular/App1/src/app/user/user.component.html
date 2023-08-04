@@ -1,0 +1,116 @@
+<div>
+    <h1 style="margin-left: 440px;">User Page </h1>
+    <div>
+        <h2 style="margin-left: 440px;">Use using ngIf</h2>
+        <table class="table table-srtiped table-dark table-warning">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Salary</th>
+                    <th>Dob</th>
+                    <th>Hobbies</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of user1">
+                    <td>{{u.userid}}</td>
+                    <td>
+                        <span *ngIf="u.usersalary>=50000" class="bg-warning">
+                            {{u.username}}
+                        </span>
+                        <span *ngIf="u.usersalary<50000" class="text-light">
+                            {{u.username}}
+                        </span>
+                    </td>
+                    <td>{{u.usersalary}}</td>
+                    <td>{{u.userdob}}</td>
+                    <td>{{u.userhobby}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <table class="table table-warning">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Dob</th>
+                <th>Hobbies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of user1">
+                <td>{{u.userid}}</td>
+                <td>{{u.username}}</td>
+                <td>{{u.usersalary}}</td>
+                <td>{{u.userdob}}</td>
+                <td>{{u.userhobby}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 [ngStyle]="{'margin-left': '440px','background-color':'maroon','color':'white','width':'20%'}">Using  Switch Case</h2>
+
+    <table class="table table-warning">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Dob</th>
+                <th>Hobbies</th>
+                <th>Salary Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of user1">
+                <td>{{u.userid}}</td>
+                <td>{{u.username|uppercase}}</td>
+                <td>{{u.usersalary|currency:'₹'}}</td>
+                <!-- <td>{{u.userdob|date}}</td> -->
+                <!-- <td>{{u.userdob|date:'fullDate'}}</td> -->
+                <!-- <td>{{u.userdob|date:'full'}}</td> -->
+                <td>{{u.userdob|date:'mediumDate'}}</td>
+                <td>{{u.userhobby}}</td>
+                <td>
+                 <span [ngSwitch]="u.usersalary">
+                      <span *ngSwitchCase="'80000'">
+                          Interactive Salary 
+                      </span>   
+                      <span *ngSwitchCase="'70000'">
+                          Interactive Salary 
+                      </span>   
+                      <span *ngSwitchCase="'67000'">
+                          Interactive Salary 
+                      </span>   
+                      <span *ngSwitchCase="'45000'">
+                          Good Salary 
+                      </span>   
+                      <span *ngSwitchCase="'71000'">
+                          Interactive Salary 
+                      </span>   
+                      
+                      <span *ngSwitchCase="'73000'">
+                          Interactive Salary 
+                      </span>   
+
+                      <span *ngSwitchCase="'25000'">
+                          Average Salary 
+                      </span>   
+                      <span *ngSwitchDefault>
+                          Low Salary 
+                      </span>   
+                 </span>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+ 
+    <div class="bg-dark text-white mt-5 p-5 mb-5 ml-5 mr-5">
+   {{user1|json}}
+     </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container" style="width:60%">
+    <form class="bg-info text-dark mt-5 p-5">
+        <h1>Interest Calculation Program</h1>
+        <div class="form-group">
+            <label>Enter Amount</label>
+            <input [(ngModel)]="calc.amt" name="calc.amt" class="form-control" value="calc.amt" placeholder="Amount">
+        </div>
+        <div class="form-group">
+            <label>Enter Rate</label>
+            <input [(ngModel)]="calc.rate" name="calc.rate" class="form-control" placeholder="Rate">
+        </div>
+        <div class="form-group">
+            <label>Enter Time</label>
+            <input [(ngModel)]="calc.time" name="calc.time" class="form-control" placeholder="Time">
+        </div>
+    </form>
+    <div class="bg-info text-dark mt-5 mb-5 p-5 border border-dark">
+        <div class="hello">
+            <div>Amount is {{calc.amt}}</div>
+            <div>Time is {{calc.time}}</div>
+            <div>Rate is {{calc.rate}}</div>
+            <div>Interest is {{calc.amt*calc.rate*calc.time/100}}</div>
+        </div>
+    </div>
+</div>

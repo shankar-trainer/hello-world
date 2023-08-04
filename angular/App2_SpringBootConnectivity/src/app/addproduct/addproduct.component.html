@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Product Form </h1>
+    <form (ngSubmit)="addProduct()">
+        <div class="form-group">
+            <label>Enter Id</label>
+            <input class="form-control" [(ngModel)]="prd.id" name="prd.id">
+        </div>
+
+        <div class="form-group">
+            <label>Enter Name</label>
+            <input class="form-control" [(ngModel)]="prd.name" name="prd.name">
+        </div>
+        <div class="form-group">
+            <label>Enter Cost</label>
+            <input class="form-control" [(ngModel)]="prd.cost" name="prd.cost">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-2 mb-5" style="margin-right: 20px;">Add Product</button>
+            <button type="reset" class="btn btn-primary mt-2 mb-5">Cancel Product</button>
+        </div>
+
+    </form>
+</div>

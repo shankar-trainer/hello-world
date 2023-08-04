@@ -8,6 +8,6 @@ add all files of git here
 
 as  default is \git\employee-service
 
-so add in spring employee cofig client application.properties
+so add in spring employee config client application.properties
 
 spring.application.name=employee-service

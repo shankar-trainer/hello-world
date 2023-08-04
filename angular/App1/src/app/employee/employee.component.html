@@ -1,0 +1,67 @@
+<div class="container">
+    <form class="bg-info mt-5 p-5 border border-primary" #empForm=ngForm (ngSubmit)="getData()">
+        <h3>Employee Form</h3>
+        <div class="form-group">
+            <label>Enter Id</label>
+            <input class="form-control" [(ngModel)]="emp1.id" name="id" required #id="ngModel" minlength="3">
+            <div *ngIf="id.touched && id.errors">
+                <div class="alert alert-danger" *ngIf="id.errors?.['required']">
+                    id is empty
+                </div>
+            </div>
+            <div *ngIf="id.touched && id.errors">
+                <div class="alert alert-danger" *ngIf="id.errors?.['minlength']">
+                    id is not of minimum length 3
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Enter Name</label>
+            <input class="form-control" [(ngModel)]="emp1.name" name="name" minlength="10" #name="ngModel" required>
+
+            <div *ngIf="name.touched && name.errors">
+                <div class="alert alert-danger" *ngIf="name.errors?.['required']">
+                    name is empty
+                </div>
+            </div>
+            <div *ngIf="name.touched && name.errors">
+                <div class="alert alert-danger" *ngIf="name.errors?.['minlength']">
+                    name must of minimum 10 characters
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>Enter Salary</label>
+            <input class="form-control" [(ngModel)]="emp1.salary" name="salary" minlength="5" #salary="ngModel"
+                required>
+
+            <div *ngIf="salary.touched && salary.errors">
+                <div class="alert alert-danger" *ngIf="salary.errors?.['required']">
+                    salary is empty
+                </div>
+            </div>
+            <div *ngIf="name.touched && name.errors">
+                <div class="alert alert-danger" *ngIf="salary.errors?.['minlength']">
+                    salary must be minimum 10000
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-5 p-3">Send</button>
+            <button type="reset" class="btn btn-primary  mt-5 p-3" style="margin-left:20px;">Cancel</button>
+        </div>
+
+    </form>
+    <div class="bg-warning text-dark mt-5 mb-5 p-5" [hidden]="!submitted">
+        <div style="margin-left: 300px;">
+            <h2>Employee Information </h2>
+            <div>Id is {{emp1.id}}</div>
+            <div>Name is {{emp1.name}}</div>
+            <div>Salary is {{emp1.salary}}</div>
+        </div>
+    </div>
+</div>
