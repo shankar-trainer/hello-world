@@ -7,6 +7,7 @@ import Hello1 from './Hello1';
 import Person from './Person';
 import BookMain from './bookmain';
 import Employee from './Employee';
+import BookStatePage from './BookStatePage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +16,8 @@ root.render(
     {/* <Hello1></Hello1> */}
     {/* <Person></Person> */}
     {/* <BookMain></BookMain> */}
-    <Employee id="10001" name="ram kumar"></Employee>
+    {/* <Employee id="10001" name="ram kumar"></Employee> */}
+    <BookStatePage></BookStatePage>
   </React.StrictMode>
 );
 
