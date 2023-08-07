@@ -39,7 +39,6 @@ class Counter extends Component {
                     <button type="button" onClick={this.dataChange}>Change Above Data</button>
                 </div>
 
-
                 <div className="border border-primary p-5">
 
                     <div>

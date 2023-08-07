@@ -8,6 +8,9 @@ import Person from './Person';
 import BookMain from './bookmain';
 import Employee from './Employee';
 import BookStatePage from './BookStatePage';
+import UserForm from './UserForm';
+import UserCounter from './UserCounter';
+import CustomerForm from './CustomerForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +20,10 @@ root.render(
     {/* <Person></Person> */}
     {/* <BookMain></BookMain> */}
     {/* <Employee id="10001" name="ram kumar"></Employee> */}
-    <BookStatePage></BookStatePage>
+    {/* <BookStatePage></BookStatePage> */}
+    {/* <UserForm id="1001" name="suresh kumar"></UserForm> */}
+    {/* <UserCounter></UserCounter> */}
+    <CustomerForm></CustomerForm>
   </React.StrictMode>
 );
 
