@@ -5,3 +5,8 @@ h1{
 .class1{
   margin-left: 300px;;
 }
+
+span{
+  color:red;
+  font-weight: bold;
+}
