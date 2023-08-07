@@ -6,14 +6,24 @@ class CustomerForm extends Component {
         this.state = {
             'id': 0,
             'name': '',
-            'salary': 0
+            'salary': 0,
+            'error_id':'', 
+            'error_name':'', 
+            'error_salary':'', 
         }
     }
     idchange=(event)=>{
+        if(event.target.value<=0){
+            this.setState(
+                {error_id:'invalid id'}
+              )       
+        }
+       else { 
       this.setState(
         {id:event.target.value}
       )  
     }
+}
     namechange=(event)=>{
       this.setState(
         {name:event.target.value}
@@ -32,6 +42,7 @@ class CustomerForm extends Component {
                     <div className="form-group">
                         <label>Enter Id</label>
                         <input className="form-control" onChange={this.idchange}></input>
+                        <span>{this.state.error_id}</span>
                     </div>
 
                     <div className="form-group">
