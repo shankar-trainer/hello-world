@@ -11,7 +11,8 @@ import BookStatePage from './BookStatePage';
 import UserForm from './UserForm';
 import UserCounter from './UserCounter';
 import CustomerForm from './CustomerForm';
-
+import Counter2  from './Counter2';
+import MyForm1 from './MyForm1';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -23,7 +24,9 @@ root.render(
     {/* <BookStatePage></BookStatePage> */}
     {/* <UserForm id="1001" name="suresh kumar"></UserForm> */}
     {/* <UserCounter></UserCounter> */}
-    <CustomerForm></CustomerForm>
+    {/* <CustomerForm></CustomerForm> */}
+    {/* <Counter2></Counter2> */}
+    <MyForm1></MyForm1>
   </React.StrictMode>
 );
 
