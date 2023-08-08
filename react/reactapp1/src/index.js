@@ -12,6 +12,8 @@ import UserForm from './UserForm';
 import UserCounter from './UserCounter';
 import CustomerForm from './CustomerForm';
 import Counter2  from './Counter2';
+import Dashboard from './dashboard';
+
 import MyForm1 from './MyForm1';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,7 +28,8 @@ root.render(
     {/* <UserCounter></UserCounter> */}
     {/* <CustomerForm></CustomerForm> */}
     {/* <Counter2></Counter2> */}
-    <MyForm1></MyForm1>
+    {/* <MyForm1></MyForm1> */}
+    <Dashboard></Dashboard>
   </React.StrictMode>
 );
 

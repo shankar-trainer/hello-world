@@ -45,7 +45,7 @@ function MyForm1() {
                 </div>
                 <div className="form-group">
                     <div>
-                        <label> Enter Name</label>
+                        <label> Enter Name ( 5 -15 chars )</label>
                     </div>
                     <div>
                         <input onChange={(e) => {
@@ -66,12 +66,10 @@ function MyForm1() {
                     </div>
                 </div>
                 <div className="form-group mt-2">
-                    <button type="submit" onClick={(e)=>{
+                    <button type="submit" onClick={(e) => {
                         e.preventDefault();
-                        alert('id is '+id+'\nname is '+name)
-
+                        alert('id is ' + id + '\nname is ' + name)
                     }
-
                     } >Send</button>
                     <button type="reset" style={{ marginLeft: '10px' }}>Cancel</button>
                 </div>
@@ -85,7 +83,6 @@ function MyForm1() {
             </form>
         </div >
     );
-
 }
 
 export default MyForm1;
