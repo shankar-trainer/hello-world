@@ -9,11 +9,15 @@ import { MyProduct } from '../myproduct/myproduct';
   styleUrls: ['./search-product.component.css']
 })
 export class SearchProductComponent implements OnInit {
-  id: number;
+  id: number=0;
   prd: MyProduct;
   prdstatus=false;
 
-  constructor( private route: ActivatedRoute, private service: MyproductService, private router: Router) { }
+  constructor( private route: ActivatedRoute, private service: MyproductService, private router: Router) { 
+    this.prd=new MyProduct()
+
+
+  }
 
   ngOnInit(): void {
     this.prd=new MyProduct();

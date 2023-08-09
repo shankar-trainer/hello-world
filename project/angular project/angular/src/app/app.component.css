@@ -8,3 +8,11 @@ nav a {
  width:33%;
 
 }
+
+nav ul{
+    margin-left: 300px;
+}
+
+nav ul li{
+    margin-left: 100px;
+}

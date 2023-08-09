@@ -22,3 +22,11 @@ public class RestApplication {
 	         .apis(RequestHandlerSelectors.basePackage("")).build();
 	   }
 }
+
+//To verify that Springfox is working, we can visit this URL in our browser:
+//http://localhost:9090/v2/api-docs
+
+
+//http://localhost:9090/swagger-ui/
+
+

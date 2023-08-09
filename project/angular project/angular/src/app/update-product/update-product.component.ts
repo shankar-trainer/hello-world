@@ -9,13 +9,15 @@ import { MyProduct } from '../myproduct/myproduct';
   styleUrls: ['./update-product.component.css']
 })
 export class UpdateProductComponent implements OnInit {
-  id: number;
+  id: number=0;
   prd: MyProduct;
 
-  constructor( private route: ActivatedRoute, private service: MyproductService, private router: Router) { }
+  constructor( private route: ActivatedRoute, private service: MyproductService, private router: Router) { 
+    this.prd=new MyProduct()
+  }
 
   ngOnInit(): void {
-    this.prd=new MyProduct();
+    //this.prd=new MyProduct();
     this.id=this.route.snapshot.params['id']; 
     
     this.service.searchProduct(this.id).subscribe(

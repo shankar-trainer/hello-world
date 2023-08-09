@@ -10,7 +10,7 @@ import { catchError, tap, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MyproductService {
-  private baseUrl = "http://localhost:9090/prd/getProduct";
+  private baseUrl = "http://localhost:9090/prd";
 
   constructor(private http: HttpClient) {
   }
@@ -25,25 +25,24 @@ export class MyproductService {
   }
 */
 
-
   searchProduct(id: Number): Observable<MyProduct> {
-    return this.http.get<MyProduct>(`${this.baseUrl}/${id}`)
+    return this.http.get<MyProduct>(`${this.baseUrl}/searchProduct1/${id}`)
   }
   saveProduct(product: Object): Observable<Object> {
     console.log('inside save Product')
-    return this.http.post(`${this.baseUrl}/`, product);
+    return this.http.post(`${this.baseUrl}/addProduct`, product);
   }
 
   updateProduct(product: Object): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/`, product);
+    return this.http.put(`${this.baseUrl}/updateProduct`, product);
   }
 
   removeProduct(id: Number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`,{responseType:'text'})
+    return this.http.delete(`${this.baseUrl}/deleteProduct/${id}`,{responseType:'text'})
   }
-
+  
   getProductList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`)
+    return this.http.get(`${this.baseUrl}/allProduct`)
   }
 
   

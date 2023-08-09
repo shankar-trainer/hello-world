@@ -9,26 +9,29 @@ import { MyProduct } from '../myproduct/myproduct';
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
-  prd:MyProduct=new MyProduct();
+  prd:MyProduct;
   submitted=false;
 
-  constructor(private service:MyproductService,private router:Router) { }
+  constructor(private service:MyproductService,private router:Router) { 
+    this.prd=new MyProduct();
+  }
 
   ngOnInit(): void {
   }
    
   newProduct():void{
     this.submitted=false;
-    this.prd=new MyProduct();
+    //this.prd=new MyProduct();
+
   }
   onSubmit(){
-    console.log('on submit called')
+    //console.log('on submit called')
     this.submitted=true;
     this.save();
   }
 
   save(){
-    console.log('save called')
+    //console.log('save called')
     this.service.saveProduct(this.prd).subscribe(
       data=>console.log(data),error=>console.log(error));
       this.prd=new MyProduct();

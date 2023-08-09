@@ -1,5 +1,5 @@
 export class MyProduct{
-    prdId:Number;
-    prdName:String;
-    prdCost:Number;
+    prdId:number=0;
+    prdName:String='';
+    prdCost:number=0;
 }

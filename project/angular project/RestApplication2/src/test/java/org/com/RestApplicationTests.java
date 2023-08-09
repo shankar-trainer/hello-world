@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import io.micrometer.core.ipc.http.HttpSender.Response;
 
 @SpringBootTest
 class RestApplicationTests {

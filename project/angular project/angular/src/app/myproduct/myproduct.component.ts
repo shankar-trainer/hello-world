@@ -13,6 +13,7 @@ export class MyproductComponent implements OnInit {
 
   product: Observable<MyProduct[]>;
   constructor(private service: MyproductService, private router: Router) {
+    this.product = this.service.getProductList();
   }
 
   ngOnInit(): void {

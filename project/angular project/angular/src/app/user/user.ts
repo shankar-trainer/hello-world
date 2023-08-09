@@ -1,5 +1,5 @@
 export class User{
-    id:Number;
-    name:String;
-    salary:Number;
+    id:Number=0;
+    name:String='';
+    salary:Number=0;
 }

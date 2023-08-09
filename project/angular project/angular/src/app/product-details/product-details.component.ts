@@ -10,13 +10,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
 
-   id:number;
+   id:number=0;
    prd:MyProduct;
 
   constructor(
     private route:ActivatedRoute,
     private service:MyproductService,private router:Router) {
-   }
+      this.prd=new MyProduct()
+
+    }
 
   ngOnInit(): void {
    this.prd=new MyProduct();

@@ -2,7 +2,7 @@ package org.com.controller;
 
 import java.util.List;
 import java.util.Optional;
-import javax.validation.Valid;
+//import javax.validation.Valid;
 
 import org.com.dao.ProductRepository;
 import org.com.error.RecordNotFoundException;
@@ -24,7 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/prd")
-@CrossOrigin(value = "http://localhost:4300")
+@CrossOrigin("http://localhost:4200")
+
 public class ProductController {
 
     @Autowired
@@ -71,14 +72,14 @@ public class ProductController {
      }
      */
     @PostMapping("/saveProduct")
-     public Product createProduct(@Valid @RequestBody Product employee) {
+     public Product createProduct(@RequestBody Product employee) {
      return dao.save(employee);
      }
     
     @PostMapping("/addProduct")
            // @PostMapping(value = "/addProduct",produces = {MediaType.APPLICATION_JSON_VALUE})
     //    @ResponseBody
-    public ResponseEntity<Product> saveProduct(@Valid @RequestBody Product prd) {
+    public ResponseEntity<Product> saveProduct(@RequestBody Product prd) {
 
         Optional<Product> findById = dao.findById(prd.getPrdId());
         try {
@@ -94,7 +95,7 @@ public class ProductController {
     }
 
     @PutMapping("/updateProduct")
-    public ResponseEntity<Product> updateProduct(@Valid @RequestBody Product prd) {
+    public ResponseEntity<Product> updateProduct(@RequestBody Product prd) {
 
         Optional<Product> findById = dao.findById(prd.getPrdId());
         try {
