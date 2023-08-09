@@ -1,0 +1,10 @@
+h1,table{
+	 margin-left: 200px;
+	 width:40%;
+	 padding: 10px;
+	 background: yellow;
+	 color:blue;
+}
+table,tr,td{
+	border:double 2px;
+}

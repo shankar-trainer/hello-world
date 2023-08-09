@@ -1,0 +1,22 @@
+<h1>Search Product Form</h1>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Enter Id</label>
+        <input class="form-control" id="id" required [(ngModel)]="prd.prdId" name="id">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<br><br><br>
+<div *ngIf="prdstatus">
+    product found
+    <br>
+    
+    Id is {{prd.prdId}}
+    <br>name is {{prd.prdName}}
+    <br>Cost is {{prd.prdCost}}
+</div>
+<br><br><br>
+<div *ngIf="!prdstatus">
+    product not found
+</div>
