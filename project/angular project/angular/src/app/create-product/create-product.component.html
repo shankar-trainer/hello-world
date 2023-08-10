@@ -1,7 +1,7 @@
-<h1>Product Form</h1>
+<h1 style="margin-left: 100px">Product Form</h1>
 <div [hidden]="submitted" style="width: 400px;">
 
-<form (ngSubmit)="onSubmit()" >
+<form (ngSubmit)="onSubmit()" style="margin-left: 100px" >
      
     <div class="form-group">
         <label for="name">Enter Name</label>
@@ -13,8 +13,8 @@
             <input  class="form-control" id="cost"   required   [(ngModel)]="prd.prdCost" name="cost" >
     </div>
     
-    <button type="submit" class="btn btn-success" >Submit</button>
-    <button type="reset"  class="btn btn-success" (click)="newProduct()" style="margin-left:10px;" >New Product </button>
+    <button type="submit" class="btn btn-success" style="margin-top:10px" >Submit</button>
+    <button type="reset"  class="btn btn-success" (click)="newProduct()" style="margin-left:10px;margin-top:10px" >New Product </button>
 </form>
 </div>
 
