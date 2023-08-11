@@ -1,0 +1,27 @@
+<h1>Calculator Program</h1>
+<form (ngSubmit)="onSubmit()">
+<table >
+    <tr>
+        <td>First Number</td>
+        <!-- <td><input value={{calculator.n1}}></td> -->
+        <td><input [(ngModel)]="calculator.n1"></td>
+    </tr>
+    <tr>
+        <td>Second Number</td>
+        <td><input [(ngModel)]="calculator.n2"></td>
+    </tr>
+     <tr>
+        <td><input type="submit" value="Result"></td>
+        <td></td>
+    </tr>
+</table>
+</form>
+<div class="class1"  [hidden]="!submitted" >
+    No1 is {{calculator.n1}}<br>
+    No2 is {{calculator.n2}}<br>
+    Addition is {{calculator.n1+calculator.n2}}<br>
+    
+    Subtraction is {{calculator.n1-calculator.n2}}<br>
+    Multiplication is {{calculator.n1*calculator.n2}}<br>
+    Division is {{calculator.n1/calculator.n2}}<br>
+</div>

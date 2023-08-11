@@ -12,6 +12,12 @@ import { SqrtPrgPipe } from './pipe-example/pipe/sqrt-prg.pipe';
 import { PowerPipe } from './pipe-example/pipe/power.pipe';
 import { EmployeeComponent } from './employee/employee.component';
 import { BookComponent } from './book/book.component';
+import { Calculator1Component } from './calculator1/calculator1.component';
+import { ParentToChildInputComponent } from './parent-to-child-input/parent-to-child-input.component';
+import { Parent1Component } from './parent-to-child-input/parent1/parent1/parent1.component';
+import { ParentComponent } from './parent-to-child-input/parent/parent/parent.component';
+import { Child1Component } from './parent-to-child-input/child1/child1/child1.component';
+import { ChildComponent } from './parent-to-child-input/child/child.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { BookComponent } from './book/book.component';
     SqrtPrgPipe,
     PowerPipe,
     EmployeeComponent,
-    BookComponent
+    BookComponent,
+    Calculator1Component,
+    ParentToChildInputComponent,
+    Parent1Component,
+    ParentComponent,
+    Child1Component,
+    ChildComponent
   ],
   imports: [
     BrowserModule,

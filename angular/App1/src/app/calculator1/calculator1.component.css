@@ -1,0 +1,23 @@
+table{
+    margin-left: 400px;
+    margin-top: 50px;
+    background-color: blanchedalmond; 
+    padding: 30px;
+    border: solid; 
+}
+.class1{
+    margin-left: 400px;
+    margin-top: 50px;
+    background-color: blanchedalmond; 
+    padding: 35px;
+    border: solid;
+    width: 22%;
+}
+
+h1{
+    margin-left: 0px;
+    margin-top: 50px;
+    text-align: center;
+    color: blue;
+}
+  
