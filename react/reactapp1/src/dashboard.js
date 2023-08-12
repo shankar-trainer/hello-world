@@ -6,24 +6,28 @@ import Counter2 from './Counter2';
 import CustomerForm from './CustomerForm';
 import BookStatePage from './BookStatePage'
 import UserForm from './UserForm';
+import Fetch from './Fetch';
 
 function Dashboard() {
     return (
         <Router>
             <div>
-                <nav  className="nav navbar-dark bg-light text-primary navbar-expand-sm">
+                <nav className="nav navbar-dark bg-light text-primary navbar-expand-sm">
                     <ul className="navbar-nav ml-4">
-                        <li className="nav-item"  style={{marginLeft:'300px'}}>
+                        <li className="nav-item" style={{ marginLeft: '300px' }}>
                             <Link to="/myform">User Form </Link>
                         </li>
-                        <li className="nav-item"  style={{marginLeft:'30px'}}>
+                        <li className="nav-item" style={{ marginLeft: '30px' }}>
                             <Link to="/counter2">Counter Application</Link>
                         </li>
-                        <li className="nav-item"  style={{marginLeft:'30px'}}>
+                        <li className="nav-item" style={{ marginLeft: '30px' }}>
                             <Link to="/customerform">CustomerForm</Link>
                         </li>
-                        <li className="nav-item"  style={{marginLeft:'30px'}}>
+                        <li className="nav-item" style={{ marginLeft: '30px' }}>
                             <Link to="/book">BookStatePage</Link>
+                        </li>
+                        <li className="nav-item" style={{ marginLeft: '30px' }}>
+                            <Link to="/pdata">Product Data</Link>
                         </li>
 
                     </ul>
@@ -38,13 +42,14 @@ function Dashboard() {
                         </CustomerForm>
                     </Route>
                     <Route path="/book"> <BookStatePage>
-                        </BookStatePage> </Route>
+                    </BookStatePage> </Route>
+
+                    <Route path="/pdata"> <Fetch>
+                    </Fetch>
+                    </Route>
                 </Switch>
             </div>
         </Router>
     )
 }
 export default Dashboard;
-
-// npm i react-router-dom@5.3.4
-// npm i react-router@5.3.4
