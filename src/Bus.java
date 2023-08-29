@@ -1,58 +1,22 @@
-import java.util.Objects;
-
 public class Bus {
-
-	private int busId;
+	private long busId;
+	private String busName;
 	private String busRoute;
 	private float busFare;
 
-//
-//	@Override
-//	public boolean equals(Object obj) {
-//		if(obj instanceof Bus) {
-//			Bus b=(Bus) obj;
-//			if(b.busId==this.busId && b.busFare==this.busFare && 
-//					b.busRoute==this.busRoute)
-//			return true;
-//		}
-//		return false;
-//	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(busFare, busId, busRoute);
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Bus other = (Bus) obj;
-		return Float.floatToIntBits(busFare) == Float.floatToIntBits(other.busFare) && busId == other.busId
-				&& Objects.equals(busRoute, other.busRoute);
-	}
-
-
-	@Override
-	public String toString() {
-		return "Bus [busId=" + busId + ", busRoute=" + busRoute + ", busFare=" + busFare + "]";
-	}
-
-	
-	public Bus(int busId, String busRoute, float busFare) {
-		super();
+	public Bus(long busId, String busName, String busRoute, float busFare) {
 		this.busId = busId;
+		this.busName = busName;
 		this.busRoute = busRoute;
 		this.busFare = busFare;
 	}
 
-	public int getBusId() {
+	public long getBusId() {
 		return busId;
+	}
+
+	public String getBusName() {
+		return busName;
 	}
 
 	public String getBusRoute() {
@@ -62,5 +26,29 @@ public class Bus {
 	public float getBusFare() {
 		return busFare;
 	}
+	
 
+	public void setBusId(long busId) {
+		this.busId = busId;
+	}
+
+	public void setBusName(String busName) {
+		this.busName = busName;
+	}
+
+	public void setBusRoute(String busRoute) {
+		this.busRoute = busRoute;
+	}
+
+	public void setBusFare(float busFare) {
+		this.busFare = busFare;
+	}
+
+	void busInfo() {
+		System.out.println("\n\t id "+getBusId());
+		System.out.println("\t name "+getBusId());
+		System.out.println("\t route "+getBusRoute());
+		System.out.println("\t fare "+getBusFare());
+	}
+	
 }

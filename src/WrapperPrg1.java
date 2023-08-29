@@ -1,17 +1,25 @@
 
-public class WrapperPrg1 {
+public class WrapperPRg1 {
 
 	public static void main(String[] args) {
 		
-		int x=100;
-		Integer p1=new Integer(x); // boxing 
+		int p=100;
+		Integer x=new Integer(p); // boxing primitive to wrapper class
 		
-		int intValue = p1.intValue();// un boxing 
+		System.out.println(x);
 		
-		intValue++;
-		intValue++;
+		int i=x.intValue(); // unboxing  -- wrapper class to primitive
+		i++;
 		
-		p1=new Integer(x);// unboxing 
+		x=new Integer(i);
+		
+		System.out.println(x);
+		
+		// auto boxing 
+		
+		
+		Integer k=100;   // autoboxing =boxing+unboxing 
+		k++;
 		
 		
 	}

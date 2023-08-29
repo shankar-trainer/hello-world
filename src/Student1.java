@@ -1,10 +1,12 @@
 
 public class Student1 {
 
-	private int studentId;
-	private String studentName, studentAddress, collegeName;
+	int studentId;
+
+	String studentName, studentAddress, collegeName;
 
 	public Student1(int studentId, String studentName, String studentAddress, String collegeName) {
+		super();
 		this.studentId = studentId;
 		this.studentName = studentName;
 		this.studentAddress = studentAddress;
@@ -12,10 +14,11 @@ public class Student1 {
 	}
 
 	public Student1(int studentId, String studentName, String studentAddress) {
+
 		this.studentId = studentId;
 		this.studentName = studentName;
 		this.studentAddress = studentAddress;
-		this.collegeName="NIT";
+		this.collegeName = "NIT";
 	}
 
 	public int getStudentId() {

@@ -1,14 +1,19 @@
 
 public class Order {
+
 	private int orderId;
 	private String orderLocation;
-	private int orderPinCode;
+	private float orderTotalCost;
 
-	public Order(int orderId, String orderLocation, int orderPinCode) {
+	public void setOrderTotalCost(float orderTotalCost) {
+		this.orderTotalCost = orderTotalCost;
+	}
+
+	public Order(int orderId, String orderLocation, float orderTotalCost) {
 		super();
 		this.orderId = orderId;
 		this.orderLocation = orderLocation;
-		this.orderPinCode = orderPinCode;
+		this.orderTotalCost = orderTotalCost;
 	}
 
 	public int getOrderId() {
@@ -19,8 +24,8 @@ public class Order {
 		return orderLocation;
 	}
 
-	public int getOrderPinCode() {
-		return orderPinCode;
+	public float getOrderTotalCost() {
+		return orderTotalCost;
 	}
 
 }
