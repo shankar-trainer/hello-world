@@ -62,6 +62,10 @@ this and super
                      
          
          
-         
+IndexOutOfBoundsException         
+   |
+   1. StringIndexOutOfBoundsException
+   2. ArraysIndexOutOfBoundsException
+
 
 
