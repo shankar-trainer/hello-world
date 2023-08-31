@@ -69,3 +69,17 @@ IndexOutOfBoundsException
 
 
 
+Exception Handling 
+
+    on abnormal situation it creates exception object and throw it.
+    
+    
+    throw new Exception();
+    throw new RunttimeException();
+    
+    
+    
+
+
+
+
