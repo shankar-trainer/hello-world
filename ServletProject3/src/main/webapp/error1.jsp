@@ -8,12 +8,29 @@
 <style type="text/css">
  @import url("css/style1.css");
 </style>
+
+<style type="text/css">
+.hello{
+ color:red;
+ font-weight: bold;
+ font-size: 20px;
+ width:50%;
+ height: 100px;
+}
+</style>
+
 </head>
 <body>
 
-<%@include file="Coforge.jsp"  %>
+<%@ page isErrorPage="true" %>
+
 <div class="hello">
-<h1>Employee Page  </h1>
+
+Error is     ...... 
+<br>
+<%=exception %>
 </div>
+
+
 </body>
 </html>

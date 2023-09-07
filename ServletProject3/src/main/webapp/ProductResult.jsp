@@ -8,7 +8,7 @@
 <style>
 @import url("css/style1.css");
 </style>
-
+<%@page errorPage="error1.jsp" %>
 </head>
 <body>
 	<%
