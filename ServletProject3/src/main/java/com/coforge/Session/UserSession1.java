@@ -26,6 +26,12 @@ public class UserSession1 extends HttpServlet {
 		
 		session.setMaxInactiveInterval(10);
 		
+		session.setAttribute("prd1", "book");
+		session.setAttribute("prd2", "apple");
+		session.setAttribute("id", 665656);
+		session.setAttribute("name", "punam devi");
+		
+		
 
 		
 		
