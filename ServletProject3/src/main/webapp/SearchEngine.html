@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<style>
+		
+		@import url("css/style1.css")
+		
+	</style>
+</head>
+
+<body>
+	<script>
+	var validate=function(){
+			var engine=document.getElementsByName("searchengine");
+			var status=false;
+			for(const a of engine){
+				if(a.checked){
+					status=true;
+				}
+			}
+			if(status==false){
+				alert("select search engine")
+				return false;
+			}
+			else if(status==true){
+				return true;
+			}
+		}
+	</script>
+	<form action="SearchEngine" onsubmit="return validate()">
+		<div>
+			<label>Search Engine1</label>
+			<input type="radio"  value="google" name="searchengine">Google
+		</div>
+		<div>
+			<label>Search Engine2</label>
+			<input type="radio" value="yahoo" name="searchengine">Yahoo
+		</div>
+		<div>
+			<label>Search Engine3</label>
+			<input type="radio" value="bing" name="searchengine">Bing
+		</div>
+		<div>
+			<label>Search Engine4</label>
+			<input type="radio" value="duckduckgo" name="searchengine">DuckDuckGo
+		</div>
+		<div>
+			<button type="submit" value="Send">Send</button>
+			<button type="reset" value="Cancel">Cancel</button>
+		</div>
+	</form>
+</body>
+
+</html>
