@@ -12,13 +12,13 @@
 
 	if (foodtype.equals("north")) {
 	%>
-	<jsp:forward page="northindianfood.jsp"></jsp:forward>
+	<jsp:forward page="result/northindianfood.jsp"></jsp:forward>
 	<%
 	}
 
 	else if (foodtype.equals("south")) {
 	%>
-	<jsp:forward page="southindianfood.jsp"></jsp:forward>
+	<jsp:forward page="result/southindianfood.jsp"></jsp:forward>
 	<%
 	}
 	%>
