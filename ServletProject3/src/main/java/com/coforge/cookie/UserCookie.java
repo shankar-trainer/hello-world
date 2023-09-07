@@ -22,6 +22,9 @@ public class UserCookie extends HttpServlet {
 		cookie2=new Cookie("empid2", "coforge_emp00002");
 		cookie3=new Cookie("empid3", "coforge_emp00003");
 		
+//		cookie1.setMaxAge(10);
+		cookie1.setMaxAge(24*60*60*365);// set cookie max age for 1 year
+		
 		response.addCookie(cookie1);
 		response.addCookie(cookie2);
 		response.addCookie(cookie3);
