@@ -35,7 +35,6 @@ No1 is <%=a %><br>
 No2 is <%=b %><br>
 Sum  is <%=c %><br>
 Addition of 30 and 40 is <%=addition(30, 40) %>
-
 <br><br>
 Date is <%=LocalDate.now() %>
 
