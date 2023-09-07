@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>\</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .myclass {
+            margin-left: 300px;
+            border: solid;
+            padding: 20px;
+            margin-top: 50px;
+            width: 30%;
+            background-color: aquamarine;
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var changetext = function () {
+            document.getElementById('id1').innerHTML = '<h2>welcome to javascript</h2>'
+        }
+        var c = 0;
+        var increment = function () {
+            c = c + 1;
+            document.getElementById('id2').innerHTML = ' count is ' + c
+        }
+        var decrement = function () {
+            c = c -1;
+            document.getElementById('id3').innerHTML = ' count is ' + c
+        }
+        
+        var clock = function () {
+            var clock=new Date().toLocaleTimeString()
+            document.getElementById('id3').innerHTML = clock
+        }
+       setInterval(clock,1000)
+
+    </script>
+    <div  id="id3" style="margin-left: 1200px;color:blue;font-weight: bold;font-size: 20px;">
+        
+    </div>
+    <div class="myclass" id="id1" onclick="changetext()">
+        Hello World
+    </div>
+
+    <div class="myclass">
+        <div>
+            <button onclick="increment()">Incremnent</button>
+            <label id="id2"></label>
+        </div>
+        <div>
+            <button onclick="decrement()">Decremnent</button>
+            <label id="id3"></label>
+        </div>
+    </div>
+
+</body>
+
+</html>

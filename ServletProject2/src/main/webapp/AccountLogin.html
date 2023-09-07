@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+@import url("css/style1.css");
+</style>
+</head>
+<body>
+	<form action="AccountController" method="post">
+		<div>
+			<label>Enter Id</label> <input name="id">
+		</div>
+
+		<div>
+			<label>Enter Password</label> <input name="pass" type="password">
+		</div>
+		 
+		 <div>
+		 <label>Account Type</label>
+		 <div><br>
+		   <input type="radio"  name="account_type"   value="saving">Saving Account<br>
+		   <input type="radio"   name="account_type"  value="current">Current Account<br>
+		 </div>
+		 </div>
+		<div>
+			<input type="submit"> <input type="reset">
+		</div>
+	</form>
+</body>
+</html>

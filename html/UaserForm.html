@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        @import url('css/style2.css');
+    </style>
+    <style>
+        form{
+            border-radius: 10%;
+            box-shadow: 40px 100px 65px blue;
+            transform: translate(250px,250px);
+            transform: rotate(10deg);
+            transform: scale(1.0,1.0);
+            transform: skew(10deg,10deg);
+
+        }
+    </style>
+
+</head>
+
+<!-- <body style="background-image: url(image/img2.jfif);background-repeat: repeat-x;"> -->
+<!-- <body style="background-image: url(image/img2.jfif);background-repeat: repeat-y;"> -->
+<!-- <body style="background-image: url(image/img2.jfif);background-repeat:no-repeat;"> -->
+<!-- <body style="background-image: url(image/img2.jfif),url(image/img2.jfif),url(image/img3.jfif);background-repeat:repeat;background-attachment: fixed;
+     background-size: 200px;">  -->
+<body style="background-image: url(image/img2.jfif),url(image/img2.jfif),url(image/img3.jfif);background-repeat:repeat;background-attachment: fixed;
+     background-size: 200px;"> 
+
+    <!-- <body style="background-image: url(image/img9.jpg);background-repeat:repeat;background-size: 30px;"> -->
+
+
+    <form >
+        <div>
+            <input name="name" placeholder="Enter Name" required autofocus>
+        </div>
+
+        <div>
+            <input name="age" placeholder="Enter Age" type="number" required>
+        </div>
+
+        <div>
+            <input name="dob" placeholder="Enter DOB" type="date" required>
+        </div>
+
+        <div>
+            <input name="entry time" placeholder="Entry Time" type="time" required>
+        </div>
+        <div>
+            <input name="email" placeholder="Enter Mail id" type="email" required>
+        </div>
+
+        <div>
+            <label>Select the Rank(1 -- 10)</label>
+            <input name="rank" type="range" max="10" min="1">
+        </div>
+        <div>
+            <br>
+            <input list="state" placeholder="state name">
+            <datalist id="state">
+                <option value="Bihar"></option>
+                <option value="UP"></option>
+                <option value="Haryana"></option>
+                <option value="Rajsthan"></option>
+                <option value="Tamilnadu"></option>
+            </datalist>
+        </div>
+
+        <div>
+        <label>Search </label>
+            <input type="search">
+        </div>
+
+        
+        <div>
+        <label>Play Audio </label>
+        <audio controls>
+            <source src="C:\Windows\WinSxS\amd64_microsoft-windows-shell-sounds_31bf3856ad364e35_10.0.19041.1_none_cd0389b654e71da2\Alarm09.wav"  >
+
+        </audio>
+
+        <video src="https://www.w3schools.com/tags/movie.mp4" controls>
+
+        </video>
+
+        
+
+        </div>
+
+
+        <div class="space">
+            <input type="submit" value="Login">
+            <input type="reset" value="Cancel">
+
+        </div>
+
+    </form>
+</body>
+
+</html>

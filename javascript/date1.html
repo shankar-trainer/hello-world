@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+<script>
+var date1=new Date()
+alert(date1)
+alert("time "+date1.getHours()+":"+date1.getMinutes())
+alert("date is "+date1.getDate()+"/"+(date1.getMonth()+1)+"/"+date1.getFullYear())
+
+console.log(date1.toLocaleDateString())//9/5/2023
+console.log(date1.toDateString())//Tue Sep 05 2023
+
+console.log(date1.toLocaleTimeString())//10:30:20 AM
+console.log(date1.toTimeString())//10:30:20 GMT+0530 (India Standard Time)
+
+
+</script>
+    
+
+</body>
+</html>

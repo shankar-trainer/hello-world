@@ -1,0 +1,29 @@
+label {
+	float: left;
+	width: 120px;
+}
+
+input {
+	width: 120px;
+	margin-top: 5px;
+}
+
+form {
+	color: blue;
+	border: inset 20px red;
+	margin-left: 300px;
+	margin-TOP: 100px;
+	padding: 30px;
+	width: 30%;
+	background-color: azure;
+}
+
+.hello {
+	width: 300px;
+	height: 200px;
+	border: solid blue;
+	padding: 20px;
+	margin-left: 300px;
+	margin-TOP: 100px;
+	background-color: azure;
+}

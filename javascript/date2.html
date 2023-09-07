@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    
+    <script>
+        function alarm(){
+            alert ('alarm is ringing')
+        }
+      document.write('alarm will ring after 4 second ')  
+      setTimeout(alarm,4000)// 1st arg is function, 2nd is time interval 
+        
+      // anonymous function
+      var clock=function(){
+          console.log(new Date().toLocaleTimeString())
+      }
+      //setTimeout(clock(),1000)
+      
+      setInterval(clock,1000)//it will call function everytime after interval
+
+
+    </script>
+</body>
+</html>

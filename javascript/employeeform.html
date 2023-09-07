@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <style>
+        label {
+            float: left;
+            width: 120px;
+        }
+
+        input {
+            width: 120px;
+            margin-top: 5px;
+        }
+
+        span {
+            color: red;
+            font-weight: bold;
+
+        }
+
+        form {
+            color: blue;
+            border: inset 20px red;
+            margin-left: 300px;
+            margin-TOP: 100px;
+            padding: 30px;
+            width: 40%;
+            background-color: azure;
+        }
+    </style>
+    <script src='script/script3.js'>
+
+    </script>
+</head>
+
+<body>
+
+    <form onsubmit="return validate()">
+        <div>
+            <label>Enter Id</label>
+            <input placeholder="Enter Id" id="id">
+            <span id="id_err"></span>
+        </div>
+        <div>
+            <label>Enter Name</label>
+            <input placeholder="Enter Name" id="name">
+            <span id="name_err"></span>
+        </div>
+
+        <div>
+            <br>
+            <label>Select Gender</label>
+            <br>
+            <div>
+                <input type="radio" id="gender" name="gender" value="male">Male
+                <span style="margin-left: 100px;" id="gender_err"></span>
+            </div>
+            <div>
+                <input type="radio" id="gender" name="gender" value="female">Female
+            </div>
+        </div>
+
+        <div>
+            <button type="submit">Login</button>
+            <button type="reset">Cancel</button>
+        </div>
+
+
+    </form>
+
+</body>
+
+</html>

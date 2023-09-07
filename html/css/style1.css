@@ -1,0 +1,8 @@
+.list{
+    border: inset 20px blueviolet;
+    width: 25%;
+    margin-left: 50px;
+    margin-top: 50px;
+    background-color: aliceblue;
+    float: left;
+}

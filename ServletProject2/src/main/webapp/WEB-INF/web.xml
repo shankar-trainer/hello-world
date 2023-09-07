@@ -1,0 +1,6 @@
+<web-app>
+	<context-param>
+		<param-name>country</param-name>
+		<param-value>india</param-value>
+	</context-param>
+</web-app>

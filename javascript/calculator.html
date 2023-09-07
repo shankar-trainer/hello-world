@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        label {
+            float: left;
+            width: 120px;
+        }
+
+        input {
+            width: 120px;
+            margin-top: 5px;
+        }
+
+        form {
+            color: blue;
+            border: inset 20px red;
+            margin-left: 300px;
+            margin-TOP: 100px;
+            padding: 30px;
+            width: 30%;
+            background-color: azure;
+        }
+    </style>
+    <script>
+
+        function addition() {
+            var a = document.getElementById('n1').value
+            var b = document.getElementById('n2').value
+            if (a <= 0 )
+                alert('no1 is zero or -ve')
+           else if (a == '')
+                alert('no1 is blank')
+            else if (isNaN(a))
+                alert(a + ' is not a number')
+            else if (b <= 0 || a == '')
+                alert('no2 is blank')
+            else if (isNaN(b))
+                alert(b + ' is not a number')
+            else
+                document.getElementById('n3').value = parseFloat(a) + parseFloat(b)
+            //alert('addition is '+(parseFloat(a) + parseFloat(b)))
+        }
+        function subtraction() {
+            var a = document.getElementById('n1').value
+            var b = document.getElementById('n2').value
+            if (a <= 0 )
+                alert('no1 is zero or -ve')
+           else if (a == '')
+                alert('no1 is blank')
+            else if (isNaN(a))
+                alert(a + ' is not a number')
+            else if (b <= 0 || a == '')
+                alert('no2 is blank')
+            else if (isNaN(b))
+                alert(b + ' is not a number')
+            else
+            document.getElementById('n3').value = parseFloat(a) - parseFloat(b)
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label>Enter No1</label>
+            <input id="n1">
+        </div>
+        <div>
+            <label>Enter No2</label>
+            <input id="n2">
+        </div>
+
+        <div>
+            <label>Result</label>
+            <input id="n3">
+        </div>
+        <div>
+            <input type="button" value="addition" onclick="addition()">
+            <button type="button" onclick="subtraction()">subtraction</button>
+        </div>
+
+    </form>
+
+</body>
+
+</html>
