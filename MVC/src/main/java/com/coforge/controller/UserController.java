@@ -14,14 +14,12 @@ import com.coforge.model.User;
 @WebServlet("/UserController")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
            int id=Integer.parseInt(request.getParameter("id"));
            String name=request.getParameter("name");
            float salary=Float.parseFloat(request.getParameter("salary"));
            String type=request.getParameter("type");
-           
            
            User user=new User();
            user.setId(id);

@@ -1,0 +1,14 @@
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.2</jspversion>
+	<tag>
+		<name>upper</name>
+			<tagclass>com.coforge.tag.MyTag</tagclass>
+		<bodycontent>scriptless</bodycontent>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>
