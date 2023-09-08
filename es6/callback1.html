@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       function hello(a){
+        console.log('hello1 '+a)
+       }
+       
+       function hello2(a){
+        console.log('hello2 '+a)
+        hello(a)
+       }
+    hello2("welcome")
+
+   //====================================
+
+   mydisplay=(a,b)=>{
+    console.log('mydisplay callback later\n addition is '+(a+b))
+   }
+
+   calculator=(n1,n2,callback)=>{
+      console.log('first it  will run')
+      callback(n1,n2)
+   }
+   calculator(11,22,mydisplay)
+
+   // other call back 
+
+   setTimeout(()=>alert('hi'),1000)
+   console.log(new Array(11,1,3,2).sort((a,b)=>a-b))
+
+   console.log(new Array(11,12,3,21).filter((a)=>a%3==0))
+   
+   console.log(new Array(11,12,3,21).map((a)=>a*a))
+
+
+    </script>
+</body>
+</html>
