@@ -36,11 +36,13 @@ public class UserController extends HttpServlet {
            
            switch (type) {
 		case "homeloan": {
+			request.setAttribute("amount", 200000);
 			dispatcher=request.getRequestDispatcher("page/homeloan.jsp");
 			dispatcher.forward(request, response);
 			break;
 		}
 		case "personalloan": {
+			request.setAttribute("amount", 1000000);
 			dispatcher=request.getRequestDispatcher("page/personalloan.jsp");
 			dispatcher.forward(request, response);
 			break;

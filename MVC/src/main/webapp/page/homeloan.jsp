@@ -11,7 +11,9 @@
 @import url("css/style1.css");
 </style>
 <style type="text/css">
-
+label{
+ width: 150px;
+}
 .hello{
  width: 40%;
 }
@@ -32,6 +34,8 @@
    <% } else {
   User user= (User)session.getAttribute("user");
 	   %>
+	   
+   <label>Loan Amount <%=request.getAttribute("amount") %></label><br>
    <label>Id is <%=user.getId() %></label><br>
    <label>Name is <%=user.getName() %></label><br><br>
    <label>Salary is <%=user.getSalary() %></label><br>

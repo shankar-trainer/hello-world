@@ -14,6 +14,9 @@
 .hello {
 	width: 40%;
 }
+label {
+	width:150px;
+}
 </style>
 </head>
 <body>
@@ -31,6 +34,7 @@
 		%>
 
 		<jsp:useBean id="user" scope="session" class="com.coforge.model.User" />
+		<label>Loan Amount <%=request.getAttribute("amount") %></label><br>
 		Id is
 		<jsp:getProperty property="id" name="user" /><br> Name is
 		<jsp:getProperty property="name" name="user" /><br> Salary is
