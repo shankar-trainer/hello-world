@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .col1{
+            color:blue;
+            font-weight: bold;
+            margin-left: 100px;
+            float: left;
+            font-size: 20px;
+        }
+        .col2{
+            color:blue;
+            font-weight: bold;
+            margin-right: 100px;
+            float: right;
+            font-size: 20px;
+        }
+        </style>
+</head>
+
+<body onload="hello()">
+    <script>
+        setTimeout(() => console.log('alarm ringing'), 3000)
+        //setTimeout(() => alert('alarm ringing'), 3000)
+        //setInterval(() => console.log(new Date().toLocaleTimeString()), 1000)
+
+        // time 
+        setInterval(() => document.getElementById('id2').innerHTML=(new Date().toLocaleTimeString()), 1000)
+        
+        // date
+        hello=()=>document.getElementById('id1').innerHTML=(new Date().toLocaleDateString())
+        
+    </script>
+        <hr width="100%" size="10px" color="green" style="margin-bottom: 20px;;">
+    <div class="col1" id="id1">
+
+    </div>
+    <div class="col2" id="id2">
+       
+    </div>
+<hr width="100%" size="10px" color="green" style="margin-top: 50px;">
+</body>
+
+</html>
