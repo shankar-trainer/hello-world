@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var x=11;
+        document.write(x);
+        promise=new Promise((resolve,reject)=>{
+            if(x%2==0)
+                resolve(x+" is even no ")
+              else 
+               reject(x+' is odd no')  
+        });
+
+       promise.then((result)=>{
+           document.write("<br>"+result);
+       }).catch((e)=>{
+        document.write(e);
+       })
+    </script>
+</body>
+</html>
