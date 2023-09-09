@@ -17,3 +17,5 @@ connection.connect((err)=>{
        });
    console.log('connected')    
 })                                         
+//npm init 
+//npm install mysql
