@@ -3,17 +3,26 @@ package com.coforge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.coforge.config.ProductConfig;
 import com.coforge.dao.ProductDaoImpl;
 import com.coforge.model.Product;
 import com.coforge.service.ProductServiceImpl;
 
+@ComponentScan(basePackages = {"com.coforge.service","com.coforge.dao"})
 public class ProductMain2 {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = new AnnotationConfigApplicationContext(ProductServiceImpl.class);
+		//1st way
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(ProductConfig.class);
 		ProductServiceImpl service = ctx.getBean(ProductServiceImpl.class);
+		
+		
+		//2nd way 
+		//ApplicationContext ctx = new AnnotationConfigApplicationContext(ProductServiceImpl.class);
+		//ProductServiceImpl service = ctx.getBean(ProductServiceImpl.class);
 
 		Product prd[] = new Product[3];
 		prd[0] = new Product(1, "sweets", 300.0f);
