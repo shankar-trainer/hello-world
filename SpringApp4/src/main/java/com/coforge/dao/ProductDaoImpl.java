@@ -22,7 +22,6 @@ public class ProductDaoImpl implements ProductDao {
 			if (p1 == p)
 				return p;
 		}
-
 		return null;
 	}
 
@@ -52,7 +51,6 @@ public class ProductDaoImpl implements ProductDao {
 			prdList.add(p);
 			return p;
 		}
-		
 		return null;
 	}
 
