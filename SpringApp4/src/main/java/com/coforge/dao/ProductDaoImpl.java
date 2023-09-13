@@ -44,12 +44,12 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public Product updateProduct(Product p) {
+	public Product updateProduct(Product p1,Product p2) {
 		
-		if (searchProduct(p) != null) {
-			prdList.remove(p);
-			prdList.add(p);
-			return p;
+		if (searchProduct(p1) != null) {
+			prdList.remove(p1);
+			prdList.add(p2);
+			return p2;
 		}
 		return null;
 	}
