@@ -8,5 +8,8 @@
 </head>
 <body>
 <h1>Welcome </h1>
+<%
+response.sendRedirect("user/hello");
+%>
 </body>
 </html>
