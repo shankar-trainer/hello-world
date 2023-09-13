@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import com.coforge.exception.ProductException;
 import com.coforge.model.Product;
 
 @Service
+@ComponentScan("com.coforge.dao")
 public class ProductServiceImpl implements ProductService {
     @Autowired
 	ProductDaoImpl dao;
