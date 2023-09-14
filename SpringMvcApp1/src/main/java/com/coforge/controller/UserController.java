@@ -13,7 +13,7 @@ public class UserController {
 
 	@RequestMapping("/hello")
 	public String hello() {
-		return "UserForm";
+		return "UserForm";// return String is view
 	}
 	
 	@RequestMapping("/UserAction")
