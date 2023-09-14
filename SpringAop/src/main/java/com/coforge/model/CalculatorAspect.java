@@ -1,5 +1,7 @@
 package com.coforge.model;
 
+import java.util.Arrays;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,18 +12,18 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class CalculatorAspect {
 
-	@Before("execution(* (com.coforge.model.Calculator.addition(..))")
+	@Before("execution(* com.coforge.model.Calculator.addition(..))")
 	public void beforeAddtion(JoinPoint jp) {
 		
 		System.out.println("before addtion method called ");
 		System.out.println(jp.getSignature().getName());
-		System.out.println(jp.getArgs());
+		System.out.println(Arrays.toString(jp.getArgs()));
 	}
 	
-	@After("execution(* (com.coforge.model.Calculator.addition(..))")
+	@After("execution(* com.coforge.model.Calculator.addition(..))")
 	public void afterAddtion(JoinPoint jp) {
 		System.out.println("before addtion method called ");
 		System.out.println(jp.getSignature().getName());
-		System.out.println(jp.getArgs());
+		System.out.println(Arrays.toString(jp.getArgs()));
 	}
 }
