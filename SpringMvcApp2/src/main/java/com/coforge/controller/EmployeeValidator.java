@@ -10,12 +10,13 @@ public class EmployeeValidator implements  Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		Employee.class.isAssignableFrom(clazz);
-		return false;
+		return Employee.class.isAssignableFrom(clazz);
+		   //return Employee.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
+		System.out.println("validate called....");
 		Employee employee=(Employee) target;
 		if(employee.getId()<=0)
 			errors.rejectValue("id", "id is zero or negative");

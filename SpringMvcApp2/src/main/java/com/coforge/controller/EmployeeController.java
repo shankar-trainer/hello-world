@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,14 +30,22 @@ public class EmployeeController {
 		this.validator = employeeValidator;
 	}
 
-//	public void InitBinder(WebDataBinder binder) {
-//		binder.setValidator(validator);
-//	}
+	@InitBinder("validator")
+	public void InitBinder(WebDataBinder binder) {
+		binder.setValidator(validator);
+	}
 	// @RequestMapping("/form")
 	@GetMapping("/form")
 //	public String employeeInit(ModelMap map) {
 	public ModelAndView employeeInit(ModelMap map) {
 		Employee employee = new Employee();
+//		employee.setId(10001);
+//		employee.setPassword("aa");
+//		employee.setSalary(9999);
+//		employee.setName("suresh kumar");
+//		employee.setHobbies(new String[] {"hobby1","hobby2"});
+//		employee.setGender(new String[] {"male","female"});
+		
 		map.put("employee", employee);
 		// return "emp/EmployeeForm";
 		ModelAndView view = new ModelAndView("emp/EmployeeForm", map);
