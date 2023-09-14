@@ -11,6 +11,7 @@ import lombok.Data;
 
 @Data
 public class Account {
+	//jsr 303 validation
 	@Min(value =  10000, message = "Account id must of minimum 10000")
 	@Max(value=50000,message = "Account id must of maximum 50000")
 	@NotNull(message = "account id is null")
