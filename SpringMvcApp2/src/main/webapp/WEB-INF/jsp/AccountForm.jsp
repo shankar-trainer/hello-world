@@ -13,14 +13,18 @@
 
 <f:label path="accountId">Enter Account Id</f:label>
 <f:input path="accountId"/>
+<f:errors path="accountId"></f:errors>
 <br>
 
 <f:label path="accountHolderName">Enter Account Name</f:label>
 <f:input path="accountHolderName"/>
+<f:errors path="accountHolderName"></f:errors>
 <br>
 
 <f:label path="balance">Enter Account Balance</f:label>
 <f:input path="balance"/>
+<f:errors path="balance"></f:errors>
+
 <br>
 <input type="submit">
 <input type="reset">
