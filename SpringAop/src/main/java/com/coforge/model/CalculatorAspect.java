@@ -22,7 +22,7 @@ public class CalculatorAspect {
 	
 	@After("execution(* com.coforge.model.Calculator.addition(..))")
 	public void afterAddtion(JoinPoint jp) {
-		System.out.println("before addtion method called ");
+		System.out.println("\nafter addtion method called ");
 		System.out.println(jp.getSignature().getName());
 		System.out.println(Arrays.toString(jp.getArgs()));
 	}
