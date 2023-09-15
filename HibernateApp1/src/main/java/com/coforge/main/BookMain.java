@@ -1,6 +1,7 @@
 package com.coforge.main;
 
 import java.util.List;
+import java.util.Scanner;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,9 +22,9 @@ public class BookMain {
 		Transaction transaction = session.getTransaction();
 
 		Book book = new Book();
-		book.setIsbn(10004);
-		book.setBname("king  and queeen story");
-		book.setCost(345.56f);
+		book.setIsbn(10006);
+		book.setBname("mahabharat story ");
+		book.setCost(1645.56f);
 
 		transaction.begin();
 //		session.save(book);
@@ -35,15 +36,24 @@ public class BookMain {
 		List<Book> list = createQuery.list();
 
 		list.forEach(System.out::println);
-
+		System.out.println("enter book isbn to delete");
+		Book find2 = session.find(Book.class, new Scanner(System.in).nextLong());
+		if (find2 == null)
+			System.out.println("book not present");
+		else {
+			transaction.begin();
+			session.delete(find2);
+			transaction.commit();
+			System.out.println("book found and delete");
+		}
 		System.out.println("\n");
 		list.forEach(a -> System.out.println(a.getIsbn() + "\t" + a.getBname() + "\t" + a.getCost()));
 
 		Book find = session.find(Book.class, 10002);
-		if(find==null)
+		if (find == null)
 			System.out.println("book not found with id 10002");
-		else 
-			System.out.println("book found with id 10002 \n"+find);
+		else
+			System.out.println("book found with id 10002 \n" + find);
 		session.close();
 	}
 }
