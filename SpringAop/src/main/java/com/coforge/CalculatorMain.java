@@ -17,5 +17,7 @@ public class CalculatorMain {
 		
 		Calculator calc = ctx.getBean(Calculator.class);
 		calc.addition(11, 22);
+		System.out.println("division is "+calc.division(220, 22));
+		System.out.println("\ndivision is... "+calc.division(11, 0));
 	}
 }
