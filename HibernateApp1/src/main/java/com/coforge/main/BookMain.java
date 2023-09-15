@@ -44,7 +44,7 @@ public class BookMain {
 			transaction.begin();
 			session.delete(find2);
 			transaction.commit();
-			System.out.println("book found and delete");
+			System.out.println("book found and deleted");
 		}
 		System.out.println("\n");
 		list.forEach(a -> System.out.println(a.getIsbn() + "\t" + a.getBname() + "\t" + a.getCost()));
@@ -54,6 +54,26 @@ public class BookMain {
 			System.out.println("book not found with id 10002");
 		else
 			System.out.println("book found with id 10002 \n" + find);
+		
+		System.out.println("enter book isbn to find and update");
+		
+		find2 = session.find(Book.class, new Scanner(System.in).nextLong());
+		if (find2 == null)
+			System.out.println("book not present");
+		else {
+			Book b2=new Book();
+			b2.setIsbn(find2.getIsbn());
+			
+			System.out.println("enter book name and cost ");
+			b2.setBname(new Scanner(System.in).next());
+			b2.setCost(new Scanner(System.in).nextFloat());
+			
+			transaction.begin();
+			session.update(b2);
+			transaction.commit();
+			System.out.println("book found and updated");
+		}
+		
 		session.close();
 	}
 }
