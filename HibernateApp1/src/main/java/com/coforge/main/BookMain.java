@@ -21,12 +21,13 @@ public class BookMain {
 		Transaction transaction = session.getTransaction();
 
 		Book book = new Book();
-		book.setIsbn(10002);
-		book.setBname("tiger and rabbit story");
-		book.setCost(120);
+		book.setIsbn(10004);
+		book.setBname("king  and queeen story");
+		book.setCost(345.56f);
 
 		transaction.begin();
-		session.save(book);
+//		session.save(book);
+		session.persist(book);
 		transaction.commit();
 		System.out.println("Record added ");
 		// hql -- hibernate query language , not table but pojo file name
@@ -38,6 +39,11 @@ public class BookMain {
 		System.out.println("\n");
 		list.forEach(a -> System.out.println(a.getIsbn() + "\t" + a.getBname() + "\t" + a.getCost()));
 
+		Book find = session.find(Book.class, 10002);
+		if(find==null)
+			System.out.println("book not found with id 10002");
+		else 
+			System.out.println("book found with id 10002 \n"+find);
 		session.close();
 	}
 }
