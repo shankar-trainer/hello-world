@@ -12,7 +12,7 @@
 <%@page isErrorPage="true"  %>
 <body>
 <form>
-<h1>Error Page1</h1>
+<h1>Error Page2</h1>
   Error  is <%=exception.getMessage() %>
 </form>
 </body>

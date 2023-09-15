@@ -42,8 +42,8 @@ public class UserController {
 		}
 	}
 	
-	@ExceptionHandler(value = UserException.class)
-	public String userError() {
-		return "error1";
-	}
+//	@ExceptionHandler(value = UserException.class)
+//	public String userError() {
+//		return "error1";
+//	}
 }
