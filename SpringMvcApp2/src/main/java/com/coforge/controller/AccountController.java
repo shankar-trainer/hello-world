@@ -14,7 +14,7 @@ import com.coforge.model.Account;
 @RequestMapping("/account")
 public class AccountController {
 
-	@RequestMapping
+	@RequestMapping("/form")
 	public String accountInit(ModelMap map) {
 		Account account=new Account();
 		map.put("account", account);

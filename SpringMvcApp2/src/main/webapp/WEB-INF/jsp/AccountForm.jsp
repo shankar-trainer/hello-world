@@ -11,6 +11,12 @@
   label {
 	width:150px;
 }
+.error1{
+ color:red;
+}
+form{
+ width:39%;
+}
 </style>
 </head>
 
@@ -21,17 +27,17 @@
 
 <f:label path="accountId">Enter Account Id</f:label>
 <f:input path="accountId"/>
-<f:errors path="accountId"></f:errors>
+<f:errors path="accountId" cssClass="error1"></f:errors>
 <br>
 
 <f:label path="accountHolderName">Enter Account Name</f:label>
 <f:input path="accountHolderName"/>
-<f:errors path="accountHolderName"></f:errors>
+<f:errors path="accountHolderName" cssClass="error1"></f:errors>
 <br>
 
 <f:label path="balance">Enter Account Balance</f:label>
 <f:input path="balance"/>
-<f:errors path="balance"></f:errors>
+<f:errors path="balance" cssClass="error1"></f:errors>
 
 <br>
 <input type="submit">

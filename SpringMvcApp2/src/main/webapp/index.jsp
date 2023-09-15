@@ -10,7 +10,7 @@
 <h1>Welcome File </h1>
 
 <ul>
-  <li><a href='account'>Account Page</a></li>
+  <li><a href='account/form'>Account Page</a></li>
   <li><a href='employee/form'>Employee Page</a></li>
 </ul>
 </body>
