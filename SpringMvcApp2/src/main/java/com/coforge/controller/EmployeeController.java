@@ -1,11 +1,14 @@
 package com.coforge.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -30,21 +33,23 @@ public class EmployeeController {
 		this.validator = employeeValidator;
 	}
 
-	@InitBinder("validator")
+	@InitBinder//("validator")
 	public void InitBinder(WebDataBinder binder) {
 		binder.setValidator(validator);
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("dd-MM-yyyy"), true));
+
 	}
 	// @RequestMapping("/form")
 	@GetMapping("/form")
 //	public String employeeInit(ModelMap map) {
 	public ModelAndView employeeInit(ModelMap map) {
 		Employee employee = new Employee();
-//		employee.setId(10001);
-//		employee.setPassword("aa");
-//		employee.setSalary(9999);
-//		employee.setName("suresh kumar");
-//		employee.setHobbies(new String[] {"hobby1","hobby2"});
-//		employee.setGender(new String[] {"male","female"});
+		employee.setId(0);
+		employee.setPassword("");
+		employee.setSalary(0.0f);
+		employee.setName(" ");
+		employee.setHobbies(new String[] {" "," "});
+		employee.setGender(new String[] {" "," "});
 		
 		map.put("employee", employee);
 		// return "emp/EmployeeForm";
@@ -52,10 +57,11 @@ public class EmployeeController {
 		return view;
 	}
 
-	@PostMapping("employeeAction")
+	@PostMapping("/employeeAction")
 	public String employeeFormProcessed(@ModelAttribute("employee") @Valid   Employee employee,BindingResult result) {
-	
+	System.out.println("employee action called ..");
 		if(result.hasErrors()) {
+			System.out.println("error in employee...");
 			return "emp/EmployeeForm";
 		}
 		else 

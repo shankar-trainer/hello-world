@@ -15,13 +15,13 @@
 			<f:input path="id"></f:input>
 			<f:errors path="id"></f:errors>
 		</div>
-		
+
 		<div>
 			<f:label path="password">Enter Password</f:label>
-			<f:password path="password"/>
+			<f:password path="password" />
 			<f:errors path="password"></f:errors>
 		</div>
-		
+
 		<div>
 			<f:label path="name">Enter Name</f:label>
 			<f:input path="name"></f:input>
@@ -34,17 +34,16 @@
 		</div>
 		<div>
 			<f:label path="gender">Gender</f:label>
-			<f:radiobuttons items="${gender}" path="gender"/>
+			<f:radiobuttons items="${gender}" path="gender" />
 			<f:errors path="gender"></f:errors>
 		</div>
 		<div>
 			<f:label path="hobbies">Enter Hobbies</f:label>
-			<f:checkboxes path="hobbies"  items="${hobbies}"/>
+			<f:checkboxes path="hobbies" items="${hobbies}" />
 			<f:errors path="hobbies"></f:errors>
 		</div>
 		<div>
-		<input type="submit">
-		<input type="reset">
+			<input type="submit"> <input type="reset">
 		</div>
 
 	</f:form>
