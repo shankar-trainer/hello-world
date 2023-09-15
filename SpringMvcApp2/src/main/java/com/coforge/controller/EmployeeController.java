@@ -44,10 +44,10 @@ public class EmployeeController {
 //	public String employeeInit(ModelMap map) {
 	public ModelAndView employeeInit(ModelMap map) {
 		Employee employee = new Employee();
-		employee.setId(0);
-		employee.setPassword(" ");
-		employee.setSalary(0.0f);
-		employee.setName(" ");
+//		employee.setId(0);
+//		employee.setPassword(" ");
+//		employee.setSalary(0.0f);
+//		employee.setName(" ");
 		//employee.setHobbies(new String[] {"a ","a "});
 		//employee.setGender();
 		
