@@ -5,7 +5,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<%@ taglib uri="http://www.springframework.org/tags"  prefix="spring"%>	
+<link rel="stylesheet" href='<spring:url value="/resources/style1.css"/>'/>
+<style>
+  label {
+	width:150px;
+}
+</style>
 </head>
+
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 
 <body>

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.coforge.model.Account;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/account")
 public class AccountController {
 
 	@RequestMapping
