@@ -12,7 +12,8 @@
 		<property name="connection.pool_size">1</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">create</property>
+		
+		<property name="hbm2ddl.auto">update</property>
 		
 		<!-- create / create-drop / update / validate -->
 
