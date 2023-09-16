@@ -1,14 +1,20 @@
 package com.coforge.model;
 
+import jakarta.persistence.NamedQuery;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name="book1")
+
+@NamedQueries({@NamedQuery(name="allbook",query="from Book")})
+
 public class Book {
 
 	@Id
