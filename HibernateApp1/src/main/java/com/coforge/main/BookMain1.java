@@ -21,7 +21,7 @@ public class BookMain1 {
 		List<Object[]> list1 = session.createNativeQuery("select * from book").list();
 
 		for (Object b[] : list1) {
-			System.out.println(b[0]+"   "+b[1]+"     "+b[2]);
+			System.out.println(b[0] + "   " + b[1] + "     " + b[2]);
 
 		}
 	}
