@@ -62,8 +62,9 @@ public class PersonMain_Onetomany_bidir {
 		System.out.println("\nperson list\n");
 		for (Car car2 : list) {
 			Person person2 = car2.getPerson();
-			System.err
+			System.out
 					.println(person2.getPersonId() + "\t" + person2.getPersonName() + "\t" + person2.getPersonSalary());
+		    
 		}
 	}
 }
