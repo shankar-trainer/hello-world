@@ -13,8 +13,8 @@
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="show_sql">true</property>
 
- 		<property name="hbm2ddl.auto">update</property>
- 
+<!--  		<property name="hbm2ddl.auto">create-drop</property>
+ --> 
 		<!-- create / create-drop / update / validate -->
 
 		<mapping class="com.coforge.model.Book" />
