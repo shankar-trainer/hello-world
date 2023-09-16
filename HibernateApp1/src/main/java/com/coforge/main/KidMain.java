@@ -14,18 +14,22 @@ public class KidMain {
 	    Kid kid=new Kid();
 	    Toy toy=new Toy();
 	    
-	    toy.setToyColor("yellow");
-	    toy.setToyCost(12000f);
-	    toy.setToyName("monkey and donkey");
+	    toy.setToyColor("red");
+	    toy.setToyCost(400.0f);
+	    toy.setToyName("drum master");
 	    
 	    
 	    kid.setAge(6);
-	    kid.setName("chunnu kumar");
+	    kid.setName("munnu kumar");
 	    kid.setToy(toy);
 	    
 	    session.getTransaction().begin();
 	    
+	    // without cascading
 	    session.save(toy);
+	    session.save(kid);
+
+	    // with cascading
 	    session.save(kid);
 	    
 	    session.getTransaction().commit();

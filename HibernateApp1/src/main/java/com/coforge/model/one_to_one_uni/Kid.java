@@ -1,5 +1,6 @@
 package com.coforge.model.one_to_one_uni;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -17,7 +18,8 @@ public class Kid {
 	private int age;
 	private String name;
 
-	@OneToOne
+	//@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "kid_toy_id")
 	private Toy toy;
 }
