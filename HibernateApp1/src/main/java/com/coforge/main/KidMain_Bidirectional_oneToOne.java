@@ -24,7 +24,9 @@ public class KidMain_Bidirectional_oneToOne {
 		kid.setAge(6);
 		kid.setName("munnu kumar");
 
+		// bidirectional
 		toy.setKid(kid);
+		// unidirectional
 		// kid.setToy(toy);
 
 		session.getTransaction().begin();
@@ -38,6 +40,7 @@ public class KidMain_Bidirectional_oneToOne {
 		 session.createQuery("from Toy").list().forEach(System.out::println);
 		 
 		 // bi directional   toy to kid direction 
+		 // -- in bi add cascade type in both owner(kid) and inverse(toy)
 		 // uni direction -- kid -- to toy
 		 
 		 
