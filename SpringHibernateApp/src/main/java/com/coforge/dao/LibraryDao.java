@@ -26,9 +26,9 @@ public class LibraryDao {
 		Library library2 = session.get(Library.class, library.getLibraryId());
 		if (library2 == null) {
 			session.getTransaction().begin();
-			session.save(library2);
+			session.save(library);
 			session.getTransaction().commit();
-			return library2;
+			return library;
 		}
 		return null;
 	}

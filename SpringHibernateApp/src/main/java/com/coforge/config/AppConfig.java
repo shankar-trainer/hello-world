@@ -33,11 +33,11 @@ public class AppConfig {
 		p.setProperty(AvailableSettings.URL, "jdbc:mysql://localhost:3306/db1");
 		p.setProperty(AvailableSettings.USER, "root");
 		p.setProperty(AvailableSettings.PASS, "mysql");
-		p.setProperty(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQLDialect");
+		p.setProperty(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 		p.setProperty(AvailableSettings.SHOW_SQL, "true");
-		p.setProperty(AvailableSettings.HBM2DDL_AUTO, "update");
+		p.setProperty(AvailableSettings.HBM2DDL_AUTO, "create");
+		//org.hibernate.tool.schema.Action.CREATE
 
 		return p;
-
 	}
 }
