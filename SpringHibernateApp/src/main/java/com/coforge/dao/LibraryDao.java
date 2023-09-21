@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import com.coforge.model.Library;
-
+@Repository
 public class LibraryDao {
 
 	SessionFactory factory;

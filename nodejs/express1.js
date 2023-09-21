@@ -10,7 +10,7 @@ app.get("/",(req,resp)=>{
     resp.writeHead(200,{'Content-Type':'text/html'}) 
     resp.write('<h2>hello  this is express application</h2>');
     resp.write('<h2>will add all rest methods </h2>');
-    //resp.json(book);
+   
     resp.end();
  });
  app.get("/book",(req,resp)=>{

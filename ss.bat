@@ -1,3 +1,4 @@
+ cp -r C:\Users\Training\eclipse-workspace\SpringApp2 .
 git add *
 git commit -m "added"
-git push origin  coforge23_2
+git push origin  main
