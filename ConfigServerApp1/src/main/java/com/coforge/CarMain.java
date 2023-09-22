@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
 import com.coforge.model.Car;
 
 @SpringBootApplication
+@EnableConfigServer
 public class CarMain  implements CommandLineRunner {
 
 	public static void main(String[] args) {
@@ -20,9 +22,9 @@ public class CarMain  implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		System.out.println(car.getId());
-		System.out.println(car.getName());
-		System.out.println(car.getCost());
+		System.out.println("id "+car.getId());
+		System.out.println("name "+car.getName());
+		System.out.println("cost "+car.getCost());
 	}
 
 }
