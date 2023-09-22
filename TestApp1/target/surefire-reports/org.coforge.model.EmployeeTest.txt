@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.coforge.model.EmployeeTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.173 s - in org.coforge.model.EmployeeTest
