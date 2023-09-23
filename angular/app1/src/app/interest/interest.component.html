@@ -1,0 +1,43 @@
+<div class="container">
+    <form class="w-75 bg-info p-5 border mt-5" (ngSubmit)="onSubmit()">
+        <h1> Interest Calculation Program </h1>
+        <div class="form-group">
+            <label>Enter Amount</label>
+            <input [(ngModel)]="amt" class="form-control" name="amt">
+        </div>
+
+        <div class="form-group">
+            <label>Enter Rate</label>
+            <input [(ngModel)]="rate" class="form-control" name="rate">
+        </div>
+
+        <div class="form-group">
+            <label>Enter Time</label>
+            <input [(ngModel)]="time" class="form-control" name="time">
+        </div>
+
+        <div class="form-group mt-2">
+            <input type="submit" class="btn btn-primary">
+            <input type="reset" class="btn btn-primary" style="margin-left: 10px;;">
+
+        </div>
+
+
+    </form>
+    <div>
+        <div>
+            amt is {{amt}}
+        </div>
+        <div>
+            time is {{time}}
+        </div>
+        <div>
+            rate is {{rate}}
+        </div>
+        <div>
+            interewst is {{amt*rate*time/100}}
+        </div>
+
+
+    </div>
+</div>
