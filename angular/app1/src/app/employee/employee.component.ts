@@ -13,6 +13,7 @@ export class EmployeeComponent {
  img_height:number=150;
 
  img2:string="./assets/img2.jpg";
+ img3:string="./assets/img3.jpg";
 
  constructor(){
   this.employee=[

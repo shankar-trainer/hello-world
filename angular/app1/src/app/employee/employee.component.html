@@ -13,6 +13,7 @@
     </tr>
 
 </table>
+<p>property binding</p>
 <div class="border p-5 w-50 bg-primary">
 <img [src]="img1" [width]="img_width" height="img_height">
 </div>
@@ -20,4 +21,11 @@
 <div class="border p-5 w-50 bg-secondary mt-5">
 <img [src]="img2" [width]="img_width" height="img_height">
 </div>
+
+<p>without property binding</p>
+
+<div class="border p-5 w-50 bg-info mt-5">
+<img src={{img3}} width="300" height="200">
+</div>
+
 </div>
