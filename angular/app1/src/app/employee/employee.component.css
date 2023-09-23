@@ -1,0 +1,13 @@
+table{
+    border: solid ;
+
+    padding: 20px;;
+    margin-left: 200px;
+    width: 40%;;
+    color: blue;;
+    background-color: lightyellow;
+}
+
+tr,th,td{
+    border: solid;
+}
