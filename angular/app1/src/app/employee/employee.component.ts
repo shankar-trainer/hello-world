@@ -8,6 +8,11 @@ import { Employee } from './employee';
 })
 export class EmployeeComponent {
  employee:Employee[];
+ img1:string="https://hips.hearstapps.com/hmg-prod/images/close-up-of-tulips-blooming-in-field-royalty-free-image-1584131603.jpg"; 
+ img_width:number=200;
+ img_height:number=150;
+
+ img2:string="./assets/img2.jpg";
 
  constructor(){
   this.employee=[
