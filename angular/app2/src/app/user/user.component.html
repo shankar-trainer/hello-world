@@ -74,7 +74,7 @@
             <div>
                 State is {{state}}
             </div>
-            <div [ngSwitch]="state">
+            <div [ngSwitch]="state" [ngClass]="{class1:true}">
                 <div *ngSwitchCase="'delhi'">capital is new delhi</div>
                 <div *ngSwitchCase="'up'">capital is lucknow</div>
                 <div *ngSwitchCase="'mp'">capital is bhopal</div>
