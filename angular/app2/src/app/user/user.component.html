@@ -84,7 +84,7 @@
                 <div *ngSwitchCase="'tamilnadu'">capital is chennai</div>
                 <div *ngSwitchDefault>state not found</div>
             </div>
-            <div>
+            <div [ngStyle]="{color: 'blue','background-color':'white','width':'30%'}">
                 <div *ngIf="salary>100000 && salary<=200000">
                     Senior Manager
                 </div>
