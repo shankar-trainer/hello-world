@@ -1,0 +1,12 @@
+<p>parent2 works!</p>
+<form (ngSubmit)="send()">
+<div>
+    Enter Name <input name="name">
+</div>
+
+<div>
+    <button type="submit">send</button>
+    <app-child2 [name]=name></app-child2>
+</div>
+
+</form>

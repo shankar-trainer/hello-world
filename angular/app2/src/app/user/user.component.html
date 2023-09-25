@@ -25,30 +25,31 @@
         <tr>
             <td><label>state is {{state}}</label></td>
         </tr>
+
     </table>
     <hr>
 
-    <form class="text-light bg-secondary p-5" style="border-radius:30px">
+    <form class="text-light bg-secondary p-5" style="border-radius:30px"  (ngSubmit) ="userInfo()">
         <div class="form-group">
             <label>Enter Id</label>
-            <input class="form-control" [(ngModel)]="id" name="id">
+            <input class="form-control" [(ngModel)]="id" name="id" placeholder="Enter Id">
         </div>
         <div class="form-group">
-            <label>Enter name</label>
-            <input class="form-control" [(ngModel)]="name" name="name">
+            <label>Enter Name</label>
+            <input class="form-control" [(ngModel)]="name" name="name" placeholder="Enter Name">
         </div>
         <div class="form-group">
             <label>Enter Salary</label>
-            <input class="form-control" [(ngModel)]="salary" name="salary">
+            <input class="form-control" [(ngModel)]="salary" name="salary" placeholder="Enter Salary">
         </div>
         <div class="form-group">
             <label>Enter Location</label>
-            <input class="form-control" [(ngModel)]="location" name="location">
+            <input class="form-control" [(ngModel)]="location" name="location" placeholder="Enter Location">
         </div>
 
         <div class="form-group">
             <label>Enter State</label>
-            <input class="form-control" [(ngModel)]="state" name="state">
+            <input class="form-control" [(ngModel)]="state" name="state" placeholder="Enter State">
         </div>
         <div class="form-group">
 
@@ -56,7 +57,7 @@
             <input type="reset" class="btn btn-primary m-3" >
         </div>
       
-        <div class="border border-info w-50 ml-5 p-5 text-light bg-dark" style="border-radius:25px">
+        <div class="border border-info w-50 ml-5 p-5 text-light bg-dark" style="border-radius:25px" [hidden]="!submitted" >
             <div>
              Id is {{id}}
             </div>
@@ -71,6 +72,20 @@
             </div>
             <div>
              State is {{state}}
+            </div>
+
+            <div>
+             <div *ngIf="salary>100000 && salary<=200000">
+                 Senior Manager
+             </div>
+             
+             <div *ngIf="salary>50000 && salary<=100000">
+                  Manager
+             </div>
+             <div *ngIf="salary>30000 && salary<=50000">
+                  Cashier
+             </div>
+
             </div>
 
         </div>
