@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -6,11 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
-   id:number;
-   name:string;
-   salary:number;
-   location:string;
-   state:string;
+  @Input() id:number;
+  @Input() name:string;
+  @Input() salary:number;
+  @Input() location:string;
+  @Input() state:string;
 
    constructor(){
     this.id=66556;

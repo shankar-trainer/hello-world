@@ -28,28 +28,51 @@
     </table>
     <hr>
 
-    <form class="text-light bg-dark p-5" style="border-radius:30px">
+    <form class="text-light bg-secondary p-5" style="border-radius:30px">
         <div class="form-group">
             <label>Enter Id</label>
-            <input class="form-control">
+            <input class="form-control" [(ngModel)]="id" name="id">
         </div>
         <div class="form-group">
             <label>Enter name</label>
-            <input class="form-control">
+            <input class="form-control" [(ngModel)]="name" name="name">
         </div>
         <div class="form-group">
             <label>Enter Salary</label>
-            <input class="form-control">
+            <input class="form-control" [(ngModel)]="salary" name="salary">
         </div>
         <div class="form-group">
             <label>Enter Location</label>
-            <input class="form-control">
+            <input class="form-control" [(ngModel)]="location" name="location">
         </div>
 
         <div class="form-group">
             <label>Enter State</label>
-            <input class="form-control">
+            <input class="form-control" [(ngModel)]="state" name="state">
         </div>
-        
+        <div class="form-group">
+
+            <input type="submit" class="btn btn-primary">
+            <input type="reset" class="btn btn-primary m-3" >
+        </div>
+      
+        <div>
+            <div>
+             Id is {{id}}
+            </div>
+            <div>
+             name is {{name}}
+            </div>
+            <div>
+             Salary is {{salary}}
+            </div>
+            <div>
+             Location is {{location}}
+            </div>
+            <div>
+             State is {{state}}
+            </div>
+
+        </div>
     </form>
 </div>
