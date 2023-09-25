@@ -27,6 +27,27 @@
         </tr>
 
     </table>
+
+    <h2> Car List </h2>
+    <table class="table table-bordered table-striped table-dark text-light">
+        <thead>
+            <tr>
+                <th>Car Registration No</th>
+                <th>Car Model </th>
+                <th>Car Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of cars">
+                <td>{{c.carid}}</td>
+                <td>{{c.carmodel}}</td>
+                <td>{{c.carcost}}</td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
     <hr>
 
     <form class="text-light bg-secondary p-5" style="border-radius:30px" (ngSubmit)="userInfo()">
@@ -95,7 +116,6 @@
                     Cashier
                 </div>
             </div>
-
         </div>
     </form>
 </div>
