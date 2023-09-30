@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Clock from "./Clock";
 
 class UserForm extends Component {
 
@@ -13,11 +14,11 @@ class UserForm extends Component {
             name_error: '',
             salary_error: '',
             city_error: '',
-            show:true
+            show: true
         }
     }
 
-    toggle = () => this.setState((currentState) => ({show: !currentState.show}));
+    toggle = () => this.setState((currentState) => ({ show: !currentState.show }));
 
 
     id_change = (event) => {
@@ -32,7 +33,7 @@ class UserForm extends Component {
     name_change = (event) => {
         if (event.target.value == '')
             this.setState({ name_error: 'name is blank' })
-        else if (event.target.value.length<5)
+        else if (event.target.value.length < 5)
             this.setState({ name_error: 'name must of 5 characters ' })
         else
             this.setState({ name: event.target.value })
@@ -56,7 +57,9 @@ class UserForm extends Component {
         return (
             <div className="border border-primary p-5 m-5 w-50 bg-info">
                 <form>
-                    <div className="form-group">
+                    <div style={{ float: 'left' }} className="text-light"><Clock></Clock></div>
+                    <br></br>
+                    <div className="form-group mt-3">
                         <label>Enter Id</label>
                         <input className="form-control" onClick={this.id_change} onChange={this.id_change}></input>
                         <span className="text-danger">{this.state.id_error}</span>
@@ -85,14 +88,13 @@ class UserForm extends Component {
                     </div>
 
                     <div className="form-group">
-                        
-                        <button type="button"  className="form-control btn btn-primary mt-3 w-25"
-                        onClick={this.toggle}  >
-                                   {this.state.show ? 'show' : 'hide'}
+
+                        <button type="button" className="form-control btn btn-primary mt-3 w-25"
+                            onClick={this.toggle}  > show and hide
+                            {/* {this.state.show ? 'show' : 'hide'} */}
                         </button>
 
-                        
-                        <button type="button"  className="form-control btn btn-primary mt-3  w-25" style={{'marginLeft':'5px'}}>
+                        <button type="button" className="form-control btn btn-primary mt-3  w-25" style={{ 'marginLeft': '5px' }}>
                             reset
                         </button>
 
