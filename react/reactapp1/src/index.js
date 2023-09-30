@@ -13,7 +13,7 @@ import Address from './person/PersonInfo';
 import PersonInfo from './person/PersonInfo';
 import UserForm from './UserForm1';
 import UnControlledForm from './UnControlledForm';
-
+import Counter2 from './hook/Counter2';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -26,8 +26,11 @@ root.render(
     {/* <Person></Person> */}
     {/* <PersonInfo></PersonInfo> */}
     {/* <UserForm></UserForm> */}
-    <UnControlledForm></UnControlledForm>
-  </React.StrictMode>
+    {/* <UnControlledForm></UnControlledForm>*/}
+    <Counter2></Counter2>
+  
+    </React.StrictMode> 
+
 );
 
 // If you want to start measuring performance in your app, pass a function
