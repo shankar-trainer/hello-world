@@ -12,6 +12,7 @@ import Counter1 from './Counter1';
 import Address from './person/PersonInfo';
 import PersonInfo from './person/PersonInfo';
 import UserForm from './UserForm1';
+import UnControlledForm from './UnControlledForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,7 +25,8 @@ root.render(
     {/* <Counter1></Counter1> */}
     {/* <Person></Person> */}
     {/* <PersonInfo></PersonInfo> */}
-    <UserForm></UserForm>
+    {/* <UserForm></UserForm> */}
+    <UnControlledForm></UnControlledForm>
   </React.StrictMode>
 );
 
