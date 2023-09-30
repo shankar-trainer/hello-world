@@ -74,17 +74,28 @@ export default function Counter2() {
                             else if (isNaN(e.target.value))
                                 setErrorAge('age must of number ')
                             else {
-                              setErrorAge('')
-                              setAge(e.target.value)
+                                setErrorAge('')
+                                setAge(e.target.value)
                             }
-
                         }}
                     ></input>
                     <div className="text-warning">{err_age}</div>
+                </div>
+            </form>
 
+            <div className="border border-info bg-light text-primary p-5 m-5">
+                <div>
+                    Id is {id}
+                </div>
+                <div>
+                    Name is {name}
                 </div>
 
-            </form>
+                <div>
+                    Age is {age}
+                </div>
+
+            </div>
         </div>
     )
 }
