@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Clock from "./Clock";
+import Clock1 from "./Clock1";
 
 class UserForm extends Component {
 
@@ -57,7 +58,8 @@ class UserForm extends Component {
         return (
             <div className="border border-primary p-5 m-5 w-50 bg-info">
                 <form>
-                    <div style={{ float: 'left' }} className="text-light"><Clock></Clock></div>
+                    <span style={{ float: 'left' }} className="text-light"><Clock></Clock></span>
+                    <span style={{ float: 'right' }} className="text-light"><Clock1></Clock1></span>
                     <br></br>
                     <div className="form-group mt-3">
                         <label>Enter Id</label>

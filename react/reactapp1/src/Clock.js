@@ -24,4 +24,18 @@ export default class Clock extends Component{
         )
     }
 
+
+    componentDidMount(){
+      console.log('componet did mount')
+    }
+    componentWillUnmount(){
+
+    }
+    componentDidCatch(){
+
+    }
+    componentWillUnmount(){
+
+    }
+
 }
