@@ -13,9 +13,12 @@ class UserForm extends Component {
             name_error: '',
             salary_error: '',
             city_error: '',
-            
+            show:true
         }
     }
+
+    toggle = () => this.setState((currentState) => ({show: !currentState.show}));
+
 
     id_change = (event) => {
         if (event.target.value == '')
@@ -83,9 +86,11 @@ class UserForm extends Component {
 
                     <div className="form-group">
                         
-                        <button type="button"  className="form-control btn btn-primary mt-3 w-25">
-                            send
+                        <button type="button"  className="form-control btn btn-primary mt-3 w-25"
+                        onClick={this.toggle}  >
+                                   {this.state.show ? 'show' : 'hide'}
                         </button>
+
                         
                         <button type="button"  className="form-control btn btn-primary mt-3  w-25" style={{'marginLeft':'5px'}}>
                             reset
@@ -94,7 +99,7 @@ class UserForm extends Component {
                     </div>
                 </form>
 
-                <div className="border border-primary p-5 mt-5 bg-secondary text-light" hidden={this.state.hidden}>
+                <div className="border border-primary p-5 mt-5 bg-secondary text-light" hidden={this.state.show}>
                     <p>id is {this.state.id}</p>
                     <p>name is {this.state.name}</p>
                     <p>salary is {this.state.salary}</p>
