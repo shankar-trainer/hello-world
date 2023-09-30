@@ -13,6 +13,7 @@ const Dashboard = () => {
     return (
         <Router>
             <Navbar></Navbar>
+            {/* <Navbar>inside routes will not render in every page   */}
             <Routes>
                 {/* <Route exact path="/" element={<Navbar/>}/> */}
                 <Route exact path="/userform" element={<UserForm />} />
