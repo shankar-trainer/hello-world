@@ -15,6 +15,13 @@
 	</properties>
 	<dependencies>
 
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-core</artifactId>
+    <version>6.1.4</version>
+</dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>

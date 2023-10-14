@@ -1,0 +1,8 @@
+<p>parent1 works!</p>
+
+<strong>Name: </strong> {{userName}}
+<strong>Phone: </strong> {{userPhone}}
+
+<app-child1 (nameEvent)="nameEventHander($event)" (phoneEvent)="phoneEventHander($event)"></app-child1>
+<br>
+<app-child2 (nameEvent)="nameEventHander($event)" (phoneEvent)="phoneEventHander($event)"></app-child2>

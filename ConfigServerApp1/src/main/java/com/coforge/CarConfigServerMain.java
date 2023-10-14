@@ -29,3 +29,7 @@ public class CarConfigServerMain  //implements CommandLineRunner
 //	}
 
 }
+//http://localhost:8080/car/production
+//http://localhost:8080/car/dev
+//http://localhost:8080/car/qa
+//http://localhost:8080/car/default

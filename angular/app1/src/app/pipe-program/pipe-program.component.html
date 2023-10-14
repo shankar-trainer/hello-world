@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="border border-primary p-5 m-5 w-50 bg-warning text-light">
+        <p>pipe-program works!</p>
+
+        <p>power of 2,3 is {{2|power:3}}</p>
+
+    </div>
+
+
+    <form class="border border-secondary p-5 m-5 w-50 bg-dark text-light">
+
+        <div class="form-group">
+            <label>Enter Base</label>
+            <input placeholder="Enter Base" class="form-control" name="base" [(ngModel)]="base">
+        </div>
+        <div class="form-group">
+            <label>Enter Exponent</label>
+            <input placeholder="Enter Exponent" class="form-control" name="exponent" [(ngModel)]="exponent">
+        </div>
+
+        <div class="form-group mt-2">
+            <input type="submit" value="Send" class="btn btn-info">
+            <input type="reset" value="Cancel" class="btn btn-info" style="margin-left:5px">
+        </div>
+
+    </form>
+
+    <div claSS="border border:success w-50 m-5 p-5 bg-primary text-light">
+        <div>
+            base is {{base}}
+        </div>
+        <div>
+            exponet is {{exponent}}
+        </div>
+        <div>
+            power of {{base}} with exponent {{exponent}} is {{base|power:exponent}}
+        </div>
+
+
+    </div>
+</div>

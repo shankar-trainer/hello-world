@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>Product Add Form</h2>
+    <form (ngSubmit)="addproduct()">
+        <div class="form-group">
+            <label>Enter Id</label>
+            <input class="form-control" name="prdId" [(ngModel)]="prd.prdId" ngModel="prdId">
+        </div>
+        <div class="form-group">
+            <label>Enter Name</label>
+            <input class="form-control" name="prdName" [(ngModel)]="prd.prdName" ngModel="prdName">
+        </div>
+        <div class="form-group">
+            <label>Enter Cost</label>
+            <input class="form-control" name="prdCost" [(ngModel)]="prd.prdCost" ngModel="prdCost">
+        </div>
+        <div class="form-group">
+            <label>Enter Mfd</label>
+            <input type="date" class="form-control" name="prdMfd" [(ngModel)]="prd.prdMfd" ngModel="prdMfd">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="submit" value="Add Product">
+            <input class="form-control" type="reset" value="Cancel">
+        </div>
+    </form>
+    <div>
+        {{msg}}
+    </div>
+</div>

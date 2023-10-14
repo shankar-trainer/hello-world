@@ -1,0 +1,19 @@
+
+<h1>Update Product Details   </h1>
+
+<div *ngIf="prd">
+    <div>
+        <label><b> Product Id</b></label>{{prd.prdId}}
+    </div>
+
+    <div>
+            <label><b> Product Name</b></label>{{prd.prdName}}
+    </div>
+
+    <div>
+            <label><b> Product Cost</b></label>{{prd.prdCost}}
+    </div>
+</div>
+<br>
+<br>
+<button (click)="list()">Back to Product List</button>

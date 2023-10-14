@@ -6,7 +6,6 @@ angular --- typescript (.ts)
   tsc compiler
 
 
-
 npm i -g @angular/cli@15.2.9
 npm i -g @angular/cli
 
@@ -40,6 +39,42 @@ ng g c employee
 C:\coforge2\angular\app1>cd src\app\employee
 
 C:\coforge2\angular\app1\src\app\employee>ng g class employee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+npm i -g @angular/cli
+
+
+ng new app3
+
+
+ng g component
+
+cd component
+
+ng g pipe power_pipe
+
+
+
+
+
+
+
+
 
 
 

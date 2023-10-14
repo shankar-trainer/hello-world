@@ -10,7 +10,7 @@ import com.coforge.model.Car;
 
 @SpringBootApplication
 @EnableConfigServer
-public class CarConfigServerMain // implements CommandLineRunner
+public class CarConfigServerMain  //implements CommandLineRunner 
 {
 
 	public static void main(String[] args) {
@@ -27,4 +27,9 @@ public class CarConfigServerMain // implements CommandLineRunner
 //		System.out.println("name "+car.getName());
 //		System.out.println("cost "+car.getCost());
 //	}
+
 }
+//http://localhost:8080/car/production
+//http://localhost:8080/car/dev
+//http://localhost:8080/car/qa
+//http://localhost:8080/car/default

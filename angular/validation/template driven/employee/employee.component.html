@@ -1,0 +1,70 @@
+<div class="container">
+
+    <form class=" p-5 m-5 w-75 bg-info" (ngSubmit)="submit()" #empForm=ngForm>
+        <div class="form-group">
+            <label>Enter Id</label>
+            <input class="form-control" [(ngModel)]="emp.id" name="id" required #id="ngModel" minlength="5"
+                maxlength="7" pattern="[0-9]{5,7}">
+            <div *ngIf="id.touched && id.errors?.['required']">
+                <div class="alert alert-danger">Id is blank </div>
+            </div>
+
+            <div *ngIf="id.touched && id.errors?.['minlength']">
+                <div class="alert alert-danger">Id should be minimum 5 digits </div>
+            </div>
+
+            <div *ngIf="id.errors?.['pattern']">
+                <div class="alert alert-danger">This is not a valid Id!!!
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>Enter Name</label>
+            <input class="form-control" [(ngModel)]="emp.name" name="name" required #name="ngModel" minlength="5"
+                maxlength="15" pattern="^[a-zA-Z]+$">
+
+            <div *ngIf="name.touched && name.errors?.['required']">
+                <div class="alert alert-danger">name is blank </div>
+            </div>
+
+            <div *ngIf="name.touched && name.errors?.['minlength']">
+                <div class="alert alert-danger">name should be minimum 5 digits </div>
+            </div>
+            <div *ngIf="name.errors?.['pattern']">
+                <div class="alert alert-danger">This is not a valid name!!!
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Enter Salary</label>
+            <input class="form-control" [(ngModel)]="emp.salary" name="salary" required #salary="ngModel" minlength="4"
+                maxlength="6">
+            <div *ngIf="salary.touched && salary.errors?.['required']">
+                <div class="alert alert-danger">salary is blank </div>
+            </div>
+
+            <div *ngIf="salary.touched && salary.errors?.['minlength']">
+                <div class="alert alert-danger">salary should be minimum 4 digits </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary mt-3">Login</button>
+            <button type="reset" class="btn btn-primary mt-3" style="margin-left:5px;">Cancel</button>
+        </div>
+    </form>
+
+    <div class="border border-primary p-5 m-5 w-75 bg-warning text-info" [hidden]="!submitted">
+        <div>
+            Id is {{emp.id}}
+        </div>
+        <div>
+            Name is {{emp.name}}
+        </div>
+        <div>
+            Salary is {{emp.salary}}
+        </div>
+    </div>
+</div>
