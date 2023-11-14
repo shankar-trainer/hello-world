@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "maven-run",
+            "name": "Maven-run configuration",
+            "mainClass": "ex1.loose.Main",
+        },
+        
+    ]
+}

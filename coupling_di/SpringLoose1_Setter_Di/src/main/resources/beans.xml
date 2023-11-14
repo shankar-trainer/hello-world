@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="car" class="ex1.loose.Car">
+	</bean>
+
+	<bean id="bike" class="ex1.loose.Bike">
+	</bean>
+
+	<bean id="car_traveller" class="ex1.loose.Traveller">
+		<property name="vehicle" ref="car"></property>
+	</bean>
+	
+	<bean id="bike_traveller" class="ex1.loose.Traveller">
+		<property name="vehicle" ref="bike"></property>
+	</bean>
+	
+
+</beans>
