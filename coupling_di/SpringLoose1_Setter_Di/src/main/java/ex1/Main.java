@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
 
 	public static void main(String[] args) {
+
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		Traveller traveller1 = ctx.getBean("car_traveller", Traveller.class);
 	    traveller1.getVehicle().start();

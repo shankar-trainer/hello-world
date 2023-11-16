@@ -29,16 +29,14 @@ public class Traveller {
 		System.out.println("loose coupling");
 		Vehicle car=new Car();
 	 
-	 Traveller traveller=new Traveller();
+	    Traveller traveller=new Traveller();
 	 
-	 traveller.setVehicle(car);
-	 traveller.vehicle.start();
+	    traveller.setVehicle(car);
+	    traveller.vehicle.start();
 	 
+        Vehicle bike=new Bike();
 	 
-	 Vehicle bike=new Bike();
-	 
-	 traveller.setVehicle(bike);
-	 traveller.vehicle.start();
-	 
+	    traveller.setVehicle(bike);
+	    traveller.vehicle.start();
 	}
 }

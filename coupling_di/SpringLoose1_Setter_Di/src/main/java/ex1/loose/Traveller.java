@@ -12,22 +12,4 @@ public class Traveller {
 		return vehicle;
 	}
 	
-
-//	public static void main(String[] args) {
-//	 Vehicle car=new Car();
-//	 
-//	 Traveller traveller=new Traveller();
-//	 
-//	 traveller.setVehicle(car);
-//	 traveller.vehicle.start();
-//	 
-//	 
-//	 Vehicle bike=new Bike();
-//	 
-//	 traveller.setVehicle(bike);
-//	 traveller.vehicle.start();
-//	 
-//	 
-//	}
-	
 }
