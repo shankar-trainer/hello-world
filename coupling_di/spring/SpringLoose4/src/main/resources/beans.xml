@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="o_address" class="ex1.loose.OfficeAddress" init-method="init">
+	</bean>
+
+	<bean id="h_address" class="ex1.loose.HomeAddress" init-method="init">
+	</bean>
+
+	<bean id="office_employee" class="ex1.loose.Employee">
+		<property name="address" ref="o_address"/>
+	</bean>
+	
+	<bean id="home_employee" class="ex1.loose.Employee">
+		<property name="address" ref="h_address"></property>
+	</bean>
+	
+
+</beans>
