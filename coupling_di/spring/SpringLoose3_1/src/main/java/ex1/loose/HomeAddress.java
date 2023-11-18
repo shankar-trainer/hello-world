@@ -3,9 +3,12 @@ package ex1.loose;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import lombok.Data;
+
 import javax.annotation.PostConstruct;
 
 //@Component
+@Data
 @Service
 public class HomeAddress  implements  Address{
     

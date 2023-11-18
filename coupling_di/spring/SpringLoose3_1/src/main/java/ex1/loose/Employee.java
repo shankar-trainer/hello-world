@@ -2,6 +2,7 @@ package ex1.loose;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -22,8 +23,8 @@ public void init(){
 }
 
 @Autowired
+@Qualifier("homeAddress")
 Address address;
-
-    
+   
     
 }
