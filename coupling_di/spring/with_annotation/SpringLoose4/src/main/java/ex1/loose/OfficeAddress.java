@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 
 @Data
 @Service
-@Qualifier("officeAddress")
+//@Qualifier("officeAddress")
 public class OfficeAddress  implements  Address{
     
     private int addrId;

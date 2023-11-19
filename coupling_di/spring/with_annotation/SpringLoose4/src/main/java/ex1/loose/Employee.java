@@ -25,7 +25,11 @@ public class Employee {
 
 	//@Autowired
 	//@Qualifier("homeAddress")
-	@Resource(name="homeAddress")
+	//@Qualifier("officeAddress")
+	
+	// or below
+	//@Resource(name="homeAddress")
+	@Resource(name="officeAddress")
 	Address address;
 
 }
