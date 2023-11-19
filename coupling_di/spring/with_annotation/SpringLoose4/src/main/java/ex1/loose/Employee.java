@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 @Component
 @Data
@@ -22,8 +23,9 @@ public class Employee {
 		this.salary = 90000.0f;
 	}
 
-	@Autowired
-	@Qualifier("homeAddress")
+	//@Autowired
+	//@Qualifier("homeAddress")
+	@Resource(name="homeAddress")
 	Address address;
 
 }

@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 
 //@Component
 @Service
-@Qualifier("homeAddress")
+//@Qualifier("homeAddress")
 @Data
 public class HomeAddress implements Address {
 
