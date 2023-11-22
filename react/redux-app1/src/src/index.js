@@ -12,6 +12,7 @@ import Example11 from './example11/Example11';
 import App3 from './example3/App';
 import Example5 from './example5/App';
 import Index from './example5/js';
+import App4 from './example4/App';
 //const store=createStore(counterReducer,loggedReducer)
 const store=createStore(allReducers,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -23,6 +24,7 @@ ReactDOM.render(
       {/* <Example2></Example2> */}
       {/* <Example11></Example11> */}
       {/* <App3></App3> */}
+      <App4></App4>
       <Index></Index>
     </Provider>,
   document.getElementById('root')
