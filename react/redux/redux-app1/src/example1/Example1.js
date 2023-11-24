@@ -3,7 +3,6 @@ import {useSelector, useDispatch} from 'react-redux';
 //import { increment, decrement } from './actions';
 import { increment, decrement } from './actions/myaction';
 
-
 export default function Example1() {
 
   const counter=useSelector(state=>state.counter)
@@ -17,7 +16,7 @@ export default function Example1() {
       <button onClick={()=>dispatch(increment())}>+</button>
       <button onClick={()=>dispatch(decrement())}>-</button>
     {
-      isLogged?<h3>Valubale information I donot see</h3>:''
+      isLogged?<h3>Valubale information I do not see</h3>:''
     }
     </div>
   );
