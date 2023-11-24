@@ -5,6 +5,7 @@ import store from "./store/index";
 import App from "./components/App";
 const Index = () =>(
   <Provider store={store}>
+    
     <App />
   </Provider>
 

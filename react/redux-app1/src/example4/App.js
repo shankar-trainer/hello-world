@@ -12,11 +12,10 @@ function App4() {
 
   const dispatch = useDispatch();
 
-  
-
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className='border primary bg-info w-50 p-5 m-5'>
+      <p className='text-danger'>Example4</p>
+      {/* <header className="App-header"> */}
         <h2> Counter : {counter}</h2>
 
         <button onClick={()=>dispatch(increment(1))}>+</button>
@@ -34,10 +33,8 @@ function App4() {
           <button onClick={()=>dispatch(signin())}> Login </button>
           </>
         }
-
-        
-
-      </header>
+      {/* </header> */}
+      
     </div>
   );
 }
