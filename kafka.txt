@@ -105,7 +105,7 @@ kafka-topics \
   --create
 
   
-===============================
+=============================== 
   start zookeeper
 
 cd C:\kafka_2.11-0.9.0.0\bin\windows
@@ -114,6 +114,7 @@ cd C:\kafka_2.11-0.9.0.0\bin\windows
 
   start kafka server 
 cd   C:\kafka_2.11-0.9.0.0\bin\windows
+
 $ kafka-server-start.bat ..\..\config\server.properties
 
 
@@ -127,3 +128,32 @@ start the consumer which listens to the topic javainuse-topic we just created ab
  
   
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic javainuse-topic --from-beginning --zookeeper 127.0.0.1:2181
+=====================================
+spring boot example
+
+  start zookeeper
+
+cd C:\kafka_2.11-0.9.0.0\bin\windows
+ $ zookeeper-server-start.bat ..\..\config\zookeeper.properties
+
+
+  start kafka server 
+cd   C:\kafka_2.11-0.9.0.0\bin\windows
+
+$ kafka-server-start.bat ..\..\config\server.properties
+
+
+$ kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic javainuse-topic
+
+
+Next start the Spring Boot Application by running it as a Java Application.
+
+Also Start the consumer listening to the java_in_use_topic-
+ kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic javainuse-topic --from-beginning --zookeeper 127.0.0.1:2181
+ 
+http://localhost:8080//javainuse-kafka/producer?message=test
+
+
+https://www.javainuse.com/spring/spring-boot-apache-kafka-hello-world
+https://www.javainuse.com/misc/apache-kafka-hello-world
+
