@@ -22,9 +22,9 @@
 	width: 110px;
 	margin-top: 3px;
 }
-.error{
- color:red;
- 
+
+.error {
+	color: red;
 }
 
 button {
@@ -38,7 +38,7 @@ button {
 	<form:form method="post" action="customerAction"
 		modelAttribute="customer" cssClass="form1"
 		cssStyle="border:solid red 3px;">
-
+		<p>Spring Validation
 		<div>
 			<form:label path="customerId" cssClass="label1">Enter Id</form:label>
 			<form:input path="customerId" cssClass="input1" />
