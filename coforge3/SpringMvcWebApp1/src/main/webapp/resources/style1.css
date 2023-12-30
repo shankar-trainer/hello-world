@@ -1,10 +1,9 @@
-
 form {
 	margin-left: 300px;
 	background-color: lightyellow;
 	padding: 20px;
 	border: solid;
-	width: 30%;
+	width: 60%;
 }
 
 label {
@@ -17,7 +16,9 @@ input {
 	margin-top: 5px;
 	width: 110pt;
 }
-
+span{
+	color:red;
+}
 button {
 	margin-top: 2px;
 	width: 110pt;

@@ -24,6 +24,7 @@ public class UserController {
 	public String userForm(@RequestParam("id") int id, @RequestParam("name") String nm,
 			@RequestParam("salary") float sal, ModelMap map) {
 
+		 
 		User user = new User();
 		user.setId(id);
 		user.setName(nm);
