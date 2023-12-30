@@ -9,6 +9,10 @@
 <body>
 <h1>Hello World</h1>
 <p>
+
 <a href="user/hello">User Form</a>
+<p>
+<a href="emp/form">Employee Form</a>
+
 </body>
 </html>
