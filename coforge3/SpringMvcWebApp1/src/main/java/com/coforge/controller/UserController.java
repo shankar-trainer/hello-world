@@ -32,7 +32,7 @@ public class UserController {
 
 		map.addAttribute("user1", user);
 
-		return "UserResult";
+		return "result/UserResult";
 	}
 }
 //https://github.com/shankar-trainer/hello-world/tree/coforge23_2/coforge3/SpringMvcWebApp1

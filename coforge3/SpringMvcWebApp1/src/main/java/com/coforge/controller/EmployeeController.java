@@ -30,14 +30,14 @@ public class EmployeeController {
 		map.addAttribute("employee", employee);
 		return  new ModelAndView("EmployeeForm");
 	}
-	
+	// jsr 303
 	@PostMapping("/employeeAction")
 	public ModelAndView employeeProcess(@ModelAttribute("employee") @Valid Employee employee,BindingResult result) {
 		if(result.hasErrors()) {
 			return new ModelAndView("EmployeeForm");
 		}
 		else {
-			return new ModelAndView("EmployeeResult");
+			return new ModelAndView("result/EmployeeResult");
 		}
 		
 	}

@@ -35,24 +35,24 @@ button {
 <body>
 	<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-	<form:form method="post" action="employeeAction"
-		modelAttribute="employee" cssClass="form1"
+	<form:form method="post" action="customerAction"
+		modelAttribute="customer" cssClass="form1"
 		cssStyle="border:solid red 3px;">
 
 		<div>
-			<form:label path="empId" cssClass="label1">Enter Id</form:label>
-			<form:input path="empId" cssClass="input1" />
-			<form:errors path="empId" cssClass="error"></form:errors>
+			<form:label path="customerId" cssClass="label1">Enter Id</form:label>
+			<form:input path="customerId" cssClass="input1" />
+			<form:errors path="customerId" cssClass="error"></form:errors>
 		</div>
 		<div>
-			<form:label path="empName" cssClass="label1">Enter Name</form:label>
-			<form:input path="empName" cssClass="input1" />
-			<form:errors path="empName" cssClass="error"></form:errors>
+			<form:label path="customerName" cssClass="label1">Enter Name</form:label>
+			<form:input path="customerName" cssClass="input1" />
+			<form:errors path="customerName" cssClass="error"></form:errors>
 		</div>
 		<div>
-			<form:label path="empSalary" cssClass="label1">Enter Salary</form:label>
-			<form:input path="empSalary" cssClass="input1" />
-			<form:errors path="empSalary" cssClass="error"></form:errors>
+			<form:label path="customerSalary" cssClass="label1">Enter Salary</form:label>
+			<form:input path="customerSalary" cssClass="input1" />
+			<form:errors path="customerSalary" cssClass="error"></form:errors>
 		</div>
 		<div>
 			<button type="submit">Login</button>

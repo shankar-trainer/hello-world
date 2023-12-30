@@ -13,6 +13,8 @@
 <a href="user/hello">User Form</a>
 <p>
 <a href="emp/form">Employee Form</a>
+<p>
+<a href="customer/form">Customer Form</a>
 
 </body>
 </html>
