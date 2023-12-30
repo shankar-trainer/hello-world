@@ -2,11 +2,12 @@ package com.coforge.controller;
 
 import javax.validation.Validator;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
 import com.coforge.model.Customer;
-
+@Component
 public class CustomerValidator implements org.springframework.validation.Validator{
 
 	@Override
@@ -17,13 +18,13 @@ public class CustomerValidator implements org.springframework.validation.Validat
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmpty(errors, "customerName", "customer name is required");
+		ValidationUtils.rejectIfEmpty(errors, "customerName","customer.required", "customer name is required");
 		
 		Customer customer=(Customer) target;
 		if(customer.getCustomerId()<=0)
-			errors.rejectValue("customerId", "id is required");
+			errors.rejectValue("customerId", "id.required","id is required");
 		if(customer.getCustomerSalary()<=0)
-			errors.rejectValue("customerSalary", "salary is required");
+			errors.rejectValue("customerSalary","salary.required", "salary is required");
 		
 	}
 

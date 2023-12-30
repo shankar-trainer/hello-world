@@ -33,6 +33,9 @@ public class CustomerController {
 	@RequestMapping("/form")
 	public ModelAndView welcome(ModelMap map) {
 		Customer customer=new Customer();
+		customer.setCustomerId(0);
+		customer.setCustomerName("");
+		customer.setCustomerSalary(0.0f);
 		
 		map.addAttribute("customer", customer);
 		return  new ModelAndView("CustomerForm");
