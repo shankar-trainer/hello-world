@@ -7,7 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet"
+<link rel="css/stylesheet"
 	href="<spring:url value='/resources/style1.css'/>" />
 </head>
 <body>
