@@ -17,23 +17,21 @@ public class UserController {
 	public String welcome() {
 		return "UserForm";
 	}
-	
-	@RequestMapping(path="/hello", method = RequestMethod.POST)
-	//@PostMapping("/hello")
-	public String userForm(@RequestParam("id") int id,@RequestParam("name") String nm,
-			@RequestParam("salary") float sal, ModelMap map
-			
-			) {
-		
-		User user=new User();
+
+	//@PostMapping("/hello") equal  @RequestMapping(path = "/hello", method = RequestMethod.POST)  
+	//@RequestMapping(path = "/hello", method = RequestMethod.POST)
+	 @PostMapping("/hello")
+	public String userForm(@RequestParam("id") int id, @RequestParam("name") String nm,
+			@RequestParam("salary") float sal, ModelMap map) {
+
+		User user = new User();
 		user.setId(id);
 		user.setName(nm);
 		user.setSalary(sal);
-		
+
 		map.addAttribute("user1", user);
-		
+
 		return "UserResult";
 	}
-	
-	
 }
+//https://github.com/shankar-trainer/hello-world/tree/coforge23_2/coforge3/SpringMvcWebApp1
