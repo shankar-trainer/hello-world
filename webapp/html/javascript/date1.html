@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body onload="myclock1()">
+    <script>
+        date = new Date()
+        // alert(date)
+        document.write("<br>date " + date)
+        document.write("<br>date toDateString " + date.toDateString())
+        document.write("<br> toLocaleDateString " + date.toLocaleDateString())
+        document.write("<br> toTimeString " + date.toTimeString())
+        document.write("<br> toLocaleTimeString " + date.toLocaleTimeString())
+
+        function alarm() {
+            alert('alarm is ringing ')
+        }
+        // anonymous function
+        myalarm = function () {
+            alert('alarm is ringing after 5 second ')
+        }
+        document.write("<br><br><br><br>alarm will ring after 4  second ")
+        setTimeout(alarm, 4 * 1000);
+
+        document.write("<br><br><br><br>alarm will ring after 5  second ")
+        setTimeout(myalarm, 9 * 1000);
+
+        setInterval(function () {
+            console.log(new Date().toLocaleTimeString())
+        }
+            , 1000
+        )
+
+        function myclock1() {
+            var clock;
+            setInterval(function () {
+                clock = (new Date().toLocaleTimeString())
+                document.getElementById('id1').innerHTML = clock
+            }
+                , 1000
+            )
+        }
+    </script>
+
+    <br><br>
+    <div style="color: blue;border: solid;padding: 20px;font-size: large;margin-left: 200px;width: 30%;">
+        Time is
+        <span id="id1">
+        </span>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+form {
+	margin-left: 350px;
+	margin-top: 100px;
+	background-color: lightyellow;
+	padding: 20px;
+	border: solid;
+	width: 30%;
+}
+
+label {
+	width: 110pt;
+	float: left;
+	margin-top: 5px;
+}
+
+input {
+	margin-top: 5px;
+	width: 110pt;
+}
+span{
+	color:red;
+}
+button {
+	margin-top: 2px;
+	width: 110pt;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    
+    <script>
+   var ar1=[10,21,32,43,55];
+   console.log(ar1)
+   console.log('for in loop')
+   
+   for (var key in ar1) {
+       console.log(key+'   '+ar1[key])
+    }
+    
+    console.log('for of  loop')
+    for (var x of ar1) {
+        console.log(x)
+    }
+
+    ar1.push(999); // push add element at last position
+    console.log(ar1)
+    console.log('pop element '+ar1.pop()); // pop remove and return element from last position
+   
+    ar1.unshift(19999); // unshift will add element at first position
+    ar1.unshift(19999);// shift -- remove and return from first position
+    
+    console.log("\n"+ar1+'\nreverse \n\n'+ar1.reverse())
+
+    var city=['delhi','mumbai','chennai','kolkotta']
+    console.log("\nunsorted "+city)
+    
+    city.sort();
+    console.log("\nsorted "+city)
+
+    var ar5=[55,1,2,99,10];
+    document.write("<br>unsorted "+ar5)
+
+     function arraysort(a,b){
+        return a-b;
+     }
+
+     ar5.sort(arraysort)
+     document.write("<br>sorted "+ar5)
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<div class="container">
+ <h1>All Customer Detail </h1>
+  <table class="table table-bordered table-striped bg-primary text-light">
+  <thead>
+    <tr>
+        <th>Customer Id</th>
+        <th>Customer Name</th>
+        <th>Customer Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of customer|async">
+     <td>
+        {{c.customerId}}
+     </td>
+     <td>
+        {{c.customerName}}
+     </td>
+     <td>
+        {{c.customerSalary}}
+     </td>
+
+    </tr>
+  </tbody>
+ </table>
+ <button (click)="addcustomer()">Add Customer page</button>
+</div>

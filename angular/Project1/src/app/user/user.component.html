@@ -1,0 +1,65 @@
+<div class="container">
+
+    <div class="text-light p-5 bg-primary m-5 w-75" style="border-radius: 10pt;">
+        <form (ngSubmit)="formSubmit()">
+            <h2>Template Driven Form</h2>
+            <h3>User Form</h3>
+            <div class="form-group">
+                <label>Enter Id</label>
+                <input name="userId" [(ngModel)]="user.userId" class="form-control" required #userId="ngModel"
+                    minlength="5" maxlength="10" placeholder="Enter Id">
+
+                <span *ngIf="userId.touched && userId.errors?.['required']">
+                    id is blank
+                </span>
+                <span *ngIf="userId.touched && userId.errors?.['minlength']">
+                    id must of 5 digit
+                </span>
+
+                <span *ngIf="userId.touched && userId.errors?.['maxlength']">
+                    id must of maximum 10 digit
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label>Enter Name</label>
+                <input name="userName" #userName="ngModel" [(ngModel)]="user.userName" class="form-control"
+                    minlength="5" maxlength="20" required="" placeholder="Enter Name">
+                <span *ngIf="userName.touched && userName.errors?.['required']" class="bg-danger">
+                    name is blank
+                </span>
+
+                <span *ngIf="userName.touched && userName.errors?.['minlength']">
+                    name must of minimum 5 character
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label>Enter Salary</label>
+                <input name="user.userName" [(ngModel)]="user.userSalary" class="form-control" required
+                    name="userSalary" #userSalary="ngModel" placeholder="Enter Salary" minlength="5" maxlength="7">
+                <span *ngIf="userSalary.touched && userSalary.errors?.['required']">
+                    salary is blank
+                </span>
+
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-secondary"> Login </button>
+                <button type="reset" class="btn btn-secondary" style="margin-left: 10px;"> Cancel </button>
+            </div>
+
+        </form>
+
+    </div>
+    <div class="bg-info text-light m-5 w-75 p-5" style="font-weight: bolder; font-size: x-large;border-radius: 10pt;" [hidden]="!submitted">
+
+        <div>
+            id is {{user.userId}}
+        </div>
+        <div>
+            name is {{user.userName}}
+        </div>
+        <div>
+            salary is {{user.userSalary}}
+        </div>
+    </div>

@@ -1,0 +1,107 @@
+slide link
+mysql
+https://drive.google.com/drive/folders/1NZCsd6FEd-cZkeaso8d87FaggBJaMdJG?usp=sharing
+
+Uml slide link
+https://drive.google.com/drive/folders/1APMivb_bFer5oZE4oBTvpU_RNoNwtm2Q?usp=sharing
+
+java slide
+https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
+
+html link
+
+https://drive.google.com/drive/folders/1QQOyhCahMQIhSa_pHxIhF2Gllm9vxmf9?usp=sharing
+
+html 5 link
+
+https://drive.google.com/drive/folders/1k9OsoLD4KTN542cKy1evoNa9FwyACy7l?usp=sharing
+
+css link 
+
+https://drive.google.com/drive/folders/1KoL-m1gPx0IBCd8ALUiqvJZ_sXkO-NwX?usp=sharing
+
+css3 link
+
+https://drive.google.com/drive/folders/1g0h0nvd6H3Ko5DlTcTmjdmG9o_vUKwID?usp=sharing
+
+jquery link
+https://drive.google.com/drive/folders/1WO6Dh2xhhmPzvFQ4S8eInOHarAP3fdAJ?usp=sharing
+
+
+javascript link
+
+https://drive.google.com/drive/folders/1YK7nr_yqOPwHLR6xgx_XFnMyNDe14fT3?usp=sharing
+
+
+servlet,jsp slide
+
+https://drive.google.com/drive/folders/1dltroT1T_scV5IOl0po0p03N3c-ME-oS?usp=sharing
+
+node express link
+
+https://drive.google.com/drive/folders/1D4xKdxqfNupCVCYvqGIGTE8_cOgDf_2E?usp=sharing
+
+hibernate
+
+https://drive.google.com/drive/folders/14QE5f3TPxuAR_cwVaH7jVAhLbTfuHUMV?usp=sharing
+
+spring slide
+
+https://drive.google.com/drive/folders/1wS5tGQN92Zy1DlSl5jwk8BeWgME2d6in?usp=sharing
+
+spring boot
+
+https://drive.google.com/drive/folders/1nK8xmsCErwTg7PlSKAB-AmN3YpJn3Pga?usp=sharing
+
+spring microservice
+
+https://drive.google.com/drive/folders/11eU_MAsOIgV77BiudQn3k8fdUYie-2wq?usp=sharing
+
+angular slide
+
+https://drive.google.com/drive/folders/1_AOn33J6VEE5Doxej83-if4QPyfK24Fy?usp=sharing
+
+react slide
+
+https://drive.google.com/drive/folders/1YPDVEw41EFYzN9y9lDOvOvghYb8EKPM0?usp=sharing
+
+
+
+software link
+
+jdk link
+https://www.oracle.com/in/java/technologies/downloads/#jdk20-windows
+https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.msi
+
+mysql 
+https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.35.0.msi
+
+code git link
+https://github.com/shankar7979/coforge_23_3  
+
+
+
+
+
+
+==================
+
+https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-03/R/eclipse-jee-2023-03-R-win32-x86_64.zip
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+

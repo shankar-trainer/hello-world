@@ -1,0 +1,17 @@
+<div class="container">
+    <form (ngSubmit)="addcustomer()">
+    <div class="form-group">
+      <label>Enter Id</label>
+      <input class="form-control" [(ngModel)]="customer.customerId"
+      [ngModelOptions]="{standalone: true}">
+    </div>
+    
+    <button type="submit">Search Record</button>
+    
+    <button type="reset">Cancel Record</button>
+    
+    <button type="button" (click)="showall()" >show all customer</button>
+    <button type="button" (click)="add()" >show all customer</button>
+</form>
+Customer Message {{msg}}
+</div>

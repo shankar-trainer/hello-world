@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto:  create
+      
+  datasource:
+    url:  jdbc:mysql://localhost:3306/db3
+    
+    username:  root
+    password:  mysql
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+      
+    show-sql:  true
+        
+
+

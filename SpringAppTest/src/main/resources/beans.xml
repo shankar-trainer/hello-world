@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="hello1" class="com.coforge.model.Hello"
+		init-method="start" destroy-method="destroy" lazy-init="true">
+	</bean>
+
+	<bean class="com.coforge.model.Employee" id="emp1"
+		init-method="init" scope="prototype" autowire="byName">
+		<property name="empId" value="6767766"></property>
+		<property name="empName" value="amit kumar"></property>
+		<property name="empSalary" value="90000"></property>
+		<!-- <property name="address" ref="addr"></property> -->
+	</bean>
+
+<!-- 	<bean class="com.coforge.model.Address" id="addr"> -->
+ 	<bean class="com.coforge.model.Address" id="address">
+		<property name="addrId" value="6756776"></property>
+		<property name="city" value="greater noida"></property>
+		<property name="state" value="uttar pardesh"></property>
+	</bean>
+	
+<!-- 	<bean id="book1" class="com.coforge.model.Book"> -->
+	<!--    if no id the spring creates id with small case like book -->
+	<bean  class="com.coforge.model.Book" >
+	  <constructor-arg name="isbn" value="67776"></constructor-arg>
+	  <constructor-arg name="bname" value="spring recipee"></constructor-arg>
+	  <constructor-arg name="author" value="s kumar"></constructor-arg>
+	</bean>
+	
+</beans>

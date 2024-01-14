@@ -1,0 +1,61 @@
+
+parent 
+Customer       Order              Delievery  
+   id (pk)      id (pk)            id 
+   name         cost               delievery_date
+   age          order_date         location
+   income       customer_id(fk)    order_id(fk)
+                                   customer_id(fk) 
+   pk               fk
+   id --           customer_id 
+
+mysql> select * from customer;
++-----+----------------+------+--------+
+| id  | name           | age  | income |
++-----+----------------+------+--------+
+| 450 | priyansh kumar |   34 |  45000 |
++-----+----------------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from customer_order;
++----+------+------------+-------------+
+| id | cost | order_date | customer_id |
++----+------+------------+-------------+
+|  1 | 1200 | 2023-12-06 |         450 |
+|  2 | 1100 | 2023-12-06 |         450 |
+|  3 |  100 | 2023-12-06 |         450 |
+|  4 |  200 | 2023-12-06 |         450 |
++----+------+------------+-------------+
+4 rows in set (0.00 sec)
+
+
+
+mysql> select * from customer;
++-----+----------------+------+--------+
+| id  | name           | age  | income |
++-----+----------------+------+--------+
+| 450 | priyansh kumar |   34 |  45000 |
++-----+----------------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from customer_order;
++----+------+------------+-------------+
+| id | cost | order_date | customer_id |
++----+------+------------+-------------+
+|  1 | 1200 | 2023-12-06 |         450 |
+|  2 | 1100 | 2023-12-06 |         450 |
+|  3 |  100 | 2023-12-06 |         450 |
+|  4 |  200 | 2023-12-06 |         450 |
++----+------+------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from delievery;
++-----+----------------+-----------+----------+-------------+
+| id  | delievery_date | location  | order_id | customer_id |
++-----+----------------+-----------+----------+-------------+
+| 101 | 2023-12-08     | new delhi |        1 |         450 |
+| 102 | 2023-12-09     | aagra     |        2 |         450 |
+| 103 | 2023-12-10     | mathura   |        3 |         450 |
+| 104 | 2023-12-18     | gurfgaon  |        4 |         450 |
++-----+----------------+-----------+----------+-------------+
+4 rows in set (0.00 sec)

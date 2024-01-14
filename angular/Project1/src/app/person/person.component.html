@@ -1,0 +1,59 @@
+<div class="container">
+   <form class="p-5 bg-secondary text-light m-5 border border-dark" (ngSubmit)="onsubmit()">
+    <div class="form-group">
+      <label>Enter Id</label>
+      <input class="form-control" [(ngModel)]="person.id" [ngModelOptions]="{standalone: true}">
+    </div>
+    
+    <div class="form-group">
+      <label>Enter Name</label>
+      <input class="form-control"   [(ngModel)]="person.name" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group">
+      <label>Enter Salary</label>
+      <input class="form-control"  [(ngModel)]="person.salary" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group">
+      <label>Enter Dob</label>
+      <input class="form-control"  type="date" [(ngModel)]="person.dob" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group mt-2" >
+        <button type="submit">Ok</button>
+        <button type="reset" > Reset</button>
+    </div>
+   </form>
+
+    <div class="bg-light text-info border border-primary p-5 m-5" [hidden]="!submit">
+
+        <h1>person information</h1>
+
+        <div>
+            Id is {{person.id}}
+        </div>
+        <div>
+            Name is {{person.name|uppercase}}
+        </div>
+        <div>
+            Name is {{person.name|titlecase}}
+        </div>
+        <div>
+            Salary is {{person.salary|currency}}
+        </div>
+        
+        <div>
+            Salary is {{person.salary|currency:'Rs'}}
+        </div>
+        
+        <div>
+            Salary is {{person.salary|currency:'₹'}}
+        </div>
+
+        <div>
+            Dob is {{person.dob|date}}
+        </div>
+        
+    <div>
+        Person data {{person|json}}
+      </div>
+    </div>
+</div>

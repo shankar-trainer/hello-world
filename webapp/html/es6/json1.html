@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+ const student=[  
+   {  
+      name:'arun',
+      gender:'Male',
+      physics:88,
+      maths:87,
+      english:78
+   },
+   {  
+      name:'rajesh',
+      gender:'Male',
+      physics:96,
+      maths:100,
+      english:95
+   },
+   {  
+      name:'moorthy',
+      gender:'Male',
+      physics:89,
+      maths:90,
+      english:70
+   },
+   {  
+      name:'raja',
+      gender:'Male',
+      physics:30,
+      maths:25,
+      english:40
+   },
+   {  
+      name:'usha',
+      gender:'Female',
+      physics:67,
+      maths:45,
+      english:78
+   },
+   {  
+      name:'priya',
+      gender:'Female',
+      physics:56,
+      maths:46,
+      english:78
+   },
+   {  
+      name:'Sundar',
+      gender:'Male',
+      physics:12,
+      maths:67,
+      english:67
+   },
+   {  
+      name:'Kavitha',
+      gender:'Female',
+      physics:78,
+      maths:71,
+      english:67
+   },
+   {  
+      name:'Dinesh',
+      gender:'Male',
+      physics:56,
+      maths:45,
+      english:67
+   },
+   {  
+      name:'Hema',
+      gender:'Female',
+      physics:71,
+      maths:90,
+      english:23
+   },
+   {  
+      name:'Gowri',
+      gender:'Female',
+      physics:100,
+      maths:100,
+      english:100
+   }
+]
+
+document.write('<h2>student data</h2>')
+
+document.write(JSON.stringify(student[0]));
+document.write("<p>"+JSON.stringify(student[1]));
+
+    document.write("<br>name "+student[0].name);
+    document.write("<br>gender "+student[0].gender);
+    document.write("<br>physics "+student[0].physics);
+    document.write("<br>maths "+student[0].maths);
+    document.write("<br>english "+student[0].english);
+
+    document.write("<p><p><br> using for of loop <p> ")
+
+    for (const st of student) {
+        document.write("<br>"+st.name+"\t"+st.gender+"\t"+st.maths+"\t"+st.english+"\t"+st.physics)
+    }
+
+    
+
+    </script>
+
+ 
+
+
+</head>
+<body>
+    
+</body>
+</html>

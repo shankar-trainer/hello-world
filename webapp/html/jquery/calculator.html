@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='style/style1.css'>
+
+    <script src='script/jquery-3.7.1.min.js'>
+    </script>
+    <script>
+        $(function () {
+
+            $('#addition').click(
+                function () {
+                    if ($('#n1').val() == ''){
+                        //alert('no1 is blank')
+                       $('#err_n1').text('no1 is blank').css('background','yellow').
+                       css('border','1px solid red')
+                    }
+                    else if ( $('#n2').val() == ''){
+                        //alert('no2 is blank')
+                        $('#err_n1').text('')
+                        $('#err_n2').text('no2 is blank')
+                    }
+                    else {
+                        $('#err_n2').text('')
+                 $('#n3').val(parseFloat($('#n1').val()) +parseFloat( $('#n2').val()));
+                    }
+                }
+            )
+
+            $('#subtraction').click(
+                function () {
+                    if ($('#n1').val() == '')
+                        alert('no1 is blank')
+                    else if ( $('#n2').val() == '')
+                        alert('no2 is blank')
+                    else {
+                 $('#n3').val(parseFloat($('#n1').val()) -parseFloat( $('#n2').val()));
+                    }
+                }
+            )
+        })
+    </script>
+
+
+</head>
+
+<body>
+    <form>
+        <div>
+            <label>Enter No1</label>
+            <input id="n1">
+            <span id="err_n1"></span>
+        </div>
+
+        <div>
+            <label>Enter No2</label>
+            <input id="n2">
+            <span id="err_n2"></span>
+        </div>
+
+        <div>
+            <label>Result</label>
+            <input id="n3">
+
+        </div>
+
+        <div>
+            <div><input type="button" id="addition" value="Addition"></div>
+
+            <div><input type="button" id="subtraction" value="Subtraction"> </div>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<div class="container">
+    <div>
+        <button type="button" value="click it"  (click)="hello()" >click it </button>
+        <h2>Property Bindning Customer Image</h2>
+        <img [src]="img1_src" [border]="border1">
+        <img [src]="img2_src" [border]="border2">
+        <img [src]="img3_src" >
+
+        <h2> Customer Data</h2>
+        <table class="table table-striped border border-primary p-5">
+            <thead>
+                <tr>
+                    <th>Customer Id</th>
+                    <th>Customer Name</th>
+                    <th>Customer Name</th>
+                    <th>Customer Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer1 of customer">
+                    <td>
+                        {{customer1.customerId}}
+                    </td>
+
+                    <td>
+                        {{customer1.customerName}}
+                    </td>
+                    <td>
+                        {{customer1.customerName|uppercase|slice:0:5}}
+                    </td>
+                    <td>
+                        {{customer1.customerSalary}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <hr>
+        <h2> Customer Data</h2>
+        <table class="table table-striped border border-primary p-5">
+            <thead>
+                <tr>
+                    <th>Customer Id</th>
+                    <th>Customer Name</th>
+                    <th>Customer Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer1 of customer">
+                    <td>
+                        {{customer1.customerId}}
+                    </td>
+
+                    <td>
+                        {{customer1.customerName}}
+                    </td>
+                    <td>
+                        {{customer1.customerSalary}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h2> Customer Data With Salary >=50000</h2>
+        <h3>Ng IF Directive</h3>
+        <table class="table table-striped border border-primary p-5">
+            <thead>
+                <tr>
+                    <th>Customer Id</th>
+                    <th>Customer Name</th>
+                    <th>Customer Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer1 of customer">
+                    <td *ngIf="customer1.customerSalary>=50000">
+                        {{customer1.customerId}}
+                    </td>
+
+                    <td *ngIf="customer1.customerSalary>=50000">
+                        {{customer1.customerName}}
+                    </td>
+                    <td *ngIf="customer1.customerSalary>=50000">
+                        {{customer1.customerSalary}}
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="color:red"> Customer Data With Salary >=50000</h2>
+        <h3>Ng Switch Directive</h3>
+        <h3 [ngStyle]="{'color':'blue'}">Ng Style Directive</h3>
+        <table class="table table-striped border border-primary p-5">
+            <thead>
+                <tr>
+                    <th>Customer Id</th>
+                    <th>Customer Name</th>
+                    <th>Customer Salary</th>
+                    <th>Customer Post</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer1 of customer">
+                    <td>
+                        {{customer1.customerId}}
+                    </td>
+
+                    <td>
+                        {{customer1.customerName}}
+                    </td>
+                    <td>
+                        {{customer1.customerSalary}}
+                    </td>
+                    <td [ngSwitch]="customer1.customerName">
+                        <span *ngSwitchCase="'sumit kumar'">Manager</span>
+                        <span *ngSwitchCase="'amit kumar'">Director</span>
+                        <span *ngSwitchCase="'vimal kumar'">Regional Manager</span>
+                        <span *ngSwitchCase="'samar kumar'">Manager</span>
+                        <span *ngSwitchCase="'kamal kumar'">Accountant</span>
+                        <span *ngSwitchDefault="'kamal kumar'">Wrong data</span>
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+
+        <div [ngClass]="{'style1':'true'}">
+        
+            hello world
+
+        </div>
+    </div>
+
+</div>

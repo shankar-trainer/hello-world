@@ -1,0 +1,281 @@
+
+
+java supports primitive(old ) data type 
+
+Number 
+   Integer 
+
+     byte 
+     short 
+     int
+     long 
+
+   Decimal 
+     float 
+     double 
+
+    Character 
+      char 
+    Boolean
+      boolean 
+
+
+
+      + 
+         1. arithmetic addition
+         2. String concatenation
+
+
+
+
+         double 
+           by default all decimals are double
+
+        float -- use sign F  
+
+
+                  default package used in java 
+                    java.lang 
+                         Integer, Float, Double, String 
+
+        User Input 
+        
+                java.util 
+            -->  Scanner  class 
+                       methods  
+                                nextInt() -- int 
+                                nextFloat() -- float 
+                                nextDouble()-- double 
+                                next()      -- string(single word)
+                                nextLine()  -- multi words string
+
+
+
+
+
+
+
+    condition check 
+
+      if(condition  true ){
+
+      }
+
+      if()
+
+      else if
+
+      else 
+
+
+// Question 
+
+StudentPerformance
+     roll
+     name
+     subject1, subject2, subject3
+     marks1, marks2, marks3
+
+     total
+     percentage
+
+     grade 
+
+     percentage 
+       --  75  - 100   distinction 
+       --  60  - 74     first
+       --  50  - 59     second
+       --  35  - 49     third
+       --  0 -  34      fail 
+       any marks<35     fail 
+
+   create separate static method for grade calculation
+             
+             static String gradeCalculation(float percentage){
+
+             }
+
+    create separate static method for display all values
+        
+        static void display
+        (int r, String nm,String s1, String s2, String s3, float m1,  float m2, float m3, float t,float p, String g){
+
+
+          }
+
+  
+
+
+  primitive data type                    class 
+   
+   Integer 
+
+     byte   ---------------         java.lang.Byte
+     short  ---------------         java.lang.Short
+     int    ---------------         java.lang.Integer 
+     long    ---------------        java.lang.Long
+
+        
+
+
+    int to char 
+
+
+    ascii code 
+
+    0- 255 
+
+   loop
+
+       iterative/repetitive state work till true condition
+       
+  type 
+     while loop 
+        top tested 
+      
+      while(condition){
+
+       body 
+      }
+
+
+Question 
+   take 10 no from user using while loop and display  the sum , highest and lowest no
+
+   create static  display method to show all values
+
+
+for loop 
+     --> easiest loop
+     --> top tested loop 
+     --> counter delaration, condition check, increment/decrement is done at one place
+
+     -->you can use multiple counter too;
+
+
+do .. while loop 
+
+    bottom tested loop 
+
+    do {
+
+
+    }
+    while(condition);
+
+
+ 5
+    -- 1*2*3*4*5
+    -- 5*4*3*2*1
+    
+
+
+
+ two dimension array
+
+
+   int ar[][]={
+
+         {1,2,3,4},
+         {11,22,33,44},
+   }
+
+   int ar1[][]=new int[3][4]
+
+
+   Write a java program to implement Bank-SB-Account Class 
+   with a constructor to initilize acct_no, customer_name, trans_type, trans_amount,bal_amount data members.
+
+     Create member functions to update the balance amount based on the type of transaction(deposit, withdrawal) and show the customer information with the new balance amount.
+
+Inside main 
+Input account_no,customer_name,trans_type and balance amount:
+
+Output 
+"Account no:  12122
+Customer name: Raj
+Transaction type:  Deposit
+Transaction amount: Rs. 7000.00
+Balance amount:   Rs. 25000.00
+New Balance:   Rs. 32000.00"
+
+
+
+
+
+
+
+
+Encapsulation 
+  1. all attributes should be private 
+
+
+  2.  attributes will be used outside using public getter and setter method
+
+
+  attributes -- data
+
+  methods    -- code 
+
+  bind  -- code+ data   -- Encapsulation
+
+
+
+java.lang.System 
+     -- out is static variable of PrintStream class 
+
+  --PrintStream class  we have print method
+
+
+  static import
+
+   import the static members 
+
+   
+
+
+
+super() -- super class constructor
+this()  -- current class constructor
+
+super -- call super class method, variables 
+this -- call current class method, variables 
+
+
+  in any class default constructor is added 
+
+  if there is parameterized constructor then no default constructor is added 
+
+ in inheritance using super keyword we need to call superclass constructor with super(args) ;
+
+
+
+static methods are inherited.
+
+
+
+overriding 
+
+  in subclass if you are changing the behaviour of super class method 
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

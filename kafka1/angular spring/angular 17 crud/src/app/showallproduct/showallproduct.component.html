@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Product All Service</h1>
+    <table class="table tabled-border p-5 m-5 table-dark">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Cost</th>
+                <th>Mfd</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of prd|async">
+                <td>{{p.prdId}}</td>
+                <td>{{p.prdName}}</td>
+                <td>{{p.prdCost}}</td>
+                <td>{{p.prdMfd}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+   
+ 
+</div>

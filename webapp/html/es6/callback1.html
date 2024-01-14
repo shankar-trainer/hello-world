@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <script>
+        hello = (name) => console.log('hello how are you ' + name)
+        alarm=setTimeout(function () {
+            console.log('called after 5 second')
+        }, 5000)
+       
+       greeting=(hello1,callback)=>{
+              hello1('suresh kumar')
+              callback
+        }
+        greeting(hello,alarm);
+
+
+         welcome=(country,callback)=>{
+            alert('country is '+country);
+            callback('new delhi')             
+        }
+        
+        display=(capital)=>{
+          alert('capital is '+capital)
+        }
+        welcome('india',display);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="text-light p-5 bg-dark m-5 w-75" style="border-radius: 100pt;">
+
+        <h2>Pipe Example Exponent</h2>
+        <div>
+            No1 is {{n1}}
+        </div>
+
+        <div>
+            No2 is {{n2}}
+        </div>
+
+        <div>
+            Exponent is {{n1|exponent:n2}}
+        </div>
+    </div>
+    <div class="text-light p-5 bg-primary m-5 w-75" style="border-radius: 10pt;">
+     <div class="form-group">
+        <label>Enter Base</label>
+        <input name="n1" [(ngModel)]="n1" class="form-control" >
+     </div>
+     
+     <div class="form-group">
+        <label>Enter Exponent</label>
+        <input name="n2" [(ngModel)]="n2" class="form-control">
+     </div>
+
+      <div>
+     <label>
+      Result is {{n1|exponent:n2}}
+     </label>
+
+      </div>
+    </div>
+</div>

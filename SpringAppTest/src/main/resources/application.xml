@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.coforge.model.Person">
+		<property name="id" value="6767766"></property>
+		<property name="name" value="subham sharma"></property>
+		<property name="age" value="26"></property>
+
+		<property name="bookSet">
+			<set>
+				<value>Two State</value>
+				<value>Revolution</value>
+				<value>Ramayan</value>
+				<value>Mahabharat</value>
+				<value>Two State</value>
+			</set>
+		</property>
+
+		<property name="musicAlbum">
+			<list>
+				<value>opera</value>
+				<value>telugu</value>
+				<value>hindi classical</value>
+				<value>enriq illegus</value>
+				<value>hindi classical</value>
+				<value>opera</value>
+			</list>
+		</property>
+		<property name="car">
+			<map>
+				<entry key="10001" value="Maruti Swift" />
+				<entry key="10002" value="Tata Jaguar" />
+				<entry key="10001" value="Mahindra Bolero" />
+
+				<entry key="10003" value="Celario">
+				</entry>
+			</map>
+		</property>
+
+	</bean>
+
+</beans>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+label {
+	width: 120px;
+	float: left;
+}
+
+input {
+	width: 120px;
+	margin-top: 3px;
+}
+
+form {
+	margin-left: 300px;
+	margin-top: 100px;
+	border: solid;
+	width: 30%;
+	padding: 2em;
+}
+</style>
+</head>
+<body>
+	<script>
+		function validate() {
+			var id = document.getElementById("id").value
+			var name = document.getElementById("name").value
+			var pass1 = document.getElementById("pass").value
+			if (id == '') {
+				alert("id is blank");
+				return false;
+			} else if (pass1 == '') {
+				alert("password is blank");
+				return false;
+			} else if (name == '') {
+				alert("name is blank");
+				return false;
+			} else {
+				true;
+			}
+		}
+	</script>
+	<form action="MyServlet1" onsubmit="return validate()" method="post">
+		<div>
+			<label>Enter Id</label> <input name="id" id="id">
+		</div>
+
+		<div>
+			<label>Enter password</label> <input name="pass" id="pass"
+				type="password">
+		</div>
+
+		<div>
+			<label>Enter Name</label> <input name="name" id="name">
+		</div>
+
+
+		<div>
+			<div>
+				<label style="font-weight: bold; font-style: italic;"> Add
+					Hobbies</label>
+			</div>
+			<p>
+			<br>
+			<div>
+				<input type="checkbox" value="reading" name="hobby">Reading
+			</div>
+			<div>
+				<input type="checkbox" value="music" name="hobby">Music
+			</div>
+			<div>
+				<input type="checkbox" value="movie" name="hobby">Movie
+			</div>
+			<div>
+				<input type="checkbox" value="touring" name="hobby">Touring
+			</div>
+			<div>
+				<input type="submit"> <input type="reset">
+			</div>
+
+		</div>
+
+
+	</form>
+
+</body>
+</html>

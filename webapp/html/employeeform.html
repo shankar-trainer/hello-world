@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='style/style1.css'>
+
+    <script src="script/validate.js">
+
+    </script>
+</head>
+
+<body>
+    <form onsubmit="return employee_validate()">
+        <h2>employee form</h2>
+        <div>
+            <label>Enter Id</label>
+            <input id="id">
+            <span id="id_err"></span>
+        </div>
+        <div>
+            <label>Enter Name</label>
+            <input id="name">
+            <span id="name_err"></span>
+        </div>
+        <div>
+            <label>Enter Age</label>
+            <input type="number" id="age">
+            <span id="age_err"></span>
+        </div>
+
+        <div>
+            <label>Enter Date Of Birth</label>
+            <input type="date" id="dob">
+            <span id="date_err"></span>
+        </div>
+
+        <div>
+            <label>Enter Login Time</label>
+            <input type="time" id="time">
+            <span id="time_err"></span>
+        </div>
+
+        <div>
+            <label>Enter Email</label>
+            <input type="email" id="email">
+            <span id="email_err"></span>
+        </div>
+        <div>
+
+            <div id="gender1">
+                <div>
+                    <label>Gender</label>
+                </div>
+                <br>
+                <div>
+                    <input type="radio" name="gender" value="male">Male
+                </div>
+                <div>
+                    <input type="radio" name="gender" value="female">Female
+                </div>
+                <span id="gender_err"></span>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 10px;">
+            <div>
+                <label style="font-weight: bold;">Hobbies</label>
+            </div>
+            <br>
+            <div>
+                <input type="checkbox" name="hobby" value="carrom">Carrom
+            </div>
+            <div>
+                <input type="checkbox" name="hobby" value="music">Music
+            </div>
+            <div>
+                <input type="checkbox" name="hobby" value="movie">Movie
+            </div>
+
+            <div>
+                <input type="checkbox" name="hobby" value="reading">Reading
+            </div>
+            <span id="hobby_err"></span>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <input type="submit" value="Login">
+            <input type="reset" value="cancel">
+        </div>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="p-5 border border-primary bg-info text-warning w-75 mt-5">
+        <p>employee works!</p>
+        <div>
+            Id is {{id}}
+        </div>
+        <div>
+            Name is {{name}}
+        </div>
+        <div>
+            Salary is {{salary}}
+        </div>
+    </div>
+
+    <h3>Address</h3>
+    <table class="table table-striped table-bordered bg-danger text-dark">
+
+        <tr class="bg-dark text-light">
+            <th>Address Id</th>
+            <th>Address Location</th>
+            <th>Address City</th>
+        </tr>
+        <tr *ngFor="let addr of address">
+            <td>
+                {{addr.addr_id}}
+            </td>
+            <td>
+                {{addr.addr_location}}
+            </td>
+            <td>
+                {{addr.addr_city}}
+            </td>
+        </tr>
+    </table>
+</div>

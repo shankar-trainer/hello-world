@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+        class Book {
+            isbn;
+            bname;
+            cost;
+
+            constructor() {
+                this.isbn = 10001;
+                this.bname = 'two states';
+                this.cost = 566;
+            }
+            set isbn(isbn) {
+                this.isbn = isbn;
+            }
+            get isbn() {
+                return this.isbn;
+            }
+            set bname(bname) {
+                this.bname = bname;
+            }
+            get bname() {
+                return this.bname;
+            }
+            set cost(cost) {
+                this.cost = cost;
+            }
+            get cost() {
+                return this.cost;
+            }
+            display(){
+             console.log('book data')
+             console.log('\tisbn '+this.isbn);
+             console.log('\tbname '+this.bname);
+             console.log('\tcost '+this.cost);
+            }
+        }
+
+        b=new Book()
+        
+        b.display(b);
+
+        b.isbn=78878;
+        b.bname='sql beginner';
+        b.cost=450;
+
+        console.log(b.isbn)
+        console.log(b.bname)
+        console.log(b.cost)
+
+        b.display();
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

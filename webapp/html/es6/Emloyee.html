@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+        class Employee{
+            // constructor(){
+            //     this.id=10001;
+            //     this.name='amit kumar';
+            //     this.dob='10-jan-2021';
+            // }
+            constructor(id,name,dob){
+                this.id=id;
+                this.name=name;
+                this.dob=dob;
+            }
+
+           display(){
+            console.log('Employee Information ')
+            console.log(":\tid is "+this.id);
+            console.log(":\tname is "+this.name);
+            console.log(":\tdob is "+this.dob);
+           }
+        }
+        //var e=new Employee();
+        //e.display();
+        
+        var e1=new Employee(6776767,'pawan kumar','25-feb-1997');
+        e1.display();
+   
+
+    </script>
+
+
+</body>
+</html>

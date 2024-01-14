@@ -1,0 +1,28 @@
+<div class="container">
+    <form (ngSubmit)="addcustomer()">
+    <div class="form-group">
+      <label>Enter Id</label>
+      <input class="form-control" [(ngModel)]="customer.customerId"
+      [ngModelOptions]="{standalone: true}">
+    </div>
+    
+    <div class="form-group">
+      <label>Enter Name</label>
+      <input class="form-control" [(ngModel)]="customer.customerName"
+      [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <div class="form-group">
+      <label>Enter Salary</label>
+      <input class="form-control" [(ngModel)]="customer.customerSalary"
+      [ngModelOptions]="{standalone: true}">
+      
+    </div>
+    <button type="submit">Add Record</button>
+    
+    <button type="reset">Cancel Record</button>
+    
+    <button type="button" (click)="showall()" >show all customer</button>
+</form>
+Customer Message {{msg}}
+</div>

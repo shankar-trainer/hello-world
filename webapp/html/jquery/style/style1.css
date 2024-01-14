@@ -1,0 +1,24 @@
+form {
+    margin-left: 400px;
+    margin-top: 50px;
+    background-color: whitesmoke;
+    width: 40%;
+    padding: 20px;
+    border: solid;
+}
+
+label {
+    width: 140px;
+    float: left;
+}
+input {
+    width: 140px;
+    margin-top: 5px;
+}
+h2{
+   text-decoration: line-through;
+   text-transform: uppercase;   
+}
+span{
+    color:red; 
+}
