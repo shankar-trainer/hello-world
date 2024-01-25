@@ -1,0 +1,17 @@
+Using react-router-dom v6
+Parent component (App)
+<Route path="/something/:id" element={<Something />} />
+Child component (Something)
+import { useParams } from "react-router-dom";
+
+const Something = (props) => {
+
+    let { id } = useParams(); 
+
+    useEffect(() => {
+        console.log(`/something/${id}`);
+    },[]);
+
+    // .....
+
+}

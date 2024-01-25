@@ -1,0 +1,34 @@
+
+<h1 style="margin-left: 100px">All Product Items</h1>
+
+<table class="table table-stripped table-bordered  w-75 p-5" style="margin-left: 100px">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Cost</th>
+      <th colspan='3'>Operation</th>
+    </tr>
+
+  </thead>
+  <tbody>
+  <tr *ngFor="let p of product|async">
+      <td>{{p.prdId}}</td>
+      <td>{{p.prdName}}</td>
+      <td>{{p.prdCost}}</td>
+   <td>
+      <button (click)="deleteProduct(p.prdId)" type="button" class="btn btn-primary">delete</button>
+    </td>
+
+    <td> <button (click)="updateProduct(p.prdId)" type="button" class="btn btn-primary">update</button>
+    </td>
+
+    <td> <button (click)="productDetail(p.prdId)" type="button" class="btn btn-primary">Detail</button>
+    </td>
+
+  </tr>
+</tbody>
+</table>
+
+<hr>
+

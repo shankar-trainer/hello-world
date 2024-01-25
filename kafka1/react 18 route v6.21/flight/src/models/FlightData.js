@@ -1,0 +1,32 @@
+export const FlightData = [
+  {
+    id: 1,
+    airline: 'United Airlines',
+    flight_no: 'UA1234',
+    trip_type: 'Round Trip',
+    departure_airport: 'ORD',
+    arrival_airport: 'LAX',
+    departure_date: '2019-06-24',
+    return_date: '2019-06-25',
+  },
+  {
+    id: 2,
+    airline: 'American Airlines',
+    flight_no: 'AA1952',
+    trip_type: 'One Way',
+    departure_airport: 'LAX',
+    arrival_airport: 'ABQ',
+    departure_date: '2019-06-25',
+    return_date: '2019-06-26',
+  },
+  {
+    id: 3,
+    airline: 'Southwest Airlines',
+    flight_no: 'WN4307',
+    trip_type: 'Round Trip',
+    departure_airport: 'ORD',
+    arrival_airport: 'DEN',
+    departure_date: '2019-06-25',
+    return_date: '2019-06-26',
+  },
+];

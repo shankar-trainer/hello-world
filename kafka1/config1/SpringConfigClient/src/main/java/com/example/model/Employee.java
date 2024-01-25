@@ -1,11 +1,8 @@
 package com.example.model;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "emp")
-
 public class Employee {
 
 	private int id;

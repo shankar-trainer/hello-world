@@ -1,0 +1,22 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        column_ordering_strategy:  legacy
+    show-sql:  true
+    hibernate:
+      ddl-auto:  update
+  datasource:
+    url:  jdbc:mysql://localhost:3306/db3
+    username:  root
+    password:  mysql
+    driver-class-name:   com.mysql.cj.jdbc.Driver 
+  application:
+    name:  Customer Application
+server:
+  port:  8080
+  
+  
+#spring.jpa.properties.hibernate.column_ordering_strategy=legacy  
+
+       

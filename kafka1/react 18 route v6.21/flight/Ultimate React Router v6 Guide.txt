@@ -1,0 +1,256 @@
+How to Access URL Parameters Using React Router 6
+
+React Router version 6 introduces several powerful new features, as well as improved compatibility with the latest versions of React. 
+
+It also introduces a few breaking changes from version 5. This document is a comprehensive guide on how to upgrade your v4/5 app to v6 while hopefully being able to ship as often as possible as you go.
+
+To learn more about all the new changes and how to upgrade to version 6, please visit https://reactrouterdotcom.fly.dev/docs/en/v6/upgrading/v5
+
+Below are two examples of changes that you will need to adhere to if you’re running version 6.
+
+React Router v6 introduces a Routes component that replaces Switch. In order to use v6, you’ll need to convert all your <Switch> elements to <Routes>.
+
+React Router v6 introduces an element property that replaces the render property/function.
+
+Thus passing URL parameters to class components is a little different but can still be done using a Wrapper function component. 
+
+Function components can retrieve URL parameters using Hooks the usual way.
+
+
+How to Retrieve URL Parameters Using Function Components
+Below is one common and easy way to create react routes.
+
+index.js
+
+First, let’s wrap the root component with the BrowserRouter.
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import './index.css';
+import App from './App';
+
+import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(
+    <Router>
+        <App />
+    </Router>
+    , document.getElementById('root'));
+
+serviceWorker.unregister();
+
+App.js Component
+
+In the App.js module, let's create a route to the /flights/:id url. The FlightList component is a Function Component to display information about a single flight record. In order to do that, we'll need to fetch the id parameter from the URL.
+
+import React from 'react';
+import { Routes, Route} from 'react-router-dom';
+import { Nav, Footer, FlighData, FlightList } from "./components";
+import './App.css';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { flightData: FlighData };
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Nav />
+        <Routes>
+          <Route path="/flights/:id" element={<FlightList flightData={this.state.flightData} />} />
+        </Routes>
+        <Footer />
+      </div>
+    );
+  }
+}
+export default App;
+
+FlightList.js Component
+
+In the FlightList component, retrieve the id URL parameter via the useParams() function. After the id is obtained, search the flightData list and retrieve the flight record matching the id.
+
+import React from 'react';
+import { useParams } from 'react-router-dom';
+export function FlightList(props) {
+    let { id } = useParams(); // Unpacking and retrieve id
+    let index = props.flightData.findIndex(e => e.id === parseInt(id));
+    let flight = this.props.flightData[index];
+    return (
+        <div>
+            <p>Flight Number: {flight.flight_no}</p>
+            <p>Airline: {flight.airline}</p>
+            <p>Departure Airport: {flight.departure_airport}</p>
+            <p>Arrival Airport: {flight.arrival_airport}</p>
+            <p>Depart Date: {flight.departure_date}</p>
+            <p>Arrival Date: {flight.arrival_airport}</p>
+        </div>
+    )
+}
+
+2️⃣ How to Retrieve URL Parameters Using Class Components
+Class Components do not have access to Hooks so they cannot use useParams() from the react router. Of course there are other methods to pass data down to child components (e.g. using Context). 
+
+The example demonstrated here is how to use a Wrapper function component to pass the params via the match property to a Class Component. Finally, it'll be possible to retrieve specific parameters from the params via the props object.
+
+App.js Component
+
+In the App.js module, let's create a route to the /edit/:id url. The EditFlight component is a Class Component to edit an existing flight record. In order to do that, we'll need to fetch the id parameter from the URL.
+
+import React from 'react';
+import { Routes, Route, useParams } from 'react-router-dom';
+import { Nav, Footer, FlighData, EditFlight } from "./components";
+import './App.css';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { flightData: FlighData };
+    this.updateFlight = this.updateFlight.bind(this);
+  }
+
+  updateFlight(idx, flight) {
+    let temp = this.state.flightData;
+    temp[idx] = flight;
+    this.setState({ flightData: temp })
+  }
+
+  render() {
+    const Wrapper = (props) => {
+      const params = useParams();
+      return <EditFlight flightData={this.state.flightData} updateFlight={this.updateFlight} {...{...props, match: {params}} } />
+    }
+    return (
+      <div className="App">
+        <Nav />
+        <Routes>          
+          <Route path="/edit/:id" element={<Wrapper />} />
+        </Routes>
+        <Footer />
+      </div>
+    );
+  }
+}
+export default App;
+
+EditFlight.js Component
+
+In the EditFlight component, retrieve the id from the URL parameters via the props object. After the id is obtained, search the flightData list and retrieve the flight record matching the id. Finally, pass this record to another child component FlightForm to populate the form for editing.
+
+import React from 'react';
+import FlightForm from './FlightForm';
+
+export class EditFlight extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        console.log(this.props)
+        let { id } = this.props.match.params;  // Unpacking and retrieve id
+        let index = this.props.flightData.findIndex(e => e.id === parseInt(id));  // Get the index of matching record
+        let flight = this.props.flightData[index];  // Get the record
+        return <FlightForm flight={flight} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />         
+    }
+
+    handleChange(event) {
+        // Implemenation here
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        // Implementation here
+    }
+}
+
+
+=======================================
+
+ are absolutely not dropping support for class-based components, @AbrahamLopez10, but I think the API changes you pointed out do tend to illustrate some of the value of hooks.
+
+For example, in a world without hooks it makes a lot of sense to use render props instead of a hook. This is because the router knows some state and it needs a way to expose it to you so it can pass it through to your component, so a render prop makes it easy to do so.
+
+<Route
+  path="posts/:id"
+  render={({ match }) => <BlogPost id={match.params.id} />}
+/>
+
+class BlogPost extends React.Component {
+  render() {
+    let { id } = this.props;
+    // ...
+  }
+}
+However, in a world with hooks, we don't need a render prop for exposing state. Instead, you can just use the hook in your component directly.
+
+<Route path="posts/:id" element={<BlogPost />} />
+
+function BlogPost() {
+  let { id } = useParams();
+  // ...
+}
+In addition to eliminating the need for render props for sharing state, hooks also eliminate a lot of other prop-passing boilerplate code in other components that are rendered by <BlogPost>. For instance, without hooks if you wanted to pass the id URL param down to another component, you'd probably do something like this:
+
+class BlogPost extends React.Component {
+  render() {
+    return (
+      <div>
+        <PostHeader id={this.props.id} />
+        {/* ... */}
+      </div>
+    );
+  }
+}
+
+class PostHeader extends React.Component {
+  render() {
+    let { id } = this.props;
+    // ...
+  }
+}
+But with hooks, it's as simple as:
+
+function BlogPost() {
+  return (
+    <div>
+      <PostHeader />
+      {/* ... */}
+    </div>
+  );
+}
+
+function PostHeader() {
+  let { id } = useParams();
+  // ...
+}
+Anyway, that's my sales pitch for using hooks. I totally understand if you don't want to use them, but I think you could probably eliminate some of the boilerplate from your code if you did.
+
+As for shipping a withRouter-style HOC with v6, we can probably do that if you really need one. But we would probably spend a bunch of time bike-shedding all the stuff you want to include in your HOC props (do you want the history? the match? just the params?) when in reality it's really easy to just make your own HOC that is custom designed for the pieces you need.
+
+For example, you could make your own withNavigation or withParams HOC in a one-liner (again, thanks to the power of hooks!):
+
+// in hocs.js
+function withNavigation(Component) {
+  return props => <Component {...props} navigate={useNavigate()} />;
+}
+
+function withParams(Component) {
+  return props => <Component {...props} params={useParams()} />;
+}
+
+// in BlogPost.js
+class BlogPost extends React.Component {
+  render() {
+    let { id } = this.props.params;
+    // ...
+  }
+}
+
+export default withParams(BlogPost);
+Hopefully that helps you understand what we are thinking with v6. It's a low-level library and the hooks are a nice low-level abstraction that should allow you to build whatever you can think of and use whatever API you're most comfortable with, even if you decide to stick with class components.
+
+
+
+https://github.com/remix-run/react-router/issues/8146

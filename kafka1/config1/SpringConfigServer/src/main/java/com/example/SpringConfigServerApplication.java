@@ -9,9 +9,11 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 @EnableConfigServer
 @EnableDiscoveryClient
 public class SpringConfigServerApplication {
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringConfigServerApplication.class, args);
 	}
+
 }
 
 //http://localhost:8080/emp/dev

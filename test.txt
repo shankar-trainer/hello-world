@@ -1,0 +1,13 @@
+
+https://writexo.com/coforge2023_3
+
+
+
+LTS   -- Long Term Support 
+       java 8 
+       java 17
+
+https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.msi
+ 
+
+https://teams.microsoft.com/l/meetup-join/19%3ameeting_MTFmYmQ2MmQtY2EzZS00YjUxLWEwZjQtNzdiOTc3YTIwNjI2%40thread.v2/0?context=%7b%22Tid%22%3a%22b727a530-a0d5-4fb8-bd40-d8f9763e97db%22%2c%22Oid%22%3a%22af88a7e2-1988-4c61-9fea-fb4047b0dc86%22%7d

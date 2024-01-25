@@ -1,0 +1,41 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+function SearchCustomer(){
+    const [id, setId] = useState('');
+    const [err_id, setErrorId] = useState('');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log('search customer called use effect')
+    })
+
+    return (
+        <div className='container w-50'>
+            <h1>Search Customer </h1>
+            <div className="form-group" >
+                <label>Enter Id</label>
+                <input className="form-control" onChange={
+                    (e) => {
+                        if (e.target.value == '')
+                            setErrorId('id is blank')
+                        else if (e.target.value.length < 2 || e.target.value.length > 5)
+                            setErrorId('id must of min 2 digit or max 5 digit')
+                        else {
+                            setErrorId('')
+                            setId(e.target.value)
+                        }
+                    }
+                }></input>
+                <div className="text-warning">{err_id}</div>
+            </div>
+            <div>
+                {/* <button type="submit" onClick={(e) => {
+                    navigate('/userdata/', { state: { name } })
+                }
+                }>Submit</button> */}
+            </div>
+        </div>
+    )
+}
+export default SearchCustomer;
