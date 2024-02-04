@@ -1,0 +1,33 @@
+<h2>Customer Page</h2>
+<p>
+  {{x}}
+</p>
+
+<p *ngFor="let x1 of x;index as i ">
+  Hi.. {{x1}} ---> index is {{i}}<br>
+</p>
+
+
+Using for loop 1ST WAY
+<div *ngFor="let img1  of img; let i=index">
+  <p>
+    <img src='{{"./assets/img"+(i+1)+".jpg"}}' width="150" height="100" />
+  </p>
+</div>
+For Loop Ends
+<hr>
+<P></P>
+Using for loop 2ND WAY
+<div *ngFor="let img1  of img; let i=index">
+  <p>
+    <img src='{{"./assets/"+(img1)+".jpg"}}' width="150" height="100" />
+  </p>
+</div>
+For Loop Ends
+<hr>
+
+<img src="./assets/img1.jpg" width="150" height="100">
+<br>
+<img [src]='"assets/img1.jpg"' width="150" height="100">
+<br>
+<img src='{{ "assets/img1.jpg"}}' width="150" height="100">

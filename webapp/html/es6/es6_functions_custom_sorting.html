@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+
+    <script>
+        let ar2 = [11, 22, 3, 40, 1];
+
+        console.log(ar2);
+        console.log(ar2.sort((a, b) => a - b));
+
+        ar2.forEach(element => {
+            console.log(element)
+        });
+
+        console.log('custom sorting ')
+        const student = [
+            {
+                name: 'arun',
+                english: 78
+            },
+            {
+                name: 'rajesh',
+                english: 95
+            },
+            {
+                name: 'moorthy',
+                english: 70
+            },
+            {
+                name: 'raja',
+                english: 40
+            },
+            {
+                name: 'usha',
+                english: 78
+            },
+            {
+                name: 'priya',
+                english: 78
+            }]
+        student.forEach(element => {
+            console.log(element.name + "\t" + element.english)
+        });
+
+        student.sort((a, b) => {
+            if (a.english > b.english)
+                return 1;
+            if (a.english < b.english)
+                return -1;
+            return 0;
+        })
+        console.log("sorted by english ")
+        console.log(JSON.stringify(student))
+ 
+        student.sort((a, b) => {
+            if (a.name > b.name)
+                return 1;
+            if (a.name < b.name)
+                return -1;
+            return 0;
+        })
+        console.log("sorted by name ")
+        console.log(JSON.stringify(student))
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

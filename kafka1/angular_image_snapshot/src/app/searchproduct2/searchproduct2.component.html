@@ -1,0 +1,26 @@
+<div class="container bg-prinary text-dark p-5 w-75 m-5 border border-primary">
+
+    <div *ngIf="status==true">
+        <table class="table table-striped table-hover">
+            <tbody>
+                <tr>
+                    <td>
+                        <h2>Search Product Page</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Id is {{prd.id}}</td>
+                </tr>
+                <tr>
+                    <td>Name is {{prd.name}}</td>
+                </tr>
+                <tr>
+                    <td> Cost is {{prd.cost}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="status==false">
+        Product not Present
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+     const employee={
+         id:10001,
+         name:'suresh kumar',
+         address:{
+              'city':'new delhi delhi',
+              'pin':'6776656',
+              'state':'up',
+              'country':'india'
+         },
+         salary:20000,
+         dob:'10-jan-1997',
+         pf:0.03,
+         netSalary(){
+          return employee.salary-employee.salary*employee.pf;
+         }
+     }
+     console.log('employee information')
+     console.info('\tid '+employee.id)
+     console.info('\tname '+employee.name)
+     console.info('\tsalary '+employee.salary)
+     console.info('\tpf '+employee.pf)
+     console.info('\tnet salary '+employee.netSalary())
+     console.info('\tdob '+employee.dob)
+      
+     document.write(JSON.stringify(employee))
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

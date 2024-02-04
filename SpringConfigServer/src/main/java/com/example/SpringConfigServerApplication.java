@@ -15,6 +15,6 @@ public class SpringConfigServerApplication {
 	}
 
 }
-//http://localhost:8080/emp/default
+
 //http://localhost:8080/emp/dev
 //http://localhost:8080/emp/default

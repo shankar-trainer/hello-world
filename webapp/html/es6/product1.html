@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+     var item1= localStorage.getItem('prd1');
+     var cost1= localStorage.getItem('cost1');
+    
+     var item2= sessionStorage.getItem('prd2');
+     var cost2= sessionStorage.getItem('cost2');
+
+     var item3= localStorage.getItem('prd3');
+     var cost4= localStorage.getItem('cost3');
+
+    
+     document.write("<p>Product Details")
+     
+     document.write("<p>item1 name "+item1);
+     document.write("<br>item1 cost "+cost1);
+     
+     document.write("<p>item2 name "+item2);
+     document.write("<br>item2 cost "+cost2);
+     
+     document.write("<p>item3 name "+item2);
+     document.write("<br>item3 cost "+cost2);
+
+     function removeitem(item){
+        localStorage.removeItem(item);
+     }
+    </script>
+</head>
+<body>
+    <p></p>
+<button onclick="removeitem('prd1')">remove item1 item</button>
+<p></p>    
+<button onclick="removeitem('cost1')">remove item1 cost</button>
+</body>
+</html>
