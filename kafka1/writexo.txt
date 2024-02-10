@@ -1,0 +1,222 @@
+https://dl.ebooksworld.ir/books/Spring.in.Action.6th.Edition.Craig.Walls.Manning.9781617297571.EBooksWorld.ir.pdf
+
+https://junit.org/junit5/docs/current/user-guide/
+https://github.com/junit-team/junit5-samples/blob/r5.10.1/junit5-jupiter-starter-maven/pom.xml
+
+Hibernate Template
+
+When Spring and Hibernate integration started, Spring ORM provided two helper classes – HibernateDaoSupport and HibernateTemplate. The reason to use them was to get the Session from Hibernate and get the benefit of Spring transaction management. However from Hibernate 3.0.1, we can use SessionFactory getCurrentSession() method to get the current session and use it to get the spring transaction management benefits. If you go through above examples, you will see how easy it is and that’s why we should not use these classes anymore.
+
+One other benefit of HibernateTemplate was exception translation but that can be achieved easily by using @Repository annotation with service classes, shown in above spring mvc example. This is a trick question to judge your knowledge and whether you are aware of recent developments or not.
+
+Spring:message
+/Tags
+
+https://stackoverflow.com/questions/1298322/wrong-ordering-in-generated-table-in-jpa
+legacy behavior
+We set spring.jpa.properties.hibernate.column_ordering_strategy=legacy
+https://stackoverflow.com/questions/77727305/in-standalone-mode-how-to-i-import-a-module-in-angular-17
+
+Config server
+
+in configclient in model file add
+@ConfigurationProperties(prefix = "emp")
+
+https://www.lcg.ufrj.br/nodejs/books/react-beginners-handbook
+https://github.com/flaviocopes
+https://www.freecodecamp.org/news/the-react-handbook-b71c27b0a795/
+https://github.com/softchris/react-book
+blob:https://github.com/1789a111-1984-47df-aea8-b705c66ce74f
+Microsoft Introduction to the programming language and tools of the trade
+import { useState } from "react";
+
+export const Clock_hook = () => {
+    let time = new Date().toLocaleTimeString();
+    const [ctime, newTime] = useState(time);
+
+    function updateTime() {
+        time = new Date().toLocaleTimeString();
+        newTime(time);
+    }
+  setInterval(updateTime, 1000);
+    return (
+        <div>
+            {ctime}
+        </div>
+    )
+
+React routing v6 in 45 minute
+s
+https://codeload.github.com/WebDevSimplified/useful-custom-react-hooks/zip/refs/heads/main
+
+https://dl.ebooksworld.ir/books/Pro.Angular.5th.Edition.Apress.9781484281758.EBooksWorld.ir.pdf
+https://dl.ebooksworld.ir/books/Learning.Angular.4th.Edition.Aristeidis.Bampakos.Packt.9781803240602.EBooksWorld.ir.pdf
+
+https://codeload.github.com/PacktPublishing/Learning-Angular-Fourth-Edition/zip/refs/heads/main
+https://www.smashingmagazine.com/category/graphql
+
+https://polito-wa1-aw1-2022.github.io/materials/slides/3-06-React-Router.pdf
+https://github.com/codezri/react-router-v6-example
+
+
+https://www.digitalocean.com/community/tutorials/angular-query-parameters
+https://www.samarpaninfotech.com/blog/methods-to-share-data-between-angular-components/
+https://github.com/nishant-666/Angular-crud/tree/Finished-Code/src/app
+
+https://github.com/sandipmalaviya07/data_sharing_between_components_in_angular/tree/main/src/app
+https://github.com/poojakumari11228/employee-management/
+https://github.com/jp-quintana/react-shopping-cart
+
+https://codeload.github.com/poojakumari11228/learning-management-system/zip/refs/heads/main
+https://github.com/bezkoder/react-hooks-crud-web-api/tree/master/src
+axios
+https://www.javaguides.net/2020/08/reactjs-axios-get-post-put-and-delete-example-tutorial.html
+
+https://github.com/Selman-S/CRUD-Axios-API-React-App/blob/master/src/pages/Home.jsx
+https://github.com/RameshMF/ReactJS-Spring-Boot-CRUD-Full-Stack-App
+
+https://github.com/Franklin361/axios-react/blob/main/src/components/DeletePost.tsx
+https://survey.stackoverflow.co/2023/#section-most-popular-technologies-other-tools
+
+jest
+https://jestjs.io/docs/tutorial-react
+https://www.theseus.fi/bitstream/handle/10024/793189/Thesis%20report_MaiTran_1900308.pdf?sequence=2
+https://books-library.net/files/books-library.net-07251825Lk2A5.pdf
+mastering react test driven
+
+https://softchris.github.io/books/react/jsx/
+https://github.com/PacktPublishing/Learn-React-Hooks
+https://charlotte.kde.org/binary-factory/Kate_Nightly_win64/lastSuccessfulBuild/kate-master-2067-windows-cl-msvc2019-x86_64.7z
+
+https://github.com/girls-incode/react-hotel-booking-app/tree/master/src/components
+
+https://github.com/javigong/react-ecommerce-shopping-cart-with-context-reducer-hooks/tree/main/src/context
+
+https://www.knowledgefactory.net/2022/06/reactjs-spring-boot-jwt-authentication.html
+https://github.com/knowledgefactory4u/springboot-reactjs-jwt-authentication
+
+https://www.bezkoder.com/spring-boot-react-jwt-auth/
+https://stackoverflow.com/questions/71308748/manage-current-user-using-context-and-custom-hooks-in-react
+https://stackoverflow.com/questions/73227158/how-can-i-use-this-react-hook-to-reflect-logged-in-status
+
+https://stackoverflow.com/questions/75388280/how-to-logout-user-in-react-using-context-api
+spring boot imp one to many
+https://github.com/bezkoder/spring-boot-one-to-many
+
+https://github.com/hendisantika/spring-boot-one-to-many-example
+
+Security
+https://www.codejava.net/frameworks/spring-boot/form-authentication-with-jdbc-and-mysql
+
+eclipse theia
+https://mirror.kakao.com/eclipse/theia/ide/latest/windows/TheiaIDESetup.exe
+
+https://docs.spring.io/spring-security/site/docs/3.2.3.RELEASE/reference/htmlsingle/
+https://github.com/ali-bouali/spring-boot-3-jwt-security/blob/main/src/main/java/com/alibou/security/config/SecurityConfiguration.java
+https://github.com/Suxrob-Jurakulov/
+
+https://github.com/zvision/spring_boot_3_security_jpa
+
+https://github.com/PacktPublishing/Learning-Spring-Boot-3.0-Third-Edition
+
+https://docs.spring.io/spring-boot/docs/current/reference/pdf/spring-boot-reference.pdf
+https://docs.spring.io/spring-security/site/docs/3.0.x/reference/springsecurity.pdf
+https://www.geeksforgeeks.org/authentication-and-authorization-in-spring-boot-3-0-with-spring-security/
+https://github.com/whyalwaysmea/Spring-Security
+https://github.com/amigoscode/spring-boot-security-course
+https://github.com/bkielczewski/example-spring-boot-security
+
+spring security   tutorial
+
+https://github.com/stormpath/spring-boot-spring-security-tutorial
+https://github.com/RaymondMouthaan/spring-boot-security
+https://github.com/wdkeyser02/SpringBootTutorialSecurity
+
+https://github.com/dangeabunea/RomanianCoderExamples/tree/master/SpringBootSecurity
+
+https://docs.spring.io/spring-security/site/docs/3.0.x/reference/springsecurity.pdf
+https://docs.spring.io/spring-security/site/docs/5.2.1.RELEASE/reference/htmlsingle/
+https://docs.spring.io/spring-boot/docs/current/reference/pdf/spring-boot-reference.pdf
+https://www.javatpoint.com/spring-security-project-modules
+https://medium.com/@haytambenayed/basic-authentication-and-form-based-authentication-using-spring-security-ed79951dbb2e
+https://www.baeldung.com/spring-security-jdbc-authentication
+https://github.com/Rameshkatiyar/spring-security-jdbc
+
+https://codeload.github.com/Apress/beginning-spring-boot-3/zip/refs/heads/main
+https://github.com/Apress/Learn-Microservices-with-Spring-Boot-3-3rd-ed
+https://codeload.github.com/zvision/spring_boot_3_security_jpa/zip/refs/heads/main
+https://github.com/Apress/pro-spring-boot-2
+
+https://pdfroom.com/books/pro-spring-boot-2-an-authoritative-guide-to-building-microservices-web-and-enterprise-applications-and-best-practices/kNpgpZqO5jr/download
+https://github.com/Apress?q=spring+boot&type=all&language=&sort=
+spring in action 6th ed chapter 5
+https://github.com/spring-guides/gs-authenticating-ldap/tree/main
+
+ldap 
+https://spring.io/guides/gs/authenticating-ldap/
+
+https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol
+https://stackoverflow.com/questions/49671139/change-img-src-dynamically
+
+
+
+spring guide 
+jwt authentication with spring boot and angular
+
+https://github.com/spring-guides/tut-spring-security-and-angular-js/tree/master/single
+
+https://github.com/spring-guides/tut-spring-security-and-angular-js/tree/master/vanilla
+
+https://github.com/spring-guides/tut-spring-security-and-angular-js/tree/master/spring-session
+
+https://github.com/spring-guides/tut-spring-security-and-angular-js/tree/master
+
+java techie
+https://github.com/Java-Techie-jt/angular-jwt-client
+
+https://github.com/Java-Techie-jt/spring-security-jwt-example
+https://www.javainuse.com/spring/ang7-jwt
+
+https://codeload.github.com/JavaInUse/angular7-jwt/zip/refs/heads/master
+
+https://www.javainuse.com/static/zip/spring/boot/ang-spring-boot-jwt.rar
+
+https://docs.spring.io/spring-framework/reference/web/webmvc-cors.html
+https://github.com/eugenp/tutorials/tree/master/spring-boot-modules/spring-boot-runtime
+
+https://stackoverflow.com/questions/76987080/cors-in-spring-security-spring-boot-3
+
+https://en.wikibooks.org/wiki/Java_Persistence/ElementCollection
+
+https://en.wikibooks.org/wiki/Java_Persistence
+
+kotlin
+
+https://otfried.org/courses/cs109/project-install.html
+https://github.com/Apress/pro-spring-6-kotlin/tree/main/chapter02/src/main/kotlin/com/apress/prospring6/two/annotated
+
+https://docs.spring.io/spring-framework/docs/6.0.0/reference/pdf/spring-framework.pdf
+https://github.com/PacktPublishing/Building-Applications-with-Spring-5-and-Kotlin
+
+https://resources.jetbrains.com/storage/products/kotlinconf2017/slides/Why+Spring+loves+Kotlin.pdf
+
+https://spring.io/guides/tutorials/spring-boot-kotlin
+
+
+
+
+
+
+IntelliJ IDEA 2022.2 featuring support for Java 17 and the latest languages and frameworks such as Scala, Kotlin, Spring 6 and Spring Boot 3
+
+mproved performance: IntelliJ IDEA 2021.3 features significant performance improvements, including faster indexing, reduced memory consumption, and improved responsiveness.
+New features: The latest version of IntelliJ IDEA includes several new features, such as support for Java 17, improved code completion, and enhanced Git integration.
+Better integration: IntelliJ IDEA offers seamless integration with a variety of tools and technologies, including popular build systems like Gradle and Maven, application servers like Tomcat and Jetty, and databases like MySQL and PostgreSQL.
+Customizability: IntelliJ IDEA is highly customizable, allowing you to configure your IDE to meet your specific needs and preferences. You can choose from a variety of themes, plugins, and settings to optimize your workflow and improve your productivity
+
+
+
+Add ½ to 1 tsp (3-6 g) of baking soda into 8 oz (237 mL) of water.
+Baking soda is a natural cooking ingredient that’s also highly alkaline. With its pH of 9, it easily raises your water’s pH. Simply pour ½ to 1 tsp (3-6 g) of baking soda into an 8 oz (237 mL) glass of water and stir or shake the glass well to fully combine the baking soda and water.[2]
+Drink no more than 1 glass of baking soda each day. Ingesting large quantities of baking soda can be toxic and cause vomiting, diarrhea, and muscle weakness.[3]
+Do not drink water alkalized with baking soda if you are on a low-sodium diet for health reasons. Baking soda is high in sodium.

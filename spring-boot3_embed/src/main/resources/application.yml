@@ -1,0 +1,34 @@
+#spring:
+#    datasource:
+#        url: jdbc:postgresql://localhost:5432/jwt_security
+#        driver-class-name: org.postgresql.Driver
+#        username: postgres
+#        password: teste
+#    jpa:
+#        hibernate: 
+#            ddl-auto: create-drop
+#        show-sql: true
+#        properties:
+#            hibernate:
+#                format_sql: true
+#        database: postgresql
+#        database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto:  create-drop
+
+#    properties:
+#      hibernate:
+#        enable_lazy_load_no_trans=true
+
+  datasource:
+    url:  jdbc:mysql://localhost:3306/db1
+    username:  root
+    password:  mysql
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+    show-sql:  true
+        
+#spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
+#enable_lazy_load_no_trans:  true

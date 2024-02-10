@@ -1,0 +1,20 @@
+<div class="container p-5 m-5 bg-info" style="border-radius: 20px;">
+    <form (ngSubmit)="submit()">
+        <div class="form-group">
+            <label>Enter UserName </label>
+            <input class="form-control" [(ngModel)]="user.username"  name="username">
+        </div>
+
+        <div class="form-group">
+            <label>Enter Password </label>
+            <input type="password" size="20" class="form-control" [(ngModel)]="user.password"
+            name="password"
+            >
+        </div>
+
+        <div class="mt-2">
+            <input type="submit" class="btn btn-primary">
+            <input type="reset" class="btn btn-primary" style="margin-left: 4px;">
+        </div>
+    </form>
+</div>

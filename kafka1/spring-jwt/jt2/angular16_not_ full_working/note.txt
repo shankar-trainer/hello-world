@@ -1,0 +1,84 @@
+post man 
+
+post method 
+http://localhost:9192/authenticate
+
+it will generate jwt token
+copy token 
+
+
+==================================
+get method 
+ localhost:9192/
+
+in below select Authorization Type Bearer 
+in right window toke paste the token
+
+============================================================
+
+for angular 
+
+open browser add 
+http://localhost:4200/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+angular --- typescript (.ts)
+
+.ts--> transpiled --- .js 
+
+tsc compiler
+
+npm i -g @angular/cli@15.2.9
+npm i -g @angular/cli
+
+ng new projectname ---- create new project 
+ng new app1 -- create new angular project 
+
+---- 
+
+1. npm i -g @angular/cli
+2. ng new app1
+
+cd app1
+
+ng serve
+
+-- generate component 
+
+ng g c component_name
+
+ng g c student 
+
+ng generate  component  student 
+
+ng g c employee
+
+C:\coforge2\angular\app1>cd src\app\employee
+
+C:\coforge2\angular\app1\src\app\employee>ng g class employee
+
+
+
+

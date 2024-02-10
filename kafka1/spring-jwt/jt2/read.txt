@@ -1,0 +1,11 @@
+spring boot 2.2.2.RELEASE
+
+angular 17 standalone
+
+java 1.8
+
+angular 
+
+localhost:4200 
+
+add user name and password

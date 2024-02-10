@@ -1,0 +1,28 @@
+<div class='container border border-primary p-5  w-50 bg-info'
+     style="margin-left:300px;margin-top:100px;border-radius:30px">
+  <div>
+    <h1>Login</h1>
+  </div>
+  <form>
+    <div class="form-group">
+      <label>Enter User Name</label>
+      <input placeholder="Username" [(ngModel)]="username" name="username" required class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Enter User Password</label>
+      <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required
+             class="form-control">
+    </div>
+
+  <p *ngIf="error" class="error">
+      {{ error }}
+    </p>
+
+    <div class="form-group mt-3">
+      <button class="btn btn-primary" (click)="checkLogin()" color="primary">Login</button>
+    </div>
+  </form>
+
+
+</div>
