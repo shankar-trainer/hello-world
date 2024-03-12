@@ -1,0 +1,32 @@
+unsorted array1 
+
+
+empty sorted array2
+
+
+array1 -- smallest element
+    assign to array2 
+	
+	
+PSEUDOCODE 
+
+Declare A(n), temp,min  as Integer
+FOR I<- 1 TO N-1 
+ min<-I
+
+ FOR J<-I+1 TO N
+   IF A(J)<A(min)  THEN 
+     min<-j 
+     temp=A(I)
+	 A(I)=A(min)
+	 A(min)=temp
+   END IF 
+ END FOR 
+END FOR 
+ 
+
+ 	 
+  
+ 
+	
+	

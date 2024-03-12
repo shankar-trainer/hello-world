@@ -1,0 +1,31 @@
+BEGIN
+DECLARE n1,n2,sum,subtraction,multiplication,division As Integer
+
+ PRINT("Enter two number")
+
+ INPUT n1
+ INPUT n2
+
+ sum <- n1+n2
+ subtraction <- n1-n2
+ multiplication <- n1*n2
+ division <- n1/n2
+
+ PRINT("Number1 ")
+ PRINT n1
+ PRINT("Number 2 ")
+ PRINT n2
+
+ PRINT("Sum is ")
+ PRINT sum
+
+ PRINT("Subtraction is ")
+ PRINT subtraction
+ 
+ PRINT("Multiplication is ")
+ PRINT multiplication
+
+ PRINT("Division is ")
+ PRINT division
+
+END 

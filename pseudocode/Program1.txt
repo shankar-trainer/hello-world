@@ -1,0 +1,23 @@
+BEGIN
+
+  DECLARE N1 As Integer
+  DECLARE N2 As Integer
+
+  PRINT("Enter No1")
+  INPUT N1
+
+  PRINT("Enter No2")
+  INPUT N2
+
+  PRINT("Number1 is ")
+  PRINT(N1)
+
+  PRINT("Number2 is ")
+  PRINT(N2)
+
+END 
+
+
+
+
+

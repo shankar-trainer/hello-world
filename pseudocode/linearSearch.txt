@@ -1,0 +1,21 @@
+BEGIN
+
+Declare Ar(n), element, found  as Integer
+   Function search(Ar, element)
+		For i=1 to n
+		 if(Ar(i)==element)
+		   return i
+		 end if 
+		END For 
+		
+		return NIL;
+		
+	End Function
+	
+	found=search(Ar(n),element)
+    if(found<>NIL)
+	  print("Found at ",found, "position")
+	else 
+      print("Not Found ")
+    end if	  
+END 

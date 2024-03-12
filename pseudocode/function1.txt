@@ -1,0 +1,9 @@
+BEGIN
+DECLRAE 
+ FUNCTION addition(x,y)
+   s=x+y
+   RETURN s;
+ END FUNCTION
+
+ PRINT("ENTER TWO NUMBER)
+END

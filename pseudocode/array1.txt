@@ -1,0 +1,17 @@
+pseudocode 
+
+display sum , array(10) elements 
+
+BEGIN
+
+Declare N(5),TOTAL as Integer 
+
+TOTAL<-0
+
+For i<-1 TO 5
+ INPUT N(i)
+ TOTAL<-TOTAL+N(I)
+END FOR  
+
+PRINT "SUM IS ",TOTAL
+END

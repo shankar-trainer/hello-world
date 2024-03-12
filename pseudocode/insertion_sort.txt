@@ -1,0 +1,52 @@
+selection sort 
+
+BEGIN
+
+Declare A(n), minIndex as Integer
+
+	FOR i<-1 to n-1
+	  minIndex<-i
+	  FOR j<-i+1 to n
+		IF(A(j)<A(minIndex)) then 
+				minIndex=j
+		END IF 
+
+		SWAP(A(i), A(minIndex))	
+	  
+	 END FOR 
+	END FOR
+
+END 
+
+======================================
+insertion sort 
+
+BEGIN 
+Declare A(n), key,J,I as Integer
+
+	FOR J<-2 TO n
+
+     key=A[J]
+     I=J-1
+	 
+	  WHILE  I>0 AND A(I)<key
+	     A(I+1)=A(I)
+		 I=I-1
+      END WHILE		
+	 
+	 A[I+1]=key
+	   
+ 
+	END FOR
+END 
+
+
+
+
+
+
+
+
+
+
+

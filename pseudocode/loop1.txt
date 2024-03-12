@@ -1,0 +1,30 @@
+Pseudocode
+while loop
+print 1 to 10
+
+-------------------------------
+
+BEGIN
+ DECLARE n1 as Integer
+
+ n1=1
+
+ WHILE(n1<=10)
+
+  DO PRINT n1
+   n1=n1+1;
+ ENDWHILE
+
+END
+
+----------------------------------
+Algorithm
+
+ STEP1. INPUT N1
+ STEP2. WHILE N1<=10
+          PRINT N1
+          N1=N1+1;
+        ENDWHILE
+STEP3. END
+ 
+ 

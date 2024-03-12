@@ -1,0 +1,115 @@
+PSEDOCODE FOR BUBBLE SORTING
+
+BEGIN
+
+	Declare ar(n), n, temp,I ,J as Integer
+
+	PRINT "ENTER SIZE"
+
+	INPUT  n
+
+	FOR I<- 1 TO n
+	 INPUT  ar(n)
+	END FOR
+	
+	PRINT "BEFORE SORTING"
+	FOR I<- 1 TO n
+	 PRINT  ar(I)
+	END FOR
+	
+	FOR I<- 1 TO n-1
+	 FOR J<-I  TO I
+	   IF (ar(J)>ar(J+1))   THEN 	
+	      temp=ar(J)
+		  ar(J)=ar(J+1)
+		  ar(J+1)=temp
+	   END IF
+	 END FOR
+	END FOR 
+	
+	PRINT "AFTER SORTING"
+	FOR I<- 1 TO n
+	 PRINT  ar(I)
+	END FOR
+
+END
+
+
+ x=1,y=2
+ 
+ temp=x=1
+ temp=1
+ 
+ x=y -- x=2
+ 
+ y=temp=1
+ y=1
+ 
+ swap 
+ x=2
+ y=1
+
+ 
+  water_glass 
+  milk_glass
+
+  empty_glass=water_glass
+  water_glass=milk_glass
+  
+  milk_glass=empty_glass
+  
+  
+  
+ 
+ 
+==========================
+
+	FOR I<- 1 TO n-1
+	 FOR J<-I  TO I
+	   IF (ar(J)>ar(J+1))   THEN 	
+
+=====================	   
+
+ ar=3,4,1,2,5
+   n =5
+
+  i=1 
+step 1
+
+ i=1 to 5-1=4
+ j=1 to i
+ 
+  ar(1)>ar(2)
+    no swap 
+  ar=3,4,1,2,5
+  
+
+step 2
+
+ i=1 to 4
+ j=2 to i
+ 
+  ar(2)>ar(3)
+    swap 4>1 
+  ar=3,1,4,2,5
+  
+step 3
+
+ i=1 to 4
+ j=3 to i
+ 
+  ar(3)>ar(4)
+    swap 4>2 
+  ar=3,1,2,4,5
+  
+step 4
+
+ i=1 to 5-1=4
+ j=4 to 4
+ 
+  ar(4)>ar(5)
+    no swap 2>4 
+  ar=3,1,2,4,5
+
+
+ 

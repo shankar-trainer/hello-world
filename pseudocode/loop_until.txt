@@ -1,0 +1,30 @@
+pseudocode take 10 number from user and display the sum
+=====================================
+BEGIN
+DECLARE C1, N1, TOTAL as Integer
+
+C1=1;
+TOTAL=0;
+
+REPEAT  
+ PRINT("ENTER NO")
+ INPUT N1
+ TOTAL=TOTAL+N1
+ C1=C1+1
+UNTIL C1=10
+
+PRINT("TOTAL")
+PRINT TOTAL 
+END
+
+================================
+algorithm
+
+STEP1. C1 <-1, TOTAL<-0
+STEP2. REPEAT STEP2 UNTIL C1=10
+STEP3. INPUT N1
+STEP4. COMPUTE TOTAL<-TOTAL+N1
+STEP5. COMPUTE C1 <-C1+1
+STEP6. PRINT "TOTAL", TOTAL
+STEP7. STOP
+  

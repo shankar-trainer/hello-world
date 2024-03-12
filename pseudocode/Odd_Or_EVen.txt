@@ -1,0 +1,29 @@
+PSEUDOCODE
+------------------------------------
+BEGIN
+ Declare n as Integer 
+
+ PRINT("Enter Number")
+ INPUT n
+ 
+ IF(n Mod 2=0) THEN
+ PRINT("EVEN")
+ ELSE
+ PRINT("ODD")
+ ENDIF
+
+END
+
+-----------------------------------------------
+ALGORITHM
+
+STEP1 INPUT N
+STEP2 IF N MOD 2=0 
+       THEN PRINT "EVEN"
+      ELSE
+       PRINT "ODD"
+      ENDIF
+STEP3 STOP
+   
+
+

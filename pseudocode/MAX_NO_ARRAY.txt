@@ -1,0 +1,60 @@
+program 
+  calculate maximum and minimum  from the array of 10 elements 
+
+psedocode
+
+BEGIN
+
+Declare ar(10), max,min as Integer
+
+ar(10) <-[11,2,3,6,90,44,89,31,84,90]
+
+FOR i=1 to 10
+
+ IF i=1 THEN
+  max <-ar(1)
+  min <-ar(1)
+ END IF
+ 
+ IF i<>1 THEN
+   IF ar(i)>=max
+      max=ar(i)
+   END IF
+ 
+   IF ar(i)><=min
+      min=ar(i)
+   END IF
+ END IF 
+
+END FOR
+
+PRINT "MAX ",max 
+PRINT "MIN ",min
+
+END
+===========================================
+algorithm
+
+STEP1. DECLARE AN ARRAY AR(N), MAX,MIN WHERE N>=1
+STEP2. INITIALISE AR
+STEP3. REPEAT STEP 4 FOR i=1 TO N
+STEP4. IF i=1  THEN
+         max <-AR(1)
+         min <-AR(1)
+       END IF
+STEP5. IF i<>1 THEN
+          IF AR(i)>=MAX
+           MAX=AR(i)
+          END IF
+ 
+          IF ar(i)><=min
+           min=ar(i)
+          END IF
+       END IF 
+STEP6. PRINT "MAX",MAX
+STEP6. PRINT "MIN",MIN
+STEP7. END
+
+
+
+

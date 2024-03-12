@@ -1,0 +1,32 @@
+Pseudocode
+
+BEGIN
+
+ DECLARE  n1, n2, avg as Integer 
+
+ PRINT("Enter two no)
+ INPUT n1
+ INPUT n2
+
+ avg<- (n1+n2)
+ avg<- avg/2
+ 
+ PRINT("average ")
+ PRINT avg
+
+END
+=====================================================================
+Algorithm
+
+   Step1. INPUT TO N1,N2
+   Step2. AVG <- N1+N2
+   Step3. AVG <- AVG/2
+   Step4. PRINT AVG 
+   Step5. STOP
+
+
+
+
+
+
+
