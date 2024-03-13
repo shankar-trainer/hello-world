@@ -1,0 +1,52 @@
+variable -- an entity whose value can vary 
+
+  let x=10
+      x=20
+	  
+constant-- entity whose value will not change  
+
+ const pi=3.14
+ const  g=9.8 
+ 
+
+pseudocode 
+	--> pseudo -- false 
+    -->pseudocode -- flase  code 
+
+	-->pseudocode is human readable 
+    -->not executed by any software 
+
+	
+   data type 
+   integer -- no deciaml
+    double -- with decimal 
+    string -- collection of characters in double quotes
+
+    char  -- single char 
+
+
+	assignment operator 
+	   <-
+	= -- checking equality    
+  
+
+Write program to addition of two no 
+
+START 
+
+  Declare A,B,C as Integer  
+
+  Print "enter first no"
+  Input A
+  
+  Print "enter second no"
+  Input B
+  
+  C<- A+B
+  
+  Print "No1 is ",A
+  Print "No2 is ",B
+  Print "Addition is ",C
+
+END 
+

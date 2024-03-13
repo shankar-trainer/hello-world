@@ -1,0 +1,42 @@
+
+Pseudocode 
+
+  Take one array , initialise it print it 
+  
+  sort it using bubble sort and print it 
+ 
+  Start 
+  
+	  Declare ar(n), n, temp of Integer 
+
+	  Print "Enter no of elements for array  "
+	  Input n
+	  
+	  For i=1 to n
+	   Print "Enter array element value"
+	   Input ar(i)
+	  End For 
+
+	  Print "Unsorted array"
+	  For i=1 to n
+	   Print ar(i)
+	  End For 
+
+	   For i=1 to n
+		 For j=1 to i
+		  if ar(j)>ar(j+1)
+		   temp=ar(j)
+		   ar(j)=ar(j+1)
+		   ar(j+1)=temp
+		  end if 
+		End For
+	  End For 	
+	  
+	  Print "sorted array"
+	  For i=1 to n
+	   Print ar(i)
+	  End For 
+
+  End 
+
+

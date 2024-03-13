@@ -1,0 +1,50 @@
+BEGIN
+
+Declare f,res,p as Integer 
+f=1
+	Function factorial(n)
+
+	 For i=1 to n 
+	   f=f*i
+	 End For
+
+	return f
+
+	End Function
+	
+	Input p
+	
+	res=factorial(p)
+	
+	Print "Factorial of ",p," is ",res
+
+END 
+
+==================================
+Factorial using recursion 
+
+Begin
+
+Declare res as Integer
+
+  Function factorial(n)
+    if n=0 then 
+	return 1
+	else 
+	 return n*factorial(n-1)
+	End if 
+   
+  End Function
+
+res=factorial(4)
+Print "Factorial is ",res   
+  
+End
+ 
+ factorial(4)
+ 4*factorial(3*factorial(2*factorial(1)))
+ 4*3*2*1
+ 
+ 
+ 
+ 

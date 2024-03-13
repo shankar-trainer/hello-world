@@ -1,0 +1,41 @@
+Take 5 student name, subject and marks using array 
+Display total, average marks, names, subjects  
+
+Start 
+
+ Declare name(5), subject(5) as String
+ Declare marks(5), average, total  as Integer
+ 
+ total<-0
+ average<-0
+ 
+ For i=1 to 5
+    Print "Enter name, subject, marks"
+	Input name(i),subject(i),marks(i)
+	total<-total+marks(i)
+ End For 
+ 
+ Print "name, subject, marks"
+ For i=1 to 5
+      Print name(i), subject(i), marks(i)
+ End For 
+  
+ average<-total/5 
+ 
+ Print "Total Marks ",total
+ Print "Average Marks ",average
+
+End 
+
+
+name(5)=["ram kumar","shyam kumar","madan kumar","subham sharma","kamal kant"] 
+
+Print name(1)-- ram kumar
+Print name(2)-- shyam kumar
+Print name(3)-- madan kumar
+Print name(4)-- subham kumar
+
+
+
+    
+

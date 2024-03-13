@@ -1,0 +1,26 @@
+
+
+Start
+
+Declare sum, n1,n2, result  as Integer  
+
+	Function addition(a,b)
+
+	   sum<-a+b
+
+	End Function 
+
+
+	result<-addition(11,22)
+	
+	Print "Addition is ",result
+	
+	Print "Enter two number"
+	Input n1,n2
+
+	result<-addition(n1,n2)
+	
+	Print "Addition is ",result
+	
+End 
+

@@ -1,0 +1,65 @@
+Pseudocode 
+
+Take 3 marks for student and display total, average and grade 
+
+  average 
+  >=75 <=100   -- distinction
+  >=60 <=74    -- first
+  >=50 <=59    -- second
+  >=35 <=49    -- third 
+  >=0  <=34    -- fail 
+ 
+  in any subject marks < 35 fail 
+
+Start 
+
+ Declare m1,m2,m3,total,average as Integer 
+ Declare grade as string 
+ 
+ Print "Enter 3 subject marks"
+ Input m1,m2,m3
+ 
+ total<-m1+m2+m3
+ average<-total/3
+ 
+ If average>=75 and average<=100
+   grade="distinction"
+ Else If average>=60 and average<=74 
+   grade="first"
+ Else If average>=50 and average<=59
+   grade="second"
+ Else If average>=35 and average<=49
+   grade="third"
+ Else
+   grade="fail"
+ End If 
+ 
+ If m1<35 or m2<35 or m3<35 
+   grade="fail"
+ End If 
+
+ Print "Marks1", m1 
+ Print "Marks2", m2
+ Print "Marks3", m3
+ 
+ Print "Total", total
+ Print "Average", average
+ 
+ Print "Grade", grade
+
+
+End 
+
+
+  
+  
+  
+  
+    
+         
+
+
+
+
+
+

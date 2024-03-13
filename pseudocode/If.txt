@@ -1,0 +1,21 @@
+Psedocode 
+ Take marks from student and display pass or fail 
+  
+  marks>=35 -- pass 
+  marks<35  -- fail 
+Start 
+
+ Declare  marks as Integer 
+ 
+ Print "Enter marks"
+ Input marks 
+ 
+ If marks>=35 
+  Print "Pass"
+ End If
+ 
+ If marks<35 
+  Print "Fail"
+ End if   
+ 
+End   

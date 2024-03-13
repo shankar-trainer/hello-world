@@ -1,0 +1,194 @@
+
+AND Truth table 
+
+  If All conditions are true then Result is true
+  
+ Cond1     Cond2     Result  
+   T        T         T
+   F        T         F
+   T        F         F
+   F        F         F
+
+Or Truth table
+
+If Either conditions is  true then Result is true
+ Cond1     Cond2     Result  
+  T         F        T 
+  F         T        T 
+  T         T        T 
+  F         F        F
+
+  
+  If statement 
+        will execute if conditions is true
+  
+   Syntax 
+       If condition true 
+	       Body 
+	   End If
+   
+      If Else Statement 
+          will execute if conditions is true or else part 
+          get executed		  
+  
+       Syntax
+	     
+		 If condition true
+		   body 
+		 Else 
+           Body 
+         End if 		 
+  
+   
+    Nested If 
+	     If Else If Else  
+		 
+		 If condition 
+		 
+         Else If condition
+		 
+  		 
+		 Else If condition
+		 
+		 Else If condition
+		 
+		 Else 
+		 
+		 End If 
+		 
+
+		 https://writexo.com/wipro1234
+
+
+		 Loop 
+		 
+		      Iterative statement work till condition is true 
+		  
+			  Counter
+
+            while loop 
+			
+			syntax 
+			
+			  while (condition)  
+			  
+			  end while  
+			  
+			  
+			  counter=1
+			  
+			  while(counter<=10)
+			   print counter
+			   counter<-counter+1
+			  end while 
+
+             dry run 
+			 
+
+            counter=1
+            print 1 
+            counter=1+1=2
+
+            counter=2
+            print 2 
+            counter=2+1=3
+
+            counter=3
+            print 3 
+            counter=3+1=4
+			
+			counter=4
+            print 4 
+            counter=4+1=5
+			
+			counter=5
+            print 5 
+            counter=5+1=6
+			
+			counter=6
+            print 6 
+            counter=6+1=7
+			
+			counter=7
+            print 7 
+            counter=7+1=8
+			
+			counter=8
+            print 8 
+            counter=8+1=9
+			
+			counter=9
+            print 9 
+            counter=9+1=10
+			
+			counter=10
+            print 10 
+            counter=10+1=11
+			
+			counter=11
+			
+			while counter=11
+			   condition false
+			   will not execute
+			   
+            
+			
+		   For Loop 
+
+               no need to declare counter variable 
+
+           Syntax
+
+            For i=1 to n  
+			 Body
+			
+			End For 
+			
+			
+ Array  -- 
+
+       collection of same data type having single name
+        supports index 
+      
+       ar(n) as Integer 
+       
+	   name(6) as string 
+	   
+	   
+	   
+	   name(1)-- first name 
+	   name(2)-- second name 
+	   name(3)-- third name 
+	   
+	   
+	   
+			
+	Function 
+              -- piece of code for specific work  with some name, parameter
+			  -- return values 
+			  
+			 Function name(parameter)
+
+
+             End Function 
+
+			 
+			  
+			
+
+ 			
+            			
+			   
+			  
+			  
+			  
+			  
+
+
+			  
+			  
+			  
+		 
+		 
+		 
+		    

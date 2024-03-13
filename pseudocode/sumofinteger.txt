@@ -1,0 +1,73 @@
+Pseudocode 
+ 
+ Take integer from user and calculate its sum 
+ 
+ n=1234
+ sum=1+2+3+4
+ sum=10 
+
+ mod  
+   1 mod 10 -- 1   
+   12 mod 10 -- 2   
+   13 mod 10 -- 3 
+
+  / 
+  
+    9/10    -- 0
+    10/10   -- 1
+    12 / 10 -- 1
+    20 / 10 -- 2
+    22 / 10 -- 2
+	
+	
+Start 
+
+  Declare n,sum,p as Integer
+  
+  sum<=0 
+  p<-0
+  Print "Enter No"
+  Input n  
+  
+  while n<>0  
+    p<-n mod 10 
+	sum<-sum+p
+    n<-n/10
+  end   
+
+ print "sum of digit is ", sum 
+
+End 	
+	
+	
+	dry run 
+	n=123 
+	
+   while n<>0
+   while 123<>0 
+      p=123 mod 10
+      p=3 
+      sum =sum+p
+      sum=0+3 =3 
+
+	  n<-n/10
+	  n=123/10        123 -- mod  3 
+	                  12  -- mod  2
+	  n=12                        1
+	  
+	  
+   while 12<>0
+      p=12 mod 10 
+	  p=2
+      3=3+2
+	  sum=5 
+	  
+	  n=12/10 
+	  n=1
+	
+	while 1<>0
+      p=1 mod 10 
+	  
+	  
+	  
+	  

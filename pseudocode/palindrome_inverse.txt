@@ -1,0 +1,10 @@
+
+Pseudocode 
+
+ Check no is palindrome or not 
+ 
+ Start 
+ 
+ 
+ End 
+ 

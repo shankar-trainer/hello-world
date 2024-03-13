@@ -1,0 +1,23 @@
+ Pesudocode 
+
+ Circle for  area and circumference.
+ Take the radius and calculate area and circumference.
+ 
+ Start 
+ 
+	 Declare radius, area, circumference as Double
+	 
+	 Print "Enter radius of circle"
+	 Input radius
+
+	 area<-3.14*radius*radius
+	 circumference<-2*3.14*radius 
+	 
+	 Print "Radius is ",radius
+	 Print "Area is ",area
+	 Print "Circumference is ",circumference
+ 
+ End 
+ 
+ 
+  

@@ -16,7 +16,7 @@ FOR I<- 1 TO N-1
 
  FOR J<-I+1 TO N
    IF A(J)<A(min)  THEN 
-     min<-j 
+     min<-J 
      temp=A(I)
 	 A(I)=A(min)
 	 A(min)=temp

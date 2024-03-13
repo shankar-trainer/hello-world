@@ -1,0 +1,26 @@
+Pseudocode 
+
+Take three no and display highest no 
+
+Note Use And Logical Operator 
+
+Start 
+ Declare a,b,c as Integer 
+ 
+ Print "Enter 3 number"
+ 
+ Input a,b,c
+ 
+ If a>b and a>c 
+  Print "Highest No is ",a
+ End If
+ 
+ If b>a and b>c 
+  Print "Highest No is ",b
+ End If
+ 
+ If c>b and c>a 
+  Print "Highest No is ",c
+ End If
+ 
+End 

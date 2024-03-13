@@ -1,0 +1,61 @@
+Pseudocode 
+
+ Take the no from user and calculate factorial 
+
+Start 
+ Declare n, fact as Integer 
+ 
+ fact <- 1
+ 
+ Print "Enter  Number"
+ Input n 
+
+ For i<- 1 to n  
+    fact<-fact*i
+ End For 
+ Print "Factorial is ",fact 
+ 
+End 
+
+
+
+  factorial of 5 
+  
+  1*2*3*4*5 
+  5*4*3*2*1 
+
+  
+  Dry Run 
+  
+  
+  n=5 
+  
+  For i=1 to 5
+  
+     i=1 
+	 fact=fact*i
+	 fact=1*1=1
+	 
+	 i=2 
+	 fact=fact*i
+	 fact=1*2=2
+	 
+	 i=3 
+	 fact=fact*i
+	 fact=3*2=6
+	 
+	 i=4 
+	 fact=fact*i
+	 fact=4*6=24
+	 
+	 i=5 
+	 fact=fact*i
+	 fact=5*24=120
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+     	 

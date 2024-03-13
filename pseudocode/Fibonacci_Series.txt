@@ -1,0 +1,46 @@
+Pseudo code for fibonacci series 
+
+Begin
+
+	Function series(n)
+	 Declare n1,n2,res as Integer
+	 n1=0
+	 n2=1
+	 res=0
+        
+		For i=1 to n
+         print res 
+		 res=n1+n2 
+		 n1=n2
+		 n2=res
+			
+        End For 
+		
+
+	End Function
+
+	series(5)
+	series(7)
+End 
+
+fibonacci series using recursion
+
+Begin
+ Declare n as Integer
+	Function series(n)
+	 if n=0 
+	  return 0
+	 end if 
+	 if n=1
+      return 1
+	 end if  
+	 return series(n-1)+series(n-2)
+	End Function
+
+   n=5
+   For i=1 to n
+    print series(n)
+   End For    
+       	
+End 	
+	

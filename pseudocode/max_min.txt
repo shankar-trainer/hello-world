@@ -1,0 +1,40 @@
+Pseudocode 
+
+take 10 no from user using while loop
+calculate sum and display it.
+
+take 10 no from user using while loop
+find min,max  and display it.
+
+
+max min 
+
+
+Start 
+Declare counter, max, min, n as Integer 
+
+counter<-1
+
+	while  counter=10  
+     Print "Enter Number"
+	 Input n 
+	 
+	 if counter=1 
+	  max<-n
+	  min<-n
+	  
+	 else if n>=max
+	  max<-n 
+	 else if n<=min
+	  min<-n
+	 end if 
+	 
+	 counter<=counter+1
+	 
+	End  
+
+   Print "max ",max 	
+   Print "min ",min 	
+
+End 
+

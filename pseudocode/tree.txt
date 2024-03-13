@@ -1,0 +1,32 @@
+
+
+
+												Oragnization
+												
+						1.Employees             2. Deparments         3.Locations   				
+						 Manager
+						 
+						 
+						 
+						 
+						     BST               BST -- Binary Search Tree   
+						     20
+							/   \ 
+						  15	 25
+						  
+						  
+						  
+						  
+						 D 
+					   /	\ 
+				      B	      F
+					   \     / \
+					    C    E   K
+					  /     /  \ 
+					 A		I    M
+								
+								
+								
+								
+								Node1(name, data)-->Node2 
+								

@@ -1,0 +1,16 @@
+Pseudocode 
+Print 1 to 10 using while loop 
+
+
+Start
+
+Declare counter as Integer 
+
+ counter<-1
+  
+  while(counter<=10)
+   print counter
+   counter<-counter+1
+  end while 
+
+End 			  

@@ -1,0 +1,33 @@
+BEGIN
+Declare Ar(n),search,low,high,result_pos as Integer 
+
+	Function binary_search(A,v,low,high)
+
+		while low<high
+			mid<- (low+high)/2
+			if v=A(mid)
+			   return mid
+			else if  v>A[mid]
+			  low=mid+1
+			else
+			   high=mid-1	
+		end while 
+    	return NIL 
+	END Function
+		
+	PRINT "Enter Array Element "
+	For i=1 to n 
+       Input Ar(i)
+    End For 
+
+    Sort(Ar)
+
+    Input high=n 
+    Input low=1 	
+    result_pos=binary_search(Ar,56,high,low)
+    if(result_pos<>NIL) then 
+	  PRINT "Found at", result_pos
+	else 
+      PRINT "Not Found"	
+	   
+END
