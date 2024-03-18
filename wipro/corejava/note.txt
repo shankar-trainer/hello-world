@@ -1,0 +1,198 @@
+
+
+char =ascii code
+
+0 -255 code
+A
+B
+
+convert the code to char
+       char to code
+
+  int x=1;
+  x=x+1;
+  x=x-1;
+  x++;//post increment(increment and assign later)
+  ++x;//pre increment(increment and assign)
+
+
+Loop
+  it is iterative statement will execute till the true value
+
+   type
+   1. while loop
+   2. for loop
+   3. do while loop
+   4. for each loop
+
+   while loop
+     1. top tested loop
+     syntax
+       counter
+       while(condition){
+        statement
+       }
+
+
+
+
+int p,res, fact=1, c=1;
+        java.util.Scanner sc=new java.util.Scanner(System.in);
+        p=sc.nextInt();
+          //1*2*3*4*5
+        while(c<=p){
+            fact=fact*c;
+            c++;
+        }
+
+        p=4;
+        c=1
+        fact=1
+
+        while(c<=p)
+        while(1<=4)
+
+        fact=fact*c;
+        c=1
+        fact=1*1;
+
+        c=2
+        fact=1*2=2
+
+        c=3
+        fact=2*3=6
+
+        c=4
+        fact=6*4=24
+
+
+===============
+    static int getFactorial(int s){
+int f=1;
+        int count=s;
+        //5*4*3*2*1
+
+        while(count>=1){
+            f=f*count;
+            count--;
+        }
+
+        s=4
+        count=s=4
+        count>=1
+
+        count=4
+        f=1*4=4
+
+        count=3
+        f=4*3=12
+
+        count=2
+        f=12*2=24
+
+        count=1
+        f=24*1=24
+loop types
+1. while loop
+    -->top tested
+    --> add count variable outside
+    --> check condition
+    --> increment/decrement of count variable
+2. for loop
+      -->it is easiest loop
+      -->it is top tested loop
+      --> count variable declaration, condition check , increment declaration of count variable
+          is done at single place
+
+          syntax
+           for(counter; condition;increment,decrement)
+
+3. do while loop
+    --> bottom tested loop
+    --> it will execute at least once
+        if true condition it may execute one or more times
+        if false condition it will execute one times
+
+Arrray
+     -->collection of multiple elements of same data type with single name.
+     -->it uses index to add, get , remove the value
+
+
+     declaration
+
+     data type array_name[];
+
+     initialization
+        two ways
+         a. inline initialization
+              declare array without size and initialization in single line
+         b. declare array with size and initialize later
+
+var argument
+    -- variable no of argument in method
+    -- denoted by ...
+    -- must be the last argument in method parameter
+    -- a method can have single var argument
+    -- supports for, for each
+
+
+two dimension array
+ int ar[][]
+      1st arg row
+      2nd arg col
+
+
+      int arr1[]={
+                      {1,2,3},
+                      {4,5,6}
+              };
+              // array of 2 row , 3 col
+             arr1[0] --- {1,2,3}
+             arr1[1] --- {4,5,6}
+            two dimension array consists of array of one dimension array
+
+           for(int j[]:arr1){
+           for(int k:j){
+           }
+           }
+
+
+matrix1
+   {
+   {11,22,33,44},
+   {55,66,77,88}
+   }
+
+   transpose of matrix is changing row to col and col to row
+   {
+   {11,55},
+   {22,66},
+   {33,77},
+   {44,88}
+   }
+
+Assignment
+ Take two dimension array. initialise it.
+ Print the  array.
+ Make the transpose of matrix and display it.
+
+
+
+   sem[][]
+
+   sem[0]=new int[n];
+
+
+
+
+
+array methods
+
+  -- insert
+  -- delete
+  -- access
+  -- update
+  -- slice
+  -- reverse
+
+  slice -- takes the slice from start to end(not inclusive)
