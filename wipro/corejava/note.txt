@@ -1,5 +1,4 @@
 
-
 char =ascii code
 
 0 -255 code
@@ -196,3 +195,12 @@ array methods
   -- reverse
 
   slice -- takes the slice from start to end(not inclusive)
+
+  algorithm, pseudocode, dfd  
+  slide link 
+  https://drive.google.com/drive/folders/1m28sDoKdZDeXR5D3sW6Oe1NbBulVrZ3Q?usp=sharing
+  
+  corejava slide link 
+  https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
+  
+  
