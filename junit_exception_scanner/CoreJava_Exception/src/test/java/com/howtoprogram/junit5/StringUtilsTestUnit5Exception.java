@@ -13,7 +13,13 @@ public class StringUtilsTestUnit5Exception {
     assertThrows(IllegalArgumentException.class, () -> {
       StringUtils.convertToInt(st);
     });
-
+  }
+  @Test
+  public void convertToIntNullParameterAssertThrows1() {
+    String st = null;
+    assertThrows(IllegalArgumentException.class, () -> {
+      StringUtils.convertToInt(st);
+    },"String must be not null or empty");
   }
 
   @Test
