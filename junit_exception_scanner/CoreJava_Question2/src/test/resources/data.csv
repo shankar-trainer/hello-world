@@ -1,2 +1,3 @@
 input1, expected1, input2, expected2  input3, expected3
 priya,    priya,      female,     female, 15000, 15000
+kamal,   kamal,      male,    male,   90000, Registration Failed. Salary cannot be less than 10000.

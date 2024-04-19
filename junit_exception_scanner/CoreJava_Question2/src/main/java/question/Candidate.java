@@ -27,11 +27,12 @@ public class Candidate {
         return expectedSalary;
     }
 
-    public void setExpectedSalary(double expectedSalary) throws InvalidSalaryException {
+    public void setExpectedSalary(double expectedSalary)// throws InvalidSalaryException
+    {
         if (expectedSalary < 10000) {
             throw new InvalidSalaryException("Registration Failed. Salary cannot be less than 10000.");
         }
-        else
+        //else
         this.expectedSalary = expectedSalary;
     }
 }

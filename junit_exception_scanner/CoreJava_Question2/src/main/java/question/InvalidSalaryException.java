@@ -1,6 +1,6 @@
 package question;
 
-public class InvalidSalaryException extends Exception {
+public class InvalidSalaryException extends RuntimeException {
     public InvalidSalaryException(String message) {
         super(message);
     }

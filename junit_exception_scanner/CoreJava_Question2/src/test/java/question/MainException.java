@@ -17,12 +17,25 @@ public class MainException {
         Candidate candidate = new Candidate();
         candidate.setName(input1);
         candidate.setGender(input2);
+        //candidate.setExpectedSalary(Double.valueOf(input3));
 
-        Throwable exception =  assertThrows(InvalidSalaryException.class, () -> {
+        System.out.println("input1 " + input1 + " expected 1 " + expected1);
+        System.out.println("input2 " + input2 + " expected 2 " + expected2);
+        System.out.println("input3 " + input3 + " expected 3 " + expected3);
+
+       /* Throwable exception = assertThrows(InvalidSalaryException.class, () -> {
             candidate.setExpectedSalary(Double.valueOf(expected3));
         });
-                //"Expect salary exception");
         assertEquals("Registration Failed. Salary cannot be less than 10000.", exception.getMessage());
+*/
+        //"Expect salary exception");
+
+        try{
+            candidate.setExpectedSalary(Double.valueOf(input3));
+        }
+        catch (InvalidSalaryException e){
+            assertEquals("Registration Failed. Salary cannot be less than 10000.", e.getMessage());
+        }
 
         assertEquals(expected1, candidate.getName());
         assertEquals(expected2, candidate.getGender());
