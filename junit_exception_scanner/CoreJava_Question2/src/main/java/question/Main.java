@@ -18,7 +18,7 @@ public class Main {
         double salary = scanner.nextDouble();
 
         if (salary < 10000) {
-            throw new InvalidSalaryException("Registration Failed. Salary cannot be less than 10000.");
+            throw new InvalidSalaryException("Registration Failed.Salary cannot be less than 10000.");
         } else {
             Candidate candidate = new Candidate();
             candidate.setName(name);
