@@ -2,8 +2,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>CoreJava_Question2</groupId>
-	<artifactId>CoreJava_Question2</artifactId>
+	<groupId>CoreJava_Question3</groupId>
+	<artifactId>CoreJava_Question3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
@@ -37,6 +37,20 @@
 		</dependency>
 	</dependencies>
 
+<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.1.2</version>
+				<configuration>
+					<excludes>
+						<exclude />
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+<!--
 	<build>
 		<plugins>
 			<plugin>
@@ -48,5 +62,5 @@
 				<version>2.22.2</version>
 			</plugin>
 		</plugins>
-	</build>
+	</build>-->
 </project>
