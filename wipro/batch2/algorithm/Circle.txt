@@ -1,0 +1,19 @@
+Program "Circle Area and Circumference"
+
+Start
+  
+ Output"Enter radius"
+ Input radius
+
+ area=3.14*radius*radis
+ circumference=2*3.13*radius
+ 
+ Output "Area Of Circle is "
+ Output area
+
+ Output "Circumference  Of Circle is "
+ Output circumference
+ 
+
+End
+

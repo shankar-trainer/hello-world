@@ -1,0 +1,50 @@
+Fibonacci sequence
+
+Start 
+  Function series(n)
+     n1=0, n2=1
+	 res=0
+     	print n1
+        print n2 		
+	 For i=2 to n-1
+	   res=n1+n2
+	   print res
+	   n1=n2
+	   n2=res 
+	 End For
+  
+  End Function
+
+  series(3)
+  series(4)
+End 
+
+======dry run====
+0, 1, 1, 2, 3, 5, 8,
+
+n=5 
+n1=0, n2=1
+	 res=0
+
+	 i=2 to 4
+	   print res
+	   res=n1+n2
+	   n1=n2
+	   n2=res 
+i=2
+res=0
+print 0
+
+i=3
+res=0+1=1
+print 1
+n1=1
+n2=1
+
+i=3 
+res=1+1=2
+print 2 
+n1=1
+n2=2
+
+ 

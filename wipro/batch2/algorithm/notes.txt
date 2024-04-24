@@ -1,0 +1,26 @@
+
+
+
+Search 
+
+ Ar1=[11,2,1,89,5,7,3]
+
+   5 search 
+
+  linear/sequential  search  search all elements till not found 
+
+  sorted  array 
+Ar1=[1,2,3,5,7,11,89]
+
+
+  100000  elements
+    
+sorted 
+    5000 
+  binary search 
+
+         mid= (first_index+last_index)/2
+
+
+
+ 

@@ -1,0 +1,100 @@
+Program "Selection Sort"
+Start 
+
+Ar(n), min,temp
+
+ For i=0 to n-1
+  print "Enter No"
+  read Ar(i)
+ End For
+
+ print "Unsorted Array" 
+ For i=0 to n-1
+  print Ar(i)
+ End For
+
+ For i=0 to n-1
+  min_index=i
+   For j=i+1 to n
+     If Ar(j)<Ar(min_index)
+      min_index=j
+     End If
+  //  Swap(Ar(i),Ar(min_index))
+     temp=Ar(i)
+     Ar(i)=Ar(min_index)
+     Ar(min_index)=temp
+   End For 
+ End for
+
+ print "Sorted Array" 
+ For i=0 to n-1
+  print Ar(i)
+ End For
+
+End 
+
+
+==== dry run====
+Ar(5)=[5,2,1,4,3]
+
+ For i=0 to n-1
+  min_index=i
+   For j=i+1 to n-1
+     If Ar(j)<Ar(min_index)
+      min_index=j
+     End If
+  //  Swap(Ar(i),Ar(min_index))
+     temp=Ar(i)
+     Ar(i)=Ar(min_index)
+     Ar(min_index)=temp
+   End For 
+ End for
+============== i=0=====
+i=0
+ For i=0 to 4
+ min_index=0
+  For j=1 to 4
+   j=1
+     If Ar(1)<Ar(0)
+         2<5
+     min_index=1
+  //  Swap(Ar(i),Ar(min_index))
+ 5,2,1,4,3 swap 
+ 2,5,1,4,3
+
+
+ For i=0 to 4
+ min_index=1
+  For j=2 to 4
+         If Ar(j)<Ar(min_index)
+             Ar(2)<Ar(1)
+             1 <2  -- true 
+ 2,5,1,4,3 swap 
+ 1,5,2,4,3
+  min_index=2
+
+
+ For i=0 to 4
+ min_index=2
+  For j=3 to 4
+         If Ar(j)<Ar(min_index)
+             Ar(3)<Ar(2)
+             4 <3  -- false 
+ 
+ 1,5,2,4,3 no swap 
+  min_index=2
+
+ For i=0 to 4
+ min_index=2
+  For j=4 to 4
+         If Ar(j)<Ar(min_index)
+             Ar(4)<Ar(2)
+             4 <5  -- false 
+ 
+ 1,5,2,4,3 no swap 
+  min_index=2
+
+====== i=1 
+
+
+

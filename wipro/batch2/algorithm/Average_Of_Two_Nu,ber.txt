@@ -1,0 +1,12 @@
+Program "Average of two number"
+
+Start 
+
+ Write "Enter Two Number"
+ Read x
+ Read y
+ set z to (x+y)/2
+ Write "average of two number is "
+ Write z
+
+End;

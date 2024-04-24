@@ -1,0 +1,37 @@
+Program "Find Biggest and Smallest From Three Number"
+
+
+Start
+
+ Print "Enter three Number"
+ Input A,B,C 
+
+  If  A>B And A>C
+     Print "Biggest No is ",A
+  End If 
+
+  If  B>A And B>C
+     Print "Biggest No is ",B
+  End If 
+
+  If  C>B And C>A
+     Print "Biggest No is ",C
+  End If 
+
+
+  If  A<B And A<C
+     Print "Smallest No is ",A
+  End If 
+
+  If  B<A And B<C
+     Print "Smallest No is ",B
+  End If 
+
+  If  C<B And C<A
+     Print "Smallest No is ",C
+  End If 
+
+
+
+
+End

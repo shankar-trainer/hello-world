@@ -1,0 +1,52 @@
+Program Factorial 
+one way 1*2*3*4*5
+
+Start
+ Declare  counter, fact,n as Number 
+
+ counter=1
+ fact=1
+ n=0
+
+ Print "Enter Number"
+ read n
+
+ Repeat 
+  fact =fact*counter
+  counter=counter+1
+ Until counter<=n 
+
+ Print "Factorial is",fact 
+End
+
+Dry Run
+Enter Number
+ 0
+ counter=1
+ fact=1
+ fact=fact*counter=1*1
+ 
+  Factrial is 1
+
+Enter Number
+3
+ counter=1
+ fact=1
+ fact=fact*counter=1*1=1
+
+ counter=2
+ fact=1
+ fact=fact*counter=1*2=2
+
+ counter=3
+ fact=2
+ fact=fact*counter=2*3=6
+ 
+  Factrial is 6
+
+ 
+
+
+5  -- 5*4*3*2*1
+      1*2*3*4*5
+

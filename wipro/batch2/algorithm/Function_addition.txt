@@ -1,0 +1,29 @@
+Program Addition with function
+
+Start 
+	Declare Function addition(a,b)
+	 return a+b
+	End Function 
+	
+	Declare Function Factorial(n)
+	  fact=1
+	  For i=1 to n
+	   fact=fact*i
+	  End For 
+	return fact
+	End Function
+
+	Print "Factorial of 5 is ", Factorial(5)
+	Print "Factorial of 6 is ", Factorial(6)
+    k=4
+	j=Factorial(k)
+	Print "Factorial of ",k," is ",j
+	
+	Print "Sum of 1 and 2 is ", addition(1,2)
+	x=10
+	y=20
+	z=addition(x,y)
+	
+	Print "Addition Of "+x+" and "+y+" is "+z
+End 
+

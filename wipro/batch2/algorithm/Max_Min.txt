@@ -1,0 +1,66 @@
+Program Max Min 
+
+Start
+  next=yes
+  n=0
+  max=0
+  min=0
+  count=1
+
+  while next=yes loop
+ 
+    Print "Enter No"
+    Read n
+    if count=1
+      max=min=n
+    else if n>=max
+      max=n
+    else if n<=min
+      min=n
+    end if
+
+    Print "another number yes/no"
+    Read next 
+    count=count+1
+
+  end loop 
+
+  Print "Max is "
+  Print max
+
+  Print "Min is "
+  Print min
+
+End 
+
+
+ n=5
+ count=1
+ max=min=5
+
+
+ n=8
+ count=2
+ max=min=5
+
+     else if n>=max
+      max=n
+    else if n<=min
+      min=n
+    8>=5
+     max=8
+
+ n=2
+ count=3
+ max=8
+ min=5
+
+    2>=8  -- false
+     max=8
+    2<=5  -- true
+     min=2
+
+
+
+  
+

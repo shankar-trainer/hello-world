@@ -1,0 +1,13 @@
+STEP 1 Start
+
+STEP 2 Take Array A 
+STEP 3 
+      FOR I=1 TO A.LENGTH-1
+	   FOR J=I+1 TO A.LENGTH-1
+	      IF A[J]<A[J-1]
+		    SWAP A[J] WITH A[J-1]
+          
+   		  
+STEP 5 End 
+      
+

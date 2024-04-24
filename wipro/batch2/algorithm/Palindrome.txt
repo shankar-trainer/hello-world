@@ -1,0 +1,45 @@
+Program sum of integer 
+Start
+
+ Print "Enter No"
+ Read n
+ n1=n
+ k=0
+ 
+ While n<>0 Loop 
+  k=k*10+n%10
+  n=n/10  
+ End Loop 
+
+ If n1=k then 
+  Print "No is palindrome "
+ Else
+  Print "No is not palindrome"
+ End If 
+End
+
+-- Dry Run--
+k=0
+n=121
+k=k*10+n%10=0*10+121%10=0+1
+n=n/10=121/10=12
+
+
+k=1
+n=12
+k=k*10+n%10=1*10+12%10=10+2=12
+n=n/10=12/10=1
+
+k=12
+n=1
+k=k*10+n%10=12*10+1%10=120+1=121
+n=n/10=1/10=0
+
+exit 
+
+
+
+1234321-- palindrome
+
+65655  -- not palindrome
+

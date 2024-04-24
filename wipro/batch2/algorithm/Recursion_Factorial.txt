@@ -1,0 +1,23 @@
+Program Factorial With Recursion
+Start
+
+   Function factorial(n)
+   if n=0
+    retutn 1
+	retutn n*factorial(n-1)
+   End Function
+
+   k=5
+   Print "factorial of 5 is ",factorial(5)
+End
+
+
+dry run 
+k=5 
+factorial(5)
+
+  retutn 5*factorial(4)
+ 
+  retutn 5*factorial(4*factorial(3*factorial(2*factorial(1*factorial(0)))))
+          5*4*3*2*1-- 
+  

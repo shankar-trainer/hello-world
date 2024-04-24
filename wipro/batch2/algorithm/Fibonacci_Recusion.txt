@@ -1,0 +1,22 @@
+Program Fibonacci Recursion
+
+Start 
+  Declare Function series(n)
+	  if n==0
+		return 0
+	  end if 
+	  
+	  if n==1
+		return 1
+	  end if 
+
+	  return series(n-1)+series(n-2)
+  End Function
+
+  for i=0 to n
+    print series(i)
+  end for 
+  
+End
+ 
+

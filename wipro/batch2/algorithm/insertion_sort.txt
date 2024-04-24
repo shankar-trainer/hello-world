@@ -1,0 +1,15 @@
+start
+
+a(n), minindex
+minindex=0
+
+For i=0 to n-1
+  For j=i+1 to n-1
+    if a(j)<a(minindex) then 
+      minindex=j	
+     end if 
+	 swap(a(i),a(minindex))
+  end for 
+end for 
+   
+end 

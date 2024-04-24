@@ -1,0 +1,27 @@
+Program "Linear Search"
+
+Start 
+ Ar(n)
+
+ print "initialise array"
+ For i=0 to n-1
+   read Ar(i)
+ End For  
+
+ print "linear search"
+ print "enter search element"
+ read search
+ search_index=-1 
+
+ For j=0 to n-1
+    if Ar(j)=search
+      search_index=j
+      break
+    end if
+ End For 
+  if search_index!=-1
+    print search," Found at ", search_index
+  else 
+    print "not found"
+  end if 
+End 

@@ -1,0 +1,21 @@
+Rem -- Take two number and display the sum
+
+Begin
+
+ Print "Addition of Two NUmber"
+ Declare n1,n2,n3 as Integer 
+ 
+ Print"Enter No1"
+ Input n1
+
+ Print"Enter No2"
+ Input n2
+
+ n3=n1+n2
+  
+ Print "No1 is "+n1
+ Print "No2 is "+n2
+ Print "Sum is "+n3
+
+End;
+

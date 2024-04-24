@@ -1,0 +1,12 @@
+Program "Check Even Odd Program"
+
+Start 
+  Print "Enter a number"
+  Read A
+
+  if A mod 2 =0 
+    Print "No is Even"
+  Else 
+    Print "No is Odd"
+  End If;
+End 

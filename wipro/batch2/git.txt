@@ -1,0 +1,21 @@
+Administrator@DESKTOP-TIC5DM4 MINGW64 ~
+$ git config --global user.name "b51user01"
+
+Administrator@DESKTOP-TIC5DM4 MINGW64 ~
+$ git config --global user.email "b51user01@rpsconsulting.in"
+
+Administrator@DESKTOP-TIC5DM4 MINGW64 ~
+$cd Desktop
+$git clone http://10.10.16.125:8929/wipronga_batch51/assignment1
+
+$cd assignment1
+
+Now open assignment folder on Desktop
+Create one folder day1 inside assignment1
+Add some java files inside day1
+
+$git add *
+$git commit -m "added"
+$git push origin main
+
+open url http://10.10.16.125:8929

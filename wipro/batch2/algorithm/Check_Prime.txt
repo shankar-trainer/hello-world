@@ -1,0 +1,42 @@
+Program Check prime no 
+
+Start 
+
+ Print "Enter a number"
+ Input A
+ Prime=true
+ Counter=2
+
+ While counter<=A-1 Loop 
+
+   if A mod counter=0 then 
+    Prime=false; 
+   End If;
+
+   Counter=Counter+1
+ End Loop 
+ 
+ If Prime=true Or A=1
+  Print "No is Prime "
+ Else 
+  Print "No is Not Prime "
+ End If  
+End
+
+
+---- dry run --
+
+1 
+No is Prime
+
+5
+counter =2 to 5-1
+   not divisble by 2,3,4
+No is Prime 
+
+6
+counter =2 to 6-1
+    divisble by 2,3
+No is Not Prime 
+
+

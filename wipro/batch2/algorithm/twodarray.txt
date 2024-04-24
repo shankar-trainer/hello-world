@@ -1,0 +1,14 @@
+Start 
+
+ar(2)(3)=[
+    [1,2,3],
+	[4,5,6] 
+ ]
+
+ for i=0 to 1
+  for j=0 to 2
+    print ar(i)(j)+", 
+  end for 
+  print("")
+ end for  
+End 

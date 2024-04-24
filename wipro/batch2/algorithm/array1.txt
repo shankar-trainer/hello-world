@@ -1,0 +1,20 @@
+Program Array of 10, calculate the sum 
+
+Start 
+rem ar(10)=[1,2,3,4,5,11,12,13,88,77]
+ar(10)
+
+	For i=0 to 9 
+     print "Enter No "
+	 read ar(i)
+	End For 
+
+	sum=0
+	For i=0 to 9 
+	 print ar(i)
+	 sum=sum+ar(i)
+	End For 
+    Print "sum of array elements "
+	Print sum 
+	
+End 

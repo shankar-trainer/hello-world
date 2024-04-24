@@ -1,0 +1,96 @@
+start 
+	print  "enter three number "
+	read a,b,c 
+
+	if a>b and a>c
+        g=a
+	end if 
+
+	if b>a and b>c
+        g=b
+	end if 
+	
+	if c>a and c>b
+        g=c
+	end if 
+    print "highest is ",g 
+end
+
+
+start 
+	print  "enter three number "
+	read a,b,c 
+              nested if 
+	if a>b 
+	     if a>c
+        g=a
+	end if 
+
+	if b>a and b>c
+        g=b
+	end if 
+	
+	if c>a and c>b
+        g=c
+	end if 
+
+    print "highest is ",g 
+
+end
+
+	if a>b and a>c
+        g=a
+	end if 
+	------------------------	
+	if a>b 
+	     if a>c
+          g<-a
+		 else 
+          g<-c
+         end if 
+	else
+      	if b>c
+		   g<-b
+		else 
+           g<-c
+        end if 		   
+	end if 
+	
+	a=2,b=1,c=5
+
+   if a>b true  
+	     if a>c -- false 
+          g<-a  -- not 
+		 else 
+          g<-c  g=5 
+         end if 
+	else
+      	if b>c
+		   g<-b
+		else 
+           g<-c
+        end if 		   
+	end if 
+	
+	a=2,b=10,c=5
+
+   if a>b true  
+	     if a>c -- false 
+          g<-a  -- not 
+		 else 
+          g<-c  g=5 
+         end if 
+   else  (b>a) true 
+      	if b>c  true 
+		   g<-b g=10
+		else 
+           g<-c
+        end if 		   
+	end if 
+	
+	
+	
+
+		
+
+

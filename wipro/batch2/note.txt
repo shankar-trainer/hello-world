@@ -1,0 +1,373 @@
+cd -- change directory
+
+md -- make directory 
+dir -- display list of files
+
+directory/ folder -- same 
+
+
+primitive data type  -- old data types 
+
+numeric 
+  integer 
+    
+      byte   -------------------java.lang.Byte
+      short  ------------------- java.lang.Short
+      int     -- default------- java.lang.Integer
+      long   ------------------- java.lang.Long
+
+  decimal 
+     float 
+     double  -- default 
+   character 
+       char 
+   String -- collection of charcters- String class 
+
+
+Loop -- iterative statement works till condition is true
+
+1. while loop
+     top tested
+      condition is checked at start
+
+
+pre increment
+    ++c  --- incremented and assigned
+post increment ---  incremented but assigned later
+
+User Input
+
+Scanner --
+    nextInt()-- int
+    nextFloat() -- float
+    next() -- string
+    nextLine() -- multi words string
+
+All characters in computer are generated with ascii code
+A -Z -- ascii code
+a-z  -- ascii code
+0-9  -- ascii code
+
+
+loop
+ 4 types
+ 1. while loop
+ 2. do while
+ 3. for loop
+
+ while loop
+    -- top tested loop
+ do while
+    -- bottom tested loop
+    -- it will execute at least once
+      syntax
+        do {
+          body
+
+        }
+        while();
+
+  for loop
+     -- easiest loop
+     -- top tested loop
+     -- variable declaration, condition check, variable increment/decrement is done at one place
+     syntax
+
+     for(var dec; condition check; variable increment/decrement)
+
+
+PrimeNo
+  - a no which is divisible by 1 and itself
+
+  1,
+  2
+  3
+  4 not prime
+  5 prime
+
+  2 to n-1
+
+
+
+arr1[]={11,2,3,44}
+
+for(int x=0;x<arr1.length;x++)
+   System.out.println(arr1[x)
+
+   arr1[0]-- 11
+   arr1[1]-- 2
+   arr1[2]-- 3
+   arr1[3]-- 44
+
+   for(int i:arr1)
+    System.out.println(i)
+       i:arr1
+       i=11
+       i=2
+       i=3
+       i=44
+
+
+   Two Dimension Array
+   int arr1[][]={
+                   {1,2,3,4},
+                   {5,6,7,8}
+                 };
+                 // 2 rows 4 cols
+
+            two dimension array consists of multiple one dimension array
+
+            arr1[0] ={1,2,3,4}
+            arr1[1] ={5,6,7,8}
+
+            first row element
+
+            arr1[0][0] -- 1
+            arr1[0][1] -- 2
+            arr1[0][2] -- 3
+            arr1[0][3] -- 4
+
+            second row
+            arr1[1][0] -- 5
+            arr1[1][1] -- 6
+            arr1[1][2] -- 7
+            arr1[1][3] -- 8
+
+        System.out.println("1st row ");
+         for(int k:arr1[0]) // arr1[0]={1,2,3,4}
+            System.out.print(k+",");
+    arr1[0] -- k
+               k-1
+               k-2
+               k-3
+               k-4
+
+        System.out.println("\n1st row ");
+        for(int i=0;i<arr1[0].length;i++)
+            System.out.print(arr1[0][i]+",");
+
+            arr1[0][0] -- 1
+            arr1[0][1] -- 2
+            arr1[0][2] -- 3
+            arr1[0][3] -- 4
+
+            insert element in array
+
+            int ar[]={1,2,3,4,5,6};
+
+            pos=4
+            element=999
+            ar-- 6
+            ar1 --7
+            int ar1[]=new int[ar.length+1]
+            ar1[0]=ar[0];
+            ar1[1]=ar[1];
+            ar1[2]=ar[2];
+            ar1[3]=element;
+            ar1[4]=ar[3];
+            ar1[5]=ar[4];
+            ar1[6]=ar[5];
+
+
+            delete element in array
+
+            int ar[]={1,2,3,4,5,6};  -- size 6
+            pos=3
+            int ar1[]=new int[ar.length-1]   -- size 5
+
+            ar1[0]=ar[0];
+            ar1[1]=ar[1];
+            ar[2]   -- removed
+            ar1[2]=ar[3];
+            ar1[3]=ar[4];
+            ar1[4]=ar[5];
+
+
+
+    Class  --- collection of object
+
+         Employee class --
+
+                   consists of lot of employee
+                   each employee is object
+
+                   object -- attribute
+                             behaviour
+
+                  Employee
+                    attributes :
+                      id
+                      name
+                      salary
+
+                     method :
+                      projectWork()
+
+                      each object(employee)
+                               all attributes , behaviour
+
+
+                      object -- instance of class
+
+
+
+Constrcutor
+       -- special method having same name as of class
+       -- no return type even void
+       -- if return then it will become method
+       -- it can be private, public, protected, default
+       -- no constructor added then  compiler will add default constructor
+       -- default constructor added by compiler  inialises instance variables with 0 and null
+     two types
+      default constructor -- no arg
+      overloaded constructor -- with arguments
+
+      default constructor
+       -- can be only one
+
+     overloaded constructor
+         -- can be multiple with different arguments
+
+         one constructor can call the other constructor-- called as chaining of constructor
+
+
+
+
+
+  =====
+      Four main feature of oop
+      1. Encapsulation
+      2. Inheritance
+      3. Abstraction
+      4. Polymorphism
+
+
+      1.Encapsulation
+
+          In Class attributes should be private
+          Attributes should be exposed to the class using public methods
+
+          Encapsulation= bind  code (behaviour)+data(attributes)
+
+          bind the data with methods
+
+          States are hidden(private), behaviour (methods) is exposed to external world
+
+     2. Inheritance
+        -->One class can inherit  the features (attributes, behaviour) from other class
+        -->Code reusability
+        --> Is a relationship
+        --> private features can not be inherited
+        --> child class uses extends keyword
+         Super/Parent/Base
+
+             |
+             |
+             v
+         Child/Derieved/
+
+          Animal
+           |
+           Dog
+
+           Dog is a animal
+
+
+       Animal
+            sound()
+               animal sound
+
+
+             Cat extends Animal
+                 sound()-- Cat mews
+             Dog extends Animal
+                 sound()-- Dog barks
+
+
+
+               Employee
+                    salary()
+
+
+                    Manager pf
+                    Clerk   hra
+                    Accountant  da
+java.lang -- default package
+java.lang.System
+      public static final PrintStream out = null;
+            PrintStream -- println method
+System.out.println();
+
+
+
+
+static
+       -- common variable, methods
+       -- created in the starting
+       -- single copy is shared by all the objects
+       -- class variable/methods
+
+     static/class method
+     ==>static method can call static members directly
+     ==>static method can access non-static/instance variable using object
+
+     non-static/instance  method
+     ==>instance method can call static, instance  members directly
+
+     static created when class starts
+     instance variables are created later when object is created
+
+
+static method can call static directly , instance/normal method can call all static, instance variables, methods direcly
+
+    static can call static, instance can call both
+
+
+
+    family
+
+        four son  -- each son -- instance variable
+        father static
+
+        son1 -- 10
+        son2 -- 10
+        son3 -- 10
+        son4 -- 10
+
+        father -- 10 total 10
+        father -- 10 total 10+10=20
+        father -- 10 total 10+10+10=30
+        father -- 10 total 10+10+10+10=40
+
+throw -- create new Exception object and throw it
+throws -- it declares with method what exceptions to be throws
+
+
+
+player1 -------- ball  ------  player2 -------------- player3
+                                catch, again throw
+Arrays - class
+java.util.Arrays
+
+ static methods to work with arrays
+
+
+
+
+ List
+   ordered
+   index support
+   duplicate
+   for , for each
+
+   Set -
+       no duplicate
+       no index support
+       traversing with  for each, Iterator,
+
+
+       subclass
+        -- hashset
+        -- linkedhashset
+        -- treeset
+

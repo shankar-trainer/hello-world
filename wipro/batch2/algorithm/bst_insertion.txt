@@ -1,0 +1,17 @@
+Step 1: Algorithm InsertNode(current,value)
+Step 2: Pre: current is the node to start
+Step 3: Post: value placed in current
+Step 4: if value<current.Value
+Step 5:    if current.Left=0
+Step 6:       current.Left<-node(value)
+Step 7:     else
+Step 8:       InsertNode(current.Left,value)  
+Step 9:    end if
+Step 10: else 
+Step 11:     if current.Right=0
+Step 12:        current.Right<-node(value)
+Step 13:      else
+Step 14:       InsertNode(current.Right,value)  
+Step 15:      end if
+Step 16: end if
+Step 17:end InsertNode

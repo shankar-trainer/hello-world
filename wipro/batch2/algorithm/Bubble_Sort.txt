@@ -1,0 +1,82 @@
+Program "Bubble Sorting"
+
+Start 
+ Ar(n), temp 
+
+ For i=0 to n-1
+  print "Enter No "
+  read Ar(i) 
+ End For 
+ print "Unsorted Array"
+ For i=0 to n-1
+   print  Ar(i) 
+ End For 
+
+ For i=0 to n-1
+  For j=0 to n-i-1
+   if Ar(j)>Ar(j+1)
+    temp=Ar(j+1)
+    Ar(j+1)=Ar(j)
+    Ar(j)=temp 
+   End If
+  End For 
+ End For 
+
+print "Sorted Array"
+ For i=0 to n-1
+   print  Ar(i) 
+ End For 
+End
+
+
+ For i=0 to n-1
+  For j=0 to n-i-1
+   if Ar(j)>Ar(j+1)
+    temp=Ar(j+1)
+    Ar(j+1)=Ar(j)
+    Ar(j)=temp 
+   End If
+  End For 
+ End For 
+
+
+Ar(4)=[22,2,44,5] n=4 
+i=0 to 3
+j=0 to 3
+
+ 22,2,44,5
+ Ar(0)-22
+ Ar(1)--2
+ Ar(j)>Ar(j+1)
+  22>2
+ 2,22,44,5
+
+i=0 to 3
+j=1 to 3
+
+ 2,22,44,5
+ Ar(1)-22
+ Ar(2)--44
+ Ar(j)>Ar(j+1) -- false
+  22>44 false 
+ 2,22,44,5  -- no change
+
+
+i=0 to 3
+j=2 to 3
+
+ 2,22,44,5
+ Ar(2)-44
+ Ar(3)--5
+ Ar(j)>Ar(j+1) -- true
+  44>5  true 
+ 2,22,5,44  -- changed 
+ 
+ 
+  
+
+ 
+
+
+
+ 

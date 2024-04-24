@@ -1,0 +1,40 @@
+Program Swap 
+
+Start 
+	n1=10
+	n2=20
+	print "no1 is ",n1
+	print "no2 is ",n2
+
+	temp=n1
+	n1=n2
+	n2=temp  
+
+	print "after swapping"
+	print "no1 is ",n1
+	print "no2 is ",n2
+End 
+
+output ---
+
+no1 is 10
+no2 is 20 
+
+after swapping
+no1 is 20
+no2 is 10 
+
+ 
+
+1glass -- water 
+2glass -- milk 
+
+3emptyglass 
+
+3 --- 1glass- water 
+1glass = 2glass==milk
+2glass=3emptyglass=water 
+
+
+
+ 

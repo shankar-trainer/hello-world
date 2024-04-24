@@ -1,0 +1,27 @@
+Program Employee Data 
+
+Start 
+//Declare Id(5) as Integer 
+
+	Id(5),Name(5),Salary(5),Total,Avg
+
+	Total=0
+	Avg=0
+	
+	For i=0 to 4
+	  Print "Enter Id, Name, Salary "
+	  read Id(i), Name(i), Salary(i)
+	  Total=Total+Salary(i)
+	End For 
+
+	Avg=Total/5;
+	
+	For i=0 to 4
+	  Print "Id is "+Id(i)
+	  Print "Name is "+Name(i)
+      Print	"Salary is "+Salary(i)
+	End For 
+
+   Print "Total Salary "+Total
+   Print "Average Salary "+Avg
+End 

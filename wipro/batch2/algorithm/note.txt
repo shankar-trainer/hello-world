@@ -1,0 +1,216 @@
+pseudocode 
+
+1. SEQUENCE 
+2. SELECTION
+3. ITERATION
+
+
+
+Camel Case 
+
+Single word, multi word 
+
+Capitalise first letter 
+
+CalucalteInterest 
+
+InterestCalculation
+
+
+TRUTH TABLE 
+
+AND -- all conditions should be true --result true 
+    -- any condition is false then result is false 
+
+OR 
+   -- any condition is true  result is true 
+   -- all conditions are false then result is false 
+
+
+
+AND 
+
+   Condition1      Condition2      Result 
+    T                 T             T 
+	T                 F             F
+	F                 T             F
+	F                 F             F 
+
+
+OR 
+
+   Condition1      Condition2      Result 
+     T                 T             T 
+	 T                 F             T 
+	 F                 T             T
+     F                 F             F 
+ 	 
+	 
+	 
+Loop 
+   -- is iterative statement to do specific work again and again (multiple time )
+
+   -- count how many times to be done 
+
+
+
+   condition check 
+   Loop 
+    Body 
+   
+   End Loop 
+   
+   
+   Types 
+   
+   while 
+   do while 
+   until loop 
+   do until loop 
+   
+   for loop 
+   
+   
+   while loop 
+     -- top tested loop 
+	 -- condition is checked at the top/ start 
+	 
+
+For Loop 
+  --> easier 
+  Syntax 
+  For count=1 to 10
+   Body 
+  End For 
+  
+  
+  
+  ar(2)(3)=[
+    [1,2,3],
+	[4,5,6] 
+ ]
+ 
+ ar(0) -- [1,2,3]
+ ar(1) -- [4,5,6]
+ 
+ ar(0)(0) -- 1
+ ar(0)(1) -- 2
+ ar(0)(2) -- 3
+
+ ar(1)(0) -- 4
+ ar(1)(1) -- 5
+ ar(1)(2) -- 6 
+ 
+ 
+ 
+ 
+ 
+
+
+
+ Function --
+ 
+     ==>a subprogram which is having name and can have parameter, return type
+	 ==>does the specific work 
+     ==>called many times 
+
+
+
+  somework()
+      
+
+  Calculation 
+
+       addition
+
+       subtraction
+	   
+	   multiplication
+	   division 
+	   
+	    interestCalculation
+		
+		
+		addition(3,4)
+		
+		Function addition(a,b)
+		   return a+b
+		End Function
+ 
+ 		addition(3,4)
+		addition(3,4)
+		addition(3,4)
+
+       Function sqrt(a)
+        return value 
+       End Function  
+		
+		
+		sqrt(5)
+		sqrt(56)
+		
+	 
+ 	Declare Function Factorial(n)
+	  fact=1
+	  For i=1 to n
+	   fact=fact*i
+	  End For 
+	return fact
+	End Function
+
+	 
+   Function factorial(n)
+     if n==0
+       retutn 1;
+	 retutn n*factorial(n-1)
+   End Function
+
+ n=4
+ n*factorial(n-1)
+ 
+ 4*factorial(3*factorial(2*factorial(1*factorial(0)))
+ 
+ 4*3*2*1*1
+ 
+ 
+ 
+ Linear Search 
+ 
+    --   search elements 
+	
+	-- less efficient 
+  	
+	
+ 11,2,66,9,56, 88,33
+ 
+ 
+ binary search 
+ 
+     -- sorted array 
+     2,9,11,33,56,66,88 
+
+	 mid=33 
+	 
+	 key=66
+
+	 
+	
+	
+
+
+
+	
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
