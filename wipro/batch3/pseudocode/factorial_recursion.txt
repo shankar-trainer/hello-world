@@ -1,0 +1,28 @@
+Program "factorial recursion"
+
+	Function factorial(n)
+     if n==0 or n==1 
+       return 1 	 
+	 else return n*factorial(n-1)
+	End Function
+   
+   print "factorial of 5 is ",factorial(5)
+
+End
+==== dry run =====
+n=4 
+  4*factorial(3*factorial(2*factorial(1))
+  4*3*2*1 
+
+
+Program "Factorial "
+	n=5
+	fact=1
+	For i=1 to n 
+	 fact=fact*i;
+	End For
+	
+	print "factorial is ",fact;
+End 
+ 
+

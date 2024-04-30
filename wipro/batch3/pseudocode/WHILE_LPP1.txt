@@ -1,0 +1,7 @@
+PROGRAM "PRINT 1 TO 10"
+
+
+
+
+
+END

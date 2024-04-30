@@ -1,0 +1,36 @@
+PROGRAM "PRIME NO"
+   PRINT "ENTER NUMBER"
+   READ A
+
+   COUNTER=2
+
+   DO 
+
+    IF A MOD 2 ==0
+      PRINT "NOT PRIME NO"
+      BREAK
+    END IF 
+   WHILE COUNTER<=A-1
+
+    IF COUNTER==A-1 
+       PRINT "IT IS PRIME NO"
+    END IF 
+
+END
+
+
+--- DRY RUN ---
+1 MOD 2 =1
+     PRIME 
+2 MOD 2 =0
+  NOT PRIME 
+3 MOD 2 =1 
+   PRIME 
+
+   
+
+
+
+
+
+

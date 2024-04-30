@@ -1,0 +1,23 @@
+ program "bst insert" 
+ 
+   bnode {
+     info 
+	 bnode left
+	 bnode right
+   }
+  
+  function insert(bnode root, item)
+    if root ==null
+      root=new bnode()
+      root.left=root.right=null
+      root.info=item	  
+    
+	else if (item<root.info)
+		 root.left=insert(root.left,item)
+		 
+	else if (item>root.info)
+		 root.right=insert(root.right,item)
+    end if   
+  end function
+   
+ end

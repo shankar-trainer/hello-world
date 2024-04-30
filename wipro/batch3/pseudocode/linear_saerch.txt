@@ -1,0 +1,31 @@
+Program "Linear search"
+
+ sub input(ar)
+  For i=0 to ar.length-1
+    print "Enter no"
+	read ar(i)
+ End For  	
+  
+ sub search(ar,k)
+  For i=0 to ar.length-1
+      if ar(i)==k 
+	    return i
+	  end if  
+  End For 
+  return -1 
+ end sub 
+ 
+ print "enter no of element  "
+ read n 
+ 
+ ar(n)=[]
+ input(ar)
+ 
+ pos=search(ar,5)
+ 
+ if pos==-1 
+   print "not found "
+ else
+   print "element found at ", (pos+1)
+ end if 
+ 

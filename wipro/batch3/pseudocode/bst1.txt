@@ -1,0 +1,24 @@
+Program "binary search tree"
+ bnode {
+     info 
+	 bnode left
+	 bnode Right
+  }
+ 
+  function bst(bnode root, key)
+	  if root==null
+	   print "not found "
+	  
+	  else if (key==root.info)
+	   print  "found "
+	  
+	  else if (key<root.info)
+		 return bst(root.left,key);
+		 
+	  else if (key>root.info)
+		 return bst(root.right,key);
+	  end if 	 
+  end function
+
+
+End 

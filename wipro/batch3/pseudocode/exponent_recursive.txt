@@ -1,0 +1,27 @@
+program "recursive exponent"
+
+  function power(base,exponent)
+     if exponent==0
+	  return 1
+	  
+	 return base*power(base,exponent-1) 
+  end function
+
+  result=power(3,3)
+   print "power of 3,3 is ",result
+end 
+   ==== dry run=== 
+      power(3,0) --- 1
+	
+	 power(2,2)
+	    2*power(2,1)
+		2*power(2,0)
+		
+		2*2*2 =8
+		
+		1*2*2*2=8    
+		
+		power(2,2(power(2,1(power(2,0))))
+		
+	
+	 

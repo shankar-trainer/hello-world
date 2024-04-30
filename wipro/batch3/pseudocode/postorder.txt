@@ -1,0 +1,18 @@
+Program "postorder binary tree traversal"
+  Node {
+     Data 
+	 Node left
+	 Node Right
+  }
+  
+  Function postorder(Node root)
+  
+    if root==NULL
+	 return NULL
+
+    postorder(root.left)  
+ 	postorder(root.right)
+	print (root.Data)
+      
+  End Function 
+End 

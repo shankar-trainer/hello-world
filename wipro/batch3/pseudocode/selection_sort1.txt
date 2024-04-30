@@ -1,0 +1,41 @@
+Program "insertion sort"
+
+ print "enter array length"
+ read n
+ 
+ ar(n), minindex
+ minindex=0
+ 
+  For i=0 to n-1
+    Print "enter element"
+	read ar(i)
+  End For 
+  
+  Print "unsorted array "
+  
+  For i=0 to n-1
+      print ar(i)
+  End For 
+  
+ 
+ For i=0 to n-1
+   For j=i+1 to n-1 
+   
+    if ar(j)<ar(minindex) 
+	  minindex=j
+	End If
+ 	  //swap(ar(i),ar(minindex))
+	   temp=ar(i)
+	   ar(i)=ar(minindex)
+	   ar(minindex)=temp 
+   End For 
+ End For
+
+ 
+  Print "sorted array "
+  
+  For i=0 to n-1
+      print ar(i)
+  End For  
+
+END 

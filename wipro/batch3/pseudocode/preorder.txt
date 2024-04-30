@@ -1,0 +1,22 @@
+Program "preorder binary tree traversal"
+
+  Node {
+     Data 
+	 Node left
+	 Node Right
+  }
+  
+  Function preorder(Node root)
+  
+    if root==NULL
+	 return NULL
+	else 
+    print (root.Data)
+  
+  preorder(root.left)  
+  preorder(root.right)  
+  
+  End Function 
+ 
+
+End 

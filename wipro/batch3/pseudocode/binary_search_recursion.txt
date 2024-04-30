@@ -1,0 +1,32 @@
+program "binary serach recursion"
+
+ function binarySearch(A,v,low,high)
+	if low>high 
+	   return NIL 
+	mid=(low+high)/2
+    if v==A(mid)
+       return mid
+    else if v>A(mid)
+       binarySearch(A,v,low,mid-1)	
+ 
+ end function
+  
+  print "enter no of elements of array  "
+  read n 
+  ar(n)  
+  
+  for i=0 to n-1 
+   read ar(i)
+  end for  
+  
+  sort(ar)
+  print "enter element to search "
+  read search 
+  pos=binarySearch(ar,search,0, n-1)
+  
+  if pos<0
+    print "not found "
+ else 
+    print "found at ",pos 
+  
+end

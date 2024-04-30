@@ -1,0 +1,22 @@
+Program "fibonacci series"
+
+  Function series(n)
+     n1=0, n2=1
+     res=0 
+
+     print n1	 
+     print n2
+     
+     For i=2  to n-1
+         res=n1+n2 
+		 print res 
+		 n1=n2 
+		 n2=res
+
+     End For 	
+   End Function
+
+   series(5)
+   series(6) 
+   
+  

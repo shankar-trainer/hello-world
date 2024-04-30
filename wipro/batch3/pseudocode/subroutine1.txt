@@ -1,0 +1,51 @@
+program "Addition subroutine"
+ 
+   // subroutine with parameter and return type
+ sub addition(a,b)
+    return a+b
+ end sub
+
+ // subroutine with no  parameter but   return type
+ sub subtraction()
+    print "enter two number"
+	read a,b 
+    return a-b
+ end sub
+ 
+ // subroutine with parameter and no return type
+ sub multiplication(a,b)
+  print "multiplication of "a," and ",b," is ",(a*b)
+ end sub
+ 
+ // subroutine with no parameter and no return type
+ sub division()
+   print "enter two number"
+   read a,b 
+  print "division of ",a," and ",b," is ",(a/b)
+ end sub
+ 
+ 
+ // callinng subroutine
+ 
+ add=addition(12,3)
+ print "addition is ",add
+ 
+ add=addition(10,5)
+ print "addition is ",add
+  
+ sub=subtraction()
+ print "subtraction is : ",sub
+
+ sub=subtraction()
+ print "subtraction is : ",sub
+ 
+ multiplication(20,30)
+ multiplication(2,33)
+ 
+ division()
+ division()
+ 
+ 
+ 
+ 
+

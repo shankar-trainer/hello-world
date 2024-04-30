@@ -1,0 +1,56 @@
+logical operator trith table 
+
+
+OR 
+  -- any condition is true then result will be true 
+
+     OR TRUTH TABLE
+
+    condition1 condition2   result 
+      T		T		T
+      F		T		T
+      T		F		T
+      F		F		F
+
+
+  AND 
+       if any of the condition is false result is  false
+       all conditions are true then the result is true 
+
+     OR TRUTH TABLE
+
+    condition1 condition2   result 
+      T		T		T
+      F		T		F
+      F		F		F
+      T		F		F
+
+Iteration
+    It is repetitive statement and will execute till condition 
+    is true 
+
+    its implemented using three loop constructs.
+    1. while
+    2. do while 
+    3. for loop 
+
+   1. while loop 
+       -- top tested loop 
+       -- it requires one counter or condition check variable 
+       
+       counter/condition check variable 
+          while  condition
+             body
+          end while   
+
+factorial 
+     5 --  1*2*3*4*5
+            5*4*3*2*1 
+
+     0 -- 1
+
+DO WHILE  LOOP 
+    -- BOTTOM TESTED 
+    -- EXECUTE AT LEAST ONCE 
+ 
+     

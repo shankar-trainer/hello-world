@@ -1,0 +1,15 @@
+PROGRAM "PRINT ALL PRIME BETWEEN 1 TO 100"
+  FOR I =1 TO 100
+
+   FOR J=2 TO I-1
+     IF I MOD J==0
+        BREAK
+     END IF 
+   END FOR
+ 
+     IF J==I-1
+      PRINT I
+     END IF 
+  END FOR
+
+END 

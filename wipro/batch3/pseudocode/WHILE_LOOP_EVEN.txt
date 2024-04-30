@@ -1,0 +1,11 @@
+PROGRAM "EVEN NO BETWEEN 1 TO 20"
+   COUNTER=1
+     
+      WHILE COUNTER<=20
+        IF COUNTER MOD 2 ==0
+         PRINT COUNTER
+        END IF 
+        COUNTER=COUNTER+1
+      END WHILE 
+
+END 

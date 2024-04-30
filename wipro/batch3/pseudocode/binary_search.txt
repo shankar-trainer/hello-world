@@ -1,0 +1,36 @@
+Program "Binary Search"
+
+ print "enter no of element "
+ read n
+ Ar(n), key, high, low, mid, search_index=-1
+
+ sub input(ar)
+  For i=0 to ar.length-1
+    print "Enter no"
+	read ar(i)
+  End For  	
+ end sub 
+  
+ sub binary_search(ar, key, high, low, search_index)
+   sort(ar)
+   
+  while low<high 
+    mid=(low+high)/2
+	if key==ar(mid)
+	   search_index=mid 
+	else if  key>ar(mid)
+      low=mid+1
+     else 
+       high=mid-1	 
+  end while 
+  return search_index
+  end Sub  
+
+ input(ar) 
+pos=sub binary_search(ar, 5, n-1, 0, -1)
+  if pos==-1 
+   print "not found "
+   else 
+   print "search found at ", pos
+ 
+End 

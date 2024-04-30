@@ -1,0 +1,27 @@
+Program "selection sort"
+
+	print "enter array size "
+	read n 
+	Ar(n), min, temp 
+
+	 For i=0 to n-1 
+	  print" enter no "
+	  read Ar(n)
+	 End For 
+
+	  For i=0 to n-1 
+	   minindex=i 
+        For j=i+1 to n 
+        if Ar(j)<Ar(minindex)
+		   minindex=j
+		End If 
+       Swap(Ar(i),Ar(minindex))		
+	  End For 	
+      End For 
+	  
+	  print "sorted elements "
+    For i=0 to n-1 
+	  print" enter no "
+	  read Ar(n)
+	 End For 
+End 

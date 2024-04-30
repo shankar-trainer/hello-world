@@ -1,0 +1,21 @@
+Program "inorder binary tree traversal"
+
+  Node {
+     Data 
+	 Node left
+	 Node Right
+  }
+  
+  Function inorder(Node root)
+  
+    if root==NULL
+	 return NULL
+
+    inorder(root.left)  
+ 	print (root.Data)
+    inorder(root.right)  
+  
+  End Function 
+ 
+
+End 

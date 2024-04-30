@@ -1,0 +1,38 @@
+program "sum of digit"
+
+  print "enter a number "
+  read a
+  sum=0
+  
+  while a!=0 
+   sum=sum+a%10
+   a=a/10
+  end while 
+  print "sum of digit of number is :", sum 
+end 
+
+=== dry run ======
+
+a=1234
+sum=sum+1234%10=0+4=4
+a=1234/10=123
+
+a=123
+sum=sum+123%10=4+3=7
+a=123/10=12
+
+a=12
+sum=sum+12%10=7+2=9
+a=12/10=1
+
+a=1
+sum=sum+1%10=9+1=10
+a=12/10=0
+
+  terminate 
+  
+  
+
+
+
+ 

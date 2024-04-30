@@ -1,0 +1,78 @@
+program "minmax"
+sub minmax()
+ print "enter no of element "
+ read n 
+ 
+ max=min=0 
+ p=0
+ 
+ For i=1 to n
+  print "enter no "
+  read p 
+  if i==1  
+    max=min=p 
+  else if p>=max 
+    max=p 
+  else if p<=min  
+    min=p 
+  end if 
+ 
+ End For 
+ 
+ print "maximum no is ",max 
+ print "minimum no is ",min 
+ 
+ end sub 
+ 
+ minmax()
+ minmax()
+ minmax()
+ 
+ 
+ === dry run ====
+  n=5
+  if i==1  
+    max=min=p 
+  else if p>=max 
+    max=p 
+  else if p<=min  
+    min=p 
+  end if 
+-----   
+ i=1 
+  enter no
+  p=5
+if i==1  
+    max=min=p=5
+
+i=2 
+    enter no
+  p=7
+  max=7 
+  min=5
+
+i=3 
+    enter no
+  p=10
+  max=10 
+  min=5
+    
+i=4 
+    enter no
+  p=3
+  max=10 
+  min=3
+  
+i=5 
+    enter no
+  p=1
+  max=10 
+  min=1
+  
+  
+    
+  	
+	
+
+	
+   

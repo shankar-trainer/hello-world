@@ -1,0 +1,46 @@
+program "sum of digit"
+
+  print "enter a number "
+  read a
+  b=a
+  k=0
+  
+  while a!=0 
+   k=k*10+a%10
+   a=a/10
+  end while 
+  
+  print "inverse of the number is  :", k 
+  if b==k 
+     print b," is palindrome"
+  else 	 
+     print b," is not palindrome"
+end 
+
+-- dry run ---
+a=1234 
+k=0*10+1234%10=0+4=4
+a=1234/10=123 
+
+a=123
+k=4*10+123%10=40+3=43
+a=123/10=12
+
+a=12
+k=43*10+12%10=430+2=432
+a=12/10=1
+
+a=1
+k=432*10+1%10=4320+1=4321
+a=1/10=0
+
+terminate 
+k=4321
+
+
+
+
+ 
+
+
+

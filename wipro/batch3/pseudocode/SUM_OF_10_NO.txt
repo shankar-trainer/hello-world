@@ -1,0 +1,11 @@
+PROGRAM "SUM OF 10 NO"
+   SUM=0
+  FOR I= 1 TO 10 
+    PRINT "ENTER  NO "
+    READ A 
+    SUM=SUM+A
+  END FOR 
+
+   PRINT "SUM IS ",SUM
+
+END 

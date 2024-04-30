@@ -1,0 +1,31 @@
+program "iterative exponent"
+
+  function power(base,exponent)
+     res=1
+	 For i=1 to exponent
+	   res=res*base
+	 End For 
+	 
+	 return res
+  end function 
+   
+   result=power(3,3)
+   print "power of 3,3 is ",result
+end 
+
+
+   --- dry run -----
+     power(3,3)
+	
+	res=1 
+     i=1 to 3 
+	   i=1 
+	   res=1*3=3 
+	   
+	   i=2 
+	   res=3*3=9
+	   
+	   i=3 
+	   res=9*3=27
+	   
+	   

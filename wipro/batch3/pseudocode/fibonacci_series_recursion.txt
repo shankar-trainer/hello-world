@@ -1,0 +1,27 @@
+Program "fibonacci series recursion"
+
+	Function series(n)
+	 
+	 if n==0 
+	   return 0 
+	 end if 
+	 
+	 if n==1 
+	   return 1 
+	 end if 
+	 
+	 return series(n-1)+series(n-2)
+	End Function 
+
+   k=5 
+   For i=0 to k 
+     print series(i)
+   End For
+   
+   k=6 
+   For i=0 to k 
+     print series(i)
+   End For
+
+End 
+
