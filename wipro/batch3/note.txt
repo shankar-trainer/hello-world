@@ -1,0 +1,221 @@
+
+
+
+java -- jdk software 
+        jdk 17 (lts) 
+                lts -- long term support 
+
+cd \       --- cd change directory 
+           \   -- root directory 
+
+
+Eclipse 
+    -- free, open source 
+    -- workspace -- space for work 
+        all created projects will be save inside workspace 
+
+    -- jre -- java run time environment 
+           files are compiled with inbuilt compiler 
+        
+
+
+
+primitive data type   ---- reference class 
+byte                        java.lang.Byte 
+short                       java.lang.Short 
+
+
+md wipro     --- md make directory
+
+dir -- list of files, directories
+
+  ==> a single java file can have multiple classes.
+  ==> each class can have main method.
+  ==> each class can be run separately
+
+  ==> a single class can be public, 
+  ==> class having same name as of file can be public 
+
+  ==>  java is case sensitive.
+
+UserInput 
+   java.util.Scanner 
+            nextInt() ----- int 
+            nextFloat() ---- float 
+            nextDouble()----- double 
+            next() --- single word string
+            nextLine() -- multi word string 
+
+
+loop
+   while loop
+     top tested 
+
+    for loop
+     top tested
+
+
+     array - multiple elements in single name
+             use index to access the elements
+             index starts from 0 to array length-1
+
+           one dimension array
+             int []
+
+            two dimension array
+             int [][]
+
+
+             int ar[][]={
+                     {1,2,3,4},
+                     {5,6,7,8},
+                     {9,8,7,6}
+             };
+             3 rows and 4 cols.
+
+
+ ar[0]=       {1,2,3,4},
+
+
+ Loop  three types
+   1. while loop -- top tested
+   2. for loop  -- top tested
+   3. do while  -- bottom tested
+                    condition is checked at last ,
+                    it executes at least once
+     do {
+
+     }
+     while(condition);
+
+
+     class -- collection/group of objects. each object has same attribute and behaviour as that of class
+         Employee class -- group of lot of employee objects.
+         class Employee {
+           id
+           name
+           salary
+            work()
+         }
+         id,name,salary -- attribute of the class
+         work()-- behaviour of the class
+
+         emp1, emp2, emp3 -- three object
+           each object will carry one copy of attributes and behaviour
+
+         Object -- instance of the class
+
+         class -- conceptual entity
+         object is real entity
+
+
+Encapsulation
+
+    data should be private
+    using public behaviour(method) it can be exposed outside
+
+    bind data(attribute)+code(method)
+    it will encapsulate  data using code
+
+
+
+   values can be set by two ways
+       setter methods
+       constructor
+
+
+       one constructor can call other constructor with this()
+       inside constructor this(), super() must be in first line
+       inside constructor either use  this() or  super() not both
+
+       overload constructor can be multiple with different arguments
+       but only one default constructor will be present
+
+
+
+instance variable --- each object will get a separate copy of instanc variable
+                  --- initialization done with constructor
+static variable/class variable
+                 -- single copy is shared among all objects
+                 -- created before the creation of object
+                 -- used with classname. static member name
+                 -- initialization done with static block
+
+
+
+
+
+System.out.println -- how works
+
+
+    java.lang.System
+  public static final java. io. PrintStream out
+
+    java. io. PrintStream
+  public void println(double x)
+
+
+Inheritance
+ one class inherits attributes and behaviours  the other class
+ subclass, child class, derived class    inherits from super class, parent class
+
+  Employee (parent class)
+     |
+     Manager (sub class)
+   private members can not be inherited
+
+ java multiple inheritance is not supported directly
+
+    multiple inheritance  allows one sub class to have multiple super class
+
+      Father , Mother
+          \/
+         Child
+
+     in java we have multi level inheritance
+
+     Vehicle
+      |
+      Car
+       \
+       Sports Car
+
+
+
+ Constructors are not inherited
+     each constructor is having super() in first line added by compiler
+     super() -- calls super class constructor
+
+
+
+                                   caught
+    player1   ---    ball ---------player3-----------------------------player2
+                                      re throw
+
+
+
+
+     Collection
+         -->collection is a framework
+         -->it allows the element to be added, removed, transferred as single unit
+         -->it has algorithms implemented like sorting, binary search
+
+
+         It has basically three interfaces
+
+          1. List
+               --> it allows duplicates
+               --> it supports  index
+               --> it is ordered
+                implementations classes
+                  -->ArrayList
+                  -->LinkedList
+                  -->Vector(legacy)
+           2. Set
+                    ==> it does not allow duplicates
+                    ==> it does not allow index
+
+                implementations classes
+                  1.HashSet -- not ordered
+                  2.TreeSet  -- sorted
+                  3.LinkedHashSet  -- ordered
