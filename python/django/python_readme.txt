@@ -83,3 +83,13 @@ select package
 click on install
 
 
+
+pip install jupyterlab
+
+launch JupyterLab with:
+
+jupyter lab
+pip install notebook
+To run the notebook:
+
+jupyter notebook
