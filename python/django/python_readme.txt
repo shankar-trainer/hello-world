@@ -93,3 +93,7 @@ pip install notebook
 To run the notebook:
 
 jupyter notebook
+
+jupyter notebook <notebook>.ipynb
+
+jupyter lab <notebook>.ipynb
