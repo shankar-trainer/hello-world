@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .box {
+            width: 100pt;
+            height: 100pt;
+            background-color: yellow;
+            margin-bottom: 20pt;
+            margin-left: 100pt;
+            border: solid 10pt;
+        }
+
+        p {
+            color: yellow;
+            background-color: red;
+            width: 20%;
+            margin-left: 350pt;
+            font-size: 20pt;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+    </div>
+
+    <p>rotate</p>
+    <div class="box" style="transform:rotate(30deg);">
+    </div>
+
+    <p>scale</p>
+    <div class="box" style="transform:scale(2,2);">
+    </div>
+
+    <p>translate</p>
+    <div class="box" style="transform:translate(100pt,50pt);">
+    </div>
+
+    <p>skew</p>
+    <div class="box" style="transform:skew(20deg,30deg);">
+    </div>
+
+    <p>matrix</p>
+    <div class="box" style="transform:matrix(0.866,0.5,-0.5,0.866,0,0); ;">
+    </div>
+
+</body>
+
+</html>

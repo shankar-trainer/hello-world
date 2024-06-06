@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+     function change(){
+        var id2=document.getElementById("id1").innerHTML
+        alert(id2)
+        document.getElementById("id1").innerHTML='<h2>Greeting to javascript</h2>'
+     }
+
+     var x=1;
+     function increment(){
+        document.getElementById("id3").innerHTML='Count is '+(++x)
+     }
+     function decrement(){
+        document.getElementById("id3").innerHTML='Count is '+(--x)
+     }
+
+    </script>
+    
+    <div id="id1" onclick="change()">
+     <h1> hello world </h1>
+    </div>
+
+    <div id="id3" style="border: solid; padding: 20pt;margin-bottom:10px ;width: 30%;">
+          Count is 1
+    </div>
+
+     <button onclick="increment()">increment </button>
+     <button  onclick="decrement()">decrement </button>
+
+</body>
+</html>

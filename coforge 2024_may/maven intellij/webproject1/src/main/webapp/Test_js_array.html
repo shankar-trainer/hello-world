@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <script>
+        var ar = [1, 2, 3, 4, 5]
+        console.log(ar)
+
+        console.log('using for loop ')
+        document.write("<div> using for loop  </div>")
+
+        for (index = 0; index < ar.length; index++) {
+            console.log(ar[index])
+            document.write("<div>  " + ar[index] + "</div>")
+        }
+
+        document.write('using for in loop ')
+        // for in takes index from array 
+        for (key in ar) {
+            document.write("<div>  " + key + "  ------   " + ar[key] + "</div>")
+        }
+
+        document.write('using for of  loop ')
+        // for of  takes element from array 
+        for (element of ar) {
+            document.write("<div>  " + element + "</div>")
+        }
+
+
+    </script>
+
+</body>
+
+</html>

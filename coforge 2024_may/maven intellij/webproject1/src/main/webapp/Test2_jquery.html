@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        @import url("css/style2.css");
+    </style>
+    <script src="script/jquery-3.7.1.min.js">
+    </script>
+    <script>
+        var x = 1
+        $(function () {
+            $('#id1').click(function () {
+                $('#id3').html('Count is ' + (++x)).css('color', 'blue')
+            })
+            $('#id2').click(function () {
+                $('#id3').html('Count is ' + (--x)).css('color', 'red')
+            })
+            setInterval(
+                function () {
+                    $('#clock').html(new Date().toLocaleTimeString()).
+                        css('color', 'green').
+                        css('background', 'pink').
+                        css('width', '30%').
+                        css('margin-top', '5px').
+                        css('border-radius', '30pt').
+                        css('padding', '2em')
+                }, 1000)
+        })
+        // calculator application 
+        $(function () {
+            $('#addition').click(function () {
+                if ($('#n1').val() == "")
+                    alert("no1 is blank ")
+                else if ($('#n2').val() == "")
+                    alert("no2 is blank ")
+                else {
+                    $('#result').val(
+                        parseFloat($('#n1').val()) + parseFloat($('#n2').val())
+                    )
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div style=" margin-left: 350pt;">
+
+
+        <div id="id3">
+            Count is 1
+        </div>
+        <div>
+            <button id="id1">increment</button>
+            <button id="id2">decrement</button>
+        </div>
+
+        <div id="clock">
+        </div>
+    </div>
+    <hr>
+
+    <form>
+        <header>
+            <h2>My calculator </h2>
+        </header>
+        <div>
+            <label>Enter No1 </label>
+            <input id="n1">
+        </div>
+        <div>
+            <label>Enter No2 </label>
+            <input id="n2">
+        </div>
+
+        <div>
+            <label>Result </label>
+            <input id="result">
+        </div>
+        <div>
+            <input type="button" value="addition" id="addition">
+            <input type="button" value="subtraction" id="subtraction">
+        </div>
+        <div>
+            <input type="button" value="multiplication" id="multiplication">
+            <input type="button" value="division" id="division">
+        </div>
+    </form>
+
+</body>
+
+</html>

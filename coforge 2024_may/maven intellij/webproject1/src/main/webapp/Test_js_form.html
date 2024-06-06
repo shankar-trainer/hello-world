@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        @import url("css/style2.css");
+    </style>
+
+</head>
+
+<body>
+    <script>
+        function formdata() {
+            var id = document.getElementById('id').value
+            var name = document.getElementById('name').value
+            if (id == "") {
+                document.getElementById('id').style.border = "solid red 2px"
+                document.getElementById('id_err').innerHTML="id is blank"
+               // alert("id is blank")
+            }
+            else if (name == "")
+                //alert("name is blank")
+                document.getElementById('name_err').innerHTML="name is blank"
+            else
+                alert("id is " + id + "\nname is " + name)
+        }
+
+        function addition() {
+            var no1 = document.getElementById('n1').value
+            var no2 = document.getElementById('n2').value
+            if (no1 == "")
+               alert("no1 is blank")
+              
+            else if (isNaN(no1))
+                alert("no1 is not a number ")
+            else if (no2 == "")
+                alert("no2 is blank ")
+            else if (isNaN(no2))
+                alert("no1 is not a number ")
+            else
+                document.getElementById('result').value = parseFloat(no1) + parseFloat(no2)
+        }
+        function subtraction() {
+            var no1 = document.getElementById('n1').value
+            var no2 = document.getElementById('n2').value
+            document.getElementById('result').value = parseFloat(no1) - parseFloat(no2)
+        }
+        function multiplication() {
+            var no1 = document.getElementById('n1').value
+            var no2 = document.getElementById('n2').value
+            document.getElementById('result').value = parseFloat(no1) * parseFloat(no2)
+        }
+        function division() {
+            var no1 = document.getElementById('n1').value
+            var no2 = document.getElementById('n2').value
+            document.getElementById('result').value = parseFloat(no1) / parseFloat(no2)
+        }
+    </script>
+    <form style="width: 40%;">
+        <div>
+            <label>Enter id </label>
+            <input id="id">
+            <span id="id_err"></span>
+        </div>
+
+        <div>
+            <label>Enter Name </label>
+            <input id="name">
+            <span id="id_err"></span>
+        </div>
+        <div>
+            <button type="submit" onclick="formdata()">submit</button>
+            <button type="reset">reset</button>
+        </div>
+    </form>
+    <hr>
+    <form>
+        <header>
+            <h2>My calculator </h2>
+        </header>
+        <div>
+            <label>Enter No1 </label>
+            <input id="n1">
+        </div>
+        <div>
+            <label>Enter No2 </label>
+            <input id="n2">
+        </div>
+
+        <div>
+            <label>Result </label>
+            <input id="result">
+        </div>
+        <div>
+            <input type="button" value="addition" onclick="addition()">
+            <input type="button" value="subtraction" onclick="subtraction()">
+        </div>
+        <div>
+            <input type="button" value="multiplication" onclick="multiplication()">
+            <input type="button" value="division" onclick="division()">
+        </div>
+    </form>
+
+
+</body>
+
+</html>

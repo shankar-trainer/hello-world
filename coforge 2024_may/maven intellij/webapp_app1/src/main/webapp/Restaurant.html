@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @import url('css/style.css')
+    </style>
+    <style>
+        form{
+            height:200pt;
+            color:white;
+            background-color:maroon;
+        }
+        body{
+            background-color:wheat;
+        }
+    </style>
+</head>
+<body>
+<form action="FoodController"  method="get">
+    <div>
+        <label>Enter Id</label>
+        <input name="id">
+    </div>
+    <div>
+        <label>Enter PassWord</label>
+        <input name="pass" type="password">
+    </div>
+    <div  style="margin-top:20pt;border:solid;padding:5pt;border-radius:10pt">
+        <div><label>Select Food Type </label></div><br>
+        <div><input name="type" type="radio" value="nindian">North Indian</div>
+        <div><input name="type" type="radio" value="sindian">South Indian</div>
+        <div><input name="type" type="radio" value="chinese">Chinese</div>
+    </div>
+    <div style="margin-top:20pt;">
+        <button type="submit">Send</button>
+        <button type="reset">Cancel</button>
+    </div>
+</form>
+</body>
+</html>

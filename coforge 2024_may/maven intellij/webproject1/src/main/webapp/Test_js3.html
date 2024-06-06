@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+</head>
+<body>
+    <h2>Date Object javascript program </h2>
+    
+    <script>
+      date=new Date()
+      document.write("<div> date is "+date+"</div>")
+      document.write("<div> date is "+date.getDate()+"/"+(date.getMonth()+1)+"/"+(date.getYear()+1900)+"</div>")
+    
+      document.write("<div> date is "+date.toDateString()+"</div>")
+      document.write("<div> date is "+date.toLocaleDateString()+"</div>")
+      document.write("<div> time is "+date.toTimeString()+"</div>")
+      document.write("<div> time is "+date.toLocaleTimeString()+"</div>")
+      
+      function addition(x,y){
+          return x+y
+        }
+        
+        // anonymous function       
+        var multiply=function(x,y){
+            return x*y;
+        }  
+        
+        var k=10;
+        var p=20;
+
+        document.write("<div> multiplication  is "+multiply(k,p)+"</div>")
+    
+    </script>
+</body>
+</html>
