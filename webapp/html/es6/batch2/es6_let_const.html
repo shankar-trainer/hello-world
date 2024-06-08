@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var x = 10;
+        x = 999;
+        const p = 777;
+        //p=90;
+        alert("x is " + x)
+        function hello() {
+            let x = 100;
+            alert("hello x is " + x)
+        }
+        hello()
+        alert("outside x is " + x)
+
+        const myfunction = function () {
+            alert('hello');
+        }
+
+        // cannot change function as assigned to const 
+        // myfunction=  function(){
+        //     alert('welcome.');
+        // }
+
+        myfunction()
+
+         const name="suman kumar";
+         const id=6776;
+         const age=56;   
+        var user=`hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        <p>
+        my name is ${name}<br>
+        my id is ${id}<br>
+        my age is ${age}<br>
+        <p>
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        hello i am user i have attributes and and value\n
+        `
+
+        document.write(user);
+    </script>
+
+</body>
+
+</html>

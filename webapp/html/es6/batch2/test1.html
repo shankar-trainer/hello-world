@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // es 5  only var 
+        var x = 10;
+        console.log(x);
+        {
+            x = 20
+            console.log(x);
+        }
+        console.log(x);
+    </script>
+    //es6 let -- local variable
+    <script>
+        console.log("--------------------------------")
+        var y = 1;
+        const p = 100;
+        console.log("constant  " + p)
+        //p=999;
+        console.log("gloabal " + y)
+        {
+            let y = 2;
+            console.log("local  " + y)
+        }
+
+        console.log("gloabl " + y)
+
+    </script>
+
+</body>
+
+</html>

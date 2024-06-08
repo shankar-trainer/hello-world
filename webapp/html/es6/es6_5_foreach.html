@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+
+        let ar = new Array(11, 22, 1, 2, 3, 44, 5, 6, 7, 99, 33);
+
+        document.write("<br><br>using normal for loop<br>");
+    
+        for (let index = 0; index < ar.length; index++) {
+            document.write( ar[index]+",");
+        }
+
+        document.write("<br><br>using for in loop <br>");
+        for (const key in ar) {
+            document.write( ar[key]+",");
+        }
+
+        document.write("<br><br>using for of  loop <br>");
+        for (const a of ar) {
+            document.write(a+",");
+        }
+
+        document.write("<br><br>using for each   loop <br>");
+
+        ar.forEach(element => {
+            document.write(element+",")
+        });
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

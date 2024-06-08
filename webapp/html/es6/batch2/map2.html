@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        var ar1=[];
+         function mymap(array){
+            for (let index = 0; index < array.length; index++) {
+               ar1.push(array[index]*array[index])
+            }
+            return ar1;
+         } 
+
+         var ar2=[1,2,3,4,5];
+         document.write(ar2);
+         var res=mymap(ar2);
+         document.write("<br>"+res);
+         
+         myarr1=[10,20,30,40,50];
+
+         var res2=myarr1.map(function(a){
+             return a*5;
+            })
+        
+            var res3 =myarr1.map((a)=> a*7);
+            document.write("<br>"+myarr1+"<br>"+res2+"<br>"+res3);
+
+            var res4=res3.filter((a)=>a>200)
+            document.write("<br>using filter > 200   "+res4);
+        
+
+            var myarr4=[1,2,3,4];
+            document.write("<br>"+myarr4+"  reduce for sum "+myarr4.reduce((sum,a)=>sum+a))
+            document.write("<br>"+myarr4+"  reduce for multiplication "+myarr4.reduce((sum,a)=>sum*a))
+            
+
+
+
+    </script>
+    
+    <div id="id1">
+
+
+    </div>
+</body>
+</html>

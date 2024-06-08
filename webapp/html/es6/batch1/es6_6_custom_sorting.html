@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        td,
+        th {
+            border: solid;
+
+        }
+
+        table {
+            width: 60%;
+            margin-left: 300px;
+        }
+    </style>
+    <script>
+        var employee = [
+            { "id": 10005, "name": "vimal kumar", "age": 30, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b.jpg" },
+            {
+                "id": 10002, "name": "amrital sinha", "age": 34, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55.jpg"
+            },
+            {
+                "id": 10003, "name": "babita fogot", "age": 40, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/2/60/537bcaef0f6cf.jpg"
+            },
+            { "id": 10001, "name": "anil sharam", "age": 41, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/3/50/537ba56d31087.jpg" },
+            { "id": 10004, "name": "fahran akhtar", "age": 50, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/d/50/50febb79985ee.jpg" },
+            { "id": 10009, "name": "salim khan", "age": 45, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/6/70/526547e2d90ad.jpg" },
+            { "id": 10007, "name": "jarina wahab", "age": 31, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/3/10/5112d84e2166c.jpg" },
+            {
+                "id": 10008, "name": "jack fernades", "age": 25, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/6/40/526963dad214d.jpg"
+            },
+            { "id": 10012, "name": "george fernades", "age": 67, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/2/80/511a79a0451a3.jpg" },
+            { "id": 10011, "name": "bhim rao chauhan", "age": 10, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/6/e0/51127cf4b996f.jpg" },
+            {
+                "id": 10010, "name": "asish chandravanshi", "age": 23, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/1/40/526034979bc98.jpg"
+            },
+            {
+                "id": 10015, "name": "jai kumar", "age": 54, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/5/f0/5261a85a501fe.jpg"
+            },
+            {
+                "id": 10014, "name": "vijay kumar", "age": 39, "Image": "http://i.annihil.us/u/prod/marvel/i/mg/3/10/5112d84e2166c.jpg"
+            }
+        ]
+
+
+        document.write("<table>");
+        document.write("<tr><th>Id</th><th>name</th><th>salary</th><th>Image</th></tr>");
+
+        for (const emp of employee) {
+            document.write("<tr><td>" + emp.id + "</td><td>" + emp.name + "</td><td>" + emp.age + "</td><td><img width='200' height='150' src=" + emp.Image + "></td><tr>");
+        }
+        document.write("</table>");
+        
+        employee.sort((a, b) => {
+            if (a.id < b.id)
+                return -1;
+
+            if (a.id > b.id)
+                return 1;
+
+            return 0;
+        })
+
+        document.write("<h1>After Sorting By id</h1><table>");
+        document.write("<tr><th>Id</th><th>name</th><th>salary</th><th>Image</th></tr>");
+
+        for (const emp of employee) {
+            document.write("<tr><td>" + emp.id + "</td><td>" + emp.name + "</td><td>" + emp.age + "</td><td><img width='200' height='150' src=" + emp.Image + "></td><tr>");
+        }
+        document.write("</table>");
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

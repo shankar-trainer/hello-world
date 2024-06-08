@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class User{
+            constructor(id,name,city,salary){
+                this.id=id;
+                this.name=name;
+                this.salary=salary;
+                this.city=city;
+            }
+            display(){
+                console.log('User information');
+                console.log('\tid :'+this.id);
+                console.log('\tname :'+this.name);
+                console.log('\tcity :'+this.city);
+                console.log('\tsalary :'+this.salary);
+            }
+        } 
+
+    user=new User(10001,'mithlesh kumar','aagra',200000);
+    user.display()
+    console.log('id is ...'+user.id)
+    </script>
+</body>
+</html>
+

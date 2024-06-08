@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    //ES 5
+      address={
+          city:'delhi',
+          location:'laxminagar',
+          pin:4343434
+      }
+      student={
+          roll:10001,
+          name:'suresh kumar',
+          subject:'math',
+          address: address,
+           //display: function() //es5
+            display() //es 6
+               {
+                console.log('display function')
+               }
+      }
+   console.log(student)
+   console.log('roll is '+student.roll)
+   console.log(`roll is ${student.roll}`)
+   console.log(`name is ${student.name}`)
+   console.log(`subject is ${student.subject}`)
+
+   console.log(`address is \ncity : ${student.address.city}\nlocation :${student.address.location}\npin : ${student.address.pin}`)
+  student.display()    
+
+</script> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+

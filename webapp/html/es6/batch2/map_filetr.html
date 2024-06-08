@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+               // ES 5 map 
+                let ar1=[1,2,3,4,5];
+
+                console.log(ar1);
+                map2= ar1.map(function(a){
+                    return a*a;
+                })
+                console.log(map2);
+                
+                // using es6 arrow function
+                map3=ar1.map((a)=>a*a)
+                console.log(map3+"  using map3 arrow function");
+
+                // arrow function 
+
+                  function hello(){
+                    console.log('hello')
+                  }
+                 // es 6 arrow function 
+                 hello1=()=>console.log(' hello1 ....')
+                 addition=(a,b)=> console.log(`sum of ${a} and ${b} is ${a+b}`) 
+                 
+                 hello()
+                  hello1()
+                  addition(11,22)
+
+    </script>
+</body>
+</html>

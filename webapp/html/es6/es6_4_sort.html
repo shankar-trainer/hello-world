@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <script>
+        let ar1=[11,2,3,1,4,5];
+        let ar2=[1,22,3,111,40,500];
+
+        console.log(ar1)
+        
+        function mysorting(a,b){
+            return a-b
+        }
+        //ar1.sort(mysorting(x,y));
+        console.log('number sorting')
+        ar1.sort(function(x,y){
+            return x-y
+        });
+        
+        console.log(ar2)
+        ar2.sort((x,y)=>x-y)
+        
+        console.log(ar1)
+        console.log(ar2)
+        
+        ar2.sort((x,y)=>y-x)
+        console.log(ar2)
+        
+        console.log('string or character sorting  ');
+
+        let name=['suman kumar','raman kumar','chaman kumar','babban kumar','aman kumar','dilbar'];
+    console.log(name);
+    name.sort()
+    console.log(name);
+    console.log(name.reverse());
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+     class Book{
+       constructor(isbn=8999,bname,bcost){
+        this.isbn=isbn;
+        this.bname=bname;
+        this.bcost=bcost;
+       }
+
+       get_isbn(){
+        return this.isbn;
+       }
+       set_isbn(val){
+        this.isbn=val;
+       }
+
+       get_bname(){
+        return this.bname;
+       }
+       set_bname(val){
+        this.bname=val;
+       }
+
+       get_bcost(){
+        return this.bcost;
+       }
+       set_bcost(val){
+        this.bcost=val;
+       }
+     }
+
+     class sciencebook extends Book{
+
+        constructor(author,isbn,bname,bcost){
+        super(isbn,bname,bcost)     
+        this.author=author
+        }
+
+        getdetail(){
+            console.log('book details ');
+            console.log('\tisbn '+this.get_isbn());
+            console.log('\tname '+this.get_bname());
+            console.log('\tcost '+this.get_bcost());
+            console.log('\tauthor '+this.author);
+        }
+    }
+    book1=new sciencebook('a kumar',878789,'biology',250);
+    
+    book1.set_bname('zoology')
+    book1.getdetail();
+    console.log('isbn '+book1.get_isbn())
+    </script>
+</body>
+</html>

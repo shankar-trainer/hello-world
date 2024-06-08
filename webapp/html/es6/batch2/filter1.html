@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+  let ar1=[11,2,22,3,40,4,5];
+   console.log(ar1+" unsorted ")
+   console.log(ar1.sort((a,b)=>a-b)+" sorted ")
+   
+   console.log(ar1.filter((a)=>a%2==0)+" filter divided by 2 ")
+   // reduce 
+   ar1.forEach((a)=>console.log(a))
+   var res=ar1.reduce((sum,a)=>sum+a)
+   console.log("sum using reduce function is "+res)
+
+   
+
+    </script>
+</body>
+</html>

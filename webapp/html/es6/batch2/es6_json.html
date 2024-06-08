@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border:double;
+            width:60%;
+            margin-left: 300px;
+            margin-top: 100px;
+            padding: 3em;
+            margin-bottom: 100px;
+        }
+        th{
+            border:inset 10px red;
+        }
+        tr,td{
+            border:solid blue;
+        }
+    </style>
+</head>
+<body>
+    <script>
+  var employee={
+         id:100001,
+         name:'suresh kumar',
+         dob:'10 jan 20001'
+  };
+  document.write(JSON.stringify(employee))
+  document.write('<br>id :'+employee.id)
+  document.write('<br>name :'+employee.name)
+  document.write('<br>dob :'+employee.dob)
+
+ var book=[
+       {
+        isbn:676766,
+        bname:'java in action',
+        author:'a kumar'
+       },
+       {
+        isbn:676767,
+        bname:'react for beginner',
+        author:'s kumar'
+       },
+       {
+        isbn:676761,
+        bname:'sql in action',
+        author:'ajay kumar'
+       },
+       {
+        isbn:676762,
+        bname:'spring  action',
+        author:'rajesh kumar'
+       },
+       {
+        isbn:676763,
+        bname:'hibernate in action',
+        author:'dhrub kumar'
+       },
+       {
+        isbn:676764,
+        bname:'angular for dummies',
+        author:'shyam kumar'
+       },
+       {
+        isbn:676789,
+        bname:'jquery for beginner',
+        author:'pankaj kumar'
+       }
+ ]
+ document.write(JSON.stringify(book))
+
+ document.write("<p>"+JSON.stringify(book[0]))
+ document.write("<p>"+JSON.stringify(book[1]))
+
+    for (const bk of book) {
+   document.write("<br>"+bk.isbn+"   "+bk.bname+"  "+bk.author)
+}
+document.write("<table>")
+document.write("<tr><th>Isbn</th><th>book Name</th><th>Author</th></tr>");
+
+for (const bk of book) {
+    document.write("<tr><td>"+bk.isbn+" </td> <td> "+bk.bname+"</td><td>  "+bk.author+"</td></tr>")
+}
+document.write("</table>")
+
+
+</script>
+    
+</body>
+</html>

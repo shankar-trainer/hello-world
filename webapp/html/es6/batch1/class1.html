@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+ class Customer{
+
+     constructor(id,name,salary){
+            this.id=id;
+            this.name=name;
+            this.salary=salary;
+     }
+     customerInfo(){
+        document.write("customer information");
+        document.write("<br>\tid "+this.id);
+        document.write("<br>\tname "+this.name);
+        document.write("<br>\tsalary "+this.salary);
+     }
+ }
+
+ class GeneralCustomer extends Customer{
+
+    constructor(id,name,salary,location,state){
+        super(id,name,salary);
+        this.location=location
+        this.state=state
+    }
+    
+    customerInfo1(){
+         super.customerInfo();
+         /*
+        document.write("customer information...");
+        document.write("<br>\tid "+this.id);
+        document.write("<br>\tname "+this.name);
+        document.write("<br>\tsalary "+this.salary);
+        */
+        document.write("<br>\tlocation "+this.location);
+        document.write("<br>\tstate "+this.state);
+     }
+ }
+ var customer2=new GeneralCustomer(30001,'suman kumar',35000,'new delhi','delhi');
+ customer2.customerInfo1();
+
+
+/*
+ var customer1=new Customer(10001,'arvind kumar',25000);
+ console.log("customer information");
+ console.log("\tid "+customer1.id);
+ console.log("\tname "+customer1.name);
+ console.log("\tsalary "+customer1.salary);
+
+ customer1.customerInfo();
+  */
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
