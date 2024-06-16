@@ -1,0 +1,13 @@
+<taglib>
+
+	<tlib-version>1</tlib-version>
+	<jsp-version>2</jsp-version>
+	<short-name>s</short-name>
+
+	<tag>
+		<name>date</name>
+		<tag-class>com.coforge.MyTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+
+</taglib>

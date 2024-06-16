@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="emp1" class="com.coforge.model.Employee"
+		init-method="init" destroy-method="cleanup" scope="singleton"
+		lazy-init="true" autowire="byType"  >
+		<!-- autowire="byName" -->
+
+		<property name="id" value="10001"></property>
+		<property name="name" value="ram kumar"></property>
+		<property name="salary" value="45000"></property>
+		<!-- <property name="car" ref="car1"></property> -->
+	</bean>
+
+	<!-- <bean id="car1" class="com.coforge.model.Car" init-method="init" lazy-init="true" 
+		> -->
+	<bean id="car1" class="com.coforge.model.Car" init-method="init"
+		lazy-init="true">
+		<property name="regNo" value="556577645454"></property>
+		<property name="model" value="indica"></property>
+		<property name="cost" value="700000"></property>
+	</bean>
+	<bean id="car2" class="com.coforge.model.Car" init-method="init"
+		lazy-init="true">
+		<property name="regNo" value="556577645454"></property>
+		<property name="model" value="indica"></property>
+		<property name="cost" value="700000"></property>
+	</bean>
+
+	<bean id="customer1" class="com.coforge.model.Customer" autowire="constructor">
+		<constructor-arg name="customerId" value="10001"></constructor-arg>
+		<constructor-arg name="customerName"
+			value="Amit Kumar"></constructor-arg>
+		<constructor-arg name="customerSalary" value="90000"></constructor-arg>
+	</bean>
+	
+	<bean id="address12" class="com.coforge.model.Address">
+		<constructor-arg name="addressId" value="1"></constructor-arg>
+		<constructor-arg name="location" value="yamuna par"></constructor-arg>
+		<constructor-arg name="city"
+			value="Aagra"></constructor-arg>
+
+	</bean>
+	
+
+</beans>
