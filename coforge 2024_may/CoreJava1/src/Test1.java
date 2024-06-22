@@ -1,8 +1,19 @@
 
 public class Test1 {
 
-	public static void main(String[] args) {
-		int a = 10, b = 5;
-		System.out.println("Addition of " + a + " and " + b + " is " + Calculator.addition(a, b));
+	
+	void display(String name) {
+		Exception exception = new Exception("invalid name ");
+		
+		if(name.isBlank())
+		try{
+			 throw exception;
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+			//throw new Exception("invalid name ");
+		
 	}
+	
 }
