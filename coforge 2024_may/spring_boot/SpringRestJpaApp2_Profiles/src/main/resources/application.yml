@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active:  dev
+
+#spring:
+#  config:
+#    activate:
+#      on-profile:  production
+---
+spring:
+  profiles:
+    active:  production
+  jpa:
+    show-sql:  true
+    hibernate:
+      ddl-auto:  create
+  datasource:
+    url:  jdbc:mysql://localhost:3306/db4
+    username:  root
+    password:  mysql
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+
+server:
+  port:  8080
+---
+spring:
+  profiles:
+    active:  dev
+
+  jpa:
+    show-sql:  true
+    hibernate:
+        ddl-auto:  create
+  datasource:
+    url:  jdbc:h2:mem:sampledb
+    username:  sa
+    password:
+    driver-class-name:  org.h2.Driver
+
+server:
+  port:  9090
+
+#spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
