@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="uform" type="org.aurionpro.form.UserForm" />
+	</form-beans>
+
+	<action-mappings>
+		<action name="uform" path="/uaction" type="org.aurionpro.action.UserAction"  input="/UserPage.jsp">
+			<forward name="success" path="/WEB-INF/pages/userresult.jsp" />
+		</action>
+
+	</action-mappings>
+
+	<message-resources parameter="org/aurionpro/message">
+	</message-resources>
+
+
+</struts-config>
+

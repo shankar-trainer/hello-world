@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-init="">
+<script type="text/javascript" src="js/angular.js"></script>
+<input required="required" ng-model="name">
+<br>
+<input  type="email"  ng-model="email">
+<br>
+
+name is {{name.toUpperCase()}}
+<br>
+email is <span ng-bind="email">  </span>
+sum of 10 and 12 is {{10+12}}<br>
+sum of 10 and 12 is <h2 data-ng-bind="10+12"></h2>
+
+</body>
+</html>

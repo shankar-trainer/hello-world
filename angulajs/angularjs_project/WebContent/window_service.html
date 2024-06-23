@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="js/angular.js">
+</script>
+<script type="text/javascript">
+
+angular.module("app1", []).controller("controller1", function($scope,$window) {
+
+	$scope.width=$window.innerWidth
+	$scope.height=$window.innerHeight
+var a=	$window.prompt("Enter first no ", 0)
+var b=	$window.prompt("Enter second no ", 0)
+
+var c=parseFloat(a)+parseFloat(b)
+alert("sum of "+a+" and "+b+" is "+c)
+$scope.x=a;
+	
+})
+
+</script>
+</head>
+<body ng-app="app1" ng-controller="controller1">
+window width {{width}}<br>
+window height {{height}}<br>
+no1 is {{x}}
+
+
+
+</body>
+</html>

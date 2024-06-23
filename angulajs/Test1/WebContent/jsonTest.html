@@ -1,0 +1,23 @@
+<html>
+    <head>
+    <script>
+        var object={"country":"india","capital":"new delhi"};
+        alert("country is "+object.country+" capital is "+object.capital)
+      document.write("country is "+object.country+" <br>capital is "+object.capital)
+      
+      
+      var myJSONObject = {"bindings": [
+        {"ircEvent": "PRIVMSG", "method": "newURI", "regex": "^http://.*"},
+        {"ircEvent": "PRIVMSG", "method": "deleteURI", "regex": "^delete.*"},
+        {"ircEvent": "PRIVMSG", "method": "randomURI", "regex": "^random.*"}
+    ]
+};
+        
+        </script>
+    </head>
+    <body>
+        <div ng-view></div>
+        <script src="path/to/app/app.js"></script>
+        <script src="path/to/angular/angular.js"></script>
+    </body>
+</html>

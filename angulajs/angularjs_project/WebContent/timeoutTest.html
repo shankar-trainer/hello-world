@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="js/angular.js">
+
+</script>
+<script type="text/javascript">
+myApp=angular.module("app1", []);
+myApp.controller('MyController', ['$scope', '$timeout', function ($scope, $timeout) {
+    $scope.timeout = function (duration) {
+        $scope.duration = duration;
+        $timeout(callTimeout, duration);
+    }
+
+    function callTimeout() {
+        $scope.message = "Timeout occurred in " + $scope.duration / 1000 + " seconds";
+    }
+}]);
+</script>
+
+</head>
+<body ng-app="app1" ng-controller="MyController">
+
+{{message}}
+<button ng-click="timeout(5)">click me </button>
+</body>
+</html>

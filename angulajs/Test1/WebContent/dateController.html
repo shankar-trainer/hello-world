@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+
+angular.module("myapp1",[]).controller("date_controller1", function($scope){
+	
+	$scope.mydate=new Date()
+});
+
+</script>
+</head>
+<body ng-app="myapp1" ng-controller="date_controller1">
+ <div style="background-color: pink;color:blue;margin: 20; border: thick;">
+ date is {{mydate}}
+ <br>
+now date is {{mydate|date}}
+
+ <br>
+now date is {{mydate|date:'dd-MM-yyyy'}}
+
+ <br>
+now date is {{mydate|date:'dd-MMM-yy HH:mm:ss:.sss'}}
+ 
+ <br>
+now date is {{mydate|date:'dd-MMMM-y hh:mm:ss'}}
+ 
+ <br>
+medium date  and time is {{mydate|date:'medium'}}
+
+<br>
+medium date  is {{mydate|date:'mediumDate'}}
+
+  <br>
+short date and time is {{mydate|date:'short'}}
+ <br>
+ 
+  <br>
+short date is {{mydate|date:'shortDate'}}
+ <br>
+Long date is {{mydate|date:'longDate'}}
+ 
+ </div>
+
+</body>
+</html>

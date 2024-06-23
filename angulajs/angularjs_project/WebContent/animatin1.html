@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="angular.min.js">
+	
+</script>
+<script type="text/javascript" src="angular-animate.js">
+	
+</script>
+<script type="text/javascript">
+	angular.module("app1", [ 'ngAnimate' ]).controller("control1",
+			function($scope) {
+				$scope.on = false;
+			})
+</script>
+
+
+<style type="text/css">
+.my-first-animation.ng-enter {
+	transition: .5s all;
+	opacity: 0;
+}
+
+.my-first-animation.ng-enter.ng-enter-active {
+	opacity: 1;
+}
+</style>
+
+</head>
+<body ng-app="app1" ng-controller="control1">
+	<button ng-click="on=!on">Toggle Content</button>
+	
+	<div class="my-first-animation" ng-if="on">This content will fade
+		in over half a second.</div>
+</body>
+</html>

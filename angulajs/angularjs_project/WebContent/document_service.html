@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>angular js program</title>
+<script type="text/javascript" src="js/angular.js">
+
+</script>
+<script type="text/javascript">
+
+angular.module("document_app1", []).controller("controller1",function($scope,$document){
+$scope.title=$document[0].title	
+$scope.windowTitle = angular.element(window.document)[0].title
+})
+
+</script>
+
+
+
+</head>
+<body ng-app="document_app1" ng-controller="controller1">
+document title is {{title}}<br>
+{{windowTitle}}
+</body>
+</html>

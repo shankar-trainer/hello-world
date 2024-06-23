@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="angular.min.js"></script>
+
+<script type="text/javascript" src="angular-animate.js"></script>
+<style type="text/css">
+.my-animation-class.ng-enter {
+	-webkit-transition: 0.5s linear all;
+	transition: 0.5s linear all;
+	opacity: 0;
+	background: green;
+}
+
+.my-animation-class.ng-enter.ng-enter-active {
+	opacity: 1;
+}
+
+.my-animation-class.ng-leave {
+	-webkit-transition: 0.5s linear all;
+	transition: 0.5s linear all;
+}
+
+.my-animation-class.ng-leave.ng-leave-active {
+	opacity: 0;
+}
+</style>
+<script type="text/javascript">
+	angular.module('animationDemo', [ 'ngMaterial' ]);
+</script>
+
+</head>
+<body>
+		<input type="checkbox" ng-model="isShown" />Show
+
+		<div class="my-animation-class" ng-show="isShown">
+			<h3>Enter/Leave Animation</h3>
+		</div>
+
+	
+</body>
+</html>

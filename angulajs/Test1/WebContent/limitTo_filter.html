@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="app1">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js">
+
+</script>
+<script type="text/javascript">
+angular.module("app1",[]).controller('controller1',function($scope){
+	$scope.mobile=["Motorola","samsung","nokia","intex","lava","micromax"];
+});
+
+</script>
+</head>
+<body ng-init="ar=[11,22,33,44,55,66,77]">
+<span ng-repeat="a in ar">
+  {{a}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</span>
+<br>
+<span ng-repeat="a in ar|limitTo:3">
+  {{a}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</span>
+<br>
+
+<table ng-controller="controller1" >
+<tr ng-repeat="m in mobile|limitTo :3">
+<td>{{m}}</td>
+</tr>
+</span>
+
+</body>
+</html>

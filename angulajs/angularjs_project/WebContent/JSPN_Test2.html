@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js">
+	
+</script>
+<script type="text/javascript">
+	angular.module("myApp", []).controller("Example1Controller",
+			function($scope, $http) {
+				$scope.getCustomers = function() {
+					$http.get("customer.json").then(function(response) {
+						$scope.status = response.status;
+						$scope.data = response.data;
+					}, function(response) {
+						$scope.data = response.data || "Request failed";
+						$scope.status = response.status;
+					});
+				};
+			});
+</script>
+</head>
+<body ng-app="myApp" ng-controller="Example1Controller">
+
+	<button id="getButton" ng-click="getCustomers()">GET Customers</button>
+	<br>
+	<pre>http status code: {{status}}</pre>
+	<pre>http response data: {{data}}</pre>
+	<table>
+		<tr ng-repeat="x in data">
+			<td>{{x.order_id}}</td>
+			<td>{{x.order_name}}</td>
+			<td>{{x.order_cost}}</td>
+		</tr>
+	</table>
+
+</body>
+
+
+
+
+</html>

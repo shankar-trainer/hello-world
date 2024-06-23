@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+ @IMPORT url("css/style.css");
+</style>
+
+</head>
+<body>
+ <form action="CustomerServlet" method="get"> 
+
+ <label>User Id</label>
+ <input name="userId"><br>
+ 
+ <label>User Name</label>
+ <input name="userName"><br>
+ 
+ <label>User Salary</label>
+ <input name="userSalary"><br>
+ 
+ <label>Select User Cities</label><br>
+ <select name="cities"  multiple="multiple">
+ <option  value="new delhi">New Delhi</option>
+ <option  value="hyderabad">Hyderabad</option>
+ <option  value="mumbai">Mumbai</option>
+ <option  value="chennai">Chennai</option>
+ </select>
+ <br>
+ <input type='submit' value="login">
+ <input type='reset' value="cancel">
+ 
+</form>
+</body>
+</html>

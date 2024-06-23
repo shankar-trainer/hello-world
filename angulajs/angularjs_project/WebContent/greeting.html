@@ -1,0 +1,24 @@
+<!DOCTYPE html><html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js">
+</script>
+<script>
+angular.module("myApp", [])
+  .controller("Example1Controller", function($scope, $window) {
+    $scope.greeting = 'Hello, World!';
+    $scope.doGreeting = function(greeting) {
+      $window.alert(greeting);
+    };
+  }
+);
+</script>
+</head>
+<body ng-app="myApp" ng-controller="Example1Controller">
+<input  ng-model="greeting" aria-label="greeting" /> 
+<button ng-click="doGreeting(greeting)">ALERT</button>
+
+
+</body>
+</html>

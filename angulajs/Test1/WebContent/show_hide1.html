@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+#red {
+	background-color: red;
+}
+
+#green {
+	background-color: green;
+}
+
+#blue {
+	background-color: blue;
+}
+
+#purple {
+	background-color: purple;
+}
+
+#gray {
+	background-color: gray;
+}
+
+#olive {
+	background-color: olive;
+}
+
+div {
+	margin: 20px;
+	padding: 20px;
+	font-size: 16px;
+	color: #ffffff;
+}
+</style>
+
+	<script type="text/javascript" src="js/angular.js">
+		
+	</script>
+
+<script type="text/javascript">
+	angular.module("myapp1", []).controller("showhide_controller",	function($scope) {
+				$scope.isHidden = true;
+				$scope.showHideColors = function() {
+					$scope.isHidden = !$scope.isHidden;
+				}
+			});
+</script>
+</head>
+<body ng-app="myapp1" ng-controller="showhide_controller">
+
+	<button ng-click="showHideColors()" type="button">
+		show hide </button>
+		
+	<br>
+	
+	<div id="red" ng-hide="isHidden">Red</div>
+	<div id="green" ng-show="isHidden">Green</div>
+	<div id="blue" ng-hide="isHidden">Blue</div>
+	<div id="purple" ng-show="isHidden">Purple</div>
+	<div id="gray" ng-hide="isHidden">Dark Slate Gray</div>
+	<div id="olive" ng-show="isHidden">Olive</div>
+
+</body>
+</html>

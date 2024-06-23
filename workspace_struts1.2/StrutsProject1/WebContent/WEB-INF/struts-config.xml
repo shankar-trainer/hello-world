@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<global-exceptions>
+		<exception type="java.lang.NumberFormatException" path="/WEB-INF/pages/nferror.jsp"
+			key="user.err1">
+		</exception>
+		<exception type="java.lang.Exception" path="/WEB-INF/pages/error1.jsp"
+			key="user.err2">
+		</exception>
+
+	</global-exceptions>
+
+	<form-beans>
+		<form-bean name="uform" type="org.aurionpro.form.UserForm" />
+		<form-bean name="mycalc" type="org.aurionpro.form.CalculatorForm" />
+		<form-bean name="UserForm" type="org.aurionpro.UserForm" />
+		<form-bean name="cform" type="org.aurionpro.form.CustomerForm" />
+	</form-beans>
+
+	<action-mappings>
+		<action name="uform" path="/uaction" type="org.aurionpro.action.UserAction">
+			<forward name="success" path="/WEB-INF/pages/userresult.jsp" />
+		</action>
+
+		<action name="cform" path="/MyLocale"
+			type="org.aurionpro.action.SelectLanguageAction" parameter="method"
+			validate="false" input="/CustomerPage.jsp">
+			<forward name="success" path="/CustomerPage.jsp" />
+		</action>
+
+		<action name="mycalc" path="/calcAction"
+			type="org.aurionpro.action.CalculatorAction" parameter="method"
+			scope="session">
+			<forward name="success" path="/CalculationForm.jsp" />
+		</action>
+
+		<action name="UserForm" path="/go" type="org.aurionpro.UserAction">
+			<forward name="success" path="/result/success.jsp" />
+			<forward name="failure" path="/result/error.jsp" />
+		</action>
+
+		<action name="cform" path="/caction" type="org.aurionpro.action.CustomerAction"
+			validate="true" input="/CustomerPage.jsp">
+			<forward name="success" path="/cresult/CustomerResult.jsp" />
+		</action>
+
+	</action-mappings>
+
+	<message-resources parameter="message">
+	</message-resources>
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property
+        property="pathnames"
+        value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+  </plug-in>
+
+
+</struts-config>
+

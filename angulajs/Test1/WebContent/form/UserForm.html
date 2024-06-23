@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/angular.js">
+	
+</script>
+<script type="text/javascript">
+	angular.module("app1", []).controller(
+			"form_controller1",
+			function($scope) {
+
+				$scope.user = {
+					id : 1001,
+					name : 'ram kumar',
+					age : 20,
+
+					address : {
+						street : 'first main',
+						location : 'anna nagar',
+						city : 'chennai',
+						state : 'tamil nadu'
+					}
+				}
+
+				$scope.user_info = function() {
+					if (!angular.isDefined($scope.user.id))
+						alert("user id is empty")
+
+					else if (!angular.isDefined($scope.user.name))
+						alert("user name is empty")
+
+					else if (!angular.isDefined($scope.user.age))
+						alert("user age is empty")
+
+					else if (!angular.isDefined($scope.user.address.street))
+						alert("street age is empty")
+					else if (!angular.isDefined($scope.user.address.location))
+						alert("location is empty")
+					else if (!angular.isDefined($scope.user.address.city))
+						alert("city  is empty")
+					else if (!angular.isDefined($scope.user.address.state))
+						alert("state is empty")
+					else {
+						alert("User Information" + "\nId is " + $scope.user.id
+								+ "\nName is " + $scope.user.name + "\nage is "
+								+ $scope.user.id)
+						alert("User Address Information" + "\nstreet is "
+								+ $scope.user.address.street + "\nlocation is "
+								+ $scope.user.address.location + "\ncity is "
+								+ $scope.user.address.city + "\nstate is "
+								+ $scope.user.address.state)
+					}
+				}
+
+			})
+</script>
+</head>
+
+<body ng-app="app1">
+	<div ng-controller="form_controller1">
+		<form>
+			Enter Id <input ng-model="user.id" required><br> Enter
+			name <input ng-model="user.name" required><br> Enter Age
+			<input ng-model="user.age" required><br> Address Enter
+			street <input ng-model="user.address.street"><br> Enter
+			location <input ng-model="user.address.location"><br>
+			Enter city <input ng-model="user.address.city"><br>
+			Enter state <input ng-model="user.address.state"><br> <input
+				type="button" value="UserInfo" ng-click="user_info()">
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js">
+	
+</script>
+<script type="text/javascript">
+	angular.module("myapp1", []).controller("controller1", function($scope) {
+		$scope.student = [ {
+			roll : 1016,
+			name : 'ram kumar'
+		}, {
+			roll : 1010,
+			name : 'arvind kumar'
+		}, {
+			roll : 1007,
+			name : 'devanshu kumar'
+		}, {
+			roll : 1001,
+			name : 'sudhansu kumar'
+		}, {
+			roll : 1003,
+			name : 'priyanshu kumar'
+		} ];
+		$scope.user_order = function(stud) {
+			$scope.myOrderBy = stud;
+		}
+	});
+</script>
+</head>
+<body ng-app="myapp1" ng-controller="controller1">
+
+
+	<h2>Order By Click</h2>
+	</center>
+	<table bgcolor='yellow' align='center' border='1'>
+		<tr>
+			<th ng-click="user_order('roll')">Roll</th>
+			<th ng-click="user_order('name')">Name</th>
+		</tr>
+		<tr ng-repeat="stud in student|orderBy:myOrderBy">
+			<td>{{stud.roll}}</td>
+			<td>{{stud.name}}</td>
+		</tr>
+	</table>
+
+
+
+	<table bgcolor='aqua' align='center' border='1'>
+		<tr ng-repeat="stud in student">
+			<td>{{stud.roll}}</td>
+			<td>{{stud.name}}</td>
+		</tr>
+	</table>
+
+	<center>
+		<h2>Order By Roll</h2>
+	</center>
+	<table bgcolor='yellow' align='center' border='1'>
+		<tr ng-repeat="stud in student|orderBy:'roll'">
+			<td>{{stud.roll}}</td>
+			<td>{{stud.name}}</td>
+		</tr>
+	</table>
+	<center>
+		<h2>Order By Name</h2>
+	</center>
+	<table bgcolor='yellow' align='center' border='1'>
+		<tr ng-repeat="stud in student|orderBy:'name'">
+			<td>{{stud.roll}}</td>
+			<td>{{stud.name}}</td>
+		</tr>
+	</table>
+
+	<center>
+		<h2>In Json Format</h2>
+	</center>
+	{{student|json}}
+
+
+
+
+
+
+</body>
+</html>

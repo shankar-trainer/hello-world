@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/angular.js">
+</script>
+
+<script type="text/javascript">
+angular.module("app1", []).controller("controller1", function($scope,$location) {
+	$scope.myurl=$location.absUrl()
+	$scope.myhost=$location.host()
+	$scope.myport=$location.port()
+	$scope.myprotocol=$location.protocol()
+	//$scope.search1=$location.search("angular js")
+	$location.path("http://wwww.google.co.in")
+$scope.mypath=$location.path()
+})
+
+</script>
+</head>
+<body ng-app="app1" ng-controller="controller1">
+<input ng-model="search1">
+
+<h1 >UrL is {{myurl}}</h1>
+host is {{myhost}}<br>
+port is {{myport}}<br>
+protocol is {{myprotocol}}<br>
+path is {{mypath}}
+</body>
+</html>

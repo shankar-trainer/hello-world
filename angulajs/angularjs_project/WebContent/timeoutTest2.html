@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type="text/javascript" src="js/angular.js">
+
+</script>
+<script type="text/javascript">
+myApp=angular.module("app1", []);
+myApp.controller('MyController', function ($scope, $timeout, $log) {
+$scope.language="learning angularjs";
+$timeout(function() {
+	$scope.language="yes we are learning angular js  services"
+console.info($scope.language)
+$log.info("langauge is "+$scope.language)
+}, 5000);
+
+$timeout(function() {
+	var date=new Date()
+	$scope.time=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
+	console.info($scope.time)
+$log.info("time is "+$scope.time)
+}, 5000);
+
+$scope.mytime1=function(){
+	$timeout(mytime, 1000);
+}
+
+function mytime(){
+	$scope.time1=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
+}
+});
+</script>
+
+</head>
+<body ng-app="app1" ng-controller="MyController">
+<font size="7" color="blue">{{language}}
+<br>Time will disppalyed after 5 sec {{time}}
+
+</font>
+<br>
+
+<button value="show me time" ng-click="mytime1">
+show the time
+</button>
+{{time1}}
+
+</body>
+</html>

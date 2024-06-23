@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+
+function MyFilterDemoCtrl($scope) {
+	var someData = {
+		firstName : 'prabhakar',
+		surname : 'sinha',
+		dateJoined : new Date(2010, 2, 23),
+		consumption : 123.659855,
+		plan : 'super-basic-plan'
+	};
+	$scope.data = someData;
+}
+</script>
+
+</head>
+<body ng-app="" ng-controller="MyFilterDemoCtrl">
+<p>
+		medium:<strong> {{ data.dateJoined | date:'medium'}} </strong>
+	</p>
+	<p>
+		mediumDate:<strong> {{ data.dateJoined | date:'mediumDate'}}
+		</strong>
+	</p>
+	<p>
+		shortDate:<strong> {{ data.dateJoined | date:'shortDate'}} </strong>
+	</p>
+	<p>This customer joined in the month of {{ data.dateJoined |
+		date:'MMMM'}} on a {{ data.dateJoined | date:'EEEE'}} at {{
+		data.dateJoined | date:'ha'}}</p>
+		
+		
+		<p>This customer joined in the month of {{ data.dateJoined |
+		date:'MMM'}} on a {{ data.dateJoined | date:'EEE'}} at {{
+		data.dateJoined | date:'ha'}}</p>
+
+</body>
+</html>

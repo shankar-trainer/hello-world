@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/angular.js">
+</script>
+<script type="text/javascript">
+	angular.module("myapp1", []).controller("form_validate_controller",
+			function($scope) {
+			})
+</script>
+
+</head>
+<body ng-app="myapp1">
+	<div ng-controller="form_validate_controller">
+			
+		<form  novalidate="novalidate" name="personForm">
+			<div>
+				<label for="id"> Enter Id</label> <input name='id'
+					ng-model="per1.id" id='id'>
+				 <span  
+				 ng-show="personForm.id.$pristine">Id
+					is Blank</span>
+					
+					<span  
+				 ng-show="personForm.id.$dirty">Id
+					added</span>
+			</div>
+			<div>
+				<label for="name"> Enter Name</label> <input ng-model="per1.name"
+					id='name' placeholder="enter name" name='name'>
+					<span  
+				 ng-show="personForm.name.$pristine">Name
+					is Blank</span>
+					
+					<span  
+				 ng-show="personForm.id.$dirty">Name 
+					added</span>
+			</div>
+			<div>
+				<input type="submit">
+			</div>
+	</div>
+	</form>
+</body>
+</html>

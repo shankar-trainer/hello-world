@@ -1,0 +1,13 @@
+<taglib>
+
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>s</short-name>
+  <tag>
+  <name>mytag</name>
+  <tag-class>org.example.tag.Mytag</tag-class>
+  <body-content>empty</body-content>
+  </tag>
+  
+    
+</taglib>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+angular.module("app1", []).controller("controller1",function($scope,$http){
+	$http.get('date.jsp').then(function(response) {
+	$scope.mydata=response.data	
+	});	
+});
+</script>
+</head>
+<body ng-app="app1" ng-controller="controller1">
+{{mydata}}
+</body>
+</html>

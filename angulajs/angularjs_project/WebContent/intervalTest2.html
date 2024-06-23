@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="angular.js"></script>
+<script type="text/javascript">
+angular.module("app1", []).controller('MyController',  function ($scope, $interval,$log) {
+    
+    $scope.callAtInterval = function (duration) {
+        $interval(callTimeout, duration);
+        $scope.duration = duration;
+    }
+    $scope.totalDurationInSeconds=0;
+    
+    function callTimeout() {
+        $scope.totalDurationInSeconds += $scope.duration / 1000;
+        $scope.messages="Timeout occurred in " + $scope.totalDurationInSeconds + " seconds";
+        $log.info("Timeout occurred in " + $scope.totalDurationInSeconds + " seconds")
+    }
+});
+
+</script>
+</head>
+<body ng-app="app1" ng-controller="MyController">
+<button ng-click="callAtInterval(3000)">
+click me
+</button>
+{{messages}}
+</body>
+</html>

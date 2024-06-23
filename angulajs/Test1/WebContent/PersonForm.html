@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/angular.js">
+</script>
+<script type="text/javascript">
+	angular.module("myapp1", []).controller("form_validate_controller",
+			function($scope) {
+
+				var person = {
+					id : 1001,
+					name : 'ram kumar'
+				}
+				$scope.per1 = person;
+				$scope.validate = function() {
+
+					$scope.idError = false;
+					$scope.nameError = false;
+					if ($scope.personForm.id.$valid)
+						$scope.idError = true;
+
+					if ($scope.personForm.name.$valid)
+						$scope.nameError = true;
+				}
+			})
+</script>
+
+</head>
+<body ng-app="myapp1">
+	<div ng-controller="form_validate_controller">
+	
+	 <div style="background-color: red;font-size: large;" 
+	 ng-show="personForm.$pristine">Form input has not yet started</div>
+        <div  style="background-color: pink;font-size: large;" ng-show="personForm.$dirty">Form input has started</div>
+		
+		<form ng-submit="validate()" novalidate="novalidate" name="personForm">
+			<div>
+				<label for="id"> Enter Id</label> <input name='id'
+					ng-model="per1.id" id='id'>
+				 <span style="background-color: red;font-size: large;" ng-show="idError">Id
+					is Blank</span>
+			</div>
+			<div>
+				<label for="name"> Enter Name</label> <input ng-model="per1.name"
+					id='name' placeholder="enter name" name='name'> <span
+		style="background-color: red;font-size: large;"			ng-show="nameError">Name is Blank</span>
+			</div>
+			<div>
+				<input type="submit">
+			</div>
+	</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+	angular.module("app1", []).controller("controller1",
+			[ '$log', function($log) {
+				console.debug("console debug level message")
+				console.info("console debug level message")
+				console.warn("console warn level message")
+				console.error("console debug level message")
+				console.log("console log level message")
+
+				//$log.debug("logger debug message")
+				$log.info("logger info message")
+				$log.warn("logger warn message")
+				$log.error("logger error message")
+				$log.log("logger log message")
+
+			} ])
+</script>
+
+</head>
+<body ng-app="app1" ng-controller="controller1">
+<h1>This is logging application</h1>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+var message;
+var name;
+function HelloController($scope){
+	$scope.message="hello world";
+    $scope.name="ram kumar";    
+}
+
+</script>
+
+</head>
+<body>
+<div ng-app="" ng-controller="HelloController">
+ Message is {{message}}
+<br>Name is  <span ng-bind="name"></span>
+<br>Enter name <input ng-model="name">
+</div>
+</body>
+</html>

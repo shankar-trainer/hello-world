@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/angular.js">
+</script>
+</head>
+<body ng-app="">
+	<div>
+		Select Hobbies <input type="checkbox" ng-model="hb1">Reading
+		<input type="checkbox" ng-model="hb2">Music <input
+			type="checkbox" ng-model="hb3">Movie
+	</div>
+
+	<div>
+		Your Hobbies are
+		<ol>
+			<li ng-show="hb1">Reading</li>
+			<li ng-show="hb2">Music</li>
+			<li ng-show="hb3">Movie</li>
+		</ol>
+	</div>
+</body>
+</html>

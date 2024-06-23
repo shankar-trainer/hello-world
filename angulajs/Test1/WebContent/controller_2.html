@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myapp2">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="js/angular.js">
+</script>
+
+ <script type="text/javascript" src="js/controller1.js">
+</script> 
+
+<!-- <script type="text/javascript">
+var myapp=angular.module("myapp2",[]);
+myapp.controller("mycontroller2", function($scope) {
+	$scope.disp=function(fname,lname,email){
+	alert("Hello "+fname +"  "+lname+" email is "+email)
+	}
+})
+</script>
+ -->
+</script>
+</head>
+<body ng-controller="mycontroller2">
+<h1>User Info</h1>
+<label>First Name</label>
+<input ng-model="fname"><br>
+
+<label>Lasst Name</label>
+<input ng-model="lname"><br>
+
+<label>Email Id</label>
+<input ng-model="email" type="email"><br>
+
+<input type="button" value="display" ng-click="disp(fname,lname,email)">
+</body>
+</html>

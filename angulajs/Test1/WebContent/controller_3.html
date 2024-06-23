@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myapp3">
+<head>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+
+angular.module("myapp3",[]).controller("mycontroller3", function($scope) {
+	$scope.language=["perl","java","reactjs","extjs","jquery"];
+	$scope.names = [
+{name:'Jani',country:'Norway'},
+{name:'Hege',country:'Sweden'},
+{name:'Kai',country:'Denmark'}
+];
+	
+});
+</script>
+</head>
+<body ng-controller="mycontroller3" >
+<ol ng-repeat="l in language">
+<li>{{$index}}}{{l}}</li>
+</ol>
+
+
+<ol ng-repeat="x in names">
+<li>{{x.name}}------ {{x.country}}}</li>
+</ol>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js">
+	
+</script>
+<script type="text/javascript">
+	angular.module("myapp1", []).controller("select_controller",
+			function($scope) {
+	    $scope.customer={};
+        
+				$scope.customer.channels=[{
+					value : "television",
+					label : "Television"
+				}, {
+					value : "newpaper",
+					label : "NewsPaper"
+				}, {
+					value : "website",
+					label : "WebSite"
+				}, {
+					value : "pumplet",
+					label : "Pumplet"
+				}, {
+					value : "others",
+					label : "Others"
+				}
+				];				
+			});
+</script>
+</head>
+<body ng-app="myapp1" ng-controller="select_controller">
+
+	<form>
+	<select ng-model="customer.channels" ng-options="obj.label as obj.value for obj in customer.channels">
+	<option value=""></option>
+	</select>
+	
+	</form>
+</body>
+</html>

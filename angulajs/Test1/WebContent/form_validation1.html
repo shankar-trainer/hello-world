@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js"></script>
+</head>
+<body>
+
+<form name="form" class="css-form" novalidate>
+    Name:
+     <input type="text" ng-model="user.name" name="uName" required="" />
+    <br />
+    <div ng-show="form.$submitted || form.uName.$touched">
+         <div ng-show="form.uName.$error.required">Tell us your name.</div>
+    </div>
+
+    E-mail:
+    <input type="email" ng-model="user.email" name="uEmail" required="" />
+    <br />
+    <div ng-show="form.$submitted || form.uEmail.$touched">
+        <span ng-show="form.uEmail.$error.required">Tell us your email.</span>
+        <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+    </div>
+    <input type="submit" ng-disabled="form.$invalid"/>
+</form>
+
+</body>
+</html>

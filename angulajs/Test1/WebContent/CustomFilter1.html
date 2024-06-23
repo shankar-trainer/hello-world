@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+function toTitleCase(str){
+    return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+}
+function toTitleCase1(str)     {          
+return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt. substr(1).toLowerCase();});
+}
+console.log(toTitleCase("jennifer"));     console.log(toTitleCase("jENniFEr"));
+console.log(toTitleCase("jENniFEr amanda Grant"));
+console.log(toTitleCase1("jennifer"));     console.log(toTitleCase1("jENniFEr"));
+console.log(toTitleCase1("jENniFEr amanda Grant")); </script>
+</script>
+</head>
+
+
+</head>
+<body>
+
+</body>
+</html>

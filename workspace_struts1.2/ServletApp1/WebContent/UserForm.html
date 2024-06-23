@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+   @IMPORT url("css/style1.css");
+   form{
+      background:yellow; 
+      border:10px double;
+   }
+</style>
+</head>
+<body>
+
+<form action='UserAction' method="post">
+<h1>User Registration Form</h1>
+<label>Enter Id</label>
+<input  name="id"><br>
+
+<label>Enter Password</label>
+<input  type='password'  name="password"><br>
+
+<label>Enter Name</label>
+<input name="name"><br>
+
+<label><b>Select Cities</b></label><br>
+<input type="checkbox" name="cities" value="new delhi">New Delhi<br>
+<input type="checkbox" name="cities" value="nagpur">Nagpur<br>
+<input type="checkbox" name="cities" value="mumbai">Mumbai<br>
+<input type="checkbox" name="cities" value="sholapur">Sholapur<br>
+<input type="checkbox" name="cities" value="kolkotta">Kolkotta<br>
+<input type='submit' value='login'>
+<input type='reset' value='cancel'>
+
+</form>
+</body>
+</html>

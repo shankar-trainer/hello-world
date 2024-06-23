@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	function disp(file, id) {
+		var xmlhttprequest;
+		xmlhttprequest = new XMLHttpRequest();
+		id = document.getElementById('id');
+		xmlhttprequest.open("Get", file);
+		xmlhttprequest.onreadystatechange = function() {
+			if (xmlhttprequest.readyState === 4
+					&& xmlhttprequest.status === 200) {
+				id.innerHTML = xmlhttprequest.responseText;
+			}
+		};
+		xmlhttprequest.send(null);
+	}
+</script>
+</head>
+<body>
+	<form>
+		<input type="button" value="button" onclick="disp('date.jsp', 'id');">
+		<br>
+	</form>
+	date is
+	<div id='id'></div>
+
+</body>
+</html>

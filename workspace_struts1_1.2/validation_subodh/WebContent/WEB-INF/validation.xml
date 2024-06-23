@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_0.dtd">
+
+<form-validation>
+
+<!--
+     This is a blank Validator form file with a commented examples.
+-->
+
+    <global>
+
+        <!-- An example global constant
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        end example-->
+
+    </global>
+
+    <formset>
+        <!-- validation mapping for action /example1 -->
+        <form name="/example1">
+            <field 
+            	property="name"
+                depends="required, minlength">
+                	<arg0 key="exampleForm.name" />
+                	<arg1 key="${var:minlength}" resource="false" />
+			        <var>
+			          <var-name>minlength</var-name>
+			          <var-value>3</var-value>
+			        </var>
+            </field>
+            <field
+                property="age"
+                depends="required, intRange, integer">
+                    <arg0 key="exampleForm.age"/>
+                    <arg1 name="intRange" key="${var:min}" resource="false" />
+        		  <arg2 name="intRange" key="${var:max}" resource="false" />
+                    <var>
+			  	<var-name>min</var-name>
+			      <var-value>1</var-value>
+			  </var>
+			  <var>
+			      <var-name>max</var-name>
+			      <var-value>150</var-value>
+			  </var>
+            </field>
+        </form>
+ 
+        <!-- validation mapping for action /example2 -->
+        <form name="/example2">
+            <field 
+                property="name"
+                depends="required, minlength">
+                  <arg0 key="exampleForm.name" />
+                	<arg1 key="${var:minlength}" resource="false" />
+			<var>
+				<var-name>minlength</var-name>
+			      <var-value>6</var-value>
+			</var>
+            </field>
+        </form>
+    </formset>
+    
+
+</form-validation>

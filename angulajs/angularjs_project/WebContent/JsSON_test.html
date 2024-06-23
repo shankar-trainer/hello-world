@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js">
+</script>
+
+<script type="text/javascript">
+angular.module("app1", []).controller("json_controller1",function($scope,$http){
+
+	$scope.customer_data="[]";
+	$http.get('customer.json').success(function(response) {
+		$scope.customer_data=response
+	});
+});
+</script>
+</head>
+<body ng-app="app1" ng-controller="json_controller1">
+{{customer_data}}
+</body>
+</html>

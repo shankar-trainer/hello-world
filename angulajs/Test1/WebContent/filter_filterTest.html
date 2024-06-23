@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/angular.js">
+</script>
+</head>
+<body ng-app="" ng-init="names=['ram kumar', 'ramesh kumar','suresh kumar','gita sinha','radha sinha']">
+<h2>Name having ra</h2>
+<div ng-repeat="name in names|filter:'ra'">
+<br> {{name}}
+</div>
+
+<h1>All Names</h1>
+Enter name <input ng-model="n1"><br>
+
+<div ng-repeat="name in names|filter:n1">
+<br> {{name}}
+</div>
+</body>
+</html>

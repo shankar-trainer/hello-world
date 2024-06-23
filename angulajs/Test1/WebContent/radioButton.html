@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js">
+	
+</script>
+
+</head>
+<body ng-app="">
+	<form>
+		<input type="radio" ng-model="user" name='user' value="male">Male<br>
+		<input type="radio" ng-model="user" name='user' value="female">Female
+		<div ng-switch="user">
+
+			<div ng-switch-when="male">
+				<h1>User is male</h1>
+			</div>
+
+			<div ng-switch-when="female">
+				<h1>User is female</h1>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

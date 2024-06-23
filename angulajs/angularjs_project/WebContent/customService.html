@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="angular.js">
+	
+</script>
+<script>
+	var mainApp = angular.module("mainApp", []);
+	mainApp.factory('MathService', function() {
+		var factory = {};
+
+		factory.multiply = function(a, b) {
+			return a * b
+		}
+		return factory;
+	});
+
+	mainApp.service('CalcService', function(MathService) {
+		this.square = function(a) {
+			return MathService.multiply(a, a);
+		}
+	});
+
+	mainApp.controller('control1', function($scope, CalcService) {
+
+		$scope.mysquare = function() {
+			$scope.result = CalcService.square($scope.no1);
+		}
+
+	});
+
+	mainApp.service('CalcService1', function(MathService) {
+		this.square = function(a, b) {
+			return MathService.multiply(a, b);
+		}
+	});
+
+	mainApp.controller('control2',
+			function($scope, CalcService1) {
+
+				$scope.mymultiply = function() {
+					$scope.mresult = CalcService1.square($scope.number1,
+							$scope.number2);
+				}
+			});
+</script>
+</head>
+<body ng-app="mainApp">
+<h1>square program</h1>
+	<div ng-controller="control1">
+		Enter no <input ng-model="no1"> <br>
+		<button ng-click="mysquare()">Click for result</button>
+		square is {{result}}
+	</div>
+<br>
+<h1>Multiplication Program</h1>
+	<div ng-controller="control2">
+		Enter no1 <input ng-model="number1"> <br>
+		Enter no2 <input ng-model="number2"> <br>
+		<button ng-click="mymultiply()">Click for multiplication result</button>
+		Multiplication of {{number1}} and {{number2}}   is {{mresult}}
+	</div>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/angular.js">
+	
+</script>
+<style type="text/css">
+
+
+textarea.ng-invalid{
+background-color: red;
+}
+
+textarea.ng-valid{
+background-color: pink;
+}
+</style>
+
+</head>
+<body ng-app="">
+	
+	Type Comment 
+	<textarea ng-model="text_ar1">
+	</textarea>
+	
+	<h1>Comment is </h1>
+	{{text_ar1}}
+	
+	<form>
+
+		<select ng-model="order">
+			<option value="_________">
+			<option value="pizza">Pizza
+			<option value="masala dosa">Masala Dosa
+			<option value="chicken biryani">Chicken Biryani
+		</select>
+
+		<div ng-switch="order">
+
+			<div ng-switch-when="pizza" style="color: purple;">
+				<h1>You have ordered pizza</h1>
+			</div>
+
+			<div ng-switch-when="masala dosa" style="color: maroon;">
+				<h1>You have ordered Masala Dosa Speciality Of South India</h1>
+			</div>
+
+			<div ng-switch-when="chicken biryani" style="color: blue">
+				<h1>You have ordered Chicken Biryani Wow !!</h1>
+			</div>
+			
+				<div ng-switch-when="_________" style="color: red">
+				<h1>No Order  Waiting !!</h1>
+			</div>
+
+		</div>
+	</form>
+</body>
+</html>

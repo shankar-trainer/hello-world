@@ -1,0 +1,18 @@
+<taglib>
+
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>s</short-name>
+  
+  <tag>
+  <name>mydate</name>
+  <tag-class>org.example.tag.MyTag1</tag-class>
+  <body-content>empty</body-content>
+  <attribute>
+  <name>format</name>
+  <required>format</required>
+  </attribute>
+  </tag>
+  
+    
+</taglib>

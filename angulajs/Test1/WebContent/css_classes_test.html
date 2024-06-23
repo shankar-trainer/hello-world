@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/angular.js">
+
+</script>
+<script type="text/javascript">
+angular.module("app1",[]).controller("controller1",function($scope){
+	
+	$scope.product={
+			id:1001,
+			name:"book order"
+			
+	}
+});
+</script>
+<style type="text/css">
+input.ng-invalid{
+background-color: fuchsia;
+}
+
+input.ng-valid{
+background-color: yellow;
+}
+
+form.ng-dirty{
+border-color: blue; border-style: double;
+}
+
+form.ng-pristine{
+border-color: red; border-style: dotted;
+}
+
+</style>
+
+</head>
+
+
+<body ng-app="app1">
+<input ng-model="name">
+
+<form ng-controller="controller1">
+
+<h2>Product Information </h2>
+Enter Id <input ng-model="product.id"><br>
+Enter name <input ng-model="product.name"><br>
+
+</form>
+
+
+</body>
+</html>

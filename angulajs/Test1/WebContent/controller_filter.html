@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-app="myApp1" ng-controller="controller1">
+	message is
+	<h1>{{message}}</h1>
+	First name
+	<input ng-model="fname">
+	<br> Last name
+	<input ng-model="lname">
+	First name  is {{fname}} {{fname|uppercase}}<br>
+	Last name  is {{lname}} {{lname|uppercase}}
+	<br> Full name
+	{{getfullName()|uppercase}}
+	<br>
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("myApp1", []);
+
+		app.controller("controller1", function($scope) {
+			$scope.message = "this is controller message";
+			$scope.fname = "ram"
+			$scope.lname = "kumar"
+
+			$scope.getfullName = function() {
+				return $scope.fname + "   " + $scope.lname;
+			}
+		});
+	</script>
+
+</body>
+</html>

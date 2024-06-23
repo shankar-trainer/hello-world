@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/angular.js"></script>
+<script type="text/javascript">
+	angular.module("app1", []).controller("controller1",
+			function($scope, $http) {
+				$scope.language = "angular js "
+				$http.get("test14.html").then(function(response) {
+					$scope.myresponse = response.data
+				},
+
+				function myError(response) {
+					$scope.myresponse1 = response.status
+				});
+			});
+</script>
+</head>
+<body ng-app="app1" ng-controller="controller1">
+	{{language}}
+	<br>
+	 <div>{{myresponse}}</div>
+	 
+	 {{myresponse1}}
+</body>
+</html>

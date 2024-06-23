@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript">
+angular.module("app1", []).controller("controller1", function($scope, $interval) {
+
+	$interval(function() {
+		var date=new Date()
+		$scope.time=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
+	}, 1000);
+
+});
+
+</script>
+</head>
+<body ng-app="app1" ng-controller="controller1">
+time is {{time}}
+<br>
+time is
+<input ng-model="time" size="6">
+</body>
+</html>
