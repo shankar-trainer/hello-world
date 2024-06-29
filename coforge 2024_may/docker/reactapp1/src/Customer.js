@@ -33,13 +33,13 @@ class Customer extends Component {
                     Age is {this.state.age}
                 </div>
                 <div>
-                 <div>
-                     Country  
-                    name {this.props.country1.name}
+                    <div>
+                        Country
+                        name {this.props.country1.name}
                     </div>
                     <div>
-                    Country  
-                    isd {this.props.country1.isd}
+                        Country
+                        isd {this.props.country1.isd}
                     </div>
                 </div>
                 <div>
@@ -52,25 +52,52 @@ class Customer extends Component {
                         this.props.address[0].location
                     }
 
-                    <table>
-                             {
+                    <table className="border w-100">
+                        <tr className="border">
+                            <th>Id</th>
+                            <th>Location</th>
+                            <th>City</th>
+                        </tr>
+                        {
                             this.props.address.map(
-                                a => 
-                                    <tr>
-                                        <td>
+                                a =>
+                                    <tr className="border">
+                                        <td className="border">
                                             {a.addr_id}
                                         </td>
-                                        <td>
+                                        <td className="border">
                                             {a.location}
                                         </td>
-                                        <td>
+                                        <td className="border">
                                             {a.city}
                                         </td>
-                                    </tr>
-                                
+                                   </tr>
                             )
-                        } 
-                    </table> 
+                        }
+                    </table>
+                    <table className="border w-100 mt-5">
+                        <tr className="border">
+                            <th>Id</th>
+                            <th>Location</th>
+                            <th>City</th>
+                        </tr>
+
+                        {
+                            this.props.address.forEach(a => 
+                                <tr className="border">
+                                    <td className="border">
+                                        {a.addr_id}
+                                    </td>
+                                    <td className="border">
+                                        {a.location}
+                                    </td>
+                                    <td className="border">
+                                        {a.city}
+                                    </td>
+                                </tr>
+                            )
+                        }
+                    </table>
                 </div>
 
                 <div>

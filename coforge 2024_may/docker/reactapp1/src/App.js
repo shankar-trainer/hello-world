@@ -7,15 +7,17 @@ import { address } from './Address';
 import  {Country}  from './Country';
 import User1 from './User1';
 import { Address } from './data/Address';
+import Test1 from './Test1';
 
 function App() {
   return (
     <div className="App">
       {/* <Hello></Hello> */}
         {/* <Customer country="India"></Customer> */}
-      <Customer country="India" country1={Country} address={address}></Customer> 
+      {/* <Customer country="India" country1={Country} address={address}></Customer>  */}
        {/* <Counter></Counter> 
       <User1 name="ram kumar" address={Address}></User1> */}
+      <Test1></Test1>
     </div>
   );
 }
