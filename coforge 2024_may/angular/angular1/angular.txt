@@ -1,0 +1,19 @@
+
+npm i -g @angular/cli
+
+c:\
+ make folder  angular 
+ go inside 
+
+open cmd 
+
+c:\angular 
+
+C:\angular>ng new AngularApp1
+
+C:\angular>code  AngularApp1
+
+C:\angular\AngularApp1> ng serve 
+
+ng generate component Employee
+

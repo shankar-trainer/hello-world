@@ -1,0 +1,13 @@
+C:\Users\Training>cd \
+
+C:\>md react
+
+C:\>cd react
+
+C:\react>npm  i -g create-react-app
+
+C:\react>npx create-react-app  reactapp1
+
+ cd reactapp1
+  npm start
+
