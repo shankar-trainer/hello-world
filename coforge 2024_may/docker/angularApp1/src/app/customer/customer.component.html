@@ -1,0 +1,108 @@
+<div class="border border-primary  w-25 p-5 text-light bg-dark" style="margin-left: 300pt;margin-top: 100pt; ">
+    <div>Id is {{customer.customerId}}</div>
+    <div>Name is {{customer.customerName}}</div>
+    <div>Salary is {{customer.customerSalary}}</div>
+    <div>Id is {{customer1[0].customerId}}</div>
+    <div>Name is {{customer1[0].customerName}}</div>
+    <div>Salary is {{customer1[0].customerSalary}}</div>
+</div>
+
+<div style="margin-left: 200pt; padding: 20pt;">
+    <h1>Using ngFor </h1>
+    <table class="table text-info bg-primary   table-bordered w-50 table-striped">
+        <thead>
+            <tr>
+                <th>Customer Id</th>
+                <th>Customer Name</th>
+                <th>Customer Salary</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let c of customer1">
+            <td>{{c.customerId}}</td>
+            <td>{{c.customerName}}</td>
+            <td>{{c.customerSalary}}</td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-left: 200pt; padding: 20pt;">
+    <h1>Using ngIf </h1>
+    <table class="table text-info bg-primary   table-bordered w-50 table-striped">
+        <thead>
+            <tr>
+                <th>Customer Id</th>
+                <th>Customer Name</th>
+                <th>Customer Salary</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let c of customer1">
+            <td *ngIf="c.customerSalary>=20000">{{c.customerId}}</td>
+            <td *ngIf="c.customerSalary>=20000">{{c.customerName}}</td>
+            <td *ngIf="c.customerSalary>=20000">{{c.customerSalary}}</td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-left: 200pt; padding: 20pt;">
+    <h1>Using ngSwitch </h1>
+    <table class="table text-info bg-primary   table-bordered w-50 table-striped">
+        <thead>
+            <tr>
+                <th>Customer Id</th>
+                <th>Customer Name</th>
+                <th>Customer Salary</th>
+                <th>Customer Post</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let c of customer1">
+            <td>{{c.customerId}}</td>
+            <td >{{c.customerName}}</td>
+            <td>{{c.customerSalary}}</td>
+            <td [ngSwitch]="c.customerName" class="text-light">
+                <span *ngSwitchCase="'harish kumar'">
+                    Director
+                </span>
+                
+                <span *ngSwitchCase="'anand kumar'">
+                    Ast Director
+                </span>
+                
+                <span *ngSwitchCase="'pawan kumar'">
+                    SuperVisor
+                </span>                
+                <span *ngSwitchCase="'amit kumar'">
+                    manager
+                </span>                
+                <span *ngSwitchCase="'raman kumar'">
+              Office Boy1
+                </span>                
+                <span *ngSwitchCase="'shiv kumar'">
+              Office Boy2
+                </span>                
+            
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+<img src={{img_src}} width="200pt" height="150pt">
+
+<div class="m-5 border border-primary p-5 w-25">
+    <img [src]="img_src" width={{img_width}} height={{img_height}}>
+</div>
+<div>
+
+    <button type="button" (click)="customerClick()">Button1</button>
+
+    <div>
+        <label>Enter Name</label>
+        <input [(ngModel)]="name">
+    </div>
+    <div>
+        My name is {{name}}
+    </div>
+
+</div>
