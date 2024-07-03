@@ -11,38 +11,33 @@ import org.springframework.stereotype.Repository;
 import com.abc.model.Product;
 
 import lombok.Data;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//@EnableTransactionManagement
-//@Repository
-//@Data
+
 public class ProductDaoImpl1 implements ProductDao {
 
 	SessionFactory factory;
-	Session session;
+	Session session,session2;
 
 	public ProductDaoImpl1(SessionFactory factory) {
 		super();
 		this.factory = factory;
-//		session = factory.getCurrentSession();
 	}
 
 	@Transactional
 	@Override
 	public Product addProduct(Product p) {
-		//Session session=factory.openSession();
-		//if (searchProduct(p.getIsbn()) == null) {
 		session = factory.getCurrentSession();
-		session.save(p);
+		if (searchProduct(p.getIsbn()) == null) {
+			session.save(p);
 			return p;
-		//}
-		//return null;
+		}
+		return null;
 	}
 
 	@Override
 	public Product searchProduct(long isbn) {
-		session = factory.getCurrentSession();
-		Product product = session.find(Product.class, isbn);
+		session2 = factory.openSession();
+		Product product = session2.find(Product.class, isbn);
 
 		if (product != null)
 			return product;
@@ -52,9 +47,8 @@ public class ProductDaoImpl1 implements ProductDao {
 
 	@Override
 	public List<Product> getAllProduct() {
-		session = factory.getCurrentSession();
-		return session.createQuery("from Product").getResultList();
-
+		session2 = factory.openSession();
+		return session2.createQuery("from Product").getResultList();
 	}
 
 }

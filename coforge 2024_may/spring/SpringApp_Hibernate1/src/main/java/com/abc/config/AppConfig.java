@@ -22,12 +22,15 @@ public class AppConfig {
 	
 	@Bean
 	public LocalSessionFactoryBean getFactoryBean() {
+		
 		LocalSessionFactoryBean bean=new LocalSessionFactoryBean();
 		bean.setHibernateProperties(getProperty());
 		bean.setAnnotatedClasses(Product.class);
+		
 		return bean;
 	}
-
+	
+	
 	@Bean
 	public Properties getProperty() {
 		Properties properties=new Properties();
@@ -37,8 +40,11 @@ public class AppConfig {
 		properties.setProperty(AvailableSettings.DRIVER, "com.mysql.jdbc.Driver");
 		properties.setProperty(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 		properties.setProperty(AvailableSettings.SHOW_SQL, "true");
-		properties.setProperty(AvailableSettings.HBM2DDL_AUTO, "create");
+		//properties.setProperty(AvailableSettings.HBM2DDL_AUTO, "create");
 		return properties;
 	}
-
+	
+	
+	
+	
 }

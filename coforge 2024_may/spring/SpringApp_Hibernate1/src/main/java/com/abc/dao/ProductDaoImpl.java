@@ -11,8 +11,8 @@ import com.abc.model.Product;
 
 import lombok.Data;
 
-//@Repository
-//@Data
+@Repository
+@Data
 public class ProductDaoImpl implements ProductDao {
 
 	SessionFactory factory;
@@ -43,11 +43,15 @@ public class ProductDaoImpl implements ProductDao {
 
 		if (product != null)
 			return product;
+
 		return null;
 	}
 
 	@Override
 	public List<Product> getAllProduct() {
+
 		return session.createQuery("from Product").getResultList();
+
 	}
+
 }
