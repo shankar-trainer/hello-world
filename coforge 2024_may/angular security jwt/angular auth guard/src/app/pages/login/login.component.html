@@ -1,0 +1,17 @@
+<div class="parent">
+  <div class="wrapper">
+    <form action="">
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="text" name="EmailId" [(ngModel)]="loginObj.EmailId" placeholder="Email" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="Password" [(ngModel)]="loginObj.Password" placeholder="password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <button type="button" class="btn" (click)="login()">Login</button>
+
+    </form>
+  </div>
+</div>

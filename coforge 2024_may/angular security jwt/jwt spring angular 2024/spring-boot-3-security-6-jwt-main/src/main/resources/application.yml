@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db4
+    username: root
+    password: mysql
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+server:
+  port: 8086
+application:
+  security:
+    jwt:
+      secret-key: 586B633834416E396D7436753879382F423F4428482B4C6250655367566B5970
+      expiration: 900000 #  15 min in ms
+      cookie-name: jwt-cookie
+      refresh-token:
+        expiration: 1296000000 # 15 days in ms
+        cookie-name: refresh-jwt-cookie

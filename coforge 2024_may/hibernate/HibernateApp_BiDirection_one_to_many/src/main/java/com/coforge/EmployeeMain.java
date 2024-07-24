@@ -2,6 +2,7 @@ package com.coforge;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
@@ -52,6 +53,16 @@ public class EmployeeMain {
 		transaction.begin();
 		session.save(department);
 		transaction.commit();
+
+		List<Department> fromDepartment = session.createQuery("from Department").getResultList();
+		for (Department d:  fromDepartment) {
+			System.out.println(d.getDeptId() + "\t" + d.getDeptName() + "\t" + d.getTotalMember());
+			Set<Employee> employeeSet1 = d.getEmployeeSet();
+			for(Employee e:employeeSet1)
+				System.out.println(e.getEmpId()+"\t"+e.getEmpName()+"\t"+e.getDob());
+		}
+
+
 
 	}
 }

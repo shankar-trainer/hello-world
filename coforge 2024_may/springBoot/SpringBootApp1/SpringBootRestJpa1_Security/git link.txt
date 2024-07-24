@@ -1,2 +1,0 @@
-https://spring.io/guides/tutorials/spring-security-and-angular-js
-https://www.javainuse.com/spring/ang7-basic
