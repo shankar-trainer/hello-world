@@ -21,14 +21,15 @@ public class ReactiveApp1Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		dao.save(User.builder().userId("10001").name("ram kumar").build());
-		dao.save(User.builder().userId("10002").name("shyam kumar").build());
-		dao.save(User.builder().userId("10003").name("suresh kumar").build());
+		dao.save(User.builder().id("10001").name("ram kumar").build());
+		dao.save(User.builder().id("10002").name("shyam kumar").build());
+		dao.save(User.builder().id("10003").name("suresh kumar").build());
 		dao.findAll().forEach(a->System.out.println(a));
 		 // use db10-- create database 
 		//mongodb  db.dropDatabase()
 		// db.user.find()
 		//db.user.drop() // drop collection, table
 	}
-
 }
+//http://localhost:8080/userbyidandname/10001?name=ram kumar
+//http://localhost:8080/userbyid/10001
