@@ -1,3 +1,7 @@
+open terminal 
+
+bin\psql -U postregs
+
 \l
 \list    will list all databases
 \c databasename   -- will  connect with database
