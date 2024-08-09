@@ -11,3 +11,71 @@ capg1=# insert into employee  (name,salary,dob) values  ('hemant kumar',12000,'1
 capg1=# insert into employee  (name,salary,dob) values ('sumit kumar',18000,'1991-10-12'), ('anil kumar',78000,'1982-10-10'), ('pritam kumar',56000,'1983-09-25');
 										  
 capg1=# select * from employee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/db2
+spring.datasource.username= postgres
+spring.datasource.password=postgresql
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto = update
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
