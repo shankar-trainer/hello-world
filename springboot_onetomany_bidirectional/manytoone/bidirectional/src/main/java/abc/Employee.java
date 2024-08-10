@@ -2,11 +2,15 @@ package abc;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 @Entity
-@Data
+//@Data
+@Setter
+@Getter
 public class Employee implements Serializable {
 
     @Id
@@ -18,7 +22,14 @@ public class Employee implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Address address;
 
-
-    //Many Employee with on address
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                '}';
+    }
+//Many Employee with on address
 
 }

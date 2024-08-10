@@ -2,13 +2,17 @@ package abc;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Data
+//@Data
+@Setter
+@Getter
 public class Address  implements Serializable {
 
     @Id
@@ -19,4 +23,11 @@ public class Address  implements Serializable {
     @OneToMany(mappedBy = "address",  cascade= CascadeType.ALL ,fetch = FetchType.EAGER)
     private List<Employee> empList;
 
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addr_id=" + addr_id +
+                ", location='" + location + '\'' +
+                '}';
+    }
 }
