@@ -16,8 +16,8 @@ public class Main1 implements CommandLineRunner {
     @Autowired
     EmployeeRepository repository;
 
-    @Autowired
-    AddressRepository addressRepository;
+//    @Autowired
+//    AddressRepository addressRepository;
 
     @Transactional
     @Override
