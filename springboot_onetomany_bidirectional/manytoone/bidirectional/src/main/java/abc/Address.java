@@ -17,7 +17,6 @@ import java.util.Set;
 @Getter
 @ToString(exclude = {"employee"})
 @EqualsAndHashCode(exclude = {"employee"})
-
 public class Address  implements Serializable {
 
     @Id
@@ -29,7 +28,8 @@ public class Address  implements Serializable {
     @OneToMany(mappedBy = "address",  cascade= CascadeType.ALL ,fetch = FetchType.EAGER)
     private Set<Employee> empset;
 
-    //generate equals and tostring excluding employee
+    //generate equals and to
+    // string excluding employee
 //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;

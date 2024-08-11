@@ -14,31 +14,28 @@ import java.util.Objects;
 @Getter
 @ToString(exclude = {"address"})
 @EqualsAndHashCode(exclude = {"address"})
-
 public class Employee implements Serializable {
 
     @Id
     @GeneratedValue
     private int id;
-
     private String name;
 
     @JsonIgnoreProperties("empSet")
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Address address;
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address=" + address +
-                '}';
-    }
 //Many Employee with on address
+//    @Override
+//    public String toString() {
+//        return "Employee{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", address=" + address +
+//                '}';
+//    }
 
-
-    //generate equals and tostring excluding address
+//generate equals and tostring excluding address
 //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;

@@ -5,6 +5,7 @@ import com.ukg.model.Customer;
 import com.ukg.model.Product;
 import com.ukg.repository.CustomerRepository;
 import com.ukg.repository.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +27,16 @@ public class CustomerService {
         return repository.findAll();
     }
 
+//    @Transactional
     public Customer addCustomer(Customer customer) {
         if (repository.findById(customer.getId()).isPresent())
             throw new CustomerException("id already present");
-        return repository.save(customer);
+        else {
+//            for (Product p : customer.getProductSet())
+//                productRepository.save(p);
+
+            return repository.save(customer);
+        }
     }
 
     public Customer updateCustomer(Customer customer) {
@@ -37,8 +44,8 @@ public class CustomerService {
         if (repository.findById(customer.getId()).isEmpty())
             throw new CustomerException("id not present");
         else {
-            for (Product p : customer.getProductSet())
-                productRepository.save(p);
+//            for (Product p : customer.getProductSet())
+//                productRepository.save(p);
             return repository.save(customer);
         }
     }

@@ -42,6 +42,7 @@ public class Service2
         address.setEmpset(empSet);
 
         addressRepository.save(address);
+
         for (Address a : addressRepository.findAll()) {
             System.out.println(a.getAddr_id() + "\t" + a.getLocation());
             for (Employee e : a.getEmpset())

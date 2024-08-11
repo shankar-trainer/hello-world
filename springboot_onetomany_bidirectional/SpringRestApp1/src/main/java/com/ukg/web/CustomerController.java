@@ -19,6 +19,20 @@ public class CustomerController {
 
     @Autowired
     private CustomerService service;
+    //-------------------------
+    @Autowired
+    private CustomerRepository repository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+
+    @GetMapping("/all1")
+    public List<Customer> getAllCustomer1() {
+        System.out.println(repository.findAll());
+        return repository.findAll();
+    }
+//----------------
 
     @RequestMapping("/all")
     public ResponseEntity<List<Customer>> getAllCustomer() {
@@ -33,14 +47,14 @@ public class CustomerController {
     @PostMapping("/add")
     public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
         try {
+            for (Product p : customer.getProductSet())
+                p.setCustomer(customer);
             return new ResponseEntity<Customer>(service.addCustomer(customer), HttpStatus.CREATED);
         } catch (CustomerException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
-    @Autowired
-    private ProductRepository productRepository;
 
     @PutMapping("/update")
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
@@ -52,12 +66,15 @@ public class CustomerController {
         return null;*/
 
         try {
-           return new ResponseEntity<>(service.addCustomer(customer),HttpStatus.FOUND);
+            for (Product p : customer.getProductSet())
+                p.setCustomer(customer);
 
+            return new ResponseEntity<>(service.updateCustomer(customer), HttpStatus.FOUND);
         } catch (CustomerException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
+
     @GetMapping("/get/{id}")
     public ResponseEntity<Customer> findCustomerById(@PathVariable("id") long id) {
         try {
@@ -99,13 +116,14 @@ public class CustomerController {
 
     @Autowired
     ProductRepository productRepository1;
+
     @PostMapping("/addProduct")
-    public Product addProduct(@RequestBody Product p){
+    public Product addProduct(@RequestBody Product p) {
+        Customer c=p.getCustomer();
+            //c.setProductSet();
 
-       return  productRepository1.save(p);
-
+        return productRepository1.save(p);
     }
-
 }
 
 /*
@@ -128,6 +146,32 @@ http://localhost:9090/add
         }
     ]
 }
+//http://localhost:9090/update
+
+    {
+        "id": 1,
+        "name": "raman kumar",
+        "ssn": "65566xxxx",
+        "productSet": [
+            {
+                "id": 3,
+                "pname": "pizza1",
+                "cost": 2001.0
+            },
+            {
+                "id": 1,
+                "pname": "pant1",
+                "cost": 12001.0
+            },
+            {
+                "id": 2,
+                "pname": "shirt1",
+                "cost": 8001.0
+            }
+        ]
+    }
+
+
 http://localhost:9090/addProduct
 {
             "pname":"pant",
@@ -137,4 +181,14 @@ http://localhost:9090/addProduct
       "ssn":"65566bnnbbn"
      }
 }
+http://localhost:9090/addProduct
+{
+            "pname":"pant",
+            "cost":1200,
+      "customer":{
+      "name":"anand kumar",
+      "ssn":"65566bnnbbn"
+     }
+}
+
 */
