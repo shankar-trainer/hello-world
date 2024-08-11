@@ -25,10 +25,11 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-       // service1.hello1();
-        service2.hello2();
+       service1.hello1();
+//        service2.hello2();
     }
 
 }
+//https://stackoverflow.com/questions/49668298/spring-data-jpa-bidirectional-relation-with-infinite-recursion
 //https://stackoverflow.com/questions/34897343/disable-cascade-in-manytoone-relationship-jpa-when-saving
 //https://stackoverflow.com/questions/7197181/jpa-unidirectional-many-to-one-and-cascading-delete

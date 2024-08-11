@@ -1,16 +1,20 @@
 package abc;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 //@Data
 @Setter
 @Getter
+@ToString(exclude = {"address"})
+@EqualsAndHashCode(exclude = {"address"})
+
 public class Employee implements Serializable {
 
     @Id
@@ -19,6 +23,7 @@ public class Employee implements Serializable {
 
     private String name;
 
+    @JsonIgnoreProperties("empSet")
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Address address;
 
@@ -32,4 +37,18 @@ public class Employee implements Serializable {
     }
 //Many Employee with on address
 
+
+    //generate equals and tostring excluding address
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Employee employee = (Employee) o;
+//        return id == employee.id && Objects.equals(name, employee.name);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, name);
+//    }
 }
