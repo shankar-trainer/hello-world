@@ -1,0 +1,20 @@
+server:
+  port:  7575
+
+spring:
+  application:
+    name:  api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id:  Rest-Jpa-Client1
+          uri:  http://localhost:6060
+          predicates:
+            - Path=/allCustomer/**
+
+        - id:  rest-application-rest1
+          uri:  http://localhost:7070
+          predicates:
+            - Path=/all/**
+
+

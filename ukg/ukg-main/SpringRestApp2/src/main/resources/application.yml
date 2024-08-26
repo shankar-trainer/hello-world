@@ -1,0 +1,16 @@
+#server:
+#  port:  9090
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/db1
+#    username:  postgres
+#    password:  postgres
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect:  org.hibernate.dialect.PostgreSQLDialect
+#        ddl-auto:  create
+#    show-sql:  true
+#
+#
+#

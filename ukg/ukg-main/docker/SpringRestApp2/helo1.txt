@@ -1,0 +1,80 @@
+gg
+services:
+  app:
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/demo
+      - SPRING_DATASOURCE_USERNAME=admin #your required name
+      - SPRING_DATASOURCE_PASSWORD=admin123 # your required password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8080:8080"
+
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      - POSTGRES_USER=admin  #your required name
+      - POSTGRES_PASSWORD=admin123 # your required password
+      - POSTGRES_DB=demo
+==
+version: '3.1'
+services:
+  app:
+    container_name: app-springboot-postgresql
+    image: app-springboot-postgresql
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - dbpostgresql
+  dbpostgresql:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=mydb
+      -
+
+
+
+==================
+
+
+services:
+  app:
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=$YOUR_USERNAME
+      - POSTGRES_PASSWORD=$YOUR_PASSWORD
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/$YOUR_DB_NAME
+      - SPRING_DATASOURCE_USERNAME=$YOUR_USERNAME
+      - SPRING_DATASOURCE_PASSWORD=$YOUR_PASSWORD
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+    ports:
+      - "$LOCAL_PORT:$DOCKER_PORT"
+
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      - POSTGRES_USER=$YOUR_USERNAME
+      - POSTGRES_PASSWORD=$YOUR_PASSWORD
+      - POSTGRES_DB=$YOUR_DB_NAME
+    ports:
+      - "$LOCAL_PORT:$DOCKER_PORT"

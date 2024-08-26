@@ -1,0 +1,15 @@
+
+https://github.com/gomezrondon/spring-basic-security
+https://github.com/sudhs22/spring_security_basic_auth  -- imp 
+https://github.com/shankar7979/coforge_2024_1/tree/main/springBoot/SpringSecurityForAngular
+https://github.com/shankar7979/coforge_2024_1/tree/main/angular%20security%20jwt/angular%20spring%20basic%20security
+
+
+
+custom spring security with database
+https://github.com/kishanjavatrainer/SpringBootCustomSecurityWithDatabase/tree/master
+
+
+
+https://www.manning.com/downloads/1629
+
