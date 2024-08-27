@@ -1,0 +1,63 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    restart: always
+
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+
+    ports:
+      - "8080:9090"
+
+  db:
+    image: postgres
+#    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+
+#old not working
+
+# services:
+#   db:
+#     ports:
+#       - 5432:5432
+
+#     image: postgres
+#     container_name: postgresql_container
+#     environment:
+#       - POSTGRES_USER=admin2
+#       - POSTGRES_PASSWORD=admin2
+#       - POSTGRES_DB=mydb2
+# #    volumes:
+# #      - /custom/mount: /var/lib/postgresql/data
+#     restart: always
+#   backend:
+#     build: .
+#     #   dockerfile: Dockerfile
+#     container_name: testapp_container
+#     ports:
+#       - 8080:9090
+#     environment:
+#       db-url: jdbc:postgresql://db:5432/MYDB2
+#       db-username: admin2
+#       db-password: admin2
+#     depends_on:
+#       - db
+#     restart: always
+
+
+
+
+
+
+
