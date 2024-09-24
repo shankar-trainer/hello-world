@@ -1,0 +1,32 @@
+
+git config --global --unset-all  user.name
+git config --global --unset-all  user.email
+
+git config --list
+
+git config --global user.name "name"
+git config --global user.email "email" 
+
+
+github.com-- login
+
+create repository  coforge_sep_2024
+
+C:\Users\Training>cd \
+
+C:\>md welcome
+
+C:\>cd welcome
+
+C:\welcome>git clone https://github.com/shankar7979/coforge_sep_2024
+C:\welcome>cd coforge_sep_2024
+
+C:\welcome\coforge_sep_2024> git branch
+
+C:\welcome\coforge_sep_2024> notepad Hello.txt
+
+C:\welcome\coforge_sep_2024> git add *
+
+C:\welcome\coforge_sep_2024>  git commit -m "hello.txt"
+
+C:\welcome\coforge_sep_2024>  git push origin main
