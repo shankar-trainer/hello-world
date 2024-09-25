@@ -4,7 +4,7 @@
 form {
 	border: solid blue;
 	padding: 30px;
-	width: 30%;
+	width: 40%;
 	margin-left: 300pt;
 	margin-top: 40pt;
 }
@@ -35,21 +35,21 @@ input[type='reset'] {
 	<form:form action="customerAction" modelAttribute="customer" method="post">
 		<h1>Customer Page</h1>
 		<div>
-			<form:label path="id">Enter Id</form:label>
+			    <form:label path="id">Enter Id</form:label>
 				<form:input name="id" path="id" />
 				<form:errors path="id" />
 		</div>
 
 		<div>
-			<form:label path="id">Enter Name</form:label>
-				<form:input name="name" path="id" />
-				<form:errors path="id" />
+			    <form:label path="name">Enter Name</form:label>
+				<form:input name="name" path="name" />
+				<form:errors path="name" />
 		</div>
 
 		<div>
-			<form:label path="id">Enter Salary</form:label>
-				<form:input name="salary" path="id" />
-				<form:errors path="id" />
+			    <form:label path="salary">Enter Salary</form:label>
+				<form:input name="salary" path="salary" />
+				<form:errors path="salary" />
 		</div>
 
 		<div>
