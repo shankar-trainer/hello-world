@@ -27,7 +27,7 @@
 </style>
 </head>
 <body>
-<form action="userAction">
+<form action="userAction" method="post">
 <h1>User Page</h1>
  <div>
  <label>Enter Id</label>
