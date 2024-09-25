@@ -9,7 +9,6 @@ public class MyWebApplicationInitializer extends AbstractAnnotationConfigDispatc
 		return new Class[] {
 				// ApplicationSecutiryConfiguration.class
 		};
-
 	}
 
 	@Override
