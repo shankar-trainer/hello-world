@@ -18,6 +18,11 @@
   <body>
     <div class="style1">
      Error is <%=exception.getMessage()%>
+
     </div>
+    <div style="width:30%;margin-left:300pt;margin-top:40pt;font-weight:bold">
+       <a href="welcome">Back</a>
+    <div>
+
   </body>
   </html>

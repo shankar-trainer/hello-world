@@ -60,7 +60,7 @@ public class UserContoller {
             return modelAndView;
         }
     }
-    @ExceptionHandler(UserException.class)
+    /*@ExceptionHandler(UserException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     //public @ResponseBody String myerror(){
     public  String myerror(){
@@ -70,7 +70,7 @@ public class UserContoller {
     @ExceptionHandler(NumberFormatException.class)
     public  String myerror2(){
         return  "error2";
-    }
+    }*/
 
 //    @ExceptionHandler(Exception.class)
 //    public  String myerror1(){
