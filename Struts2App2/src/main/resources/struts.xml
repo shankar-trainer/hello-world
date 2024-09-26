@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="true" />
+		
+	<constant name="struts.custom.i18n.resources"
+		value="com.example.model.Product" />
+	<constant name="struts.custom.i18n.resources" value="Message" />
+
+	<package name="default" extends="struts-default"
+		strict-method-invocation="true">
+		<action name="prdAction" class="com.example.model.Product"
+			method="execute">
+			<result name='success'>WEB-INF/pages/productInfo.jsp</result>
+			<result name='input'>ProductForm.jsp</result>
+		</action>
+
+		<action name="LoginAction" class="com.example.model.StudentAction">
+			<result>/StudentSuccess.jsp</result>
+			<result name='input'>/StudentForm.jsp</result>
+		</action>
+
+		<action name="additionAction" class="com.example.model.Addition">
+			<exception-mapping result="fail" exception="java.lang.NumberFormatException"></exception-mapping>
+			<result>/AdditionSuccess.jsp</result>
+			
+			<result name="fail">/AdditionFail.jsp</result>
+			
+		</action>
+
+     <!--    <action name="Product_input">
+            <result name="success" type="tiles">Product</result>
+        </action>
+        <action name="Product_add">
+            <result name="success" type="tiles">Thanks</result>
+        </action>
+ -->
+
+	</package>
+</struts>

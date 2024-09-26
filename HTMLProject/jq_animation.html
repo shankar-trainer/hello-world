@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+<style>
+    #style1{
+                background-color: yellow;
+                border: double 10px blue;
+                width:200px;
+                height:200px;
+                margin-left:300px;
+            }
+    </style>
+    
+    <script src='script/jquery-3.6.0.min.js'>
+    </script>
+</head>
+<body>
+    <script>
+        $(function(){
+            $('#btn1').click(function(){
+                $('div').animate({height:'250px',opacity:'0.5'})
+            })
+        })
+
+        $(function(){
+            $('#btn2').click(function(){
+                $('div').animate({width:'550px'})
+            })
+        })
+        $(function(){
+            $('#btn3').click(function(){
+                $('span').css("font-size","30px");
+            })
+        })
+        $(function(){
+            $('#btn4').click(function(){
+                $('div').animate({width:'+=10px',height:'+=10px'})
+            })
+        })
+
+        $(function(){
+            $('#btn5').click(function(){
+                $('div').animate({width:'-=10px',height:'-=10px'})
+            })
+        })
+
+        $(function(){
+            $('#btn6').click(function(){
+                $('div').show();
+            })
+        })
+
+        $(function(){
+            $('#btn7').click(function(){
+                $('div').hide();
+            })
+        })
+        $(function(){
+            $('#btn8').click(function(){
+                $('div').toggle();
+            })
+        })
+        $(function(){
+            $('#btn9').click(function(){
+         //       $('div').fadeIn();
+               // $('div').fadeIn('slow');
+                $('div').fadeIn(5000);
+            })
+        })
+
+        $(function(){
+            $('#btn10').click(function(){
+                //$('div').fadeOut('slow');
+                $('div').fadeOut(5000);
+            })
+        })
+    </script>
+
+    <div id='style1'>
+    </div>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+<input type="button" id='btn1' value="change height ">
+<input type="button" id='btn2' value="change width">
+<input type="button" id='btn4' value="increase size">
+<input type="button" id='btn5' value="decrease size">
+<input type="button" id='btn6' value="show">
+<input type="button" id='btn7' value="hide">
+<input type="button" id='btn8' value="toggle">
+<input type="button" id='btn9' value="fadeIn">
+<input type="button" id='btn10' value="fadeOut">
+
+<input type="button" id='btn3' value="change hello world size ">
+<br>
+
+<span>
+     hello world</span>
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Addresses>
+	<Address>
+		<id>add_78788</id>
+		<sector>sector7</sector>
+		<city>new delhi</city>
+		<state> delhi</state>
+	</Address>
+	<Address>
+		<id>add_78789</id>
+		<sector>sector7</sector>
+		<city>mumbai</city>
+		<state> maharastra</state>
+	</Address>
+	<Address>
+		<id>add_78780</id>
+		<sector>sector19</sector>
+		<city>lucknow</city>
+		<state>UP</state>
+	</Address>
+
+</Addresses>

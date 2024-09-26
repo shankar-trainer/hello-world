@@ -1,0 +1,20 @@
+form{
+	background-color: aqua;
+	width:30%;
+	margin-left:300px;
+	margin-top:100px;
+	border:solid red 4px;
+	padding:10px;
+}
+label{
+	float: left;
+	width:120px;
+}
+input{
+	width:120px;
+	margin-bottom: 4px;
+}
+body{
+	background-color: yellowgreen;
+	
+}

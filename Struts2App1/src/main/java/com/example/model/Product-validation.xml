@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+                            "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+
+<validators>
+	<field name="prdId">
+		<field-validator type="int">
+			<param name="min">1000</param>
+			<param name="max">10000</param>
+<!-- 			<message>id range 1000 - 10000</message>
+ -->			<message key="error.prdid.maxmin"></message>
+		</field-validator>
+	</field>
+
+	<field name="prdName">
+		<field-validator type="requiredstring">
+			<!-- <message>name is blank</message> -->
+		<message   key="error.prdname.blank"></message> 
+		</field-validator>
+	</field>
+	
+	<field name="prdCost">
+		<field-validator type="double">
+			<param name="minInclusive">500.0</param>
+			<param name="maxInclusive">1000.0</param>
+	<!-- 		<message>cost range 1500 - 1000</message> -->
+	<message>cost range  ${minInclusive} and ${maxInclusive} </message>
+		</field-validator>
+	</field>
+
+
+
+</validators>

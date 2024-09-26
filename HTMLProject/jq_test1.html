@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'>
+    </script>
+</head>
+
+<body>
+    <script>
+        jQuery(document).ready(
+            function () {
+                alert('hello')
+            }
+        )
+        $(function () {
+                alert('hello world')
+            }
+        )
+        $(function () {
+             alert($('#myid').text())
+               }
+        )
+
+       function hello(){
+           alert(document.getElementById('myid1').innerHTML)
+       }
+    </script>
+   <div id='myid'>
+     jquery program
+   </div>
+
+   <div id='myid1' onclick="hello()">
+     javascript program
+   </div>
+
+
+</body>
+
+</html>

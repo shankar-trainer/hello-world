@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+        function validate() {
+
+            var id = document.getElementById('id').value
+            try {
+                if (id == '') {
+                    throw "id is empty"
+                    return false
+                }
+                else if (isNaN(id)) {
+                    throw "id is not a number"
+                    return false
+                }
+                else {
+                    return true
+                }
+            }
+            catch (error) {
+                alert(error)
+                document.getElementById('err_id').innerHTML = error
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form onsubmit="return  validate()">
+        <label>Enter Id </label>
+        <input id="id">
+        <span id='err_id'>
+            <br>
+            <br>
+
+            <input type="submit">
+            <input type="RESET">
+    </form>
+</body>
+
+</html>

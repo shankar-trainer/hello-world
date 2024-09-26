@@ -1,0 +1,103 @@
+{
+	"employee": [
+		{
+			"empid": 10001,
+			"empname": "rajesh kumar",
+			"salary": 20000
+		},
+		{
+			"empid": 10002,
+			"empname": "mohan kumar",
+			"salary": 30000
+		},
+		{
+			"empid": 10003,
+			"empname": "sashi kumar",
+			"salary": 40000
+		},
+		{
+			"empid": 10004,
+			"empname": "umesh kumar",
+			"salary": 60000
+		},
+		{
+			"empid": 10005,
+			"empname": "suraj kumar",
+			"salary": 90000
+		},
+		{
+			"empid": 10006,
+			"empname": "parbhat kumar",
+			"salary": 60000
+		},
+		{
+			"empid": 10007,
+			"empname": "palak sharma",
+			"salary": 20000
+		},
+		{
+			"empid": 10008,
+			"empname": "aanchal  verma",
+			"salary": 20000
+		}
+	],
+	"address": [
+		{
+			"city": "delhi",
+			"sector": 1,
+			"state": "delhi",
+			"country": "india",
+			"pin": 100001
+		},
+		{
+			"city": "naoida",
+			"sector": 1,
+			"state": "up",
+			"country": "india",
+			"pin": 788787
+		},
+		{
+			"city": "patna",
+			"sector": 5,
+			"state": "bihari",
+			"country": "india",
+			"pin": 800001
+		},
+		{
+			"city": "kanpur",
+			"sector": 1,
+			"state": "up",
+			"country": "india",
+			"pin": 87887
+		},
+		{
+			"city": "gwalior",
+			"sector": 17,
+			"state": "mp",
+			"country": "india",
+			"pin": 455587
+		},
+		{
+			"city": "sholapur",
+			"sector": 19,
+			"state": "maharastra",
+			"country": "india",
+			"pin": 7657576
+		},
+		{
+			"city": "shivkasi",
+			"sector": 1,
+			"state": "tamil nadu",
+			"country": "india",
+			"pin": 8877887
+		},
+		{
+			"city": "kolkotta",
+			"sector": 11,
+			"state": "west bengal",
+			"country": "india",
+			"pin": 8978879
+		}
+	]
+}
+        
