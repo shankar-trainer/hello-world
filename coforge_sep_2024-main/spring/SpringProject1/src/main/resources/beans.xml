@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+<!--    <bean class="com.coforge.model.Employee" id="employee" scope="prototype"-->
+<!--     autowire="byName">-->
+    <bean class="com.coforge.model.Employee" id="employee" scope="prototype"
+     autowire="byType"  >
+
+      <property name="id" value="20001"></property>
+      <property name="name" value="amit kumar"></property>
+      <property name="salary" value="80000"></property>
+<!--      <property name="address" ref="address1"></property>-->
+    </bean>
+
+<!--    <bean class="com.coforge.model.Address" id="address1">-->
+<!--    <bean class="com.coforge.model.Address" id="address" >-->
+
+    <bean class="com.coforge.model.Address" id="address1" >
+
+        <property name="addr_Id" value="1"></property>
+        <property name="location" value="sector 144 gr noida"></property>
+        <property name="state" value="Uttar Pardesh"></property>
+    </bean>
+<!--    <bean class="com.coforge.model.Address" id="address2" >-->
+
+<!--        <property name="addr_Id" value="1"></property>-->
+<!--        <property name="location" value="sector 144 gr noida"></property>-->
+<!--        <property name="state" value="Uttar Pardesh"></property>-->
+<!--    </bean>-->
+
+
+    <bean  class="com.coforge.model.Customer" init-method="init" lazy-init="true">
+         <constructor-arg name="customerId" value="7677676"></constructor-arg>
+         <constructor-arg name="customerName" value="anand kumar"></constructor-arg>
+         <constructor-arg name="customerSalary" value="56000"></constructor-arg>
+    </bean>
+</beans>

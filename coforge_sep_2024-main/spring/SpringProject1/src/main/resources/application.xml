@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+    <bean class="com.coforge.model.Product">
+        <property name="prdId" value="787877"></property>
+        <property name="prdName" value="bike"></property>
+        <property name="prdCost" value="69000"></property>
+        <property name="locationList">
+            <list>
+                <value>delhi</value>
+                <value>chennai</value>
+                <value>kolkotta</value>
+                <value>madurai</value>
+                <value>chennai</value>
+            </list>
+        </property>
+        <property name="modelSet">
+            <set>
+                <value>normal bike</value>
+                <value>super bike</value>
+                <value>sports bike</value>
+                <value>super bike</value>
+            </set>
+        </property>
+        <property name="stateMap">
+            <map>
+                <entry key="1" value="delhi"/>
+                <entry key="2" value="haryana"/>
+                <entry key="3" value="punjab"/>
+                <entry key="4" value="up"/>
+                <entry key="5" value="mp"/>
+                <entry key="6" value="rajsthan"/>
+                <entry key="7" value="delhi"/>
+                <entry key="1" value="tamil nadu"/>
+            </map>
+        </property>
+    </bean>
+    
+</beans>
