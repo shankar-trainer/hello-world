@@ -1,0 +1,35 @@
+<div class="container">
+    <h2>Search Customer By Id</h2>
+    <form class="bg-success p-5 m-5" style="border-radius: 20pt;" (ngSubmit)="searchRecord()">
+        <div class="form-group">
+            <label>Enter Id</label>
+            <input [(ngModel)]="c.customerId" class="form-control" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="mt-2">
+            <input type="submit" class="btn btn-info">
+            <input type="reset" class="btn btn-info" style="margin-left: 10pt;">
+        </div>
+    </form>
+
+    <div class="border border-primary p-5 m-5" [hidden]="!visible">
+        <!-- {{c1|json}} -->
+        <h2>{{msg}}</h2>
+
+        <div *ngIf="msg=='Record found'">
+
+            <table class="table table-bordered table-striped p-5 m-5 bg-info w-75">
+                <tr>
+                    <th>Id</th>
+                    <th>name</th>
+                    <th>Dob</th>
+                </tr>
+                <tr>
+                    <td>{{c1.customerId}}</td>
+                    <td>{{c1.customerName}}</td>
+                    <td>{{c1.customerDob}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

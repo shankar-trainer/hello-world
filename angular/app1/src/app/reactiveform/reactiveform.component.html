@@ -1,0 +1,69 @@
+<div class="container">
+    <form class="bg-success p-5 m-5" style="border-radius: 20pt;" [formGroup]="fgroup"
+     (ngSubmit)="show()">
+        <div class="form-group">
+            <label>Enter ISBN</label>
+            <input class="form-control" [formControl]="isbn" id="isbn" [(ngModel)]="b.isbn">
+           
+            <!-- <span [hidden]="isbn.valid || isbn.untouched" class="text-warning">
+                invalid isbn
+            </span> -->
+            
+            <span [hidden]="!isbn.hasError('required')" class="text-warning">
+                isbn is blank
+            </span>
+            
+            <span [hidden]="!isbn.hasError('minlength')" class="text-warning">
+                isbn must of minimum 5 digit
+            </span>
+            
+            <span [hidden]="!isbn.hasError('maxlength')" class="text-warning">
+                isbn must of maximum 10 digit
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Enter Book Name</label>
+            <input class="form-control" [formControl]="bname" id="bname" [(ngModel)]="b.bname">
+
+            <!-- <span [hidden]="bname.valid || bname.untouched" class="text-warning">
+                invalid book name
+            </span> -->
+            
+            <span [hidden]="!bname.hasError('required')" class="text-warning">
+                book name  is blank
+            </span>
+            <span [hidden]="!bname.hasError('minlength')" class="text-warning">
+                book name  must of minimum 5 character
+            </span>
+            
+            <span [hidden]="!bname.hasError('maxlength')" class="text-warning">
+                book name  must of maximum 15 character 
+            </span>
+        </div>
+        <div class="form-group" >
+            <label>Enter Cost</label>
+            <input class="form-control" [formControl]="cost" id="cost" [(ngModel)]="b.cost">
+            <span [hidden]="!cost.hasError('required')" class="text-warning">
+                cost  is blank
+            </span>
+            <span [hidden]="!cost.hasError('minlength')" class="text-warning">
+                cost   must of minimum 1 
+            </span>
+            
+            <span [hidden]="!cost.hasError('maxlength')" class="text-warning">
+                cost  must of maximum  9999999 
+            </span>
+
+        </div>
+        <div class="mt-2">
+            <input type="submit" class="btn btn-primary">
+            <input type="reset" class="btn btn-primary" style="margin-left: 10pt;">
+        </div>
+        <div [hidden]="!visible" class="border border-info p-2 mt-3 ml-3 w-50">
+            <h2>Book Information</h2>
+            <div>isbn  is {{b.isbn}}</div>
+            <div>name  is {{b.bname}}</div>
+            <div>cost  is {{b.cost}}</div>
+        </div>
+    </form>

@@ -1,0 +1,6 @@
+Username: osboxes
+Password: osboxes.org
+Root Account Password: osboxes.org
+
+login   root
+init 0

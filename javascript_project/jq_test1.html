@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <script src='https://code.jquery.com/jquery-3.7.1.min.js'>
+    </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            alert('hello world')
+        })
+        
+        $(function(){
+            alert('hello world to jquery')
+            alert($('#id1').text())
+            $('#id1').text('greeting to jquery')
+        })
+        $(function(){
+         $('#id2').click(function(){
+            $('#id2').html('<h1>Welcome to India</h1>')
+         })
+        })
+        
+    </script>
+</head>
+<body>
+    <div  id="id1">
+         This is first div
+    </div>
+    <div id="id2">
+                Welcome to coforge
+    </div>
+      
+</body>
+</html>

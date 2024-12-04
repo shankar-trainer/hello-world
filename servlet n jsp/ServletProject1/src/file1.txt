@@ -1,0 +1,15 @@
+open two terminal
+
+cd c:\mysql\bin
+
+c:\mysql\bin>mysqld --console
+
+c:\mysql\bin>mysql -u root -p
+
+mysql> create database coforge;
+
+mysql> use coforge;
+mysql> create table employee(id int primary key, name varchar(20), salary float);
+
+
+Servlet Response has SendRedirect() method

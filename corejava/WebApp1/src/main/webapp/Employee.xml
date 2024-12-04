@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE  employees SYSTEM "emp.dtd">
+<employees>
+    <employee>
+         <id>10001</id>
+        <name>ram kumar</name>
+        <salary>20000</salary>
+    </employee>
+
+    <employee>
+         <id>10002</id>
+        <name>shyam kumar</name>
+        <salary>90000</salary>
+    </employee>
+
+    <employee>
+        <id>10003</id>
+        <name>jagdish kumar</name>
+        <salary>67000</salary>
+    </employee>
+
+
+</employees>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+         changeIt=()=>{
+  document.getElementById("id1").innerHTML="<h2>Greeting from javascript</h2>"
+         }
+         var c=1;
+         increment=()=>{
+            document.getElementById("id2").innerHTML='Count is'+c++ 
+         }
+        decrement=()=>{
+            document.getElementById("id2").innerHTML='Count is'+c-- 
+         }
+               
+    </script>
+    <div id="id1" onclick="changeIt()">
+      <h1>Welcome to java</h1>
+    </div>
+
+    <div id="id2" style="color:blue;border:solid;padding: 30pt;width: 30%;font-size: 20pt;">
+         Count is 1
+    </div>
+    <div>
+        <button onclick="increment()">increment</button>
+        <button onclick="decrement()">decrement</button>
+    </div>
+
+</body>
+</html>

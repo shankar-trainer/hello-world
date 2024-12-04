@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+    <script>
+     ar=new Array(5);
+     ar[0]=11;
+     ar[1]=22;
+     ar[2]=33;
+     ar[3]=44;
+     ar[4]=55;
+     alert(ar)
+
+     ar1=new Array(1,2,3,4,5,6,7)
+     alert(ar1)
+     ar3=["delhi","chennai","kolkotta","banglore"]
+     alert(ar3)
+
+      document.write("<div>using for loop</div>")
+      for (let index = 0; index < ar3.length; index++) {
+        document.write("<div>"+ar3[index]+"</div>")        
+      }
+
+      document.write("<div>using for in loop</div>")
+       for (const key in ar3) {
+        document.write("<div>"+ar3[key]+"</div>")       
+       }
+      document.write("<div>using for of loop</div>")
+       for (const element of ar3) {
+           document.write("<div>"+element+"</div>")       
+       }
+
+       window.document.write("<div>using forEach method </div>")
+
+       ar3.forEach(element => {
+        document.write("<div>"+element+"</div>") 
+       });
+
+       window.alert(" hello ..")
+    </script>
+    
+</body>
+</html>

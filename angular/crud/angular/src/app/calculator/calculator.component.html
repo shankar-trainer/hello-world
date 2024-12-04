@@ -1,0 +1,23 @@
+<div class="container">
+  <form class="bg-success p-5 m-5 w-75" style="border-radius: 20pt;">
+    <div class="form-group mt-2">
+      <label>Enter No1</label>
+      <input class="form-control" [(ngModel)]="n1" [ngModelOptions]="{standalone: true}" type="number">
+    </div>
+
+    <div class="form-group mt-2">
+      <label>Enter No2</label>
+      <input class="form-control" [(ngModel)]="n2" [ngModelOptions]="{standalone: true}" type="number">
+    </div>
+
+    <div class="border mt-4 p-5 text-light">
+      <div>Addition is {{n1+n2}}</div>
+      <div>Subtraction is {{n1-n2}}</div>
+      <div>Multiplication is {{n1*n2}}</div>
+      <div>Division is {{n1/n2}}</div>
+    </div>
+  </form>
+
+
+
+</div>

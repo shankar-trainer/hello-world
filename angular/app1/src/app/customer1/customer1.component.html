@@ -1,0 +1,24 @@
+<form class="bg-success p-5 m-5 text-light" style="border-radius: 20pt;" (ngSubmit)="onsubmit1()">
+  <h3>Route SnapShot params </h3>
+  <div class="form-group">
+    <label>Enter Id</label>
+    <input class="form-control" [(ngModel)]="c.id" name="id" #id="ngModel">
+  </div>
+
+  <div class="form-group">
+    <label>Enter Name</label>
+    <input class="form-control" [(ngModel)]="c.name" name="name" #name="ngModel"/>
+  </div>
+
+  <div class="form-group">
+    <label>Enter Salary</label>
+    <input class="form-control" required minlength="4" maxlength="7" [(ngModel)]="c.salary" name="salary"
+           #salary="ngModel"/>
+  </div>
+
+  <div class="mt-2">
+    <button type="submit" class="btn btn-primary"> login</button>
+    <button type="reset" class="btn btn-primary" style="margin-left: 10pt;"> cancel</button>
+  </div>
+
+</form>

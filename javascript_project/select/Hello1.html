@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="test1.js">
+
+   </script>
+   <style>
+      label {
+         width: 100pt;
+         float: left;
+      }
+
+      input {
+         width: 110pt;
+         margin-top: 5pt;
+      }
+   </style>
+</head>
+
+<body>
+   <form style="border:solid; margin:100pt;padding: 50pt;width:40%">
+      <div>
+         <label>Enter name</label>
+         <input id="name">
+      </div>
+
+      <div>
+         <label>Enter age</label>
+         <input id="age">
+      </div>
+      <div>
+         <div> Enter Gender</div>
+         <div> <input type="radio" value="male" id="gender">male</div>
+         <div> <input type="radio" value="female" id="gender">female</div>
+      </div>
+      <div>
+
+         <div>Favourite food </div>
+         <div style="margin-top: 10pt;margin-bottom: 10pt;">
+            <select name="food" multiple id="food1">
+               <option value="pizza">pizza</option>
+               <option value="biryani">biryani</option>
+               <option value="idli">idli</option>
+               <option value="dosa" dosa</option>
+            </select>
+         </div>
+      </div>
+      <div>
+         <input type="button" value="login" onclick="getAllFood()">
+      </div>
+
+   </form>
+</body>
+
+</html>

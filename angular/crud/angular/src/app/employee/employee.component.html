@@ -1,0 +1,45 @@
+<div class="container border border-primary  p-5 m-5 bg-dark text-light w-50 ">
+
+    <div>Id is {{id}}</div>
+    <div>Name is {{name}}</div>
+    <div>Age is {{age}}</div>
+
+    <div class="border border-light p-5 m-5">
+        <div>Id is {{emp.id}}</div>
+        <div>Name is {{emp.name}}</div>
+        <div>Age is {{emp.age}}</div>
+
+    </div>
+
+    <div class="border border-info p-5 m-5 bg-light text-dark">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+            <tr *ngFor="let e of emp1">
+                <td>{{e.id}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.age}}</td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div>
+        <div>
+            <img src="./assets/img1.jpg" width="200" height="150" />
+        </div>
+        <div>
+            <img [src]="img_src" [width]="img_width" [height]="img_height">
+        </div>
+
+        <div>
+
+        </div>
+        <div>
+            <button (click)="empdetail()">Click to get Employeen Detais</button>
+        </div>
+    </div>
+</div>

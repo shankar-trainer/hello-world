@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       const addition=(a,b)=>a+b
+        var x=10
+        var y=20
+      //  alert(`sum of ${x} and ${y} is ${addition(x,y)}`)       
+        const multiplication=(a,b)=>a*b
+        //alert(`multiplication of ${x} and ${y} is ${multiplication(x,y)}`)       
+       
+        const myprogram=(msg,callback1,callback2)=>{
+            alert(msg)
+            alert("multiplication"+callback1(11,22))
+            alert('addition '+callback2(x,y))
+        }
+        myprogram(' first multiplication will be done then addition',multiplication,addition)
+        //addition=(a,b)=>a-b
+        //alert(`sum of ${x} and ${y} is ${addition(x,y)}`)       
+       var a="123"
+       var b=123
+       var c=123
+       alert(a==b)
+       alert(a===b)
+       alert(b===c)
+
+       var p1=10
+       var p2=10
+         if(confirm("p1 ==p2 "))
+           alert("p1==p2")
+        else 
+          alert("p1!=p2")
+        
+    </script>
+</body>
+
+</html>

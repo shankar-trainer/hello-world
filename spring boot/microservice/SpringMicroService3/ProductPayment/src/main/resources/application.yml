@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active:  prod
+
+  application:
+    name:  product-payment-app
+  config:
+    import: optional:configserver:http://localhost:8082/management.endpoints.web.exposure.include=refresh
+server:
+  port: 9092

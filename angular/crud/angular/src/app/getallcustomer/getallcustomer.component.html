@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>All Customer</h2>
+
+    <table class="table table-bordered table-striped bg-success w-75 p-5 m-5 text-light ">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Dob</th>
+        </tr>
+        <tr *ngFor="let c of customerlist|async">
+            <td>{{c.customerId}}</td>
+            <td>{{c.customerName}}</td>
+            <td>{{c.customerDob}}</td>
+        </tr>
+
+    </table>
+
+    <div class="mt-5 ml-5">
+      <button (click)="goto_addCustomer()" class="btn btn-info">add Customer</button>
+    </div>
+
+
+</div>

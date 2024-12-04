@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="css\bootstrap.min.css" rel="stylesheet">
+    <script src="script/jquery-3.7.1.min.js">
+    </script>
+    <script>
+        $(function () {
+            //$('form').submit(function(){
+            $('#submit').click(function () {
+                if ($('#id').val() == '') {
+                    $('#err_id').html('id is blank')
+                }
+                else if ($('#name').val() == '')
+                    $('#err_name').html('name is blank')
+                else {
+                    //$('form').submit(function () 
+                    {
+                        alert('form is validated')
+                        $('form').submit();
+                    }
+                    //)
+                }
+            }
+            )
+        }
+        )
+    </script>
+</head>
+
+<body>
+    <form class="container border border-primary p-5 w-50 m-5" action="hello.jsp">
+        <div class="form-group">
+            <label>Enter Id </label>
+            <input id="id" class="form-control">
+            <span id="err_id"></span>
+        </div>
+        <div class="form-group">
+            <label>Enter Name </label>
+            <input id="name" class="form-control">
+            <span id="err_name"></span>
+        </div>
+        <div class="form-group">
+
+            <div class="mt-2">
+                <input type="submit" id="submit" value="Send" class="btn btn-primary">
+                <input type="reset" id="reset" value="Cancel" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+
+
+</body>
+
+</html>

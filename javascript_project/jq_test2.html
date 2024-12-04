@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="css\bootstrap.min.css" rel="stylesheet">
+    <script src="script/jquery-3.7.1.min.js">
+    </script>
+    <script>
+        var c = 1
+        $(function () {
+            $('#increment').click(function () {
+                $('#id1').html('Count is ' + (++c))
+            })
+            $('#decrement').click(function () {
+                $('#id1').html('Count is ' + (--c))
+            })
+            setInterval(() => {
+                $('#clock').html(new Date().toLocaleTimeString())
+            },1000)
+        })
+
+    </script>
+</head>
+
+<body>
+
+    <div class="bg-info border p-5 m-5 w-50">
+        <div id="clock" style="float:right" class="text-light">
+        </div>
+
+        <div id="id1">
+            Count is 1
+        </div>
+        <button id="increment" class="btn btn-primary">increment</button>
+        <button id="decrement" class="btn btn-primary">decrement</button>
+
+
+    </div>
+    </div>
+</body>
+
+</html>

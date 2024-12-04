@@ -1,0 +1,82 @@
+slide link
+mysql
+https://drive.google.com/drive/folders/1NZCsd6FEd-cZkeaso8d87FaggBJaMdJG?usp=sharing
+
+Uml slide link
+https://drive.google.com/drive/folders/1APMivb_bFer5oZE4oBTvpU_RNoNwtm2Q?usp=sharing
+
+java slide
+https://drive.google.com/drive/folders/1M-dnYiUl287n7gVqex_G3wGODyRzctaO?usp=sharing
+
+html link
+https://drive.google.com/drive/folders/1QQOyhCahMQIhSa_pHxIhF2Gllm9vxmf9?usp=sharing
+
+html 5 link
+https://drive.google.com/drive/folders/1k9OsoLD4KTN542cKy1evoNa9FwyACy7l?usp=sharing
+
+css link 
+https://drive.google.com/drive/folders/1KoL-m1gPx0IBCd8ALUiqvJZ_sXkO-NwX?usp=sharing
+
+css3 link
+https://drive.google.com/drive/folders/1g0h0nvd6H3Ko5DlTcTmjdmG9o_vUKwID?usp=sharing
+
+jquery link
+https://drive.google.com/drive/folders/1WO6Dh2xhhmPzvFQ4S8eInOHarAP3fdAJ?usp=sharing
+
+
+javascript link
+
+https://drive.google.com/drive/folders/1YK7nr_yqOPwHLR6xgx_XFnMyNDe14fT3?usp=sharing
+
+
+servlet,jsp slide
+
+https://drive.google.com/drive/folders/1dltroT1T_scV5IOl0po0p03N3c-ME-oS?usp=sharing
+
+node express link
+
+https://drive.google.com/drive/folders/1D4xKdxqfNupCVCYvqGIGTE8_cOgDf_2E?usp=sharing
+
+hibernate
+
+https://drive.google.com/drive/folders/14QE5f3TPxuAR_cwVaH7jVAhLbTfuHUMV?usp=sharing
+
+spring slide
+
+https://drive.google.com/drive/folders/1wS5tGQN92Zy1DlSl5jwk8BeWgME2d6in?usp=sharing
+
+spring boot
+
+https://drive.google.com/drive/folders/1nK8xmsCErwTg7PlSKAB-AmN3YpJn3Pga?usp=sharing
+
+spring microservice
+
+https://drive.google.com/drive/folders/11eU_MAsOIgV77BiudQn3k8fdUYie-2wq?usp=sharing
+
+angular slide
+
+https://drive.google.com/drive/folders/1_AOn33J6VEE5Doxej83-if4QPyfK24Fy?usp=sharing
+
+
+react slide
+
+https://drive.google.com/drive/folders/1YPDVEw41EFYzN9y9lDOvOvghYb8EKPM0?usp=sharing
+
+docker slide
+https://drive.google.com/drive/folders/1_WA0auE1xvZsPqUxmQa-m4HyLsDuvW-W?usp=sharing
+
+kubernetes slide
+https://drive.google.com/drive/folders/1ZfvhcIfyowCbpWUSVHaxPiHEs4r59lAW?usp=sharing
+
+gcp slide
+https://drive.google.com/drive/folders/19sdhzhlxHVXP5duNnItBS_uLErbfKUkk?usp=sharing
+
+aws slide  
+https://drive.google.com/drive/folders/10OPi4Y2iQG3srg1wvzEpf59uxfraMlgG?usp=sharing
+
+
+git jenkin slide
+https://drive.google.com/drive/folders/1GnMAflZ3PcwNX_OV0Wygy5W1o0dAXEex?usp=sharing
+
+agile scrum slide 
+https://drive.google.com/drive/folders/1RO8vAlkgbyaE3Lt-2rEvuoeu4pBGYkm9?usp=sharing

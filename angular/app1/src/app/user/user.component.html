@@ -1,0 +1,174 @@
+<div class="container">
+    <div class="border border-primary p-5 m-5 w-50">
+        <h1>User 1 Information</h1>
+        <div>Id : {{user.userId}}</div>
+        <div>Name : {{user.userName}}</div>
+        <div>Dob : {{user.userDob.toLocaleDateString()}}</div>
+    </div>
+
+    <table class="table table-bordered table-striped bg-success text-info w-75 ">
+        <tr class="table-success">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Dob</th>
+            <th>Salary</th>
+        </tr>
+
+        <tr *ngFor="let u of user1">
+            <td>
+                {{u.userId}}
+            </td>
+            <td>
+                {{u.userName}}
+            </td>
+            <td>
+                {{u.userDob.toDateString()}}
+            </td>
+            <td>
+                {{u.userSalary}}
+            </td>
+        </tr>
+    </table>
+
+    <hr size="20pt" color="blue">
+
+    <h2>Employee having salary greater than 25000 (*NgIf)</h2>
+    <table class="table table-bordered table-striped bg-success text-info w-75 ">
+        <tr class="table-success">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Dob</th>
+            <th>Salary</th>
+        </tr>
+
+        <tr *ngFor="let u of user1">
+            <td *ngIf="u.userSalary>25000">
+                {{u.userId}}
+            </td>
+            <td *ngIf="u.userSalary>25000">
+                {{u.userName}}
+            </td>
+            <td *ngIf="u.userSalary>25000">
+                {{u.userDob.toDateString()}}
+            </td>
+            <td *ngIf="u.userSalary>25000">
+                {{u.userSalary}}
+            </td>
+        </tr>
+    </table>
+
+    <!-- <h1 class="mystyle">Ng Directive </h1> -->
+    <h1 [ngClass]="{mystyle:true}">Ng Directive </h1>
+
+    <h2 [ngStyle]="{color:'blue','text-transform':'capitalize'}">Employee having salary greater than 25000 (*NgSwitch)
+    </h2>
+    <table class="table table-bordered table-striped bg-warning text-dark w-75 ">
+        <tr class="table-success">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Dob</th>
+            <th>Salary</th>
+            <th>Post</th>
+        </tr>
+
+        <tr *ngFor="let u of user1">
+            <td>
+                {{u.userId}}
+            </td>
+            <td>
+                {{u.userName}}
+            </td>
+            <td>
+                {{u.userDob.toDateString()}}
+            </td>
+            <td>
+                {{u.userSalary}}
+            </td>
+            <td [ngSwitch]="u.userName">
+                <span *ngSwitchCase="'saumesh kumar'" class="bg-warning">Director</span>
+                <span *ngSwitchCase="'arvind kumar'" class="bg-warning">Clerk</span>
+                <span *ngSwitchCase="'rupesh kumar'" class="bg-warning">Sr Clerk</span>
+                <span *ngSwitchCase="'kamal kumar'" class="bg-warning">Engineer</span>
+                <span *ngSwitchCase="'amit kumar'" class="bg-warning">Jr. Engineer</span>
+                <span *ngSwitchCase="'sunil kumar'" class="bg-warning">Jr. Engineer</span>
+                <span *ngSwitchCase="'sita ram kumar'" class="bg-warning">Clerk</span>
+                <span *ngSwitchCase="'suresh kumar'" class="bg-warning">Engineer</span>
+                <span *ngSwitchCase="'vimal kumar'" class="bg-warning">Engineer</span>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+    <h2>Using Pipe</h2>
+    <table class="table table-bordered table-striped bg-success text-info w-75 ">
+        <tr class="table-success">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Dob</th>
+            <th>Salary</th>
+        </tr>
+
+        <tr *ngFor="let u of user1">
+            <td>
+                {{u.userId}}
+            </td>
+            <td>
+                {{u.userName|uppercase}}
+            </td>
+            <td>
+                {{u.userName|uppercase|slice:0:5}}
+            </td>
+            <td>
+                {{u.userDob.toDateString()|date:'fullDate'|uppercase}}
+            </td>
+
+            <td>
+                {{u.userDob.toDateString()|date:'shortDate'}}
+            </td>
+
+            <td>
+                {{u.userSalary|currency:'Rs'}}
+            </td>
+
+            <td>
+                {{u.userSalary|number}}
+            </td>
+
+            <td>
+                {{0.04|percent}}
+            </td>
+
+
+        </tr>
+    </table>
+    <div class="p-5 m-5 bg-warning">
+        {{user1|json}}
+    </div>
+
+    <div class="p-5 m-5 bg-success text-light">
+        {{user|json}}
+    </div>
+
+    <div class="p-5 m-5 bg-success text-light">
+        <h2>Power Pipe </h2>
+        Power of 3 to 2 is {{3|power:2}}
+        <form>
+            <div class="form-group">
+                <label>Enter Base </label>
+                <input class="form-control" [(ngModel)]="base" [ngModelOptions]="{standalone: true}" type="number">
+            </div>
+
+            <div class="form-group">
+                <label>Enter Exponent </label>
+                <input class="form-control" [(ngModel)]="exponent" [ngModelOptions]="{standalone: true}" type="number">
+            </div>
+            <div>
+                <button (click)="show()" class="btn btn-primary mt-1"> show result</button>
+            </div>
+            <div [hidden]="!visible">
+               The Power of {{base}} to the  {{exponent}} is {{base|power:exponent}}
+            </div>
+        </form>
+    </div>
+
+</div>

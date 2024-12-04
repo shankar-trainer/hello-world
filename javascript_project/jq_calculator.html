@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link href="css\bootstrap.min.css" rel="stylesheet">
+    <script src="script/jquery-3.7.1.min.js">
+    </script>
+
+    <script>
+        $(function () {
+            $('#addition').click(function () {
+                if ($('#n1').val() == '')
+                    //alert('no1 is blank')
+                    $('#err_n1').html('no1 is blank').css('color','red').css('border','solid blue').css('padding','20pt')
+                else if (isNaN($('#n1').val()))
+                    //alert('no1 is not a number')
+                    $('#err_n1').html('no1 is not a number')
+                else if ($('#n2').val() == '')
+                    //alert('no2 is blank')
+                    $('#err_n2').html('no2 is blank')
+                else if (isNaN($('#n2').val()))
+                    //alert('no2 is not a number')
+                    $('#err_n2').html('no1 is not a numebr')
+                else {
+                    $('#result').html(parseFloat($('#n1').val()) + parseFloat($('#n2').val()))
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container border border-primary p-5 w-50 m-5">
+        <div class="form-group">
+            <label>Enter No1 </label>
+            <input id="n1" class="form-control">
+            <span id="err_n1"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Enter No2 </label>
+            <input id="n2" class="form-control">
+            <span id="err_n2"></span>
+        </div>
+        <div class="form-group">
+            <label>Result </label>
+            <label id="result"></label>
+        </div>
+        <div class="form-group">
+            <div class="mt-2">
+                <input type="button" id="addition" value="Addition" class="btn btn-primary">
+
+                <input type="button" id="subtraction" value="Subtraction" class="btn btn-primary">
+            </div>
+
+            <div class="mt-2">
+                <input type="button" id="multiplication" value="Multiplication" class="btn btn-primary">
+
+                <input type="button" id="division" value="Division" class="btn btn-primary">
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
