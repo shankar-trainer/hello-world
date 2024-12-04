@@ -1,0 +1,42 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+#    restart: always
+#jdbc:postgresql://db:5432/postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mysql
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=mysql
+    ports:
+      - "8080:9090"
+  db:
+    container_name: mysql
+    image: mysql
+    cap_add:
+      - SYS_NICE
+#    restart: always
+    environment:
+#      MYSQL_USER: root
+      MYSQL_DATABASE: mysql
+      MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - 3306:3306
+#    volumes:
+#      - db:/var/lib/mysql
+#      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+#volumes:
+#  db:
+#    driver: local
+
+volumes:
+  mysql-data:
+
+
+
+
+
+

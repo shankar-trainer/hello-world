@@ -1,0 +1,15 @@
+docker images -- will show all images with id
+docker ps -a  -- will show all container
+docker stop conianerid -- stop container
+docker rmi  image_id -- will remove image
+ docker rm containerid -- will remove container
+docker build -t name . ---- create image
+docker run image_name  -- run image
+
+
+docker build -t springapp2 .
+
+docker run -p 8080:7070 -it springapp2  -- expose is 8080 -- it will run on 7080
+
+
+docker run -p container:host -it 

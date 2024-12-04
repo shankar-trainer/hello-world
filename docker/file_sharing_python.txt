@@ -1,0 +1,11 @@
+
+ip addr
+Create a server in a directory that contains the file you want to transfer, Python 3:
+
+python3 -m http.server 8080
+or Python 2:
+
+python -m SimpleHTTPServer 8080
+On the receiving computer, open a browser, and visit:
+
+192.168.0.10:8080

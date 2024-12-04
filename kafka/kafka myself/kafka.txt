@@ -1,0 +1,235 @@
+C:\Users\Training\Downloads\java fsd\software\zip\kafka_2.12-3.6.1\kafka_2.12-3.6.1\bin
+
+==================================== 
+
+I also faced the same issue with new version kafka_2.12-3.0.0. Sorted out by using lower version kafka_2.12-2.8.1
+
+kafka 
+
+   messaging application 
+   linkedin -- donated to open source -- apache kafka 
+
+start zookeeper
+
+cd C:\kafka_2.11-0.9.0.0\bin\windows
+ $ zookeeper-server-start.bat ..\..\config\zookeeper.properties
+
+
+start kafka server 
+cd   C:\kafka_2.11-0.9.0.0\bin\windows
+$ kafka-server-start.bat ..\..\config\server.properties
+
+-- list of topics 
+ $ kafka-topics.bat --zookeeper 127.0.0.1 --list
+
+   C:\kafka_2.11-0.9.0.0\bin\windows>kafka-topics.bat  --list --zookeeper 127.0.0.1:2181
+first_topic
+second_topic
+
+-- create topic
+C:\kafka_2.11-0.9.0.0\bin\windows>kafka-topics.bat --zookeeper 127.0.0.1:2181 --topic second_topic --create --partitions 3 --replication-factor 1
+Option zookeeper is deprecated, use --bootstrap-server instead.
+
+-- describe the topic
+
+C:\kafka_2.11-0.9.0.0\bin\windows>kafka-topics.bat   --zookeeper 127.0.0.1:2181 --topic first_topic --describe
+
+--delete 
+ $ kafka-topics.bat --zookeeper 127.0.0.1:2181 --topic tt_topic --delete
+
+kafka console producer
+  one terminal 
+  $ kafka-console-producer.bat --broker-list 127.0.0.1:9092 --topic second_topic1
+
+kafka console consumer
+  second terminal 
+  kafka-console-consumer.bat --bootstrap-server  127.0.0.1:9092 --topic second_topic1 --zookeeper 127.0.0.1:2181
+
+
+---- 
+
+
+third terminal  from-beginning 
+
+kafka-console-consumer.bat --bootstrap-server  127.0.0.1:9092 --topic second_topic1 --zookeeper 127.0.0.1:2181 --from-beginning
+
+
+--grouping of messages 
+=========================================================================
+kafka new version 
+-- create
+kafka-topics.bat --create --topic first_topic --bootstrap-server localhost:9092  -- single partition 
+
+  3 partition
+
+$ kafka-topics.bat --bootstrap-server localhost:9092  --topic second_topic --create --partitions 3 --replication-factor 1
+
+
+--list 
+
+  $ kafka-topics.bat  --bootstrap-server localhost:9092  --list
+
+
+--describe 
+$ kafka-topics.bat    --bootstrap-server localhost:9092  --topic first_topic --describe
+
+Producer
+
+$ kafka-console-producer.bat --broker-list 127.0.0.1:9092 --topic second_topic
+
+
+Consumer 
+ 
+ $ kafka-console-consumer.bat --bootstrap-server  127.0.0.1:9092 --topic second_topic
+
+ $ kafka-console-consumer.bat --bootstrap-server  127.0.0.1:9092 --topic second_topic --from-beginning
+
+  using group 
+    use in three terminal 
+    $ kafka-console-consumer.bat --bootstrap-server  127.0.0.1:9092 --topic second_topic --group group1
+
+
+example wordcount 
+
+
+kafka-topics \
+  --bootstrap-server localhost:9092 \
+  --topic sentences \
+  --replication-factor 1 \
+  --partitions 1 \
+  --create
+
+kafka-topics \
+  --bootstrap-server localhost:9092 \
+  --topic word-count \
+  --replication-factor 1 \
+  --partitions 1 \
+  --create
+
+  
+=============================== 
+  start zookeeper
+
+cd C:\kafka_2.11-0.9.0.0\bin\windows
+ $ zookeeper-server-start.bat ..\..\config\zookeeper.properties
+
+
+  start kafka server 
+cd   C:\kafka_2.11-0.9.0.0\bin\windows
+
+$ kafka-server-start.bat ..\..\config\server.properties
+
+
+$ kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic javainuse-topic
+
+ create a producer to send message to the above created javainuse-topic and send a message - Hello World Javainuse to it-
+
+kafka-console-producer.bat --broker-list localhost:9092 --topic javainuse-topic
+ 
+start the consumer which listens to the topic javainuse-topic we just created above. We will get the message we had sent using the producer
+ 
+  
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic javainuse-topic --from-beginning --zookeeper 127.0.0.1:2181
+=====================================
+spring boot example
+
+  start zookeeper
+
+cd C:\kafka_2.11-0.9.0.0\bin\windows
+ $ zookeeper-server-start.bat ..\..\config\zookeeper.properties
+
+
+  start kafka server 
+cd   C:\kafka_2.11-0.9.0.0\bin\windows
+
+$ kafka-server-start.bat ..\..\config\server.properties
+
+
+$ kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic javainuse-topic
+==================
+with kafka_2.12-3.6.1
+
+Option zookeeper is deprecated, use --bootstrap-server instead.
+ kafka-topics.bat --create --bootstrap-server localhost:2181 --replication-factor 1 --partitions 1 --topic javainuse-topic
+  kafka-topics.bat --create --topic quickstart-events --bootstrap-server localhost:9092
+===============================
+Next start the Spring Boot Application by running it as a Java Application.
+
+Also Start the consumer listening to the java_in_use_topic-
+
+working 
+ kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic javainuse-topic --from-beginning
+
+not working 
+ kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic javainuse-topic --from-beginning --zookeeper 127.0.0.1:2181
+ 
+http://localhost:8080//javainuse-kafka/producer?message=test
+
+
+https://www.javainuse.com/spring/spring-boot-apache-kafka-hello-world
+https://www.javainuse.com/misc/apache-kafka-hello-world
+
+package com.javainuse.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.javainuse.service.KafkaSender;
+
+@RestController
+@RequestMapping(value = "/javainuse-kafka/")
+public class ApacheKafkaWebController {
+
+	@Autowired
+	KafkaSender kafkaSender;
+
+	@GetMapping(value = "/producer")
+	public String producer(@RequestParam("message") String message) {
+		kafkaSender.send(message);
+
+		return "Message sent to the Kafka Topic java_in_use_topic Successfully";
+	}
+
+}
+
+package com.javainuse.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+public class KafkaSender {
+	
+	@Autowired
+	private KafkaTemplate<String, String> kafkaTemplate;
+	
+	//String kafkaTopic = "java_in_use_topic";
+	String kafkaTopic = "javainuse-topic";
+	
+	public void send(String data) {
+	    
+	    kafkaTemplate.send(kafkaTopic, data);
+	}
+}
+package com.javainuse;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringBootHelloWorldApplication {
+
+	public static void main(String[] args) {
+
+		// SpringApplication.run(
+		// 		new Object[] 
+		// 		{ SpringBootHelloWorldApplication.class }, args)
+
+		SpringApplication.run(
+			SpringBootHelloWorldApplication.class , args);
+	}
+}

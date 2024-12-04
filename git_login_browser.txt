@@ -1,0 +1,26 @@
+hi ...
+
+
+to login using browser in git 
+
+first add 
+
+Open Git Bash.
+Use the command $ git config –global user.name “YourUsername” to set your username.
+Use the command $ git config –global user. email “YourEmail” to set your email.
+Use the command $ git config –global user. password “YourPassword” to set your password.
+
+
+
+
+then 
+
+sudo apt install gh 
+
+then 
+
+gh auth login -w 
+
+it will open browser 
+
+

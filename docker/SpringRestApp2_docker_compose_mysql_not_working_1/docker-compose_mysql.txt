@@ -1,0 +1,39 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    restart: always
+
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/db1
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=mysql
+
+    ports:
+      - "8080:9090"
+  db:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+#    restart: always
+    environment:
+      - MYSQL_DATABASE=db1
+      - MYSQL_ROOT_PASSWORD=mysql
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+#volumes:
+#  db:
+#    driver: local
+
+
+
+
+
+
+

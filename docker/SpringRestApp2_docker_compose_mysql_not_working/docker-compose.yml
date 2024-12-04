@@ -1,0 +1,38 @@
+#version: '3.8'
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: inventory
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    networks:
+      - springmysql
+
+  spring-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-container
+    ports:
+      - "9090:8080"
+    depends_on:
+      - mysql-db
+    environment:
+      MYSQL_URL: jdbc:mysql://mysql-container:3306/inventory?autoReconnect=true&useSSL=false
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 10
+    networks:
+      - springmysql
+
+networks:
+  springmysql:
+    name: springmysql

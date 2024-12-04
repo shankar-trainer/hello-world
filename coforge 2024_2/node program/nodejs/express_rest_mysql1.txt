@@ -1,0 +1,44 @@
+import connection from './database/dbconnection.js';
+//var mysql=require('mysql');
+//import mysql from 'mysql';
+//var express=require('express')
+var app=express()
+app.use(express.json())
+
+//var conn=require('./database/dbconnection');
+
+// var connection=mysql.createConnection(
+//     {
+//         host:'localhost',
+//         user:'root',
+//         password:'mysql',
+//         database:'coforge'
+//     }
+// );
+ 
+app.get("/employee",(req,resp)=>{  
+    
+    connection.query("select * from employee",(err,result)=>{
+        if(err)
+            throw err;
+        resp.json(result);
+    })
+   })
+
+app.get("/employee/:id",(req,resp)=>{  
+    if(!req.params.id )
+      resp.status(404).send('id is not prsent')
+
+    else if(isNaN(req.params.id))
+        resp.status(404).send('id is not a number')
+    else {
+        var id=parseInt(req.params.id)
+    connection.query("select * from employee where id="+id,(err,result)=>{
+        if(err)
+            throw err;
+        resp.json(result);
+    })
+    }
+   })
+
+app.listen(8000)

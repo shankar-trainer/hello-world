@@ -1,0 +1,68 @@
+make a class Circle with two methods
+
+circumference and area
+
+float circumference(float r){
+
+}
+
+float area(float r){
+}
+
+in main  method just take radius, and calculate, display the result
+
+java.util.Scanner --
+
+       nextInt() -- int
+       nextFloat()-- float
+       next() -- single word string
+       nextLine() -- multi word string
+
+
+
+loop
+ -- iterative statement
+ -- executes based on conditions
+
+ 1. while loop
+ 2. do while loop
+ 3. for loop
+
+ while loop
+    -- basic loop
+    -- to iterate counter variable is required
+    -- top tested
+ syntax
+
+     while(counter)
+       statement
+
+ do while loop
+    -- basic loop
+    -- to iterate counter variable is required
+    -- bottom  tested
+    -- execute at least once
+
+
+
+ char -- int
+ int -- char
+ ascii code
+
+
+
+Encapsulation
+
+           data private + public behaviour --- encapsulated data
+
+           data is hidden
+
+
+Inheritance
+
+Polymorphism
+
+ one entity in multiple forms
+    - compile time -- overloading
+    - run time     -- overriding
+
