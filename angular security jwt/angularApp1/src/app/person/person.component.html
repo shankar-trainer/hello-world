@@ -1,0 +1,27 @@
+<div style="margin-left: 200pt; padding: 20pt;">
+    <table class="table text-primary bg-light   table-bordered w-100 table-striped">
+        <thead>
+            <tr>
+                <th>Person Id</th>
+                <th>Person Name</th>
+                <th>Person Salary</th>
+                <th>Person DOB</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let c of person">
+            <td>{{c.id}}</td>
+            <td>{{c.name|uppercase}}</td>
+            <td>{{c.salary|currency:'₹'}}</td>
+            <td>{{c.dob|date}}</td>
+            <td>{{c.dob|date:'short'}}</td>
+            <td>{{c.dob|date:'fullDate'}}</td>
+            <td>{{c.dob|date:'mediumDate'}}</td>
+            <td>{{c.dob|date:'mediumDate'}}</td>
+            <td>{{c.dob|date:'dd-MMMMM-yyyy'}}</td>
+            <td>{{c.dob|date:'dd-MMMMM-yyyy EEEEE'}}</td>
+        </tr>
+    </table>
+    
+    Power of 3 to the 4 is {{3|exponent:4}}
+
+</div>

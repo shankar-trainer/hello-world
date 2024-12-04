@@ -1,0 +1,36 @@
+<div class="container">
+
+    <form class="w-50 bg-info text-dark p-5 m-5" style="border:double;border-radius: 10pt;" (ngSubmit)="savePerson()">
+       
+        <div class="form-group">
+            <label>Enter Id </label>
+            <input class="form-control" [(ngModel)]="person.personId" #personId="ngModel"
+            name="personId"
+            >
+        </div>
+        <div class="form-group">
+            <label>Enter Name </label>
+            <input class="form-control" [(ngModel)]="person.personName" #personName="ngModel"
+            name="personName"
+            >
+        </div>
+        
+        <div class="form-group">
+            <label>Enter Salary </label>
+            <input class="form-control" [(ngModel)]="person.personSalary" #personSalary="ngModel"
+            name="personSalary"
+            >
+        </div>
+
+        <div>
+          <input type="submit" value="add person">
+          <input type="reset" value="Cancel">
+          <input type="button" value="showAll" 
+          (click)="showAll()"
+          >
+        </div>
+    </form>
+</div>
+<div>
+    {{msg}}
+</div>

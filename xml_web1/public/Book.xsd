@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/Book"
+	xmlns:tns="http://www.example.org/Book" elementFormDefault="qualified">
+
+	<xs:element name="book">
+		<xs:complexType>
+			<xs:sequence>
+			  <xs:element name="isbn" type="xs:int"/>
+			  <xs:element name="bname" type="xs:string"/>
+			  <xs:element name="cost" type="xs:float"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

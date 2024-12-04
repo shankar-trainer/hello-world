@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        label {
+            width: 100pt;
+            float: left;
+        }
+
+        input {
+            width: 110pt;
+        }
+        input[type="submit"]{
+            margin-top: 5pt;
+            width: 40pt;
+        }
+        input[type="reset"]{
+            width: 50pt;
+        }
+
+        form {
+            margin-left: 350pt;
+            margin-top: 100pt;
+            border: solid;
+            width: 30%;
+            padding: 20px;
+            background-color: beige;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label>Enter Id</label>
+            <input>
+        </div>
+
+        <div>
+            <label>Enter Name</label>
+            <input>
+        </div>
+
+        <div>
+            <label>Enter Age</label>
+            <input type="number" min="1" max="100">
+        </div>
+
+        <div>
+            <label>Enter Email</label>
+            <input type="email" required>
+        </div>
+
+        <div>
+            <label>Enter DOB</label>
+            <input type="date">
+        </div>
+
+        <div>
+            <label>Enter time</label>
+            <input type="time">
+        </div>
+        <div>
+            Select City
+        </div>
+        <div>
+            <input list="list1">
+            <datalist id="list1">
+                <option>Delhi</option>
+                <option>Mumbai</option>
+                <option>Pune</option>
+                <option>Kochchi</option>
+                <option>Chennai</option>
+                <option>Kolkotta</option>
+                <option>Banglore</option>
+                <option>Hyderabad</option>
+            </datalist>
+        </div>
+        <div>
+            <input type="submit">
+            <input type="reset">
+        </div>
+    </form>
+
+    <form>
+        <div>
+            <label>Enter No1</label>
+            <input type="number" id="a" value="10" oninput="result.value=parseFloat(a)+parseFloat(b)">
+        </div>
+        <div>
+            <label>Enter No2</label>
+            <input type="number" id="b" value="20" oninput="result.value=parseFloat(a)+parseFloat(b)">
+        </div>
+        <div>
+            <label>Result </label>
+            <output name="result" value="30" for="a b">30</output>
+        </div>
+
+    </form>
+    <form>
+        <div>
+            <label style="width: 130pt;">
+                Enter entry date and time
+            </label>
+
+            <div>
+                <input type="datetime-local" />
+            </div>
+        </div>
+
+        <div>
+            <label style="width: 130pt;">
+                Search
+            </label>
+
+            <input type="search" />
+        </div>
+        <div>
+            <label style="width: 130pt;">
+              Enter Telephone No
+            </label>
+
+            <input type="tel" />
+        </div>
+
+    </form>
+
+</body>
+
+</html>

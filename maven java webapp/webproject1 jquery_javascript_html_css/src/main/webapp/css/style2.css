@@ -1,0 +1,25 @@
+label {
+    width: 100pt;
+    float: left;
+}
+
+input {
+    width: 110pt;
+    margin-top: 4px;
+}
+input[type="submit"]{
+    margin-top: 5pt;
+    width: 40pt;
+}
+input[type="reset"]{
+    width: 50pt;
+}
+
+form {
+    margin-left: 350pt;
+    margin-top: 100pt;
+    border: solid;
+    width: 30%;
+    padding: 20px;
+    background-color: beige;
+}

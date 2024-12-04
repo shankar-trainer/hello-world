@@ -1,0 +1,17 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>AccountController</servlet-name>
+  	<display-name>AccountController</display-name>
+  	<description></description>
+  	<servlet-class>com.coforge.controller.AccountController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AccountController</servlet-name>
+  	<url-pattern>/AccountController</url-pattern>
+  </servlet-mapping>
+</web-app>

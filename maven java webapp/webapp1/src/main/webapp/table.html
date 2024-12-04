@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        th {
+            border: solid red;
+        }
+
+        td {
+            border: dotted yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <table style="background-color: aqua;border-style: solid;border-color: blue; border-width: 10pt;margin-left: 200pt;margin-top: 50pt;border-radius: 10pt;
+    width: 500pt; height: 200pt; padding: 20pt;   
+    ">
+         <tbody>
+            <tr>
+                <td>10001 </td>
+                <td>ram</td>
+                <td> kumar </td>
+                <td>25000</td>
+            </tr>
+            <tr>
+                <td>10002</td>
+                <td>shyam</td>
+                <td> kumar </td>
+                <td>45000</td>
+            </tr>
+            <tr>
+                <td>10003</td>
+                <td>amit </td>
+                <td> kumar </td>
+                <td>45000</td>
+            </tr>
+            <tr>
+                <td>10004</td>
+                <td>pawan </td>
+                <td>kumar</td>
+                <td>65000</td>
+            </tr>
+            <tr>
+                <td>10005</td>
+                <td>saurabh </td>
+                <td> kumar </td>
+                <td>65000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td>
+                coforge
+            </td>
+            <td>
+                company
+            </td>
+            <td>
+                date is
+                <script>
+                    document.write(new Date().toDateString())
+                </script>
+
+            </td>
+            <td>
+                Country India
+            </td>
+        </tfoot>
+        <thead>
+            <tr>
+                <th rowspan="2">Id</th>
+                <th colspan="2">Name</th>
+                <th rowspan="2">Salary</th>
+            </tr>
+            <tr>
+                <th>
+                    FName
+                </th>
+                <th>
+                    LName
+                </th>
+            </tr>
+        </thead>
+    </table>
+
+</body>
+
+</html>

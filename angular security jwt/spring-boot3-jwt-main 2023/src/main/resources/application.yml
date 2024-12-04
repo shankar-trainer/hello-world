@@ -1,0 +1,32 @@
+#spring:
+#    datasource:
+#        url: jdbc:postgresql://localhost:5432/jwt_security
+#        driver-class-name: org.postgresql.Driver
+#        username: postgres
+#        password: teste
+#    jpa:
+#        hibernate: 
+#            ddl-auto: create-drop
+#        show-sql: true
+#        properties:
+#            hibernate:
+#                format_sql: true
+#        database: postgresql
+#        database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto:  create
+      
+  datasource:
+    url:  jdbc:mysql://localhost:3306/db1
+    username:  root
+    password:  mysql
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+    show-sql:  true
+        
+
+security:
+    jwt:
+        secret-key: 753778214125442A472D4B6150645267556B58703273357638792F423F452848

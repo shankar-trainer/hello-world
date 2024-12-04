@@ -1,0 +1,15 @@
+h1{
+    background-color:aqua;
+    color:blue;
+    width:40%;
+    margin-left:300pt;
+    padding:20pt;
+}
+div{
+
+    width:300pt;
+    height:300pt;
+    border:solid;
+    background-color:yellow;
+    margin-left:40pt;
+}

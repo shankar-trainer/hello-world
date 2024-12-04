@@ -1,0 +1,19 @@
+server:
+    port: 8765
+spring:
+    application:
+      name: GateWay-Application
+    cloud:
+      gateway:
+            routes:
+                - id:  Order-Application
+                  uri:  http://localhost:9090
+                  predicates:
+                      - Path=/order/**
+
+                - id: Payment-Application
+                  uri: http://localhost:9091
+                  predicates:
+                      - Path=/payment/**
+
+            

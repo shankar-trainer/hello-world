@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <script>
+
+        function alarm() {
+            alert("alarm is ringing ")
+        }
+
+        document.write("alarm will ring after 5 second")
+        setTimeout(alarm, 1000 * 4)
+
+        function consoleClock() {
+            console.log(new Date().toLocaleTimeString())
+        }
+
+        setInterval(consoleClock, 1000)
+
+        function myclock(){
+      //      document.getElementById("clock").innerHTML=new Date().toLocaleTimeString()
+            document.getElementById("clock").innerHTML="<span style='color:blue;font-size:20pt;margin-left:270pt;border:inset 20pt' >"+new Date().toLocaleTimeString()+"</span>"
+        }
+        setInterval(myclock, 1000)
+    </script>
+
+<div id="clock">
+
+</div>
+
+</body>
+
+</html>

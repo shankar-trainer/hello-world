@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+      .box{
+        width: 200pt;
+        height: 200pt;
+        background-color: beige;
+        padding: 20pt;
+        color:blue;
+        font-size: large;
+        border: double;
+        border-radius: 20pt;
+        margin: 200pt;
+      }
+    </style>
+
+</head>
+
+<body>
+    <script>
+
+        var name;
+        var roll;
+        var subject1;
+        var subject2;
+        var marks1;
+        var marks2;
+    
+        name=prompt("enter name ","ram kumar")
+        roll=prompt("enter roll ")
+        subject1=prompt("enter subject1")
+        subject2=prompt("enter subject2")
+    
+        marks1=parseFloat(prompt("enter marks1"))
+        marks2=parseFloat(prompt("enter marks2"))
+        total=marks1+marks2;
+        percentage=total/2;
+    
+        document.write("<div class='box'>")
+        document.write("name  is "+name)
+        document.write("<br>roll  is "+roll)
+        document.write("<br>subject1  is "+subject1)
+        document.write("<br>subject2  is "+subject2)
+        document.write("<br>marks1  is "+marks1)
+        document.write("<br>marks2  is "+marks2)
+        document.write("<br>total marks   is "+total)
+        document.write("<br>marks percentage   is "+percentage)
+        document.write("</div>")
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Employees SYSTEM "Employee.dtd" >
+<Employees>
+  <Employee>
+    <id>1001</id>
+    <name>suman kumar</name>
+    <salary>20000</salary>
+  </Employee>
+  
+  <Employee>
+    <id>1002</id>
+    <name>aman kumar</name>
+    <salary>30000</salary>
+  </Employee>
+  
+</Employees>

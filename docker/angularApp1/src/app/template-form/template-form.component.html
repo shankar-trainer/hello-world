@@ -1,0 +1,98 @@
+<div class="container">
+
+    <form class="w-50 bg-primary text-dark p-5 m-5" style="border:double;border-radius: 10pt;" (ngSubmit)="submit()" >
+        <div class="form-group">
+            <label>Enter Id</label>
+            <input class="form-control" [(ngModel)]="customer.id" #id="ngModel" name="id"
+            required minlength="3" maxlength="10"
+            >
+
+            <span *ngIf="id.touched &&  id.errors?.['required']" class="text-danger">
+                Id is blank
+            </span>
+            
+            <span *ngIf="id.touched &&  id.errors?.['minlength']" class="text-danger">
+                Id must of minimum 3 digit
+            </span>
+
+            <span *ngIf="id.touched &&  id.errors?.['maxlength']" class="text-danger">
+                Id must of maximum 10 digit
+            </span>
+
+        </div>
+
+        <div class="form-group">
+            <label>Enter Name</label>
+            <input class="form-control" [(ngModel)]="customer.name" #name="ngModel" name="name"
+            required minlength="5" maxlength="15">
+            <span *ngIf="name.touched &&  name.errors?.['required']" class="text-danger">
+                Name  is blank
+            </span>
+            
+            <span *ngIf="name.touched &&  name.errors?.['minlength']" class="text-danger">
+                Name must of minimum 5 character length
+            </span>
+
+            <span *ngIf="name.touched &&  name.errors?.['maxlength']" class="text-danger">
+                Name must of maximum 15 character length
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label>Enter SSN</label>
+            <input class="form-control" [(ngModel)]="customer.ssn" #ssn="ngModel" name="ssn"
+            required minlength="4" maxlength="10">
+            <span *ngIf="ssn.touched &&  ssn.errors?.['required']" class="text-danger">
+             SSN is blank
+            </span>
+            
+            <span *ngIf="ssn.touched &&  ssn.errors?.['minlength']" class="text-danger">
+                SSN must of minimum 4 alphanumeric
+            </span>
+
+            <span *ngIf="ssn.touched &&  ssn.errors?.['maxlength']" class="text-danger">
+                SSN must of minimum 10 alphanumeric
+            </span>
+        </div>
+        <div class="form-group">
+            <label>Enter Age</label>
+            <input class="form-control" [(ngModel)]="customer.age" #age="ngModel" name="age"
+            required minlength="1" maxlength="3">
+            <span *ngIf="age.touched &&  age.errors?.['required']" class="text-danger">
+                Age is blank
+            </span>
+            
+            <span *ngIf="id.touched &&  id.errors?.['minlength']" class="text-danger">
+                Age must of minimum 1 digit
+            </span>
+
+            <span *ngIf="id.touched &&  id.errors?.['maxlength']" class="text-danger">
+                Id must of maximum 10 digit
+            </span>
+        </div>
+        <div class="form-group" style="margin-top: 5pt;">
+                <button type="submit" class="btn btn-secondary">Login</button>
+                <button type="reset" class="btn btn-secondary" style="margin-left: 2pt;">Cancel</button>
+        </div>
+
+
+    </form>
+    <div class="w-50 bg-secondary text-dark p-5 m-5" style="border:double;border-radius: 10pt;" [hidden]="!visible" >
+        <div>
+            Id is {{customer.id}}
+        </div>
+        <div>
+            Name is {{customer.name}}
+        </div>
+        <div>
+            SSN is {{customer.ssn}}
+        </div>
+        <div>
+            Age is {{customer.age}}
+        </div>
+
+    </div>
+
+   
+
+</div>

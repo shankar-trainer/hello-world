@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <script>
+        var ar1 = [1, 2, 3, 4, 5]
+        var ar2 = [11, 22, 33, 44, 55]
+        alert("array1 "+ar1+"\nArray2"+ar2)
+        
+        ar3=ar1.concat(ar2)
+
+        alert("array3 "+ar3)
+
+        myarr=ar1.join("-")
+        alert(myarr)
+        alert(ar1+"\nreverse "+ar1.reverse())
+
+        alert(ar1+" using pop "+ar1.pop())
+        alert("after pop "+ar1)  // pop() remove and return last element 
+
+        alert(ar1+" using push ")
+        ar1.push(999)//    push add elemnet at last position
+        alert("after push  "+ar1)
+
+        alert(ar1+" using shift "+ar1.shift())
+        alert("after shift  "+ar1)  // shift() remove and return first  element 
+
+        
+        alert(ar1+" using unshift  ")
+        ar1.unshift(777)//    unshift add elemnet at first position
+        alert("after unshift  "+ar1)
+
+         alert("before  splice "+ar1)
+         ar1.splice(2,2)
+         alert("after splice "+ar1)
+
+
+        
+    </script>
+
+</body>
+
+</html>
