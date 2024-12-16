@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="panel-heading">Student List</div>
+        <table class="table table-bordered table-stripped">
+            <thead>
+                <th>Name</th>
+                <th>College</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students;index as i">
+                    <td>{{student.name}}</td>
+                    <td>{{student.college}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

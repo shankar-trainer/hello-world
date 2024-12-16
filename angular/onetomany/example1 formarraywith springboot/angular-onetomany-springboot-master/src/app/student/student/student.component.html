@@ -1,0 +1,48 @@
+<div class="container">
+    <form [formGroup]="studentForm">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label>Roll Number</label>
+            <input type="text" class="form-control" formControlName="rollNo">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" formControlName="email">
+        </div>
+        <div class="form-group">
+            <label for="lastName">College</label>
+            <input type="text" class="form-control" formControlName="college">
+        </div>
+        <div class="form-group">
+            <label>Branch</label>
+            <input type="text" class="form-control" formControlName="branch">
+        </div>
+        <div style="margin-top: 0px;">
+            <button type="button" class="btn btn-primary" style="text-align: left;margin-left: 10px"
+                (click)="addNewBook()">Add Book</button>
+                <!-- <input type="password" placeholder="Confirm Password" class="form-control" [formControl]="$any(myForm).controls['confirmpassword']"/>  -->
+                <!-- <ng-container *ngFor="let lessonForm of lessons.controls; let i = index"> -->
+
+            <!-- <div formGroupName="books" > -->
+            <div formArrayName="books" >
+                <!-- <div *ngFor="let book of studentForm.controls.books['controls'];index as i" [formGroupName]="i"> -->
+                <!-- <div *ngFor="let book of studentForm.controls;index as i" [formGroupName]="i"> -->
+                <div *ngFor="let book of getBook.controls; let i=index" >
+                <!-- <div *ngFor="let book of studentForm.get('controls');index as i" [formGroupName]="i"> -->
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-4" formControlName="bookName" placeholder="bookName">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-4" formControlName="price" placeholder="price">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" (click)="addStudent()">Add Student</button>
+        </div>
+    </form>
+</div>
