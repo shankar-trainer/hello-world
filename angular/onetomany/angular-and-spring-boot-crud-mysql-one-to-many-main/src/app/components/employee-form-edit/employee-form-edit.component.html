@@ -1,0 +1,64 @@
+<div class="container" style="margin: 0 auto;">
+
+  <h2 class="text-center mt-5">{{title}}</h2>
+
+  <!-- employee form -->
+  <div class="form-holder">
+    <div class="form-content">
+
+      <form class="requires-validation form-control p-5 mt-4"  #employeeForm="ngForm" (ngSubmit)="updateEmployee(employeeForm.value)">
+
+        <div class="col-md-12">
+          <!-- -->
+          <input ngModel class="form-control p-2" type="text" name="fullname" placeholder="{{getEmployee()._fullname}}"  required>
+        </div>
+
+        <div class="col-md-12">
+          <!-- -->
+          <input ngModel class="form-control p-2 mt-2 w-25" type="number" name="age" placeholder="{{getEmployee()._age}}" required>
+        </div>
+
+        <label class="" style="font-size: 20px; margin-right: 20px" >
+          Positions :
+        </label>
+
+        <div class="form-check form-check-inline p-lg-3">
+          <input ngModel class="form-check-input" type="radio" name="position" id="inlineRadio1" value="Full Stack Developer" />
+          <label class="form-check-label" for="inlineRadio1">Full Stack Developer</label>
+        </div>
+
+        <div class="form-check form-check-inline p-lg-3">
+          <input ngModel class="form-check-input" type="radio" name="position" id="inlineRadio2" value="Back-end Developer" />
+          <label class="form-check-label" for="inlineRadio2">Back-end Developer</label>
+        </div>
+
+        <div class="form-check form-check-inline p-lg-3">
+          <input ngModel class="form-check-input" type="radio" name="position" id="inlineRadio3" value="Front-end Developer" />
+          <label class="form-check-label" for="inlineRadio3">Front-end Developer</label>
+        </div>
+
+        <div class="col-md-12">
+          <!-- -->
+          <input ngModel class="form-control p-2 mt-2 w-25" type="number" name="salary" step="any" placeholder="{{getEmployee()._salary}}" required>
+        </div>
+
+
+        <div class="form-check">
+          <!--                                                                                         use [(ngModel)]= for access method      -->
+          <input class="btn btn-danger  mb-1" type="checkbox" name="confirm" value="true" id="confirm" ngModel required>
+          <label class="form-check-label m-lg-2">confirm</label>
+        </div>
+
+
+        <div class="form-button mt-3">
+          <button id="submit" type="submit" class="btn btn-dark  p-2" style="margin-right: 10px">Update</button>
+          <button id="reset" type="reset" class="btn btn-dark  p-2">Reset</button>
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
+
+</div>

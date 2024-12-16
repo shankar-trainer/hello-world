@@ -1,0 +1,48 @@
+<div class="container" style="margin: 0 auto;">
+
+  <h2 class="text-center p-4 mt-4">Employee List</h2>
+
+  <table class="table">
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">Order</th>
+      <th scope="col">Fullname</th>
+      <th scope="col">Age</th>
+      <th scope="col">Position</th>
+      <th scope="col">Salary</th>
+      <th class="text-center" scope="col">Action</th>
+    </tr>
+    </thead>
+
+    <!--{{getEmployees()}}-->
+    <tbody>
+    <tr *ngFor="
+      let employee of getEmployees()
+      let i = index;
+    ">
+      <th scope="row">{{i+1}}</th>
+      <td>{{employee._fullname}}</td>
+      <td>{{employee._age}}</td>
+      <td>{{employee._salary}}</td>
+      <td >{{employee._position}}</td>
+      <td class="text-center">
+        <!-- use ActivatedRoute class for retrieve tid param on path // routerLink="/editing/{{tutorial.tid}}" -->
+        <!-- new path just use / -->
+        <button  class="btn btn-sm btn-dark p-2 m-lg-1" routerLink="/employee/editing/{{employee._eid}}">Edit</button>
+        <!-- when clicked it had sent delete method for delete by pk //  (click)="delete(tutorial.tid , i)" -->
+        <button class="btn btn-sm btn-warning p-2" (click)="delete(employee._eid , i)">Delete</button>
+    </tr>
+    </tbody>
+
+    <tfoot>
+    <tr>
+      <td colspan="5"></td>
+      <td class="text-center">
+        <button class="btn btn-sm btn-danger p-2" >Delete All</button>
+      </td>
+    </tr>
+    </tfoot>
+
+  </table>
+
+</div>

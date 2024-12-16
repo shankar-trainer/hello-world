@@ -1,0 +1,32 @@
+<h1>Hello </h1>
+<div class="container-fluid">
+  <h1> Angular Form Array Example</h1>
+  <form class="form" [formGroup]="form">
+    <div class="container">
+      <div formArrayName="skills">
+        <div *ngFor="let skill of skills.controls;let i=index" >
+          <div [formGroupName]="i">
+            <!-- <input type="checkbox" formControlName="checked" /> {{skill.get('name').value}} -->
+            
+            <div class="form-group">
+              <input type="text" class="form-control mt-4" formControlName="bookName" placeholder="bookName">
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control mt-4" formControlName="price" placeholder="price">
+          </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <br/>
+  <br/>
+  <br/>
+  <div class="container">
+    {{this.form.getRawValue()}}
+  </div>
+</div>
+
+<router-outlet />

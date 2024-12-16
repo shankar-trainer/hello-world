@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+  <div class="container-fluid">
+    <a class="navbar-brand p-lg-3">Angular + Spring Boot</a>
+
+    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto ">
+
+
+        <li class="nav-item p-lg-3">
+          <a class="nav-link mx-2" routerLink="" routerLinkActive="active">Home</a>
+        </li>
+
+        <li class="nav-item p-lg-3">
+          <a class="nav-link mx-2"  routerLink="both/list"  routerLinkActive="active" >Both List</a>
+        </li>
+
+
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown p-lg-3">
+              <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Employee
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item p-2" routerLink="employee/list" routerLinkActive="active" >Employee List</a></li>
+                <li><a class="dropdown-item p-2" routerLink="employee/form-create" routerLinkActive="active">Employee Form</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown2">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown p-lg-3">
+              <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Address
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink2">
+                <li><a class="dropdown-item p-2"  routerLink="address/list" routerLinkActive="active"  >Address List</a></li>
+                <li><a class="dropdown-item p-2"  routerLink="address/form-create" routerLinkActive="active" >Address Form</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

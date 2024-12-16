@@ -1,0 +1,56 @@
+<div class="container" style="margin: 0 auto;">
+
+  <h2 class="text-center p-4 mt-4">Employee List</h2>
+
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th style="width: 235px;">Order</th>
+          <th style="width: 235px;">Fullname</th>
+          <th style="width: 235px;">Age</th>
+          <th style="width: 235px;">Position</th>
+          <th style="width: 235px;">Salary</th>
+        </tr>
+      </thead>
+    </table>
+
+    <div *ngFor="let employee of getEmployeeHasAddressesList(); let index = index;" >
+
+      <table class="table">
+        <tbody>
+        <tr >
+          <td style="width: 235px;">{{index+1}}</td>
+          <td style="width: 235px;">{{employee._fullname}}</td>
+          <td style="width: 235px;">{{employee._age}}</td>
+          <td style="width: 235px;">{{employee._position}}</td>
+          <td style="width: 235px;">{{employee._salary}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <div *ngIf="employee._addresses != undefined"> <!-- if array is had -->
+        <!--{{employee.addresses}}
+        {{employee.addresses?.length}}
+        {{employee.addresses?.length == 0}}-->
+        <table class="table table-borderless table-sm">
+          <thead class="table-secondary">
+          <tr *ngIf="employee._addresses?.length != 0">
+            <th style="width: 100px">Country</th>
+            <th style="width: 100px">City</th>
+            <th>Details</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let address of employee._addresses;">
+            <td>{{address._country}}</td>
+            <td>{{address._city}}</td>
+            <td>{{address._details}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div> <!-- end for loop -->
+
+</div>

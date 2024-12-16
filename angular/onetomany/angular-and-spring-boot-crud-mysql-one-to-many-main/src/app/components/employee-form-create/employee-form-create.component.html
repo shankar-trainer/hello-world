@@ -1,0 +1,162 @@
+<div class="container" style="margin: 0 auto;">
+
+  <h2 class="text-center mt-5">{{title}}</h2>
+
+  <!-- employee form -->
+  <div class="form-holder">
+    <div class="form-content">
+
+      <form class="requires-validation form-control p-5" #employeeForm="ngForm" (ngSubmit)="createEmployee(employeeForm.value)">
+
+        <div class="col-md-12">
+          <!-- -->
+          <input ngModel class="form-control p-2" type="text" name="fullname" placeholder="Fullname..." required>
+        </div>
+
+        <div class="col-md-12">
+          <!-- -->
+          <input ngModel class="form-control p-2 mt-2 w-25" type="number" name="age" placeholder="Age..." required>
+        </div>
+
+        <label class="" style="font-size: 20px; margin-right: 20px" >
+          Positions :
+        </label>
+
+        <div class="form-check form-check-inline p-lg-3">
+          <input ngModel class="form-check-input" type="radio" name="position" id="inlineRadio1" value="Full Stack Developer" />
+          <label class="form-check-label" for="inlineRadio1">Full Stack Developer</label>
+        </div>
+
+        <div class="form-check form-check-inline p-lg-3">
+          <input ngModel class="form-check-input" type="radio" name="position" id="inlineRadio2" value="Back-end Developer" />
+          <label class="form-check-label" for="inlineRadio2">Back-end Developer</label>
+        </div>
+
+        <div class="form-check form-check-inline p-lg-3">
+          <input ngModel class="form-check-input" type="radio" name="position" id="inlineRadio3" value="Front-end Developer" />
+          <label class="form-check-label" for="inlineRadio3">Front-end Developer</label>
+        </div>
+
+        <div class="col-md-12">
+          <!-- -->
+          <input ngModel class="form-control p-2 mt-2 w-25" type="number" name="salary" step="any" placeholder="Salary..." required>
+        </div>
+
+
+        <div class="form-check">
+          <!-- -->
+          <input ngModel class="btn btn-danger  mb-1" type="checkbox" name="confirmEmployee" value="true" id="confirm" required>
+          <label class="form-check-label m-lg-2">need to create address</label>
+        </div>
+
+
+        <div class="form-button mt-3">
+          <button id="submit" type="submit" class="btn btn-dark  p-2" style="margin-right: 10px">Send</button>
+          <button id="reset" type="reset" class="btn btn-dark  p-2">Reset</button>
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- address1 form -->
+  <div *ngIf="confirmEmployee">
+
+    <h5 class="text-center mt-2">{{title2}}</h5>
+
+    <div class="form-holder">
+      <div class="form-content">
+
+        <form class="requires-validation form-control p-5" #addressForm="ngForm" (ngSubmit)="createAddress1(addressForm.value)">
+
+
+          <div class="row mb-4">
+
+            <div class="col m-lg-1">
+              <div class="form-outline">
+                  <!-- -->
+                  <input ngModel class="form-control p-2 mt-2 w-100"  type="text" name="country" placeholder="Country..." required>
+              </div>
+            </div>
+
+            <div class="col m-lg-1">
+              <div class="form-outline">
+                  <!-- -->
+                  <input ngModel class="form-control p-2 mt-2 w-100" type="text" name="city" placeholder="City..." required>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="col-md-12">
+            <!-- -->
+            <textarea ngModel class="form-control p-2 mt-2" name="details" placeholder="Details..."></textarea>
+          </div>
+
+          <div class="form-check">
+            <!-- -->
+            <input ngModel class="btn btn-danger  mb-1" type="checkbox" name="confirmAddress" value="true" id="confirmAddresses" required>
+            <label class="form-check-label m-lg-2">need to create more address</label>
+          </div>
+
+
+          <div class="form-button mt-3">
+            <button id="submit2" type="submit" class="btn btn-dark  p-2" style="margin-right: 10px">Send</button>
+            <button id="reset2" type="submit" class="btn btn-dark  p-2">Reset</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- address2 form -->
+  <div *ngIf="confirmAddress">
+
+    <div class="form-holder">
+      <div class="form-content">
+
+        <form class="requires-validation form-control p-5" #addressForm="ngForm" (ngSubmit)="createAddress2(addressForm.value)">
+
+        <div class="row mb-4">
+
+          <div class="col m-lg-1">
+            <div class="form-outline">
+              <!-- -->
+              <input ngModel class="form-control p-2 mt-2 w-100"  type="text" name="country" placeholder="Country..." required>
+            </div>
+          </div>
+
+          <div class="col m-lg-1">
+            <div class="form-outline">
+              <!-- -->
+              <input ngModel class="form-control p-2 mt-2 w-100" type="text" name="city" placeholder="City..." required>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="col-md-12">
+          <!-- -->
+          <textarea ngModel class="form-control p-2 mt-2" name="details" placeholder="Details..."></textarea>
+        </div>
+
+
+        <div class="form-button mt-3">
+          <button id="submit3" type="submit" class="btn btn-dark  p-2" style="margin-right: 10px">Send</button>
+          <button id="reset3" type="submit" class="btn btn-dark  p-2">Reset</button>
+        </div>
+
+      </form>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
