@@ -23,22 +23,22 @@ export class StudentComponent
       email: [''],
       college: [''],
       branch: [''],
-   //   books: this._fb.array([this.addBooks()])
-      books: this._fb.array([
-        this._fb.group({
-          bookName: [''],
-          price: ['']
-        }),
-        this._fb.group({
-          bookName: [''],
-          price: ['']
-        }),
-        this._fb.group({
-          bookName: [''],
-          price: ['']
-        }),
+      books: this._fb.array([this.addBooks()])
+      // books: this._fb.array([
+      //   this._fb.group({
+      //     bookName: [''],
+      //     price: ['']
+      //   }),
+      //   this._fb.group({
+      //     bookName: [''],
+      //     price: ['']
+      //   }),
+      //   this._fb.group({
+      //     bookName: [''],
+      //     price: ['']
+      //   }),
 
-      ])
+      // ])
     })
   }
 

@@ -1,5 +1,6 @@
 <div class="container">
     <form [formGroup]="studentForm">
+      <div style="margin-top: 20px;border:solid;padding:20pt;width:30%">
         <div class="form-group">
             <label>Name</label>
             <input type="text" class="form-control" formControlName="name">
@@ -20,10 +21,13 @@
             <label>Branch</label>
             <input type="text" class="form-control" formControlName="branch">
         </div>
-        <div style="margin-top: 0px;">
-            <button type="button" class="btn btn-primary" style="text-align: left;margin-left: 10px"
-                (click)="addNewBook()">Add Book</button>
-                <!-- <input type="password" placeholder="Confirm Password" class="form-control" [formControl]="$any(myForm).controls['confirmpassword']"/>  -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" (click)="addStudent()">Add Student</button>
+        </div>
+        </div>
+
+        <div style="margin-top: 20px;border:solid;padding:20pt;width:30%">
+                           <!-- <input type="password" placeholder="Confirm Password" class="form-control" [formControl]="$any(myForm).controls['confirmpassword']"/>  -->
                 <!-- <ng-container *ngFor="let lessonForm of lessons.controls; let i = index"> -->
 
             <!-- <div formGroupName="books" > -->
@@ -40,9 +44,10 @@
                     </div>
                 </div>
             </div>
+            <button type="button" class="btn btn-primary" style="text-align: left;margin-left: 10px"
+            (click)="addNewBook()">Add Book</button>
+
         </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-success" (click)="addStudent()">Add Student</button>
-        </div>
+
     </form>
 </div>

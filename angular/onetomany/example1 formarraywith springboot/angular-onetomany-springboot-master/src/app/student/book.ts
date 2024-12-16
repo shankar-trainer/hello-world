@@ -1,8 +1,8 @@
 import { Student } from './student';
 
 export class Book {
-    private id: number=0;
-    private bookName: string='';
-    private price: number=0;
-    private student: Student=new Student();
+  id: number=0;
+  bookName: string='';
+  price: number=0;
+   student: Student=new Student();
 }

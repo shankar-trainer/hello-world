@@ -11,8 +11,16 @@ package com.spring.onetomany.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +31,7 @@ public class Book {
 	@JoinColumn(name = "student_id")
 	@JsonBackReference
 	private Student student;
+/*
 
 	public int getId() {
 		return id;
@@ -91,5 +100,6 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", bookName=" + bookName + ", price=" + price + ", student=" + student + "]";
 	}
+*/
 
 }

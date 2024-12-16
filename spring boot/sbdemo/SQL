@@ -1,0 +1,23 @@
+create table DEPARTMENT(
+DEPT_ID int primary key auto_increment,
+DEPT_NAME varchar(30)
+);
+select * from department;
+
+insert into DEPARTMENT(DEPT_NAME) values('IT');
+insert into DEPARTMENT(DEPT_NAME) values('Admin');
+insert into DEPARTMENT(DEPT_NAME) values('Finance');
+
+Create table EMPLOYEE(
+EMP_ID int primary key auto_increment,
+DEPT_ID int not null,
+FIRST_NAME varchar(40) not null,
+LAST_NAME varchar(15) not null,
+EMAIL_ID varchar(40) null,
+CONSTRAINT FK_DEP_ID FOREIGN KEY (DEPT_ID) REFERENCES DEPARTMENT(DEPT_ID)
+);
+
+insert into EMPLOYEE(DEPT_ID, FIRST_NAME, LAST_NAME,EMAIL_ID) values(1,'ram','kumar','ram@gmail.com');
+insert into EMPLOYEE(DEPT_ID, FIRST_NAME, LAST_NAME,EMAIL_ID) values(1,'Shayam','kumar','shayam@gmail.com');
+
+select * from EMPLOYEE;
