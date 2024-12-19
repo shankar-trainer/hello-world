@@ -1,11 +1,9 @@
 package org.example.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.Objects;
 
 @Entity
 @Data
@@ -14,10 +12,14 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Patient {
 
+    @Id
     @GeneratedValue
     private int id;
     private String name;
     private int age;
     private String location;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Doctor doctor;
 
 }

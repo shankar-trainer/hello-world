@@ -1,0 +1,55 @@
+<div class="container">
+    <h2>All Doctor</h2>
+
+    <table class="table table-bordered table-striped bg-success w-75 p-5 m-5 text-light ">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Dob</th>
+        </tr>
+        <!-- <tr *ngFor="let d of doctorlist|async"> -->
+        <tr *ngFor="let d of doctorlist">
+            <td>{{d.id}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.age}}</td>
+            <td>
+                All patient..
+                <table class="table table-bordered table-striped bg-light w-75 p-5 m-5 text-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Location</th>
+                    </tr>
+                        <tr *ngFor="let p of d.patientSet">
+                            <td>{{p.id}}</td>
+                            <td>{{p.name}}</td>
+                            <td>{{p.age}}</td>
+                            <td>{{p.location}}</td>
+                        </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <h2>All Patient</h2>
+    <table class="table table-bordered table-striped bg-success w-75 p-5 m-5 text-light">
+
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Location</th>
+        </tr>
+        <tbody *ngFor="let d of doctorlist">
+            <tr *ngFor="let p of d.patientSet">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.age}}</td>
+                <td>{{p.location}}</td>
+            </tr>
+        </tbody>
+
+
+
+    </table>

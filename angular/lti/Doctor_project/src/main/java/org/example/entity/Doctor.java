@@ -1,14 +1,10 @@
 package org.example.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import lombok.*;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -16,14 +12,19 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString(exclude = {"patinetSet"})
+@EqualsAndHashCode(exclude ={"patientSet"} )
+
 public class Doctor {
 
+    @Id
     @GeneratedValue
     private int id;
     private String name;
     private int age;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "doctor")
+    @JsonIgnoreProperties("doctor")
     private Set<Patient> patientSet;
 
 }
