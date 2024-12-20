@@ -3,13 +3,14 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Objects;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+//@Builder
+//@ToString(exclude = {"doctor"})
+//@EqualsAndHashCode(exclude ={"doctor"} )
+
 public class Patient {
 
     @Id

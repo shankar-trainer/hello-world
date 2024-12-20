@@ -26,19 +26,19 @@
 
         <div class="border border-primary p-5 m-5" [hidden]="!visible">
             <!-- {{c1|json}} -->
-            <h2>{{msg}}</h2>
-    
-            <div *ngIf="msg=='Record added'">
-                 Patient Added
-                <table class="table table-bordered table-striped p-5 m-5 bg-info w-75">
+           
+            <div *ngIf="msg=='Patient Record added'">
+                <h2>{{msg}}</h2>
+          
+                <table class="table table-bordered table-striped p-2 m-5 bg-info w-75">
                     <tr>
-                    
+                        <!-- <th>Id</th> -->
                         <th>Name</th>
                         <th>Age</th>
                         <th>Location</th>
                     </tr>
                     <tr>
-                        <td>{{this.patient.id}}</td>
+                        <!-- <td>{{this.patient.id}}</td> -->
                         <td>{{this.patient.name}}</td>
                         <td>{{this.patient.age}}</td>
                         <td>{{this.patient.location}}</td>

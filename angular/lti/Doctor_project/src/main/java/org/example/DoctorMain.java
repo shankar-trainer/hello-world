@@ -44,21 +44,44 @@ public class DoctorMain // implements CommandLineRunner
 
 //http://localhost:8080/swagger-ui/index.html
 /*
-post 
+post   -- doctor  and multiple patient
 http://localhost:8080/doctor
 {
     	"name":"ram kumar",
         "age":20,
       	 "patientSet":[
 
-            {"name":"patient",
+            {"name":"patient1",
             "age":22,
             "location":"patna"
             },
-            {"name":"patient",
+            {"name":"patient2",
             "age":22,
             "location":"patna"
             }
           ]
 }
+get all doctor
+http://localhost:8080/doctor
+
+post   -- doctor  and no patient
+http://localhost:8080/doctor
+
+{
+    	"name":"ram kumar",
+        "age":20,
+        "patientSet":[]
+}
+
+post add single patient     /1 is doctor id
+http://localhost:8080/doctor/addPatient/1
+{
+	       "name":"patient1",
+            "age":22,
+            "location":"delhi"
+}
+
+delete  -- all doctor and patinet
+http://localhost:8080/doctor
+
 */

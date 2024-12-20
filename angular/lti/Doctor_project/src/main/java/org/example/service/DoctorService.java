@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class DoctorService {
@@ -22,8 +24,32 @@ public class DoctorService {
     @Autowired
     PatientRepository patientRepository;
 
+    public Doctor addDoctor1(Doctor doctor) {
+
+        Set<Patient> patientSet = doctor.getPatientSet();
+        Set<Patient> patientSet1 = new HashSet<>();
+
+        for (Patient p : patientSet) {
+            p.setDoctor(doctor);
+            patientSet1.add(p);
+        }
+
+        System.out.println(patientSet);
+        System.out.println(doctor);
+        doctor.setPatientSet(patientSet1);
+
+        return doctorRepository.save(doctor);
+    }
+
     public Doctor addDoctor(Doctor doctor) {
         return doctorRepository.save(doctor);
+    }
+
+    public List<Doctor> deleteAllDoctor() {
+        //doctor.getPatientSet();
+        List<Doctor> all = doctorRepository.findAll();
+        doctorRepository.deleteAll();
+        return all;
     }
 
     public Doctor searchDoctorById(int id) {
@@ -60,7 +86,7 @@ public class DoctorService {
         Optional<Doctor> byId = doctorRepository.findById(doctorId);
         patient.setDoctor(byId.get());
         patientRepository.save(patient);
-        return  patient;
+        return patient;
     }
 
 

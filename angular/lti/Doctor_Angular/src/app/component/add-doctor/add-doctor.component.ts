@@ -29,7 +29,7 @@ export class AddDoctorComponent {
   addRecord() {
     this.visible = true;
 
-    this.service.addDoctor(this.doctor).subscribe(
+    this.service.addDoctor1(this.doctor).subscribe(
       data => {
         this.msg = 'Record added',
         this.doctor1=data; 
@@ -40,3 +40,22 @@ export class AddDoctorComponent {
 
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,8 +11,8 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@ToString(exclude = {"patinetSet"})
+//@Builder
+@ToString(exclude = {"patientSet"})
 @EqualsAndHashCode(exclude ={"patientSet"} )
 
 public class Doctor {

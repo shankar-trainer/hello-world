@@ -28,13 +28,17 @@ export class AddPatientComponent {
   }
   addRecord() {
     this.visible = true;
-
+    console.log(this.patient+"  add patient record"); 
     this.service.addPatient(this.patient,this.doctorId).subscribe(
       data => {
-        this.msg = 'Record added'
+        this.msg = 'Patient Record added'
         //console.log(data); 
         console.log(JSON.stringify(data)+'  patient data added'); 
-        //this.patient1 = data;
+        //Property 'location' is missing in type 'Doctor' but required in type 'Patient'.ts(2741)
+            //patient.ts(5, 5): 'location' is declared here.
+
+       //this.patient1 = data;
+       //https://stackoverflow.com/questions/56474226/property-0-is-missing-in-type-any-but-required-in-type-id-string-gp
       }
       , error =>
         this.msg = error.error
