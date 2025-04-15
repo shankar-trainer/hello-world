@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Book Add Form</h2>
+    <form (ngSubmit)="addBook()">
+        <div class="form-group">
+            <label>Enter Id</label>
+            <input class="form-control" name="prdId" [(ngModel)]="book.isbn" ngModel="isbn">
+        </div>
+        <div class="form-group">
+            <label>Enter Name</label>
+            <input class="form-control" name="prdName" [(ngModel)]="book.bname" ngModel="bname">
+        </div>
+        <div class="form-group">
+            <label>Enter Cost</label>
+            <input class="form-control" name="prdCost" [(ngModel)]="book.cost" ngModel="cost">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="submit" value="Add Book">
+            <input class="form-control" type="reset" value="Cancel">
+        </div>
+    </form>
+    <div>
+        {{msg}}
+    </div>
+</div>

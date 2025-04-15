@@ -1,0 +1,12 @@
+run particular test
+mvn test -Dtest=CarTest2
+
+By default Maven uses the following naming conventions when looking for tests to run:
+
+Test*
+*Test
+*Tests (has been added in Maven Surefire Plugin 2.20)
+*TestCase
+If your test class doesn't follow these conventions you should rename it or configure Maven Surefire Plugin to use another pattern for test classes.
+
+

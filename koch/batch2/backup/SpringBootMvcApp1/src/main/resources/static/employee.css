@@ -1,0 +1,18 @@
+form {
+	border: solid;
+	padding: 50pt;
+	background: yellow;
+	width: 40%;
+	margin-left: 200pt;
+	border-radius: 20pt;
+	margin-top: 50pt;
+}
+
+label {
+	float: left;
+	width: 110pt
+}
+
+input {
+	width: 100pt;
+}

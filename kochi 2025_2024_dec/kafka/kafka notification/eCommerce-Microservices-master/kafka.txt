@@ -1,0 +1,43 @@
+start zookeeper
+
+cd C:\kafka_2.13-3.9.0\bin\windows
+
+C:\kafka_2.13-3.9.0\bin\windows>zookeeper-server-start.bat ..\..\config\zookeeper.properties
+
+start kafka server
+
+C:\kafka_2.13-3.9.0\bin\windows>kafka-server-start.bat ..\..\config\server.properties
+
+
+create topic
+
+kafka-topics.bat --create  --bootstrap-server  localhost:9092 --replication-factor 1 --partitions 1 --topic cts-topic
+
+start producer
+
+kafka-console-producer.bat --broker-list 127.0.0.1:9092 --topic cts-topic
+
+start consumer
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic cts-topic --from-beginning
+
+postman
+post method
+http://localhost:8081/produits
+{
+    "nom":"test",
+    "prix":100
+}
+
+post method
+http://localhost:8082/commandes
+{
+    "produitId":10,
+    "quantite":67
+}{
+     "produitId":10,
+     "quantite":67
+ }
+
+
+

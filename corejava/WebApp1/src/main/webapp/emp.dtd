@@ -1,5 +1,0 @@
-<!ELEMENT employees (employee)*>
-<!ELEMENT employee (id,name,salary)*>
-<!ELEMENT id (#PCDATA)>
-<!ELEMENT name (#PCDATA)>
-<!ELEMENT salary (#PCDATA)>

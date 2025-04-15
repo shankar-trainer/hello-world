@@ -1,0 +1,46 @@
+server.port=8083
+spring.application.name=notification-service
+
+# Kafka
+spring.kafka.bootstrap-servers=localhost:9092
+spring.kafka.consumer.group-id=notification-group
+spring.kafka.consumer.auto-offset-reset=earliest
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.mail.host=smtp.gmail.com
+spring.mail.port=465
+spring.mail.username= Your Username Smtp #Not your account username
+spring.mail.password=Your mail gun Smtp password #not ur mail gun password !!!
+spring.mail.protocol=smtp
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.properties.mail.debug=true # Optional for debugging
+#https://stackoverflow.com/questions/43745586/send-mail-using-gmail-from-java-without-turning-on-less-secure-app
+
+ http://localhost:8082/commandes
+ {
+ "produitId":1001,
+ "quantite":2
+ }
+  http://localhost:8081/produits
+  {
+
+      "nom": "Test",
+      "prix": 100
+
+    }
+
+
+
+  spring.config.activate.on-profile=gmail
+  spring.mail.username=${GMAIL_USERNAME:yourmail@gmail.com}
+  spring.mail.password=${GMAIL_PASSWORD:yourGmailPassword}
+  spring.mail.host=smtp.gmail.com
+  spring.mail.port=587
+  spring.mail.properties.mail.transport.protocol=smtp
+  spring.mail.properties.mail.smtp.auth=true
+  spring.mail.properties.mail.smtp.starttls.enable=true
+  spring.mail.properties.mail.smtp.starttls.required=true
+  spring.mail.properties.mail.smtp.ssl.trust=smtp.gmail.com
+  # end::spring-mail-gmail-smtp[]

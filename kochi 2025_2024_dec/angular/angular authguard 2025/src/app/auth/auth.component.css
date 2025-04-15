@@ -1,0 +1,25 @@
+/* app.component.scss */
+
+nav {
+    width: 600px;
+    margin: 0 auto;
+    padding: 16px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 20px;
+
+    a {
+        color: black;
+    }
+
+    a:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .active {
+        color: blue;
+    }
+}

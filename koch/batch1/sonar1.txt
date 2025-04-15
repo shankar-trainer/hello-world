@@ -1,0 +1,27 @@
+sonarqube-25.1.0.102122
+
+go to sonarqube 10.8\config\sonar.properties
+
+sonar.log.level = DEBUG
+#sonar.log.level = INFO
+sonar.web.port=5000
+
+
+=====================
+set SONAR_JAVA_PATH=c:\software\openjdk-17.0.2_windows-x64_bin\jdk-17.0.2\bin\java.exe
+
+
+sonar\sonarqube-10.8.1.101195\bin\windows-x86-64\StartSonar.bat
+password Shankar7979@
+
+
+==========
+
+mvn sonar:sonar -Dsonar.host.url=http://localhost:5000
+
+and if password changed in sonar then 
+
+mvn verify sonar:sonar -Dsonar.login=admin -Dsonar.password=password
+
+if both username and password changed then
+mvn sonar:sonar -Dsonar.host.url=http://localhost:5000  -Dsonar.login=admin -Dsonar.password=Shankar7979@

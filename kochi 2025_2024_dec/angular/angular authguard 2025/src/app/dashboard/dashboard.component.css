@@ -1,0 +1,17 @@
+/* dashboard.component.scss */
+
+div {
+    width: 600px;
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 16px auto;
+
+    p {
+        font-size: 28px;
+    }
+
+    button {
+        height: 40px;
+        font-size: large;
+    }
+}

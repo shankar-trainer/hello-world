@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="placeHolderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="department.properties"></property>
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="message"></property>
+	</bean>
+	
+	<bean class="com.capgemini.beans.Department" id="department">
+		<constructor-arg name="departmentId" value="7676767" />
+		<constructor-arg name="departmentName"
+			value="training" />
+		<constructor-arg name="departmentLocation"
+			value="pune" />
+	</bean>
+
+	<bean class="com.capgemini.beans.Department" id="dept1">
+		<constructor-arg name="departmentId" value="${deptId}" />
+		<constructor-arg name="departmentName"
+			value="${deptName}" />
+		<constructor-arg name="departmentLocation"
+			value="${deptLocation}" />
+	</bean>
+
+	<bean class="com.capgemini.beans.User">
+		<property name="id" value="8788787"></property>
+		<property name="name" value="suman kumar"></property>
+		<property name="salary" value="56000"></property>
+		<property name="hobbies">
+			<list>
+				<value>Music</value>
+				<value>Movie</value>
+				<value>Reading</value>
+				<value>Flowering</value>
+				<value>Movie</value>
+			</list>
+		</property>
+		<property name="bike">
+			<set>
+				<value>honda shine</value>
+				<value>honda activa</value>
+				<value>honda shine</value>
+				<value>bullet enfield</value>
+				<value>hero splendour</value>
+			</set>
+		</property>
+
+		<property name="BookCollection">
+			<map>
+				<entry key="a kumar" value="java beginner" />
+				<entry key="b kumar" value="java professional" />
+				<entry key="chetan bhagat" value="two states" />
+				<entry key="amish tripathi" value="the oath of vayuputra" />
+				<entry key="amish tripathi" value="the immortal of  meluha" />
+
+			</map>
+		</property>
+
+	</bean>
+	<bean class="com.capgemini.beans.Student" autowire="byName"
+		init-method="startup" destroy-method="cleanup">
+		<property name="roll" value="88787"></property>
+		<property name="name" value="anand kumar"></property>
+		<property name="subject" value="math"></property>
+		<!-- <property name="address" ref="addr"></property> -->
+	</bean>
+
+	<bean class="com.capgemini.beans.Address" id="address">
+		<property name="addrId" value="1"></property>
+		<property name="location" value="laxminagar"></property>
+		<property name="city" value="new delhi"></property>
+		<property name="pin" value="10001"></property>
+	</bean>
+
+
+	<!-- <bean class="com.capgemini.beans.Product" scope="singleton"> -->
+	<bean class="com.capgemini.beans.Product" scope="prototype">
+
+	</bean>
+
+</beans>

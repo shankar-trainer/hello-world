@@ -1,0 +1,33 @@
+.home-container {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  margin-top: 1rem;
+  list-style-type: square;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  margin-top: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: #007ad9;
+}
+
+a:hover {
+  text-decoration: underline;
+}

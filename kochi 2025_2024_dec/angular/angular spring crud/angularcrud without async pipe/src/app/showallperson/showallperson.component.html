@@ -1,0 +1,33 @@
+<div class="container p-5 m-5">
+
+    <div *ngIf="msg!='all record'" class="bg-warning p-2 w-25 m-5">
+        {{msg}}
+    </div>
+    <div *ngIf="msg=='all record'" class=" bg-info w-75 p-2">
+        <h2>All Person</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Dob</th>
+            </tr>
+            <!-- <tr *ngFor="let p of personlist|async"> -->
+            <tr *ngFor="let p of personlist">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.salary}}</td>
+                <td>{{p.dob}}</td> 
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div>
+        <button type="button" (click)="gotoaddPerson()" class="btn btn-success">add person form</button>
+        <button type="button" (click)="gotosearchPerson()" class="btn btn-success" style="margin-left: 10pt;">search person form</button>
+        <button type="button" (click)="gotodeletePerson()" class="btn btn-success ml-5" style="margin-left: 10pt;">delete person form</button>
+        <button type="button" (click)="gotoupdatePerson()" class="btn btn-success" style="margin-left: 10pt;">update person form</button>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+spring:
+  h2:
+   console:
+     enabled:  true
+
+  application:
+    name:  SpringRest1
+  jpa:
+    show-sql:  true
+    hibernate:
+      ddl-auto:  update
+  datasource:
+    url:  jdbc:h2:mem:testdb
+    driverClassName:  org.h2.Driver
+    username:  sa
+    password:   
+    
+
+server:
+  port:  6060
+  

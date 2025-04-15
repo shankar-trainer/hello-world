@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div class="border border-primary w-75 m-5 p-5 bg-info text-danger">
+        <h1>pipe example works!</h1>
+        <p>power of (2,3) is {{2|power:3}}</p>
+        <p>power of (4,4) is {{4|power:4}}</p>
+    </div>
+
+    <form class="border border-dark w-75 m-5 p-5 bg-dark text-light">
+        <div class="form-group">
+            <label>Enter Base</label>
+            <input [(ngModel)]="n1" name="n1" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Enter Exponent</label>
+            <input [(ngModel)]="n2" name="n2" class="form-control">
+        </div>
+
+    </form>
+
+    <div class="border border-primary p-5 m-5 text-dark bg-info w-75">
+
+        <div>Base no is {{n1}}
+        </div>
+
+        <div>Exponent is {{n2}}
+        </div>
+
+        <div>Power of {{n1}} with exponent {{n2}} is {{n1|power:n2}}
+        </div>
+    </div>
+
+    <div class="border border-primary p-5 m-5 text-dark bg-info w-75" style="border-radius:25px">
+
+        <p> square of 5 is {{5|square}}</p>
+
+
+    </div>
+</div>

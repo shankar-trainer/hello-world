@@ -1,0 +1,7 @@
+spring:
+  application:
+    name:  spring-boot-project-rest-client
+server:
+  port:  7575
+
+#spring.config.import=optional:configserver:

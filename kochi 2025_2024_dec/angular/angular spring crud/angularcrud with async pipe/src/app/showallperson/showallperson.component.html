@@ -1,0 +1,23 @@
+<div class="container p-5 m-5 bg-info">
+    
+    <h2>All Person</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Dob</th>
+        </tr>
+        <tr *ngFor="let p of personlist|async">
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.salary}}</td>
+            <td>{{p.dob}}</td>
+        </tr>
+
+    </table>
+<button type="button" (click)="gotoaddPerson()" class="btn btn-success">add person form</button>
+<button type="button" (click)="gotosearchPerson()" class="btn btn-success">search person form</button>
+<button type="button" (click)="gotodeletePerson()" class="btn btn-success">delete person form</button>
+<button type="button" (click)="gotoupdatePerson()" class="btn btn-success">update person form</button>
+</div>

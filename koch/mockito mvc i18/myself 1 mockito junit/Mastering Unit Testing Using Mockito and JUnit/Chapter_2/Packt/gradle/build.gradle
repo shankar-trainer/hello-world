@@ -1,0 +1,25 @@
+defaultTasks  'aTask'
+task firstTask  << {
+  println 'Hello world.'
+}
+
+task aTask(){
+  doLast{
+   println 'Executing last.'
+  }
+  
+  doFirst {
+        println 'Running 1st'
+  }
+}
+task secondTask (dependsOn: 'firstTask') {
+   
+	doLast {
+        println 'Running last'
+    }
+	
+	 doFirst {
+        println 'Running first'
+    }
+	
+}

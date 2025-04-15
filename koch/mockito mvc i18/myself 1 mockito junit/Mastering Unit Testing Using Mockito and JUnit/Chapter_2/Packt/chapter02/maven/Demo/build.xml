@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<project name="Demo"  basedir=".">
+  <property name="src.dir" location="src/main/java" />
+  <property name="build.dir" location="bin" />
+  <property name="dist.dir" location="ant_output" />
+  <property name="test.dir" location="src/test/java" />
+  <property name="lib.dir" location="../../lib" />
+  <property name="report.dir" location="${dist.dir}/report" />
+ 
+  <target name="clean">
+    <delete dir="${build.dir}" />
+    <delete dir="${dist.dir}" />
+  </target>
+  <target name="makedir">
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${dist.dir}" />
+	<mkdir dir="${dist.dir}/report" />
+  </target>
+
+  <path id="jclass.path">
+    <fileset dir="${lib.dir}/">
+      <include name="**/*" />
+    </fileset>
+    <pathelement location="${build.dir}" />
+  </path>
+  <!-- Compiles the java code (including the usage of library for JUnit -->
+  <target name="compile" depends="clean, makedir">
+    <javac srcdir="${src.dir}" destdir="${build.dir}">
+    </javac>
+  </target>
+  
+  <target name="testcompile" depends="compile">
+    <javac srcdir="${test.dir}" destdir="${build.dir}">
+      <classpath refid="jclass.path" />
+    </javac>
+  </target>
+
+  <!--Creates the deployable jar file  -->
+  <target name="jar" depends="test">
+    <jar destfile="${dist.dir}\${ant.project.name}.jar" basedir="${build.dir}">
+      <manifest>
+        <attribute name="version" value="1.0" />
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="test" depends="testcompile">
+    <junit printsummary="on" fork="true" haltonfailure="yes">
+      <classpath refid="jclass.path" />
+      <formatter type="xml" />
+      <batchtest todir="${report.dir}">
+        <fileset dir="${test.dir}">
+          <include name="**/*Test*.java" />
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+</project> 

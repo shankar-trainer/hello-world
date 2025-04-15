@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+	<!--	<bean id="prd1" class="com.abc.model.Product" scope="prototype"
+	 autowire="byName">-->
+	<bean id="prd1" class="com.abc.model.Product" scope="prototype"
+		autowire="byType">
+		<property name="productId" value="657676"></property>
+		<property name="productName" value="Apple"></property>
+		<property name="productCost" value="200"></property>
+		<property name="bookList">
+			<list>
+				<value>java for beginner</value>
+				<value>java for dummies</value>
+				<value>java professional</value>
+				<value>java for beginner</value>
+			</list>
+		</property>
+		<property name="mobileSet">
+			<set>
+				<value>samsung</value>
+				<value>realme</value>
+				<value>poco</value>
+				<value>samsung</value>
+			</set>
+		</property>
+		<property name="shoeMap">
+			<map>
+				<entry key="7" value="Bata"></entry>
+				<entry key="8" value="Action"></entry>
+				<entry key="9" value="Relaxo"></entry>
+				<entry key="6" value="Bata"></entry>
+				<entry key="7" value="red chief"></entry>
+			</map>
+
+		</property>
+		<!--		<property name="order" ref="order1"></property>-->
+	</bean>
+
+	<bean id="order12" class="com.abc.model.Order">
+		<property name="orderId" value="6566565"></property>
+		<property name="orderName" value="mobile Order"></property>
+		<property name="quantity" value="3"></property>
+	</bean>
+	<!--  inner bean -->
+	<!--<bean id="prd1" class="com.abc.model.Product">
+		<property name="productId" value="657676"></property>
+		<property name="productName" value="Apple"></property>
+		<property name="productCost" value="200"></property>
+		<property name="order">
+			<bean id="order1" class="com.abc.model.Order">
+				<property name="orderId" value="6566565"></property>
+				<property name="orderName" value="mobile Order"></property>
+				<property name="quantity" value="3"></property>
+			</bean>
+		</property>
+	</bean>
+-->
+
+	<bean id="book1" class="com.abc.model.Book" init-method="init"
+		destroy-method="cleanup"
+		lazy-init="true">
+		<constructor-arg name="isbn" value="77787887"></constructor-arg>
+		<constructor-arg name="bname" value="spring in action"></constructor-arg>
+		<constructor-arg name="cost" value="1800.56f"></constructor-arg>
+	</bean>
+</beans>

@@ -1,0 +1,74 @@
+<div>
+
+  <form class="container" class="bg-info text-success p-5 m-5 w-75" style="border-radius: 20pt;" 
+  [formGroup]="formgroup" >
+
+    <div class="form-group">
+        <label>Enter Id</label>
+        <input class="form-control" [formControl]="id" >
+        <span [hidden]="!id.hasError('required')" class="text-warning">
+              id is blank
+        </span>
+        
+        <span [hidden]="!id.hasError('minlength')" class="text-warning">
+              id must of minimum 3 digits 
+        </span>
+        <span [hidden]="!id.hasError('maxlength')" class="text-warning">
+              id must of maximum 10 digits 
+        </span>
+
+    </div>
+    
+    <div class="form-group">
+        <label>Enter Name</label>
+        <input class="form-control" [formControl]="name" >
+        <span [hidden]="!name.hasError('required')" class="text-warning">
+            name is blank
+      </span>
+      
+      <span [hidden]="!name.hasError('minlength')" class="text-warning">
+            name must of minimum 5 character  
+      </span>
+      <span [hidden]="!name.hasError('maxlength')" class="text-warning">
+            name must of maximum 15 character  
+      </span>
+
+    </div>
+    <div class="form-group">
+        <label>Enter Location</label>
+        <input class="form-control" [formControl]="location" >
+        <span [hidden]="!location.hasError('required')" class="text-warning">
+            locattion is blank
+      </span>
+      
+      <span [hidden]="!location.hasError('minlength')" class="text-warning">
+            location  can be  minimum 5 character  
+      </span>
+      <span [hidden]="!location.hasError('maxlength')" class="text-warning">
+            location can  be  maximum 15 character  
+      </span>
+
+    </div>
+    <div class="form-group">
+        <label>Enter Salary</label>
+        <input class="form-control" [formControl]="salary" >
+        <span [hidden]="!salary.hasError('required')" class="text-warning">
+            salary is blank
+      </span>
+      
+      <span [hidden]="!salary.hasError('minlength')" class="text-warning">
+            salary can be  minimum 1000 
+      </span>
+      <span [hidden]="!salary.hasError('maxlength')" class="text-warning">
+            salary can be  maximum 9999999999 
+      </span>
+
+    </div>
+<div class="mt-3">
+    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="reset" class="btn btn-primary" style="margin-left: 10pt;">Cancel</button>
+</div>
+
+  </form>
+
+</div>

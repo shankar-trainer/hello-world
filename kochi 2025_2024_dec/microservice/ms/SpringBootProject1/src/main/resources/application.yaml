@@ -1,0 +1,26 @@
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect:  org.hibernate.dialect.MySQLDialect
+  profiles:
+    active:  prod
+  config:
+    import:  optional:configserver:http://localhost:8082
+management:
+   endpoints:
+     web:
+       exposure:
+         include:  refresh
+application:
+    name:  spring-boot-project
+server:
+  port:  8090
+
+
+
+
+
+
+   #spring.config.import=optional:configserver:

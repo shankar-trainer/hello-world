@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "isbn": "65676",
+      "bname": "java",
+      "cost": "88",
+      "id": 1
+    },
+    {
+      "isbn": "65676",
+      "bname": "java",
+      "cost": "88",
+      "id": 2
+    },
+    {
+      "isbn": "65676",
+      "bname": "java",
+      "cost": "88",
+      "id": 3
+    }
+  ]
+}

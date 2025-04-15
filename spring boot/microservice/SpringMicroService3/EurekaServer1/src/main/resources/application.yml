@@ -1,7 +1,0 @@
-server:
-  port:  8761
-
-spring:
-  application:
-    name:  Eureka Server
-

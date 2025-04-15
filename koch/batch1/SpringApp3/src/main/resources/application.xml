@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> 
+        
+        <!-- bean definitions here -->
+
+<context:component-scan base-package="com.example.model"></context:component-scan>
+<context:annotation-config></context:annotation-config>
+
+<bean id="library1" class="com.example.model.Library">
+  <property name="libraryId" value="77676"></property>
+  <property name="libraryName" value="dr arvind library"></property>
+  <property name="location" value="madurai"></property>
+</bean>
+
+<bean id="book1" class="com.example.model.Book">
+	<property name="isbn" value="65656565"></property>
+	<property name="bname" value="spring microservice"></property>
+	<property name="cost" value="1200"></property>
+</bean>
+
+
+<bean id="book2" class="com.example.model.Book">
+	<property name="isbn" value="65656561"></property>
+	<property name="bname" value="spring cloud"></property>
+	<property name="cost" value="1500"></property>
+</bean>
+
+
+
+
+</beans>

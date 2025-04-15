@@ -1,0 +1,67 @@
+<div class="container">
+    <form class="bg-info p-5 m-5  text-success"(ngSubmit)="show()"  >
+        <h2>Employe Form (Template Form) </h2>
+        <div class="form-group">
+            <label>Enter id </label>
+            <input class="form-control" required minlength="5" maxlength="10" [(ngModel)]="customer.id" 
+            name="id" #id="ngModel">
+            <span *ngIf="id.touched && id.errors?.['required']" class="text-warning">
+                id is blank
+            </span>
+            
+            <span *ngIf="id.touched && id.errors?.['minlength']" class="text-warning">
+                id must of 5 digits minimum
+            </span>
+            <span *ngIf="id.touched && id.errors?.['maxlength']" class="text-warning">
+                id must of 10 digits maximum
+            </span>
+
+        </div>
+        
+        <div class="form-group">
+            <label>Enter Name </label>
+            <input class="form-control" required minlength="5" maxlength="15" 
+             [(ngModel)]="customer.name" name="name" #name="ngModel">
+            <span *ngIf="name.touched && name.errors?.['required']" class="text-danger">
+                name is blank
+            </span>
+            <span *ngIf="name.touched && name.errors?.['minlength']" class="text-warning">
+                name must of 5 character minimum
+            </span>
+            
+            <span *ngIf="name.touched && name.errors?.['maxlength']" class="text-warning">
+                name must of 10 characters maximum
+            </span>
+
+
+        </div>
+
+        <div class="form-group">
+            <label>Enter Salary </label>
+            <input class="form-control" required minlength="4" maxlength="6" [(ngModel)]="customer.salary" name="salary" 
+            #salary="ngModel">
+            <span *ngIf="salary.touched && salary.errors?.['required']" class="text-danger">
+                salary is blank
+            </span>
+            
+            <span *ngIf="salary.touched && salary.errors?.['minlength']" class="text-danger">
+                salary cannot be less than 1000
+            </span>
+            
+            <span *ngIf="salary.touched && salary.errors?.['maxlength']" class="text-danger">
+                salary cannot be greter  than 999999
+            </span>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-3">show</button>
+        </div>
+
+        <div [hidden]="!visible">
+              <div>Id is {{customer.id}}</div>
+              <div>Name is {{customer.name}}</div>
+              <div>Salary is {{customer.salary}}</div>
+
+        </div>
+
+    </form>
+</div>

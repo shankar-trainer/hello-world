@@ -1,0 +1,26 @@
+https://bcrypt-generator.com/
+
+Pwd1  -- $2a$12$HiuAOeKycLfLqenAc/XfpO2d6wPPAaHKMyJ9WGD1IyBjkT8xqYwJm
+Pwd2  --$2a$12$rhnZ1YsJZU8Aenns9Y7tveHgsip8TUiP4JTWrViqQwTJmS8CHUb9q
+
+ insert into userinfo values (1,'basant@gmail','Basant','$2a$12$HiuAOeKycLfLqenAc/XfpO2d6wPPAaHKMyJ9WGD1IyBjkT8xqYwJm','ROLE_ADMIN'); 
+
+insert into userinfo values (2,'John@gmail','John','$2a$12$rhnZ1YsJZU8Aenns9Y7tveHgsip8TUiP4JTWrViqQwTJmS8CHUb9q','ROLE_USER');
+
+
+post method 
+localhost:8080/products/authenticate 
+ {
+
+"username":"Basant",
+"password":"Pwd1"
+}
+
+  token generated  copy it 
+
+get method 
+localhost:8080/products/all
+ beaer token 
+
+  add token  copied 
+

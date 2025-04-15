@@ -1,0 +1,1 @@
+mvn sonar:sonar -Dsonar.host.url=http://localhost:5000  -Dsonar.login=admin -Dsonar.password=Shankar7979@

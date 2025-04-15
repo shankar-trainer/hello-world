@@ -1,0 +1,47 @@
+<div class="container">
+     <h2>Update Person</h2>
+     <form class="p-5 m-5 bg-info text-success" (ngSubmit)="updatePerson()">
+      <div class="form-group">
+         <label>Enter Id</label>
+         <input class="form-control" [(ngModel)]="person.id" name="id" #id="ngModel" required>
+         <span *ngIf="id.touched && id.errors?.['required']" class="text-warning">
+             id is blank
+         </span> 
+     </div>
+      <div class="form-group">
+         <label>Enter Name</label>
+         <input class="form-control" [(ngModel)]="person.name" name="name" #name="ngModel" required>
+         <span *ngIf="name.touched && name.errors?.['required']" class="text-warning">
+             name is blank
+         </span> 
+     </div>
+      
+      <div class="form-group">
+         <label>Enter Salary</label>
+         <input class="form-control" [(ngModel)]="person.salary" name="salary" #salary="ngModel" required>
+         <span *ngIf="salary.touched && salary.errors?.['required']" class="text-warning">
+             salary is blank
+         </span> 
+      </div>
+      
+      <div class="form-group">
+         <label>Enter Dob</label>
+         <input class="form-control" type="date" [(ngModel)]="person.dob" name="dob" #dob="ngModel" required>
+         <span *ngIf="dob.touched && dob.errors?.['required']" class="text-warning">
+             dob is blank
+         </span>  
+     </div>
+     <div class="mt-2">
+         <button type="submit" class="btn btn-warning">Update Record</button>
+         <button type="reset" class="btn btn-warning">Cancel</button>
+     </div>
+     <div class="mt-2">
+         <button type="button" (click)="showAll()" class="btn btn-warning">show all page</button>
+     </div>
+      <div [hidden]="!visible">
+         {{msg}}
+         {{person1|json}}
+      </div>
+    </form>
+ 
+ </div>

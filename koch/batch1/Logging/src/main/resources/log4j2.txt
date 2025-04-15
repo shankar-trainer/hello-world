@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+	<Properties>
+		<Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n %C  %M   %L </Property>
+	</Properties>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+	</Appenders>
+	<Loggers>
+	<!--   	<Root level="info">  -->
+	<!--   level="ALL"   will allow all values info, error,debug to work-->
+	   	<Root level="ALL">  
+			<AppenderRef ref="console" />
+		</Root>
+	</Loggers>
+</Configuration>

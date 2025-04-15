@@ -1,0 +1,67 @@
+<div class="container">
+
+   <div>
+      <h1> User Table </h1>
+      <table class="table table-bordered table-striped bg-secondary text-light">
+         <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>salary</th>
+         </tr>
+         <tr *ngFor="let u of users">
+            <td>{{u.userId}}</td>
+            <td>{{u.userName}}</td>
+            <td>{{u.userSalary}}</td>
+         </tr>
+      </table>
+
+      <table class="table table-bordered table-striped bg-dark text-light">
+         <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>salary</th>
+         </tr>
+         <tr *ngFor="let u of user">
+            <td>{{u.userId}}</td>
+            <td>{{u.userName}}</td>
+            <td>{{u.userSalary}}</td>
+         </tr>
+      </table>
+      <h2> Uaing NgIf salary > 30000</h2>
+      <table class="table table-bordered table-striped bg-dark text-light">
+         <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>salary</th>
+         </tr>
+         <tr *ngFor="let u of user">
+            <td *ngIf="u.userSalary>=30000">{{u.userId}}</td>
+            <td *ngIf="u.userSalary>=30000">{{u.userName}}</td>
+            <td *ngIf="u.userSalary>=30000">{{u.userSalary}}</td>
+         </tr>
+      </table>
+      <h2> Uaing NgSwitch </h2>
+      <table class="table table-bordered table-striped bg-dark text-light">
+         <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Salary</th>
+         </tr>
+         <tr *ngFor="let u of user">
+
+            <td>{{u.userId}}</td>
+            <td>{{u.userName}}</td>
+            <td>
+               <span [ngSwitch]="u.userName">
+                  <span *ngSwitchCase="'sumit kumar'" [ngStyle]="{background:'yellow'}" >Manager</span>
+                  <span *ngSwitchCase="'amit kumar'" [ngStyle]="{background:'black',color:'white'}">Cashier</span>
+                  <span *ngSwitchCase="'suresh kumar'" [ngStyle]="{background:'pink'}">Engineer</span>
+                  <span *ngSwitchDefault [ngStyle]="{background:'red'}">No Post</span>
+               </span>
+            </td>
+            <td>{{u.userSalary}}</td>
+         </tr>
+      </table>
+   </div>
+</div>

@@ -1,0 +1,5 @@
+[INFO ] 2025-02-11 17:44:58.953 [main] Calculation - no1 is less than zero
+[INFO ] 2025-02-11 17:45:01.072 [main] Calculation - no2 is less than zero
+[INFO ] 2025-02-11 18:25:06.094 [main] Calculation - no2 is valid
+[DEBUG] 2025-02-11 18:25:52.705 [main] Calculation - no1 is less than zero
+[INFO ] 2025-02-11 18:25:54.772 [main] Calculation - format error  input must be number  

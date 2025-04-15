@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function change() {
+            var s = document.getElementById('id1').innerHTML
+            document.getElementById('id1').innerHTML = "<h2>We are learning Javascript</h2>"
+            alert(s);
+        }
+    </script>
+
+    <div id="id1">
+        Hello to javascript
+    </div>
+    <button onclick="change()">change it </button>
+
+
+
+</body>
+
+</html>

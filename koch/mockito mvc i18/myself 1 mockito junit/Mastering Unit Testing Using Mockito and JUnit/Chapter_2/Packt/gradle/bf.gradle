@@ -1,0 +1,54 @@
+
+project.description = 'Simple project'
+task simple << {
+    println 'Running simple task for project ' + project.description
+}
+
+task helloWorld << {
+  println 'Hello world.'
+}
+
+task first1(dependsOn: 'second1') {
+    doFirst {
+        println 'Running first'
+    }
+	
+	doLast {
+        println 'Running last'
+    }
+}
+task second1 {
+    doLast { Task task ->
+        println "Running ${task.name}"
+    }
+}
+task third1 << { taskObject ->
+    println 'Running ' + taskObject.name
+}
+
+def printTaskName = { task ->
+    println "Run ${task.name}"
+}
+task third(dependsOn: 'second') << printTaskName
+task second(dependsOn: 'first') << printTaskName
+task first << printTaskName
+
+def taskGroup = 'base'
+task taskGroup1(description: 'Base task', group: taskGroup) << {
+    println "I am taskGroup1"
+}
+task taskGroup2(dependsOn: taskGroup1, description: 'Secondary task', group: 
+taskGroup) << {
+    println "I am taskGroup1"
+}
+
+def simpleTask = 'simple2'
+task "${simpleTask}" << { task ->
+    println "Running ${task.name}"
+}
+// Or use loops to create multiple tasks
+['Dev', 'Acc', 'Prod'].each { environment ->
+    task "deployTo${environment}" << { task ->
+        println "Deploying to ${environment}"
+    }
+}

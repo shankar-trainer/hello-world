@@ -1,0 +1,42 @@
+<div class="container bg-dark text-light w-50 m-5 p-5 " style="border-radius:25pt">
+
+
+<p>employee works!</p>
+
+Id is {{id}}
+
+  <div>
+   <table class="bg-info p-5" style="border-radius: 5pt">
+     <tr>
+       <th>Id</th>
+       <th>Location</th>
+       <th>City</th>
+       <th>Address</th>
+     </tr>
+     <tr>
+
+       <td> {{address.id}}</td>
+       <td> {{address.locattion}}</td>
+       <td> {{address.city}}</td>
+       <td> {{address.state}}</td>
+     </tr>
+   </table>
+  </div>
+
+  <div>
+  First Name<p>{{user.firstName}}</p>
+ last Name <p>{{user.lastName}}</p>
+  </div>
+  <div>
+    Book {{book.title}}
+    {{book.author}}
+
+  </div>
+  <div>
+    Book {{book.getTitle()}}
+    {{book.getAuthor()}}
+  </div>
+  <div>
+
+  </div>
+</div>

@@ -1,0 +1,34 @@
+
+npm install -g json-server
+
+in root directory of your project, create a file called db.json. 
+This is where you will store the data for the json-server
+
+in one terminal -- ng-serve
+in second terminal 
+
+json-server --watch db.json
+
+json server can be used with postman also
+
+
+show all books 
+http://localhost:3000/books
+
+================
+If you have some data already in the JSON DB (before we start sending requests), make sure those objects have a property named "id".
+
+For eg:
+
+{
+
+cards:[
+
+"id":"1",
+      "name":"something"
+
+   ]
+}
+A JSON data needs a property named "id" to store the data we send.(If already some data is stored manually in the DB)
+
+If the DB is empty when we send our first request, it will assign a parameter "id" automatically(and give it some random value) in addition to the provided data (if we don't mention an "id" parameter explicitly) and for every further request.

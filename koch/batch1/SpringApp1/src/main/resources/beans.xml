@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--
+	<bean id="customer1" class="com.cts.model.Customer"  autowire="byName" >
+	<bean id="customer1" class="com.cts.model.Customer"  autowire="byType"  >
+		<property name="customerId" value="76766776"></property>
+		<property name="customerName" value="anand kumar"></property>
+		<property name="customerSalary" value="80000"></property>
+		<property name="address" ref="address1" ></property>
+
+	</bean>
+	
+	<bean id="address1" class="com.cts.model.Address">
+		<property name="addrId" value="1"></property>
+		<property name="addrLocation" value="sector1"></property>
+		<property name="addrCity" value="chennai"></property>
+		<property name="addrState" value="tamilnadu"></property>
+	</bean>
+-->	
+<!-- inner bean -->
+
+	<bean id="customer1" class="com.cts.model.Customer">
+		<property name="customerId" value="76766776"></property>
+		<property name="customerName" value="anand kumar"></property>
+		<property name="customerSalary" value="80000"></property>
+	    <property name="address">
+		   <bean  class="com.cts.model.Address">
+				<property name="addrId" value="1"></property>
+				<property name="addrLocation" value="sector1"></property>
+				<property name="addrCity" value="chennai"></property>
+				<property name="addrState" value="tamilnadu"></property>
+	       </bean>
+	</property>
+	</bean>
+	
+	
+
+	<bean id="person1" class="com.cts.model.Person"  init-method="init"
+	  destroy-method="cleanup" lazy-init="true">
+	 <constructor-arg name="personId" value="1"></constructor-arg>
+	 <constructor-arg name="personName" value="aditi"></constructor-arg>
+	 <constructor-arg name="personSalary" value="76000"></constructor-arg>
+	</bean>
+
+<bean id="prd1" class="com.cts.model.Product">
+ <constructor-arg name="prdId" value="1001"></constructor-arg>
+ <constructor-arg name="groceryList">
+  <list>
+    <value>flour</value>
+    <value>rice</value>
+    <value>sugar</value>
+    <value>salt</value>
+    <value>sugar</value>
+  </list>
+ </constructor-arg>
+ 
+  <constructor-arg name="bookSet">
+  <set>
+   <value>python book</value>
+   <value>javascript beginner book</value>
+   <value>angular book</value>
+   <value>spring book</value>
+   <value>python book</value>
+  </set>
+</constructor-arg>
+  <constructor-arg name="mobileMap">
+  <map>
+   <entry key="767676" value="samsung"></entry>
+   <entry key="767677" value="nokia"></entry>
+   <entry key="767679" value="realme"></entry>
+   <entry key="767678" value="poco"></entry>
+   <entry key="767671" value="motrolla"></entry>
+   <entry key="767679" value="samsung"></entry>
+  </map>
+</constructor-arg>
+ 
+ 
+</bean>
+
+</beans>

@@ -1,0 +1,2 @@
+05:03:32.915 [main] ERROR org.example.Test1 - error error object is not present
+05:03:32.917 [main] FATAL org.example.Test1 - error fatal object is not present

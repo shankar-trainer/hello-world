@@ -1,0 +1,33 @@
+<!-- src/app/components/login/login.component.html -->
+<div class="login-container">
+  <form (ngSubmit)="login()" class="login-box">
+    <h2>Login</h2>
+    <div class="input">
+      <label for="username">Usuário: </label>
+      <input
+        class="pi pi-user"
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        name="username"
+        required
+      />
+    </div>
+
+    <div class="input">
+      <label for="password">Senha: </label>
+      <input
+        class="pi pi-lock"
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </div>
+
+    <button pButton type="submit" class="p-mt-3">Entrar</button>
+  </form>
+
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+</div>

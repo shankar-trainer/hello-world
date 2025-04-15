@@ -1,0 +1,111 @@
+<div class="container">
+    <div>
+        <h2> User In json </h2>
+        <div>
+            {{user|json}}
+        </div>
+        <h2> Address In json </h2>
+        <div>
+            {{user.address|json}}
+        </div>
+
+        <h2> Insurance In json </h2>
+        <div>
+            {{insurance|json}}
+        </div>
+
+
+    </div>
+
+    <table class="table table-bordered table-stripped bg-info m-5 p-5">
+        <tr class="bg-dark text-light">
+            <td>Id </td>
+            <td>{{user.userId}}</td>
+        </tr>
+
+        <tr class="bg-dark text-light">
+            <td>Name </td>
+            <td>{{user.userName}}</td>
+        </tr>
+        <tr class="bg-dark text-light">
+            <td>Dob </td>
+            <td>{{user.dob}}</td>
+        </tr>
+        <tr colpan="2">
+            <th>
+                Address
+            </th>
+        </tr>
+
+        <tr colspan="2">
+            <td>
+                City
+            </td>
+            <td>
+                {{user.address.city}}
+            </td>
+        </tr>
+        <tr colspan="2">
+            <td>
+                Location
+            </td>
+            <td>
+                {{user.address.location}}
+            </td>
+        </tr>
+
+        <tr colspan="2">
+            <td>
+                State
+            </td>
+            <td>
+                {{user.address.state}}
+            </td>
+        </tr>
+
+
+
+
+    </table>
+
+
+    <table class="table table-bordered table-stripped bg-info m-5 p-5">
+        <tr class="bg-warning">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Start Date</th>
+            <th>Maturity Date</th>
+            <th>Premium Amt</th>
+            <th>Premium Amt</th>
+        </tr>
+        <tr *ngFor="let ins of insurance">
+            <td>{{ins.id}}</td>
+            <td>{{ins.name|uppercase}}</td>
+            <td>{{ins.name|uppercase|slice:1:3}}</td>
+            <td>{{ins.year}}</td>
+            <td>{{ins.startDate|date:'fullDate'|uppercase}}</td>
+            <td>{{ins.maturityDate|date}}</td>
+            <td>{{ins.premiumAmt|currency:'Rs'}}</td>
+            <td>{{ins.premiumAmt|currency:'₹'}}</td>
+        </tr>
+    </table>
+
+    <form class="bg-warning p-5 w-50 m-5">
+        <p> Power of 2 with exponent 3 is {{2|power:3}}</p>
+        <div class="form-group">
+            <label>Enter base</label>
+            <input [(ngModel)]="base" [ngModelOptions]="{standalone: true}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Enter Exponent</label>
+            <input [(ngModel)]="exponent" [ngModelOptions]="{standalone: true}" class="form-control">
+        </div>
+        <div>
+            <p> Power of {{base}} with exponent {{exponent}} is {{base|power:exponent}}</p>
+
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+
+    <div>
+        <table class="table  table-border w-100 border border-secondary  p-5 m-5  table-danger table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Cost</th>
+                    <th>MFd</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of product">
+                    <td>{{p.id}}</td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.cost}}</td>
+                    <td>{{p.mfd.toDateString()}}</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+
+</div>

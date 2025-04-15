@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+	<bean class="com.capgemini.beans.HelloWorld" id="hello1">
+
+	</bean>
+
+	<bean class="com.capgemini.beans.Employee" id="emp1">
+		<property name="id" value="10001" />
+		<property name="name" value="arvind kumar" />
+		<property name="salary" value="89000.00f" />
+
+	</bean>
+	<bean class="com.capgemini.beans.CurrencyConverterImpl"
+		id="converter">
+		<property name="amount" value="700"></property>
+		<property name="exchangeRate" value="0.44"></property>
+	</bean>
+
+	<bean class="com.capgemini.beans.Customer" >
+		<constructor-arg name="customerId" value="7878878" />
+		<constructor-arg name="customerName" value="harendra kumar" />
+		<constructor-arg name="customerSalary" value="890000" />
+	</bean>
+    
+    
+
+
+</beans>

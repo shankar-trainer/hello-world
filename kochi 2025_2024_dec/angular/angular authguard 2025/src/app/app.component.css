@@ -1,0 +1,23 @@
+/* auth.component.scss */
+
+div {
+    width: 600px;
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 16px auto;
+
+    p {
+        font-size: 28px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    button,
+    input {
+        height: 40px;
+        font-size: large;
+    }
+}

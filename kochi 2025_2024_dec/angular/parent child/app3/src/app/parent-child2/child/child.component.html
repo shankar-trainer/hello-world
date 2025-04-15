@@ -1,0 +1,18 @@
+<p>child works!</p>
+
+
+
+<div *ngIf="user">
+    <div class="mb-3 row">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="user.name" class="form-control" id="name">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="user.email" class="form-control" id="email">
+        </div>
+    </div>
+</div>

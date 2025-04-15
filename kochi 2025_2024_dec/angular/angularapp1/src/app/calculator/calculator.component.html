@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <span class="m-5 bg-info p-2 col-sm-2" style="width: 70pt; border-radius: 10pt;">{{date1}}</span>
+        <span class="m-5 bg-info p-2 col-sm-2" style="width: 80pt; border-radius: 10pt;margin-left: 800pt;"
+            (load)="time">{{time.toLocaleTimeString()}}</span>
+    </div>
+
+    <form class="bg-info p-5 m-5 w-75">
+        <div class="form-group">
+            <label>Enter No1</label>
+            <input type="number" class="form-control" [(ngModel)]="n1" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="form-group">
+            <label>Enter No2</label>
+            <input class="form-control" type="number" [(ngModel)]="n2" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="form-group mt-2">
+            <button type="button" class="btn btn-primary" [ngStyle]="{'margin-right':'20pt'}"
+                (click)="addition()">Addition</button>
+            <button type="button" class="btn btn-primary" [ngStyle]="{'margin-right':'20pt'}"
+                (click)="subtraction()">Subtraction</button>
+            <button type="button" class="btn btn-primary" [ngStyle]="{'margin-right':'20pt'}"
+                (click)="multiplication()">Multiplication</button>
+            <button type="button" class="btn btn-primary" (click)="division()">Division</button>
+        </div>
+
+        <div>
+            <div>Addition is {{(n1)+(n2)}}</div>
+            <div>Subtraction is {{n1-n2}}</div>
+            <div>Multiplication is {{n1*n2}}</div>
+            <div>Division is {{n1/n2}}</div>
+        </div>
+
+
+    </form>
+    <form>
+        <div class="bg-primary w-50 p-5 m-5 text-light">
+            <h2>Counter Application</h2>
+            <p>Count is {{counter}}</p>
+            <button type="button" (click)="increment()" class="btn btn-info">Increment</button>
+            <button type="button" (click)="decrement()" class="btn btn-info"
+                [ngStyle]="{'margin-left':'10pt'}">Decrement</button>
+        </div>
+    </form>
+</div>

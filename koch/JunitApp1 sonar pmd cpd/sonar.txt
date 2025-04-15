@@ -1,0 +1,118 @@
+mvn sonar:sonar -Dsonar.host.url=http://localhost:5000  -Dsonar.login=admin -Dsonar.password=Shankar7979@
+
+
+go to sonarqube 10.8\config\sonar.properties
+
+sonar.log.level = DEBUG
+#sonar.log.level = INFO
+sonar.web.port=5000
+
+
+=====================
+set SONAR_JAVA_PATH=c:\software\openjdk-17.0.2_windows-x64_bin\jdk-17.0.2\bin\java.exe
+sonar\sonarqube-10.8.1.101195\bin\windows-x86-64\StartSonar.bat
+password Shankar7979@
+
+
+==========
+
+mvn sonar:sonar -Dsonar.host.url=http://localhost:5000
+
+and if password changed in sonar then 
+
+mvn verify sonar:sonar -Dsonar.login=admin -Dsonar.password=password
+
+if both username and password changed then
+mvn sonar:sonar -Dsonar.host.url=http://localhost:5000  -Dsonar.login=admin -Dsonar.password=Shankar7979@
+
+============
+
+
+<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.5.10.201208310627</version>
+    <configuration>
+        <skip>${maven.test.skip}</skip>
+        <output>file</output>
+        <append>true</append>
+    </configuration>
+    <executions>
+        <execution>
+            <id>jacoco-initialize</id>
+            <goals>
+                <goal>prepare-agent</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>jacoco-site</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+On running maven:test it will generate jacoco.exec file
+On running jacoco:report it generates report in html file under target/site/jacoco directory. You can view the report by opening index.html
+
+==== JunitApp1 
+ mvn site 
+	<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.6.0.1398</version>
+			</plugin>
+			<!--
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.4</version>
+			</plugin>
+			-->
+			
+			 <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>io/truongbn/github/jacoco/JacocoApplication.class</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>PACKAGE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>90%</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+			

@@ -1,0 +1,14 @@
+2025-02-10 09:58:06 [http-nio-8080-exec-1] DEBUG com.example.web.GreetingController -
+                name resuest
+2025-02-10 09:58:07 [http-nio-8080-exec-2] DEBUG com.example.web.GreetingController -
+                name resuest
+2025-02-10 09:58:07 [http-nio-8080-exec-2] DEBUG com.example.web.GreetingController -
+                Response Hi favicon.ico Welcome to Java SpringBoot Logging demo
+2025-02-10 09:58:15 [http-nio-8080-exec-3] DEBUG com.example.web.GreetingController -
+                name resuest
+2025-02-10 09:58:15 [http-nio-8080-exec-3] DEBUG com.example.web.GreetingController -
+                Response Hi ram kumar Welcome to Java SpringBoot Logging demo
+2025-02-10 09:58:15 [http-nio-8080-exec-4] DEBUG com.example.web.GreetingController -
+                name resuest
+2025-02-10 09:58:15 [http-nio-8080-exec-4] DEBUG com.example.web.GreetingController -
+                Response Hi favicon.ico Welcome to Java SpringBoot Logging demo

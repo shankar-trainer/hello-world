@@ -1,0 +1,24 @@
+<div class="profile-container">
+  <div class="profile-header">
+      <h2>Perfil de usuário</h2>
+  </div>
+
+  <div class="profile-content">
+      <div class="profile-card p-shadow-3">
+          <div class="profile-avatar">
+              <img src="../../../assets/user.svg" alt="Profile Avatar">
+          </div>
+          <div class="profile-info">
+              <h3>{{ user.nome }}</h3>
+              <p>{{ user.email }}</p>
+              <p>{{ user.telefone }}</p>
+              <p><label>Nível de acesso: </label>{{ user.nivelAcesso }}</p>
+          </div>
+      </div>
+  </div>
+
+  <div class="profile-actions">
+      <button pButton type="button" (click)="home()" label="Home" class="p-button-primary"></button>
+      <button pButton type="button" (click)="logout()" label="Sair" class="p-button-secondary"></button>
+  </div>
+</div>

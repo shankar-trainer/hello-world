@@ -1,0 +1,21 @@
+<div class="gerente-container">
+  <h2>Lista de Usuários</h2>
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Nível de Acesso</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.nome }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.telefone }}</td>
+        <td>{{ user.nivelAcesso }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

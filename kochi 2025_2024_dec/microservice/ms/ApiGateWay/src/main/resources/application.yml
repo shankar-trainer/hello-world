@@ -1,0 +1,25 @@
+server:
+  port:  5050
+spring:
+  main:
+    web-application-type:  reactive
+  application:
+    name:  api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id:  SPRING-BOOT-PROJECT
+          uri:  http://localhost:8090
+          predicates:
+            - Path=/emp/**
+
+        - id:  SPRING-BOOT-FEIGN-CLIENT
+          uri:  http://localhost:7070
+          predicates:
+            - Path=/**
+
+        - id:  SPRING-BOOT-PROJECT-REST-CLIENT
+          uri:  http://localhost:7575
+          predicates:
+            - Path=/**
+

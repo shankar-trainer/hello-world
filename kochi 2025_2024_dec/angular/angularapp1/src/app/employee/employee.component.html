@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="bg-dark text-light w-50 p-5 m-5" style="border-radius:10pt">
+
+        <p>Employee Page!</p>
+
+        <p>id is {{id}}</p>
+        <p>name is {{name}}</p>
+        <p>salary is {{salary}}</p>
+
+        <h2>Employee Address</h2>
+        <ul>
+            <li>Addr Id {{address.addr_id}}</li>
+            <li>Location {{address.location}}</li>
+            <li>City {{address.city}}</li>
+            <li>State {{address.state}}</li>
+        </ul>
+    </div>
+    <div class="bg-info  w-50 p-5 border">
+        <table class="table table-bordered table-striped bg-secondary text-light">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Salary</th>
+            </tr>
+
+            <tr>
+             <td>{{id}}</td>
+             <td>{{name}}</td>
+             <td>{{salary}}</td>
+            </tr>
+            <tr colspan="4">
+                <th>Address</th>
+            </tr>
+            <tr>
+                <td>{{address.addr_id}}</td>
+                <td>{{address.location}}</td>
+                <td>{{address.city}}</td>
+                <td>{{address.state}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

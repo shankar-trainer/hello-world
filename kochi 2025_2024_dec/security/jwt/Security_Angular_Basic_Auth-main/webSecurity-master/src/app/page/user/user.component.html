@@ -1,0 +1,26 @@
+<div class="header">
+  <h2>Lista de Usuários</h2>
+</div>
+<p-table [value]="users" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Password</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user>
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.password }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog header="Erro" [(visible)]="displayErrorDialog" modal="modal" [closable]="true">
+  <p>{{ errorMessage }}</p>
+</p-dialog>
+
+<!-- PrimeNG Toast para exibir notificações -->
+<p-toast></p-toast>

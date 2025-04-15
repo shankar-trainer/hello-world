@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:util="http://www.springframework.org/schema/util" 
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<util:list id="vehicleList"  value-type="com.spelWithSpring.Vehicle">
+		<bean class="com.spelWithSpring.Car">
+			<property name="model" value="Santro"></property>
+			<property name="yearOfMake" value="2009"></property>
+		</bean>
+		<bean class="com.spelWithSpring.Car">
+			<property name="model" value="Zen"></property>
+			<property name="yearOfMake" value="2008"></property>
+		</bean>
+		<bean class="com.spelWithSpring.Car">
+			<property name="model" value="Mercedes"></property>
+			<property name="yearOfMake" value="2007"></property>
+		</bean>
+		<bean class="com.spelWithSpring.RV">
+			<property name="model" value="Eriba"></property>
+			<property name="yearOfMake" value="2004"></property>
+		</bean>
+		<bean class="com.spelWithSpring.RV">
+			<property name="model" value="HyperMobil"></property>
+			<property name="yearOfMake" value="2000"></property>
+		</bean>
+	</util:list>
+
+	<bean id="personBean" class="com.spelWithSpring.Person">
+		<property name="age" value="#{T(java.lang.Math).random() * 50}"></property>
+		<property name="name" value="#{'Sam'.toUpperCase()}"></property>
+		<property name="address" value="#{new com.spelWithSpring.Address('Harvey','Mumbai','MH')}"></property>
+		<property name="rentedCar" value="#{vehicleList.$[#this instanceof T(com.spelWithSpring.Car)]}"></property>
+		<property name="rentedRV" value="#{vehicleList.$[#this instanceof T(com.spelWithSpring.RV) and (yearOfMake > 2000)]}"></property>
+	</bean>
+</beans>

@@ -1,0 +1,33 @@
+label{
+	width:120px;
+	float:left;
+    margin-right:5px;
+}
+input{
+	width:140px;
+}
+input[type='submit']{
+	width:130px;
+	margin-bottom:1px;
+}
+input[type='reset']{
+	width:130px;
+	margin-bottom:1px;
+}
+errors,span{
+  color:red;
+  font-weight:bold;
+}
+form{
+	background:yellow;
+	border:solid blue 12px;
+	width:40%;
+	padding:20px;
+	margin-top:100px;
+	margin-left:300px;
+	color:blue;
+}
+
+body{
+ background:yellowlight;	
+}

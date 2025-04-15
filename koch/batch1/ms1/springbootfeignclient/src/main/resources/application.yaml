@@ -1,0 +1,5 @@
+spring:
+  application:
+    name:  spring-boot-feign-client
+server:
+  port:  7070

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="discount.properties"></context:property-placeholder>
+
+
+    <bean class="Inner.Student" id="st1">
+        <constructor-arg name="roll" value="1001"/>
+        <constructor-arg name="name" value="mohan kumar"/>
+        <constructor-arg name="course" ref="course1"/>
+    </bean>
+
+    <bean id="course1" class="Inner.Course">
+        <constructor-arg name="courseName" value="spring core"/>
+        <constructor-arg name="duration" value="20"/>
+    </bean>
+
+    <bean class="Inner.Student" id="st2">
+        <constructor-arg name="roll" value="1002"/>
+        <constructor-arg name="name" value="suresh kumar"/>
+        <constructor-arg name="course">
+            <bean id="course" class="Inner.Course">
+                <constructor-arg name="courseName" value="spring boot"/>
+                <constructor-arg name="duration" value="30"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean class="org.com.Product" id="prd">
+        <property name="pid" value="6565"/>
+        <property name="name" value="${app.name}"/>
+        <property name="specialDiscount" value="${special.discount}"/>
+
+    </bean>
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename">
+            <value>messages</value>
+        </property>
+    </bean>
+
+
+    <bean id="factory" class="bean.CustomerFactory">
+    </bean>
+
+    <bean factory-bean="factory" class="bean.Customer" factory-method="createCustomer"  id="cust">
+    </bean>
+
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName"
+                  value="com.mysql.jdbc.Driver" />
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/db1" />
+        <property name="username" value="root" />
+        <property name="password" value="mysql" />
+        <property name="initialSize" value="2" />
+        <property name="maxActive" value="5" />
+    </bean>
+
+
+</beans>

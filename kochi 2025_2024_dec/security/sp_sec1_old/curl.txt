@@ -1,0 +1,19 @@
+
+curl -su 'user' <url>
+
+curl -u jane:12345 http://localhost:8080/hello
+
+using HTTP POST without authenticating, use
+curl -XPOST http://localhost:8080/a
+
+using HTTP GET without authenticating, use
+curl -XGET http://localhost:8080/a
+
+curl -u john:12345 -XGET http://localhost:8080/a
+
+older working
+  curl.exe -X POST -H  "Content-Type: application/json" -d '{"name":"shyam","ssn":"ssn1010"}' http://localhost:8080/add
+
+
+when calling path /a using HTTP GET without authenticating, use
+curl -XGET http://localhost:8080/a
