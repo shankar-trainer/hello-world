@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    label{
+      float: left;
+      width: auto;
+      margin-right:10pt ;
+    }
+    button{
+      margin-top: 5pt;
+    }
+    input{
+      width: 110pt;
+    }
+    .class1 {
+      width: 30%;
+      border: 5pt solid;
+      padding: 40pt;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    var ar = [];
+
+    var add = () => {
+      var item = document.getElementById("item").value
+      console.log(item + " item")
+      // ar.unshift(item)
+      ar.push(item)
+      console.log(ar + ' array')
+    }
+    var show = () => {
+      document.getElementById("showitem").innerHTML = ''
+      myarr = ''
+      for (const element of ar) {
+        // myarr=myarr+`<div>${element}</div>`  
+        myarr = myarr + `<div>${element}</div>`
+      }
+      document.getElementById("showitem").innerHTML = myarr
+    }
+    var show1 = () => {
+      document.getElementById("showitem").innerHTML = ''
+      myarr = `<style> .hello {width:30%;padding:40pt;border:double 5pt blue;margin-top:5pt;}</style>`
+      myarr = myarr+`<div class='hello'>`
+      for (const element of ar) {
+        // myarr=myarr+`<div>${element}</div>`  
+        myarr = myarr + `<div>${element}</div>`
+      }
+      myarr+`</div>`
+      document.getElementById("showitem").innerHTML = myarr
+    }
+    var remove=()=>{
+      ar=[]
+      show1()
+    }
+  </script>
+
+  <div class="class1">
+    <div><label>add item</label> <input id="item"></div>
+    <div><button type='button' onclick="add()">add item</button>
+    <button type='button' onclick="show1()">show item</button></div>
+    <div><button type='button' onclick="remove()">remove item</button></div>
+  </div>
+
+  <div id="showitem">
+
+  </div>
+
+</body>
+
+</html>
