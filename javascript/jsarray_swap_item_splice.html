@@ -60,6 +60,11 @@
       show1();
       show2();
     }
+    var remove1=()=>{
+      
+      ar1.splice(2,2)
+      show1();
+    }
     var swap=()=>{
       var temp=ar1;
       ar1=ar2;
@@ -70,7 +75,7 @@
     
   </script>
 <div style="width: 100%;">
-  <div id="showitem1" class="col">
+<div id="showitem1" class="col">
     
   </div>
 
@@ -85,6 +90,7 @@
     <br>
     <button type='button' onclick="swap()">swap item</button>
     <button type='button' onclick="remove()">remove item</button>
+    <button type='button' onclick="remove1()">remove 2 to 4 item from first </button>
   </div>
 
 </body>
