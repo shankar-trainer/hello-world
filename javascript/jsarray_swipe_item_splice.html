@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+<style>
+ .class1 {
+      /* display: inline-block; */
+      /* display: inline-flex; */
+      /* display: inline; */
+      /* display: inline-block */
+      display: inline-table;
+      /* display: inline-flexbox; */
+      width: 30%;
+      border: 5pt solid;
+      padding: 10pt;
+      margin-left: 20pt;
+      margin-top: 50pt;
+    }
+    .col{
+      overflow: auto;      
+      /* overflow: hidden; */
+      width:40%;
+      float:left;
+      margin-left: 10pt;
+    }
+  </style>
+  <body  onload="show1();show2()">
+    <!-- <body> -->
+  <script>
+    var ar1 = ['book','pen','pencil','teacher','student'];
+    var ar2 = ['sweets','water','meals','pizza','burder'];
+    
+     var show1 = () => {
+      document.getElementById("showitem1").innerHTML = ''
+      myarr = `<style> .hello {padding:40pt;border:double 5pt blue;margin-top:5pt;}</style>`
+      myarr = myarr+`<div class='hello'>`
+      for (const element of ar1) {
+        // myarr=myarr+`<div>${element}</div>`  
+        myarr = myarr + `<div>${element}</div>`
+      }
+      myarr+`</div>`
+      document.getElementById("showitem1").innerHTML = myarr
+    }
+     var show2 = () => {
+      document.getElementById("showitem2").innerHTML = ''
+      myarr = `<style> .hello {padding:40pt;border:double 5pt blue;margin-top:5pt;}</style>`
+      myarr = myarr+`<div class='hello'>`
+      for (const element of ar2) {
+        // myarr=myarr+`<div>${element}</div>`  
+        myarr = myarr + `<div>${element}</div>`
+      }
+      myarr+`</div>`
+      document.getElementById("showitem2").innerHTML = myarr
+    }
+
+    var remove=()=>{
+      ar1=[]
+      ar2=[]
+      show1();
+      show2();
+    }
+    var swap=()=>{
+      var temp=ar1;
+      ar1=ar2;
+      ar2=temp;
+      show1();
+      show2();
+    }
+    
+  </script>
+<div style="width: 100%;">
+  <div id="showitem1" class="col">
+    
+  </div>
+
+  <div id="showitem2" class="col">
+   
+  </div>
+</div>
+
+  <div class="class1">
+    <br>
+    <br>
+    <br>
+    <button type='button' onclick="swap()">swap item</button>
+    <button type='button' onclick="remove()">remove item</button>
+  </div>
+
+</body>
+
+</html>
