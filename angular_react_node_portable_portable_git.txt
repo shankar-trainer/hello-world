@@ -10,3 +10,10 @@ npm link @angular/cli
 
 ng new app1
 
+
+portable git 
+
+
+set path=
+PortableGit-2.47.0-64-bit.7z";"PortableGit-2.47.0-64-bit.7z\mingw64\bin";"PortableGit-2.47.0-64-bit.7z\bin";"PortableGit-2.47.0-64-bit.7z\cmd
+
