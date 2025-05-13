@@ -1,0 +1,12 @@
+set path="C:\Users\2383505\Downloads\software\node-v22.15.0-win-x64"
+
+react 
+npx create-react-app app1
+
+angular 
+ npm install - g @angular/cli
+ it will add ng 
+npm link @angular/cli
+
+ng new app1
+
