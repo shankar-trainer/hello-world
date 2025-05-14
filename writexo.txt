@@ -1,3 +1,6 @@
+Spring Data Jpa | Prevent Infinite Recursion in Bidirectional mapping
+https://medium.com/@rahul302619/spring-data-jpa-prevent-infinite-recursion-in-bidirectional-mapping-c84ee8c1127f
+
  
 
 ml
@@ -254,6 +257,12 @@ https://github.com/rakeshacharya-d/springboot-angular-todoApp   8 mon back  imp
 
 jwt 
 
+https://medium.com/swlh/jenkins-pipeline-to-create-docker-image-and-push-to-docker-hub-721919512f2
+
+https://github.com/brandonjones085/docker
+
+--
+
 https://github.com/murraco/spring-boot-jwt
 
 https://medium.com/@tericcabrel/implement-jwt-authentication-in-a-spring-boot-3-application-5839e4fd8fac
@@ -261,6 +270,8 @@ https://medium.com/@tericcabrel/implement-jwt-authentication-in-a-spring-boot-3-
 
 
 Ci cd
+
+https://howtodoinjava.com/devops/setup-jenkins-pipeline-for-spring-boot-app/#41-jenkins-pipeline -- best
 
 -- CI/CD chain for a Spring Boot application and Angular Tools
 
@@ -13447,6 +13458,10 @@ Business Justification	genc program
 https://www.flipkart.com/lloyd-1-5-ton-5-star-split-inverter-ac-wi-fi-connect-white/p/itm0a238be35ad16?pid=ACNGYYVUTFHMRMAW&lid=LSTACNGYYVUTFHMRMAWRRRLTR&marketplace=FLIPKART&cmpid=content_air-conditioner-new_22331707378_x_8965229628_gmc_pla&tgi=sem,1,G,11214002,x,,,,,,,c,,,,,,,&entryMethod=22331707378&cmpid=content_22331707378_gmc_pla&gad_source=1&gad_campaignid=22321541277&gbraid=0AAAAADxRY59pSAiM2kgB-C2gDSb8U9qNa&gclid=Cj0KCQjwrPHABhCIARIsAFW2XBMnBCqBgwh6NyKtgLIls--esDRHaDSd88LdiC7D1HyrwK5-qcgFQIIaAnxTEALw_wcB
 
 
+
+
+
+TPIN: 858856;
 
 
 
