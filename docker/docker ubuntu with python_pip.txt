@@ -32,3 +32,9 @@ install by pip
 apt install -y python3-numpy
 apt install -y  python3-scipy
 
+nano test2.py
+import numpy 
+arr=numpy.array([1,2,3,4])
+print(arr)
+ 
+
