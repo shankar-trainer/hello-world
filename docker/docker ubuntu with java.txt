@@ -5,13 +5,14 @@ ARG JAVA_VERSION=openjdk-21-jdk
 
 RUN apt-get install -y $JAVA_VERSION
 RUN apt-get install -y nano
-RUN apt-get install -y mvn
-
+RUN apt-get install -y maven
+RUN apt-get install -y  git-all
 # Setup JAVA_HOME
 ENV JAVA_HOME=/usr/lib/jvm/openjdk-21-jdk
 
 # Set entry point to show Java version and environment variable $JAVA_HOME
 ENTRYPOINT ["/bin/bash", "-c", "java --version && echo -n JAVA_HOME= && printenv JAVA_HOME"]
+
 
 --
 docker build -t app1 .
