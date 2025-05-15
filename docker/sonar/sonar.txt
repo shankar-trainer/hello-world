@@ -1,0 +1,24 @@
+sonarqube-25.5.0.107428
+
+go to sonarqube 
+sonarqube-25.5.0.107428\config\sonar.properties
+
+sonar.log.level = DEBUG
+#sonar.log.level = INFO
+sonar.web.port=5000
+
+
+=====================
+set SONAR_JAVA_PATH=c:\software\openjdk-17.0.2_windows-x64_bin\jdk-17.0.2\bin\java.exe
+
+
+sonarqube-25.5.0.107428\bin\windows-x86-64\StartSonar.bat
+
+
+======
+in sonar generate key and sequence and add to the program 
+
+mvn clean verify sonar:sonar   -Dsonar.projectKey=project1   -Dsonar.projectName='project1'   -Dsonar.host.url=http://localhost:5000   -Dsonar.token=sqp_ced48480079894fa38b95a43809ab8ebfeb730d8
+
+
+it will deploy and run 
