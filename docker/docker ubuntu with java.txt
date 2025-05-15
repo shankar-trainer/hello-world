@@ -1,11 +1,15 @@
+in sonar generate key and sequence and add to the program 
+
 mvn clean verify sonar:sonar   -Dsonar.projectKey=project1   -Dsonar.projectName='project1'   -Dsonar.host.url=http://localhost:5000   -Dsonar.token=sqp_ced48480079894fa38b95a43809ab8ebfeb730d8
 
 
-9b5f7c1a55474bcc91f7fe79921c261b
+
+#docker run ubuntu 
+# this will give basic ubuntu 
 
 
 ---# Use Ubuntu as the base image
-#Dockerfile
+#start Dockerfile
 FROM ubuntu:latest
 
 # Update Ubuntu packages
