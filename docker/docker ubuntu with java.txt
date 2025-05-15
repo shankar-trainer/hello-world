@@ -1,0 +1,35 @@
+mvn clean verify sonar:sonar   -Dsonar.projectKey=project1   -Dsonar.projectName='project1'   -Dsonar.host.url=http://localhost:5000   -Dsonar.token=sqp_ced48480079894fa38b95a43809ab8ebfeb730d8
+
+
+9b5f7c1a55474bcc91f7fe79921c261b
+
+
+---# Use Ubuntu as the base image
+#Dockerfile
+FROM ubuntu:latest
+
+# Update Ubuntu packages
+RUN apt-get update -y
+
+# set JAVA_VERSION
+ARG JAVA_VERSION=openjdk-21-jdk
+
+# Install Java
+RUN apt-get install -y $JAVA_VERSION
+RUN apt-get install -y nano
+
+
+# Setup JAVA_HOME
+ENV JAVA_HOME=/usr/lib/jvm/openjdk-21-jdk
+
+# Set entry point to show Java version and environment variable $JAVA_HOME
+ENTRYPOINT ["/bin/bash", "-c", "java --version && echo -n JAVA_HOME= && printenv JAVA_HOME"]
+
+# end of docker file
+--
+docker build . -t app1
+docker run -it --entrypoint /bin/sh  app1
+
+nano Hello.java 
+javac Hello.java && java Hello
+
