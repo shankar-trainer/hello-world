@@ -26,3 +26,9 @@ nano test1.py
  print("hello world")
 python3 test1.py
  
+
+
+install by pip 
+apt install -y python3-numpy
+apt install -y  python3-scipy
+
