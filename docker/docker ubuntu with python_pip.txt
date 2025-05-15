@@ -1,0 +1,28 @@
+FROM ubuntu:latest
+
+# Update Ubuntu packages
+RUN apt-get update -y
+RUN apt-get   upgrade -y
+
+RUN apt-get install -y nano
+
+
+#RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt update
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+
+
+
+ENTRYPOINT ["/bin/bash", "-c", "python3 --version "]
+
+
+# end of docker file
+--
+docker build . -t app1
+docker run -it --entrypoint /bin/sh  app1
+
+nano test1.py 
+ print("hello world")
+python3 test1.py
+ 
