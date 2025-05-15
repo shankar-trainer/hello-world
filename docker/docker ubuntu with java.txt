@@ -21,3 +21,6 @@ docker run -it --entrypoint /bin/sh  app1
 nano Hello.java 
 javac Hello.java && java Hello
 
+git clone 
+
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
