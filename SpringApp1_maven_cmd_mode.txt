@@ -1,0 +1,12 @@
+<properties>
+<exec.mainClass>
+ com.waisbrot.MainClass
+</exec.mainClass>
+</properties>
+--
+ run mvn clean compile
+ run mvn exec:java
+or
+mvn clean compile && mvn exec:java
+--
+
