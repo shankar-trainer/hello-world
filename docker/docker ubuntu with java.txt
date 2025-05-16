@@ -13,14 +13,28 @@ ENV JAVA_HOME=/usr/lib/jvm/openjdk-21-jdk
 # Set entry point to show Java version and environment variable $JAVA_HOME
 ENTRYPOINT ["/bin/bash", "-c", "java --version && echo -n JAVA_HOME= && printenv JAVA_HOME"]
 
-
+# end of Dockerfile
 --
-docker build -t app1 .
-docker run -it --entrypoint /bin/sh  app1
+#docker build -t app1 .
+#docker run -it --entrypoint /bin/sh  app1
 
-nano Hello.java 
-javac Hello.java && java Hello
+#nano Hello.java 
+#javac Hello.java && java Hello
 
-git clone 
+#git clone 
 
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+#export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+
+# in pom.xml
+#<properties>
+# <exec.mainClass>
+# com.waisbrot.MainClass
+#</exec.mainClass>
+#</properties>
+#--
+# run mvn clean compile
+# run mvn exec:java
+#or
+#mvn clean compile && mvn exec:java
+#--
+
