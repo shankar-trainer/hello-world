@@ -1,0 +1,7 @@
+git pull  origin cts_2025_1
+
+Here is the syntax that could pull a remote branch to a local branch.
+
+git pull {repo} {remotebranchname}:{localbranchname}
+
+git pull origin xyz:xyz
