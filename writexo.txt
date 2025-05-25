@@ -1,11 +1,25 @@
+
+scikit
+
+https://hub.docker.com/r/devashishupadhyay/scikit-learn-docker
+$ docker pull devashishupadhyay/scikit-learn-docker
+Run:
+$ docker run -ti devashishupadhyay/scikit-learn-docker
+
+
+
+
 Spring Data Jpa | Prevent Infinite Recursion in Bidirectional mapping
 https://medium.com/@rahul302619/spring-data-jpa-prevent-infinite-recursion-in-bidirectional-mapping-c84ee8c1127f
  
 ml
-https://dl.ebooksworld.ir/books/Machine.Learning.with.PyTorch.and.Scikit-Learn.Sebastian.Raschka.Packt.9781801819312.EBooksWorld.ir.pdf
+https://dl.ebooksworld.ir/books/Machine.Learning.with.PyTorch.and.
+t-Learn.Sebastian.Raschka.Packt.9781801819312.EBooksWorld.ir.pdf
+
 async 
 https://www.w3schools.com/js/js_async.asp
 https://www.geeksforgeeks.org/async-await-function-in-javascript/
+
 django rest 
 https://repo.tzku.at/book/dev/python/buildingrestfulpythonwebservices.pdf   gud 
 https://nibmehub.com/opac-service/pdf/read/Beginning%20Django%20E-Commerce.pdf
@@ -15,6 +29,7 @@ https://radixweb.com/blog/create-rest-api-using-django-rest-framework
 https://docs.djangoproject.com/en/2.2/intro/tutorial01/
 https://thecodinginterface.com/blog/django-auth-part1/
 https://testdriven.io/blog/drf-basics/
+
 advanced rest with django pdf  2023  below 
 https://is.muni.cz/th/uximq/output_Archive.pdf
 https://www.pl3databases.co.za/media/django_tutorial/Tutorial%20(2024-02).pdf
