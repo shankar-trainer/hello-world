@@ -1,0 +1,1 @@
+create table  IF NOT EXISTS insurance(insurance_id int primary key auto_increment,insurance_name varchar(29), insurance_maturity_date date);
