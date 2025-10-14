@@ -1,0 +1,49 @@
+<!-- person-details.component.html -->
+<form>
+  <div>
+    <label for="firstName">First Name:</label>
+    <input id="firstName" [(ngModel)]="person.firstName" name="firstName">
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" [(ngModel)]="person.lastName" name="lastName">
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" [(ngModel)]="person.email" name="email">
+  </div>
+
+  <h3>Addresses</h3>
+  <div *ngFor="let address of person.addresses; let i = index">
+    <h4>Address {{i + 1}} ({{address.type}})</h4>
+    <div>
+      <label for="street-{{i}}">Street:</label>
+      <input id="street-{{i}}" [(ngModel)]="address.street" name="street-{{i}}">
+    </div>
+    <div>
+      <label for="city-{{i}}">City:</label>
+      <input id="city-{{i}}" [(ngModel)]="address.city" name="city-{{i}}">
+    </div>
+    <div>
+      <label for="state-{{i}}">State:</label>
+      <input id="state-{{i}}" [(ngModel)]="address.state" name="state-{{i}}">
+    </div>
+    <div>
+      <label for="zipCode-{{i}}">Zip Code:</label>
+      <input id="zipCode-{{i}}" [(ngModel)]="address.zipCode" name="zipCode-{{i}}">
+    </div>
+    <div>
+      <label for="type-{{i}}">Type:</label>
+      <select id="type-{{i}}" [(ngModel)]="address.type" name="type-{{i}}">
+        <option value="home">Home</option>
+        <option value="work">Work</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <button type="button" (click)="removeAddress(i)">Remove Address</button>
+  </div>
+
+  <button type="button" (click)="addAddress()">Add Address</button>
+
+  <pre>{{ person | json }}</pre>
+</form>

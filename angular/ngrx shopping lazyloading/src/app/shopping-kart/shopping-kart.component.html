@@ -1,0 +1,34 @@
+<p>shopping-kart works!</p>
+
+<div class="container">
+  <h1>Shopping Cart Example with NgRx</h1>
+
+  <!-- Product List -->
+  <div class="product-list">
+    <h2>Products</h2>
+    <ul>
+      <li *ngFor="let product of products">
+        <span>{{ product.name }} - ${{ product.price }}</span>
+        <button (click)="addToCart(product)">Add to Cart</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Shopping Cart -->
+  <div class="shopping-cart">
+    <h2>
+      Shopping Cart ({{ cartItemCount$ | async }})
+    </h2>
+    <div *ngIf="(cartItems$ | async)?.length === 0">Your cart is empty.</div>
+    <ul *ngIf="(cartItems$ | async)?.length != 0;">
+      <li *ngFor="let item of (cartItems$ | async)">
+        <span>{{ item.name }} ({{ item.quantity }}) - ${{ item.price * item.quantity }}</span>
+        <button (click)="updateQuantity(item.id, 1)">+</button>
+        <button (click)="updateQuantity(item.id, -1)">-</button>
+        <button (click)="removeFromCart(item.id)">Remove</button>
+      </li>
+    </ul>
+    <h3>Total: ${{ cartTotal$ | async }}</h3>
+    <button (click)="clearCart()" [disabled]="(cartItems$ | async)?.length === 0">Clear Cart</button>
+  </div>
+</div>

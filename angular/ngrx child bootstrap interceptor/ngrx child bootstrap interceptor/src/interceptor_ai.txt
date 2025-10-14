@@ -1,0 +1,135 @@
+Angular 17 provides two primary ways to implement HTTP interceptors: functional interceptors and class-based (DI-based) interceptors. Both allow you to inspect and transform HTTP requests and responses, but they differ in their structure and how they leverage Angular's Dependency Injection (DI) system.
+1. Functional Interceptors:
+Structure:
+Functional interceptors are plain JavaScript functions that implement the HttpInterceptorFn interface. They receive the HttpRequest and HttpHandlerFn as arguments.
+Dependency Injection:
+They can leverage Angular's inject() function within their body to obtain dependencies (e.g., services, configuration values). This allows them to access other parts of your application without being a class themselves.
+Registration:
+Functional interceptors are registered within the provideHttpClient() function, typically in app.config.ts for standalone applications, using withInterceptors([]).
+Example:
+TypeScript
+
+import { HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { AuthService } from './auth.service'; // Example service
+
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const authService = inject(AuthService);
+  const authToken = authService.getToken(); // Get token from service
+
+  if (authToken) {
+    const clonedReq = req.clone({
+      headers: req.headers.set('Authorization', `Bearer ${authToken}`)
+    });
+    return next(clonedReq);
+  }
+  return next(req);
+};
+2. Class-Based (DI-Based) Interceptors:
+Structure:
+These are injectable classes that implement the HttpInterceptor interface. They have an intercept method that receives the HttpRequest and HttpHandler as arguments.
+Dependency Injection:
+Dependencies are injected through the class constructor, similar to other Angular services.
+Registration:
+Class-based interceptors are registered as multi-providers in the providers array of your module or app.config.ts (for standalone) using provideHttpClient(withInterceptorsFromDi()) and HTTP_INTERCEPTORS.
+Example:
+TypeScript
+
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { AuthService } from './auth.service'; // Example service
+
+@Injectable()
+export class AuthClassInterceptor implements HttpInterceptor {
+  constructor(private authService: AuthService) {}
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const authToken = this.authService.getToken();
+
+    if (authToken) {
+      const clonedReq = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${authToken}`)
+      });
+      return next.handle(clonedReq);
+    }
+    return next.handle(req);
+  }
+}
+
+// In app.config.ts or your module's providers array:
+// { provide: HTTP_INTERCEPTORS, useClass: AuthClassInterceptor, multi: true }
+Key Difference and Choice:
+Functional interceptors are generally preferred in new Angular 17+ projects, especially with standalone components, due to their simpler, more concise syntax and direct use of inject(). Class-based interceptors remain compatible and are suitable for existing projects or scenarios where a class structure is preferred for organizational reasons. The choice largely depends on your project's architecture and personal preference.
+
+======================
+interceptor in non standalone 
+
+Angular Interceptors provide a mechanism to inspect and transform HTTP requests and responses globally before they are sent to the server or 
+processed by the client. 
+They act as a middleware layer, allowing developers to centralize common tasks related to HTTP communication. 
+
+Purpose:
+Interceptors are used to handle cross-cutting concerns related to HTTP requests and responses, such as:
+Adding common headers (e.g., authorization tokens).
+Logging requests and responses for debugging.
+Centralized error handling.
+Modifying request or response bodies.
+
+Implementing caching mechanisms.
+Displaying loading indicators during HTTP calls.
+Implementation:
+To create an interceptor, a service needs to implement the HttpInterceptor interface from @angular/common/http. This interface requires the implementation of an intercept() method. 
+TypeScript
+
+    import { Injectable } from '@angular/core';
+    import {
+      HttpInterceptor,
+      HttpRequest,
+      HttpHandler,
+      HttpEvent
+    } from '@angular/common/http';
+    import { Observable } from 'rxjs';
+
+    @Injectable()
+    export class MyInterceptor implements HttpInterceptor {
+      intercept(
+        req: HttpRequest<any>,
+        next: HttpHandler
+      ): Observable<HttpEvent<any>> {
+        // Modify the request here, e.g., add a header
+        const modifiedReq = req.clone({
+          setHeaders: { 'X-Custom-Header': 'Value' }
+        });
+
+        // Pass the modified request to the next handler in the chain
+        return next.handle(modifiedReq);
+      }
+    }
+Registration: Interceptors are registered in the providers array of an Angular module (typically AppModule) using the HTTP_INTERCEPTORS token.
+TypeScript
+
+    import { NgModule } from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+    import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+    import { MyInterceptor } from './my.interceptor'; // Import your interceptor
+
+    @NgModule({
+      declarations: [
+        // ...
+      ],
+      imports: [BrowserModule, HttpClientModule],
+      providers: [
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: MyInterceptor,
+          multi: true // Essential for allowing multiple interceptors
+        }
+      ],
+      bootstrap: [AppComponent]
+    })
+    export class AppModule {}
+
+Interceptor Chain: Multiple interceptors can be registered, forming an interceptor chain. 
+Requests flow through the chain in the order they are provided, and responses flow back in the reverse order. 
+The last interceptor in the chain is always the HttpBackend, which handles communication with the server. 

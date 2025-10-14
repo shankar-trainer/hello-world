@@ -1,0 +1,5 @@
+<p>twoway works!</p>
+
+<h1>Two-Way Binding without ngModel</h1>
+<input [value]="text" (input)="onInputChange($event)" />
+<p>Current Value: {{ text }}</p>

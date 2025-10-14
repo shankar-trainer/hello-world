@@ -1,0 +1,11 @@
+<p>shopping-kart1 works!</p>
+  template: `
+    <div *ngFor="let item of cartItems$ | async">
+      {{ item.name }} - {{ item.quantity }} x {{ item.price | currency }}
+      <button (click)="removeItem(item.id)">Remove</button>
+    </div>
+    
+    <p>Total items: {{ totalItems$ | async }}</p>
+    <p>Total price: {{ totalPrice$ | async | currency }}</p>
+    <button (click)="addItem()">Add Example Product</button>
+  `

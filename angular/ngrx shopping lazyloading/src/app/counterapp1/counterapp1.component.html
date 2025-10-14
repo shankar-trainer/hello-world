@@ -1,0 +1,11 @@
+<div style="border:solid;width:40%;padding: 2%;margin-bottom: 10pt;">
+
+<p>counterapp1 works!</p>
+  <div>
+      <h1>Counter: {{ (count$ | async) }}</h1>
+      <button (click)="increment()">Increment</button>
+      <button (click)="decrement()">Decrement</button>
+      <button (click)="reset()">Reset</button>
+      <button (click)="incrementBy(5)">Increment by 5</button>
+    </div>
+</div>    

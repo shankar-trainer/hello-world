@@ -1,0 +1,21 @@
+<div class="container">
+    <form (ngSubmit)="deleteById()">
+        <div>
+            <label>Enter id </label>
+            <input [(ngModel)]="id" [ngModelOptions]="{standalone: true}">>
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">delete</button>
+        </div>
+    </form>
+
+    <div *ngIf="this.msg==='record deleted'">
+        <div>
+            {{this.msg}}
+        </div>
+        <div>
+            {{this.c1|json}}
+        </div>
+    </div>
+
+</div>

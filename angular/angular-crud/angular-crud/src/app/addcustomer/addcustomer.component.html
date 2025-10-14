@@ -1,0 +1,31 @@
+<div class="container">
+    <form (ngSubmit)="addRecord()">
+         <div class="form-group">
+            <label>Enter Name</label>
+            <input class="form-control" [(ngModel)]="c.name" [ngModelOptions]="{standalone: true}">
+         </div>
+         
+         <div class="form-group">
+            <label>Enter Salary</label>
+            <input class="form-control" [(ngModel)]="c.salary" [ngModelOptions]="{standalone: true}">
+         </div>
+
+         <div class="form-group">
+            <label>Enter Dob</label>
+            <input class="form-control" type="date" [(ngModel)]="c.dob" [ngModelOptions]="{standalone: true}">
+         </div>
+
+         <div>
+            <button type="submit">login</button>
+            <button type="reset">cancel</button>
+         </div>
+    </form>
+    
+    <div>
+    {{this.msg}}
+    {{this.c1|json}}
+    </div>
+    <div>
+        <button type="button" (click)="showall()" class="btn btn-primary" >show all</button>
+    </div>
+</div>
