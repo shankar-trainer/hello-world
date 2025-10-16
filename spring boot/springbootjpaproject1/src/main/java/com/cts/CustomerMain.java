@@ -1,11 +1,7 @@
 package com.cts;
 
-import com.cts.dao.CustomerRepository;
-import com.cts.model.Customer;
-import com.cts.service.CustomerService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 

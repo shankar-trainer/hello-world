@@ -1,14 +1,9 @@
 package com.example.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @Setter
@@ -21,9 +16,8 @@ import lombok.Setter;
 public class Book {
 
 	@Id
+    @GeneratedValue
 	private int isbn;
-	private String banme;
+	private String bname;
 	private float cost;
-	
-	
 }

@@ -17,9 +17,8 @@ class BookTest {
 	
 	 //book=new Book();
 	 //book.setIsbn(0);
-	 book=Book.builder().isbn(10001).banme("spring").cost(1200).build();
+	 book=Book.builder().isbn(10001).bname("spring").cost(1200).build();
 	 
-	
 	}
 	
 

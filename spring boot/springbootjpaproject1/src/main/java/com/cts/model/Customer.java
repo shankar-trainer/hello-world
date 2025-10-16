@@ -90,4 +90,14 @@ public class Customer {
     public void setSalary(float salary) {
         this.salary = salary;
     }
+
+    public Customer(int id, String name, float salary, LocalDate dob, Address address, Set<Car> carSet) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+        this.dob = dob;
+        this.address = address;
+        this.carSet = carSet;
+    }
+    public Customer(){}
 }
