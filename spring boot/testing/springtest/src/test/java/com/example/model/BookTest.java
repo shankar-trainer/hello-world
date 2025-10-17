@@ -12,7 +12,7 @@ class BookTest {
 	Book book1;
 	@BeforeEach
 	void setUp() throws Exception {
-	 book=new Book(10001,"spring",1200.0f);
+	// book=new Book(10001,"spring",1200.0f);
 	 book1=new Book(10001,"spring",1200.0f);
 	
 	 //book=new Book();

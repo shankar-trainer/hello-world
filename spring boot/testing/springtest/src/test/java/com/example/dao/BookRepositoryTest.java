@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -7,8 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
 import com.example.model.Book;
+import java.util.List;
+
 
 @DataJpaTest
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -34,7 +36,6 @@ public class BookRepositoryTest {
 	@Test
 	public void bookTestById() {
          var isbn=bookRepository.findAll().get(0).getIsbn();
-
 		assertTrue( bookRepository.findById(isbn).isPresent());
 	}
 
@@ -43,6 +44,14 @@ public class BookRepositoryTest {
         assertTrue( bookRepository.findBybname("spring in action").size()>=1);
     }
 
+    @Test
+    public void bookTestByCost() {
+        List<Book> bycost = bookRepository.findBycost(12000);
+        assertTrue( bycost.contains(book));
+        Book book1 = bycost.get(0);
+        assertTrue( book1.getCost()==12000);
+        assertEquals( book1.getCost(),12000);
+    }
 }
 /*
 mvn test -Dtest=com.example.dao.BookRepositoryTest
