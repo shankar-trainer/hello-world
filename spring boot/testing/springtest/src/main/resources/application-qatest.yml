@@ -11,11 +11,11 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
-  datasource:
-    url: jdbc:hsqldb:mem:testdb
-    username: sa
-    password: root
-    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+#  datasource:
+#    url: jdbc:hsqldb:mem:testdb
+#    username: sa
+#    password: root
+#    driver-class-name: org.hsqldb.jdbc.JDBCDriver
   h2:
     console:
       enabled: true
