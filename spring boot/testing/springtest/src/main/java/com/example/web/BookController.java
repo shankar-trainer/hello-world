@@ -32,14 +32,23 @@ public class BookController {
         }
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<Book> addBooks(@RequestBody  Book b) {
         try {
         log.info("addBook  controller",b);
             return new ResponseEntity<>(bookService.addBooks(b), HttpStatus.OK);
         } catch (BookException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> searchBooksById(@PathVariable Integer id) {
+        try {
+        log.info("searchBook  controller");
+            return new ResponseEntity<>(bookService.searchBookById(id), HttpStatus.OK);
+        } catch (BookException e) {
+            return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 

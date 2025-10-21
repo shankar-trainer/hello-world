@@ -36,4 +36,10 @@ Logger  logger = LoggerFactory.getLogger(BookService.class);
       logger.info("addBook service ",b);
         return bookRepository.save(b);
     }
+
+    public Book searchBookById(int id) {
+        logger.info("searchBookById service ",id);
+       return bookRepository.findById(id).orElseThrow(()->new BookException("Book not found with id "+id));
+
+    }
 }

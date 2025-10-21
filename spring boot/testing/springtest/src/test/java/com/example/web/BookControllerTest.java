@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
+
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -35,7 +36,7 @@ public class BookControllerTest {
 
     @Test
     void getAllBook() throws Exception {
-        Book book[]=new Book[]{
+        Book book[] = new Book[]{
                 Book.builder().bname("spring for dummies").cost(1200.0f).build(),
                 Book.builder().bname("spring for professional").cost(1100).build(),
                 Book.builder().bname("spring for beginners").cost(1240).build(),
@@ -43,9 +44,9 @@ public class BookControllerTest {
                 Book.builder().bname("spring for ejb developer").cost(1700).build(),
         };
 
-        Stream.of(book).forEach(book1->bookService.addBooks(book1));
+        Stream.of(book).forEach(book1 -> bookService.addBooks(book1));
 
-        List<Book> bookList= Arrays.asList(book);
+        List<Book> bookList = Arrays.asList(book);
 
         when(bookService.getAllBooks()).thenReturn(bookList);
         mockMvc.perform(MockMvcRequestBuilders.get("/book")).
@@ -55,6 +56,7 @@ public class BookControllerTest {
                 andExpect(jsonPath("$[0].bname").value("spring for dummies")).
                 andExpect(jsonPath("$[0].cost").value(Float.valueOf(1200.0f)));
     }
+
     private static ObjectMapper mapper = new ObjectMapper();
 
     @Test
@@ -90,7 +92,6 @@ public class BookControllerTest {
                 .andExpect(jsonPath("$.cost", is(3450.0)));
 //                .andExpect(jsonPath("$").isNotEmpty())    );
     }
-
 }
 //mvn test -Dtest=com.example.web.BookControllerTest#getAllBook
 //mvn test -Dtest=com.example.web.BookControllerTest#addBookTest
