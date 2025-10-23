@@ -1,0 +1,7 @@
+ {
+    "name":"amit kumar",
+    "dob":"2001-12-20",
+ }
+
+
+ResponseEntity = ResponseBody + status

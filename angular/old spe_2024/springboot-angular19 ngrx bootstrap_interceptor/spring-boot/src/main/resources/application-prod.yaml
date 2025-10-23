@@ -1,0 +1,18 @@
+#  my sql profile for production
+spring:
+  datasource:
+    username:  root
+    password:  mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://localhost:3306/db5
+
+  jpa:
+    hibernate:
+      ddl-auto:  update
+    show-sql:  true
+    properties:
+      hibernate:
+        dialect:  org.hibernate.dialect.MySQL8Dialect
+
+server:
+  port:  9090

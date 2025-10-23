@@ -1,0 +1,44 @@
+<div class="cart-container">
+  <div class="cart-header">
+    <span class="material-icons">shopping_cart</span>
+    <h2>Your Shopping Cart</h2>
+  </div>
+
+  <div class="cart-items">
+    @if ((items$ | async)?.length) {
+      @for (item of items$ | async; track item.id) {
+        <div class="cart-item">
+          <img
+            [src]="'https://picsum.photos/seed/' + item.id + '/200/200'"
+            alt="{{ item.name }}"
+            class="cart-item-image"
+          >
+          <div class="cart-item-details">
+            <div class="cart-item-name">{{ item.name }}</div>
+            <div class="cart-item-price">{{ item.price | currency }}</div>
+          </div>
+          <button class="btn btn-remove" (click)="removeFromCart(item.id)">
+            <span class="material-icons">delete</span>
+            Remove
+          </button>
+        </div>
+      }
+    } @else {
+      <div class="empty-cart">
+        <span class="material-icons">remove_shopping_cart</span>
+        <p>Your cart is empty</p>
+      </div>
+    }
+  </div>
+
+  @if ((items$ | async)?.length) {
+    <div class="cart-total">
+      <strong>Total: {{ total$ | async | currency }}</strong>
+    </div>
+  }
+
+  <button class="btn btn-add" (click)="addDemoProduct()">
+    <span class="material-icons">add_shopping_cart</span>
+    Add Demo Product
+  </button>
+</div>

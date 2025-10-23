@@ -1,0 +1,198 @@
+ngrx shopping cart example
+
+A basic NgRx shopping cart example demonstrates how to manage a collection of products in a centralized, predictable state. The core components of NgRx—Actions, Reducers, and Selectors—are used to handle adding, removing, and viewing items in the cart. 
+
+
+1. The store: Defining the application state
+	
+	The first step is to define the shape of your state. For a simple shopping cart, you need a way to hold the products in the cart and potentially the list of available products. 
+	typescript
+	// src/app/store/cart.state.ts
+	export interface CartItem {
+	  id: string;
+	  name: string;
+	  price: number;
+	  quantity: number;
+	}
+
+	export interface AppState {
+	  cart: {
+		items: CartItem[];
+	  };
+	  // Potentially other state branches, like `products` or `user`
+	}
+
+
+2. Actions: Describing state changes
+
+	Actions are unique events that describe a change in the state. They are dispatched by your components when a user performs an action, like clicking "Add to Cart". 
+	typescript
+
+	// src/app/store/cart.actions.ts
+	import { createAction, props } from '@ngrx/store';
+	import { CartItem } from './cart.state';
+
+	export const addItemToCart = createAction(
+	  '[Cart] Add Item to Cart',
+	  props<{ item: Omit<CartItem, 'quantity'> }>()
+	);
+
+	export const removeItemFromCart = createAction(
+	  '[Cart] Remove Item from Cart',
+	  props<{ itemId: string }>()
+	);
+
+	export const updateItemQuantity = createAction(
+	  '[Cart] Update Item Quantity',
+	  props<{ itemId: string, quantity: number }>()
+	);
+	Use code with caution.
+
+
+3. Reducer: Handling state transitions
+
+	A reducer is a pure function that takes the current state and a dispatched action, then returns a new, immutable state. It contains the logic for how the state changes in response to an action. 
+	typescript
+	// src/app/store/cart.reducer.ts
+	import { createReducer, on } from '@ngrx/store';
+	import { addItemToCart, removeItemFromCart, updateItemQuantity } from './cart.actions';
+	import { AppState } from './cart.state';
+
+	export const initialState: AppState = {
+	  cart: {
+		items: []
+	  }
+	};
+
+	export const cartReducer = createReducer(
+	  initialState,
+	  on(addItemToCart, (state, { item }) => {
+		const existingItem = state.cart.items.find(cartItem => cartItem.id === item.id);
+		if (existingItem) {
+		  return {
+			...state,
+			cart: {
+			  items: state.cart.items.map(cartItem =>
+				cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+			  )
+			}
+		  };
+		} else {
+		  return {
+			...state,
+			cart: {
+			  items: [...state.cart.items, { ...item, quantity: 1 }]
+			}
+		  };
+		}
+	  }),
+	  on(removeItemFromCart, (state, { itemId }) => ({
+		...state,
+		cart: {
+		  items: state.cart.items.filter(cartItem => cartItem.id !== itemId)
+		}
+	  })),
+	  on(updateItemQuantity, (state, { itemId, quantity }) => ({
+		...state,
+		cart: {
+		  items: state.cart.items.map(cartItem =>
+			cartItem.id === itemId ? { ...cartItem, quantity: quantity } : cartItem
+		  ).filter(cartItem => cartItem.quantity > 0)
+		}
+	  }))
+	);
+	Use code with caution.
+
+
+4. Selectors: Querying the state
+
+	Selectors are pure functions used to retrieve specific pieces of data from the store. They make it easy to derive data (like the cart's total) and ensure optimal performance. 
+	typescript
+	// src/app/store/cart.selectors.ts
+	import { createFeatureSelector, createSelector } from '@ngrx/store';
+	import { AppState } from './cart.state';
+
+	export const selectCartState = createFeatureSelector<AppState['cart']>('cart');
+
+	export const selectCartItems = createSelector(
+	  selectCartState,
+	  (state) => state.items
+	);
+
+	export const selectCartTotal = createSelector(
+	  selectCartItems,
+	  (items) => items.reduce((total, item) => total + (item.price * item.quantity), 0)
+	);
+	Use code with caution.
+
+
+5. Component: Dispatching actions and selecting data
+	
+	In an Angular component, you inject the NgRx Store to dispatch actions and select data using the selectors. The component then uses this data to update the view. 
+	typescript
+	// src/app/product-list/product-list.component.ts
+	import { Component } from '@angular/core';
+	import { Store } from '@ngrx/store';
+	import { addItemToCart } from '../store/cart.actions';
+	import { AppState, CartItem } from '../store/cart.state';
+
+	@Component({
+	  selector: 'app-product-list',
+	  template: `
+		<button (click)="onAddToCart(product)">Add to Cart</button>
+	  `,
+	})
+	export class ProductListComponent {
+	  product = { id: '1', name: 'Product A', price: 19.99 }; // Example product
+
+	  constructor(private store: Store<AppState>) {}
+
+	  onAddToCart(item: Omit<CartItem, 'quantity'>) {
+		this.store.dispatch(addItemToCart({ item }));
+	  }
+	}
+
+	// src/app/cart/cart.component.ts
+	import { Component } from '@angular/core';
+	import { Store } from '@ngrx/store';
+	import { selectCartItems, selectCartTotal } from '../store/cart.selectors';
+	import { AppState } from '../store/cart.state';
+
+	@Component({
+	  selector: 'app-cart',
+	  template: `
+		<div *ngFor="let item of cartItems$ | async">
+		  {{ item.name }} - {{ item.quantity }} x {{ item.price | currency }}
+		</div>
+		<div>Total: {{ cartTotal$ | async | currency }}</div>
+	  `,
+	})
+	export class CartComponent {
+	  cartItems$ = this.store.select(selectCartItems);
+	  cartTotal$ = this.store.select(selectCartTotal);
+
+	  constructor(private store: Store<AppState>) {}
+	}
+
+
+
+6. Module: Integrating NgRx
+	
+	Finally, you must integrate NgRx into your application by importing and registering the StoreModule in your root or feature module. 
+	typescript
+	// src/app/app.module.ts
+	import { NgModule } from '@angular/core';
+	import { BrowserModule } from '@angular/platform-browser';
+	import { StoreModule } from '@ngrx/store';
+	import { cartReducer } from './store/cart.reducer';
+
+	@NgModule({
+	  imports: [
+		BrowserModule,
+		StoreModule.forRoot({ cart: cartReducer })
+	  ],
+	  // ...
+	})
+	export class AppModule {}
+	Use code with caution.
+

@@ -1,0 +1,17 @@
+<div class="container">
+    <h1>All Books</h1>
+
+<table  class="table table-striped table-bordered  w-50 bg-secondary" >
+    <tr style="border:solid">
+        <th>isbn</th>
+        <th>bname</th>
+</tr>
+
+    <tr *ngFor="let b of book|async" style="border:solid">
+            <td>{{b.isbn}}</td>
+            <td>{{b.bname}}</td>
+    </tr>
+
+</table>
+
+</div>
