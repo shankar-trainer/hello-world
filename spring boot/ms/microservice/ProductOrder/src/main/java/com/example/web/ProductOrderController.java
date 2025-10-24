@@ -2,7 +2,8 @@ package com.example.web;
 
 import com.example.exception.ProductOrderException;
 import com.example.model.ProductOrder;
-import com.example.service.ProductOrderService;
+//import com.example.service.ProductOrderService;
+import com.example.service.ProductOrderService1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/productorder")
+
 public class ProductOrderController {
 
     @Autowired
-    ProductOrderService productOrderService;
+//    ProductOrderService productOrderService;
+    ProductOrderService1 productOrderService;
 
     @PostMapping
     public ResponseEntity<ProductOrder> addProduct(@RequestBody ProductOrder productOrder) {
@@ -27,7 +30,5 @@ public class ProductOrderController {
         } catch (Exception e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
-
     }
-
 }
