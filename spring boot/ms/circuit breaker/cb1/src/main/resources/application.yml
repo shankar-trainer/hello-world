@@ -1,0 +1,32 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      PRODUCT:
+        sliding-window-type: COUNT_BASED
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        register-health-indicator: true
+server:
+  port: 5050
+spring:
+  application:
+    name: product-feign-client
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include:
+          - health
+          - circuitbreaker
+  health:
+    circuitbreakers:
+      enabled: true
+#        include: health,circuitbreakers
