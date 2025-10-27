@@ -21,6 +21,7 @@ public interface ProductFeign {
     @GetMapping("/product/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") int productId) ;
 
+
     @GetMapping("/product")
     public ResponseEntity<List<ProductDTO>> getAllProducts() ;
 }
