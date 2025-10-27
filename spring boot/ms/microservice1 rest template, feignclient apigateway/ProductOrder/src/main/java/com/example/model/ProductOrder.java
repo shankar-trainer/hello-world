@@ -17,8 +17,4 @@ public class ProductOrder {
     private LocalDate orderDate;
     private String location;
     private int productId;
-
-
-
-
 }

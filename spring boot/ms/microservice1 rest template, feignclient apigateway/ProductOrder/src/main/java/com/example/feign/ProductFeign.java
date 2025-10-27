@@ -15,7 +15,6 @@ import java.util.List;
 @FeignClient(name = "PRODUCT")
 public interface ProductFeign {
 
-
     @PostMapping("/product")
     public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO product) ;
 

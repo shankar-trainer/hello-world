@@ -16,15 +16,14 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-     private ProductService productService;
+    private ProductService productService;
 
     @PostMapping
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
 
         try {
             return new ResponseEntity<>(productService.addProduct(product), HttpStatus.OK);
-        }
-        catch (ProductException e) {
+        } catch (ProductException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
 
@@ -35,8 +34,7 @@ public class ProductController {
     public ResponseEntity<Product> getProductById(@PathVariable("id") int productId) {
         try {
             return new ResponseEntity<>(productService.getProductById(productId), HttpStatus.OK);
-        }
-        catch (ProductException e) {
+        } catch (ProductException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
@@ -45,10 +43,9 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAllProducts() {
         try {
             return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
-        }
-        catch (ProductException e) {
+        } catch (ProductException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
-    }
+}
