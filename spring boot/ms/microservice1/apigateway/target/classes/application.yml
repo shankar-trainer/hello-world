@@ -1,0 +1,18 @@
+server:
+  port: 7070
+spring:
+#  main:
+#    web-application-type: reactive
+  application:
+     name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: product
+          uri: http://localhost:8080
+          predicates:
+            - Path=/product/**
+        - id: product-order
+          uri: http://localhost:9090
+          predicates:
+            - Path=/productorder/**
