@@ -1,0 +1,45 @@
+resilience4j:
+  circuitbreaker:
+    instances:
+      PRODUCT:
+        sliding-window-type: COUNT_BASED
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        register-health-indicator: true
+server:
+  port: 5050
+spring:
+  application:
+    name: product-feign-client
+  datasource:
+    url: jdbc:mysql://localhost:3306/db3
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      hibernate:
+        ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include:
+          - health
+          - circuitbreaker
+  health:
+    circuitbreakers:
+      enabled: true
+
+
