@@ -1,0 +1,83 @@
+<header class="dashboard-header">
+  <a routerLink="/dashboard" routerLinkActive="active">
+      <h1>Dashboard Tech City</h1>
+    </a>  
+  <nav>
+    <a routerLink="/dashboard/ocorrencias" routerLinkActive="active">
+      <span class="icon">📋</span> Ocorrências
+    </a>
+    <a routerLink="/admin" routerLinkActive="active">
+      <span class="icon">👤</span> Usuários
+    </a>
+          <a routerLink="/relatorio" routerLinkActive="active">
+      <span class="icon">📋</span> Relatórios
+    </a>
+  </nav>
+  <button (click)="logout()">Sair</button>
+</header>
+
+<main class="dashboard-main">
+  <!-- Ícones flutuantes de fundo -->
+  <div class="animated-bg">
+    <span class="icon alert" data-speed="0.3">⚠️</span>
+    <span class="icon building" data-speed="0.2">🏢</span>
+    <span class="icon car" data-speed="0.25">🚗</span>
+    <span class="icon tree" data-speed="0.15">🌳</span>
+    <span class="icon fire" data-speed="0.35">🔥</span>
+  </div>
+
+  <div class="list-container">
+    <h2>Gerenciamento de Ocorrências</h2>
+
+    <div *ngIf="isLoading" class="loading">Carregando ocorrências...</div>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <div class="cards-grid" *ngIf="!isLoading && ocorrencias.length > 0">
+      <div class="ocorrencia-card" *ngFor="let o of ocorrencias">
+        <h3>{{ o.titulo }}</h3>
+        <p><strong>ID:</strong> {{ o.id }}</p>
+        <p><strong>Data:</strong> {{ o.data | date:'dd/MM/yyyy HH:mm' }}</p>
+        <p><strong>Descrição:</strong> {{ o.descricao }}</p>
+        <div class="card-actions">
+          <button class="edit-btn" (click)="editOcorrencia(o)">Editar</button>
+          <button class="delete-btn" (click)="deleteOcorrencia(o.id!)">Deletar</button>
+        </div>
+      </div>
+    </div>
+
+    <p *ngIf="!isLoading && ocorrencias.length === 0">Nenhuma ocorrência encontrada.</p>
+
+    <!-- Botão flutuante de nova ocorrência -->
+    <button class="btn-add" (click)="openForm()">+ Nova Ocorrência</button>
+  </div>
+
+  <!-- Modal de criação/edição -->
+  <div class="modal-overlay" *ngIf="showFormModal">
+    <div class="modal">
+      <h2>{{ editMode ? 'Editar Ocorrência' : 'Nova Ocorrência' }}</h2>
+      <form [formGroup]="formOcorrencia" (ngSubmit)="salvarOcorrencia()">
+        <label>
+          Título
+          <input formControlName="titulo" type="text" placeholder="Título da ocorrência" />
+        </label>
+
+        <label>
+          Descrição
+          <textarea formControlName="descricao" rows="4" placeholder="Descrição detalhada"></textarea>
+        </label>
+
+        <label>
+          Data
+          <input formControlName="data" type="datetime-local" />
+        </label>
+
+        <div class="modal-actions">
+          <button type="submit" [disabled]="formOcorrencia.invalid">
+            {{ editMode ? 'Salvar Alterações' : 'Criar Ocorrência' }}
+          </button>
+          <button type="button" class="cancel-btn" (click)="showFormModal = false">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

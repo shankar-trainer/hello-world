@@ -1,0 +1,44 @@
+<header class="dashboard-header">
+  <h1>Dashboard Tech City</h1>
+  <nav>
+    <a routerLink="/dashboard/ocorrencias" routerLinkActive="active">
+      <span class="icon">📋</span> Ocorrências
+    </a>
+    <a routerLink="/admin" routerLinkActive="active">
+      <span class="icon">👤</span> Usuários
+    </a>
+          <a routerLink="/relatorio" routerLinkActive="active">
+      <span class="icon">📋</span> Relatórios
+    </a>
+  </nav>
+  <button (click)="logout()">Sair</button>
+</header>
+
+<main class="dashboard-main">
+  <div class="animated-bg">
+  <span class="icon alert" data-speed="0.3">⚠️</span>
+  <span class="icon building" data-speed="0.2">🏢</span>
+  <span class="icon car" data-speed="0.25">🚗</span>
+  <span class="icon tree" data-speed="0.15">🌳</span>
+  <span class="icon fire" data-speed="0.35">🔥</span>
+</div>
+
+
+  <section class="cards-container">
+  <div class="card">
+    <h2>Ocorrências</h2>
+    <p>Visualize e gerencie todas as ocorrências cadastradas.</p>
+    <a routerLink="ocorrencias" class="btn-card">Acessar</a>
+  </div>
+  <div class="card">
+    <h2>Usuários</h2>
+    <p>Gerencie usuários, permissões e roles do sistema.</p>
+    <a routerLink="/admin" class="btn-card">Acessar</a>
+  </div>
+    <div class="card">
+    <h2>Relatórios</h2>
+    <p>Gere relatórios de usuários.</p>
+    <a routerLink="/relatorio" class="btn-card">Acessar</a>
+  </div>
+</section>
+</main>

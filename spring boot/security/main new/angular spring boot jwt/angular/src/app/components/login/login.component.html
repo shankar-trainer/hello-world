@@ -1,0 +1,44 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+
+<div class="login-container">
+  <!-- Fundo animado com ícones -->
+  <div class="animated-bg">
+    <span class="icon building"><i class="fa-solid fa-city"></i></span>
+    <span class="icon car"><i class="fa-solid fa-car"></i></span>
+    <span class="icon alert"><i class="fa-solid fa-triangle-exclamation"></i></span>
+    <span class="icon tree"><i class="fa-solid fa-tree"></i></span>
+    <span class="icon fire"><i class="fa-solid fa-fire"></i></span>
+  </div>
+
+  <!-- Card de Login e Registro -->
+  <div class="login-card">
+    <img src="/assets/img/logotc.png" alt="logo" class="login-logo">
+    <h2 class="title">Tech City</h2>
+
+    <!-- Login -->
+    <form (ngSubmit)="login()" class="form-login">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="credentials.username" name="username" placeholder=" " required />
+        <label>Usuário</label>
+      </div>
+
+      <div class="form-group">
+        <input type="password" [(ngModel)]="credentials.password" name="password" placeholder=" " required />
+        <label>Senha</label>
+      </div>
+
+      <button type="submit" class="btn-login">Entrar</button>
+
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+
+    <div class="footer">
+  <p>Esqueceu a senha? <a href="#">Recuperar</a></p>
+  <p>Não tem conta? <a routerLink="/register">Registrar</a></p>
+</div>
+  </div>
+</div>

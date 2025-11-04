@@ -1,0 +1,54 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+<div class="auth-container">
+  <!-- Fundo animado com ícones -->
+  <div class="animated-bg">
+    <span class="icon building"><i class="fa-solid fa-city"></i></span>
+    <span class="icon car"><i class="fa-solid fa-car"></i></span>
+    <span class="icon alert"><i class="fa-solid fa-triangle-exclamation"></i></span>
+    <span class="icon tree"><i class="fa-solid fa-tree"></i></span>
+    <span class="icon fire"><i class="fa-solid fa-fire"></i></span>
+  </div>
+
+  <!-- Card de Registro -->
+  <div class="login-card">
+    <h2 class="title">Registrar</h2>
+
+    <form (ngSubmit)="register()" class="form-login">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="registerData.fullname" name="fullname" placeholder=" " />
+        <label>Nome completo</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" [(ngModel)]="registerData.username" name="username" placeholder=" " required />
+        <label>Usuário</label>
+      </div>
+
+      <div class="form-group">
+        <input type="email" [(ngModel)]="registerData.email" name="email" placeholder=" " />
+        <label>E-mail</label>
+      </div>
+
+      <div class="form-group">
+        <input type="password" [(ngModel)]="registerData.password" name="password" placeholder=" " required />
+        <label>Senha</label>
+      </div>
+
+      <div class="form-group">
+        <input type="password" [(ngModel)]="registerData.confirmPassword" name="confirmPassword" placeholder=" " required />
+        <label>Confirmar Senha</label>
+      </div>
+
+      <button type="submit" class="btn-register">Registrar</button>
+      <p class="error-message" *ngIf="registerError">{{ registerError }}</p>
+    </form>
+
+    <div class="footer">
+      <p>Já tem conta? <a routerLink="/">Login</a></p>
+    </div>
+  </div>
+</div>

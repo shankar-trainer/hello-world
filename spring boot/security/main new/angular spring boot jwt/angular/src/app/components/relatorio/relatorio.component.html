@@ -1,0 +1,59 @@
+<header class="dashboard-header">
+  <a routerLink="/dashboard" routerLinkActive="active">
+      <h1>Dashboard Tech City</h1>
+    </a>  
+  <nav>
+    <a routerLink="/dashboard/ocorrencias" routerLinkActive="active">
+      <span class="icon">📋</span> Ocorrências
+    </a>
+    <a routerLink="/admin" routerLinkActive="active">
+      <span class="icon">👤</span> Usuários
+    </a>
+          <a routerLink="dashboard/relatorio" routerLinkActive="active">
+      <span class="icon">📋</span> Relatórios
+    </a>
+  </nav>
+</header>
+
+<main class="dashboard-main">
+  <!-- Ícones flutuantes de fundo -->
+
+
+<div class="relatorio-container">
+
+    <div class="animated-bg">
+    <span class="icon alert" data-speed="0.3">⚠️</span>
+    <span class="icon building" data-speed="0.2">🏢</span>
+    <span class="icon car" data-speed="0.25">🚗</span>
+    <span class="icon tree" data-speed="0.15">🌳</span>
+    <span class="icon fire" data-speed="0.35">🔥</span>
+  </div>
+  
+  <h2>📊 Relatório de Ocorrências por Usuário</h2>
+
+  <div class="input-area">
+    <label for="userId">ID do Usuário:</label>
+    <input
+      type="number"
+      id="userId"
+      [(ngModel)]="userId"
+      placeholder="Digite o ID do usuário"
+    />
+    <button (click)="gerarRelatorio()" [disabled]="carregando">
+      {{ carregando ? 'Gerando...' : 'Gerar Relatório' }}
+    </button>
+  </div>
+
+  <div *ngIf="erro" class="erro">
+    ⚠️ {{ erro }}
+  </div>
+
+  <div *ngIf="relatorio" class="resultado">
+    <h3>Resultado:</h3>
+    <p><strong>ID do Usuário:</strong> {{ relatorio.userId }}</p>
+    <p><strong>Total de Ocorrências:</strong> {{ relatorio.qtdOcorrencias }}</p>
+    <p><strong>Última Ocorrência:</strong> {{ relatorio.ultimaTitulo }}</p>
+    <p><strong>Data da Última:</strong> {{ relatorio.ultimaData | date:'dd/MM/yyyy HH:mm' }}</p>
+  </div>
+</div>
+</main>
