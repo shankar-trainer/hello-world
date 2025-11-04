@@ -4,17 +4,6 @@ https://raghuvardhankaranam.medium.com/implementing-jwt-authentication-using-ang
 Implementing JWT Authentication using Angular
 Raghuvardhan Karanam
 
-Follow
-6 min read
-·
-Aug 14, 2023
-108
-
-
-4
-
-
-
 Hello, In this blog, we’re diving into the world of web security. We will discuss what JWT Authentication is and how to implement it in Angular.
 
 But first, let’s discuss what is Authentication. When you log into a website, it needs to know it’s really you (that’s authentication) and what you’re allowed to do (that’s authorization). For example, you wouldn’t want just anyone to access your online banking or shopping accounts, right? That’s where JWT comes into the picture.
@@ -52,10 +41,14 @@ What are Interceptors?
 In Angular, Interceptors are like having checkpoints where changes can be made, like adding headers to a request or logging responses from a server. In our case, we’ll use an interceptor to automatically add our JWT to every request that needs it.
 
 Getting the Tools: Installing Necessary Packages
+
 To start working with JWTs in Angular, we’ll need to install a couple of packages. These are some extra tools that Angular needs to handle JWTs. They’re called `@auth0/angular-jwt` and `@angular/common/http`. We can get these using a tool called npm (Node Package Manager) by typing the following in our project directory:
 
 npm install @auth0/angular-jwt @angular/common/http
+
+
 Creating and Storing a JWT
+
 Creating a JWT usually happens on the server side when a user logs in. After validating the user’s credentials, the server will generate a JWT and send it back. On the client side (in our Angular app), we’ll receive this JWT and need to store it somewhere, usually in local storage. When you receive the response from the server after the user logins, you need to store it in the local storage as shown below:
 
 localStorage.setItem(‘access_token’, JSON.stringify(response.access_token));
