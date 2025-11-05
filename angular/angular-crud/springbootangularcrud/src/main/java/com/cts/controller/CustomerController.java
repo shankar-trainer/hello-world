@@ -1,8 +1,6 @@
 package com.cts.controller;
 
 import com.cts.exception.CustomerException;
-import com.cts.model.Address;
-import com.cts.model.Car;
 import com.cts.model.Customer;
 import com.cts.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,26 +23,7 @@ public class CustomerController {
         return customerService.getAll();
     }
 
-    @PostMapping("/car")
-    public Car addCar(@RequestBody Car car) {
-       return customerService.addCar(car) ;
-    }
 
-    @GetMapping("/car")
-    public List<Car> getAllCar() {
-     return  customerService.getAllCar();
-    }
-
-
-    @PostMapping("/address")
-    public Address addAddress(@RequestBody  Address address) {
-       return customerService.addAddress(address) ;
-    }
-
-    @GetMapping("/address")
-    public List<Address> getAllAddress() {
-        return  customerService.getAllAddress();
-    }
 
     @PostMapping("/customer")
     public Customer addCustomer(@RequestBody Customer customer) {

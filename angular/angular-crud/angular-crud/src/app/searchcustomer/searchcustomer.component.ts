@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-searchcustomer',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './searchcustomer.component.html',
   styleUrl: './searchcustomer.component.css'
 })
@@ -25,29 +25,45 @@ export class SearchcustomerComponent {
     }
   }
   searchbyId() {
-    console.log(" search by id "+this.id);
+    console.log(" search by id " + this.id);
 
     this.service.searchCustomerById(this.id).subscribe((next) => {
-     this.c1 = next;
-      console.log(' found '+this.c1)
+      this.c1 = next;
+      this.msg = "Record found"
+      console.log(' found ' + this.c1)
     },
       (error) => {
-        console.log('error ',error)
+        console.log('error ', error)
         this.msg = error.error
-       this.c1=error.error 
-       console.log('error error  ',error.error )
-
+        //this.c1=error.error 
+        console.log('error error  ', error.error)
       }
     )
-  
+
+  }
+  searchbyId1() {
+    console.log(" search by id " + this.id);
+
+    this.service.searchCustomerById(this.id).subscribe((next) => {
+      this.c1 = next;
+      console.log(' found ' + this.c1)
+    },
+      (error) => {
+        console.log('error ', error)
+        this.msg = error.error
+        this.c1 = error.error
+        console.log('error error  ', error.error)
+      }
+    )
+
   }
 
-  gotoshowAll(){
-     this.router.navigate(['all'])
-    }
-  gotoadd(){
-     this.router.navigate(['add'])
-    }
+  gotoshowAll() {
+    this.router.navigate(['all'])
+  }
+  gotoadd() {
+    this.router.navigate(['add'])
+  }
 
 
 

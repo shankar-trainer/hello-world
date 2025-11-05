@@ -12,5 +12,6 @@ export const routes: Routes = [
   {path: 'search', component: SearchcustomerComponent},
   {path: 'delete', component: DeletecustomerComponent},
   {path: 'update', component: UpdatecustomerComponent},
-  {path: 'add', component: AddcustomerComponent}
+  {path: 'add', component: AddcustomerComponent},
+
 ];

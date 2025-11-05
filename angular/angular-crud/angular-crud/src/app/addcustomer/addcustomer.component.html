@@ -4,7 +4,7 @@
             <label>Enter Name</label>
             <input class="form-control" [(ngModel)]="c.name" [ngModelOptions]="{standalone: true}">
          </div>
-         
+
          <div class="form-group">
             <label>Enter Salary</label>
             <input class="form-control" [(ngModel)]="c.salary" [ngModelOptions]="{standalone: true}">
@@ -16,16 +16,16 @@
          </div>
 
          <div>
-            <button type="submit">login</button>
-            <button type="reset">cancel</button>
+            <button type="submit" class="btn btn-success" style="margin-right:10pt">add record</button>
+            <button type="reset" class="btn btn-success">cancel</button>
          </div>
     </form>
-    
+
     <div>
     {{this.msg}}
     {{this.c1|json}}
     </div>
     <div>
-        <button type="button" (click)="showall()" class="btn btn-primary" >show all</button>
+        <button type="button" (click)="showall()" class="btn btn-primary mt-2" >show all</button>
     </div>
 </div>

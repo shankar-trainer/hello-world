@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer1 } from './addcustomer/model/customer1';
+import { Customer } from './allcustomer/model/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,8 @@ export class CustomerService {
   
   searchCustomerById(id:number):Observable<any>{
     console.log("service serchby id",id);
-    
-   return  this.http.get(`http://localhost:8080/customer/${id}`)
+  return  this.http.get(`http://localhost:8080/customer/${id}`)
+  //  return <Observable<Customer>> this.http.get(`http://localhost:8080/customer/${id}`)
   }
 
   
