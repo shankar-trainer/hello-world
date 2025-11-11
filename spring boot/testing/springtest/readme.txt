@@ -1,6 +1,6 @@
 using @profile 
 in config\DatabaseConfig.java  add DataSource for all three
-no nned to add these values now in yml or properties file 
+no need to add these values now in yml or properties file 
 comment it or delete it.
 now in application.yml add the spring.profile.active 
 
