@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter username">
+          <div *ngIf="f['username'].invalid && (f['username'].dirty || f['username'].touched)">
+            <div *ngIf="f['username'].errors?.['required']"> User name is required </div>
+          </div>
+        </div>
+    
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+          <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)">
+            <div *ngIf="f['password'].errors?.['required']"> Password is required </div>
+          </div>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top: 6px;">Login</button>
+    </form>
+  </div>
+</div>
+</div>

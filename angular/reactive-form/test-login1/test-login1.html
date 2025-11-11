@@ -1,0 +1,30 @@
+<form [formGroup]="myForm">
+  <div>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" formControlName="firstName">
+    <div *ngIf="myForm.get('firstName')?.invalid && myForm.get('firstName')?.touched">
+      <div *ngIf="myForm.get('firstName')?.errors?.['required']">First Name is required.</div>
+      <div *ngIf="myForm.get('firstName')?.errors?.['minlength']">First Name must be at least 3 characters long.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email">
+    <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
+      <div *ngIf="myForm.get('email')?.errors?.['required']">Email is required.</div>
+      <div *ngIf="myForm.get('email')?.errors?.['email']">Invalid email format.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password">
+    <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched">
+      <div *ngIf="myForm.get('password')?.errors?.['required']">Password is required.</div>
+      <div *ngIf="myForm.get('password')?.errors?.['pattern']">Password must contain at least 8 characters, including letters and numbers.</div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="myForm.invalid">Submit</button>
+</form>

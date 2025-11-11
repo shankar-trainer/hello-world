@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter username">
+          <div *ngIf="loginForm.get('username').invalid && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+            <div *ngIf="loginForm.get('username').errors?.['required']"> User name is required </div>
+          </div>
+        </div>
+    
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+          <div *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            <div *ngIf="loginForm.get('password').errors?.['required']"> Password is required </div>
+          </div>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top: 6px;">Login</button>
+    </form>
+  </div>
+</div>
+</div>
+
+<!-- 
+In Angular reactive forms, the .get() method is used to access a specific AbstractControl instance within a FormGroup or FormArray. 
+This method is particularly useful for retrieving individual FormControl instances or nested FormGroups/FormArrays.
+Key points about .get():
+It returns an AbstractControl (which is the base class for FormControl, FormGroup, and FormArray). You often need to cast it to the specific type if you want to access type-specific properties (like .controls for a FormArray).
+It accepts a string argument representing the path to the desired control. This path can use dot notation for nested controls.
+It returns null if the specified control does not exist.
+It is a safe way to access controls, especially when dealing with dynamic forms where controls might be added or removed. -->
