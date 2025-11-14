@@ -32,5 +32,4 @@ export class Counterapp1Component {
     this.store.dispatch(reset());
   }
 
-
 }

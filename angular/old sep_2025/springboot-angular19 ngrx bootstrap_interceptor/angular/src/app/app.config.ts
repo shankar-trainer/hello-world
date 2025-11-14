@@ -28,8 +28,9 @@ export const appConfig: ApplicationConfig = {
     // provideExperimentalZonelessChangeDetection(),
     provideExperimentalZonelessChangeDetection(),
     provideRouter(routes),
-    // provideStore({ counter: counterReducer }),
-    provideStore({  cart: cartReducer  }),
+    provideStore({ counter: counterReducer }),
+    // use either counterReducer above or below cartReducer both will not work
+    //  provideStore({  cart: cartReducer  }),
     importProvidersFrom(HttpClientModule),
     provideHttpClient(
       // only functional 

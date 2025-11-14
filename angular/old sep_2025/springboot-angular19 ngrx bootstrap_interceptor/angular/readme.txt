@@ -38,3 +38,9 @@ json-server --watch db.json
      importProvidersFrom(HttpClientModule) for HttpClient 
      
 ng generate interceptor logging
+
+
+=== ngrx counter and shopping kart == inside app.config.ts
+ provideStore({ counter: counterReducer }),
+    // use either counterReducer above or below cartReducer both will not work
+    //  provideStore({  cart: cartReducer  }),
