@@ -3,6 +3,7 @@ https://www.geeksforgeeks.org/angular-js/how-to-use-authguard-for-angular-17-rou
 How to use AuthGuard For Angular 17 routes?
 
 Last Updated : 23 Jul, 2025
+
 In Angular applications, it is often necessary to protect certain routes to prevent unauthorized access. The Angular Router provides a feature called Route Guards, which allows you to control access to routes based on specific conditions. One of the commonly used Route Guards is AuthGuard, which checks if the user is authenticated before allowing access to a particular route. In this article, we will explore how to set up and use the AuthGuard in an Angular 17 application.
 
 Prerequisites:
@@ -31,6 +32,7 @@ Before we create and implement the auth guard, first we need to make some compon
 
 ng g c auth
 ng g c dashboard
+
 We will create a simple auth service file so it will be easy to manage auth state in our application. Also we will update our app.router.ts and app, auth and dashboard components to have a basic skeleton of a real world application.
 
 Step 3: Create Auth Service:
