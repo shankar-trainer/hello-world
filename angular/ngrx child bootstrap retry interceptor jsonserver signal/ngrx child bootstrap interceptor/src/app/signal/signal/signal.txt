@@ -1,0 +1,196 @@
+Signals are a reactive data model that provides a simple way to manage and track changes in state within an application. A Signal in Angular is a variable whose value can change over time and any change to this value will automatically propagate to the parts of the application that depend on it.
+
+Key Concepts
+Signals: A reactive primitive that holds a value and notifies subscribers when the value changes.
+Effects: Functions that automatically re-run when the signals they depend on change effects can be used to trigger side effects based on signal changes.
+Signal Equality Functions: These are functions that compare the new values of a signal to its previous value to determine whether an update should trigger a re-run or effects or re-rendering.
+Effect Cleanup Functions: Functions that are called to clean up any side effects or resources when an effect re-runs or when the component is destroyed.
+
+
+The signal function is used to create a reactive data source. This data source can be used in templates or component logic and It automatically updates whenever the signals value changes.
+
+import { signal } from '@angular/core';
+
+const counterSignal = signal(0);
+
+// Increment the counter
+counterSignal.update(count => count + 1);
+
+// Get the current value
+console.log(counterSignal()); // Outputs: 1
+
+
+signal (initialValue): Creates a new signal with an initial value.
+counterSignal.update (fn): Updates the signal using the provided function.
+counterSignal(): Retrieves the current value of the signal.
+
+Using Effects
+Effect functions are a way to watch for changes in signals and trigger specific code when those changes occur. An effect is automatically re run whenever any signal it depends on changes.
+
+Example
+import { effect, signal } from '@angular/core';
+
+const count = signal(0);
+
+// Define an effect that logs the count whenever it changes
+effect(() => {
+    console.log(`Count changed to: ${count()}`);
+});
+
+// Update the signal value
+count.set(1);  // Logs: "Count changed to: 1"
+
+
+Signal Equality Functions
+These functions are used to optimize reactivity by determining if the value of a signal has actually changed. If the equality function returns false angular can avoid unnecessary updates.
+
+Example
+import { signal, signalEquality } from '@angular/core';
+
+const mySignal = signal({ x: 10, y: 20 }, { equals: (a, b) => a.x === b.x && a.y === b.y });
+
+mySignal.set({ x: 10, y: 20 });  // No effect triggered, as the values are considered equal
+mySignal.set({ x: 15, y: 20 });  // Effect triggered, as the x value has changed
+Effect Cleanup Functions
+When an effect function is re run due to a change in one of its signals a cleanup function can be used to clean up resources or side effects from the previous run before the new effect is executed.
+
+Example:
+
+import { effect, signal } from '@angular/core';
+
+const count = signal(0);
+
+effect((onCleanup) => {
+    const interval = setInterval(() => {
+        console.log(`Interval count: ${count()}`);
+    }, 1000);
+
+    // Define the cleanup function to clear the interval
+    onCleanup(() => clearInterval(interval));
+});
+
+count.set(1);  // Triggers re-run, and the old interval is cleared
+============
+In Angular, the effect() function provides a way to react to changes in signals and perform side effects within your components, directives, or services. It is particularly useful for synchronizing state with external systems or for interacting with non-Angular APIs.
+Here's an example of how to use effect() within an Angular component:
+TypeScript
+
+import { Component, effect, signal } from '@angular/core';
+
+@Component({
+  selector: 'app-example',
+  template: `
+    <p>Counter: {{ counter() }}</p>
+    <button (click)="increment()">Increment</button>
+  `,
+  standalone: true,
+})
+export class ExampleComponent {
+  counter = signal(0);
+
+  constructor() {
+    // This effect runs whenever the 'counter' signal changes.
+    effect(() => {
+      console.log(`Counter value changed to: ${this.counter()}`);
+      // You could perform other side effects here,
+      // such as updating local storage, calling an API,
+      // or interacting with a third-party library.
+    });
+  }
+
+  increment() {
+    this.counter.update(value => value + 1);
+  }
+}
+Explanation:
+signal(0): A signal is created to hold the counter value, initialized to 0.
+effect(() => { ... }): The effect() function is called within the component's constructor.
+Dependency Tracking: Inside the effect() callback, this.counter() is called. Angular automatically tracks this as a dependency.
+Execution: The effect() callback will execute:
+Once initially when the component is created.
+Every time the counter signal's value changes (e.g., when increment() is called).
+Side Effects: The console.log() statement demonstrates a simple side effect. In real-world scenarios, you might use this to:
+Persist data to localStorage.
+Make API calls based on signal changes.
+Update a chart or other UI element when data signals change.
+Synchronize a form with a Customer signal.
+
+Key Considerations:
+Asynchronous Nature: Effects are generally asynchronous. While component effects run during change detection, root effects (created outside the component tree) run as microtasks.
+Avoid Writing Signals in Effects: Generally, avoid directly updating signals within an effect() unless you have a clear understanding of the implications and potential for infinite loops. Use computed() for deriving values synchronously.
+Cleanup: Effects can have a cleanup function returned from their callback, which runs before the effect re-executes or when the effect is destroyed. This is useful for unsubscribing from event listeners or cleaning up resources.
+
+Angular Signals provide a way to manage reactive state within an Angular application. Here are examples illustrating their usage:
+1. Writable Signals:
+TypeScript
+
+import { signal } from '@angular/core';
+
+const count = signal(0); // Initialize a signal with an initial value
+
+// Access the current value of the signal
+console.log(count()); // Outputs: 0
+
+// Update the signal's value using .set()
+count.set(5);
+console.log(count()); // Outputs: 5
+
+// Update the signal's value based on its previous value using .update()
+count.update(value => value + 1);
+console.log(count()); // Outputs: 6
+2. Computed Signals:
+TypeScript
+
+import { signal, computed } from '@angular/core';
+
+const firstName = signal('John');
+const lastName = signal('Doe');
+
+// Create a computed signal that depends on other signals
+const fullName = computed(() => `${firstName()} ${lastName()}`);
+
+console.log(fullName()); // Outputs: John Doe
+
+// When a dependency changes, the computed signal automatically updates
+firstName.set('Jane');
+console.log(fullName()); // Outputs: Jane Doe
+3. Effects:
+TypeScript
+
+import { signal, effect } from '@angular/core';
+
+const message = signal('Hello');
+
+// Define an effect that runs when its dependencies change
+effect(() => {
+  console.log(`Current message: ${message()}`);
+});
+
+message.set('World'); // This will trigger the effect to run again
+// Outputs:
+// Current message: Hello
+// Current message: World
+4. Signals in Components:
+TypeScript
+
+import { Component, signal, computed } from '@angular/core';
+
+@Component({
+  selector: 'app-counter',
+  template: `
+    <h3>Counter: {{ counter() }}</h3>
+    <h3>Doubled Counter: {{ doubledCounter() }}</h3>
+    <button (click)="increment()">Increment</button>
+  `,
+})
+export class CounterComponent {
+  counter = signal(0); // Writable signal within a component
+
+  doubledCounter = computed(() => this.counter() * 2); // Computed signal
+
+  increment() {
+    this.counter.update(value => value + 1);
+  }
+}
+
+

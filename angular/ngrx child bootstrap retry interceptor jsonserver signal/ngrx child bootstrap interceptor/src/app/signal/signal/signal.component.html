@@ -1,0 +1,21 @@
+<div class="container">
+
+    <div class="border border-primary p-5 w-50 mt-5">
+        count is {{ count() }}
+
+        <button class="btn btn-primary" (click)="increment()">
+            increment
+        </button>
+    </div>
+
+    <div class="card p-5 mt-5 w-50">
+
+        <div> no1 is {{ x() }}</div>
+        <div> no2 is {{ y() }}</div>
+        <div> sum is {{ sum }}</div>
+        <button class="btn btn-primary w-25" (click)="addition()">
+            addition
+        </button>
+
+    </div>
+</div>

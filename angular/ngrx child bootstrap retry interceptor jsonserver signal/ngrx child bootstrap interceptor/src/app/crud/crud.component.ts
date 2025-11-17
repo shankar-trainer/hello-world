@@ -16,8 +16,7 @@ export class CrudComponent {
   book: Observable<Book[]>;
 
   constructor(private service:BookService){
-      // this.book=service.getallbook();
-      this.book=service.getallbook1();
+      this.book=service.getallbook();
   }
 
 

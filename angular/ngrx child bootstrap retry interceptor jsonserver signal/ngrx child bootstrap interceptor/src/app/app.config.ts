@@ -10,7 +10,7 @@ import { counterReducer } from './counterapp1/counter.reducer';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { loggingInterceptor } from './logging.interceptor';
 import { ErrorInterceptor } from './error.interceptor';
-// import { counterReducer } from './client/client.store';
+import { cartReducer } from './shopping-kart/store/cart.reducer';
 
 
 export const appConfig: ApplicationConfig = {
@@ -29,6 +29,8 @@ export const appConfig: ApplicationConfig = {
     provideExperimentalZonelessChangeDetection(),
     provideRouter(routes),
     provideStore({ counter: counterReducer }),
+    // use either counterReducer above or below cartReducer both will not work
+    //  provideStore({  cart: cartReducer  }),
     importProvidersFrom(HttpClientModule),
     provideHttpClient(
       // only functional 
