@@ -1,4 +1,303 @@
+spring boot restful crud using "ApplicationContextInitializer" example
+ApplicationContextInitializer is typically used in integration tests to provide a dynamic and consistent testing environment (e.g., configuring a test database using Testcontainers) rather than for building the main production CRUD application logic itself. The core logic of a Spring Boot RESTful CRUD service uses standard Spring annotations like @RestController, @Autowired, @Service, and @Repository. 
+Below is a combined example demonstrating a standard Spring Boot CRUD API, along with a testing example using an ApplicationContextInitializer.
+1. The Standard Spring Boot RESTful CRUD Application
+This is the main application code for a simple "Product" CRUD API.
+Product.java (Entity)
+java
+package com.example.crud.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private double price;
+
+    // Standard getters, setters, constructors
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
+}
+Use code with caution.
+
+ProductRepository.java (Repository)
+java
+package com.example.crud.repository;
+
+import com.example.crud.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Long> {
+}
+Use code with caution.
+
+ProductService.java (Service)
+java
+package com.example.crud.service;
+
+import com.example.crud.model.Product;
+import com.example.crud.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class ProductService {
+    @Autowired
+    private ProductRepository productRepository;
+
+    public Product createProduct(Product product) {
+        return productRepository.save(product);
+    }
+
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
+
+    public Optional<Product> getProductById(Long id) {
+        return productRepository.findById(id);
+    }
+    
+    // ... update and delete methods (standard CRUD)
+}
+Use code with caution.
+
+ProductController.java (Controller)
+java
+package com.example.crud.controller;
+
+import com.example.crud.model.Product;
+import com.example.crud.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/products")
+public class ProductController {
+    @Autowired
+    private ProductService productService;
+
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) {
+        return productService.createProduct(product);
+    }
+
+    @GetMapping
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        return productService.getProductById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+    
+    // ... put and delete endpoints (standard CRUD)
+}
+Use code with caution.
+
+2. Using ApplicationContextInitializer in Integration Tests
+This is where ApplicationContextInitializer is typically used. It can dynamically configure environment properties for tests, such as redirecting the application's database connection to a temporary container managed by Testcontainers. 
+ProductControllerIT.java (Integration Test)
+This example requires the testcontainers dependency.
+java
+package com.example.crud;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.support.TestPropertyValues;
+import org.springframework.test.web.reactive.server.WebTestClient;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+
+@Testcontainers
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ContextConfiguration(initializers = ProductControllerIT.Initializer.class) // Link the initializer
+public class ProductControllerIT {
+
+    @Autowired
+    private WebTestClient webTestClient; // Used for calling REST endpoints
+
+    @Container // Manages the lifecycle of the Docker container
+    public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:13")
+            .withDatabaseName("testdb")
+            .withUsername("testuser")
+            .withPassword("testpass");
+
+    // The ApplicationContextInitializer implementation
+    static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+        @Override
+        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
+            // Dynamically set Spring properties to use the Testcontainers instance
+            TestPropertyValues.of(
+                    "spring.datasource.url=" + postgres.getJdbcUrl(),
+                    "spring.datasource.username=" + postgres.getUsername(),
+                    "spring.datasource.password=" + postgres.getPassword()
+            ).applyTo(configurableApplicationContext.getEnvironment());
+        }
+    }
+    
+    // An example test case
+    @Test
+    void whenGetAllProducts_thenStatusIsOk() {
+        webTestClient.get().uri("/api/products")
+                .exchange()
+                .expectStatus().isOk();
+                // Add further assertions here
+    }
+}
+
+=================== example crud =============
+ApplicationContextInitializer is typically used in Spring Boot for advanced configuration scenarios, most notably in integration testing to dynamically configure environment properties (e.g., database connection details for Testcontainers). It is not part of the standard pattern for building the core RESTful CRUD functionality itself, which relies on standard Spring annotations like @RestController and @Repository. 
+Here is an example demonstrating how ApplicationContextInitializer is used in an integration test for a Spring Boot RESTful CRUD application.
+Example Scenario: Dynamic Database Configuration in Integration Tests
+This example uses ApplicationContextInitializer with the @ContextConfiguration annotation to dynamically set the database URL, username, and password for an integration test using a Docker container managed by Testcontainers. 
+1. The CRUD Application (Standard Structure)
+Your main application code (entities, repositories, service, and controllers) will follow the standard Spring Boot CRUD pattern.
+Example Entity:
+java
+package com.example.demo.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private double price;
+    // Getters, setters, constructors...
+}
+Example Repository:
+java
+package com.example.demo.repository;
+
+import com.example.demo.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Long> {
+}
+Example Controller:
+java
+package com.example.demo.controller;
+
+import com.example.demo.model.Product;
+import com.example.demo.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/products")
+public class ProductController {
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @GetMapping
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
+
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) {
+        return productRepository.save(product);
+    }
+    // Other CRUD methods (GET by ID, PUT, DELETE) would also be here...
+}
+2. The Integration Test with ApplicationContextInitializer
+This is where the ApplicationContextInitializer comes into play. It will configure the application context just before the tests run to use the dynamic details of the test database. 
+java
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.support.TestPropertyValues;
+import org.springframework.test.web.reactive.server.WebTestClient;
+import org.junit.jupiter.api.Test;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+
+@Testcontainers
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ContextConfiguration(initializers = ProductControllerIT.Initializer.class)
+public class ProductControllerIT {
+
+    // Use a static container so it's shared across all tests in this class
+    @Container
+    public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:13.3")
+            .withDatabaseName("testdb")
+            .withUsername("testuser")
+            .withPassword("testpass");
+
+    @Autowired
+    private WebTestClient webTestClient;
+
+    /**
+     * The ApplicationContextInitializer implementation.
+     * It runs before the Spring ApplicationContext is refreshed.
+     */
+    static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
+            TestPropertyValues.of(
+                    "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
+                    "spring.datasource.username=" + postgreSQLContainer.getUsername(),
+                    "spring.datasource.password=" + postgreSQLContainer.getPassword()
+            ).applyTo(configurableApplicationContext.getEnvironment());
+        }
+    }
+
+    @Test
+    void canCreateProduct() {
+        // Example test using WebTestClient to perform a POST request
+        webTestClient.post().uri("/api/products")
+                .bodyValue(new Product(null, "Test Product", 19.99))
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.name").isEqualTo("Test Product");
+    }
+}
+In this pattern, the Initializer class is solely responsible for bridging the gap between the dynamically started Testcontainers database and Spring's configuration, allowing the standard CRUD code to run without needing to know about the testing environment specifics. 
+
+
+=============================================================================
 spring boot ApplicationContextInitializer example
+
 An ApplicationContextInitializer in Spring Boot is used for programmatic configuration of the ApplicationContext before it is fully refreshed. Common use cases include adding custom property sources, activating specific profiles, or performing other setup logic that must occur early in the application lifecycle. 
 
 1. Implementation
@@ -69,13 +368,16 @@ Use code with caution.
 B. Declaratively (via spring.factories) 
 
 For an initializer that should apply to all applications that use a specific library, register it in a META-INF/spring.factories file within the library's JAR. This file should contain an entry like this: 
+
 properties
 org.springframework.context.ApplicationContextInitializer=com.example.demo.CustomApplicationContextInitializer
 
 Use code with caution.
+
 3. Verification
 Once registered and the application runs, the initializer will execute before the context is refreshed. You can verify this by checking the console output for the print statement. Any bean in your application can then access the custom property: 
 java
+
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Value;
