@@ -477,3 +477,421 @@ Mono<ApiResponse> responseMono = webClient.get()
     .bodyToMono(ApiResponse.class);
 In this example, the onStatus() method is used to handle 4xx client errors. If a 4xx error occurs, a custom exception is created and propagated through the reactive pipeline.
 
+=====================================================================
+
+Spring Boot WebFlux MongoDB Crud Example
+Akhil Zade
+
+Reactive programming
+If you are not familiar with this kind of programming approach, you have to know we are building applications based on data-stream and propagation of events/changes of data or conditions.
+
+Project Reactor
+It’s an interesting framework that brings reactive programming in Java after javaRx. The pillars of this library are two classes:
+
+Mono<T> — is a publisher that produces from 0 to 1 value of T
+Flux<T> — is a publisher that produces from 0 to N values of T
+Both classes follow a basic, but a fundamental principle:
+
+In this tutorial we will be looking at creating example using Spring Boot WebFlux + MongoDB Crud.
+
+Press enter or click to view image in full size
+
+In this article will create the example which will support fully non-blocking, also using mongodb as back-end database to utilise reactive programming completely.
+
+Follow steps from MongoDB Download for Windows.
+
+Project Structure
+
+Maven Dependency
+Add spring-boot-starter-webflux and spring-boot-starter-data-mongodb-reactive dependencies.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+ <parent>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-parent</artifactId>
+  <version>2.7.6</version>
+  <relativePath/> <!-- lookup parent from repository -->
+ </parent>
+ <groupId>com.core</groupId>
+ <artifactId>Spring_Boot_Webflux</artifactId>
+ <version>0.0.1-SNAPSHOT</version>
+ <name>Spring_Boot_Webflux</name>
+ <description>Demo project for Spring Boot</description>
+ <properties>
+  <java.version>11</java.version>
+ </properties>
+ <dependencies>
+  <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-webflux</artifactId>
+  </dependency>
+  <dependency>
+   <groupId>io.projectreactor</groupId>
+   <artifactId>reactor-test</artifactId>
+   <scope>test</scope>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-devtools</artifactId>
+   <scope>runtime</scope>
+   <optional>true</optional>
+  </dependency>
+  <dependency>
+   <groupId>org.projectlombok</groupId>
+   <artifactId>lombok</artifactId>
+   <optional>true</optional>
+  </dependency>
+  <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-test</artifactId>
+   <scope>test</scope>
+  </dependency>
+  <dependency>
+   <groupId>io.projectreactor</groupId>
+   <artifactId>reactor-test</artifactId>
+   <scope>test</scope>
+  </dependency>
+ </dependencies>
+
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+    <configuration>
+     <excludes>
+      <exclude>
+       <groupId>org.projectlombok</groupId>
+       <artifactId>lombok</artifactId>
+      </exclude>
+     </excludes>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+
+</project>
+Application Properties
+Under src/main/resources folder, open application.properties and write these lines.
+
+## MongoDB default port
+dbport=27017
+
+##MongoDB database name
+dbname=demo
+spring.data.mongodb.database=demo
+spring.data.mongodb.port=27017
+Webflux Configuration
+Configuration of Webflux In Project, You can create class and implement WebFluxConfigurer Interface. we need to add two most important annotation @EnableWebFlux @Configuration.
+
+package com.core.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.config.EnableWebFlux;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
+
+@Configuration
+@EnableWebFlux
+public class WebFluxConfig implements WebFluxConfigurer {
+}
+MongoDB Configuration
+Configuration of mongodb In Project, You can create class and extends AbstractReactiveMongoConfiguration class. we need to add two most important annotation @Configuration @EnableReactiveMongoRepositories.
+
+package com.core.config;
+
+import com.mongodb.reactivestreams.client.MongoClient;
+import com.mongodb.reactivestreams.client.MongoClients;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
+import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
+
+@Configuration
+@EnableReactiveMongoRepositories(basePackages = "com.core.repo")
+public class MongoConfig extends AbstractReactiveMongoConfiguration {
+
+    @Value("${port}")
+    private String port;
+
+    @Value("${dbname}")
+    private String dbName;
+
+    @Override
+    public MongoClient reactiveMongoClient() {
+        return MongoClients.create();
+    }
+
+    @Override
+    protected String getDatabaseName() {
+        return dbName;
+    }
+
+    @Bean
+    public ReactiveMongoTemplate reactiveMongoTemplate() {
+        return new ReactiveMongoTemplate(reactiveMongoClient(), getDatabaseName());
+    }
+
+
+}
+Entity Class
+You would never need to set the Id field as this will be generated by MongoDB. The class is annotated with @Document(collection = “organization”) as this needs to be stored in the database as organization collection.
+
+package com.core.entity;
+
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.Serializable;
+
+@Document
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public @Data class Organization implements Serializable {
+
+    @Id
+    private String orgId;
+    private String orgName;
+    private String orgEmail;
+    private Long contact;
+    private boolean isActive;
+
+
+}
+DTO Class
+DTOs or Data Transfer Objects are objects that carry data between processes in order to reduce the number of methods calls.
+
+package com.core.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public @Data class OrganizationDto implements Serializable {
+    private String orgId;
+    private String orgName;
+    private String orgEmail;
+    private boolean isActive;
+    private Long contact;
+}
+REST Controller
+Let’s focus now on the most important part of our backend application for the purpose we have in this guide: the Reactive Controller. First, let’s see the full code source, and then we’ll navigate through the different parts.
+
+package com.core.controller;
+
+import com.core.dto.OrganizationDto;
+import com.core.entity.Organization;
+import com.core.services.OrganizationService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.concurrent.ExecutionException;
+
+@RestController
+@RequestMapping(value = "/api/v1/org")
+@RequiredArgsConstructor
+@Slf4j
+public class OrganizationController {
+
+   private final OrganizationService orgService;
+
+    @PostMapping("/save")
+    public ResponseEntity<Mono<Organization>> save(@RequestBody OrganizationDto organizationDto) throws ExecutionException, InterruptedException {
+        Mono<Organization> orgSave = orgService.saveOrg(organizationDto);
+        return new ResponseEntity<Mono<Organization>>(orgSave, HttpStatus.OK);
+    }
+
+    @GetMapping("/{orgId}")
+    public ResponseEntity<Mono<Organization>> findById(@PathVariable("orgId") String id) {
+        Mono<Organization> findId = orgService.findById(id);
+        return new ResponseEntity<Mono<Organization>>(findId, HttpStatus.OK);
+    }
+
+ 
+    @GetMapping("/all")
+    public Flux<Organization> findAll() {
+        Flux<Organization> orgAll = orgService.findAll();
+        return orgAll;
+    }
+
+    @PutMapping("/update")
+    public Mono<Organization> update(@RequestBody OrganizationDto organizationDto) {
+        return orgService.update(organizationDto);
+    }
+
+    @DeleteMapping("/{orgId}")
+    public void delete(@PathVariable("orgId") String id) {
+        orgService.delete(id).subscribe();
+    }
+}
+Service Interface
+you want to follow best practiceof spring boot. you can create OrganizationService interface.
+
+package com.core.services;
+
+import com.core.dto.OrganizationDto;
+import com.core.entity.Organization;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+public interface OrganizationService {
+    Mono<Organization> saveOrg(OrganizationDto organizationDto);
+
+    Mono<Organization> findById(String id);
+
+    Flux<Organization> findAll();
+
+    Mono<Organization> update(OrganizationDto organizationDto);
+
+    Mono<Void> delete(String id);
+}
+Service classes Implementation
+create OrganizationServicesImpl and implements OrganizationService interface all method.
+
+package com.core.services.impl;
+
+import com.core.dto.OrganizationDto;
+import com.core.entity.Organization;
+import com.core.repo.OrgRepo;
+import com.core.services.OrganizationService;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.Objects;
+
+@Service
+@RequiredArgsConstructor
+public class OrganizationServicesImpl implements OrganizationService {
+
+    @NonNull
+    private OrganizationRepo orgRepo;
+
+
+
+    @Override
+    public Mono<Organization> saveOrg(OrganizationDto organizationDto){
+       if(Objects.nonNull(organizationDto)){
+           return orgRepo.save(organizationDtoToEntity(organizationDto));
+       }else{
+           return null;
+       }
+    }
+
+
+    @Override
+    public Mono<Organization> findById(String id) {
+        return orgRepo.findById(id);
+    }
+
+    @Override
+    public Flux<Organization> findAll() {
+        return orgRepo.findAll();
+    }
+
+    @Override
+    public Mono<Organization> update(OrganizationDto organizationDto) {
+        return this.orgRepo.findById(organizationDto.getOrgId())
+                .map(org -> organizationDtoToEntity(organizationDto))
+                .flatMap(this.orgRepo::save);
+    }
+
+    @Override
+    public Mono<Void> delete(String id) {
+        return orgRepo.deleteById(id);
+    }
+
+    public static Organization organizationDtoToEntity(OrganizationDto organizationDto){
+        Organization organization=new Organization();
+        BeanUtils.copyProperties(organizationDto, organization);
+       return organization;
+    }
+
+
+}
+Repository Interface
+Creating a basic Reactive repository is as simple as creating a classic one in Spring Data: you just need to create an interface that extends ReactiveCrudRepository, which is the reactive version of CrudRepository. You’ll have access then to default methods to create, read, update, and delete (CRUD) Quotes.
+
+Get Akhil Zade’s stories in your inbox
+Join Medium for free to get updates from this writer.
+
+Enter your email
+Subscribe
+Let’s have a look at the interface, and then we’ll describe what it does.
+
+package com.core.repo;
+
+import com.core.entity.Organization;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface OrganizationRepo extends ReactiveMongoRepository<Organization,String>  {
+
+
+}
+Test Application
+Run the application and follow the below steps to test the application response.
+
+Create the Organization data, use HTTP POST
+URL: http://localhost:8080/api/v1/org/save
+
+{
+  "orgId": "1233",
+  "orgName": "test",
+  "orgEmail": "test@gmail.com",
+  "isActive": false,
+  "contact": 122325
+}
+Press enter or click to view image in full size
+
+Also, you can see the output in MongoDB UI
+
+Press enter or click to view image in full size
+
+NOTE: You Can Check The All Endpoint
+
+2. Get the Organization data By orgId , use HTTP GET
+
+URL: http://localhost:8080/api/v1/org/63b173397a884a4a8246a39a
+
+3. Delete the Organization data by orgId, use HTTP DELETE
+
+URL: http://localhost:8080/api/v1/org/63b173397a884a4a8246a39a
+
+Notice that I am testing the API with Postman chrome browser extension which is a blocking client. It will display the result only when It has collected both employees’ responses.
+
+To verify the non-blocking response feature, hit the URL in the chrome browser directly. The results will appear one by one, as and when they are available in form of events (text/event-stream). To better view the result, consider adding a delay to the controller API.
+
+Press enter or click to view image in full size
+
+Conclusion
+Both Spring MVC and Spring WebFlux support client-server architecture but there is a key difference in the concurrency model and the default behavior for blocking nature and threads. In Spring MVC, it is assumed that applications can block the current thread while in webflux, threads are non-blocking by default. It is the main difference between spring webflux vs mvc.
+
+Reactive and non-blocking generally do not make applications run faster. The expected benefit of reactive and non-blocking is the ability to scale the application with a small, fixed number of threads and lesser memory requirements. It makes applications more resilient under load because they scale in a more predictable manner.
+
