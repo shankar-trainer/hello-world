@@ -1,0 +1,248 @@
+spring boot ApplicationContextInitializer example
+An ApplicationContextInitializer in Spring Boot is used for programmatic configuration of the ApplicationContext before it is fully refreshed. Common use cases include adding custom property sources, activating specific profiles, or performing other setup logic that must occur early in the application lifecycle. 
+
+1. Implementation
+First, create a Java class that implements the ApplicationContextInitializer interface and overrides the initialize method. This example adds a custom property to the application's environment. 
+java
+package com.example.demo;
+
+import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MapPropertySource;
+
+import java.util.Collections;
+import java.util.Map;
+
+public class CustomApplicationContextInitializer implements 
+        ApplicationContextInitializer<ConfigurableApplicationContext> {
+
+    @Override
+    public void initialize(ConfigurableApplicationContext applicationContext) {
+        ConfigurableEnvironment environment = applicationContext.getEnvironment();
+        Map<String, Object> customProps = Collections.singletonMap("custom.property.value", "hello from initializer");
+        
+        // Add the custom property source with a specific name
+        environment.getPropertySources().addFirst(new MapPropertySource("customSource", customProps));
+        
+        System.out.println("Custom ApplicationContextInitializer executed: added 'custom.property.value'");
+    }
+}
+
+Use code with caution.
+
+2. Registration in Spring Boot
+
+You can register the initializer in two primary ways:
+
+A. Programmatically (per application)
+Modify your main SpringBootApplication class to add the initializer to the SpringApplication instance before it runs. 
+java
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication application = new SpringApplication(DemoApplication.class);
+        // Register the custom initializer
+        application.addInitializers(new CustomApplicationContextInitializer());
+        application.run(args);
+    }
+}
+
+Use code with caution.
+Alternatively, you can use the SpringApplicationBuilder for a fluent API approach. 
+java
+import org.springframework.boot.builder.SpringApplicationBuilder;
+
+// ... inside main method
+new SpringApplicationBuilder(DemoApplication.class)
+    .initializers(new CustomApplicationContextInitializer())
+    .run(args);
+
+Use code with caution.
+
+B. Declaratively (via spring.factories) 
+
+For an initializer that should apply to all applications that use a specific library, register it in a META-INF/spring.factories file within the library's JAR. This file should contain an entry like this: 
+properties
+org.springframework.context.ApplicationContextInitializer=com.example.demo.CustomApplicationContextInitializer
+
+Use code with caution.
+3. Verification
+Once registered and the application runs, the initializer will execute before the context is refreshed. You can verify this by checking the console output for the print statement. Any bean in your application can then access the custom property: 
+java
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import jakarta.annotation.PostConstruct;
+
+@Component
+public class CustomPropertyReader {
+
+    @Value("${custom.property.value}")
+    private String customValue;
+
+    @PostConstruct
+    public void displayValue() {
+        System.out.println("Property accessed in a bean: " + customValue);
+    }
+}
+
+Use code with caution.
+Running the application will produce output similar to:
+Custom ApplicationContextInitializer executed: added 'custom.property.value'
+...
+Property accessed in a bean: hello from initializer
+
+==========================================
+
+Spring Boot provides ApplicationContextInitializer classes as a mechanism to programmatically modify the application context before it is refreshed. This allows for custom configurations and setup that need to occur before the bean lifecycle begins.
+
+Key aspects of ApplicationContextInitializer classes:
+
+Interface Implementation: To create a context initializer, a class must implement the org.springframework.context.ApplicationContextInitializer<C extends 
+ConfigurableApplicationContext> interface.
+
+initialize Method: The core of the initializer is the initialize method, which takes a ConfigurableApplicationContext as an argument. Within this method, you can perform operations like:
+Adding or modifying PropertySource objects to customize environment properties.
+Registering bean definitions programmatically.
+
+Adding BeanPostProcessor or BeanFactoryPostProcessor instances.
+
+Performing any other setup required before the context is fully initialized and beans are created.
+
+Registration: Spring Boot automatically detects and applies ApplicationContextInitializer instances in several ways:
+
+spring.factories: Listing the fully qualified class name of your initializer in META-INF/spring.factories under the key org.springframework.context.ApplicationContextInitializer.
+Programmatically: Adding initializers to the SpringApplication instance before running it:
+Java
+
+        SpringApplication app = new SpringApplication(MyApplication.class);
+        app.addInitializers(new MyCustomInitializer());
+        app.run(args);
+
+Testing: Using the @ContextConfiguration annotation in tests with the initializers attribute to specify initializer classes.
+
+Ordering: If multiple initializers are present, their execution order can be controlled by implementing the org.springframework.core.Ordered interface or by using the @Order annotation.
+
+When to use ApplicationContextInitializer:
+When you need to perform actions that modify the ApplicationContext itself before it's fully set up and beans are created.
+For externalizing or dynamically configuring parts of your application's setup that cannot be achieved through standard Spring Boot configuration properties or profiles.
+In testing scenarios where you need to set up a specific context state for your integration tests.
+=================================================================================
+
+
+An ApplicationContextInitializer in Spring Boot provides a way to programmatically initialize the ConfigurableApplicationContext before it is refreshed. This allows for customization of the application context, such as adding custom property sources, activating profiles, or modifying bean definitions, before the application fully starts.
+Here is an example demonstrating how to implement and register an ApplicationContextInitializer:
+Java
+
+import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MapPropertySource;
+import java.util.HashMap;
+import java.util.Map;
+
+public class CustomApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+
+    @Override
+    public void initialize(ConfigurableApplicationContext applicationContext) {
+        // Get the environment to modify it
+        ConfigurableEnvironment environment = applicationContext.getEnvironment();
+
+        // Example 1: Add a custom property source
+        Map<String, Object> customProperties = new HashMap<>();
+        customProperties.put("my.custom.property", "value from initializer");
+        environment.getPropertySources().addFirst(new MapPropertySource("myCustomSource", customProperties));
+
+        // Example 2: Activate a profile based on a condition
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("windows")) {
+            environment.addActiveProfile("windows-profile");
+        } else {
+            environment.addActiveProfile("non-windows-profile");
+        }
+
+        System.out.println("CustomApplicationContextInitializer executed. Added custom property and activated profile(s).");
+    }
+}
+To register this initializer with your Spring Boot application, you can do so in your main application class:
+Java
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MySpringBootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication application = new SpringApplication(MySpringBootApplication.class);
+        application.addInitializers(new CustomApplicationContextInitializer());
+        application.run(args);
+    }
+}
+In this example:
+CustomApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext>.
+
+The initialize method is overridden to contain the custom logic.
+Inside initialize, a custom property source named "myCustomSource" is added to the environment with a key my.custom.property.
+
+A profile ("windows-profile" or "non-windows-profile") is activated based on the operating system.
+In the main method of MySpringBootApplication, an instance of CustomApplicationContextInitializer is added to the SpringApplication before it is run.
+
+This setup ensures that the custom initialization logic within CustomApplicationContextInitializer is executed very early in the Spring Boot application startup process, allowing for foundational modifications to the application context before bean definitions are processed and the context is fully refreshed.
+
+=================================================
+
+ApplicationContextInitializer in Spring Boot is an interface that allows for programmatic customization of the ApplicationContext before it is refreshed. This means you can modify the environment or the context itself before any beans are instantiated or the application fully starts up.
+
+Key aspects of ApplicationContextInitializer:
+
+Early Customization: It provides a hook to perform actions very early in the Spring application lifecycle, even before the ApplicationContext is fully initialized.
+Interface Definition: The interface has a single method: initialize(ConfigurableApplicationContext applicationContext).
+
+Use Cases: Common uses include:
+
+Setting active profiles programmatically.
+
+Adding or modifying PropertySource instances to load custom configuration.
+
+Registering custom BeanDefinitionRegistryPostProcessor or BeanFactoryPostProcessor implementations.
+Performing environment-specific setup or pre-configuration tasks.
+
+Registration:
+
+Programmatically: By calling springApplication.addInitializers() before running the SpringApplication.
+
+Declaratively (for all applications): By adding the fully qualified class name of your 
+
+ApplicationContextInitializer implementation to META-INF/spring.factories within a JAR file, making it discoverable by Spring Boot.
+
+Ordering: ApplicationContextInitializer implementations can be ordered using Spring's Ordered interface or the @Order annotation, allowing control over the sequence of initialization.
+Example of a custom ApplicationContextInitializer:
+Java
+
+import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MapPropertySource;
+
+import java.util.Collections;
+
+public class MyCustomInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+
+    @Override
+    public void initialize(ConfigurableApplicationContext applicationContext) {
+        ConfigurableEnvironment environment = applicationContext.getEnvironment();
+        environment.addActiveProfile("custom-profile"); // Set an active profile
+        environment.getPropertySources().addFirst(
+            new MapPropertySource("myCustomProperties", 
+                Collections.singletonMap("my.custom.property", "customValue"))); // Add a custom property
+    }
+}
