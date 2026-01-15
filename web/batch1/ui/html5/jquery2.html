@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("css/bootstrap.min.css");
+    </style>
+
+    <script src="script/jquery-3.7.1.min.js">
+    </script>
+    <script>
+        var c=1
+        $(() => {
+            // alert("jquery program")
+            $("#btn1").click(() => {
+                // $("#id1").text(" greeting")
+                $("#id1").html(" <h2>greeting</h2>")
+            })
+            $("#btn2").click(function(){
+                 $("#id2").html("Count is "+c++).css("color","yellow")
+            })
+            $("#btn3").click(function(){
+                 $("#id2").html("Count is "+c--).css("color","red")
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container border border-primary w-75 p-5 m-5">
+        <div class="row border border-success">
+            <div id="id1"  class="col-sm-6">
+                hello world
+            </div>
+            <div  class="col-sm-6">
+                <button type="button" id="btn1" class="btn btn-primary"> 
+                    change it</button>
+            </div>
+        </div>
+        <div class="row border border-success mt-3">
+          <div id="id2" class="bg-info col-sm-6">
+               Count is 1
+          </div>
+          <div class="col-sm-6">
+            <input type="button" id="btn2" class="btn btn-secondary" value="increment">
+            
+            <input type="button" id="btn3" class="btn btn-secondary" value="decrement">
+            
+          </div> 
+          </div>
+        </div>
+    </div>
+</body>
+
+</html>

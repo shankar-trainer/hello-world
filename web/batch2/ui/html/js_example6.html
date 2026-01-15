@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var pass = "abcd"
+        var pass1 = ""
+        var user = ""
+        var x;
+        user = prompt("enter user name")
+
+        hello:
+        for (x = 1; x <= 3; x++) {
+            console.log("for loop starts "+x)
+            pass1 = prompt("enter user password")
+
+            if (pass == pass1){
+                alert("welcome user " + user)
+                break;
+            }
+            if (x == 3) {
+                if (confirm("exit yes or not")) {
+                    alert("exiting ")
+                    window.close()
+                }
+                else {
+                    //continue hello;
+                    alert("try again ")
+                }
+            }
+        }
+    </script>
+</body>
+</html>

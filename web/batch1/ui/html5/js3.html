@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function addition(a,b){
+            return a+b;
+        }
+        var p=10;
+        var q=5;
+        var result=addition(p,q);
+        document.write("sum of "+p+" and "+q+" is "+result)
+        // below is interpolation
+        document.write(`<br>sum of  ${p} and ${q} is ${result}`)
+
+        console.log(`sum of  ${p} and ${q} is ${result}`)
+        console.log(isNaN(result))
+        var p1="123";
+        console.log(isNaN(p1))
+        p1="abc"
+        console.log(isNaN(p1))
+        console.log(10/0)
+        console.log(0.0/0)
+        console.log(0/0)
+        console.log("1"+"2")
+        console.log("1"+2)
+        console.log(eval("1"+"2"))
+        x=eval("1"+"2")
+        console.log(x)
+        
+        var sum=0;
+        for(var x=1;x<=10;x++){
+            console.log(x);
+            sum=sum+x;
+        }
+        console.log("sum of 1 to 10 is ",sum)
+        
+
+    </script>
+
+
+</body>
+</html>

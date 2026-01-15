@@ -1,0 +1,563 @@
+HTML media queries are a key part of responsive web design, allowing you to apply conditional CSS styles based on the characteristics of the user's device or browsing environment, such as screen width, height, orientation, and resolution. 
+
+Using Media Queries
+Media queries can be used in two primary ways:
+
+1. In a CSS Stylesheet using the @media rule 
+This is the most common method. The @media at-rule is used to wrap a block of CSS code that will only be applied if the media query condition is true. 
+css
+/* Base styles (mobile-first approach) */
+body {
+  background-color: lightblue;
+}
+
+/* Styles for screens that are at least 600px wide (desktops, tablets in landscape, etc.) */
+@media screen and (min-width: 600px) {
+  body {
+    background-color: navy;
+    color: white;
+  }
+}
+2. In an HTML <link> tag
+You can link to an entirely separate stylesheet that is only loaded and applied if the media condition is met. 
+html
+<link rel="stylesheet" media="screen and (max-width: 600px)" href="small-screen.css">
+<link rel="stylesheet" media="screen and (min-width: 601px)" href="large-screen.css">
+Key Components and Syntax
+A media query typically consists of three parts: 
+@media: The rule that starts the media query block.
+Media Type: Specifies the broad category of device (e.g., all, screen, print, speech). If omitted, all is the default.
+Media Feature (Condition): An expression in parentheses that tests a specific characteristic of the device (e.g., max-width, orientation, prefers-color-scheme). Multiple features can be combined using logical operators (and, or, not). 
+
+Common Media Features
+Feature 	Description	Example
+width	Viewport width	@media (max-width: 768px) { ... }
+height	Viewport height	@media (height > 500px) { ... }
+orientation	Portrait or landscape mode	@media (orientation: landscape) { ... }
+resolution	Pixel density (DPI or DPXX)	@media print and (min-resolution: 300dpi) { ... }
+prefers-color-scheme	User's system preference for light/dark mode	@media (prefers-color-scheme: dark) { ... }
+prefers-reduced-motion	User's preference to minimize animation/motion	@media (prefers-reduced-motion: reduce) { ... }
+
+Essential HTML Tag
+For media queries based on screen size to work correctly on mobile devices, you must include the viewport meta tag in the <head> section of your HTML document: 
+html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+This tag ensures that the browser renders the page at the device's actual width, rather than defaulting to a typical desktop screen size and then scaling down. 
+Using media queries - CSS - MDN Web Docs
+1 Dec 2025 — Using media queries. Media queries allow you to apply CSS styles depending on a device's media type (such as print vs. screen) or other features or ch...
+
+
+===== w3===================================
+
+CSS Media Queries
+CSS media queries allow you to apply styles based on the characteristics of a device or the environment displaying the web page.
+
+CSS media queries are essential for creating responsive web pages.
+
+The CSS @media rule is used to add media queries to your style sheet.
+
+Media Query Syntax
+A media query consists of an optional media-type and one or more media-features, which resolve to either true or false.
+
+@media [not] media-type and (media-feature: value) and (media-feature: value) {
+  /* CSS rules to apply */
+}
+The media-type is optional. However, if you use not, you must also specify a media-type.
+
+The result of a media query is true if the specified media-type matches the type of device, and all media-features are true. When a media query is true, the corresponding style rules are applied, following the normal cascading rules.
+
+Meaning of the not and and keywords:
+
+not: This optional keyword inverts the meaning of the entire media query.
+
+and: This keyword combines a media-type and one or more media-features.
+
+CSS Media Types
+The optional media type specifies the type of media the styles are for. If media type is omitted, it will be set to "all".
+
+Value	Description
+all	Used for all media type devices
+print	Used for print preview mode
+screen	Used for computer screens, tablets, and smart-phones
+
+CSS Media Features
+The media feature specifies a specific characteristic of the device.
+
+Here are some commonly used media features:
+
+Value	Description
+
+max-height	Maximum height of the viewport
+min-height	Minimum height of the viewport
+height	Height of the viewport (including scrollbar)
+max-width	Maximum width of the viewport
+min-width	Minimum width of the viewport
+width	Width of the viewport (including scrollbar)
+orientation	Orientation of the viewport (landscape or portrait)
+resolution	Screen resolution
+prefers-color-scheme	User's preferred color scheme (light or dark)
+Media Queries Examples
+Here, we use a media query to change the background-color of the body to lightgreen, if the width of the viewport is 480px, or wider:
+
+Example
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+Here, we use a media query to change the background-color of the body to lightgreen, if the width of the viewport is between 480px and 768px:
+
+Example
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+More Media Query Examples
+For more examples on media queries, go to the next page: CSS MQ Examples.
+
+Exercise
+?
+What is the purpose of the @media rule in CSS?
+
+
+To add animations to elements
+To define styles for different media types
+To optimize CSS for faster loading
+To set styles for print media only
+
+
+===========================w3school =========
+
+Responsive Web Design - Media Queries
+CSS Media Queries
+CSS media queries allow you to apply styles based on the characteristics of a device or the environment displaying the web page.
+
+CSS media queries are essential for creating responsive web pages.
+
+The CSS @media rule is used to add media queries to your style sheet.
+
+Use Mediaqueries to Add a Breakpoint
+On the previous page we made a grid layout web page. Now we want to add a breakpoint with mediaqueries to rearrange the grid items on bigger screens.
+
+
+Mobile phone
+Desktop
+
+Example
+Here we use a media query to add a breakpoint at 600px:
+
+@media (min-width: 600px) {
+  .header {grid-area: 1 / span 6;}
+  .menu {grid-area: 2 / span 1;}
+  .content {grid-area: 2 / span 4;}
+  .facts {grid-area: 2 / span 1;}
+  .footer {grid-area: 3 / span 6;}
+}
+REMOVE ADS
+
+Another Breakpoint
+You can add as many breakpoints as you like.
+
+
+Desktop
+Tablet
+Phone
+
+Example
+Here we use media queries to add breakpoints when screen is min 600px, and when screen is min 768px :
+
+@media (min-width: 600px) {
+  .header {grid-area: 1 / span 6;}
+  .menu {grid-area: 2 / span 1;}
+  .content {grid-area: 2 / span 4;}
+  .facts {grid-area: 3 / span 6;}
+  .footer {grid-area: 4 / span 6;}
+}
+
+@media (min-width: 768px) {
+  .header {grid-area: 1 / span 6;}
+  .menu {grid-area: 2 / span 1;}
+  .content {grid-area: 2 / span 4;}
+  .facts {grid-area: 2 / span 1;}
+  .footer {grid-area: 3 / span 6;}
+}
+Typical Device Breakpoints
+There are tons of screens and devices with different heights and widths, so it is hard to create an exact breakpoint for each device. To keep things simple you could target five groups:
+
+Example
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {...}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {...}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {...}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {...}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {...}
+Media Queries for Screen Orientation
+Media queries can also be used to change the layout of a page depending on the orientation of the screen.
+
+Here, we change the background-color of the body, if the screen orientation is in landscape mode:
+
+Example
+@media only screen and (orientation: landscape) {
+  body {
+    background-color: lightblue;
+  }
+}
+Hide Elements With Media Queries
+Here, we use media queries to hide an element on small screens:
+
+I will be hidden on small screens.
+Example
+/* Hide element if the viewport width is 600px or less */
+@media screen and (max-width: 600px) {
+  #div1 {
+    display: none;
+  }
+}
+Change Font Size With Media Queries
+Here, we use media queries to change the font size of an element on different viewport widths:
+
+Example
+/* If viewport width is 600px or more, set font-size to 80px */
+@media screen and (min-width: 600px) {
+  #div1 {
+    font-size: 80px;
+  }
+}
+Media Queries for User Preferences
+Some users have motion sensitivity and prefer websites with less animation.
+
+The prefers-reduced-motion media feature lets you check if a user has asked to reduce motion, such as animations or transitions. Use this feature to turn off animations and transitions for the users who has activated this setting on their computer:
+
+Example
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+Exercise
+?
+What does the @media rule allow you to do?
+
+
+Add JavaScript conditions for resizing content.
+Include CSS if a certain condition is met.
+Automatically generate responsive layouts.
+
+CSS @media Reference
+For a full overview of all the media types and features/expressions, please look at the @media rule in our CSS reference.
+
+
+
+
+examples
+
+example 1
+
+Here we use a media query to add a breakpoint at 600px:
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lucida Sans", sans-serif;
+  font-size: 17px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'menu'
+    'main'
+    'facts'
+    'footer';
+  background-color: white;
+  gap: 10px;  
+}
+
+.header {
+  grid-area: header;
+  background-color: purple;
+  text-align: center;
+  color: #ffffff;
+}
+
+.header > h1 {
+  font-size: 40px;
+}
+
+.menu {
+  grid-area: menu;
+  }
+  
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+  
+.content {
+  grid-area: main;
+}
+
+.content > h1 {
+  font-size: 30px;
+  margin-bottom: 7px;
+}
+
+.content > p {
+  margin-bottom: 7px;
+}
+
+.facts {
+  grid-area: facts;
+  border: 1px solid #0099cc;
+  background-color: beige;
+  padding: 10px;
+}
+
+.facts > h2 {
+  font-size: 20px;
+}
+
+.facts li {
+  margin-bottom: 5px;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #0099cc;
+  color: #ffffff;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .header {grid-area: 1 / span 6;}
+  .menu {grid-area: 2 / span 1;}
+  .content {grid-area: 2 / span 4;}
+  .facts {grid-area: 2 / span 1;}
+  .footer {grid-area: 3 / span 6;}
+}
+</style>
+</head>
+<body>
+
+<div class="grid-container">
+
+<div class="header"><h1>Chania</h1></div>
+
+<div class="menu">
+  <ul>
+    <li>The Flight</li>
+    <li>The City</li>
+    <li>The Island</li>
+    <li>The Food</li>
+  </ul>
+</div>
+
+<div class="content">
+  <h1>The City</h1>
+  <p>Chania is the capital of the Chania region on the island of Crete.</p>
+  <p>The city can be divided in two parts, the old town and the modern city. The old town is situated next to the old harbour and is the matrix around which the whole urban area was developed.</p>
+  <p>Chania lies along the north west coast of the island Crete.</p>
+</div>  
+
+<div class="facts">
+  <h2>Facts:</h2>
+  <ul>
+    <li>Chania is a city on the island of Crete</li>
+    <li>Crete is a Greek island in the Mediterranean Sea</li>
+  </ul>
+</div>
+
+<div class="footer"><p>Resize the browser window to see the responsive effect.</p></div>
+  
+</div>
+
+</body>
+</html>
+
+
+example2 
+Here we use media queries to add breakpoints when screen is min 600px, and when screen is min 768px :
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lucida Sans", sans-serif;
+  font-size: 17px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'menu'
+    'main'
+    'facts'
+    'footer';
+  background-color: white;
+  gap: 10px;  
+}
+
+.header {
+  grid-area: header;
+  background-color: purple;
+  text-align: center;
+  color: #ffffff;
+}
+
+.header > h1 {
+  font-size: 40px;
+}
+
+.menu {
+  grid-area: menu;
+  }
+  
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+  
+.content {
+  grid-area: main;
+}
+
+.content > h1 {
+  font-size: 30px;
+  margin-bottom: 7px;
+}
+
+.content > p {
+  margin-bottom: 7px;
+}
+
+.facts {
+  grid-area: facts;
+  border: 1px solid #0099cc;
+  background-color: beige;
+  padding: 10px;
+}
+
+.facts > h2 {
+  font-size: 20px;
+}
+
+.facts li {
+  margin-bottom: 5px;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #0099cc;
+  color: #ffffff;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .header {grid-area: 1 / span 6;}
+  .menu {grid-area: 2 / span 1;}
+  .content {grid-area: 2 / span 4;}
+  .facts {grid-area: 3 / span 6;}
+  .footer {grid-area: 4 / span 6;}
+}
+
+@media (min-width: 768px) {
+  .header {grid-area: 1 / span 6;}
+  .menu {grid-area: 2 / span 1;}
+  .content {grid-area: 2 / span 4;}
+  .facts {grid-area: 2 / span 1;}
+  .footer {grid-area: 3 / span 6;}
+}
+</style>
+</head>
+<body>
+
+<div class="grid-container">
+
+<div class="header"><h1>Chania</h1></div>
+
+<div class="menu">
+  <ul>
+    <li>The Flight</li>
+    <li>The City</li>
+    <li>The Island</li>
+    <li>The Food</li>
+  </ul>
+</div>
+
+<div class="content">
+  <h1>The City</h1>
+  <p>Chania is the capital of the Chania region on the island of Crete.</p>
+  <p>The city can be divided in two parts, the old town and the modern city. The old town is situated next to the old harbour and is the matrix around which the whole urban area was developed.</p>
+  <p>Chania lies along the north west coast of the island Crete.</p>
+</div>  
+
+<div class="facts">
+  <h2>Facts:</h2>
+  <ul>
+    <li>Chania is a city on the island of Crete</li>
+    <li>Crete is a Greek island in the Mediterranean Sea</li>
+  </ul>
+</div>
+
+<div class="footer"><p>Resize the browser window to see the responsive effect.</p></div>
+  
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+        function showSelected1() {
+            var msg="";
+            menu = document.getElementById("myselect");
+            for (i = 0; i < menu.options.length; i++)
+                if (menu.options[i].selected) {
+                    msg += "option " + i + " selected\n";
+                }
+
+            if (msg.length == 0) {
+                msg = "no options selected";
+            }
+            alert(msg);
+            alert(this.options[this.selectedIndex].value)
+
+        }
+        function showSelected(menu) {
+            var i, msg = "";
+            console.log("initial msg length " + msg.length)
+
+            for (i = 0; i < menu.options.length; i++)
+                if (menu.options[i].selected) {
+                    msg += "option " + i + " selected\n";
+                    console.log("msg selected  " + msg.length)
+
+                }
+            console.log("msg length " + msg.length)
+
+            if (msg.length == 0) {
+                msg = "no options selected";
+                //    console.log("inside if msg length "+msg.length)
+            }
+            alert(msg);
+        }
+    </script>
+
+    <form name="myform" id="myform">
+        <select name="myselect" id="myselect" multiple="true">
+            <option value="Value 1" selected="true">Option 1</option>
+            <option value="Value 2">Option 2</option>
+            <option value="Value 3" selected="true">Option 3</option>
+            <option value="Value 4">Option 4</option>
+            <option value="Value 5">Option 5</option>
+        </select>
+        <br />
+        <input type="button" value="Show Selected" onclick="showSelected(document.myform.myselect);" />
+
+        <input type="button" value="Show Selected1" onclick="showSelected1();" />
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+      label {
+         float: left;
+         width: 110pt;
+      }
+
+      input {
+         width: 120pt;
+      }
+
+      form {
+         margin-left: 300pt;
+         border: solid;
+         width: 60%;
+         padding: 20pt;
+         background-color: aqua;
+      }
+   </style>
+</head>
+
+<body>
+   <!-- <form method="post"> -->
+   <form method="get">
+      <div>
+         <label>enter id </label>
+         <!-- <input type="number" value="1234" readonly disabled required> -->
+         <input type="number" name="id" placeholder="enter id" max="999" min="1" autofocus autocomplete="on">
+      </div>
+
+      <div>
+         <label>enter pass </label>
+         <input name="pass" type="password" placeholder="enter password" maxlength="15" minlength="5">
+      </div>
+
+
+      <div>
+         <label>enter name </label>
+         <input type="text" name="name" placeholder="enter name" maxlength="15" minlength="5">
+      </div>
+
+      <div>
+         <label>enter pin code </label>
+         <input type="text" name="name" placeholder="enter pin code" pattern="[0-9]{6}" required>
+      </div>
+
+      <div>
+         <label>enter email </label>
+         <input type="email" name="email" placeholder="enter email" required>
+      </div>
+
+      <div>
+         <label>enter dob </label>
+         <input type="date" name="dob" placeholder="enter dob" required>
+      </div>
+
+      <div>
+         <label>enter entry time </label>
+         <input type="time" name="entry_time" placeholder="enter entry time" required>
+      </div>
+
+      <div>
+         <label>enter joining date and time </label>
+         <input type="datetime-local" name="joining_date_time" placeholder="enter joining date and  time" required>
+      </div>
+
+
+      <div>
+         <label>enter feedback 1 - 5 </label>
+         <input type="range" name="feedback" min="1" max="5">
+      </div>
+
+      <div>
+         <label>select cities </label>
+         <input name="city1" list="city" min="1" max="5">
+         <datalist id="city">
+            <option value="hyderabad"></option>
+            <option value="banglore"></option>
+            <option value="chennai"></option>
+            <option value="noida"></option>
+            <option value="pune"></option>
+            <option value="coimbtore"></option>
+            <option value="kochchi"></option>
+         </datalist>
+      </div>
+      <div>
+         <br>
+         <label>upload file </label>
+         <input name="file" type="file" placeholder="upload the file">
+      </div>
+
+      <div>
+         <br>
+         <label>play audio </label>
+         <audio controls src="media/horse.ogv">
+         </audio>
+      </div>
+
+      <div>
+         <br>
+         <label>play video </label>
+         <video controls src="media/mov_bbb.mp4">
+            </>
+      </div>
+      <div>
+         <div>
+            <label>enter no1</label>
+            <input type="number" id="a" value="0" oninput="c.value=parseFloat(a.value)+parseFloat(b.value)">
+         </div>
+         <div>
+            <label>enter no2</label>
+            <input type="number" id="b" value="0" oninput="c.value=parseFloat(a.value)+parseFloat(b.value)">
+         </div>
+         <div>
+           result : <output id="c" value="0" for="a b"></output>
+         </div>
+      </div>
+
+      <div>
+         <input type="submit">
+         <input type="reset">
+      </div>
+
+   </form>
+
+</body>
+
+</html>

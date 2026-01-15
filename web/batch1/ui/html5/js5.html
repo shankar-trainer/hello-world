@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     var  s="we are learning java script. we will learn java also";
+     console.log(s.length)
+     console.log(s.toUpperCase())
+     console.log(s.charAt(0))
+        for(var p=0;p<s.length;p++)
+            console.log("\t",s.charAt(p))
+
+    var result= s.split(" ");       
+    console.log(result.length)
+    console.log(result[0], " \t ",  result[1])
+
+    document.write(s+"<br>")
+
+    // var position=s.indexOf("java");
+    var position=s.lastIndexOf("java");
+    // var position=s.indexOf("java1");
+    if(position>=0)
+       document.write("java found at ",position," position")
+    else 
+    document.write("java not  found  ")
+
+    document.write("<br>substr method   "+s.substr(3,8))
+    document.write("<br>substring method "+s.substring(3,8))
+
+    </script>
+
+</body>
+</html>

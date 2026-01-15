@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: double 5pt red;
+            /* margin: 100pt; */
+            margin-top: 50pt;
+            margin-left: 300pt;
+            width: 40%;
+            background-color: lightblue;
+            height: 370pt;
+        }
+        tr,
+        th,
+        td {
+            border: solid blue;
+            /* text-transform: capitalize; */
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <!-- <table border="10"> -->
+    <!-- <table style="border: solid 10pt blue;"> -->
+    <table>
+        <caption align="bottom">Employee</caption>
+        <thead>
+            <tr>
+                <th colspan="4">employee management system</th>
+            </tr>
+            <tr>
+                <th rowspan="2">Id </th>
+                <th colspan="2">Name </th>
+                <th rowspan="2">Salary</th>
+            </tr>
+            <tr>
+                <th>fname</th>
+                <th>lname</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>100001</td>
+                <td>ram </td>
+                <td> kumar</td>
+                <td>200000</td>
+            </tr>
+            <tr>
+                <td>100001</td>
+                <td>suresh</td>
+                <td> kumar</td>
+                <td>200000</td>
+            </tr>
+
+            <tr>
+                <td>100001</td>
+                <td>pawan </td>
+                <td> kumar</td>
+                <td>200000</td>
+            </tr>
+            <tr>
+                <td>100001</td>
+                <td>suman </td>
+                <td> kumar</td>
+                <td>200000</td>
+            </tr>
+            <tr>
+                <td>100001</td>
+                <td>devendra </td>
+                <td> kumar</td>
+                <td>200000</td>
+            </tr>
+            <tr>
+                <td>100002</td>
+                <td>amit </td>
+                <td>kumar</td>
+                <td>300000</td>
+            </tr>
+            <tr>
+                <td>100003</td>
+                <td>madan </td>
+                <td> kumar</td>
+                <td>340000</td>
+            </tr>
+            <tr>
+                <td>100004</td>
+                <td>vimal </td>
+                <td>kumar</td>
+                <td>600000</td>
+            </tr>
+            <tr>
+                <td>100005</td>
+                <td>ramesh </td>
+                <td>kumar</td>
+                <td>206000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>date</td>
+                <td>
+                    <script>document.write(new Date().toLocaleDateString())</script>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</body>
+
+</html>

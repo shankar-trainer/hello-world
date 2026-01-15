@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
+
+
+    <context:annotation-config></context:annotation-config>
+    <context:component-scan base-package="spel.ex1"></context:component-scan>
+    <!--<bean class="spel.ex1.Employee" id="employee" >-->
+    <bean class="spel.ex1.Employee">
+        <property name="id" value="#{10+2}"></property>
+        <property name="name" value="#{'suresh kumar'}"></property>
+    </bean>
+
+    <bean id="placeHolderConfig"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="department.properties"></property>
+    </bean>
+
+    <bean class="com.capgemini.beans.Department" id="department">
+        <constructor-arg name="departmentId" value="7676767" />
+        <constructor-arg name="departmentName"
+                         value="training" />
+        <constructor-arg name="departmentLocation"
+                         value="pune" />
+    </bean>
+    <bean class="com.capgemini.beans.Department" id="dept1">
+        <constructor-arg name="departmentId" value="${deptId}" />
+        <constructor-arg name="departmentName"
+                         value="${deptName}" />
+        <constructor-arg name="departmentLocation"
+                         value="${deptLocation}" />
+    </bean>
+
+</beans>

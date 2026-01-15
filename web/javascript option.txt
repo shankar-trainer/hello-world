@@ -1,0 +1,355 @@
+<select onchange="alert(this.options[this.selectedIndex].value);">
+            <option value="value one">Option 1</option>
+            <option value="value two">Option 2</option>
+            <option value="value three">Option 3</option>
+        </select>
+     =========================
+
+
+
+    <script type="text/javascript">
+
+        function showSelected1() {
+            var msg="";
+            menu = document.getElementById("myselect");
+            for (i = 0; i < menu.options.length; i++)
+                if (menu.options[i].selected) {
+                    msg += "option " + i + " selected\n";
+                }
+
+            if (msg.length == 0) {
+                msg = "no options selected";
+            }
+            alert(msg);
+            alert(this.options[this.selectedIndex].value)
+
+        }
+        function showSelected(menu) {
+            var i, msg = "";
+            console.log("initial msg length " + msg.length)
+
+            for (i = 0; i < menu.options.length; i++)
+                if (menu.options[i].selected) {
+                    msg += "option " + i + " selected\n";
+                    console.log("msg selected  " + msg.length)
+
+                }
+            console.log("msg length " + msg.length)
+
+            if (msg.length == 0) {
+                msg = "no options selected";
+                //    console.log("inside if msg length "+msg.length)
+            }
+            alert(msg);
+        }
+    </script>
+
+    <form name="myform" id="myform">
+        <select name="myselect" id="myselect" multiple="true">
+            <option value="Value 1" selected="true">Option 1</option>
+            <option value="Value 2">Option 2</option>
+            <option value="Value 3" selected="true">Option 3</option>
+            <option value="Value 4">Option 4</option>
+            <option value="Value 5">Option 5</option>
+        </select>
+        <br />
+        <input type="button" value="Show Selected" onclick="showSelected(document.myform.myselect);" />
+
+        <input type="button" value="Show Selected1" onclick="showSelected1();" />
+
+    </form>
+
+========================
+
+
+
+<script>
+    function add(){
+        var menu=document.getElementById("id1")
+        var option1=new Option("delhi","delhi");
+        var option2=new Option("chennai","chennai");
+        var option3=new Option("mumbai","mumbai");
+        var option4=new Option("pune","pune");
+        menu[0]=option1;
+        menu[1]=option2;
+        menu[2]=option3;
+        menu[3]=option4;
+    }
+
+    function remove(){
+        var menu=document.getElementById("id1");
+        menu.options[0]=null;
+        menu.options[1]=null;
+        menu.options[2]=null;
+        menu.options[3]=null;
+    }
+    
+    function remove1(){
+        var menu=document.getElementById("id1");
+        for (let index = 0; index < menu.options.length; index++) {
+             menu.options[index]=null
+        }
+    }
+
+    function showselected(){
+        var menu=document.getElementById("id1");
+        alert(menu.value);   
+        alert(menu.selectedIndex);   
+    }
+
+</script>
+    cities 
+    <select id="id1">
+
+    </select>
+  <button onclick="add()">add city</button>  
+  <button onclick="remove1()">remove city</button>  
+  <button onclick="showselected()">show selected </button>
+
+
+
+shankar jaiswal <sankar.jaiswal@gmail.com>
+Sun, Dec 28, 2025, 10:34 AM
+to me
+
+Select
+
+<script type="text/javascript">
+<!--
+// Create an array to hold the cities for each country
+var cities = new Array(4);
+cities["Australia"] =
+["Sydney", "Melbourne", "Canberra", "Perth", "Brisbane"];
+cities["France"] =
+["Paris", "Lyons", "Nice", "Dijon"];
+cities["Japan"] = ["Tokyo", "Kyoto", "Osaka", "Nara"];
+cities["New Zealand"] =
+["Auckland", "Wellington", "Christchurch", "Dunedin", "Queenstown"];
+function removeOptions(optionMenu)
+{
+for (var i=0; i < optionMenu.options.length; i++)
+optionMenu.options[i] = null;
+}
+function addOptions(optionList, optionMenu)
+{
+removeOptions(optionMenu); // clear out the options
+for (var i=0; i < optionList.length; i++)
+optionMenu[i] = new Option(optionList[i], optionList[i]);
+}
+//-->
+</script>
+</head>
+<body>
+<h2>Vacation Chooser</h2>
+<form name="testform" id="testform" action="#" method="get">
+Country:
+<select name="country" id="country"
+onchange="addOptions(cities[this.options[this.selectedIndex].text],document.testform.city);">
+<option selected="selected">Australia</option>
+<option>France</option>
+<option>Japan</option>
+<option>New Zealand</option>
+</select>
+City:
+<select name="city" id="city">
+<option>Sydney</option>
+<option>Melbourne</option>
+<option>Canberra</option>
+<option>Perth</option>
+<option>Brisbane</option>
+</select>
+</form>
+
+Check box=======
+
+<script type="text/javascript">
+<!--
+function showradiovalue(radiogroup)
+{
+var numradios = radiogroup.length;
+for (var i = 0; i < numradios; i++)
+if (radiogroup[i].checked)
+alert('radio '+i+' with value of '+radiogroup[i].value);
+}
+//-->
+</script>
+</head>
+<body>
+<h2 align="center">Test Form</h2>
+<form name="testform" id="testform" action="#" method="get">
+<em>Checkbox: </em>
+<input type="checkbox" name="check1" id="check1" value="testvalue" />
+<br /><br />
+<em>radio buttons: </em>
+yes:
+<input type="radio" name="radiogroup1" id="radio1" value="yes" />
+no:
+<input type="radio" name="radiogroup1" id="radio2" value="no" />
+maybe:
+<input type="radio" name="radiogroup1" id="radio3" value="maybe" />
+<br /><br />
+<input type="button" value="Click checkbox" onclick="document.testform.check1.click();" />
+<input type="button" value="Click radio" onclick="document.testform.radiogroup1[0].click();" />
+<input type="button" value="Focus checkbox" onclick="document.testform.check1.focus();" />
+<input type="button" value="Blur checkbox" onclick="document.testform.check1.blur();" />
+<input type="button" value="Checkbox state" onclick="alert('checked?'+document.testform.check1.checked);" />
+<input type="button" value="Radio state" onclick="showradiovalue(document.testform.radiogroup1);" />
+</form>
+<hr />
+<h2 align="center">Field Properties</h2>
+<script type="text/javascript">
+<!--
+with (document)
+{
+write("checked: " + document.testform.check1.checked+"<br />");
+write("defaultchecked: "+document.testform.check1.defaultChecked+"<br />");
+write("form: " + document.testform.check1.form+"<br />");
+write("form.name: " + document.testform.check1.form.name+"<br />");
+write("name: " + document.testform.check1.name+"<br />");
+write("type: " + document.testform.check1.type+"<br />");
+write("value: " + document.testform.check1.value+"<br /><br />");
+write("radiogroup array:" + document.testform.radiogroup1+"<br />");
+write("radiogroup array length:" +
+document.testform.radiogroup1.length+"<br />");
+for (var i=0; i < document.testform.radiogroup1.length; i++)
+write("radiogroup["+i+"].value:" +
+document.testform.radiogroup1[i].value+"<br />");
+}
+//-->
+</script>
+
+shankar jaiswal <sankar.jaiswal@gmail.com>
+Tue, Dec 30, 2025, 12:12 PM
+to me
+
+javascript product calculator
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hello {
+            margin-left: 200pt;
+            margin-top: 100pt;
+            padding: 30pt;
+            background-color: aliceblue;
+            width: 30%;
+<!--            border:inset 30pt;-->
+        }
+
+        label {
+            float: left;
+            width: 100pt;
+        }
+
+        table
+        {
+            border: solid 1pt;
+        }
+        fieldset{
+          height:90pt;
+          padding:20pt;
+          margin-bottom:20pt;
+        }
+
+    </style>
+    <script>
+        var sweets = ["rasogulla", "gulab jamun", "jalebi", "khirkadam", "son papri"];
+        var snacks = ["samosa", "bhujiya", "chura fry", "ghughni", "maggie"];
+        function selectItem() {
+            var product = document.getElementById("prd1");
+            if (product.value == "sweets") {
+                var items = document.getElementById("items");
+                items.innerHTML=""
+                for (const element of sweets) {
+                    console.log(element)
+                    let item = new Option(element, element);
+                    items.add(item);
+                }
+            }
+            if (product.value == "snacks") {
+                var items = document.getElementById("items");
+                items.innerHTML=""
+                for (const element of snacks) {
+                    let item = new Option(element, element);
+                    items.add(item);
+                }
+            }
+        }
+        function display() {
+        if(document.getElementById("id").value=="")
+          alert("id is blank");
+        else if(document.getElementById("name").value=="")
+          alert("name is blank");
+        else if(document.getElementById("prd1").value=="")
+          alert("product is blank");
+        else if(document.getElementById("items").value=="")
+          alert("items is blank");
+         else{
+            var table = document.getElementById("table");
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0)
+            var cell2 = row.insertCell(1)
+            var cell3 = row.insertCell(2)
+            var cell4 = row.insertCell(3)
+
+            cell1.innerHTML = document.getElementById("id").value
+            cell2.innerHTML = document.getElementById("name").value
+            cell3.innerHTML = document.getElementById("prd1").value
+            cell4.innerHTML = document.getElementById("items").value
+         }
+        }
+    </script>
+</head>
+
+<body>
+<div class="hello">
+     <fieldset>
+         <legend>product page</legend>
+        <div>
+            <label>enter id</label>
+            <input id="id">
+        </div>
+
+        <div>
+            <label>enter name</label>
+            <input id="name">
+        </div>
+
+        <div>
+            <label>select product</label>
+            <select id="prd1" onchange="selectItem()">
+                <option value="" selected>Select</option>
+                <option value="sweets">Sweet</option>
+                <option value="snacks">Snacks</option>
+            </select>
+
+        </div>
+
+        <div>
+            <label>select item</label>
+            <select id="items" >
+            </select>
+        </div>
+    </fieldset>
+    <div>
+        <button type="button" onclick="display()"> display</button>
+    </div>
+    <div>
+        <label>product details </label>
+        <table id="table">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>type</th>
+                <th>item</th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>
