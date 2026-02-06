@@ -57,10 +57,14 @@ in bidirectional org.hibernate.TransientPropertyValueException: Persistent insta
 
 
 This error occurs because you are trying to save a Chapters entity (com.cts.model.Chapters) that references a Book entity (com.cts.model.Book) which has not yet been saved to the database. Hibernate sees the Book as "transient" (new, not in the database) and refuses to save the Chapters record because it would violate foreign key constraints. 
+
 In a bidirectional relationship, you must ensure that when you persist the child (Chapters), the parent (Book) is already persisted or managed. 
+
 Here are the solutions to fix this, ordered by best practice:
+
 1. Add Cascade to the Relationship (Best Solution) 
 You need to tell Hibernate to automatically save the Book whenever a Chapters object is saved. Add cascade = CascadeType.PERSIST or CascadeType.ALL to your @ManyToOne mapping in the Chapters entity. 
+
 In Chapters.java:
 java
 @Entity
@@ -74,15 +78,20 @@ public class Chapters {
     
     // ...
 }
+
 2. Save the Parent First
+
 If you do not want to use cascading, you must save the Book instance first, which will give it an ID, and then save the Chapters. 
 java
 // Assuming book is new, chapters is new
 bookRepository.save(book); // Book is now persistent
 chapters.setBook(book);
 chaptersRepository.save(chapters); // This will work
+
 3. Ensure Proper Bidirectional Management 
+
 If you are using a bidirectional relationship, ensure that you are setting both sides of the association in your code, or at least setting the @ManyToOne side (which is the owning side) before saving. 
+
 java
 Book book = new Book();
 Chapters chapter = new Chapters();
