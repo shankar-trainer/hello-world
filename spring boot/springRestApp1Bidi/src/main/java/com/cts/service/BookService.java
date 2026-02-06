@@ -36,8 +36,11 @@ public class BookService {
     @Autowired
     ChapterRepository chapterRepository;
 
-    @Transactional
+//    @Transactional
     public Chapters addChapters(Chapters chapters) {
+        Book book = chapters.getBook();
+        bookRepository.save(book);
+        chapters.setBook(book);
         return chapterRepository.save(chapters);
     }
 

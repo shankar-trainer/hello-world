@@ -37,7 +37,6 @@ post
     }
 }
 
-below add after adding book or it may give error 
 
 http://localhost:8082/chapter
 post 
