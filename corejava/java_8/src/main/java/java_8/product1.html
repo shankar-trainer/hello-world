@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hello {
+            margin-left: 200pt;
+            margin-top: 100pt;
+            padding: 30pt;
+            background-color: aliceblue;
+            width: 30%;
+<!--            border:inset 30pt;-->
+        }
+
+        label {
+            float: left;
+            width: 100pt;
+        }
+
+        table
+        {
+            border: solid 1pt;
+        }
+        fieldset{
+          height:90pt;
+          padding:20pt;
+          margin-bottom:20pt;
+        }
+
+    </style>
+    <script>
+        var sweets = ["rasogulla", "gulab jamun", "jalebi", "khirkadam", "son papri"];
+        var snacks = ["samosa", "bhujiya", "chura fry", "ghughni", "maggie"];
+        function selectItem() {
+            var product = document.getElementById("prd1");
+            if (product.value == "sweets") {
+                var items = document.getElementById("items");
+                items.innerHTML=""
+                for (const element of sweets) {
+                    console.log(element)
+                    let item = new Option(element, element);
+                    items.add(item);
+                }
+            }
+            if (product.value == "snacks") {
+                var items = document.getElementById("items");
+                items.innerHTML=""
+                for (const element of snacks) {
+                    let item = new Option(element, element);
+                    items.add(item);
+                }
+            }
+        }
+        function display() {
+        if(document.getElementById("id").value=="")
+          alert("id is blank");
+        else if(document.getElementById("name").value=="")
+          alert("name is blank");
+        else if(document.getElementById("prd1").value=="")
+          alert("product is blank");
+        else if(document.getElementById("items").value=="")
+          alert("items is blank");
+         else{
+            var table = document.getElementById("table");x`
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0)
+            var cell2 = row.insertCell(1)
+            var cell3 = row.insertCell(2)
+            var cell4 = row.insertCell(3)
+
+            cell1.innerHTML = document.getElementById("id").value
+            cell2.innerHTML = document.getElementById("name").value
+            cell3.innerHTML = document.getElementById("prd1").value
+            cell4.innerHTML = document.getElementById("items").value
+         }
+        }
+    </script>
+</head>
+
+<body>
+<div class="hello">
+     <fieldset>
+         <legend>product page</legend>
+        <div>
+            <label>enter id</label>
+            <input id="id">
+        </div>
+
+        <div>
+            <label>enter name</label>
+            <input id="name">
+        </div>
+
+        <div>
+            <label>select product</label>
+            <select id="prd1" onchange="selectItem()">
+                <option value="" selected>Select</option>
+                <option value="sweets">Sweet</option>
+                <option value="snacks">Snacks</option>
+            </select>
+
+        </div>
+
+        <div>
+            <label>select item</label>
+            <select id="items" >
+            </select>
+        </div>
+    </fieldset>
+    <div>
+        <button type="button" onclick="display()"> display</button>
+    </div>
+    <div>
+        <label>product details </label>
+        <table id="table">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>type</th>
+                <th>item</th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+<!--    <bean class="com.cts.model.Employee" id="emp1" scope="singleton">-->
+    <bean class="com.cts.model.Employee" id="emp1" scope="prototype" >
+        <property name="id" value="100001"></property>
+        <property name="name" value="aryan kumar"></property>
+    </bean>
+
+    <bean class="com.cts.model.Address" id="address"
+          init-method="startup" scope="singleton" destroy-method="cleanup" lazy-init="true">
+        <constructor-arg name="addrId" value="1"></constructor-arg>
+        <constructor-arg name="location" value="sipcot"></constructor-arg>
+        <constructor-arg name="city" value="chennai"></constructor-arg>
+    </bean>
+
+    <bean id="user" class="com.cts.model.User"
+          autowire="byType">
+        <property name="id" value="8787789"></property>
+        <property name="name" value="8787789"></property>
+<!--        <property name="car" ref="car"></property>-->
+    </bean>
+
+    <bean id="car1" class="com.cts.model.Car">
+        <property name="carId" value="900003"></property>
+        <property name="carModel" value="maruti zen"></property>
+        <property name="cost" value="1000000"></property>
+    </bean>
+    <bean id="car2" class="com.cts.model.Car">
+        <property name="carId" value="900003"></property>
+        <property name="carModel" value="maruti zen"></property>
+        <property name="cost" value="1000000"></property>
+    </bean>
+
+</beans>

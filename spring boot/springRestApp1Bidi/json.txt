@@ -1,0 +1,54 @@
+http://localhost:8082/book
+post 
+{
+    "name": "java in action",
+    "cost": 1200,
+    "publishDate": "2025-12-11",
+    "author": {
+        "authorName": "a kumar",
+        "authorLocation": "chennai"
+    },
+    "chaptersSet": [
+        {
+            "chapterName": "java basic",
+            "chapterPageNo": 1
+        },
+        {
+            "chapterName": "java oop",
+            "chapterPageNo": 10
+        },
+        {
+            "chapterName": "java exception handling",
+            "chapterPageNo": 20
+        }
+    ]
+}
+
+http://localhost:8082/author
+post 
+{
+    "authorName":"jay kumar",
+    "authorLocation":"madurai",
+    "book":{
+        
+        "name":"sql for dummies",
+        "cost":600,
+        "publishDate":"2024-11-01"
+    }
+}
+
+below add after adding book or it may give error 
+
+http://localhost:8082/chapter
+post 
+
+{
+    "chapterName": "collection framework",
+    "chapterPageNo": 80,
+    "book":{
+        "isbn":1,
+        "name":"java for beginner",
+        "cost":1500,
+        "publishDate":"2022-11-09"
+    }
+}
