@@ -26,7 +26,7 @@ public class Chapters {
     }
 
     @JsonIgnoreProperties("chaptersSet")
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    @JoinColumn(name="book_id2")
     private Book book;
 

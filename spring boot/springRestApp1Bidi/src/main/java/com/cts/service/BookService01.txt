@@ -28,18 +28,22 @@ public class BookService {
     @Autowired
     private AuthorRepository authorRepository;
 
+    /// /  @Autowired
+//    public BookService(BookRepository bookRepository) {
+//        this.bookRepository = bookRepository;
+//    }
+
     @Autowired
     ChapterRepository chapterRepository;
 
-    // @Transactional
+//    @Transactional
     public Chapters addChapters(Chapters chapters) {
-//        Book book = chapters.getBook();
-//        bookRepository.save(book);
-//        chapters.setBook(book);
+  //      Book book = chapters.getBook();
+    //    bookRepository.save(book);
+      //  chapters.setBook(book);
         return chapterRepository.save(chapters);
     }
 
-//
 //    public Chapters addChapters(Chapters chapters) {
 //        Book book = chapters.getBook();
 //        book.getChaptersSet().add(chapters);
