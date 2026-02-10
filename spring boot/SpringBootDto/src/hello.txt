@@ -1,0 +1,59 @@
+import com.cts.dto.CustomerDTO;
+import com.cts.entity.Customer;
+import com.cts.mapper.DTOMapper;
+import com.cts.repository.CustomerRepository;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
+public class CustomerServiceTest {
+
+    @Mock
+    private CustomerRepository repository;
+
+    @Mock
+    private DTOMapper dtoMapper;
+
+    @InjectMocks
+    private CustomerService customerService;
+
+    @Test
+    public void addCustomer_ShouldReturnSavedCustomerDTO() {
+        // 1. Arrange (Setup data and Mock behavior)
+        CustomerDTO inputDto = new CustomerDTO();
+        inputDto.setName("hari kumar");
+
+        Customer customerEntity = new Customer();
+        customerEntity.setName("hari kumar");
+
+        Customer savedEntity = new Customer();
+        savedEntity.setId(1);
+        savedEntity.setName("hari kumar");
+
+        CustomerDTO expectedDto = new CustomerDTO();
+        expectedDto.setId(1);
+        expectedDto.setName("hari kumar");
+
+        // Define mock behavior
+        Mockito.when(dtoMapper.dtoToEntity(inputDto)).thenReturn(customerEntity);
+        Mockito.when(repository.save(customerEntity)).thenReturn(savedEntity);
+        Mockito.when(dtoMapper.entityToCustomerDTO(savedEntity)).thenReturn(expectedDto);
+
+        // 2. Act
+        CustomerDTO result = customerService.addCustomer(inputDto);
+
+        // 3. Assert
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(1, result.getId());
+        Assertions.assertEquals("hari kumar", result.getName());
+
+        // Verify that the repository was actually called
+        Mockito.verify(repository, Mockito.times(1)).save(customerEntity);
+        Mockito.verify(dtoMapper, Mockito.times(1)).dtoToEntity(inputDto);
+    }
+}
