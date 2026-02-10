@@ -1,4 +1,151 @@
 package com.cts.service;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import com.cts.dto.CustomerDTO;
+import com.cts.mapper.DTOMapper;
+import com.cts.model.Customer;
+import com.cts.repository.CustomerRepository;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
+public class CustomerServiceTest {
+
+    @Mock
+    private CustomerRepository customerRepository;
+
+    @Mock
+    private DTOMapper dtoMapper;
+
+    @InjectMocks
+    private CustomerService customerService;
+
+    @Test
+    @DisplayName("Should successfully save customer and return DTO")
+    void addCustomer_Success() {
+        // 1. Arrange (Mock Data)
+        CustomerDTO inputDto = new CustomerDTO();
+        Customer customerEntity = new Customer();
+        Customer savedEntity = new Customer();
+        CustomerDTO outputDto = new CustomerDTO();
+
+        // Define behavior for mocks
+        when(dtoMapper.dtoToEntity(any(CustomerDTO.class))).thenReturn(customerEntity);
+        when(customerRepository.save(any(Customer.class))).thenReturn(savedEntity);
+        when(dtoMapper.entityToCustomerDTO(any(Customer.class))).thenReturn(outputDto);
+
+        // 2. Act
+        CustomerDTO result = customerService.addCustomer(inputDto);
+
+        // 3. Assert
+        assertNotNull(result);
+        verify(dtoMapper, times(1)).dtoToEntity(inputDto);
+        verify(customerRepository, times(1)).save(customerEntity);
+        verify(dtoMapper, times(1)).entityToCustomerDTO(savedEntity);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+package com.cts.service;
 
 import com.cts.dto.CustomerDTO;
 import com.cts.exception.CustomerException;
@@ -77,3 +224,4 @@ public class CustomerServiceTest {
 
     }
 }
+*/
