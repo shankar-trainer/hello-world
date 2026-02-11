@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -53,6 +54,13 @@ public class CustomerService {
         if (customerRepository.findAll().size() == 0)
             throw new CustomerException("list is empty");
         return customerRepository.findAll();
+    }
+
+    public Customer searchById(int id){
+        Optional<Customer> byId = customerRepository.findById(id);
+          if(byId.isEmpty())
+               throw new CustomerException("id not found");
+        return  byId.get();
     }
 
 }

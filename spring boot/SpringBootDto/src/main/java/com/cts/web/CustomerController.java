@@ -28,7 +28,8 @@ public class CustomerController {
         try {
             return new ResponseEntity<>(customerService.getAllCustomer(), HttpStatus.FOUND);
         } catch (CustomerException e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(e.getMessage(),
+                    HttpStatus.NOT_FOUND);
         }
     }
 

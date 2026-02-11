@@ -57,3 +57,103 @@ public class CustomerServiceTest {
         Mockito.verify(dtoMapper, Mockito.times(1)).dtoToEntity(inputDto);
     }
 }
+
+==========
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
+class CustomerServiceTest {
+
+    @Mock
+    private CustomerRepository customerRepository;
+
+    @Mock
+    private DTOMapper dtoMapper;
+
+    @InjectMocks
+    private CustomerService customerService;
+
+    @Test
+    @DisplayName("Should successfully save customer and return DTO")
+    void addCustomer_Success() {
+        // 1. Arrange (Mock Data)
+        CustomerDTO inputDto = new CustomerDTO();
+        Customer customerEntity = new Customer();
+        Customer savedEntity = new Customer();
+        CustomerDTO outputDto = new CustomerDTO();
+
+        // Define behavior for mocks
+        when(dtoMapper.dtoToEntity(any(CustomerDTO.class))).thenReturn(customerEntity);
+        when(customerRepository.save(any(Customer.class))).thenReturn(savedEntity);
+        when(dtoMapper.entityToCustomerDTO(any(Customer.class))).thenReturn(outputDto);
+
+        // 2. Act
+        CustomerDTO result = customerService.addCustomer(inputDto);
+
+        // 3. Assert
+        assertNotNull(result);
+        verify(dtoMapper, times(1)).dtoToEntity(inputDto);
+        verify(customerRepository, times(1)).save(customerEntity);
+        verify(dtoMapper, times(1)).entityToCustomerDTO(savedEntity);
+    }
+}
+
+
+The issue here is a classic "Null Pointer" or "Unfinished Stubbing" trap in Mockito. Because dtoMapper is a Mock, it doesn't actually run its real logic—it returns null by default for every method call unless you tell it otherwise.
+
+The Problem
+In your test, you call customerService.addCustomer(dto1). Inside that method, the first thing that happens is: Customer customer = dtoMapper.dtoToEntity(dto);
+
+Since you never defined a when(...).thenReturn(...) for dtoToEntity, it returns null. When the code then hits customerRepository.save(customer), it’s passing in a null object, which likely causes your failure.
+
+The Fix
+You need to stub the behavior of the dtoMapper so it returns the objects your service expects to work with.
+
+Java
+
+@Test
+void addCustomer() {
+    // 1. Arrange Data
+    CustomerDTO inputDto = new CustomerDTO(0, "pawan kumar", 56000);
+    Customer entityBeforeSave = Customer.builder().id(0).name("pawan kumar").salary(56000).build();
+    Customer entityAfterSave = Customer.builder().id(1).name("pawan kumar").salary(56000).build();
+    CustomerDTO expectedDto = new CustomerDTO(1, "pawan kumar", 56000);
+
+    // 2. Stubbing (The Missing Piece)
+    // Tell the mock mapper what to do
+    Mockito.when(dtoMapper.dtoToEntity(inputDto)).thenReturn(entityBeforeSave);
+
+    // Tell the mock repo what to do
+    Mockito.when(customerRepository.save(entityBeforeSave)).thenReturn(entityAfterSave);
+
+    // Tell the mock mapper how to convert back
+    Mockito.when(dtoMapper.entityToCustomerDTO(entityAfterSave)).thenReturn(expectedDto);
+
+    // 3. Act
+    CustomerDTO result = customerService.addCustomer(inputDto);
+
+    // 4. Assert
+    Assertions.assertEquals(expectedDto, result);
+}
+Why this happened
+@Mock vs. Real Logic: A mock is a "hollow shell." If your CustomerService relies on the mapper to transform data, and the mapper returns null, the whole chain breaks.
+
+Order of Operations: In your original code, you were calling dtoMapper.entityToCustomerDTO(customer) inside the test to create dto1. Since it's a mock and not yet stubbed, dto1 was likely null from the start!
+
+A Quick Tip
+If your DTOMapper is a simple interface (like MapStruct) or a utility class with no heavy dependencies, it is often better to use @Spy instead of @Mock. A Spy runs the real code of the mapper while still allowing you to inject it into the service.
+
+Java
+
+@Spy
+private DTOMapper dtoMapper = new DTOMapperImpl(); // Uses real mapping logic
