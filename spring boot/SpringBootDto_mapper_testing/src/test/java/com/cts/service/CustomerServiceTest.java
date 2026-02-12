@@ -36,20 +36,20 @@ public class CustomerServiceTest {
 
     @Test
     void addCustomer() {
-        Customer customer = Customer.builder().id(0).name("pawan kumar").salary(56000).build();
-
-        Customer customer1 = Customer.builder().id(0).name("pawan kumar").salary(56000).build();
-
         CustomerDTO dto1 = CustomerDTO.builder().name("pawan kumar").salary(56000).build();
 
-        CustomerDTO dto2 = CustomerDTO.builder().name("pawan kumar").salary(56000).build();
+        Customer customer = Customer.builder().id(0).name("pawan kumar").salary(56000).build();
+        Customer customer1 = Customer.builder().id(1).name("pawan kumar").salary(56000).build();
+
+       CustomerDTO dto2 = CustomerDTO.builder().name("pawan kumar").salary(56000).build();
 
         Mockito.when(dtoMapper.dtoToEntity(dto1)).thenReturn(customer);
-
         Mockito.when(customerRepository.save(customer)).thenReturn(customer1);
 
+        Mockito.when(dtoMapper.entityToCustomerDTO(customer1)).thenReturn(dto2);
+
         CustomerDTO dto=customerService.addCustomer(dto1);
-        Assertions.assertEquals(dto2, dto1);
+        Assertions.assertEquals(dto2, dto);
     }
 
     @Test

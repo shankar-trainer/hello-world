@@ -16,5 +16,5 @@ spring:
       path: /h2-console
 
 server:
-  port: 7070
+  port: 8082
 

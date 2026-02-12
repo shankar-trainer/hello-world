@@ -107,7 +107,7 @@ class CustomerServiceTest {
         verify(dtoMapper, times(1)).entityToCustomerDTO(savedEntity);
     }
 }
-
+=====================
 
 The issue here is a classic "Null Pointer" or "Unfinished Stubbing" trap in Mockito. Because dtoMapper is a Mock, it doesn't actually run its real logic—it returns null by default for every method call unless you tell it otherwise.
 
