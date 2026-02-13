@@ -44,7 +44,6 @@ public class SecurityConfig {
 */
 
 /*
-
      below user with /hello and  role admin to be authenticated, post method  work by enabling csrf
         http.csrf(Customizer.withDefaults()).  default enabled csrf
     http.csrf(c->c.disable()).  disables csrf
@@ -56,5 +55,20 @@ public class SecurityConfig {
         return http.build();
     }
 
+    //spring security with two end point hello and welcome  both authenticated
+
+    @Bean
+    public SecurityFilterChain securityFilterChain1(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().authenticated() // Locks down both /hello and /welcome
+                )
+                // formLogin provides the standard browser login UI
+                .formLogin(Customizer.withDefaults())
+                // httpBasic allows for easy testing via Postman or curl
+                .httpBasic(Customizer.withDefaults());
+
+        return http.build();
+    }
 }
 
