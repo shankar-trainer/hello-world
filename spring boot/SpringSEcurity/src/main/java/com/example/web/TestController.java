@@ -9,12 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/hello")
-    public String hello(){
-        return  "hello world";
+    public String hello() {
+        return "hello world";
     }
 
     @GetMapping("/greeting")
-    public String greeting(){
-        return  "greeting";
+    public String greeting() {
+        return "greeting";
     }
+
+    @GetMapping("/welcome")
+    public String welcome() {
+        return "welcome";
+    }
+
+
 }
