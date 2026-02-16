@@ -29,6 +29,11 @@ import { NavLink } from "react-router-dom"
           <NavLink to='emp_data_class' style={{"marginLeft":"10pt"}}>
              EmployeeData
           </NavLink>
+          
+          <NavLink to='emp_data_hook' style={{"marginLeft":"10pt"}}>
+             EmployeeData_Hook
+          </NavLink>
+
 
 
 

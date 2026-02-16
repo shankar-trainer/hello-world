@@ -14,6 +14,7 @@ import MyClock from './hook/Person/MyClock';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import Fetch from './database/employee_class';
+import { Customer_data } from './database/employee_data_hook';
 
 function App() {
   return (
@@ -53,11 +54,11 @@ function App() {
         
         <Route path='/emp_data_class' element={<Fetch></Fetch>}>
         </Route>
-
+        
+        <Route path='/emp_data_hook' element={<Customer_data></Customer_data>}>
+        </Route>
 
       </Routes>
-
-
      </BrowserRouter>
 
     </>
