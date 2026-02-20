@@ -1,0 +1,45 @@
+
+
+echo "# myproject1" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+
+git remote add origin https://github.com/shankar-trainer/myproject1.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/shankar-trainer/myproject1.git
+git branch -M main
+git push -u origin main
+
+
+
+
+create repository 
+first way 
+    git clone 
+second way 
+   git init
+   git branch -M main
+   git remote add origin https://github.com/shankar-trainer/myproject1.git
+ git pull  origin main
+
+
+
+
+  
+
+
+. for current ditrectory 
+*  for all files 
+
+
+===========
+git add .                          
+
+git commit -m "this is readme file"
+
+git push origin main
+
+=====================
