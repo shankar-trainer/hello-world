@@ -1,5 +1,11 @@
 in this case application.properties works below not
 
+IN PRODUCT client add below dependency
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
 ===============
 give the git file name same as application name
 
