@@ -8,13 +8,23 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableDiscoveryClient
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-//
-//        (exclude = {DataSourceAutoConfiguration.class},scanBasePackages = {"com.example.service", "com.example.repository"})
-//@EnableJpaRepositories(basePackages = "com.example.repository")
-//@EntityScan("com.example.model")
+@SpringBootApplication
+
 public class ProductMain {
     public static void main(String[] args) {
         SpringApplication.run(ProductMain.class,args);
     }
 }
+
+/*
+http://localhost:9090/product
+post
+{
+   "productName":"biscuit",
+   "productCost":120
+}
+
+
+ */
+
+
