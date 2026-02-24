@@ -7,8 +7,8 @@ import java.util.Date;
 
 @Service
 public class JwtService {
-
-    private static final String SECRET_KEY = "my-very-secret-key-for-jwt-authentication-12345";
+//https://jwtsecretkeygenerator.com/
+    private static final String SECRET_KEY = "C871AThH7Br2VGhlnYyRNwF0PyU3ooM7ZNM14kyVqUZ";
     private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
 
     private Key getSigningKey() {

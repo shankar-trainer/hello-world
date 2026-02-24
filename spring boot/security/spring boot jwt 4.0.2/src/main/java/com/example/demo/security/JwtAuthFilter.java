@@ -15,7 +15,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     
     private JwtService jwtService;    
     private UserService userService;
-    
 
     public JwtAuthFilter(JwtService jwtService, UserService userService) {
 		this.jwtService = jwtService;
