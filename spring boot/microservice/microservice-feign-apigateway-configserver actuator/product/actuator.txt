@@ -1,0 +1,26 @@
+Once the application is running (e.g., on http://localhost:8080), you can access various monitoring data via the /actuator base path.
+Endpoint ID 	Description	Example URL
+health	Shows application health status (e.g., UP, DOWN).	http://localhost:8080/actuator/health
+info	Displays arbitrary application information.	http://localhost:8080/actuator/info
+beans	Displays a complete list of all Spring beans in the application.	http://localhost:8080/actuator/beans
+metrics	Shows metrics information for the application (e.g., JVM memory usage, system CPU usage).	http://localhost:8080/actuator/metrics
+env	Exposes properties from Spring's ConfigurableEnvironment.	http://localhost:8080/actuator/env
+threaddump	Performs a thread dump for diagnosing thread-related issues.	http://localhost:8080/actuator/threaddum
+
+add dependency<dependency>
+
+
+                      <groupId>org.springframework.boot</groupId>
+                      <artifactId>spring-boot-starter-actuator</artifactId>
+                  </dependency>
+
+http://localhost:8080/actuator/info
+
+By default, most endpoints are enabled, but only /health and /info are exposed over HTTP.
+To expose other endpoints (like beans, env, metrics) over the web, add the following property to your src/main/resources/application.properties
+management.endpoints.web.exposure.include=* it will expose all endpoints ,
+for specifics end points
+management.endpoints.web.exposure.include=health,info,metrics,beans
+
+
+
