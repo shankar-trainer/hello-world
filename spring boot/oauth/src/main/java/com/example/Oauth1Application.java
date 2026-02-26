@@ -12,3 +12,11 @@ public class Oauth1Application {
     }
 
 }
+
+
+
+
+
+
+
+//https://codeload.github.com/SirajChaudhary/spring-boot-oauth2-github-authentication-example/zip/refs/heads/main
