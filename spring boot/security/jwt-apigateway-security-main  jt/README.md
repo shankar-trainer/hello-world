@@ -2,7 +2,7 @@
 
 ## Regist an user
 
-```
+```                                              9898     
 curl --location --request POST 'http://localhost:8080/auth/register' \
 --header 'Content-Type: application/json' \
 --header 'Cookie: JSESSIONID=7CE91EE75A65277C0DCB6C5736C5DF5D' \
@@ -24,8 +24,12 @@ curl --location --request POST 'http://localhost:9898/auth/token' \
     "username":"Basant",
     "password":"Pwd1"
 }'
+
+http://localhost:8082/restaurant/orders/status/37jbd832
 ```
-## Access Swiggy-app
+## Access Swiggy-app  add the token generated above
+http://localhost:8081/swiggy/37jbd832
+
 
 ```
 curl --location --request GET 'http://localhost:8080/swiggy/37jbd832' \
