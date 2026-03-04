@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <script>
+
+        function addition(a, b) {
+            console.log('addition  is ' + (a + b))
+        }
+
+        function welcome(msg) {
+            console.log('welcome ' + msg)
+        }
+
+        function hello(addition1, callback) {
+            addition1(11, 22)
+            callback('good morning')
+        }
+        hello(addition, welcome)
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+<script>
+  var s1=" we are learning javascript. in react and angular we can use javascript too "
+
+  console.log(s1.length)
+  console.log(s1.trim().length)
+  console.log(s1.toUpperCase())
+  console.log(s1)
+  console.log(s1.charAt(10))
+  console.log(s1.indexOf('javascript'))
+  console.log(s1.lastIndexOf('javascript'))
+
+  var ar1=s1.split(' ')
+
+  console.info(ar1)
+  console.info(ar1.length)
+
+  for ( k in ar1) {
+        console.log(k+" -----  "+ar1[k])      
+  }
+  
+  for ( k of ar1) {
+        console.log(k)      
+  }
+
+</script>
+    
+</body>
+</html>

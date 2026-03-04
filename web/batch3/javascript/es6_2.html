@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Employee {
+
+            // constructor() {
+            //     console.info("default constrcutor ")
+            //     this.id = 10001
+            //     this.name = 'suresh parsad'
+            //     this.salary = 20000
+            // }
+            
+            constructor(id=10001,name,salary) {
+                console.info("overloaded constrcutor ")
+                this.id = id
+                this.name = name
+                this.salary = salary
+            }
+
+            get() {
+                console.log("employee info")
+                console.log("\t id :" + this.id)
+                console.log("\t name :" + this.name)
+                console.log("\t salary :" + this.salary)
+            }
+        }
+        // emp1 = new Employee();
+         emp1 = new Employee(10001,'babu kumar',45000);
+        emp1.get()
+
+        class manager extends Employee{
+            constructor(id,name,salary,location,state,country){
+                super(id,name,salary)
+                this.location=location
+                this.state=location
+                this.country=country
+            }
+             get() {
+               super.get()
+                 console.log("\t location :" + this.location)
+                 
+                 console.log("\t state :" + this.location)
+                 
+                 console.log("\t country :" + this.location)
+             }
+        }
+  manager1=new manager(1,'sumit sharma',45000,'laxminagar','delhi','india');
+  manager1.get()
+    </script>
+
+</body>
+</html>

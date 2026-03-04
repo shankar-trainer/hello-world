@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('css/form.css');
+    </style>
+</head>
+
+<body>
+    <script>
+        function hello() {
+            alert("testing")
+        }
+        function validate() {
+            var id = document.getElementById("id")
+            var name = document.getElementById("name")
+            var email = document.getElementById("email").value
+            if (id.value == 0) {
+                alert("id is blank")
+                return false;
+            }
+            else if (isNaN(id.value)) {
+                alert("id can have numeric value")
+                return false;
+            }
+            else if (name.value == "") {
+                alert("name is blank")
+                return false;
+            }
+            else if (name.value.length < 5 || name.value.length > 15) {
+                alert("name must of 5 - 15 chars")
+                return false;
+            }
+            else if (!email.indexOf('@') > 0) {
+                alert('invalid email id not having @ sign')
+                return false;
+            }
+            else if (!email.startsWith('cts')) {
+                alert('invalid email id not starts with cts')
+                return false;
+            }
+            else if (!email.endsWith('.com')) {
+                alert('invalid email id not ends with .com')
+                return false;
+            }
+
+            else {
+                alert("id is " + id.value)
+                alert("name is " + name.value)
+                return true
+            }
+        }
+    </script>
+    <div>
+        <button onclick="hello()"> click me</button>
+    </div>
+
+    <form onsubmit="return validate()">
+        <div>
+            <label>enter id</label>
+            <input id="id">
+        </div>
+
+        <div>
+            <label>enter name</label>
+            <input id="name">
+        </div>
+
+        <div>
+            <label>enter mail id </label>
+            <input id="email">
+        </div>
+
+        <div>
+            <input type="submit">
+        </div>
+
+    </form>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+label{
+    float: left;
+    width: 110pt;
+}
+fieldset{
+    margin-left: 100pt;
+    margin-top: 100pt;
+    width: 40%;
+background-image: url('../image/img3.gif');
+}
+span{
+    color: red;
+}

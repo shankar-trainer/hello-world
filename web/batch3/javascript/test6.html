@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        var date=new Date()
+        console.log(date)
+        console.log(date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear())
+
+        console.info('date is'+date.toDateString())
+        console.info('date is'+date.toLocaleDateString())
+        console.info('date is'+date.toLocaleTimeString())
+
+        date.setDate(2);
+        console.info('date is'+date.toDateString())
+        console.info('math PI '+Math.PI)
+        console.info('math sin 90 degreee  '+Math.sin(Math.PI/2))
+    </script>
+    
+</body>
+</html>

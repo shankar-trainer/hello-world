@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen'
+     href='css/product.css'>
+    <script src='script/product.js'></script>
+</head>
+<body>
+    
+    <fieldset>
+        <div>
+       <label>enter name</label>
+       <input id="name">
+       <span id="err_name"></span>
+       </div>
+       
+        <div>
+       <label>enter cost</label>
+       <input id="cost" type="number">
+        <span id="err_cost"></span>
+       </div>
+       
+        <div>
+       <label>Total No of item</label>
+       <input id="total" type="number">
+        <span id="err_total"></span>
+       </div>
+       <div>
+        <button onclick="displayItem()">display all </button>
+       </div>
+
+       <div id="display">
+          
+       </div>
+
+
+    </fieldset>
+
+</body>
+</html>
