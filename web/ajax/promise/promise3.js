@@ -9,7 +9,6 @@ promise = new Promise((resolve, reject) => {
 //console.log(promise);
 //c chaining of promise 
 
-
 //using setTimeOut 
 promise.then((result) => {
     //console.log('it is even no '+result)
