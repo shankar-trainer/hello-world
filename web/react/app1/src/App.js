@@ -2,18 +2,19 @@ import logo from './logo.svg';
 import './App.css';
 import User from './user/user';
 import Item from './user/Item';
+import UserProfile from './UserProfile';
 
 function App() {
   return (
     <div>
      {/* <User></User> */}
-     <Item item={array}></Item>
+     {/* <Item item={array}></Item> */}
+     <UserProfile userID='10001' username='suresh babu'></UserProfile>
     </div>
   );
 }
 
 export default App;
-
 
 const array=[
     {"id":10,"name":"apple","cost":120},

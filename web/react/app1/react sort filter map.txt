@@ -38,13 +38,10 @@ export default PhoneList;
 
 =============
 
-
 phone.js props pass as array with sort filter example
-தமிழ்
 
-
-+12
-To pass an array as a prop and then sort and filter it within a React component, you perform the filtering and sorting operations in the render method or a useMemo hook (for functional components) before rendering the list. This ensures the original prop data remains immutable. 
+To pass an array as a prop and then sort and filter it within a React component, you perform the filtering and sorting operations in the render method or 
+a useMemo hook (for functional components) before rendering the list. This ensures the original prop data remains immutable. 
 
 Below is an example using a functional component with useState for filter/sort criteria and applying the logic in the render phase. 
 Example Implementation
@@ -142,6 +139,9 @@ export default ItemList;
 
 Key Concepts
 Passing Props: The phoneData array is passed to the ItemList component via the items prop using standard JSX syntax.
+
 Immutability: The original items prop is never directly modified. Instead, JavaScript array methods like .filter() and .sort() (combined with .slice()) are used to create new arrays based on the original data.
+
 useMemo Hook: useMemo is used to cache the filtered and sorted arrays. This improves performance by only recalculating the lists when the items prop, filterBrand, or sortOrder state variables change.
+
 Dynamic Rendering: The component re-renders automatically when the filterBrand or sortOrder state is updated, displaying the new filtered and sorted list. 
