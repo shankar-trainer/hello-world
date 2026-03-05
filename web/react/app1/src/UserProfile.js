@@ -12,10 +12,22 @@ class UserProfile extends Component {
     this.toggleVisibility = this.toggleVisibility.bind(this);
   }
 
-  // 2. The Handler function
-  toggleVisibility() {
-    this.setState({ isVisible: true });
-  }
+  // 2. The Handler function -- it works for show only
+//   toggleVisibility() {
+//     this.setState({ isVisible: true });
+//   }
+
+// it works for both show hide
+toggleVisibility() {
+  this.setState((prevState) => ({
+    isVisible: !prevState.isVisible
+  }));
+}
+
+/*
+Since this.setState is asynchronous, the best practice is to use the updater function pattern. 
+This ensures you are toggling based on the most reliable, previous version of the state.
+*/
 
   render() {
     return (
