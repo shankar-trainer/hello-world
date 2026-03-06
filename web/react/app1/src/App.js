@@ -3,13 +3,17 @@ import './App.css';
 import User from './user/user';
 import Item from './user/Item';
 import UserProfile from './UserProfile';
+import Counter from './user/Counter';
 
 function App() {
   return (
     <div>
      {/* <User></User> */}
      {/* <Item item={array}></Item> */}
-     <UserProfile userID='10001' username='suresh babu'></UserProfile>
+     {/* <UserProfile userID='10001' username='suresh babu'></UserProfile> */}
+     {
+      <Counter></Counter>
+     }
     </div>
   );
 }

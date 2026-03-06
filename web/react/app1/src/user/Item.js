@@ -62,7 +62,6 @@ const Item = (props) => {
                     )
                 }
             </table>
-
         </div>
     )
 }
