@@ -4,6 +4,7 @@ import User from './user/user';
 import Item from './user/Item';
 import UserProfile from './UserProfile';
 import Counter from './user/Counter';
+import { Counter1 } from './hook/Counter1';
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
      {/* <User></User> */}
      {/* <Item item={array}></Item> */}
      {/* <UserProfile userID='10001' username='suresh babu'></UserProfile> */}
-     {
-      <Counter></Counter>
-     }
+     {/* {
+     <Counter></Counter>
+     } */}
+   <Counter1></Counter1>
     </div>
   );
 }

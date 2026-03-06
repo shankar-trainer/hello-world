@@ -1,0 +1,56 @@
+below code works without updater function
+export const  Counter1=()=>{
+     const [c,increment]=useState(1)
+
+    return(
+        <>
+         <h1>Hello</h1>
+         <p>Count is {c}</p>
+         <button type="button" onClick={()=>increment(c+1)}> increment</button>
+         <button type="button" onClick={()=>increment(c+1)}> increment__</button>
+        </>
+    )
+}
+
+
+
+You're absolutely right—that code works for a single click. If you hit that button, the number goes up. It feels intuitive, like changing a variable in any other language.
+
+However, there is a "hidden" trap in React's state management that usually leads developers to switch to the updater function (e.g., increment(prev => prev + 1)).
+
+Here is the breakdown of why your current code works now, but might "break" later.
+
+1. The "Snapshot" Concept
+In React, state behaves like a snapshot. When Counter1 renders, the value of c is "locked in" for that specific render.
+
+If c is 1, the onClick function is essentially hardcoded to increment(1 + 1).
+
+Even if you called increment five times in a row inside that function, React would just see increment(2) five times. The UI would update to 2, not 6.
+
+2. The Batching Problem
+React "batches" state updates to improve performance. If you try to trigger multiple updates in one event handler, you'll see where the non-updater approach fails:
+
+JavaScript
+
+// This will NOT increment by 2. It will only increment by 1.
+const handleDoubleIncrement = () => {
+  increment(c + 1); // increment(1 + 1)
+  increment(c + 1); // increment(1 + 1)
+};
+Comparison: Direct vs. Updater
+
+Feature	Direct increment(c + 1)	                        Updater increment(prev => prev + 1)
+Simplicity	Very easy to read.	                        Slightly more syntax.
+Reliability	Can use "stale" data if updates are fast.	Always uses the most recent state.
+Multiple Updates	Only the last call "wins."	        All updates are queued and applied.
+Async Safe	Risky inside setTimeout or fetch.	        Perfectly safe.
+
+Export to Sheets
+
+When can you keep it as is?
+If your logic is a simple "one click = one update" and you aren't doing any complex asynchronous work, your current code is perfectly fine. 
+It’s clean and readable.
+
+The updater function is a tool for consistency when your app grows.
+
+Would you like me to show you an example of how "stale closures" can make the direct update fail inside an asynchronous setTimeout?
