@@ -3,13 +3,9 @@ what and how below code works
     changedata() {
 
         var item = "Hello"
-
         var myArray = this.state.data.slice();
-
         myArray.push(item);
-
         this.setState({ data: myArray })
-
     }
 
 Gemini said
