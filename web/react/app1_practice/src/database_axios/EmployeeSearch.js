@@ -7,12 +7,18 @@ const { useState, useEffect } = require("react")
   const [employee,setEmployee] =useState([])
   const [loading, setLoading]=useState(true)
   const [error,setError]=useState(null)
+  const [name,setName]=useState("")
+  const [salary,setSalary]=useState("")
 
-  useEffect(()=>{
+     const { id } = useParams();
+     useEffect(()=>{
 
-    axios.get('http://localhost:2000/employee')
+    axios.get('http://localhost:2000/employee/'+id)
       .then(response=>{
-        setEmployee(response.data);
+        const data=response.data;
+        setName(data.name);
+        setSalary(data.salary);
+
         setLoading(false);  
       })
       .catch(e=>{
@@ -22,21 +28,21 @@ const { useState, useEffect } = require("react")
   },[])
     if(loading) return <p>Loading</p>
     if(error) return <p>Error {error}</p>
-   return(
-     <>
-        <ul>
-          {
-            employee.map(e=>
-              <>
-             <li>{e.id}-
-             {e.name}-
-             {e.salary}</li>
-             </>
-           )
-           }
-        </ul>
-     </>
-   )
+     return(
+         <div className="container">
+             <form onSubmit={submit}>
+                 <div className="form-group">
+                     <label>enter id</label>
+                     <input className="form-control" onChange={e=>setId(e.target.value)}></input>
+                 </div>
+                 <div>
+                     <button type="submit">search recorad</button>
+                     <button type="reset">cancel recorad</button>
+                 </div>
+
+             </form>
+         </div>
+     )
 }
 // export default EmployeeAll;
 
