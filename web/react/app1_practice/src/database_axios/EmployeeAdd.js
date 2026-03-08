@@ -1,26 +1,27 @@
 import axios from "axios";
-import {useState} from "react";
+import { useState } from "react";
 
-export const EmployeeAdd=()=>{
-    const [id,setId]=useState(0);
-    const [name,setName]=useState("");
-    const [salary,setSalary]=useState(0);
-    const [msg,setMessage]=useState(0);
+export const EmployeeAdd = () => {
+    const [id, setId] = useState(0);
+    const [name, setName] = useState("");
+    const [salary, setSalary] = useState(0);
+    const [msg, setMessage] = useState("");
 
-    const submit=(e)=>{
-         e.preventDefault();
+    const submit = (e) => {
+        e.preventDefault();
 
-         axios.post("http://localhost:2000/employee",{id,name,salary})
-             .then(response=>{
-                setMessage("posta added");
-             })
+        axios.post("http://localhost:2000/employee", { id, name, salary })
+            .then(response => {
+                const data = response.data;
+                setMessage("record  added" + JSON.stringify(data));
+            })
     }
-    return(
+    return (
         <div className="container">
             <form onSubmit={submit}>
                 <div className="form-group">
                     <label>enter id</label>
-                    <input className="form-control" onChange={e=>setId(e.target.value)}></input>
+                    <input className="form-control" onChange={e => setId(e.target.value)}></input>
                 </div>
                 <div className="form-group">
                     <label>enter name</label>
@@ -28,7 +29,7 @@ export const EmployeeAdd=()=>{
                 </div>
                 <div className="form-group">
                     <label>enter salary</label>
-                    <input className="form-control" onChange={e=>setSalary(e.target.value)}></input>
+                    <input className="form-control" onChange={e => setSalary(e.target.value)}></input>
                 </div>
                 <div>
                     <button type="submit">add recorad</button>
@@ -36,6 +37,7 @@ export const EmployeeAdd=()=>{
                 </div>
 
             </form>
+            {msg}
         </div>
     )
 }

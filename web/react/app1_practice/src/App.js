@@ -8,6 +8,7 @@ import { Counter1 } from './hook/Counter1';
 // import {EmployeeData} from './database/EmployeeData';
  import {EmployeeAll} from './database_axios/EmployeeAll';
 import {EmployeeAdd} from "./database_axios/EmployeeAdd";
+import { EmployeeSearch } from './database_axios/EmployeeSearch';
 //  import EmployeeCrud from './database_axios/EmployeeCrud';
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
    {/* <Counter1></Counter1> */}
   {/* <EmployeeData></EmployeeData> */}
   {/* <EmployeeCrud></EmployeeCrud>*/}
-        <EmployeeAdd></EmployeeAdd>
+        {/* <EmployeeAdd></EmployeeAdd> */}
+        <EmployeeSearch></EmployeeSearch>
     </div>
   );
 }

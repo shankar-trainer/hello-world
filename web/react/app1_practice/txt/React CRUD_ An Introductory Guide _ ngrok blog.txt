@@ -1,0 +1,581 @@
+React CRUD: An Introductory Guide
+Avatar for Kamaldeen Lawal
+Kamaldeen Lawal
+https://ngrok.com/blog/react-crud-example
+
+•
+CRUD is a mechanism that allows modern web applications to manage large datasets effectively. Despite sounding like a word, CRUD is not an English word but an acronym for Create, Read, Update, and Delete. These operations allow users to manipulate and interact with data from the application. In this post, you'll learn about CRUD and all its operations, why people prefer it, and how to set up the React CRUD environment.
+
+What is CRUD?
+As mentioned, CRUD stands for Create, Read, Update, and Delete. A React CRUD application allows users to create data, read data based on search queries, easily modify data through the update operation, and delete the data when not needed.
+
+
+
+What is React.js?
+React is a popular JavaScript library for building reusable and clean user interfaces following a declarative programming style. The composable nature of React makes it easy to break down complex components into a smaller group of components for building fast and reusable components.
+
+React CRUD example
+As stated above, the operations of a CRUD application are the Create, Read, Update, and Delete operations. Let's dive into the details of all the operations.
+
+Create: Create, as the name implies. The create operation injects new records into the database or creates a new entry: user information, employee status, or a specific set of actions. This operation employs the POST HTTP protocol to implement its operation.
+Read: This operation grants the user access to the entries in the database by displaying the result. It only queries the database for the required information and does not alter the database. The read operation uses the GET HTTP protocol to implement its operation.
+Update: The update operation allows for modification of existing data in the database. As opposed to the read operation, the update operation modifies the database. Unlike the other operations, the HTTP protocols to implement update operations are PUT and PATCH. While PATCH is for partial entry modification, PUT is for total entry update.
+Delete: The delete operation is for removing an entry from the database. The delete operation employs the DELETE HTTP protocol to implement its operation.
+CRUD apps are made up of the following parts:
+
+The user interface (UI), also known as the front-end part of the application, is where the users interact with applications.
+
+The application programming interface (API) serves as the link between the front end and the database.
+
+Lastly, there is the database that stores information.
+
+What you must know to build a CRUD app in React
+Like everything else, you need a solid understanding of the basics before building. It is the knowledge of those basics that will aid your building. To get started with building a React CRUD application, knowledge of the following is a must:
+
+Basic knowledge of HTML and CSS
+Knowledge of JavaScript and its various syntax
+Basic knowledge of React
+Some understanding of how a CLI works
+Next, let's look at how to set up a CRUD environment with a simple shopping list application.
+
+Set up your React CRUD application environment
+A new React application is needed for the user interface of our shopping list application. Creating a new React application with create-react-app is straightforward. Run the following command in your terminal:
+
+Copy code
+npx create-react-app shopping
+After creating a new React application, run this command to take you to the folder:
+
+Copy code
+cd shopping
+To get the application up and running, run the following command:
+
+Copy code
+npm start
+Inside the src folder, create a components folder. Then, create the following four components inside the components folder:
+
+Top.js
+Content.js
+AddList.js
+Footer.js
+
+
+Then create a data folder that will house our database file.
+
+
+
+Your file structure should look like this afterward.
+
+
+
+The components folder houses the AddList.js, Content.js, Footer.js, and Top.js components. App.css is the CSS file for the application; index.js will render the App.js file. The data folder is the parent to the database file, and App.js will render all the application components.
+
+What are we building?
+The image below shows the application we will be building during this article.
+
+
+
+Top.js
+This is the header component of the shopping list CRUD app.
+
+Copy code
+const Top = () => {
+	return (
+		<header className="header">
+			<h1>Shopping List</h1>
+		</header>
+	);
+};
+
+export default Top;
+In the above code, the Top component was created, and an H1 with a shopping list was returned.
+
+
+
+AddList.js
+This is the AddList component, which is responsible for adding a new shopping list item to the application.
+
+Copy code
+import { useRef } from "react";
+
+const AddList = ({ newItem, setNewItem, handleSubmit }) => {
+	const inputRef = useRef();
+
+	return (
+		<form
+			className="addForm"
+			onSubmit={handleSubmit}
+		>
+			<label htmlFor="addItem">Add Item</label>
+
+			<input
+				type="text"
+				id="addItem"
+				autoFocus
+				ref={inputRef}
+				placeholder="Add Item"
+				required
+				value={newItem}
+				onChange={(e) => setNewItem(e.target.value)}
+			/>
+
+			<button
+				type="submit"
+				aria-label="Add Item"
+				onClick={() => inputRef.current.focus()}
+			>
+				<h3>+</h3>
+			</button>
+		</form>
+	);
+};
+
+export default AddList;
+This component's main function is for the user to input their shopping list items into the application through an HTML input element. It receives props, also known as property, from the App.js file.
+
+
+
+Content.js
+This is the component responsible for displaying the list of shopping items.
+
+Copy code
+const Content = ({ list, handleCheck, handleDelete }) => {
+	return (
+		<main className="content">
+			{list.length ? (
+				<ul>
+					{list.map((item) => {
+						return (
+							<li
+								className="list"
+								key={item.id}
+							>
+								<input
+									onChange={() => handleCheck(item.id)}
+									type="checkbox"
+									checked={item.checked}
+								/>
+
+								<label onDoubleClick={() => handleCheck(item.id)}>
+									<h3>{item.item}</h3>
+								</label>
+
+								<button onClick={() => handleDelete(item.id)}>X</button>
+							</li>
+						);
+					})}
+				</ul>
+			) : (
+				<h3
+					style={{
+						marginTop: "2rem",
+					}}
+				>
+					{" "}
+					Empty List{" "}
+				</h3>
+			)}
+		</main>
+	);
+};
+
+export default Content;
+The component receives props from the App.js file.
+
+Footer.js
+This is the footer component of the shopping list application.
+
+Copy code
+const Footer = ({ list }) => {
+	return (
+		<footer className="footer">
+			<h3>
+				{list.length} List {list.length === 1 ? "Item" : "Items"}{" "}
+			</h3>
+		</footer>
+	);
+};
+
+export default Footer;
+Just like the other component, the footer receives props from the App.js file.
+
+
+
+To continue with our application, we need a back-end API. Creating a back-end API is a strenuous exercise for a simple data-retrieving service, hence the need to use a JSON Server.
+
+What do you know about JSON Server?
+JSON Server, a lightweight Node.js tool, simplifies creating a back-end API. Front-end developers create an API and get an HTTP server with a ready-made database. Installing the server with the following command-line prompt gives access to the popular HTTP methods like the GET, PATCH, POST, and DELETE methods.
+
+Copy code
+npm install -g json-server
+The JSON Server treats a JSON file as a database. In this tutorial, our JSON file is db.json.
+
+Copy code
+{
+  "items": [
+    {
+      "id": 1,
+      "checked": false,
+      "item": "Biscuit"
+    },
+    {
+      "id": 2,
+      "checked": false,
+      "item": "Toiletries"
+    },
+    {
+      "id": 3,
+      "checked": false,
+      "item": "Milk"
+    }
+  ]
+}
+To start the server after installation, run the following command-line prompt:
+
+Copy code
+npx json-server -p 3500 -w data/db.json
+After running the prompt, our new API endpoint is http://localhost:3500/items.
+
+App.js
+After creating our API endpoint for this application, the next step is to perform the Create, Read, Update, and Delete operations.
+
+Copy code
+import "./App.css";
+import Content from "./Components/Content";
+import Footer from "./Components/Footer";
+import Top from "./Components/Top";
+import AddList from "./Components/AddList";
+import request from "./Components/Request";
+import { useState, useEffect } from "react";
+
+function App() {
+	const API_url = "http://localhost:3500/items";
+
+	const [list, setList] = useState([]);
+
+	const [newItem, setNewItem] = useState("");
+
+	const [error, setError] = useState(null);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await fetch(API_url);
+
+				if (!response.ok) throw Error("Error Message");
+
+				const listItem = await response.json();
+
+				setList(listItem);
+
+				setError(null);
+			} catch (error) {}
+		};
+
+		fetchData();
+	}, []);
+
+	// Add new Item to the list
+
+	const addItems = async (item) => {
+		const id = list.length ? list[list.length - 1].id + 1 : 1;
+
+		const theNewItem = {
+			id,
+
+			checked: false,
+
+			item,
+		};
+
+		const listItem = [...list, theNewItem];
+
+		setList(listItem);
+
+		const postOptions = {
+			method: "POST",
+
+			headers: {
+				"content-Type": "application/json",
+			},
+
+			body: JSON.stringify(theNewItem),
+		};
+
+		const result = await request(API_url, postOptions);
+		if (result) setError(result);
+	};
+
+	//  Create a function to update the checked property
+
+	const handleCheck = async (id) => {
+		const listItem = list.map((item) =>
+			item.id === id
+				? {
+						...item,
+
+						checked: !item.checked,
+					}
+				: item,
+		);
+
+		setList(listItem);
+
+		const myitem = listItem.filter((list) => list.id === id);
+
+		const updateOptions = {
+			method: "PATCH",
+
+			headers: {
+				"content-Type": "application/json",
+			},
+
+			body: JSON.stringify({
+				checked: myitem[0].checked,
+			}),
+		};
+
+		const reqUrl = `${API_url}/${id}`;
+
+		const result = await request(reqUrl, updateOptions);
+
+		if (result) setError(result);
+	};
+
+	//  create a function to delete an item
+
+	const handleDelete = async (id) => {
+		const listItem = list.filter((item) => item.id !== id);
+
+		setList(listItem);
+
+		const deleteOptions = {
+			method: "DELETE",
+		};
+
+		const reqUrl = `${API_url}/${id}`;
+
+		const result = await request(reqUrl, deleteOptions);
+
+		if (result) setError(result);
+	};
+
+	//  create a function to prevent default submit action
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		addItems(newItem);
+
+		setNewItem("");
+	};
+
+	return (
+		<div className="App">
+			<Top />
+
+			<AddList
+				newItem={newItem}
+				setNewItem={setNewItem}
+				handleSubmit={handleSubmit}
+			/>
+
+			<Content
+				list={list}
+				handleCheck={handleCheck}
+				handleDelete={handleDelete}
+			/>
+
+			<Footer list={list} />
+		</div>
+	);
+}
+
+export default App;
+The above component houses all other components and, hence, passes props down to a few of them. Let's analyze the code in the above component. Firstly, you will need to import all the components and the useState and useEffect hooks from React. The useState and useEffect hooks are used to manage state and perform side effects in a React application, respectively. Inside the function App, our API is stored in an API-url constant.
+
+R for Read
+The fetch API is used to make GET requests because, in the HTTP world, read is also known as GET. The below code shows the read operation of the shopping list application.
+
+Copy code
+useEffect(() => {
+	const fetchData = async () => {
+		try {
+			const response = await fetch(API_url);
+
+			if (!response.ok) throw Error("Error Message");
+
+			const listItem = await response.json();
+
+			setList(listItem);
+
+			setError(null);
+		} catch (error) {}
+	};
+
+	fetchData();
+}, []);
+The useEffect hook was used for side effects, i.e., something that React doesn't have power over, in this case fetching data.
+
+C for Create
+You might be wondering why Read came before Create. It's because the Read operation, which is popularly known as retrieve, is the first step in the process. The users want to see the content before making any changes to the application. In a CRUD application, this involves fetching data from an API and displaying it for users. Recall that we have a component named AddList.js. This component renders a controlled form element. In this component, we can add new shopping items to the application.
+
+Copy code
+// Add new Item to the list
+
+const addItems = async (item) => {
+	const id = list.length ? list[list.length - 1].id + 1 : 1;
+
+	const theNewItem = {
+		id,
+
+		checked: false,
+
+		item,
+	};
+
+	const listItem = [...list, theNewItem];
+
+	setList(listItem);
+
+	const postOptions = {
+		method: "POST",
+
+		headers: {
+			"content-Type": "application/json",
+		},
+
+		body: JSON.stringify(theNewItem),
+	};
+
+	const result = await request(API_url, postOptions);
+	if (result) setError(result);
+};
+To create a new Item, a function called addItems was created. Inside the function, there's a need to generate a unique identifier (ID) for the shopping list item.
+
+To do that, we checked if there were any items in the database. If an item is there, we add 1 to the unique identifier; if not, we start from 1.
+
+The new item was created with an object that comprises the ID, input with type of checkbox, and the item.
+
+The db.json file will get updated after adding a new shopping list to the application. See below for clarity.
+
+Copy code
+{
+  "items": [
+    {
+      "id": 1,
+      "checked": false,
+      "item": "Biscuit"
+    },
+    {
+      "id": 2,
+      "checked": false,
+      "item": "Toiletries"
+    },
+    {
+      "id": 3,
+      "checked": false,
+      "item": "Milk"
+    },
+    {
+      "id": 4,
+      "checked": false,
+      "item": "Sugar"
+    },
+    {
+      "id": 5,
+      "checked": false,
+      "item": "Kitchen utensils"
+    }
+  ]
+}
+U for Update
+The PATCH method is used for the update operation in this application. The item to be updated is the input with the type of checkbox.
+
+Copy code
+//  Create a function to update the checked property
+
+const handleCheck = async (id) => {
+	const listItem = list.map((item) =>
+		item.id === id
+			? {
+					...item,
+
+					checked: !item.checked,
+				}
+			: item,
+	);
+
+	setList(listItem);
+
+	const myitem = listItem.filter((list) => list.id === id);
+
+	const updateOptions = {
+		method: "PATCH",
+
+		headers: {
+			"content-Type": "application/json",
+		},
+
+		body: JSON.stringify({
+			checked: myitem[0].checked,
+		}),
+	};
+
+	const reqUrl = `${API_url}/${id}`;
+
+	const result = await request(reqUrl, updateOptions);
+
+	if (result) setError(result);
+};
+The update method is quite different from the GET and POST methods. In this method, we need both the API-url and the ID of the particular shopping list item.
+
+D for Delete
+The DELETE method is used to delete an item.
+
+Copy code
+//  create a function to delete an item
+
+const handleDelete = async (id) => {
+	const listItem = list.filter((item) => item.id !== id);
+
+	setList(listItem);
+
+	const deleteOptions = {
+		method: "DELETE",
+	};
+
+	const reqUrl = `${API_url}/${id}`;
+
+	const result = await request(reqUrl, deleteOptions);
+
+	if (result) setError(result);
+};
+Best practices for using CRUD
+Some of the best practices for using the CRUD operation are as follows:
+
+Write code once, and use it many times: By not repeating yourself, you simplify your CRUD app and save a lot of time. In our case, we used a single form for the update and delete operations.
+Error handling and validation: By implementing error handling, meaningful feedback is provided to the users.
+Separation of concerns: Separating the business logic and data validation from the CRUD operation promotes a well-maintained code.
+
+
+Why do users prefer the CRUD app?
+Here are some of the reasons why CRUD is preferred by a lot of users:
+
+Relatable: The CRUD application is relatable to a lot of users because it mimics the common interactions with databases.
+
+Simple: It is a straightforward and easy-to-understand application.
+
+Easily scalable: The CRUD application provides a solid foundation for scaling in the future.
+
+Efficient: The CRUD application streamlines the data management process by providing an easy interface for creating, reading, updating, and deleting records.
+
+Go live with your react CRUD app and ngrok
+With this detailed guide, you now have a clearer understanding of the mechanism of CRUD to build modern web applications. We discussed CRUD and all its operations, why people prefer it, and how to set up the CRUD environment.
+
+Ready to move into production? Explore how you can use ngrok to test your CRUD app and layer in secure ingress with our JavaScript SDK in these additional resources:
+
+Add OAuth 2.0 to your JavaScript apps with Node and ngrok
+Migrate to ngrok from Cloudflare Tunnels
+Meet ngrok’s developer-defined API Gateway and deliver production-grade APIs with ease
+You can sign up today and get started. Don’t hesitate to reach out if you have any questions or encounter any issues. Connect with us on Twitter, the ngrok community on Slack, or contact us at support@ngrok.com.
+
