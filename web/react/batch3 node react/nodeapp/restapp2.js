@@ -56,6 +56,10 @@ app.post("/employee", (req, resp) => {
         name:req.body.name,
         salary:req.body.salary,
     };
+    console.log('id '+emp.id)
+    console.log('name '+emp.name)
+    console.log('salary '+emp.salary)
+
     if (!emp.id)
         resp.status(404).send('id is not present')
     else if (!emp.name)
