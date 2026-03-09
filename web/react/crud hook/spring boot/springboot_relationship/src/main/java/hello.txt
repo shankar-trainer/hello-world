@@ -1,0 +1,21 @@
+ {
+    "name":"amit kumar",
+    "dob":"2001-12-20",
+    "car":{
+      "cost":200000,
+      "type":"thar"
+    },
+    "addressSet":[
+          {"city":"noida", "state":"up"},
+          {"city":"shimla", "state":"hp"},
+          {"city":"bhopal", "state":"mp"}
+    ]
+}
+
+
+ResponseEntity = ResponseBody + status
+
+
+
+
+curl.exe -X POST -H  "Content-Type: application/json" -d '{"name":"shyam","dob":"2001-11-11"}' http://localhost:9090/employee

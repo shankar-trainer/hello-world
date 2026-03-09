@@ -12,6 +12,7 @@ import { EmployeeSearch } from './database_axios/EmployeeSearch';
 import { Conditional } from './practice/conditional';
 import UseEffect1 from './practice/UseEffect1';
 import { AddEmployee1 } from './database_fetch/AddEmployee1';
+import UnControlledForm from './practice/UnControlledForm';
 //  import EmployeeCrud from './database_axios/EmployeeCrud';
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
         {/* <Conditional></Conditional> */}
         {/* <UseEffect1></UseEffect1> */}
         {/* <AddEmployee1></AddEmployee1> */}
-        <EmployeeAll></EmployeeAll>
+        {/* <EmployeeAll></EmployeeAll> */}
+        <UnControlledForm></UnControlledForm>
     </div>
   );
 }
