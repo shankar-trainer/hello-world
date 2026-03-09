@@ -9,6 +9,9 @@ import { Counter1 } from './hook/Counter1';
  import {EmployeeAll} from './database_axios/EmployeeAll';
 import {EmployeeAdd} from "./database_axios/EmployeeAdd";
 import { EmployeeSearch } from './database_axios/EmployeeSearch';
+import { Conditional } from './practice/conditional';
+import UseEffect1 from './practice/UseEffect1';
+import { AddEmployee1 } from './database_fetch/AddEmployee1';
 //  import EmployeeCrud from './database_axios/EmployeeCrud';
 
 function App() {
@@ -24,7 +27,11 @@ function App() {
   {/* <EmployeeData></EmployeeData> */}
   {/* <EmployeeCrud></EmployeeCrud>*/}
         {/* <EmployeeAdd></EmployeeAdd> */}
-        <EmployeeSearch></EmployeeSearch>
+        {/* <EmployeeSearch></EmployeeSearch> */}
+        {/* <Conditional></Conditional> */}
+        {/* <UseEffect1></UseEffect1> */}
+        {/* <AddEmployee1></AddEmployee1> */}
+        <EmployeeAll></EmployeeAll>
     </div>
   );
 }

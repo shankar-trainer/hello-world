@@ -24,6 +24,7 @@ const { useState, useEffect } = require("react")
     if(error) return <p>Error {error}</p>
    return(
      <>
+     <div className="container bg-info text-success">
         <ul>
           {
             employee.map(e=>
@@ -35,6 +36,7 @@ const { useState, useEffect } = require("react")
            )
            }
         </ul>
+        </div>
      </>
    )
 }
