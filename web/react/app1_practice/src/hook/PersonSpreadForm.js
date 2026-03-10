@@ -1,19 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
 
-export const AddEmployee = () => {
+export const PersonSpreadForm = () => {
     const [msg, setMessage] = useState("");
     const [employee, setEmployee] = useState({});
     const [errors, setErrors] = useState({});
+
     const submit = (e) => {
         e.preventDefault();
-
-        axios.post("http://localhost:2000/employee", employee)
-            .then(response => {
-                const data = response.data;
-                setMessage("record  added" + JSON.stringify(data));
-            })
     }
+
     return (
         <div className="container">
             <form onSubmit={submit}>
@@ -46,6 +42,31 @@ export const AddEmployee = () => {
                     </input>
                     {errors.id && <> {errors.id}</>}
                 </div>
+// not working below 
+                {/* <div className="form-group">
+                    <label>enter id</label>
+                    <input className="form-control" onChange={(e) => {
+                        const value = e.target.value;
+                        setEmployee({ ...employee, id: value })
+
+                        if (value == "") {
+                            setErrors({ ...errors, id: "id is empty" })
+                        }
+                        else if (value <= 0  ) {
+                            setErrors({ ...errors, id: "invalid id" })
+                        }
+
+                        else if (value < 10000 || value > 50000) {
+                            return { ...errors, id: "ID must be between 10000 - 50000" };
+                        }
+                        else {
+                            return { ...errors, id: "" };
+                        }
+                   }}
+                    >
+                    </input>
+                    {errors.id && <> {errors.id}</>}
+                </div> */}
 
                 <div className="form-group">
                     <label>enter name</label>
@@ -64,6 +85,7 @@ export const AddEmployee = () => {
                     </input>
                     {errors.name && <> {errors.name}</>}
                 </div>
+
                 <div className="form-group">
                     <label>enter salary</label>
                     <input className="form-control" onChange={(e) => {

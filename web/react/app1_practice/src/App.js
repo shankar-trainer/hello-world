@@ -14,6 +14,10 @@ import UseEffect1 from './practice/UseEffect1';
 import { AddEmployee1 } from './database_fetch/AddEmployee1';
 import UnControlledForm from './practice/UnControlledForm';
 import { AddEmployee } from './database_axios_spread/AddEmployee';
+import { Reacthookform } from './hook/useForm/Reacthookform';
+import { PersonSpreadForm } from './hook/PersonSpreadForm';
+import { EmployeeAdd2 } from './hook/useForm/EmployeeAdd2';
+
 //  import EmployeeCrud from './database_axios/EmployeeCrud';
 
 function App() {
@@ -35,7 +39,10 @@ function App() {
         {/* <AddEmployee1></AddEmployee1> */}
         {/* <EmployeeAll></EmployeeAll> */}
         {/* <UnControlledForm></UnControlledForm> */}
-        <AddEmployee></AddEmployee>
+        {/* <AddEmployee></AddEmployee> */}
+{/* <Reacthookform></Reacthookform>        */}
+{/* <PersonSpreadForm></PersonSpreadForm> */}
+    <EmployeeAdd2></EmployeeAdd2>
     </div>
   );
 }
