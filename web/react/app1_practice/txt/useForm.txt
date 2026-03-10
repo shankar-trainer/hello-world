@@ -1,0 +1,33 @@
+The useForm hook is not a built-in React hook, but is a central feature of the popular third-party library, React Hook Form. This library simplifies form management, validation, and submission, minimizing re-renders and improving performance compared to manual state management in React. 
+Daily.dev
+Daily.dev
+ +3
+Key Concepts
+To use the useForm hook, you first need to install the library: 
+bash
+npm install react-hook-form
+Once installed, you can import and use it in your functional components. 
+React Hook Form
+React Hook Form
+ +1
+javascript
+import { useForm } from "react-hook-form";
+
+function MyForm() {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  // ... rest of the component
+}
+The useForm hook returns several methods and properties: 
+
+register: A function used to register input fields with React Hook Form, making their values available for form validation and submission. 
+It is typically spread onto the input element, like <input {...register("fieldName")} />.
+
+handleSubmit: A wrapper function for your form's submission handler. It takes your custom onSubmit function as an argument, which it only calls if the form validation passes.
+
+formState: An object containing information about the form's current state, including errors, isDirty, isValid, and isSubmitted.
+
+watch: A method to watch the values of specified inputs and return them, useful for conditionally rendering fields or displaying real-time feedback.
+
+reset: A function to reset all form fields and form state back to their default values after an action like form submission.
+
+control: An object necessary for working with external UI libraries (like Material UI) and complex input types (like custom select components) via the Controller component. 
