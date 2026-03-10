@@ -13,7 +13,7 @@ export const PersonSpreadForm = () => {
     return (
         <div className="container">
             <form onSubmit={submit}>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label>enter id</label>
                     <input className="form-control" type="number" onChange={(e) => {
                         const val = e.target.value;
@@ -41,32 +41,38 @@ export const PersonSpreadForm = () => {
                     >
                     </input>
                     {errors.id && <> {errors.id}</>}
-                </div>
-// not working below 
-                {/* <div className="form-group">
-                    <label>enter id</label>
-                    <input className="form-control" onChange={(e) => {
-                        const value = e.target.value;
-                        setEmployee({ ...employee, id: value })
-
-                        if (value == "") {
-                            setErrors({ ...errors, id: "id is empty" })
-                        }
-                        else if (value <= 0  ) {
-                            setErrors({ ...errors, id: "invalid id" })
-                        }
-
-                        else if (value < 10000 || value > 50000) {
-                            return { ...errors, id: "ID must be between 10000 - 50000" };
-                        }
-                        else {
-                            return { ...errors, id: "" };
-                        }
-                   }}
-                    >
-                    </input>
-                    {errors.id && <> {errors.id}</>}
                 </div> */}
+
+                <div className="form-group">
+                    <label>Enter ID</label>
+                    <input
+                        className="form-control"
+                        onChange={(e) => {
+                            const value = e.target.value;
+
+                            // 1. Update the employee data
+                            setEmployee({ ...employee, id: value });
+
+                            // 2. Validation Logic
+                            if (value === "") {
+                                setErrors({ ...errors, id: "id is empty" });
+                            }
+                            else if (Number(value) <= 0) {
+                                setErrors({ ...errors, id: "invalid id" });
+                            }
+                            else if (Number(value) < 10000 || Number(value) > 50000) {
+                                // FIXED: Use setErrors instead of return
+                                setErrors({ ...errors, id: "ID must be between 10000 - 50000" });
+                            }
+                            else {
+                                // FIXED: Clear the error state when valid
+                                setErrors({ ...errors, id: "" });
+                            }
+                        }}
+                    />
+                    {errors.id && <span className="text-danger">{errors.id}</span>}
+                </div>
+
 
                 <div className="form-group">
                     <label>enter name</label>

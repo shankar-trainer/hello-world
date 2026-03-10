@@ -17,6 +17,7 @@ import { AddEmployee } from './database_axios_spread/AddEmployee';
 import { Reacthookform } from './hook/useForm/Reacthookform';
 import { PersonSpreadForm } from './hook/PersonSpreadForm';
 import { EmployeeAdd2 } from './hook/useForm/EmployeeAdd2';
+import { EmployeeSearch1 } from './database_axios_spread/EmployeeSearch1';
 
 //  import EmployeeCrud from './database_axios/EmployeeCrud';
 
@@ -33,7 +34,7 @@ function App() {
   {/* <EmployeeData></EmployeeData> */}
   {/* <EmployeeCrud></EmployeeCrud>*/}
         {/* <EmployeeAdd></EmployeeAdd> */}
-        {/* <EmployeeSearch></EmployeeSearch> */}
+        <EmployeeSearch></EmployeeSearch>
         {/* <Conditional></Conditional> */}
         {/* <UseEffect1></UseEffect1> */}
         {/* <AddEmployee1></AddEmployee1> */}
@@ -42,7 +43,8 @@ function App() {
         {/* <AddEmployee></AddEmployee> */}
 {/* <Reacthookform></Reacthookform>        */}
 {/* <PersonSpreadForm></PersonSpreadForm> */}
-    <EmployeeAdd2></EmployeeAdd2>
+    {/* <EmployeeAdd2></EmployeeAdd2> */}
+    {/* <EmployeeSearch1></EmployeeSearch1> */}
     </div>
   );
 }

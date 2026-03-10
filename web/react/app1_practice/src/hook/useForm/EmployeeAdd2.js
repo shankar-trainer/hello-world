@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
 import axios from 'axios';
-
-//const { register, formState: { errors }, handleSubmit } = useForm();
 
 export const EmployeeAdd2 = (props) => {
     const [msg, setMessage] = useState("");

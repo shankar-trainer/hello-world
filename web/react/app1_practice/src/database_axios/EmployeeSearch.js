@@ -21,9 +21,14 @@ export const EmployeeSearch = () => {
     axios.get('http://localhost:2000/employee/' + id)
       .then(response => {
         const data = response.data;
-        setName(data.name);
-        setSalary(data.salary);
-        setMessage("record found " + JSON.stringify(data));
+        if (data && (data).length > 0) {
+          setMessage("record found " + JSON.stringify(data));
+          console.log(JSON.stringify(data));
+        }
+        else {
+          setMessage('not found ')
+        }
+
         setLoading(false);
       })
       .catch(e => {
@@ -46,7 +51,7 @@ export const EmployeeSearch = () => {
           <button type="submit">search record</button>
           <button type="reset">cancel record</button>
         </div>
-        
+
         {msg && <div className="alert">{msg}</div>}
 
       </form>
