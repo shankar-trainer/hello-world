@@ -1,0 +1,58 @@
+import axios from "axios"
+import { Fragment, useEffect, useState } from "react"
+
+export const AllEmployees1 = () => {
+    const [employee, setAllEmployee] = useState([])
+    const [error1, setError1] = useState(null)
+    useEffect(() => {
+        axios.get("http://localhost:7070/employee").then(result => {
+           console.log('get called ')
+            setAllEmployee(result.data)
+            //console.log(JSON.stringify(employee))
+        },
+        (error)=>{
+          //   console.log("error is "+JSON.stringify(error))
+            // console.log("error is "+JSON.stringify(error.message))
+            console.log("error is "+JSON.stringify(error))
+             setError1(JSON.stringify(error))
+            console.log(error1.message+" error1 ")
+             //console.log(JSON.stringify(error1)+" error1 ")
+        }
+    )
+    }, [])
+    return (
+        <div className="container p-5 m-5 bg-success text-white">
+          {
+             console.log(JSON.stringify(error1))
+          }
+          {
+             console.log(JSON.stringify(error1.message))
+          }
+          {
+             console.log(error1.message)
+          }
+
+            {error1.length>0 && <p className="text-warn">Error is {error1.message}</p>} 
+
+            {error1.length==0 && 
+
+            <table className="table table-bordered table-striped">
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>dob</th>
+                </tr>
+                {
+                    employee.map(a=>
+                        <tr>
+                            <td>{a.id}</td>
+                            <td>{a.name}</td>
+                            <td>{a.dob}</td>
+                        </tr>
+                    )
+                }
+            </table>
+             }
+        </div>
+    )
+}
