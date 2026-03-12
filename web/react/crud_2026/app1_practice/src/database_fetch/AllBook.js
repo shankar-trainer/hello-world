@@ -34,6 +34,7 @@ export const AllBook = () => {
 
     return (
         <div>
+            <h1>All Book page</h1>
             <table>
                 <tr><th>isbn</th><th>name</th><th>publish</th><th>cost</th></tr>
             {data && data.map(b => (

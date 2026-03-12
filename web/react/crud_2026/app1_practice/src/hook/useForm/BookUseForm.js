@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form"
 
 export const BookUseForm=()=>{
-  const{register,handleSubmit,formState:{errors},}  =useForm()
+  const{register,handleSubmit,formState:{errors},}  =useForm({
+    mode: 'onChange' 
+  })
 
 const submit=(data)=>{
   alert('name is '+data.name)
@@ -39,8 +41,19 @@ return(
             <button type="submit">ok</button>
             <button type="reset">cancel</button>
          </div>
-
         </form>
     </div>
 )
 }
+
+/*
+
+By default, React Hook Form uses an "onSubmit" validation strategy. 
+This means it won't check for errors (like your minLength or required rules) until the user first clicks that "ok" button.
+
+If you want the validation to trigger as the user types, you need to set the mode in your useForm hook.
+const { register, handleSubmit, formState: { errors } } = useForm({
+  mode: 'onChange' // This is the secret sauce!
+});
+
+*/
