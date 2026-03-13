@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const SearchBook = () => {
     const [isbn, setIsbn] = useState(0);
@@ -8,10 +9,19 @@ export const SearchBook = () => {
     const [msg, setMsg] = useState('')
     const [loading, setLoading] = useState(true)
 
+    const navigate=useNavigate()
+    const nav_allbook=()=>{
+        navigate('/allbook')
+    }
+
+    const {isbn1}=useParams();
+    const isbn2=Number(isbn1)
+
     const submit = (e) => {
         e.preventDefault();
-
-        axios.get('http://localhost:8082/book/'+isbn).then(response => {
+         alert('parameter isbn is '+isbn2)
+        // axios.get('http://localhost:8082/book/'+isbn).then(response => {
+        axios.get('http://localhost:8082/book/'+isbn2).then(response => {
             
             setMsg('book found with id ' + isbn + ' ' + JSON.stringify(response.data))
             setError('')
@@ -51,6 +61,8 @@ export const SearchBook = () => {
                 </div>
                 {msg && <>{msg}</>}
                 {error && <>{error}</> }
+                           <button type="button" className="btn btn-primary" 
+                           onClick={nav_allbook}> navigate all book</button>
             </form>
         </div>
     )

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
 
 export const BookUseForm=()=>{
-  const{register,handleSubmit,formState:{errors},}  =useForm()
+  const{register,handleSubmit,formState:{errors},}  =useForm({    mode: 'onChange' })
 
 const submit=(data)=>{
   alert('name is '+data.name)
