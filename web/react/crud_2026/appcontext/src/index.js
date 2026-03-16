@@ -10,11 +10,8 @@ import { EmployeeProvider } from './employeecontext/EmployeeContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <EmployeeProvider>
-    <BrowserRouter>
       <App />
-    </BrowserRouter>
-</EmployeeProvider>
+    
   </React.StrictMode>
 );
 
