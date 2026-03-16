@@ -23,12 +23,25 @@ import { Link, NavLink, Route, Routes } from 'react-router-dom';
 import { BookUseForm } from './hook/useForm/BookUseForm';
 import { AllBook } from './database_fetch/AllBook';
 import { EmployeeData } from './database_fetch/EmployeeData';
+import AddEmployees from './employeecontext/AddEmployees';
+import EmployeeList from './employeecontext/EmployeeList';
+import { EmployeeContext, EmployeeProvider } from './employeecontext/EmployeeContext';
 
 //  import EmployeeCrud from './database_axios/EmployeeCrud';
 
 function App() {
   return (
     <div>
+      {/* <EmployeeProvider>
+      // in index.js add <EmployeeProvider> or here
+        <div>
+          <h1>Employee Management</h1>
+          <AddEmployees />
+          <EmployeeList />
+        </div>
+      </EmployeeProvider> */}
+
+
       {/* <User></User> */}
       {/* <Item item={array}></Item> */}
       {/* <UserProfile userID='10001' username='suresh babu'></UserProfile> */}
@@ -69,15 +82,16 @@ function App() {
         <NavLink to='/addemployee'>AddEmployee_axios_spread</NavLink>
         <NavLink to='/allemployee'>All Employee</NavLink>
         <NavLink to='/addemployee1' style={{ 'marginLeft': '10pt' }}>Add Employee1</NavLink>
-        <NavLink to='/addemployee3' style={{ 'marginLeft': '10pt' }}>Add Employee3</NavLink>
-        <NavLink to='/addemployee3' style={{ 'marginLeft': '10pt' }}>Add Employee3</NavLink>
-        <NavLink to='/addemployee3' style={{ 'marginLeft': '10pt' }}>Add Employee3</NavLink>
+
         <NavLink to='/addemployee2' style={{ 'marginLeft': '10pt' }}>Add Employee useForm</NavLink>
         <NavLink to='/addemployee3' style={{ 'marginLeft': '10pt' }}>Add Employee3</NavLink>
+
         <NavLink to='/bookuseform' style={{ 'marginLeft': '15pt' }}>Add Book useForm</NavLink>
         <NavLink to='/allbook' style={{ 'marginLeft': '10pt' }}>All Book</NavLink>
         <NavLink to='/counter' style={{ 'marginLeft': '10pt' }}>Counter</NavLink>
         <NavLink to='/counter1' style={{ 'marginLeft': '10pt' }}>Counter1</NavLink>
+        <NavLink to='/context_addemployee' style={{ 'marginLeft': '10pt' }}>Add Employee_con</NavLink>
+        <NavLink to='/context_employeelist' style={{ 'marginLeft': '10pt' }}>List Employee_con</NavLink>
       </nav>
 
       <Routes>
@@ -90,6 +104,10 @@ function App() {
         <Route path='/allbook' element={<AllBook></AllBook>}>All Book </Route>
         <Route path='counter' element={<Counter></Counter>}>Counter</Route>
         <Route path='counter1' element={<Counter1></Counter1>}>Counter1</Route>
+
+
+        <Route path='context_addemployee' element={<AddEmployees></AddEmployees>}></Route>
+        <Route path='context_employeelist' element={<EmployeeList></EmployeeList>}></Route>
       </Routes>
     </div>
   );

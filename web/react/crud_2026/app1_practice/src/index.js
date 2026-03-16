@@ -7,14 +7,17 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min'; // Required for interactive components
 import { BrowserRouter } from 'react-router-dom';
+import { EmployeeProvider } from './employeecontext/EmployeeContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <EmployeeProvider>
     <BrowserRouter>
     <App />
     </BrowserRouter>
+    </EmployeeProvider>
   </React.StrictMode>
 );
 
