@@ -12,6 +12,8 @@ import { BrowserRouter, Link, NavLink, Route, Routes } from 'react-router-dom';
 import { UserProvider } from './user/UserProvider';
 import InputPage from './user/InputPage';
 import DisplayPage from './user/DisplayPage';
+import { AgeProvider } from './age/AgeProvider';
+import { AgeComponent } from './age/AgeComponent';
 
 
 
@@ -41,12 +43,14 @@ function App() {
 
       <EmployeeProvider>
         <UserProvider>
+          <AgeProvider>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<InputPage />} />
               <Route path="/profile" element={<DisplayPage />} />
               <Route path='context_addemployee' element={<AddEmployees></AddEmployees>}></Route>
               <Route path='context_employeelist' element={<EmployeeList></EmployeeList>}></Route>
+              <Route path="age" element={<AgeComponent></AgeComponent>}></Route>
             </Routes>
 
             <nav className="nav navbar-dark bg-light">
@@ -55,9 +59,11 @@ function App() {
 
               <NavLink to='/context_addemployee' style={{ 'marginLeft': '10pt' }}>Add Employee_con</NavLink>
               <NavLink to='/context_employeelist' style={{ 'marginLeft': '10pt' }}>List Employee_con</NavLink>
+              <NavLink to='/age' style={{ 'marginLeft': '10pt' }}>Age</NavLink>
             </nav>
 
           </BrowserRouter>
+          </AgeProvider>
         </UserProvider>
       </EmployeeProvider>
 
