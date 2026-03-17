@@ -547,11 +547,11 @@ const AgeProvider = () => {
 However, this makes the component much less reusable. By using children, you make the AgeProvider a flexible wrapper that can hold any part of your app.
 
 Summary Table
-Feature	Using children	Omitting children
-Flexibility	High (wraps any component)	Low (fixed content)
-Standard Practice	Yes, it's the "React way"	Rare for Providers
-Visibility	Renders nested components	Nested components are ignored
-Would you like me to show you how to set up the useContext hook to actually consume this age value in a child component?
+  Feature	Using children	Omitting children
+  Flexibility	High (wraps any component)	Low (fixed content)
+  Standard Practice	Yes, it's the "React way"	Rare for Providers
+  Visibility	Renders nested components	Nested components are ignored
+  Would you like me to show you how to set up the useContext hook to actually consume this age value in a child component?
 
 =================
 usecontext react set age and get value
@@ -560,14 +560,10 @@ To set and get an age value using React's useContext hook, you need to follow th
 Create the Context with a default value (or undefined).
 Provide the Context to your component tree using a Provider component that manages the state (e.g., using useState).
 Consume the Context in any descendant component to get the value and the function to update it. 
-DEV Community
-DEV Community
- +4
+
 1. Create the Context
 First, create a context object in a separate file (e.g., AgeContext.js). This object will be imported into other files. 
-Learn to Code — For Free
-Learn to Code — For Free
- +2
+
 jsx
 // AgeContext.js
 import { createContext } from 'react';
