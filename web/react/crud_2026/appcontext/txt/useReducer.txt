@@ -30,21 +30,21 @@ return (
 }
 
 export default Counter;
-Copy
+
 Key Points
 
-Reducer Function: The counterReducer function defines how the state changes based on the action type (INCREMENT or DECREMENT).
+  Reducer Function: The counterReducer function defines how the state changes based on the action type (INCREMENT or DECREMENT).
 
-Dispatch: The dispatch function triggers the reducer with an action object, updating the state accordingly.
+  Dispatch: The dispatch function triggers the reducer with an action object, updating the state accordingly.
 
-Initial State: The initial state is passed as the second argument to useReducer.
+  Initial State: The initial state is passed as the second argument to useReducer.
 
 Considerations
 
-Always return a new state object in the reducer to avoid mutating the existing state.
+  Always return a new state object in the reducer to avoid mutating the existing state.
 
-Use useReducer when managing complex state logic or when multiple related state variables need to be updated together. For simpler cases, useState might be more appropriate.
-
+  Use useReducer when managing complex state logic or when multiple related state variables need to be updated together. 
+  For simpler cases, useState might be more appropriate.
 
 ===============================================
 useReducer:
@@ -53,7 +53,6 @@ Used to handle more complex global states and advanced update logic.
 It is based on a reducer function that specifies how to update the state based on the provided actions.
 It is most suitable when the global state has multiple sub-values ​​or when more advanced update logic is required.
 Provides a more organized and scalable structure for handling complex states.
-
 
 useReducer is a React Hook designed for managing complex state logic. While useState is great for simple values 
 (like a toggle or a counter), useReducer is better when your state has multiple sub-values or when the next state depends on 
