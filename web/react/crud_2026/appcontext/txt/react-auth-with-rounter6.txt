@@ -1,0 +1,30 @@
+NEW way (React Router V6)
+
+This new approach is actually very clean and makes our component much simpler. With this we will call now <PrivateRoute> “PrivateRoutes”, with an “s”, because we can pass in more than one route inside of this component.
+
+import { Navigate, Outlet } from 'react-router-dom'
+const PrivateRoutes = () => {
+  let auth = {'token':true}
+return (
+    auth.token ? <Outlet/> : <Navigate to='/login'/>
+  )
+}
+Now to use it we would simply pass in <PrivateRoute> to a <Route>, and then nest all the components that we want to be private 
+inside of this route.
+
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+...
+function App() {
+  return (
+    <Router>
+        <Routes>
+          <Route element={<PrivateRoutes/>}>
+              <Route path='/' element={<Users/>} />
+              <Route path='/products' element={<Products/>} />
+          </Route>
+          <Route path='/login' element={<Login/>}/>
+        </Routes>
+    </Router>
+  );
+}
+That’s it!

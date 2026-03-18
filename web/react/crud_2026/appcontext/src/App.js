@@ -18,6 +18,8 @@ import Counter from './reducer/Counter';
 import { ItemProvider } from './reducer1/ItemProvider';
 import { ItemInput } from './reducer1/ItemInput';
 import { ItemList } from './reducer1/ItemList';
+import App1 from './propdriling/App1';
+import App2 from './propdriling/withcontext/App2';
 
 
 
@@ -61,6 +63,8 @@ function App() {
               <NavLink to='/form' style={{ 'marginLeft': '10pt' }}>Form</NavLink>
               <NavLink to='/additem' style={{ 'marginLeft': '10pt' }}>AddItem</NavLink>
               <NavLink to='/listitem' style={{ 'marginLeft': '10pt' }}>List Item</NavLink>
+              <NavLink to='/app1' style={{ 'marginLeft': '10pt' }}>App1</NavLink>
+              <NavLink to='/app2' style={{ 'marginLeft': '10pt' }}>App2</NavLink>
             </nav>
             
             <Routes>
@@ -72,6 +76,8 @@ function App() {
               <Route path="counter" element={<Counter></Counter>}></Route>
               <Route path="additem" element={<ItemInput></ItemInput>}></Route>
               <Route path="listitem" element={<ItemList></ItemList>}></Route>
+              <Route path="app1" element={<App1></App1>}></Route>
+              <Route path="app2" element={<App2></App2>}></Route>
             </Routes>
 
           </BrowserRouter>
