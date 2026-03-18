@@ -83,16 +83,18 @@ Syntax:
 const contextValue = useContext(MyContext);
 MyContext: The context object is created using React.createContext().
 contextValue: The current context value that we can use in our component.
+
 Working of useContext
 The useContext hook allows to consume values from a React Context, enabling easy access to shared state across multiple components without prop drilling. Here’s how it works:
 
 useContext hook consumes values from a React Context, making them accessible to functional components.
+
 First, create a Context object using React.createContext(), which holds the shared state.
 Use useContext to access the context value in any component that needs it, avoiding prop drilling.
 When the value of the Context updates, all components consuming that context automatically re-render with the new value.
+
 Creating a Context
 Before using useContext, we need to create a context using React.createContext(). This context will provide a value that can be accessed by any child component wrapped in a Context.Provider.
-
 
 import React, { createContext, useContext, useState } from 'react';
 
@@ -115,7 +117,9 @@ function ChildComponent() {
 createContext() creates a context object (MyContext) that holds a default value.
 MyContext.Provider passes down the context value to its child components.
 useContext(MyContext) allows components like ChildComponent to access the context value.
+
 Implementing the useContext Hook
+
 1. Managing Authentication with useContext
 useContext can be used for managing the user authentication state globally.
 

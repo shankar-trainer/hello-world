@@ -5,6 +5,8 @@ import {UserDsiplay} from "./usercontext/UserDisplay";
 import {UserProvider} from "./usercontext/UseProvider";
 import {EmployeeProvider} from "./usercontext1/EmployeeProvider";
 import {EmployeeComponent1} from "./usercontext1/EmployeeComponent1";
+import {AuthProvider} from "./usercontext2/AuthProvider";
+import {LoginButton} from "./usercontext2/LoginButton";
 
 function App() {
     return (
@@ -29,9 +31,15 @@ function App() {
                 </EmployeeProvider>
 
             </div>
+            <div className="row">
+                <AuthProvider>
+                    <LoginButton />
+                </AuthProvider>
+
+            </div>
 
 
-        </div>
+            </div>
     );
 }
 
