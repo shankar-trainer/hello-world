@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { UserComponent } from "./usercontext/UserComponent";
-import { UserDsiplay } from "./usercontext/UserDisplay";
+import { UserDisplay, UserDsiplay } from "./usercontext/UserDisplay";
 import { UserProvider } from "./usercontext/UseProvider";
 import { EmployeeProvider } from "./usercontext1/EmployeeProvider";
 import { EmployeeComponent1 } from "./usercontext1/EmployeeComponent1";
@@ -13,6 +13,10 @@ import { ArticleProvider } from './reducer/article/components/ArticleProvider';
 import { ItemProvider } from './reducer/reducer1/ItemProvider';
 import { ItemInput } from './reducer/reducer1/ItemInput';
 import { ItemList } from './reducer/reducer1/ItemList';
+import { Navbar } from './login-logout/Navbar';
+import { Home } from './login-logout/Home';
+import { AuthProvider1 } from './login-logout/AuthContext';
+import { Login } from './login-logout/Login';
 // reducer/article\\omponents\AddArticle.js
 function App() {
     return (
@@ -23,7 +27,7 @@ function App() {
                         <UserComponent />
                     </div>
                     <div className="col-6">
-                        <UserDsiplay />
+                        <UserDisplay />
                     </div>
                 </UserProvider>
             </div>
@@ -31,9 +35,7 @@ function App() {
             <div className="row border border-primary p-5 m-5">
                 <EmployeeProvider>
                     <EmployeeComponent1>
-
                     </EmployeeComponent1>
-
                 </EmployeeProvider>
 
             </div>
@@ -58,8 +60,14 @@ function App() {
                     <div className="col-6">
                         <ItemList></ItemList>
                     </div>
-
                 </ItemProvider>
+            </div>
+            <div>
+                <AuthProvider1>
+                    <Navbar />
+                    <Home />
+                    <Login></Login>
+                </AuthProvider1>
             </div>
         </div>
     );
