@@ -1,6 +1,4 @@
 
-https://codeload.github.com/keschae/react-useauth/zip/refs/heads/main
-
 The term useAuth refers to a custom React hook that centralizes authentication logic and state, making it reusable across an application. It is not a built-in React hook, but rather a common pattern implemented by developers or provided by authentication libraries like Clerk or useAuth.dev. 
 Purpose and Functionality
 A useAuth hook simplifies managing the following aspects of user authentication: 
@@ -122,6 +120,3 @@ Key Benefits
 Reusability: Update authentication logic in one file, and every component benefits.
 Clean Components: Components stay focused on UI rather than managing complex auth state.
 Global State: Easily share the user object across your entire component tree. 
-LinkedIn
-LinkedIn
- +4
