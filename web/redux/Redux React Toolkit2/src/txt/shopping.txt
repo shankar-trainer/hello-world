@@ -1,0 +1,280 @@
+old way without toolkit 
+
+Make a simple Shopping Cart App using React & Redux part 1
+A simple guide to learn how to use React & Redux to build a basic shopping cart app
+Aya Bellazreg
+Aya Bellazreg
+
+Follow
+4 min read
+·
+Dec 17, 2018
+923
+
+
+11
+
+
+
+Press enter or click to view image in full size
+
+Ok, so you may have heard of React and Redux since they’ve been all over the place lately. You may have found a bunch of tutorials and resources to learn the basics. However, when it comes to the real world you need to actually get started and build something using what you've learnt.
+
+Through this series, we’re going to learn how to implement Redux into a React project in order to build a basic e-commerce website with a shopping cart.
+
+I will provide the Github repository for the full project at the end of this article.
+
+NOTE: This article is meant for beginners who have just gotten started with React,so I’ll try to explain all the steps from scartch, bare with me!
+
+Requirements
+Node.js installed
+A terminal (you can install Git Bash for Windows if you’re a Windows user)
+Get started
+Inside you directory, execute the following command:
+
+npx create-react-app shopping-cart
+This will allow us to create the basic structure of a React app.
+
+Now let’s get inside our new directory and run the project on a localhost:
+
+cd shopping-cart
+npm start
+Press enter or click to view image in full size
+
+This is what we got so far wohoo! but hold on there’s more to come
+We can now get rid of the files we don’t need(App.css, index.css).
+
+Don’t forget to remove them from the index.js file.
+
+Press enter or click to view image in full size
+
+This is how your App.js file should look like.
+Now let’s get our hands dirty
+First of all, let’s create a new folder called components; this folder’s name is already self-explanatory, all of our components will be built there.
+
+Get Aya Bellazreg’s stories in your inbox
+Join Medium for free to get updates from this writer.
+
+Enter your email
+Subscribe
+
+Remember me for faster sign in
+
+Let’s create our first file Navbar.js to create a simple navbar:
+
+
+We’re not going to focus on the styles in this article so I am using Materialize to get awesome styles quickly. You can use something else or make your own styles. You’re free!
+
+NOTE: The Link tag is just a simple component that we use instead of an anchor tag to prevent the default action of the browser (refreshing the page). But you first have to install the react-router-dom.
+
+Press enter or click to view image in full size
+
+Then include the component into our App.js file.
+
+Create the Home.js file which will display all our items. This is where we’re going to use Redux to manipulate data! So, in order to use Redux in the first place, we need to install it:
+
+npm install redux react-redux
+Ok, so we got ourselves all set to use Redux. Now all we need to do is to import the components that we need for this project. That is:
+
+createStore: which allows us to create a store that holds all of our state tree of our app(will be imported from ‘redux’).
+Provider: which will basically wrap our App component. It will simply allow us to pass our store into the props (will be imported from ‘react-redux’).
+So, let’s go ahead and create our store:
+
+
+As you can see, our createStore component takes a reducer as a parameter.
+In this case, we called it cartReducer.
+
+Reducers specify how the application’s state changes in response to actions sent to the store.
+
+Let’s simply take a reducer as a filter that filters the actions that have been sent. Depending on those actions, we’ll excute certain things.
+
+Inside the components folder, create another folder called reducers within it a file called cartReducer.
+
+NOTE: Even though we have one reducer in this project, it’s common practice to create a reducers folder to keep your app organized and clean. In bigger projects this practice will save you from a lot of pain, same for actions(later).
+
+
+Inside the cartReducer file, let’s create the cartReducer function. It takes in two parameters; the state and action.
+
+Our state will be just a bunch of data, or in other words, our items.
+
+
+In the next part we’ll create our first action which will lead us to display and add items to the cart.
+
+Next Part
+
+Github repository
+
+https://github.com/AyaBellazreg/React-Shopping-Cart/tree/master/Shopping-Cart
+
+Make a simple Shopping Cart App using React & Redux part 2
+A simple guide to learn how to use React & Redux to build a basic shopping cart app
+Aya Bellazreg
+Aya Bellazreg
+
+Follow
+3 min read
+·
+Dec 19, 2018
+670
+
+
+9
+
+
+
+Press enter or click to view image in full size
+
+In the last part we installed everything we need for the app. Furthermore; we created a navbar composed of a Home page and a Cart page but we haven’t created them yet.
+
+The Home page: will display all the provided items and will allow us to add whatever quantity of items we need.
+The Cart page: will give us all the selected items with all the information about each product + the total.
+Firstly, let’s create the Home.js:
+
+
+Basic Home Page
+It will look something like that:
+
+Press enter or click to view image in full size
+
+However, we want to display our items, right? so we’re going to somehow connect the Home page with the data that we stored in the cartReducer.
+
+To do that, we use the connect component from react-redux.
+
+import { connect } from ‘react-redux’
+Then, we need to add the mapStateToProps function(more about it later).
+
+const mapStateToProps = (state)=>{
+return {
+    items: state.items
+     }
+}
+Now we’ll connect this Home component to the data in our store and pass in our new function.
+
+export default connect(mapStateToProps)(Home)
+The mapStateToProps function:Takes the state in our cartReducer and pass it as props in our file(in this case we only need the items).
+
+Get Aya Bellazreg’s stories in your inbox
+Join Medium for free to get updates from this writer.
+
+Enter your email
+Subscribe
+
+Remember me for faster sign in
+
+Now that we have the items data in our props, we can manipulate it however we want;
+
+
+Getting items from the store(our state) and displaying them.
+Finally, we get our displayed items:
+
+Press enter or click to view image in full size
+
+The last step is to add items into the cart. For that; we need to add an onClick event to our add icon and affect it to a function that will lead eventually to add a new item to our store.
+
+onClick={()=>{this.handleClick(item.id)}}
+Now let’s create that handleClick function:
+
+handleClick = (id)=>{
+this.props.addToCart(id);
+}
+As you can see, we called an addToCart function(taking in the id of the targetted item as a parameter) from the props. This comes from creating a mapDispatchToProps function and connecting it to our reducer.
+
+const mapDispatchToProps= (dispatch)=>{
+return{
+   addToCart: (id)=>{dispatch(addToCart(id))}
+     }
+}
+NOTE: addToCart is actually an action that the reducer will handle later on.
+
+Adding the add to cart functionality inside the Home component.
+Now let’s create that addToCart action inside our cartActions file:
+
+export const addToCart= (id)=>{
+return{
+    type: ADD_TO_CART,
+     id }
+}
+And lastly, we’ll define how we’re going to handle our addToCart action once it’s dispatched to our reducer.
+
+Handling the addToCart action in our reducer.
+Now let’s display our added items in the Cart Component
+
+
+The following code will allow us to display our added items to the Cart component.
+
+In the next part we’ll add the functionality of adding the quantity and removing an item or all the items.
+
+Next Part
+
+Github repository
+
+React
+JavaScript
+Shopping Cart Solutions
+Redux
+Tutorial
+670
+
+
+9
+
+
+Aya Bellazreg
+Written by Aya Bellazreg
+218 followers
+·
+8 following
+A computer science enthusiast || Front-end Developer
+
+
+Follow
+Responses (9)
+
+Write a response
+
+What are your thoughts?
+
+Cancel
+Respond
+Anatoliy L
+Anatoliy L
+
+Jun 25, 2019
+
+
+Hello, you have an error in you cartReducer, you must add ‘else’ block with return ‘state’ in it. It fix error ‘Cannot read property items of undefined ‘
+The reducer function will look like this:
+const cartReducer = (state = initState, action) => {
+if…more
+2
+
+
+1 reply
+
+Reply
+
+Deepali Srivastava
+Deepali Srivastava
+
+May 14, 2020
+
+
+I followed the same step but nothing is happening on clicking add button.
+2
+
+Reply
+
+Norbert Huszti
+Norbert Huszti
+
+Mar 20, 2019
+
+
+Hi there! I’m doing everything as described, but somehow I get a “Cannot read property ‘items’ of undefined”. I have tried to fix it in every known ways to me, but still … Can you help me out pls? :)
+3
+
+
+2 replies
+
+Reply
+

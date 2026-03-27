@@ -66,18 +66,26 @@ Redux Toolkit (RTK) is the official, recommended way to write Redux logic today.
 
 Core Concepts and APIs
     Redux Toolkit abstracts much of the manual setup required by traditional Redux using key utilities:
+
     configureStore(): Simplifies store setup, automatically combining slice reducers, adding the redux-thunk middleware (for asynchronous logic) by default, and setting up the Redux DevTools extension.
+
     createSlice(): The core utility for defining a "slice" of state. It automatically generates action creators and action types based on the reducer functions you provide in a single object, co-locating all related logic.
+
     createAsyncThunk(): Simplifies asynchronous operations (like API calls) by abstracting the pattern of dispatching pending, fulfilled, and rejected actions based on a Promise's lifecycle.
+
     RTK Query: An optional, powerful data fetching and caching solution that can eliminate the need to write custom thunks or reducers for most data loading scenarios.
 
 Basic Usage Steps
 To implement Redux Toolkit, install @reduxjs/toolkit and react-redux, then follow these steps:
 
     Configure Store: Create a store with configureStore (usually in src/app/store.js).
+
     Provide Store: Wrap the root component with Provider from react-redux.
+
     Create Slice: Define state, actions, and reducers in one file using createSlice. This creates actions and reducers automatically.
+
     Add Reducers: Import the slice reducer into the store configuration.
+
     Use Hooks: Use useSelector to read state and useDispatch to update it in React components.
 =========================
 The Provider component from react-redux is a wrapper that makes the Redux store available to any nested components in a React application. It uses React's Context API to pass the store down to components, allowing them to access state or dispatch actions without prop drilling.
