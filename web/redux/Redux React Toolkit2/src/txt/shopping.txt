@@ -2,18 +2,6 @@ old way without toolkit
 
 Make a simple Shopping Cart App using React & Redux part 1
 A simple guide to learn how to use React & Redux to build a basic shopping cart app
-Aya Bellazreg
-Aya Bellazreg
-
-Follow
-4 min read
-·
-Dec 17, 2018
-923
-
-
-11
-
 
 
 Press enter or click to view image in full size
@@ -52,16 +40,8 @@ This is how your App.js file should look like.
 Now let’s get our hands dirty
 First of all, let’s create a new folder called components; this folder’s name is already self-explanatory, all of our components will be built there.
 
-Get Aya Bellazreg’s stories in your inbox
-Join Medium for free to get updates from this writer.
-
-Enter your email
-Subscribe
-
-Remember me for faster sign in
 
 Let’s create our first file Navbar.js to create a simple navbar:
-
 
 We’re not going to focus on the styles in this article so I am using Materialize to get awesome styles quickly. You can use something else or make your own styles. You’re free!
 
@@ -74,6 +54,7 @@ Then include the component into our App.js file.
 Create the Home.js file which will display all our items. This is where we’re going to use Redux to manipulate data! So, in order to use Redux in the first place, we need to install it:
 
 npm install redux react-redux
+
 Ok, so we got ourselves all set to use Redux. Now all we need to do is to import the components that we need for this project. That is:
 
 createStore: which allows us to create a store that holds all of our state tree of our app(will be imported from ‘redux’).
@@ -109,20 +90,6 @@ https://github.com/AyaBellazreg/React-Shopping-Cart/tree/master/Shopping-Cart
 Make a simple Shopping Cart App using React & Redux part 2
 A simple guide to learn how to use React & Redux to build a basic shopping cart app
 Aya Bellazreg
-Aya Bellazreg
-
-Follow
-3 min read
-·
-Dec 19, 2018
-670
-
-
-9
-
-
-
-Press enter or click to view image in full size
 
 In the last part we installed everything we need for the app. Furthermore; we created a navbar composed of a Home page and a Cart page but we haven’t created them yet.
 
@@ -134,7 +101,6 @@ Firstly, let’s create the Home.js:
 Basic Home Page
 It will look something like that:
 
-Press enter or click to view image in full size
 
 However, we want to display our items, right? so we’re going to somehow connect the Home page with the data that we stored in the cartReducer.
 
@@ -153,13 +119,89 @@ Now we’ll connect this Home component to the data in our store and pass in our
 export default connect(mapStateToProps)(Home)
 The mapStateToProps function:Takes the state in our cartReducer and pass it as props in our file(in this case we only need the items).
 
-Get Aya Bellazreg’s stories in your inbox
-Join Medium for free to get updates from this writer.
 
-Enter your email
-Subscribe
+Now that we have the items data in our props, we can manipulate it however we want;
 
-Remember me for faster sign in
+
+Getting items from the store(our state) and displaying them.
+Finally, we get our displayed items:
+
+
+The last step is to add items into the cart. For that; we need to add an onClick event to our add icon and affect it to a function that will lead eventually to add a new item to our store.
+
+onClick={()=>{this.handleClick(item.id)}}
+Now let’s create that handleClick function:
+
+handleClick = (id)=>{
+this.props.addToCart(id);
+}
+As you can see, we called an addToCart function(taking in the id of the targetted item as a parameter) from the props. This comes from creating a mapDispatchToProps function and connecting it to our reducer.
+
+const mapDispatchToProps= (dispatch)=>{
+return{
+   addToCart: (id)=>{dispatch(addToCart(id))}
+     }
+}
+NOTE: addToCart is actually an action that the reducer will handle later on.
+
+Adding the add to cart functionality inside the Home component.
+Now let’s create that addToCart action inside our cartActions file:
+
+export const addToCart= (id)=>{
+return{
+    type: ADD_TO_CART,
+     id }
+}
+And lastly, we’ll define how we’re going to handle our addToCart action once it’s dispatched to our reducer.
+
+Handling the addToCart action in our reducer.
+Now let’s display our added items in the Cart Component
+
+
+The following code will allow us to display our added items to the Cart component.
+
+In the next part we’ll add the functionality of adding the quantity and removing an item or all the items.
+
+Next Part
+
+Github repository
+
+Hello, you have an error in you cartReducer, you must add ‘else’ block with return ‘state’ in it. It fix error ‘Cannot read property items of undefined ‘
+The reducer function will look like this:
+const cartReducer = (state = initState, action) => {
+if…more
+
+Hi there! I’m doing everything as described, but somehow I get a “Cannot read property ‘items’ of undefined”. I have tried to fix it in every known ways to me, but still … Can you help me out pls? :)
+================
+Make a simple Shopping Cart App using React & Redux part 2
+A simple guide to learn how to use React & Redux to build a basic shopping cart app
+Aya Bellazreg
+
+In the last part we installed everything we need for the app. Furthermore; we created a navbar composed of a Home page and a Cart page but we haven’t created them yet.
+
+The Home page: will display all the provided items and will allow us to add whatever quantity of items we need.
+The Cart page: will give us all the selected items with all the information about each product + the total.
+Firstly, let’s create the Home.js:
+
+Basic Home Page
+It will look something like that:
+
+However, we want to display our items, right? so we’re going to somehow connect the Home page with the data that we stored in the cartReducer.
+
+To do that, we use the connect component from react-redux.
+
+import { connect } from ‘react-redux’
+Then, we need to add the mapStateToProps function(more about it later).
+
+const mapStateToProps = (state)=>{
+return {
+    items: state.items
+     }
+}
+Now we’ll connect this Home component to the data in our store and pass in our new function.
+
+export default connect(mapStateToProps)(Home)
+The mapStateToProps function:Takes the state in our cartReducer and pass it as props in our file(in this case we only need the items).
 
 Now that we have the items data in our props, we can manipulate it however we want;
 
@@ -206,39 +248,6 @@ In the next part we’ll add the functionality of adding the quantity and removi
 
 Next Part
 
-Github repository
-
-React
-JavaScript
-Shopping Cart Solutions
-Redux
-Tutorial
-670
-
-
-9
-
-
-Aya Bellazreg
-Written by Aya Bellazreg
-218 followers
-·
-8 following
-A computer science enthusiast || Front-end Developer
-
-
-Follow
-Responses (9)
-
-Write a response
-
-What are your thoughts?
-
-Cancel
-Respond
-Anatoliy L
-Anatoliy L
-
 Jun 25, 2019
 
 
@@ -278,3 +287,95 @@ Hi there! I’m doing everything as described, but somehow I get a “Cannot rea
 
 Reply
 
+
+=========================
+Make a simple Shopping Cart App using React & Redux part 3
+A simple guide to learn how to use React & Redux to build a basic shopping cart app
+Aya Bellazreg
+
+In the last part we learned how to display items and add them to our Redux store. This time, let’s do the opposite; we’ll remove the added items from the DOM and the store in additon to adding(and subtracting) quantity via our Cart component.
+
+In order to add or subtract the quantity, we firstly need to add onClick events the same way we did before with the addToCart function. So inside our Cart.js file, let’s add the following code(will be explained later):
+
+
+Adding/subtracting quantity, and removing an item.
+To explain this, we’ll just take one example(adding to quantity) since all the other examples are pretty much the same;
+
+So once the target is clicked, we called the addQuantity function from the props. Here is where we need the mapDispatchToProps function; It basically dispatches the action to the reducer, and then we of course have to add that function as a parameter in the connect component.
+
+NOTE: Don’t forget to add all the mentioned actions into your cartActions file and then import them to the Cart.
+
+Now let’s add some changes inside our reducer to make this all work;
+
+
+Adding the new actions to our reducer.
+Here I used the if statement, but we generally use the switch statement.
+
+Get Aya Bellazreg’s stories in your inbox
+
+Now we’re going to display our total. For that, I’ve created another component called Recipe. So we want to import our total from the store and display it then add or remove this shipping, right? we’ve already done that a few times now, so you should be able to do it by your own now!
+
+Recipe.js file
+
+Now let’s handle our shipping actions:
+
+Add the shipping from the total:
+if(action.type=== ADD_SHIPPING){
+return{
+...state,
+total: state.total + 6
+      }
+}
+Remove the shipping from the total:
+if(action.type=== SUB_SHIPPING){
+return{
+...state,
+total: state.total - 6
+      }
+}
+And now, the total should be updated depending on shipping option!
+
+However, we should consider that when the user visits another page and comes back, the checkbox will remain unchecked but the value of total didn’t change. That will cause a problem; it will keep adding the shipping cost even when the checkbox remained unchecked because of the default action of the browser. So to solve that, we could simply add the componentWillUnmount() function:
+
+componentWillUnmount() {
+if(this.refs.shipping.checked)
+this.props.substractShipping()
+}
+We did target that checkbox using the name of our ref. We’ve already added a ref attribute to it, remember?
+
+Don’t forget to add it to your Cart component.
+
+That’s it! I hope I gave you a little insight about the React and Redux use and a better understanding about the concepts that comes in with Redux.
+
+Github repository
+https://github.com/AyaBellazreg/React-Shopping-Cart/tree/master/Shopping-Cart
+
+
+Great work. But in ADD_TO_CART action section, You’d better return a new addedItems, not just addedItem.quantity +=1
+6
+
+Reply
+
+Tejas Patel
+Tejas Patel
+
+Aug 20, 2020
+
+
+How to manage cart items when user reload the page. On reloading the page Redux value will be blank.
+2
+
+
+1 reply
+
+Reply
+
+Foroogh Fallah
+Foroogh Fallah
+
+Feb 22, 2020
+
+
+Spoiler Alert!
+In case anyone had a problem with updating “Quantity” in “ADD_QUANTITY
+” & “SUB_QUANTITY”, you need to make a new copy of state.items & apply your changes to that cloned array & then reassign the cloned array to the original array just…more
