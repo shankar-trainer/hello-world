@@ -15,31 +15,36 @@ const reducer = (state, action) => {
       return {
         ...state,
         [action.field]: action.value,
+        error: null, // Clear error when user starts typing again
       };
-    case "submit":
-      if (!state.name || !state.email || !state.password || !state.agreeToTerms) {
-        return { ...state, error: "All fields must be filled out" };
-      }
-      return { ...state, error: null };
+    case "error":
+      return { 
+        ...state, 
+        error: action.message 
+      };
     case "reset":
       return initialState;
     default:
-      throw new Error();
+      return state;
   }
 };
-
-const SignupForm = () => {
+const SignupForm1 = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch({ type: "submit" });
-    if (!state.error) {
-      alert("Form submitted!");
-      dispatch({ type: "reset" });
-    }
-  };
+  // 1. Validate locally using the current state values
+  const isInvalid = !state.name || !state.email || !state.password || !state.agreeToTerms;
 
+  if (isInvalid) {
+    // 2. If invalid, just update the error state
+    dispatch({ type: "error", message: "All fields must be filled out" });
+  } else {
+    // 3. If valid, proceed with submission
+    alert("Form submitted!");
+    dispatch({ type: "reset" });
+  }
+};
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -75,4 +80,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default SignupForm1;
