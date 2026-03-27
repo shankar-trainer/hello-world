@@ -1,9 +1,11 @@
 This example demonstrates a React-Redux application managing two distinct states (counter and name) using combined reducers, displaying them on two separate, specialized pages (Components). 
 1. Actions (actions.js)
 javascript
+
 export const increment = () => ({ type: 'INCREMENT' });
 export const decrement = () => ({ type: 'DECREMENT' });
 export const changeName = (name) => ({ type: 'CHANGE_NAME', payload: name });
+
 2. Reducers (reducers.js)
 javascript
 import { combineReducers } from 'redux';
