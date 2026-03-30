@@ -5,15 +5,18 @@ When State is an Object (Class Components or useState with an object)
 If your state is an object (common in class components), you must use an approach similar to ...state, count: state.count + 1. 
 
 ...state, count: state.count + 1:
+
 Function: This is a part of the argument passed to this.setState() in a class component, or a similar state updater function when using useReducer. The spread syntax (...state) is crucial because React merges state updates in class components, it doesn't replace the entire state object. The spread ensures that other properties in the state object are preserved.
 Reliability: When using the functional form this.setState((prevState) => ({ ...prevState, count: prevState.count + 1 })), it guarantees you are working with the most up-to-date prevState, preventing issues caused by asynchronous state updates and batching.
 Example (Class):
+
 jsx
 this.setState((state) => ({
   ...state,
   count: state.count + 1,
 }));
 count: state.count + 1:
+
 Function: This alone is incomplete if your state object has other properties, as it would not preserve those other properties if passed as the entire object to the setter. It is only valid as part of a larger object literal, as seen above, or in a functional update that returns the new object. 
 
 
