@@ -1,0 +1,92 @@
+You can pass multiple props in React by listing them as attributes on the child component in the parent's JSX, and then accessing them in the child component. There are two main methods for handling multiple props: individual declaration and using the spread operator with an object.
+
+1. Passing and Reading Individual Props
+
+This is the most explicit and common way to pass multiple props.
+In the Parent Component:
+You add multiple attributes to the child component instance within the JSX. The values can be strings (in quotes) or any JavaScript expression (in curly braces), including numbers, objects, arrays, and functions.
+
+jsx
+import Avatar from './Avatar';
+
+export default function Profile() {
+  const userName = "Katsuko Saruhashi";
+  const imageId = "YfeOqp2";
+  const size = 80;
+
+  return (
+    <Avatar
+      person={{ name: userName, imageId: imageId }}
+      size={size}
+      isLoggedIn={true}
+    />
+  );
+}
+In the Child Component:
+You can read the props using object destructuring in the function signature for cleaner code. This is generally considered a best practice as it clearly shows which props the component expects.
+
+jsx
+function Avatar({ person, size, isLoggedIn }) {
+  // You can use person, size, and isLoggedIn directly as variables
+  return (
+    <div className="avatar-container">
+      <img
+        src={`https://i.imgur.com{person.imageId}.jpg`}
+        alt={person.name}
+        width={size}
+        height={size}
+      />
+      <p>{isLoggedIn ? 'Logged in' : 'Logged out'}</p>
+    </div>
+  );
+}
+
+Alternatively, you can access them via the single props object:
+jsx
+function Avatar(props) {
+  // Access as props.person, props.size, props.isLoggedIn
+  return (
+    // ... use props.person.imageId, etc.
+  );
+}
+
+2. Using the Spread Operator (for many props)
+If you have many props stored in a single object, you can pass all of its properties down to a child component using the spread syntax (...). This can simplify the parent component's code, but should be used thoughtfully to avoid passing unintended props.
+
+
+In the Parent Component:
+jsx
+import ChildComponent from './ChildComponent';
+
+const ParentComponent = () => {
+  const myProps = {
+    prop1: "value1",
+    prop2: "value2",
+    prop3: true,
+    prop4: 100
+  };
+
+  return <ChildComponent {...myProps} />;
+};
+
+In the Child Component:
+The props are received just as if they were passed individually, and can be destructured.
+
+jsx
+function ChildComponent({ prop1, prop2, prop3, prop4 }) {
+  return (
+    <div>
+      <p>Prop 1: {prop1}</p>
+      <p>Prop 2: {prop2}</p>
+      <p>Prop 3: {prop3.toString()}</p>
+      <p>Prop 4: {prop4}</p>
+    </div>
+  );
+}
+
+Best Practices
+
+Destructure props in the child component's function signature for improved readability.
+Group related props into objects (e.g., passing a single user object instead of userName, userEmail, userId separately) to keep prop lists manageable and avoid "prop drilling".
+
+Use the React Context API for data that needs to be accessed by many components at different nesting levels, rather than passing it down manually through every component.

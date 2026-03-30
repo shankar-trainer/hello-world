@@ -70,7 +70,9 @@ To understand why this happens, let’s look at how React processes state update
 
 State Snapshot: The count variable in your component is a snapshot of the state for the current render. It doesn't update until the component re-renders.
 Update Queue: When you call setCount, React enqueues the update. For setCount(count + 1), it queues a static value (e.g., 1). For setCount(prev => prev + 1), it queues a function that will compute the new state based on the previous state.
+
 Batching: React processes all queued updates in order during the next render cycle. Functional updates (prev => prev + 1) are applied sequentially, using the latest state each time, while direct updates (count + 1) rely on the potentially stale count value.
+
 Asynchronous Example
 The difference becomes even clearer in asynchronous scenarios, like a setTimeout:
 
@@ -91,12 +93,19 @@ function Counter() {
 }
 setCount(count + 1) uses the count value from when setTimeout was called, which might be outdated.
 setCount(prev => prev + 1) uses the actual state when the update is processed, ensuring correctness.
+
 When to Use Each
+
 Use setCount(prev => prev + 1):
+
 When the new state depends on the previous state (e.g., incrementing, decrementing, or transforming state).
+
 In scenarios with multiple updates, async code, or event handlers where batching might occur.
+
 To avoid bugs caused by stale state.
+
 Use setCount(count + 1):
+
 When setting a fixed value that doesn’t depend on the previous state (e.g., setCount(42)).
 In simple cases where you’re confident batching or async issues won’t arise.
 Putting It All Together

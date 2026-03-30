@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Todo List Table</title>
     <style>
@@ -43,7 +42,6 @@
     </table>
 
     <script>
-
         var hello = async () => {
             // 1. Fetch the data
             var response = await fetch("https://jsonplaceholder.typicode.com/todos");
@@ -62,13 +60,12 @@
       </tr>
     `;
             });
-
             // 4. Join all the strings together and inject them into the table
             tableBody.innerHTML = htmlRows.join("");
+
         }
 
         hello();
-
     </script>
 </body>
 </html>
