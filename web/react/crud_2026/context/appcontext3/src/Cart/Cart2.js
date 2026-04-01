@@ -1,27 +1,31 @@
-import { useState } from "react"
+import { useReducer, useState } from "react"
 /*
 coders gyan react
 https://github.com/codersgyan/react-shopping-cart
 https://www.youtube.com/watch?v=iyresihBdO8&t=981s
-
+using useReducer 
 */
+const reducer = (state, action) => {
+    console.log('state', state)
+    console.log('action', action)
+    switch (action.type) {
+        case 'ADD_ITEM':
+            {
+                const newItem = `Item ${state.length + 1}`
+                return [...state, newItem];
+            }
+        case 'REMOVE_ITEM':
+            return  state.filter((_, i) => i != action.index)
+            
+        case 'CLEAR_ITEM':
+            return []
 
 
-export const Cart1 = () => {
-    // const [cart, setCart] = useState(["laptop","phone","car"])
-    const [cart, setCart] = useState([])
-    const addItem = () => {
-        const newItem = `Item ${cart.length + 1}`
-        setCart((cart) => [...cart, newItem]);
     }
-    const removeItem = (index) => {
-        setCart((cart) => cart.filter((_, i) => i != index))
-    }
-    
-    const clearCart = () => {
-        setCart([])
-    }
+}
 
+export const Cart2 = () => {
+    const [cart,dispatch]=useReducer(reducer,[])
     return (
         <>
             <h2>Cart using useState </h2>
@@ -30,14 +34,14 @@ export const Cart1 = () => {
                     cart.map((item, index) => (
                         <li>
                             {item}
-                            <button onClick={()=>removeItem(index)}>Remove Item</button>
+                            <button onClick={() => dispatch({ 'type': 'REMOVE_ITEM', index: index })}>Remove Item</button>
                             {/* <button onClick={removeItem(index)}>Remove Item1</button> */}
                         </li>
                     ))
                 }
             </ul>
-            <button onClick={addItem}>Add Item</button>
-            <button onClick={clearCart}>Clear Cart</button>
+            <button onClick={() => dispatch({ 'type': 'ADD_ITEM' })}>Add Item</button>
+            <button onClick={() => dispatch({ 'type': 'CLEAR_ITEM' })}>Clear Cart</button>
             <p>Total Items :{cart.length}</p>
         </>
     )
@@ -87,52 +91,4 @@ Pro Tip: If your function didn't need any arguments (e.g., removeItem()), you co
 
 Would you like me to take a look at your removeItem logic to make sure the state is being updated immutably?
 
--------------------------------------------
-        setCart((cart) => cart.filter((_, i) => i != index))
-
-what it does
-
-This line of code is a common pattern in React used to remove a specific item from a list (state) based on its position (index).
-
-To break it down, here is exactly what each part of that logic is doing:
-
-The Breakdown
-setCart((cart) => ...): This uses a "functional update." Instead of just passing a new value, it takes the current state (called cart here) as an argument. This ensures you are working with the most up-to-date version of the list.
-
-.filter(): This is a standard JavaScript array method that creates a new array. It keeps every item that passes a specific "test" and tosses out the ones that don't.
-
-(_, i):
-
-The underscore _ is a convention used when you don't actually need the value of the item (like the name or price of the product).
-
-The i represents the index (the numerical position) of the current item being checked.
-
-i != index: This is the "test." It tells React: "Keep this item if its position (i) is not equal to the one I want to delete (index)."
-
-In Plain English
-Imagine you have a shopping list:
-
-Apples
-
-Milk
-
-Bread
-
-If you call this function with index = 1 (Milk), the filter looks at the list and says:
-
-"Is 0 equal to 1? No. Keep Apples."
-
-"Is 1 equal to 1? Yes. Remove Milk."
-
-"Is 2 equal to 1? No. Keep Bread."
-
-The result is a brand-new list: ['Apples', 'Bread'].
-
-Why do it this way?
-In React, you should never "mutate" (change) the state directly (e.g., you can't just use cart.splice()). 
-You must always provide a new copy of the array. The .filter() method is perfect for this because it doesn't change the original array; 
-it returns a fresh one with the item missing.
-
-
 */
-

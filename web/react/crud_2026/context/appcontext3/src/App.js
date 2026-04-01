@@ -13,6 +13,7 @@ import { Counter1, Counter2 } from './reducer2/Counter1';
 import ParentComponent from './parent-child/ParentComponent';
 import ChildComponent from './parent-child/ChildComponent';
 import { Cart1 } from './Cart/Cart1';
+import { Cart2 } from './Cart/Cart2';
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
         {/* <ParentComponent>
           <ChildComponent></ChildComponent>
         </ParentComponent> */}
-        <Cart1></Cart1>
+        {/* <Cart1></Cart1> */}
+        <Cart2></Cart2>
     </div>
   );
 }
