@@ -1,0 +1,212 @@
+An AI roadmap typically serves two main purposes: it either outlines a learning path for individuals to master the technology or a strategic plan for businesses to implement AI at scale. [1, 2]
+1. AI Learning Roadmap (Individual)
+For those looking to become an AI Engineer or Data Scientist in 2026, the path is generally divided into several progressive phases: [1, 2]
+• Phase 1: Foundations (Months 1–2)
+	o Mathematics: Focus on Linear Algebra (matrices), Probability/Statistics, and Calculus (gradients).
+	o Programming: Master Python, including libraries like NumPy, Pandas, and Matplotlib.
+	• Phase 2: Machine Learning (Months 3–6)
+	o Learn Supervised (Regression, Classification) and Unsupervised (Clustering) learning.
+	o Understand model evaluation metrics like accuracy, precision, and recall.
+	• Phase 3: Deep Learning & Generative AI (Months 7–10)
+	o Neural Networks: Study CNNs (for vision) and Transformers (for text) using frameworks like PyTorch or TensorFlow.
+	o Generative AI: Explore Large Language Models (LLMs), Prompt Engineering, and Retrieval-Augmented Generation (RAG).
+	• Phase 4: Engineering & Deployment (Months 11–12)
+	o Learn to build AI Agents and deploy models using Docker and cloud platforms like AWS or Google Cloud. [1, 2, 3, 4, 5, 6]
+2. Business Implementation Roadmap (Enterprise)
+	Organizations use AI roadmaps to ensure initiatives align with business goals rather than just deploying technology for its own sake. Key workstreams include: [1]
+	• AI Strategy & Value: Defining specific use cases that will drive ROI.
+	• Data Readiness: Ensuring high-quality, "AI-ready" data is available and governed.
+	• Governance & Ethics: Establishing policies for safety, transparency, and regulatory compliance.
+	• Workforce Readiness: Redesigning roles and upskilling employees for human-AI collaboration. [1, 2]
+	Recommended Resources
+	• Interactive Paths: Sites like roadmap.sh and Krish Naik Academy offer visual, step-by-step guides.
+	• Free Courses: freeCodeCamp and GitHub repositories provide comprehensive free learning materials. [1, 2, 3, 4, 5]
+	https://www.freecodecamp.org/news/ai-engineering-roadmap/
+	https://github.com/aadi1011/AI-ML-Roadmap-from-scratch
+	Are you looking for a career-focused learning plan or a business strategy for implementing AI in a specific industry?
+
+
+
+Free AI and Machine Learning Roadmap with Resources
+🧠 Become skilled in Artificial Intelligence, Machine Learning, Generative AI, Deep Learning, Data Science, Natural Language Processing, Reinforcement Learning and more with this complete 0 to 100 repository.
+
+💡 You can follow these modules simultaneously as well as in order given below. The modules are ranked in increasing order of difficulty. Content with a ⭐ are highly recommended.
+
+📚 These are a collection of the best free resources from YouTube and online courses, as well as other popular blogs and websites.
+
+Contents
+Learning Pathway Modules
+
+	Module 0 - Before You Start
+	Module 1 - The Math Behind It All
+	Module 2 - Building Your Foundation
+	Module 3 - Data Science
+	Module 4 - Machine Learning
+	Module 5 - Computer Vision
+	Module 6 - Deep Learning Neural Network
+	Module 7 - Generative AI
+	Sub-Module 7A - Retrieval Augmented Generation (RAG)
+	Module 8 - Natural Language Processing
+	Module 9 - Reinforcement Learning
+	Module 10 - Agentic AI
+	Bonus Module - Advanced Learning Pathway Courses
+
+	Additional Cool Stuff
+
+PROJECTS!
+	Interesting Websites to Visit
+	AI Newsletters
+	AI Blogs
+	Contribute
+	Module 0 - Before You Start
+	Before you begin, it is best to build your foundations and have the set-up ready. This would help you get your system working for Python on a compiler software. Mathematics is a foundation for everything in the world for Artificial Intelligence. Have a core in applied mathematical concepts like linear algebra, matrics and more can help you theoretically understand how machines work.
+
+S.No Type Course Name
+	1 Software Python 3.13 Download
+	2 Software Visual Studio Code Download
+	3 Py Package Install Pip Package Installer on Python
+	4 Py Package Common Python Libraries used for AI/ML
+
+	Module 1 - The Math Behind It All
+	The domain of AI/ML is a vast deep ocean and it's time for you to build a boat and rafters for a smooth sail. These foundational courses in Computer Science and Python Programming will get you going strong!
+
+	S.No Type Course Name
+	1 Playlist Math for Machine Learning Playlist
+	2 ⭐Course NPTEL Swayam Discrete Mathematics Course
+	3 Course Discrete Structures via Saylor Academy
+	4 Lectures Linear Algebra Lecture Series from MIT
+	5 Course Fundamental Math for Data Science
+
+	Module 2 - Building Your Foundation
+	The domain of AI/ML is a vast deep ocean and it's time for you to build a boat and rafters for a smooth sail. These foundational courses in Computer Science and Python Programming will get you going strong!
+
+	S.No Type Course Name
+	1 Course MITx: Introduction to Computer Science and Programming Using Python
+	2 Course HarvardX: CS50's Introduction to Programming with Python
+	3 Website Introduction to Python - W3 Schools
+	4 YouTube Learn Python in 4 Hours
+	5 ⭐Practice! Practice Python on HackerRank
+	6 Certificate Python Basic Certification
+
+	Module 3 - Data Science
+	Data is the new oil! Before jumping into making advanced AI, let's learn about the data that drives it. We'll cover basics of statistics and Data Science using Python in this module.
+
+	S.No Type Course Name
+	Bonus YouTube Quick 5 Minute Intro to Data Science
+	1 YouTube Data Science Overview
+	2 Website Data Science Introduction
+	3 YouTube Python for Data Science
+	4 Course Google Data Analytics Professional Certificate
+	5 ⭐Course IBM Data Science Professional Certificate
+
+	Module 4 - Machine Learning
+	Time to use that data to train a machine on how to learn them. Machine learning is the science of computer algorithms that help machines learn and improve from data analysis without explicit programming. THAT'S SO COOL!
+
+	S.No Type Course Name
+	1 Website Introductory Article on Machine Learning - Spiceworks
+	2 ⭐Course HarvardX: Data Science: Machine Learning
+	3 Website Machine Learning Tutorial - GFG
+	4 Course Explore Azure with OpenAI
+	5* Course Machine Learning Specialization by Andrew Ng
+	6 Course Machine Learning Engineer Learning Path from Google Cloud Skills Boost
+	*❗ The ML Specialization by Andrew NG is a highly specialized and industry level course by one of the most promient AI scientist - Andrew NG. It is an expert level course and is highly recommened to do one you get a good grasp of the foundational knowledge.
+
+	Module 5 - Computer Vision
+	Giving the power of vision to our intelligent computers! Computer Vision trains computers to interpret and understand the visual world, just the way we see it (or in an more advanced way ;))
+
+	S.No Type Course Name
+	1 YouTube Computer Vision Crash Course Overview
+	2 YouTube OpenCV Course - Full Tutorial with Python
+	3 Course OpenCV Bootcamp
+	4 ⭐Course Computer Vision Essentials
+	5 Playlist (VERY ADVANCED) Stanford Computer Vision Lectures
+
+	Module 6 - Deep Learning Neural Network
+	Time to harness the power of our human brain to develop something that resembles the powers of a human brain. Neural Networks help you understand how information is processed from raw data like the human brain to mimic desired outputs.
+
+	S.No Type Course Name
+	1 Course DeepLearning.AI Neural Networks and Deep Learning
+	2 Course Neural Networks and Deep Learning
+	3 Course Convolutional Neural Networks
+	4 ⭐YouTube Deep Learning Crash Course for Beginners
+	5 Playlist Neural Networks: Zero to Hero
+
+	Module 7 - Generative AI
+	The big buzz word everywhere! Create text, images, audios, videos, and more all thanks to Generative Adversarial Networks!
+
+	S.No Type Course Name
+	1 Course Microsoft Fundamentals of Generative AI
+	2 Course Microsoft Responsible Generative AI
+	3 ⭐YouTube Generative AI in a Nutshell
+	4 Course Generative Adversarial Networks (GANs) Specialization
+	5 E-Book Generative AI and LLMs for Dummies
+	6 Course Generative AI Learning Path by Google Cloud Skills Boost
+	7 YouTube Generative AI for Developers
+	Sub-Module 7A - Retrieval Augmented Generation (RAG)
+	Retrieval-augmented generation (RAG) is a natural language processing (NLP) technique that combines the capabilities of traditional information retrieval systems with the strengths of generative large language models (LLMs)
+
+	S.No Type Course Name
+	1 Course Retrieval Augmented Generation Introduction (RXM403)
+	2 Project Guided Project on RAG
+	3 YouTube Learn RAG From Scratch
+
+	Module 8 - Natural Language Processing
+	English, Spanish, French, Hindi, Tamil, Russian, Python, Java, C++ and wait what? Let's learn how can we help computers understand our human language better (the natural language)
+
+	S.No Type Course Name
+	1 Website How To Get Started with NLP
+	2 ⭐Playlist Tensorflow's NLP Zero to Hero
+	3 YouTube Natural Language Processing Pipeline
+
+	Module 9 - Reinforcement Learning
+	Walk, fall, get up, learn, repeat. Just like how humans learn through experiences on what to do and what not to do, AI is no different!
+
+	S.No Type Course Name
+	1 Playlist Reinforcement Learning By The Book
+	2 YouTube RL Basics from Scratch
+	3 Website Reinforcement Learning Tutorial - JavaTPoint
+	4 ⭐Website Deep Reinforcement Learning Course - HuggingFace
+	Module 10 - Agentic AI
+	Don't just provide the solutions, start acting on it. Agentic AI workflows integrate AI and operations to fuel the next wave automation like never before.
+
+	S.No Type Course Name
+	1 ⭐YouTube AI Agents Fundamentals in 7 Minutes
+	2 YouTube Getting Started with LangFlow
+	3 YouTube Building RAG Based LLM App using LangFlow
+	4 YouTube Building a Team of AI Agents in n8n with No Code
+	5 Website n8n Documentation
+	6 Website Generative AI vs Agentic AI - Forbes
+	Bonus Module - Advanced Learning Pathway Courses
+	Additional bonus courses and problem solving exercises.
+
+	S.No Course Name
+	1 Stanford Machine Learning Specialization
+	2 Google: Google AI for Anyone
+	3 IBM AI Foundations for Business Specialization
+	4 Solve Artificial Intelligence Problems on HackerRank
+	5 Solve Functional Programming on HackerRank
+
+	PROJECTS!
+
+	20 Popular Deep Learning Projects - TheCleverProgrammer Blog
+	500 AI, Machine learning, Deep learning, Computer vision, NLP Projects with code - GitHub Repo
+	Machine Learning Projects - GeeksForGeeks
+	15 Python Reinforcement Learning Project Ideas for Beginners - Project Pro
+	Interesting Websites to Visit:
+	AI Club - SIT Pune
+	AI WareHouse
+	Google Talk to Books
+	Google Semantris Machine Learning Word Game
+	Replika AI Avatars
+	AI Music, Text to Speech, and Voice to Voice
+	AI Newsletters
+	The Rundown AI
+	Mindstream
+	AI Breakfast
+	TLDR AI
+	The Neuron
+	AI Blogs
+	Google AI Blogs
+	Distill Publications
+	Machine Learning Mastery
+	Contribute
