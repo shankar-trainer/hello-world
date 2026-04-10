@@ -3,13 +3,21 @@ Vite is the recommended modern build tool for creating React applications, offer
 1. Quick Start Commands
 To scaffold a new React project, run the following command in your terminal and follow the interactive prompts: 
 
-    NPM: npm create vite@latest
+    NPM: npm create vite@latest projectname
     Yarn: yarn create vite
     pnpm: pnpm create vite 
 
     One-line Setup:
     To skip prompts and create a project immediately with a specific template (e.g., TypeScript): 
     bash
+        create project with .js 
+     npm create vite@latest projectname
+        create project with .jsx 
+
+    npm create vite@latest my-react-app -- --template react
+
+        create project with .ts 
+
     npm create vite@latest my-app -- --template react-ts
 
 
