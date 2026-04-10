@@ -1,0 +1,32 @@
+In PHP, the term __CLASS__ refers to a magic constant that provides the name of the class where it is used. Unlike regular constants, 
+magic constants change their value based on their location in the code.Key Characteristics of __CLASS__Context-Sensitive: 
+
+It returns the name of the class in which it is defined.Fully Qualified: The returned name includes the namespace in which the class was declared (e.g., Foo\Bar).Compile-Time Resolution: It is resolved when the script is compiled, rather than at runtime.Trait Support: When used inside a trait method, it returns the name of the class currently using that trait.Case-Insensitive: 
+
+Although usually written in uppercase, __CLASS__ is case-insensitive.
+
+Usage Examples1. Basic Class Name Retrievalphpclass MyExample {
+    public function showClassName() {
+        echo __CLASS__; 
+    }
+}
+$obj = new MyExample();
+$obj->showClassName(); // Outputs: MyExample
+
+2. Inside a Namespacephpnamespace App\Models;
+
+class User {
+    public function getName() {
+        return __CLASS__;
+    }
+}
+
+$user = new User();
+echo $user->getName(); // Outputs: App\Models\User
+
+Alternatives and Related FeaturesClassName::class: A similar feature that returns the fully qualified class name of a specific class (e.g., User::class).get_class($this): 
+
+A function used to find the class of an object at runtime. 
+Unlike __CLASS__, this will respect inheritance and return the name of a child class if called from a parent method.
+
+__METHOD__: Returns both the class name and the method name (e.g., MyClass::myMethod).
