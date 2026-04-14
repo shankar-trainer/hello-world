@@ -1,0 +1,99 @@
+The HTML5 Geolocation API
+● It allows websites to retrieve the geographical
+position (latitude and longitude) of a user after
+obtaining their explicit permission.
+● Since this can compromise privacy, the location
+is not available unless the user approves it.
+Using HTML Geolocation API
+–
+The Geolocation API is accessed via a call to navigator.geolocation.
+–
+This will cause the browser to ask the user for permission to access
+their location data.
+–
+If the user accept, the browser will search for the best available
+functionality on the device to access this information (for example
+GPS).
+
+Core Implementation
+To use geolocation, you must first check for browser support and
+then call the getCurrentPosition() method.
+●
+Key API Methods
+●
+getCurrentPosition(): Fetches the user's current location once.
+●
+watchPosition(): Returns periodic updates as the user's location changes (useful for
+navigation).
+●
+clearWatch(): Stops a previously established watchPosition() session.
+●
+User Privacy: Browsers will always prompt the user for permission before sharing
+location data.
+●
+HTTPS Requirement: Most modern browsers require a secure connection (HTTPS)
+for the Geolocation API to function.
+●
+Accuracy Options: You can pass an optional configuration object to
+getCurrentPosition() to set enableHighAccuracy, timeout, and maximumAge.
+
+<h1>HTML Geolocation</h1>
+<p>Click the button to get your coordinates.</p>
+<button onclick="getLocation()">Try It</button>
+<p id="demo"></p>
+<script>
+const x = document.getElementById("demo");
+function getLocation() {
+if (navigator.geolocation) {
+navigator.geolocation.getCurrentPosition(success,
+error);
+} else {
+x.innerHTML = "Geolocation is not supported by
+this browser.";
+}
+}
+function success(position) {
+x.innerHTML = "Latitude: " + position.coords.latitude +
+"<br>Longitude: " + position.coords.longitude;
+}
+function error() {
+alert("Sorry, no position available.");
+}
+</script>
+// 1. Check browser support and request
+current location
+const output = document.getElementById("display");
+function findMe() {
+// 1. Check browser support
+if (navigator.geolocation) {
+// 2. Request current position
+navigator.geolocation.getCurrentPosition(showPosition, handleError);
+} else {
+output.innerHTML = "Geolocation is not supported by this browser.";
+}
+}
+
+Success callback
+function showPosition(position) {
+const lat = position.coords.latitude;
+const lon = position.coords.longitude;
+output.innerHTML = `Latitude: ${lat}<br>Longitude: ${lon}`;
+}
+
+// 4. Error handling callback
+function handleError(error) {
+switch(error.code) {
+case error.PERMISSION_DENIED:
+output.innerHTML = "User denied the request for Geolocation.";
+break;
+case error.POSITION_UNAVAILABLE:
+output.innerHTML = "Location information is unavailable.";
+break;
+case error.TIMEOUT:
+output.innerHTML = "The request to get user location timed out.";
+break;
+case error.UNKNOWN_ERROR:
+output.innerHTML = "An unknown error occurred.";
+
+break;
+}
