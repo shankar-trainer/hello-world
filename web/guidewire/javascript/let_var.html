@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var a = 10;
+        {
+            let a = 20;
+            console.log('a inside block/function is  ' + a);
+            a = 22;
+            console.log('a inside block/function after change is  ' + a);
+        }
+        console.log('a outside  block/function is  ' + a);
+        const k=99;
+        // k=687; // error 
+
+        function fullname(fn, ln) {
+            return fn + '  ' + ln;
+        }
+        fname = 'amit';
+        lname = 'kumar';
+
+        console.log('first name  ' + fname);
+        console.log('last name  ' + lname);
+        console.log('full name  ' + fullname(fname, lname));
+        console.log('full name  ' + fullname('shiv', 'parsad'));
+    </script>
+</body>
+
+</html>

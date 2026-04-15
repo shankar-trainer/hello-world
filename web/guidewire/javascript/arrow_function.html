@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function hello(str) { // normal function
+            return "welcome " + str;
+        }
+
+        const greeting = function (str) {   // anonymous function
+            return "welcome " + str;
+        }
+
+        const greeting1 = (str) => "welcome" + str; // arrow function 
+
+        const addition=(a,b)=>a+b;
+
+        console.log(hello("amit kumar"));
+        console.log(greeting("ritesh kumar"));
+        console.log(greeting1("suresh kumar"));
+        console.log(addition(11,22));
+
+        // rest function 
+        
+         sum=(name,course,...arg)=>{
+            var s=0;
+            for (const a of arg) {
+                s=s+a;
+            }
+            console.log(`name  is ${name}\ncourse is ${course}`);
+            console.log('total marks ')
+         return s;
+        }
+      console.log(sum('arvind','be',90,88));
+      console.log(sum('suman','btech',66,76,45));
+      console.log(sum('surendra','b.sc',55,58,67,90));
+
+      var ar=[1,2,3,4,5]
+      console.log(ar)
+      console.log(...ar)
+    </script>
+</body>
+</html>
