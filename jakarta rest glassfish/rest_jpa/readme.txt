@@ -55,5 +55,123 @@ drop-and-create	Drops existing objects and then creates new ones.
 drop	Drops the database objects.
 
 
+==============================
+Developing a JAX-RS RESTful service with GlassFish 8 (Jakarta EE 10+) using JPA (EclipseLink) and MySQL 8 requires configuring a JDBC connection pool and resource, adding the MySQL driver to the GlassFish domain, and setting up persistence.xml. GlassFish 8 uses jakarta.* namespaces rather than javax.*.
+1. Prerequisites
+GlassFish 8
+MySQL Server 8.x
+MySQL JDBC Driver (Connector/J) 
+2. Configure GlassFish for MySQL 
+JDBC Driver: Download the MySQL Connector/J driver and copy the JAR file into the glassfish/domains/domain1/lib/ext folder.
+Restart: Restart the GlassFish server to load the driver.
+Connection Pool: Use the admin console (usually http://localhost:4848) or asadmin command:
+bash
+asadmin create-jdbc-connection-pool --datasourceclassname com.mysql.cj.jdbc.MysqlDataSource --restype javax.sql.DataSource --property user=root:password=password:serverName=localhost:portNumber=3306:databaseName=yourdb:useSSL=false MySQL8Pool
+JDBC Resource: Create the JNDI name:
+bash
+asadmin create-jdbc-resource --connectionpoolid MySQL8Pool jdbc/MySQL8App
+ 
+Stack Overflow
+Stack Overflow
+ +4
+3. JPA Configuration (persistence.xml) 
+Create src/main/resources/META-INF/persistence.xml to define the persistence unit:
+xml
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    <persistence-unit name="myPersistenceUnit" transaction-type="JTA">
+        <jta-data-source>jdbc/MySQL8App</jta-data-source>
+        <properties>
+            <!-- Automatically create tables for MySQL 8 -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+4. Implementation Example
+Entity:
+java
+@Entity
+public class User implements Serializable {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    // Getters and Setters
+}
+JAX-RS Resource:
+java
+@Path("/users")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class UserResource {
+    @PersistenceContext(unitName = "myPersistenceUnit")
+    private EntityManager em;
 
+    @GET
+    @Path("/{id}")
+    public User getUser(@PathParam("id") Long id) {
+        return em.find(User.class, id);
+    }
+}
+5. Deployment
+Build the application as a WAR file and deploy it to GlassFish 8 via the console or asadmin deploy. The JPA provider (EclipseLink) will use the connection pool configured in GlassFish to communicate with MySQL. 
+Eclipse GlassFish
+Eclipse GlassFish
+ +4
+Note: Ensure you are using jakarta.* annotations and libraries for Jakarta EE 10 compliance in GlassFish 8. 
 
+=========================================================
+
+jaxrs with glassfish 8 using jpa with mysql without database configuration
+
+To use JAX-RS with GlassFish 8 and JPA/MySQL without manual database configuration, define a persistence.xml that uses RESOURCE_LOCAL with Hibernate or EclipseLink properties to auto-generate tables, and add the MySQL Connector JAR to glassfish/domains/domain1/lib. Define your API via JAX-RS annotated classes and use @PersistenceContext for CRUD operations. 
+Stack Overflow
+Stack Overflow
+ +4
+Key Components for No-Config Setup
+JDBC Driver: Place mysql-connector-java-x.x.x.jar into the glassfish/domains/domain1/lib/ folder to make it available to the server.
+persistence.xml (Auto-DDL): Set up the persistence unit to handle database creation automatically. 
+Stack Overflow
+Stack Overflow
+ +2
+xml
+<persistence-unit name="MyPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <properties>
+        <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/your_db?createDatabaseIfNotExist=true"/>
+        <property name="javax.persistence.jdbc.user" value="root"/>
+        <property name="javax.persistence.jdbc.password" value="password"/>
+        <property name="eclipselink.ddl-generation" value="create-tables"/>
+        <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+    </properties>
+</persistence-unit>
+Steps to Implement 
+Create MySQL Schema: Create the database manually (CREATE DATABASE dbname;), but let JPA handle table creation.
+Define JPA Entity:
+java
+@Entity
+public class Item {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    // getters/setters
+}
+Create JAX-RS Endpoint:
+java
+@Path("/items")
+public class ItemResource {
+    @PersistenceContext(unitName = "MyPU")
+    EntityManager em;
+
+    @POST
+    @Transactional
+    public void create(Item item) {
+        em.persist(item);
+    }
+}
+Run: Deploy the WAR file to GlassFish 8. JPA will generate the tables upon first access. 
+Packt
+Packt
+ +1
+This approach utilizes JPA's provider-specific properties to handle table generation, bypassing manual SQL scripts or GlassFish JDBC connection pool configuration, notes. For a more production-ready approach, see Oracle's tutorial. 
