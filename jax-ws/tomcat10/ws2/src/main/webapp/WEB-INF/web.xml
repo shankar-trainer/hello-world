@@ -1,0 +1,15 @@
+<web-app xmlns="http://jcp.org" version="3.1">
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+    
+</web-app>

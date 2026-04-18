@@ -1,0 +1,54 @@
+Creating a JAX-WS (Java API for XML Web Services) application on a GlassFish server is straightforward because GlassFish includes the necessary Metro runtime by default. 
+1. Create the Web Service Implementation
+The core of a JAX-WS service is a Java class annotated with @WebService. 
+java
+package com.example;
+
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebService;
+
+@WebService(serviceName = "HelloService")
+public class HelloWS {
+
+    @WebMethod(operationName = "sayHello")
+    public String sayHello(String name) {
+        return "Hello, " + name + " from GlassFish!";
+    }
+}
+
+Note: If using an older version of GlassFish (prior to v6), use javax.jws.* instead of jakarta.jws.*.
+
+2. Configure Dependencies (Maven) 
+If you are using Maven, ensure your pom.xml includes the Jakarta EE or Java EE API. GlassFish provides the implementation, so you only need the API at compile time. 
+xml
+<dependencies>
+    <dependency>
+        <groupId>jakarta.platform</groupId>
+        <artifactId>jakarta.jakartaee-api</artifactId>
+        <version>10.0.0</version> <!-- Match your GlassFish version -->
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+3. Build and Deploy to GlassFish 
+You can deploy your application as a WAR file using several methods:
+NetBeans/Eclipse: Right-click the project and select Run or Deploy. The IDE will automatically package the WAR and upload it to the GlassFish Server.
+Admin Console: Navigate to http://localhost:4848, go to Applications, and click Deploy.
+CLI: Use the asadmin tool:
+bash
+asadmin deploy target/your-app.war
+ 
+4. Verify and Test the Service
+Once deployed, you can verify the service and its WSDL:
+View WSDL: Access the WSDL via the URL pattern: http://localhost:8080/your-context-root/HelloService?wsdl.
+GlassFish Tester Page: GlassFish provides a built-in test interface. In the GlassFish Admin Console, select your application and click View Endpoint to see the test page and WSDL links.
+SoapUI: Use tools like SoapUI to import the WSDL and send sample SOAP requests. 
+5. Create a Web Service Client 
+To consume the service, use the wsimport tool provided in the GlassFish bin directory to generate the client artifacts: 
+bash
+wsimport -keep -p com.example.client http://localhost:8080/your-context-root/HelloService?wsdl
+Then invoke it in your Java code:
+java
+HelloService service = new HelloService();
+HelloWS port = service.getHelloWSPort();
+System.out.println(port.sayHello("World"));
+For more detailed step-by-step guides, refer to the official Jakarta EE Tutorial or the Oracle Java EE Tutorial.
