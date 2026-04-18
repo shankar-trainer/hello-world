@@ -125,15 +125,12 @@ Note: Ensure you are using jakarta.* annotations and libraries for Jakarta EE 10
 jaxrs with glassfish 8 using jpa with mysql without database configuration
 
 To use JAX-RS with GlassFish 8 and JPA/MySQL without manual database configuration, define a persistence.xml that uses RESOURCE_LOCAL with Hibernate or EclipseLink properties to auto-generate tables, and add the MySQL Connector JAR to glassfish/domains/domain1/lib. Define your API via JAX-RS annotated classes and use @PersistenceContext for CRUD operations. 
-Stack Overflow
-Stack Overflow
- +4
+
 Key Components for No-Config Setup
 JDBC Driver: Place mysql-connector-java-x.x.x.jar into the glassfish/domains/domain1/lib/ folder to make it available to the server.
 persistence.xml (Auto-DDL): Set up the persistence unit to handle database creation automatically. 
-Stack Overflow
-Stack Overflow
- +2
+
+
 xml
 <persistence-unit name="MyPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
@@ -175,3 +172,62 @@ Packt
 Packt
  +1
 This approach utilizes JPA's provider-specific properties to handle table generation, bypassing manual SQL scripts or GlassFish JDBC connection pool configuration, notes. For a more production-ready approach, see Oracle's tutorial. 
+==================================
+
+To create a JAX-RS CRUD application on GlassFish with MySQL without using the server's internal JNDI or Connection Pool configuration, you must manage the database connection directly within your application code using the MySQL Connector/J driver.
+1. Add MySQL Maven Dependency 
+Since you are bypassing GlassFish's server-side configuration, you must include the MySQL driver in your project's pom.xml. 
+
+
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.33</version>
+</dependency>
+
+2. Create a Database Connection Class 
+Implement a utility class to establish a direct JDBC connection using DriverManager. This replaces the need for a JNDI lookup in the GlassFish console. 
+
+public class DBConnection {
+    public static Connection getConnection() throws Exception {
+        // Load the driver explicitly if needed for older versions
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        String url = "jdbc:mysql://localhost:3306/your_database";
+        return DriverManager.getConnection(url, "username", "password");
+    }
+}
+
+3. Implement the CRUD Resource 
+Define your JAX-RS endpoints using standard annotations like @GET, @POST, @PUT, and @DELETE. Each method will call the DBConnection to perform SQL operations. 
+
+
+Create (POST): Use a PreparedStatement to insert data.
+Read (GET): Retrieve results from a ResultSet and convert them to POJOs or JSON.
+Update (PUT): Execute an UPDATE SQL statement based on a unique ID.
+Delete (DELETE): Execute a DELETE SQL statement. 
+
+java
+@Path("/items")
+public class ItemResource {
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Item> getAllItems() throws Exception {
+        List<Item> items = new ArrayList<>();
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM items")) {
+            while (rs.next()) {
+                items.add(new Item(rs.getInt("id"), rs.getString("name")));
+            }
+        }
+        return items;
+    }
+}
+4. Deploy to GlassFish
+Package as WAR: Build your project into a .war file.
+Deploy: Upload the WAR file through the GlassFish Administration Console or use the asadmin command.
+No Server Config: You do not need to create a "JDBC Connection Pool" or "JDBC Resource" in the GlassFish Admin UI, as your code handles the connection string directly. 
+Eclipse GlassFish
+Eclipse GlassFish
+ +4
+Important: For production use, managing connections manually (as shown above) can lead to resource leaks if not handled carefully with try-with-resources. For better performance without JNDI, consider embedding a standalone pool like HikariCP directly in your application. 
