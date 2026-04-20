@@ -35,6 +35,7 @@ NetBeans/Eclipse: Right-click the project and select Run or Deploy. The IDE will
 Admin Console: Navigate to http://localhost:4848, go to Applications, and click Deploy.
 CLI: Use the asadmin tool:
 bash
+
 asadmin deploy target/your-app.war
  
 4. Verify and Test the Service
@@ -42,10 +43,14 @@ Once deployed, you can verify the service and its WSDL:
 View WSDL: Access the WSDL via the URL pattern: http://localhost:8080/your-context-root/HelloService?wsdl.
 GlassFish Tester Page: GlassFish provides a built-in test interface. In the GlassFish Admin Console, select your application and click View Endpoint to see the test page and WSDL links.
 SoapUI: Use tools like SoapUI to import the WSDL and send sample SOAP requests. 
+
 5. Create a Web Service Client 
+
 To consume the service, use the wsimport tool provided in the GlassFish bin directory to generate the client artifacts: 
 bash
 wsimport -keep -p com.example.client http://localhost:8080/your-context-root/HelloService?wsdl
+
+
 Then invoke it in your Java code:
 java
 HelloService service = new HelloService();

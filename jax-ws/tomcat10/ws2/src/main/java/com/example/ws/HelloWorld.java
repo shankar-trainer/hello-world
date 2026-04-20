@@ -10,4 +10,5 @@ public class HelloWorld {
         return "Hello, " + name + "!";
     }
 }
+
 //http://localhost:8080/ws2/hello?wsdl

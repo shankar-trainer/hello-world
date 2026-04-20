@@ -67,8 +67,17 @@ xml
 5. Deployment and Testing
 Build the WAR: Package your application into a .war file (e.g., using mvn package).
 Deploy: Copy the WAR file to the webapps directory of your Apache Tomcat installation.
+
 Verify: Start Tomcat and access the WSDL file in your browser at:
 http://localhost:8080/YourProjectName/hello?wsdl 
+
+----------------------------
+Command Line: Download the CXF distribution and run:
+wsdl2java -p com.example.package -d ./src -client yourservice.wsdl
+D:\software\zip\soap\apache-cxf-4.2.0\bin\wsdl2java.bat  -p ws  -d ./src -client http://localhost:8080/ws2/hello?wsdl
+
+-----------------------
+
 Alternative: Apache TomEE
 If you want to avoid manual configuration of sun-jaxws.xml, consider using Apache TomEE, a Java EE-compliant version of Tomcat that supports JAX-WS out of the box with just the @WebService annotation. 
 
