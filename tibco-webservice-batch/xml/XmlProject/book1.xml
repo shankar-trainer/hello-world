@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xmlns="http://www.example.org/book"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/book book.xsd ">
+	<isbn>0</isbn>
+	<author>tns:author</author>
+	<cost>0.0</cost>
+	<location>tns:location</location>
+</book>

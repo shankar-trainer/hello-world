@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:table xmlns:f="http://www.w3schools.com/furniture">
+	<f:name>African Coffee Table</f:name>
+	<f:width>80</f:width>
+	<f:length>120</f:length>
+</f:table>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<student>
+	<roll>10001</roll>
+	<name>suresh kumar</name>
+	<subject>math</subject>
+	<marks>88</marks>
+</student>

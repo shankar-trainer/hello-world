@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:EmployeeDetails xmlns:tns="http://www.example.org/EmployeeDetails" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.example.org/EmployeeDetails EmployeeDetails.xsd ">
+  <tns:employee>
+    <tns:id>10001</tns:id>
+    <tns:name>amitendra</tns:name>
+    <tns:location>chennai</tns:location>
+    <tns:salary>12000</tns:salary>
+  </tns:employee>
+  
+  <tns:employee>
+    <tns:id>10001</tns:id>
+    <tns:name>amitendra</tns:name>
+    <tns:location>chennai</tns:location>
+    <tns:salary>12000</tns:salary>
+  </tns:employee>
+  
+  
+  
+</tns:EmployeeDetails>

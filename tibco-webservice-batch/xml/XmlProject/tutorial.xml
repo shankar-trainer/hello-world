@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="tutorial.xsl"?>
+
+<tutorials>
+	<tutorial>
+	 <name> xml tutorial</name>
+     <url>www.tutorial.com/xml</url>
+	</tutorial>
+	
+	<tutorial>
+	 <name> html tutorial</name>
+     <url>www.tutorial.com/html</url>
+	</tutorial>
+	
+</tutorials>

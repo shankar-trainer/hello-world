@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cts</groupId>
+  <artifactId>Calculator</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Webservice1 Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+	  <!-- Source: https://mvnrepository.com/artifact/jakarta.xml.ws/jakarta.xml.ws-api -->
+	<dependency>
+	    <groupId>jakarta.xml.ws</groupId>
+	    <artifactId>jakarta.xml.ws-api</artifactId>
+	    <version>4.0.0</version>
+	    <scope>compile</scope>
+	</dependency>
+	
+	<!-- Source: https://mvnrepository.com/artifact/com.sun.xml.ws/jaxws-rt -->
+	<dependency>
+	    <groupId>com.sun.xml.ws</groupId>
+	    <artifactId>jaxws-rt</artifactId>
+	    <version>4.0.1</version>
+	    <scope>compile</scope>
+	</dependency>
+	
+  </dependencies>
+  <build>
+    <finalName>Calculator</finalName>
+  </build>
+</project>

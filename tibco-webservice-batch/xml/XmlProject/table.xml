@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<h:table xmlns:h="https://www.w3.org/TR/html4/">
+	<h:tr>
+		<h:th>id</h:th>
+		<h:th>name</h:th>
+		<h:th>salary</h:th>
+	</h:tr>
+	<h:tr>
+		<h:td>10001</h:td>
+		<h:td>muthu </h:td>
+		<h:td>67000</h:td>
+	</h:tr>
+
+</h:table>

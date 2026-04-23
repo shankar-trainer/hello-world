@@ -1,0 +1,17 @@
+<!ELEMENT insurances (insurance)+ >
+<!ELEMENT insurance (name,maturity,emi-amount,maturity-amount,(city|location),state,country)>
+<!ELEMENT id (#PCDATA)> 
+<!ELEMENT name (fname,lname)> 
+<!ELEMENT fname (#PCDATA)> 
+<!ELEMENT lname (#PCDATA)> 
+<!ELEMENT maturity (#PCDATA)> 
+<!ELEMENT emi-amount (#PCDATA)> 
+<!ELEMENT maturity-amount (#PCDATA)> 
+<!ELEMENT city (#PCDATA)> 
+<!ELEMENT location (#PCDATA)> 
+<!ELEMENT state (#PCDATA)> 
+<!ELEMENT country (#PCDATA)> 
+
+<!ATTLIST insurance id CDATA #IMPLIED>
+<!ENTITY country 'india'>
+<!ENTITY state 'tamilnadu'>

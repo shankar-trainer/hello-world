@@ -1,0 +1,16 @@
+employees{
+	 display:block;
+	 border:double;
+	 width:30%;
+	 margin: 100pt;
+	 
+}
+
+employee{
+	 padding:10pt;
+	 margin:10pt;
+	 display: block;
+	 color:blue;
+	 border:solid;
+	 
+}

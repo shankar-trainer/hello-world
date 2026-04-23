@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/book"
+	xmlns:tns="http://www.example.org/book" elementFormDefault="qualified">
+
+	<element name="book">
+		<complexType>
+			<sequence>
+				<element name="isbn">
+					<simpleType>
+
+						<restriction base="integer">
+							<minExclusive value="10000"></minExclusive>
+							<maxExclusive value="50000"></maxExclusive>
+						</restriction>
+					</simpleType>
+				</element>
+				<element name="author">
+					<simpleType>
+						<restriction base="string">
+							<length value="10"></length>
+						</restriction>
+					</simpleType>
+
+				</element>
+				<element name="phone">
+					<simpleType>
+						<restriction base="string">
+							<pattern value="[0-9]{10}"></pattern>
+						</restriction>
+					</simpleType>
+				</element>
+				<element name="cost" type="float"></element>
+				<element name="location">
+					<simpleType>
+						<restriction base="string">
+							<enumeration value="chennai"></enumeration>
+							<enumeration value="madurai"></enumeration>
+							<enumeration value="banglore"></enumeration>
+							<enumeration value="kochi"></enumeration>
+						</restriction>
+					</simpleType>
+				</element>
+				<element name="pin">
+					<complexType>
+						<attribute name="pinCode" type="integer" use="required">
+						</attribute>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

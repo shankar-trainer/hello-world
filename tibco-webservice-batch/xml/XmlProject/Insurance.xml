@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE insurances SYSTEM "insurance.dtd">
+<insurances>
+	<insurance id='8989'>
+		<name>
+			<fname>health</fname>
+			<lname>insurance</lname>
+		</name>
+		<maturity>5</maturity>
+		<emi-amount>5000</emi-amount>
+		<maturity-amount>80</maturity-amount>
+		<city>chennai</city>
+		<state>&state;
+		</state>
+		<country>&country;
+		</country>
+	</insurance>
+
+	<insurance>
+
+		<name>
+			<fname>life</fname>
+			<lname>life</lname>
+		</name>
+		<maturity>15</maturity>
+		<emi-amount>20000</emi-amount>
+		<maturity-amount>500000</maturity-amount>
+		<location>sipkot</location>
+		<state>&state;</state>
+		<country>&country;</country>
+	</insurance>
+</insurances>

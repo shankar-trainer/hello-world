@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+	<user>
+		<id>100001</id>
+		<name>
+			amit kumar
+		</name>
+		<salary>
+			45000
+		</salary>
+	</user>
+
+	<user>
+		<id>100002</id>
+		<name>
+			sumit kumar
+		</name>
+		<salary>
+			56000
+		</salary>
+	</user>
+
+	<user>
+		<id>100003</id>
+		<name>
+			rahul kumar
+		</name>
+		<salary>
+			36000
+		</salary>
+	</user>
+
+
+</users>

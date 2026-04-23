@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+	<book id='10001'>
+	 <author>s kumar</author>
+	 <title>xml programming</title>
+	 <year>2006</year>
+	</book>
+	
+	<article id="1" ref="10001">
+	 <name>xml basic</name>
+	 <date>11-12-2009</date>
+	</article>
+</books>
