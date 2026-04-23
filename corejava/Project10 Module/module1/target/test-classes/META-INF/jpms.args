@@ -1,4 +1,0 @@
---patch-module
-com.cts=_
---add-reads
-com.cts=ALL-UNNAMED
