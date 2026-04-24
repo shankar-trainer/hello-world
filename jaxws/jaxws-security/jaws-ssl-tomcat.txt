@@ -57,6 +57,7 @@ url-pattern="/hello"/>
 </endpoints>
 When user access /hello/ URL path, it will fire the declared web service, which is
 HelloWorldImpl.java.
+
 Note
 For detail endpoint attributes , see this article.
 3. web.xml
@@ -151,11 +152,13 @@ manually.
 • stax-ex.jar
 • streambuffer.jar
 • policy.jar
+
 6. Deployment
 Copy the generated WAR file to {$TOMCAT}/webapps/ folder and start the Tomcat server.
 For testing, you can access this URL : http://localhost:8080/HelloWorld/hello, if you see following
 page, it means web services are deploy successfully.
 Download Source Code
+
 Deploy JAX-WS web services on
 Tomcat +
 SSL connection
@@ -165,6 +168,7 @@ web service and configured SSL connection on your Tomcat server properly :)
 Note
 This article is just a combination of my last few posts on developing web service in SSL connection
 environment.
+
 1. Configure Tomcat + SSL
 For detail, see this guide – Make Tomcat to support SSL or https connection.
 Basically, just buy a certificate from trusted certificate provider, or use JDK’s keytool command
@@ -187,14 +191,18 @@ Restart Tomcat, and now, your Tomcat is supported SSL connection, e.g https://lo
 Deploy it like a normal web service, see this guide – Deploy JAX-WS web services on Tomcat
 servlet container.
 3. Test It
+
 The configuration is done; you can access the deployed web service in SSL connection by using a
 normal web service client.
+
 For example,
 URL url = new URL("https://localhost:8443/HelloWorld/hello?wsdl");
 QName qname = new QName("http://ws.mkyong.com/", "HelloWorldImplService");
+
 Service service = Service.create(url, qname);
 HelloWorld hello = service.getPort(HelloWorld.class);
 System.out.println(hello.getHelloWorldAsString());
+
 Note
 For localhost SSL testing environment, the client will hit following exceptions, please read the
 problem and solution below :
@@ -206,6 +214,7 @@ configure your Tomcat to support SSL connection only.
 How to configure Tomcat to support SSL or
 https
 A guide to show you how to configure Tomcat 6.0 to support SSL or https connection.
+
 1. Generate Keystore
 First, uses “keytool” command to create a self-signed certificate. During the keystore creation
 process, you need to assign a password and fill in the certificate’s detail.
