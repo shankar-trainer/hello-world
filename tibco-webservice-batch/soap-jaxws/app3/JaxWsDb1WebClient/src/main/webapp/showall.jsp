@@ -15,7 +15,7 @@
 	CustomerDaoImplService dao = new CustomerDaoImplService();
 	CustomerDaoImpl customerDaoImplPort = dao.getCustomerDaoImplPort();
 	List<Customer> clist = customerDaoImplPort.getAllCustomer();
-
+     
 	if (clist.isEmpty()) {
 	%>
 	<h2>No record Present</h2>
