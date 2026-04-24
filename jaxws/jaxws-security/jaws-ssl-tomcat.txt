@@ -1,6 +1,7 @@
 Deploy JAX-WS web services on Tomcat
 Here’s a guide to show you how to deploy JAX-WS web services on Tomcat servlet container. See
 following summary steps of a web service deployment.
+
 1. Create a web service (of course).
 2. Create a sun-jaxws.xml, defines web service implementation class.
 3. Create a standard web.xml, defines WSServletContextListener, WSServlet and
@@ -9,21 +10,24 @@ structure of a web project.
 5. Copy JAX-WS dependencies to “${Tomcat}/lib” folder.
 6. Copy WAR to “${Tomcat}/webapp” folder.
 7. Start It.
+
 Directory structure of this example, so that you know where to put your files.
+
 1. WebServices
 A simple JAX-WS hello world example.
 File : HelloWorld.java
-package com.mkyong.ws;
-import javax.jws.WebMethod;
-import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-import javax.jws.soap.SOAPBinding.Style;
-//Service Endpoint Interface
-@WebService
-@SOAPBinding(style = Style.RPC)
-public interface HelloWorld{
-@WebMethod String getHelloWorldAsString();
-}
+	package com.mkyong.ws;
+	import javax.jws.WebMethod;
+	import javax.jws.WebService;
+	import javax.jws.soap.SOAPBinding;
+	import javax.jws.soap.SOAPBinding.Style;
+	//Service Endpoint Interface
+
+	@WebService
+	@SOAPBinding(style = Style.RPC)
+	public interface HelloWorld{
+	@WebMethod String getHelloWorldAsString();
+	}
 File : HelloWorldImpl.java
 package com.mkyong.ws;
 import javax.jws.WebService;
@@ -35,7 +39,9 @@ public String getHelloWorldAsString() {
 return "Hello World JAX-WS";
 }
 }
+
 Later, you will deploy this hello world web service on Tomcat.
+
 2. sun-jaxws.xml
 Create a web service deployment descriptor, which is also known as JAX-WS RI deployment
 descriptor – sun-jaxws.xml.
