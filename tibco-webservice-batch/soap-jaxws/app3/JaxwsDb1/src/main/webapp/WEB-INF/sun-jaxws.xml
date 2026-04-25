@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
     <endpoint
-        name="JaxwsDb1"
+        name="Customer"
         implementation="com.cts.dao.CustomerDaoImpl"
         url-pattern="/customer"/>
 </endpoints>
+
+<!--        <?xml version="1.0" encoding="UTF-8"?>-->
+<!--<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">-->
+<!--<endpoint-->
+<!--        name="Calcws"-->
+<!--        implementation="com.cts.webservice.CalculatorImpl"-->
+<!--        url-pattern="/calc"/>-->
+<!--</endpoints>-->

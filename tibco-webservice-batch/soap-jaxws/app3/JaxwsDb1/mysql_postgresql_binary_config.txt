@@ -1,0 +1,51 @@
+===postgresql =======
+
+https://get.enterprisedb.com/postgresql/postgresql-16.3-2-windows-x64-binaries.zip
+
+mkdir
+
+c:\pgsql_data
+extract it in c:\
+
+C:\postgresql-16.3-2-windows-x64-binaries\pgsql\bin>
+
+initdb.exe -D c:\pgsql_data -U postgres -W -E UTF8 -A scram-sha-256
+
+C:\postgresql-16.3-2-windows-x64-binaries\pgsql\bin>
+
+pg_ctl.exe -D c:\pgsql_data start
+
+C:\postgresql-16.3-2-windows-x64-binaries\pgsql\bin>psql.exe -U postgres
+
+====================  mysql ============
+
+https://dev.mysql.com/downloads/file/?id=531676
+mysqld --initialize --console
+
+mysqld --console
+
+mysql -u root -p
+
+Enter the temporary password from point 3. The root is default MySQL user name. Then type:
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'mysql';
+
+==========================
+
+open terminal 
+
+bin\psql -U postregs
+
+\l
+\list    will list all databases
+\c databasename   -- will  connect with database
+create database  databasename -- add  command in capital terminated  with semi colon 	
+                              -- create database 	  
+\dt -- show all tables 
+create table tablename (colname datatype, colname datatype )-- create table 
+\d+ tablename -- structure of the table 
+capg1=# create table employee (id bigserial primary key, name varchar(20), salary float, dob date);
+capg1=# insert into employee  (name,salary,dob) values  ('hemant kumar',12000,'1999-01-11');
+capg1=# insert into employee  (name,salary,dob) values ('sumit kumar',18000,'1991-10-12'), ('anil kumar',78000,'1982-10-10'), ('pritam kumar',56000,'1983-09-25');
+										  
+capg1=# select * from employee

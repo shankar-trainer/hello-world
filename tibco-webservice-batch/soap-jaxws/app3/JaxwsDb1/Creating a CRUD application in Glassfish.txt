@@ -1,0 +1,663 @@
+Building a JAX-WS CRUD application for GlassFish 8 using "pure" JDBC (no JPA/DataSources) requires a bit of manual plumbing, but it’s a great way to understand how the underlying layers work. Since you're targeting GlassFish 8 (Jakarta EE 11), we'll use the jakarta namespace.
+
+1. Project Structure: pom.xml
+You need the Jakarta EE Web API and the PostgreSQL driver. Since GlassFish 8 provides the JAX-WS runtime, we mark it as provided.
+
+XML
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>jaxws-jdbc-crud</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>11.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>jaxws-jdbc-crud</finalName>
+    </build>
+</project>
+2. Configuration Files
+Without a DataSource, you must handle the connection manually.
+
+WEB-INF/web.xml
+This maps the JAX-WS listener and the servlet.
+
+XML
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+    <listener>
+        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>UserWebService</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserWebService</servlet-name>
+        <url-pattern>/userservice</url-pattern>
+    </servlet-mapping>
+</web-app>
+WEB-INF/sun-jaxws.xml
+This tells the JAX-WS runtime which class implements the service.
+
+XML
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+    <endpoint
+        name="UserWebService"
+        implementation="com.example.service.UserServiceImpl"
+        url-pattern="/userservice"/>
+</endpoints>
+3. The Model Class
+A simple POJO for our database table.
+
+Java
+package com.example.model;
+
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class User {
+    private int id;
+    private String name;
+    private String email;
+
+    // Default constructor, Getters, and Setters
+    public User() {}
+    public User(int id, String name, String email) {
+        this.id = id; this.name = name; this.email = email;
+    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+}
+4. The JAX-WS Service (CRUD Logic)
+Since we aren't using a DataSource, we use DriverManager. Note: In a production environment, you should use a connection pool, but for this specific "no-datasource" request, we open/close manually.
+
+Java
+package com.example.service;
+
+import com.example.model.User;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebService;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@WebService
+public class UserServiceImpl {
+
+    private Connection getConnection() throws Exception {
+        Class.forName("org.postgresql.Driver");
+        return DriverManager.getConnection(
+            "jdbc:postgresql://localhost:5432/your_db", "user", "pass");
+    }
+
+    @WebMethod
+    public String createUser(User user) {
+        String sql = "INSERT INTO users (name, email) VALUES (?, ?)";
+        try (Connection conn = getConnection(); 
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.executeUpdate();
+            return "User created successfully!";
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    @WebMethod
+    public User getUser(int id) {
+        String sql = "SELECT * FROM users WHERE id = ?";
+        try (Connection conn = getConnection(); 
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new User(rs.getInt("id"), rs.getString("name"), rs.getString("email"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @WebMethod
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+        try (Connection conn = getConnection(); 
+             Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery("SELECT * FROM users")) {
+            while (rs.next()) {
+                users.add(new User(rs.getInt("id"), rs.getString("name"), rs.getString("email")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+    @WebMethod
+    public String updateUser(User user) {
+        String sql = "UPDATE users SET name = ?, email = ? WHERE id = ?";
+        try (Connection conn = getConnection(); 
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setInt(3, user.getId());
+            ps.executeUpdate();
+            return "User updated.";
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    @WebMethod
+    public String deleteUser(int id) {
+        try (Connection conn = getConnection(); 
+             PreparedStatement ps = conn.prepareStatement("DELETE FROM users WHERE id = ?")) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            return "User deleted.";
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
+    }
+}
+Deployment Steps
+PostgreSQL: Create a table named users with columns id (serial/primary key), name (varchar), and email (varchar).
+
+Driver: Since you aren't using a DataSource, the postgresql.jar needs to be in your WEB-INF/lib (the Maven dependency handles this).
+
+Build: Run mvn clean package.
+
+Deploy: Copy the .war to glassfish8/glassfish/domains/domain1/autodeploy/.
+
+Test: Access the WSDL at http://localhost:8080/jaxws-jdbc-crud/userservice?wsdl.
+
+=================================================================
+Setting up a JAX-WS (SOAP) CRUD application on GlassFish 8 using raw JDBC requires a bit of manual plumbing, especially since we are bypassing JPA and container-managed DataSources.
+
+Since GlassFish 8 runs on Jakarta EE 11, we will use the jakarta.xml.ws namespace.
+
+1. Project Structure (pom.xml)
+You need the Jakarta EE Web API and the PostgreSQL driver. Note that GlassFish provides the JAX-WS runtime, so we mark it as provided.
+
+XML
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>jaxws-jdbc-crud</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-web-api</artifactId>
+            <version>11.0.0-M1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
+        </dependency>
+    </dependencies>
+</project>
+2. Database Utility (No DataSource)
+Since you aren't using a GlassFish DataSource, we manage the connection manually. Note: In a production environment, you should use a connection pool, but for a direct JDBC example, this is the pattern:
+
+Java
+package com.example.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DBUtil {
+    private static final String URL = "jdbc:postgresql://localhost:5432/yourdb";
+    private static final String USER = "postgres";
+    private static final String PASS = "password";
+
+    public static Connection getConnection() throws SQLException {
+        try {
+            Class.forName("org.postgresql.Driver");
+            return DriverManager.getConnection(URL, USER, PASS);
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Driver not found", e);
+        }
+    }
+}
+3. The Model (POJO)
+Java
+package com.example.model;
+
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Product {
+    private int id;
+    private String name;
+    private double price;
+
+    // Default constructor required for JAXB
+    public Product() {}
+
+    public Product(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    // Getters and Setters...
+}
+4. JAX-WS Web Service Implementation
+This service performs direct SQL operations using PreparedStatement.
+
+Java
+package com.example.service;
+
+import com.example.model.Product;
+import com.example.util.DBUtil;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebService;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@WebService(serviceName = "ProductService")
+public class ProductWS {
+
+    @WebMethod
+    public String addProduct(Product p) {
+        String sql = "INSERT INTO products (name, price) VALUES (?, ?)";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, p.getName());
+            ps.setDouble(2, p.getPrice());
+            ps.executeUpdate();
+            return "Success";
+        } catch (SQLException e) {
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    @WebMethod
+    public List<Product> getAllProducts() {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT * FROM products";
+        try (Connection conn = DBUtil.getConnection();
+             Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery(sql)) {
+            while (rs.next()) {
+                list.add(new Product(rs.getInt("id"), rs.getString("name"), rs.getDouble("price")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @WebMethod
+    public String updateProduct(Product p) {
+        String sql = "UPDATE products SET name=?, price=? WHERE id=?";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, p.getName());
+            ps.setDouble(2, p.getPrice());
+            ps.setInt(3, p.getId());
+            return ps.executeUpdate() > 0 ? "Updated" : "Not Found";
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
+    }
+
+    @WebMethod
+    public String deleteProduct(int id) {
+        String sql = "DELETE FROM products WHERE id=?";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0 ? "Deleted" : "Not Found";
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
+    }
+}
+5. Deployment Note
+PostgreSQL Driver: Since you included the driver in the pom.xml, it will be packaged in WEB-INF/lib. This is correct for a "no datasource" setup.
+
+WSDL: Once deployed to GlassFish, the WSDL will typically be available at:
+http://localhost:8080/jaxws-jdbc-crud/ProductService?wsdl
+
+Quick Tip: Since you're not using JPA, ensure your PostgreSQL table exists before running:
+
+SQL
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    price NUMERIC
+);
+
+======================================================================
+
+Creating a CRUD application in GlassFish 8 using JAX-WS (SOAP) and PostgreSQL without JPA requires a combination of Jakarta EE 11 annotations and traditional JDBC.
+
+Since GlassFish 8 implements Jakarta EE 11, we use the jakarta.* namespace (formerly javax.*).
+
+1. Prerequisites
+GlassFish 8 installed and running.
+
+PostgreSQL installed with a database named inventory.
+
+JDBC Driver: Download the PostgreSQL JDBC JAR and place it in glassfish8/glassfish/domains/domain1/lib. Restart GlassFish.
+
+2. Configure GlassFish Resources
+Run these commands via asadmin or use the Admin Console (port 4848) to create the connection to PostgreSQL.
+
+Bash
+# Create Connection Pool
+asadmin create-jdbc-connection-pool --datasourceclassname org.postgresql.ds.PGSimpleDataSource --restype javax.sql.DataSource --property serverName=localhost:portNumber=5432:databaseName=inventory:user=postgres:password=yourpassword PostgrePool
+
+# Create JDBC Resource (JNDI Name)
+asadmin create-jdbc-resource --connectionpoolid PostgrePool jdbc/postgres
+3. Database Schema
+SQL
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    price NUMERIC(10, 2)
+);
+4. The JAX-WS Web Service (Java Code)
+Product Model (POJO)
+Java
+package com.example.model;
+
+public class Product {
+    private int id;
+    private String name;
+    private double price;
+
+    // Getters and Setters
+}
+Web Service Implementation
+We use @Resource to inject the DataSource directly, bypassing JPA.
+
+Java
+package com.example.service;
+
+import com.example.model.Product;
+import jakarta.annotation.Resource;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebService;
+import javax.sql.DataSource;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@WebService(serviceName = "ProductService")
+public class ProductWS {
+
+    @Resource(lookup = "jdbc/postgres")
+    private DataSource dataSource;
+
+    @WebMethod
+    public String addProduct(String name, double price) {
+        String sql = "INSERT INTO products (name, price) VALUES (?, ?)";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.setDouble(2, price);
+            ps.executeUpdate();
+            return "Product added successfully!";
+        } catch (SQLException e) {
+            return "Error: " + e.getMessage();
+        }
+    }
+
+    @WebMethod
+    public List<Product> getProducts() {
+        List<Product> list = new ArrayList<>();
+        try (Connection conn = dataSource.getConnection();
+             Statement st = conn.createStatement();
+             ResultSet rs = st.executeQuery("SELECT * FROM products")) {
+            while (rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getInt("id"));
+                p.setName(rs.getString("name"));
+                p.setPrice(rs.getDouble("price"));
+                list.add(p);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @WebMethod
+    public String updateProduct(int id, String name, double price) {
+        String sql = "UPDATE products SET name = ?, price = ? WHERE id = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.setDouble(2, price);
+            ps.setInt(3, id);
+            int rows = ps.executeUpdate();
+            return rows > 0 ? "Updated" : "Not found";
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
+    }
+
+    @WebMethod
+    public String deleteProduct(int id) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("DELETE FROM products WHERE id = ?")) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            return "Deleted";
+        } catch (SQLException e) {
+            return e.getMessage();
+        }
+    }
+}
+5. Project Dependencies (pom.xml)
+For GlassFish 8, you mainly need the Jakarta EE API.
+
+XML
+<dependencies>
+    <dependency>
+        <groupId>jakarta.platform</groupId>
+        <artifactId>jakarta.jakartaee-api</artifactId>
+        <version>11.0.0-M1</version> <scope>provided</scope>
+    </dependency>
+</dependencies>
+Summary of Workflow
+Deployment: Compile into a .war file and deploy to GlassFish.
+
+Access: Once deployed, your WSDL will typically be available at:http://localhost:8080/YourAppName/ProductService?wsdl
+
+Testing: Use a tool like SoapUI or Postman (SOAP request) to call the addProduct or getProducts methods.
+
+Note on JAX-WS in Jakarta EE 11:
+GlassFish 8 continues to support JAX-WS, but keep in mind that the industry is shifting heavily toward REST (Jakarta RESTful Web Services). If this is a new project, consider if SOAP is a strict requirement.
+
+==================== jpa =============================
+
+To create a CRUD application using **JAX-WS** (Jakarta XML Web Services) on **GlassFish 8**, you will be working with **Jakarta EE 11** standards. Since GlassFish 8 requires JDK 21+, you can take advantage of modern Java features like Records and Virtual Threads.
+
+Here is a streamlined guide to setting up a SOAP-based CRUD service with a PostgreSQL backend.
+
+---
+
+## 1. Prerequisites
+* **Java Development Kit (JDK):** 21 or higher.
+* **GlassFish 8.0.0:** Full Platform (JAX-WS is optional in Web Profile).
+* **PostgreSQL:** Database running with a table for your entities.
+* **PostgreSQL JDBC Driver:** Place this in `glassfish8/glassfish/domains/domain1/lib`.
+
+---
+
+## 2. PostgreSQL Configuration (GlassFish Admin)
+Before coding, set up the connection pool and JDBC resource in GlassFish:
+1.  **Connection Pool:** Create a pool named `PostgresPool` using `org.postgresql.ds.PGSimpleDataSource`.
+2.  **JDBC Resource:** Create a resource named `jdbc/myPostgresDS` pointing to the pool.
+
+---
+
+## 3. The Project Structure (Maven)
+In your `pom.xml`, include the Jakarta EE 11 dependencies. Note that JAX-WS is now under the `jakarta.xml.ws` namespace.
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>jakarta.platform</groupId>
+        <artifactId>jakarta.jakartaee-api</artifactId>
+        <version>11.0.0</version>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+```
+
+---
+
+## 4. The Entity and Persistence (`persistence.xml`)
+Create a simple `Product` entity.
+
+**`src/main/resources/META-INF/persistence.xml`**
+```xml
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+    <persistence-unit name="ProductPU" transaction-type="JTA">
+        <jta-data-source>jdbc/myPostgresDS</jta-data-source>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+```
+
+---
+
+## 5. The JAX-WS Web Service
+This class exposes the SOAP endpoints. We use `@Stateless` to easily inject the `EntityManager`.
+
+
+
+```java
+package com.example.service;
+
+import com.example.model.Product;
+import jakarta.ejb.Stateless;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
+import jakarta.jws.WebService;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import java.util.List;
+
+@WebService(serviceName = "ProductService")
+@Stateless
+public class ProductWS {
+
+    @PersistenceContext(unitName = "ProductPU")
+    private EntityManager em;
+
+    @WebMethod
+    public List<Product> getAllProducts() {
+        return em.createQuery("SELECT p FROM Product p", Product.class).getResultList();
+    }
+
+    @WebMethod
+    public Product getProduct(@WebParam(name = "id") Long id) {
+        return em.find(Product.class, id);
+    }
+
+    @WebMethod
+    public void addProduct(@WebParam(name = "name") String name, @WebParam(name = "price") Double price) {
+        Product p = new Product();
+        p.setName(name);
+        p.setPrice(price);
+        em.persist(p);
+    }
+
+    @WebMethod
+    public void updateProduct(@WebParam(name = "id") Long id, @WebParam(name = "name") String name) {
+        Product p = em.find(Product.class, id);
+        if (p != null) {
+            p.setName(name);
+            em.merge(p);
+        }
+    }
+
+    @WebMethod
+    public void deleteProduct(@WebParam(name = "id") Long id) {
+        Product p = em.find(Product.class, id);
+        if (p != null) {
+            em.remove(p);
+        }
+    }
+}
+```
+
+---
+
+## 6. Deployment and Testing
+1.  **Build:** Run `mvn clean package` to generate the `.war` file.
+2.  **Deploy:** Upload the WAR to GlassFish 8.
+3.  **WSDL:** Once deployed, your WSDL will be available at:
+    `http://localhost:8080/YourAppName/ProductService?wsdl`
+
+### Testing with SOAPUI or Postman:
+To "Read" all products, send a POST request to the service URL with this body:
+
+```xml
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.example.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getAllProducts/>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+---
+
+### Key Changes in GlassFish 8
+* **Namespace:** Ensure you are using `jakarta.*` packages, not `javax.*`.
+* **Virtual Threads:** If you have high-volume CRUD operations, you can enable virtual thread support in GlassFish 8 via the `asadmin` command to improve concurrency without increasing the memory footprint significantly.
+* **Jakarta Data:** GlassFish 8 introduces **Jakarta Data**. For a more modern approach, you could replace the `EntityManager` boilerplate with a `@Repository` interface, though JAX-WS still requires the Service class to expose the methods.
+

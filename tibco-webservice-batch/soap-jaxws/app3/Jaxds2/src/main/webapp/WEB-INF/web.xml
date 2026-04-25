@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+
     <listener>
         <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
     </listener>
@@ -10,28 +11,10 @@
         <servlet-name>Customer</servlet-name>
         <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>Customer</servlet-name>
         <url-pattern>/customer</url-pattern>
     </servlet-mapping>
-    
+
 </web-app>
-
-
-<!--<web-app xmlns="http://jcp.org" version="3.1">-->
-<!--<listener>-->
-<!--    <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>-->
-<!--</listener>-->
-<!--<servlet>-->
-<!--    <servlet-name>Calc</servlet-name>-->
-<!--    <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>-->
-<!--</servlet>-->
-
-<!--<servlet-mapping>-->
-<!--    <servlet-name>Calc</servlet-name>-->
-<!--    <url-pattern>/calc</url-pattern>-->
-<!--</servlet-mapping>-->
-
-<!--</web-app>-->
-

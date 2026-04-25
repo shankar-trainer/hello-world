@@ -9,20 +9,20 @@
   <url>http://maven.apache.org</url>
   <dependencies>
 	  <!-- Source: https://mvnrepository.com/artifact/jakarta.xml.ws/jakarta.xml.ws-api -->
-	<dependency>
-	    <groupId>jakarta.xml.ws</groupId>
-	    <artifactId>jakarta.xml.ws-api</artifactId>
-	    <version>4.0.0</version>
-	    <scope>compile</scope>
-	</dependency>
+<!--	<dependency>-->
+<!--	    <groupId>jakarta.xml.ws</groupId>-->
+<!--	    <artifactId>jakarta.xml.ws-api</artifactId>-->
+<!--	    <version>4.0.0</version>-->
+<!--	    <scope>compile</scope>-->
+<!--	</dependency>-->
 	
 	<!-- Source: https://mvnrepository.com/artifact/com.sun.xml.ws/jaxws-rt -->
-	<dependency>
+<!--	<dependency>
 	    <groupId>com.sun.xml.ws</groupId>
 	    <artifactId>jaxws-rt</artifactId>
 	    <version>4.0.1</version>
 	    <scope>compile</scope>
-	</dependency>
+	</dependency>-->
 <!--
 	<dependency>
 	    <groupId>com.mysql</groupId>
@@ -30,7 +30,21 @@
 	    <version>9.0.0</version>  Replace with latest stable version 
 	</dependency>-->
 
-<!-- Source: https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+      <dependency>
+          <groupId>com.sun.xml.ws</groupId>
+          <artifactId>jaxws-rt</artifactId>
+          <version>4.0.1</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>jakarta.platform</groupId>
+          <artifactId>jakarta.jakartaee-web-api</artifactId>
+          <version>11.0.0</version>
+          <scope>provided</scope>
+      </dependency>
+
+
+      <!-- Source: https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 <dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
