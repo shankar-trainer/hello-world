@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cts</groupId>
+  <artifactId>SpringMvcRest</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>SpringMvcRest Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <!-- Use 'release' for Java 9+ for better cross-compilation -->
+    <maven.compiler.release>17</maven.compiler.release>
+</properties>
+
+  
+  <dependencies>
+  
+  <!-- Source: https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.21.2</version>
+    <scope>compile</scope>
+</dependency>
+
+	 
+	 <!-- Source: https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+	    <version>6.1.14</version>
+	    <scope>compile</scope>
+	</dependency>
+	 
+ 
+   </dependencies>
+
+
+  <build>
+    <finalName>SpringMvcRest</finalName>
+  </build>
+</project>

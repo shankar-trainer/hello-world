@@ -1,0 +1,4 @@
+C:\pgsql\bin>start pg_ctl.exe -D c:\pgsql_data start
+
+
+C:\pgsql\bin>psql.exe -U postgres
