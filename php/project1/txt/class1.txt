@@ -1,0 +1,60 @@
+In PHP, a class serves as a blueprint for creating objects, grouping related data (properties) and functions (methods) together. 
+
+Basic Example: A Car Class
+This example defines a Car class with properties for its brand and color, uses a constructor for initialization, and includes a method to display the car's details. 
+
+<?php
+class Car {
+  // Properties
+  public $brand;
+  public $color;
+
+  // Constructor method (runs automatically when object is created)
+  public function __construct($brand, $color) {
+    $this->brand = $brand;
+    $this->color = $color;
+  }
+
+  // Method to display information
+  public function displayDetails() {
+    return "This car is a " . $this->color . " " . $this->brand . ".";
+  }
+}
+
+// Instantiate (create) a new object from the class
+$myCar = new Car("Toyota", "red");
+
+// Accessing the method
+echo $myCar->displayDetails(); 
+// Output: This car is a red Toyota.
+?>
+Key Components
+class keyword: Used to declare a new class followed by the class name (e.g., class Car).
+Properties: Variables defined inside a class that hold data for each instance.
+__construct(): A special method called automatically when an object is created, often used to set initial values.
+$this keyword: A pseudo-variable used within class methods to refer to the current object.
+new keyword: Used to create a new instance (object) of a class.
+-> (Arrow operator): Used to access properties and methods of an object. 
+
+
+Advanced Usage: Inheritance
+You can create a new class that "borrows" or extends the functionality of another class using the extends keyword. 
+
+class ElectricCar extends Car {
+  public $batteryLife;
+
+  public function __construct($brand, $color, $batteryLife) {
+    // Call the parent class's constructor
+    parent::__construct($brand, $color);
+    $this->batteryLife = $batteryLife;
+  }
+
+  public function getBatteryStatus() {
+    return "Battery level is at " . $this->batteryLife . "%.";
+  }
+}
+
+$tesla = new ElectricCar("Tesla", "white", 85);
+echo $tesla->displayDetails(); // Inherited from Car
+echo $tesla->getBatteryStatus(); // Specific to ElectricCar
+For more detailed guides, refer to the official PHP Manual or W3Schools' PHP OOP Tutorial. 
