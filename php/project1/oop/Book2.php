@@ -50,7 +50,6 @@ class Book2{
 		echo  "\nisbn ".$book->getCost(); 
 	}
      catch(Exception $e){
-		 
 		 echo "Error ".$e->getMessage();
 	 }
  ?>

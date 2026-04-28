@@ -8,16 +8,16 @@ class Book{
 	
 	public function setIsbn($isbn)
 	{
-		$this->$isbn=$isbn;
+		$this->isbn=$isbn;
 	}
 	
 
 	public function setAuthor($author){
-		$this->$author=$author;
+		$this->author=$author;
 	}
 
 	public function setCost($cost){
-		$this->$cost=$cost;
+		$this->cost=$cost;
 	}
 
     public function getIsbn(){

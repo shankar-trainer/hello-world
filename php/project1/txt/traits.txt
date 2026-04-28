@@ -50,7 +50,6 @@ $product->delete();
 Handling Conflicts (Naming Collisions)If a class uses two Traits that have a method with the same name, PHP will throw a fatal error. You must 
 resolve this manually using the insteadof and as operators.
 
-
 PHPtrait FileUploader {
     public function upload() {
         echo "Uploading to local storage...";

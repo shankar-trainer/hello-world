@@ -1,0 +1,47 @@
+$_SERVER and $_GET are superglobal variables in PHP, meaning they are built-in arrays accessible from any part of a script (functions, classes, or files) without needing to declare them as global. 
+
+$_SERVER
+
+The $_SERVER array contains information about the web server, the execution environment, and the current request. 
+
+Source: Populated by the web server (e.g., Apache, Nginx). 
+
+Common Keys:
+
+$_SERVER['PHP_SELF']: Returns the filename of the currently executing script relative to the document root.
+
+$_SERVER['SERVER_NAME']: Returns the name of the host server (e.g., www.example.com).
+$_SERVER['REQUEST_METHOD']: Returns the request method used to access the page (e.g., GET, POST).
+$_SERVER['REMOTE_ADDR']: Returns the IP address of the user viewing the page.
+$_SERVER['HTTP_USER_AGENT']: Contains details about the user's browser and operating system. 
+
+
+Usage: For more information on all available indices, visit the official PHP $_SERVER manual. 
+$_GET
+The $_GET array is used to collect data sent via the URL query string (parameters following a ? in the URL). 
+
+Source: Data is appended to the URL as key-value pairs (e.g., test.php?name=John&age=25). 
+
+
+Characteristics:
+Visibility: Data is visible in the browser's address bar and server logs, making it unsuitable for sensitive information like passwords.
+
+Bookmarking: Pages with GET parameters can be bookmarked since the state is captured in the URL.
+Capacity: Limited by URL length restrictions (typically around 2,000 characters). 
+
+
+Example Code:
+php
+// If the URL is index.php?id=123
+$user_id = $_GET['id']; // $user_id will be "123"
+ 
+Security: Always use htmlspecialchars() or similar sanitization when outputting $_GET data to prevent Cross-Site Scripting (XSS) attacks. Learn more about PHP $_GET on W3Schools. 
+
+Key Differences
+
+Feature 	$_SERVER	$_GET
+
+Primary Use	Server and request environment info	User-provided URL parameters
+Data Origin	The web server/environment	The URL query string
+Visibility	Internal (mostly hidden)	Publicly visible in the URL
+

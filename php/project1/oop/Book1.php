@@ -36,7 +36,7 @@ class Book1{
 }
 
     $book=new Book1();
-//    $book->setIsbn(10001);
+//  $book->setIsbn(10001);
     $book->setIsbn(8990);
     $book->setAuthor('php for professional');
     $book->setCost(1200);

@@ -11,7 +11,6 @@ class Employee{
 	public function __get($name){
 	 return $this->data[$name];
 	} 
-	
 }
 
 $emp=new Employee();
