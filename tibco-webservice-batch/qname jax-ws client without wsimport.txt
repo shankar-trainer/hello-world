@@ -1,7 +1,9 @@
 To create a JAX-WS client using a QName, you typically use the javax.xml.ws.Service class to programmatically discover the service and its port. This is known as a Dynamic Proxy Client. 
 Basic JAX-WS Client Example with QName
+
 This example demonstrates how to connect to a web service by specifying its WSDL location and the specific service name using a QName. 
 java
+
 import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -28,12 +30,17 @@ public class JaxWsClient {
     }
 }
 Key Components Explained
+
 QName: The javax.xml.namespace.QName represents a "Qualified Name" in XML. It identifies the service by combining a namespace URI and a local part (the service name). You can find these values in the <wsdl:definitions> and <wsdl:service> tags of your WSDL document.
+
 Service.create(): This factory method parses the WSDL and prepares the client to communicate with the specific service identified by the QName.
 service.getPort(): This returns a proxy object that implements your Service Endpoint Interface (SEI). Calling a method on this object triggers a SOAP request to the server. 
+
 Advanced: Creating a Client with Port QName 
+
 If a service has multiple ports (e.g., one for SOAP 1.1 and one for SOAP 1.2), you can specify the port explicitly using its own QName as shown in IBM's JAX-WS documentation: 
 java
+
 QName portName = new QName("http://example.com", "HelloWorldPort");
 HelloWorld hello = service.getPort(portName, HelloWorld.class);
 Useful Tools for JAX-WS
@@ -93,9 +100,7 @@ JDK Versions: For Java 11 and later, JAX-WS is no longer part of the standard JD
 
 ======================================
 JAX-WS clients can be created using javax.xml.namespace.QName and javax.xml.ws.Service to dynamically lookup WSDL information without generating client stubs. This requires defining the target namespace and service name, followed by obtaining the port from the service, a direct alternative to wsimport. 
-Mkyong.com
-Mkyong.com
- +1
+
 JAX-WS QName Client Example
 java
 import java.net.URL;
@@ -126,11 +131,44 @@ Alternatives to Manual QName Client (Service.create)
 [wsimport Tool (Static Proxy): The most common approach, using the JDK-bundled wsimport command to generate all necessary stub files from a WSDL.
 bash
 wsimport -keep -p com.example.client http://localhost:9999/ws/hello?wsdl
+
 Dispatch Client API: A dynamic client API that works at the XML message level (Dispatch<SOAPMessage> or Dispatch<Source>). Used when you don't have the SEI interface class.
+
 Provider Interface: A low-level alternative for building handlers or handling raw XML messages, offering a different way to access web service functionality than static SEI proxies. 
-Stack Overflow
-Stack Overflow
- +2
+
+
 Key QName Components
 Namespace URI: The targetNamespace attribute found in the <definitions> tag of the WSDL (e.g., http://ws.mkyong.com/).
 Local Part: The name attribute of the <service> tag in the WSDL (e.g., HelloWorldImplService). 
+
+==========================================================
+
+why wsimport use why not qname
+
+The choice between using wsimport and the QName/Service API involves a trade-off between development simplicity and runtime flexibility. These are not mutually exclusive, but rather represent two different styles of web service client development.
+
+Static Proxy Approach (wsimport):
+
+Abstraction: The wsimport tool generates strongly-typed Java stubs (proxies) from a WSDL.
+
+Simplicity: Developers can invoke web service methods as if they were local Java methods, without needing to know the granular XML details or SOAP headers.
+
+Automation: It handles complex XML-to-Java mappings using JAXB internally, which eliminates the need to manually construct XML payloads. 
+
+Dynamic / Manual Approach (QName & Service API):
+
+Granular Control: Using the QName class and Service API allows for "finer controls" over client-service communication.
+
+Runtime Flexibility: This approach is necessary when the WSDL location or service details are only known at runtime, or when you need to dynamically change the URL.
+Lower-level Access: It is often used with the JAX-WS Dispatch API to work directly at the XML message level rather than with generated Java objects. 
+Oracle Forums
+Oracle Forums
+ +2
+Summary Table
+Feature 	wsimport (Static Proxy)	QName/Service (Dynamic/Manual)
+Ease of Use	High (calls look like standard Java)	Low (requires manual plumbing)
+Type Safety	High (strong Java typing)	Low (often deals with XML/Source)
+Flexibility	Low (code is generated based on a specific WSDL)	High (can handle dynamic WSDLs)
+Best For	Standard applications with known interfaces	Middleware, dynamic clients, or complex SOAP overrides
+In practice, many developers use both: they use wsimport to generate the initial classes but then use the Service(URL, QName) constructor in their code to specify a dynamic endpoint at runtime. 
+
