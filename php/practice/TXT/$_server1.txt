@@ -22,13 +22,11 @@ The $_GET array is used to collect data sent via the URL query string (parameter
 
 Source: Data is appended to the URL as key-value pairs (e.g., test.php?name=John&age=25). 
 
-
 Characteristics:
 Visibility: Data is visible in the browser's address bar and server logs, making it unsuitable for sensitive information like passwords.
 
 Bookmarking: Pages with GET parameters can be bookmarked since the state is captured in the URL.
 Capacity: Limited by URL length restrictions (typically around 2,000 characters). 
-
 
 Example Code:
 php

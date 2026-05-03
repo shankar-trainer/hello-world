@@ -20,7 +20,6 @@ class Person
     public function getName():string{
         return  $this->name;
     }
-    
 }
 
 $p=new Person();
@@ -30,5 +29,4 @@ $p->setName('amit kumar');
 echo "person information";
 echo "<br> id ".$p->getIsbn();
 echo "<br> name ".$p->getName();
-
 ?>
