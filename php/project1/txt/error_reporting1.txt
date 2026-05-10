@@ -1,0 +1,30 @@
+In PHP, error_reporting() is a built-in function used to specify which types of errors the script should report at runtime [1, 7]. 
+It essentially filters what the engine "notices" and can act upon, 
+whether that action is displaying them to the screen or logging them to a file [3, 9]. [1, 2, 3, 4]
+
+Quick Configuration
+To immediately show all errors during development, add these lines to the top of your script: [1] php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+Use code with caution.
+•	error_reporting(E_ALL): Tells PHP to track every type of error, warning, and notice [5, 9].
+•	ini_set('display_errors', '1'): Forces PHP to output these errors directly to the browser [2, 9]. [1, 2, 3]
+Common Error Levels
+
+PHP uses bitmask constants to define different levels of severity [1, 5]: [1, 2, 3, 4]
+•	E_ERROR: Fatal runtime errors that stop script execution (e.g., calling a function that doesn't exist) [9, 29].
+•	E_WARNING: Non-fatal runtime errors; execution continues, but something went wrong (e.g., missing an included file) [9, 29].
+•	E_NOTICE: Minor issues, like using an undefined variable [9, 29].
+•	E_PARSE: Compile-time syntax errors [9, 29].
+•	E_ALL: All errors, warnings, and notices [5, 9]. Use -1 to ensure all future levels are also captured [5, 13]. [1, 2, 3, 4, 5]
+Best Practices: Development vs. Production [1]
+
+Managing how errors are handled is critical for both security and debugging. You can find detailed technical documentation on the official PHP Manual. [1, 2, 3, 4]
+•	Development: Enable everything. Set error_reporting = E_ALL and display_errors = On in your php.ini file to catch bugs immediately [9, 26].
+•	Production: Disable display_errors. Displaying errors to users can leak sensitive information like file paths and database credentials [9, 16]. Instead, set log_errors = On and define an error_log path to monitor issues privately [9, 32]. [1, 2, 3, 4, 5]
+Where to Change Settings
+1.	php.ini: The global configuration file. Changes here require a server restart (e.g., Apache or PHP-FPM) [8, 9].
+2.	Runtime: Using error_reporting() and ini_set() inside your code. This only affects the current script [1, 9].
+3.	.htaccess: Useful on Apache servers if you don't have access to the main php.ini [9]. [1, 2, 3, 4, 5]
+

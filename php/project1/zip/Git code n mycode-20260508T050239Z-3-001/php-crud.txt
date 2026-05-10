@@ -1,0 +1,365 @@
+CRUD (Create, Read, Update, Delete) application allows you to manage database records through a web interface. The following example uses the MySQLi extension in an object-oriented style to manage a simple "users" table.
+
+1. Database SetupFirst, create your database and table using a tool like phpMyAdmin.sqlCREATE DATABASE crud_db;
+USE crud_db;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+Use code with caution.
+
+2. Database Connection 
+(db.php)
+
+Set up a db.php file to handle connections.php
+
+<?php
+$conn = new mysqli('localhost', 'root', '', 'crud_db');
+
+if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
+?>
+Use code with caution.
+
+3. Create (Insert Data)Create create.php to insert data via an HTML 
+
+form.php
+<?php include 'db.php';
+if (isset($_POST['submit'])) {
+    $conn->query("INSERT INTO users (name, email) VALUES ('{$_POST['name']}', '{$_POST['email']}')");
+    header("Location: index.php");
+} ?>
+<form method="POST">
+    Name: <input type="text" name="name" required>
+    Email: <input type="email" name="email" required>
+    <button type="submit" name="submit">Add User</button>
+</form>
+Use code with caution.
+
+4. Read (Display Data)Create index.php to fetch and display
+
+records.php
+
+<?php include 'db.php'; ?>
+
+<a href="create.php">Add User</a>
+<table border="1">
+    <tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
+    <?php $result = $conn->query("SELECT * FROM users");
+    while($row = $result->fetch_assoc()): ?>
+    <tr>
+        <td><?= $row['id']; ?></td>
+        <td><?= $row['name']; ?></td>
+        <td><?= $row['email']; ?></td>
+        <td><a href="update.php?id=<?= $row['id']; ?>">Edit</a> | 
+            <a href="delete.php?id=<?= $row['id']; ?>">Delete</a></td>
+    </tr>
+    <?php endwhile; ?>
+</table>
+Use code with caution
+
+5. Update (Edit Data)Create update.php to modify existing records.php<?php include 'db.php'; $id = $_GET['id'];
+$user = $conn->query("SELECT * FROM users WHERE id=$id")->fetch_assoc();
+if (isset($_POST['update'])) {
+    $conn->query("UPDATE users SET name='{$_POST['name']}', email='{$_POST['email']}' WHERE id=$id");
+    header("Location: index.php");
+} ?>
+<form method="POST">
+    <input type="text" name="name" value="<?= $user['name']; ?>">
+    <input type="email" name="email" value="<?= $user['email']; ?>">
+    <button type="submit" name="update">Update</button>
+</form>
+Use code with caution.
+
+6. Delete (Remove Data)Create delete.php to remove records.php<?php include 'db.php'; $id = $_GET['id'];
+$conn->query("DELETE FROM users WHERE id=$id");
+header("Location: index.php"); ?>
+
+
+Use code with caution.Key PracticesSecurity: Always use Prepared Statements to prevent SQL Injection.Best Practices: Implement validation and consider using frameworks like Bootstrap for UI.
+=======... ========
+php crud mysql example with exception handling without pdo
+  try catch and throw                      To create a PHP CRUD example without PDO while using try-catch blocks and manual throw statements, you must use the MySQLi extension.
+
+Starting with PHP 8.1, MySQLi throws exceptions by default. However, for older versions or explicit control, you should enable strict error reporting using mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT) to ensure database errors trigger a mysqli_sql_exception that your try-catch block can handle.PHP 
+
+CRUD Example with Exception Handling.
+This example demonstrates how to Create, Read, Update, and Delete records while manually throwing custom exceptions for business logic (like missing records) and catching database-level errors.php
+
+<?php
+// Enable MySQLi exception reporting for all versions
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$db   = 'test_db';
+
+try {
+    // 1. CONNECT
+    $conn = new mysqli($host, $user, $pass, $db);
+    
+    // 2. CREATE (Insert)
+    $stmt = $conn->prepare("INSERT INTO users (name, email) VALUES (?, ?)");
+    $name = "John Doe";
+    $email = "john@example.com";
+    $stmt->bind_param("ss", $name, $email);
+    
+    if (!$stmt->execute()) {
+        throw new Exception("Failed to insert user."); // Manual throw
+    }
+    echo "Record created successfully.<br>";
+
+    // 3. READ (Select)
+    $id_to_find = 1;
+    $result = $conn->query("SELECT * FROM users WHERE id = $id_to_find");
+    
+    if ($result->num_rows === 0) {
+        // Manually throw exception if no record is found
+        throw new Exception("User with ID $id_to_find not found!"); 
+    }
+    $user = $result->fetch_assoc();
+    echo "User Found: " . $user['name'] . "<br>";
+
+    // 4. UPDATE
+    $new_name = "John Updated";
+    $update_stmt = $conn->prepare("UPDATE users SET name = ? WHERE id = ?");
+    $update_stmt->bind_param("si", $new_name, $id_to_find);
+    $update_stmt->execute();
+    echo "Record updated.<br>";
+
+    // 5. DELETE
+    $delete_id = 1;
+    $conn->query("DELETE FROM users WHERE id = $delete_id");
+    echo "Record deleted.<br>";
+
+} catch (mysqli_sql_exception $e) {
+    // Specifically catch database errors (connection, syntax, etc.)
+    error_log("Database Error: " . $e->getMessage());
+    echo "A database error occurred. Please try again later.";
+
+} catch (Exception $e) {
+    // Catch manual throws and other general exceptions
+    echo "Application Error: " . $e->getMessage();
+
+} finally {
+    // Close connection regardless of success or failure
+    if (isset($conn) && $conn->ping()) {
+        $conn->close();
+    }
+}
+?>
+Use code with caution.Key Components Explainedmysqli_report(): This "magic line" tells MySQLi to stop being silent and instead throw a mysqli_sql_exception whenever a query fails.
+
+try Block: Houses your CRUD logic. If any line fails or a throw is triggered, execution immediately jumps to the catch block.
+
+throw new Exception(): Used for custom logic, such as when a query technically succeeds but returns zero results (not a DB error, but a logic error for your app).
+
+catch (mysqli_sql_exception $e): Catches specific database errors like "table not found" or "connection refused".
+
+finally Block: Ensures the database connection is closed or resources are cleaned up even if an error occurs.
+
+
+
+============
+
+
+To perform CRUD (Create, Read, Update, Delete) operations in PHP without using PDO, you can use the MySQLi extension (MySQL Improved).
+
+ By default, MySQLi does not throw exceptions for query errors; however, you can enable exception handling globally using mysqli_report().
+ 
+1. Enable Exception Reporting 
+In your database connection file, use MYSQLI_REPORT_ALL or MYSQLI_REPORT_STRICT to force MySQLi to throw mysqli_sql_exception instead of just returning false. 
+
+
+<?php
+// db.php - Database Connection
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+try {
+    $host = 'localhost';
+    $user = 'root';
+    $pass = '';
+    $db   = 'my_database';
+
+    $conn = new mysqli($host, $user, $pass, $db);
+    $conn->set_charset("utf8mb4");
+} catch (mysqli_sql_exception $e) {
+    error_log($e->getMessage());
+    exit('Database connection failed');
+}
+?>
+Use code with caution.
+2. Create (Insert Data) 
+Use prepared statements to prevent SQL injection. Wrap the execution in a try-catch block to handle unique constraint violations or other SQL errors. 
+
+PHPpot
+ +4
+php
+<?php
+include 'db.php';
+
+try {
+    $stmt = $conn->prepare("INSERT INTO users (name, email) VALUES (?, ?)");
+    $stmt->bind_param("ss", $name, $email);
+    
+    $name = "John Doe";
+    $email = "john@example.com";
+    $stmt->execute();
+    
+    echo "New record created successfully";
+    $stmt->close();
+} catch (mysqli_sql_exception $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
+Use code with caution.
+3. Read (Fetch Data)
+Fetching records also requires handling potential table-level or query-level failures. 
+
+Tutorial Republic
+ +1
+php
+<?php
+include 'db.php';
+
+try {
+    $result = $conn->query("SELECT id, name, email FROM users");
+    
+    while ($row = $result->fetch_assoc()) {
+        echo "ID: {$row['id']} - Name: {$row['name']} <br>";
+    }
+} catch (mysqli_sql_exception $e) {
+    echo "Could not fetch data: " . $e->getMessage();
+}
+?>
+Use code with caution.
+4. Update (Modify Data)
+The logic follows the same pattern as "Create", ensuring the statement is prepared and executed within a protected block. 
+
+PHPpot
+ +2
+php
+<?php
+include 'db.php';
+
+try {
+    $stmt = $conn->prepare("UPDATE users SET email = ? WHERE id = ?");
+    $stmt->bind_param("si", $newEmail, $userId);
+    
+    $newEmail = "newjohn@example.com";
+    $userId = 1;
+    $stmt->execute();
+    
+    if ($stmt->affected_rows > 0) {
+        echo "Record updated successfully";
+    } else {
+        echo "No changes were made.";
+    }
+    $stmt->close();
+} catch (mysqli_sql_exception $e) {
+    echo "Update failed: " . $e->getMessage();
+}
+?>
+Use code with caution.
+5. Delete (Remove Data) 
+Similar to the update process, use affected_rows to verify if a deletion actually occurred. 
+
+Medium·Kevin Borkhatariya
+ +2
+php
+<?php
+include 'db.php';
+
+try {
+    $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    
+    $userId = 1;
+    $stmt->execute();
+    
+    echo "Record deleted successfully";
+    $stmt->close();
+} catch (mysqli_sql_exception $e) {
+    echo "Delete failed: " . $e->getMessage();
+}
+?>
+Use code with caution.
+Summary of Benefits
+mysqli_report: Automates error checking so you don't have to write or die(mysqli_error()) after every query.
+Prepared Statements: The only safe way to handle user input when not using PDO.
+Try-Catch: Provides a clean way to log errors to a file while showing users a friendly message. 
+
+Stackify
+ +4
+Would you like to see how to implement a global error handler to manage these exceptions in one central location?
+
+
+
+
+
+
+==================.
+using pdo. 
+
+php crud mysql example with exception handling   
+                   To implement a robust CRUD (Create, Read, Update, Delete) system in PHP, using the PDO (PHP Data Objects) extension is the best practice. It provides built-in support for exception handling and prepared statements to prevent SQL injection.
+
+1. Database Connection with Exception HandlingThe first step is establishing a connection. Using a try-catch block ensures that if the database is down or credentials are wrong, you can handle the error gracefully without exposing sensitive server details.php<?php
+// db.php - Database Configuration
+$host = 'localhost';
+$db   = 'my_database';
+$user = 'root';
+$pass = '';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, // Enables exceptions
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (\PDOException $e) {
+    // Log the error and stop execution
+    error_log("Connection failed: " . $e->getMessage());
+    die("A database error occurred. Please try again later.");
+}
+?>
+Use code with caution.
+
+2. CRUD OperationsEach operation should be wrapped in a try-catch block to catch PDOException errors during execution.Create (Insert)phptry {
+    $sql = "INSERT INTO users (name, email) VALUES (?, ?)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['John Doe', 'john@example.com']);
+    echo "User added successfully!";
+} catch (PDOException $e) {
+    echo "Error adding user: " . $e->getMessage();
+}
+Use code with caution.Read (Select)phptry {
+    $stmt = $pdo->query("SELECT * FROM users");
+    $users = $stmt->fetchAll();
+    foreach ($users as $row) {
+        echo $row['name'] . "<br>";
+    }
+} catch (PDOException $e) {
+    echo "Fetch failed: " . $e->getMessage();
+}
+Use code with caution.Updatephptry {
+    $sql = "UPDATE users SET name = ? WHERE id = ?";
+    $pdo->prepare($sql)->execute(['Jane Doe', 1]);
+    echo "Update successful!";
+} catch (PDOException $e) {
+    echo "Update failed: " . $e->getMessage();
+}
+Use code with caution.Deletephptry {
+    $sql = "DELETE FROM users WHERE id = ?";
+    $pdo->prepare($sql)->execute([1]);
+    echo "Record deleted!";
+} catch (PDOException $e) {
+    echo "Delete failed: " . $e->getMessage();
+}
+Use code with caution.Key Benefits of This ApproachSecurity: Prepared statements (? placeholders) automatically sanitize inputs, preventing SQL injection.Control: try-catch blocks allow you to decide how to respond to errors (e.g., showing a user-friendly message vs. a technical stack trace).Scalability: The PDO extension works across different database types, making it easier to switch from MySQL to PostgreSQL later

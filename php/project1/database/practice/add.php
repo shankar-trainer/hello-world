@@ -11,7 +11,6 @@ $name="amit kumar";
  $statement->bind_param("ss",$id,$name);
 $statement->execute();
 
-
- echo "record added";
+echo "record added";
  
 ?>

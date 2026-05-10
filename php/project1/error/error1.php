@@ -14,4 +14,5 @@ else {
     echo "\n$x  no is odd number ";
 }
 echo "\nprogram stops";
+
 ?>
