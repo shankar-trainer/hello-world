@@ -16,6 +16,7 @@ class Students{
     return $this->age;
     }
 }
+
 $stud=new Students('amit kumar',22);
 echo "student details ";
 echo "<br>\tname is ".$stud->getname();
