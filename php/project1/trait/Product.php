@@ -1,7 +1,6 @@
 <?php 
 //require('Logger.php');
 
-
 class Product{
 
 use Logger;
