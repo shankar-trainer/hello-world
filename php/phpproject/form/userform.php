@@ -11,7 +11,6 @@
 <?php
 session_start();
 
-
 $id_err1 = '';
 $name_err1 = '';
 
@@ -25,7 +24,6 @@ if (isset($_SESSION['name_err'])) {
         $name_err1 = $_SESSION['name_err'];
     }
 }
-
 ?>
 
 <body>
