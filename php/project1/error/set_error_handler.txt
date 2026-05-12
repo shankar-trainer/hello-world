@@ -1,0 +1,77 @@
+The PHP function set_error_handler() allows you to define a custom function to handle errors that occur while your script is running. It is primarily used to bypass the default PHP error messages and perform actions like logging errors to a database, emailing developers, or showing a friendly message to users. [1, 2, 3]
+Key Features
+•	Custom Control: You can decide how to process different error levels (like warnings or notices).
+•	Bypassing Defaults: Once registered, PHP's standard error handler is completely ignored for the specified error types unless your custom function returns false.
+•	Script Continuation: If your custom handler does not terminate the script (using exit() or die()), the code will continue running from the line immediately following the error. [1, 2, 3, 4, 5]
+Limitations
+There are certain fatal or compile-time errors that this function cannot catch because the script cannot recover from them or they happen before the handler is registered: [1, 2, 3, 4]
+•	E_ERROR (Fatal run-time errors)
+•	E_PARSE (Compile-time parse errors)
+•	E_CORE_ERROR / E_CORE_WARNING
+•	E_COMPILE_ERROR / E_COMPILE_WARNING [1, 2, 3]
+Basic Syntax
+To use it, you pass a "callable" (the name of your function) as the first argument. [1, 2]
+php
+function myCustomHandler($errno, $errstr, $errfile, $errline) {
+    echo "<b>Error:</b> [$errno] $errstr<br>";
+    echo "Found on line $errline in $errfile<br>";
+}
+
+// Set the custom handler
+set_error_handler("myCustomHandler");
+Use code with caution.
+Useful Related Functions
+•	restore_error_handler(): Reverts back to the previous error handler.
+•	set_exception_handler(): Sets a handler for uncaught exceptions (different from standard PHP errors).
+•	trigger_error(): Manually triggers a user-level error that your custom handler can then catch. [1, 2, 3, 4, 5]
+In PHP, the set_error_handler() function is traditionally used to catch "standard" errors (like E_NOTICE or E_WARNING). However, there is a catch when it comes to division by zero:
+•	In PHP 7 and 8: A division by zero doesn't trigger a standard error; it throws a DivisionByZeroError exception.
+•	The Solution: To catch this using a custom handler, you must ensure your handler or your code is prepared to manage Exceptions, not just Errors.
+Here is how you can implement a custom handler and bridge the gap.
+________________________________________
+The Code Example
+This script sets a custom error handler and then demonstrates how to handle the DivisionByZeroError.
+PHP
+<?php
+
+// 1. Define the custom error handler function
+function myErrorHandler($errno, $errstr, $errfile, $errline) {
+    echo "<b>[Custom Error]</b> ID: $errno | Message: $errstr<br>";
+    echo "Location: $errfile on line $errline<br>";
+    
+    // Return true to skip PHP's internal error handler
+    return true; 
+}
+
+// 2. Set the custom handler
+set_error_handler("myErrorHandler");
+
+// 3. The Division Test
+try {
+    $numerator = 10;
+    $denominator = 0;
+
+    // In PHP 7+, this throws a DivisionByZeroError Exception
+    if ($denominator === 0) {
+        // We manually trigger an error to show set_error_handler in action
+        trigger_error("Attempted division by zero!", E_USER_WARNING);
+        
+        // Or let PHP throw the exception naturally
+        $result = $numerator / $denominator;
+    }
+
+} catch (DivisionByZeroError $e) {
+    echo "<b>[Caught Exception]</b> " . $e->getMessage() . "<br>";
+}
+
+echo "The script continues to run...";
+?>
+________________________________________
+Key Takeaways
+Feature	Behavior
+set_error_handler	Only catches non-fatal errors (Warnings, Notices).
+E_USER_WARNING	Can be manually triggered via trigger_error() to test your handler.
+DivisionByZeroError	A modern PHP Exception. It bypasses set_error_handler and must be caught in a try...catch block.
+Why didn't set_error_handler catch / 0 directly?
+In older versions of PHP (5.x), division by zero merely emitted a warning and returned false or INF. In modern PHP (7+), the engine was upgraded to be more "noisy" and safe. Since it is now an Exception, the standard error handler is ignored in favor of the exception handling stack.
+

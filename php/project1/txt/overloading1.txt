@@ -1,0 +1,37 @@
+In PHP, traditional method overloading (defining multiple methods with the same name but different parameters) is not supported and will result in a fatal error. 
+
+Instead, you must use the __call() magic method to simulate this behavior by checking the arguments passed at runtime.
+Example: Customer OverloadingIn this example, we use a single method name getCustomer to fetch details using either a customerID (integer) or a name (string).php<?php
+class CustomerService {
+    // Magic method triggered when calling an undefined method 'getCustomer'
+    public function __call($name, $arguments) {
+        if ($name === 'getCustomer') {
+            $param = $arguments[0];
+
+            // Overload logic: check if the input is an ID or a Name
+            if (is_int($param)) {
+                return $this->getById($param);
+            } elseif (is_string($param)) {
+                return $this->getByName($param);
+            }
+        }
+    }
+
+    private function getById($id) {
+        return "Fetching customer record for ID: " . $id;
+    }
+
+    private function getByName($name) {
+        return "Searching for customer record by Name: " . $name;
+    }
+}
+
+// Usage
+$service = new CustomerService();
+
+// Simulates overloading by calling the same method with different types
+echo $service->getCustomer(101);        // Output: Fetching customer record for ID: 101
+echo "\n";
+echo $service->getCustomer("John Doe"); // Output: Searching for customer record by Name: John Doe
+?>
+Use code with caution.Key Technical DetailsThe __call() Method: Takes two parameters: $name (the method name called) and $arguments (an array of passed values).Argument Counting/Type Checking: You can use count($arguments) to differentiate by the number of inputs or is_int()/is_string() to differentiate by data type.Official Documentation: For more details on dynamic method handling, refer to the 
