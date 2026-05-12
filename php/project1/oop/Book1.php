@@ -1,5 +1,4 @@
 <?php
-
 class Book1{
 	
 	private int  $isbn;
@@ -8,7 +7,6 @@ class Book1{
 	
 	public function setIsbn(int $isbn):void 
 	{ 
-	 
 		$this->isbn=$isbn;
 	}
 	
@@ -45,5 +43,4 @@ class Book1{
     echo  "\nisbn ".$book->getIsbn(); 
     echo  "\nauthor ".$book->getAuthor(); 
     echo  "\nisbn ".$book->getCost(); 
-
  ?>

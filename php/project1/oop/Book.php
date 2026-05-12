@@ -43,5 +43,4 @@ echo 'book details ';
 echo  "\nisbn ".$book->getIsbn(); 
 echo  "\nauthor ".$book->getAuthor(); 
 echo  "\nisbn ".$book->getCost(); 
-
 ?>
