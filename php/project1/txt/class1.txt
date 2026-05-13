@@ -28,13 +28,14 @@ $myCar = new Car("Toyota", "red");
 echo $myCar->displayDetails(); 
 // Output: This car is a red Toyota.
 ?>
+
 Key Components
-class keyword: Used to declare a new class followed by the class name (e.g., class Car).
-Properties: Variables defined inside a class that hold data for each instance.
-__construct(): A special method called automatically when an object is created, often used to set initial values.
-$this keyword: A pseudo-variable used within class methods to refer to the current object.
-new keyword: Used to create a new instance (object) of a class.
--> (Arrow operator): Used to access properties and methods of an object. 
+    class keyword: Used to declare a new class followed by the class name (e.g., class Car).
+    Properties: Variables defined inside a class that hold data for each instance.
+    __construct(): A special method called automatically when an object is created, often used to set initial values.
+    $this keyword: A pseudo-variable used within class methods to refer to the current object.
+    new keyword: Used to create a new instance (object) of a class.
+    -> (Arrow operator): Used to access properties and methods of an object.
 
 
 Advanced Usage: Inheritance

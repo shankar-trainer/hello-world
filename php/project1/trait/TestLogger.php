@@ -1,14 +1,14 @@
 <?php 
 
-require('User.php');
+    require('User.php');
 
-$user=new User();
-$user->create();
+    $user=new User();
+    $user->create();
 
-require('Product.php');
+    require('Product.php');
 
-$product=new Product();
-$product->delete();
+    $product=new Product();
+    $product->delete();
 
 
 ?>
