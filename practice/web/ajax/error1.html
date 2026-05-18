@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var a = 10
+    var b = 0
+
+    try {
+        if (b == 0)
+            throw new Error("divide by zero error")
+        else
+            alert(a / b)
+        document.write("result is " + (a / b));
+
+    } catch (e) {
+        console.log(e)
+        document.write("result is " + (a / b));
+
+        alert(e)
+    }
+</script>
+
+</body>
+</html>
