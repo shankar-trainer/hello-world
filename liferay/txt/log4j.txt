@@ -1,0 +1,123 @@
+Here is a complete, step-by-step example of setting up **Log4j 2** in a Java project using **Maven**. This configuration includes both a `ConsoleAppender` (to print logs to your terminal) and a `FileAppender` (to save logs to a file).
+
+---
+
+### Step 1: Add Dependencies to `pom.xml`
+
+You need the Log4j core and API libraries. Add the following to your Maven `pom.xml` inside the `<dependencies>` tag:
+
+```xml
+<dependencies>
+    <!-- Log4j API -->
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>2.24.1</version> <!-- Use the latest stable version -->
+    </dependency>
+    
+    <!-- Log4j Core -->
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.24.1</version>
+    </dependency>
+</dependencies>
+
+```
+
+---
+
+### Step 2: Create the `log4j2.xml` Configuration
+
+Log4j 2 looks for a configuration file named `log4j2.xml` on the classpath.
+Place this file in your project under: `src/main/resources/log4j2.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    
+    <!-- Define properties for easy reuse -->
+    <Properties>
+        <Property name="LOG_DIR">logs</Property>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- 1. Console Appender -->
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- 2. File Appender -->
+        <File name="FileAppender" fileName="${LOG_DIR}/app.log" append="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!-- Root Logger configuration tracking both appenders -->
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="FileAppender"/>
+        </Root>
+    </Loggers>
+    
+</Configuration>
+
+```
+
+#### Quick Breakdown of the Config:
+
+* **`<Properties>`**: Sets up reusable variables like the log file path (`logs/app.log`) and the text format (`LOG_PATTERN`).
+* **`%d`, `%t`, `%-5level`, `%logger**`: These represent the timestamp, thread name, log level (padded to 5 characters), and class name respectively.
+* **`<Root level="info">`**: This dictates that any log message of level `INFO`, `WARN`, `ERROR`, or `FATAL` will be captured. `DEBUG` and `TRACE` will be ignored unless you change this to `debug`.
+
+---
+
+### Step 3: Write the Java Code
+
+Now, create a simple Java class to test the logging.
+
+```java
+package com.example;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class Log4jExample {
+
+    // Define the logger for this class
+    private static final Logger logger = LogManager.getLogger(Log4jExample.class);
+
+    public static void main(String[] args) {
+        System.out.println("Starting the application...");
+
+        // Logging at various levels
+        logger.trace("This is a TRACE message (Will not print with INFO root level)");
+        logger.debug("This is a DEBUG message (Will not print with INFO root level)");
+        
+        logger.info("This is an INFO message - Application started successfully.");
+        logger.warn("This is a WARN message - A minor warning occurred.");
+        logger.error("This is an ERROR message - Something went wrong!");
+        
+        try {
+            int result = 10 / 0;
+        } catch (ArithmeticException e) {
+            // Logging an exception
+            logger.error("Exception caught: ", e);
+        }
+        
+        System.out.println("Application finished. Check the console and 'logs/app.log' file.");
+    }
+}
+
+```
+
+---
+
+### Step 4: Run and Verify
+
+When you run the `main` method:
+
+1. **Console Output:** You will see the `INFO`, `WARN`, and `ERROR` logs print right in your IDE terminal.
+2. **File Output:** A new directory named `logs/` will be created in your project root containing an `app.log` file with identical log content.
