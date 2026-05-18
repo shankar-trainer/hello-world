@@ -1,3 +1,0 @@
-module two {
-    requires one;
-}

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<EmployeeDetails xmlns="http://www.example.org/EmployeeDetails"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.example.org/EmployeeDetails EmployeeDetails.xsd ">
-	
-	</EmployeeDetails>
-	

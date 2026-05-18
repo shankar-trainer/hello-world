@@ -1,9 +1,0 @@
-student{
-	 width:300pt;
-	 height: 200pt;
-	 border:solid;
-	 color: gray;
-}
-roll,name,subject,marks{
-	display: block;
-}
