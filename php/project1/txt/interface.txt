@@ -6,8 +6,10 @@ Key Features
     Method Signatures Only: Interfaces declare the names and parameters of methods but cannot contain any "body" (logic).
     Public Access: All methods in an interface must be declared as public.
     Multiple Implementation: Unlike classes, where you can only inherit from one parent, a single class can implement multiple interfaces.
+    
     Constants: Interfaces can contain constants, which cannot be overridden by implementing classes.
     Properties (New): As of PHP 8.4, interfaces can also declare properties, provided they specify if the property is readable, writeable, or both.
+
 Basic Syntax
 You define an interface using the interface keyword and implement it using the implements keyword.
 php
