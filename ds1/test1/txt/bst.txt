@@ -1,0 +1,240 @@
+In Java, a Binary Search Tree (BST) is a hierarchical data structure where each node has at most two children. It follows a specific ordering property that makes operations like searching, insertion, and deletion highly efficient. [1, 2, 3, 4]  
+
+Core Properties 
+
+• Left Subtree: Contains only nodes with values less than the parent node's value. 
+• Right Subtree: Contains only nodes with values greater than the parent node's value. 
+• Recursive Structure: Each subtree must itself be a valid BST. 
+• Unique Keys: Typically, all node values are distinct to maintain clear ordering. [5, 6, 7, 8, 9]  
+
+Implementation in Java 
+A standard BST implementation requires a  class and a main  class to manage operations. [10, 11]  
+// Basic Node structure
+class Node {
+    int key;
+    Node left, right;
+
+    public Node(int item) {
+        key = item;
+        left = right = null;
+    }
+}
+
+public class BinarySearchTree {
+    Node root;
+
+    // Recursive Search: O(log n) average, O(n) worst case
+    public Node search(Node root, int key) {
+        if (root == null || root.key == key) return root;
+        if (root.key > key) return search(root.left, key);
+        return search(root.right, key);
+    }
+
+    // Recursive Insertion
+    public void insert(int key) {
+        root = insertRecursive(root, key);
+    }
+
+    private Node insertRecursive(Node root, int key) {
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+        if (key < root.key) root.left = insertRecursive(root.left, key);
+        else if (key > root.key) root.right = insertRecursive(root.right, key);
+        return root;
+    }
+}
+
+
+// Java Program to Implement
+// Binary Search Tree
+
+class Node {
+    int key;
+    Node left, right;
+
+    public Node(int item) {
+        key = item;
+        left = right = null;
+    }
+}
+
+class BinarySearchTree {
+    Node root;
+
+    public BinarySearchTree() {
+        root = null;
+    }
+
+    // Insertion operation
+    void insert(int key) {
+        root = insertRec(root, key);
+    }
+
+    Node insertRec(Node root, int key) {
+        if (root == null) {
+            root = new Node(key);
+            return root;
+        }
+
+        if (key < root.key)
+            root.left = insertRec(root.left, key);
+        else if (key > root.key)
+            root.right = insertRec(root.right, key);
+
+        return root;
+    }
+
+    // Deletion operation
+    void delete(int key) {
+        root = deleteRec(root, key);
+    }
+
+    Node deleteRec(Node root, int key) {
+        if (root == null)
+            return root;
+
+        if (key < root.key)
+            root.left = deleteRec(root.left, key);
+        else if (key > root.key)
+            root.right = deleteRec(root.right, key);
+        else {
+            if (root.left == null)
+                return root.right;
+            else if (root.right == null)
+                return root.left;
+
+            root.key = minValue(root.right);
+
+            root.right = deleteRec(root.right, root.key);
+        }
+
+        return root;
+    }
+
+    int minValue(Node root) {
+        int minv = root.key;
+        while (root.left != null) {
+            minv = root.left.key;
+            root = root.left;
+        }
+        return minv;
+    }
+
+    // Search operation
+    boolean search(int key) {
+        return searchRec(root, key);
+    }
+
+    boolean searchRec(Node root, int key) {
+        if (root == null)
+            return false;
+        if (root.key == key)
+            return true;
+        if (root.key < key)
+            return searchRec(root.right, key);
+        return searchRec(root.left, key);
+    }
+
+    // Inorder traversal
+    void inorder() {
+        inorderRec(root);
+        System.out.println("\n");
+    }
+
+    void inorderRec(Node root) {
+        if (root != null) {
+            inorderRec(root.left);
+            System.out.print(root.key + " ");
+            inorderRec(root.right);
+        }
+    }
+
+    // Preorder traversal
+    void preorder() {
+        preorderRec(root);
+        System.out.println("\n");
+        
+    }
+
+    void preorderRec(Node root) {
+        if (root != null) {
+            System.out.print(root.key + " ");
+            preorderRec(root.left);
+            preorderRec(root.right);
+        }
+    }
+
+    // Postorder traversal
+    void postorder() {
+        postorderRec(root);
+        System.out.println("\n");
+    }
+
+    void postorderRec(Node root) {
+        if (root != null) {
+            postorderRec(root.left);
+            postorderRec(root.right);
+            System.out.print(root.key + " ");
+        }
+    }
+
+}
+
+// Driver Class
+public class Main{
+      // Main Function
+    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();
+
+        // Inserting elements
+        tree.insert(50);
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(40);
+        tree.insert(70);
+        tree.insert(60);
+        tree.insert(80);
+
+        System.out.println("Inorder traversal:");
+        tree.inorder();
+
+        // Deleting elements
+        tree.delete(20);
+        tree.delete(30);
+
+        System.out.println("Inorder traversal after deletion:");
+        tree.inorder();
+
+        // Searching for an element
+        int searchKey = 70;
+        System.out.println("Is " + searchKey + " present in the tree? " + tree.search(searchKey));
+
+        // Traversals
+        System.out.println("Preorder traversal:");
+        tree.preorder();
+
+        System.out.println("Postorder traversal:");
+        tree.postorder();
+    }
+}
+
+Key Operations & Complexity 
+Operations in a BST depend on the height ($h$) of the tree. [2, 12]  
+
+| Operation [13, 14, 15, 16, 17] | Average Case | Worst Case (Skewed)  |
+| --- | --- | --- |
+| Search | $O(\log n)$ | $O(n)$  |
+| Insertion | $O(\log n)$ | $O(n)$  |
+| Deletion | $O(\log n)$ | $O(n)$  |
+
+• In-order Traversal: Visiting the left subtree, then the root, then the right subtree produces a sorted sequence of values. 
+• Self-Balancing: To prevent the $O(n)$ worst case, Java uses self-balancing trees like  and , which are internally implemented as Red-Black Trees. [5, 6, 18, 19, 20]  
+
+Common Applications 
+
+• Indexing: Used in databases for fast record retrieval. 
+• Symbol Tables: Foundational for advanced structures like AVL Trees. 
+• Dynamic Sets: Implementing  in Java for sorted storage. [2, 6, 18, 21, 22]  
+

@@ -1,0 +1,69 @@
+To manually implement addLast for a Singly Linked List in Java, you typically create a Node class to hold data and then iterate through the list to find the current tail.1. The Manual Implementation LogicTo add a node at the end of the list, follow these steps:Create a new node with the given data and set its next pointer to null.Check if the list is empty (if head is null). If so, make the new node the head.Traverse from the head to the last node (the node whose next is null).Link the current last node's next pointer to your new node.2. Full Java Code ExampleThis manual implementation does not use the built-in java.util.LinkedList class.javaclass MyLinkedList {
+    Node head; // Head of the list
+
+    // Node structure
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int d) {
+            data = d;
+            next = null;
+        }
+    }
+
+    // Manual addLast implementation
+    public void addLast(int newData) {
+        // 1. Allocate the Node & Put in the data
+        Node newNode = new Node(newData);
+
+        // 2. If the Linked List is empty, then make the new node as head
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        // 3. Else traverse until the last node
+        Node last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+
+        // 4. Change the next of last node to the new node
+        last.next = newNode;
+    }
+        public void addFirst(int data) {
+            Node newNode = new Node(data);
+            newNode.next = head; // Point new node to current head
+            head = newNode;      // Make new node the new head
+        }
+
+
+    // Utility to print the list
+    public void printList() {
+        Node curr = head;
+        while (curr != null) {
+            System.out.print(curr.data + " -> ");
+            curr = curr.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        MyLinkedList list = new MyLinkedList();
+        list.addLast(10);
+        list.addLast(20);
+        list.addLast(30);
+        list.printList(); // Output: 10 -> 20 -> 30 -> null
+    }
+}
+Use code with caution.3. Optimization: Using a Tail PointerIf you frequently use addLast, you can optimize it from \(O(n)\) (linear time) to \(O(1)\) (constant time) by keeping a tail reference.javapublic void addLastOptimized(int newData) {
+    Node newNode = new Node(newData);
+    if (head == null) {
+        head = tail = newNode;
+        return;
+    }
+    tail.next = newNode; // Directly link at the end
+    tail = newNode;      // Update the tail reference
+}
+Use code with caution.Comparison: Manual vs. Java APIManual Implementation: Requires a custom Node class and explicit pointer manipulation.Java API: The java.util.LinkedList class provides a pre-built addLast() method that internally manages these pointers for you.
