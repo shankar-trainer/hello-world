@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<style type="text/css">
+@import url("style1.css");
+</style>
+
+</head>
+<body>
+
+<form action='loginController' method="post">
+<label>Enter Id</label>
+<input name="id"><br>
+
+<label>Enter Password</label>
+<input  type='password' name="pass"><br>
+
+<label>Enter Name</label>
+<input name="name"><br>
+
+<label>Select User Type</label><br><br>
+
+<input type="radio" value="admin" name='utype'>Admin<br>
+<input type="radio" value="user" name='utype'>User<br><br>
+
+<input type="submit" value="login">
+<input type="reset" value="reset">
+
+</form>
+</body>
+</html>

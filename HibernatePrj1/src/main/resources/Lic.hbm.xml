@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-mapping package="org.montran.model">
+	<class name="Lic" table="mylic">
+		<id type="integer" name="licId">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="licPolicyName" type="string" />
+		<property name="licPolicyCost" type="float" />
+	</class>
+
+</hibernate-mapping>

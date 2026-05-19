@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    
+    <script src='script/jquery-3.6.0.min.js'>
+    </script>
+   <script>
+       $(function(){
+           $('#button1').click(function(){
+            $('h1').hide()
+           }
+           )
+       })
+       
+       $(function(){
+           $('#button2').click(function(){
+               $('h1').show()
+           }
+           )
+       })
+       
+       $(function(){
+           $('#button3').click(function(){
+             alert("first h1 value "+   $('h1:first').text()) 
+            $('h1:first').hide()
+           })
+       })
+       
+       $(function(){
+           $('#button4').click(function(){
+             alert("last  h1 value "+   $('h1:last').text()) 
+            $('h1:last').hide()
+           })
+       })
+       $(function(){
+           $('#button5').click(function(){
+            $('h1:odd').hide()
+           })
+       })
+       $(function(){
+           $('#button6').click(function(){
+            $('h1:even').hide()
+           })
+       })
+
+
+   </script>
+</head>
+<body>
+   <h1> heading1</h1>    
+   <h1> heading2</h1>    
+   <h1> heading3</h1>    
+   <h1> heading4</h1>
+   <h1> heading5</h1>
+   <h1> heading7</h1>
+   <h1> heading8</h1>
+   
+   <button id='button1'>Hide H1</button>
+   <button id='button2'>Show H1</button>
+   <button id='button3'>Hide First  H1</button>
+   <button id='button4'>Hide Last  H1</button>
+   <button id='button5'>Hide odd  H1</button>
+   <button id='button6'>Hide Even  H1</button>
+</body>
+</html>

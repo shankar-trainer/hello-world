@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="user_sorting.xsl"?>
+
+<users>
+
+   <user>
+	<id>1001</id>
+	<name>mohan kumar</name>
+	<salary>12000</salary>
+	<location>delhi</location>
+	</user>
+   <user>
+	<id>1002</id>
+	<name>sohan kumar</name>
+	<salary>16000</salary>
+	<location>chennai</location>
+	</user>
+   <user>
+	<id>1003</id>
+	<name>rohan kumar</name>
+	<salary>18000</salary>
+	<location>madurai</location>
+	</user>
+   <user>
+	<id>1004</id>
+	<name>pawan kumar</name>
+	<salary>11000</salary>
+	<location>kanchipuram</location>
+	</user>
+	
+</users>

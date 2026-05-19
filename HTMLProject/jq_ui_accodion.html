@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='script/jquery-ui.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='script/jquery-ui.theme.css'>
+    <script src='script/jquery.js'></script>
+    <script src='script/jquery-ui.js'></script>
+ <style>
+     h1.ui-accordion-header{
+         font-size:10px;
+     }
+     div.ui-accordion-content{
+       font-size:60px;
+       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+       font-style:'italic' 
+    }
+</style>
+
+</head>
+<body>
+ <div id='accordion'>
+     <h1><a>Menu  1</a></h1>
+     <div>Menu Contents</div>
+     <h1><a>Menu  2</a></h1>
+     <div>Menu Contents 2</div>
+     <h1><a>Menu  3</a></h1>
+     <div>Menu Contents 3</div>
+
+     <div>  
+         <script>
+         $('#accordion').accordion() 
+         </script> 
+</body>
+</html>

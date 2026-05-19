@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    
+    <script src='script/jquery-3.6.0.min.js'>
+    </script>
+
+</head>
+<body>
+    <script>
+        $(function(){
+            $('#b1').click(function(){
+                      
+                 //$('li').parents().css("border","solid blue")     
+                 //$('li').parent().css("border","solid blue")     
+                 //$('ol').parent().css("border","solid blue")     
+                 //$('span').parent().css("border","solid blue")     
+                 $('ol').children().css("border","solid blue")     
+                 //$('span').siblings().css("border","solid blue")     
+                 $('li').siblings().css("border","solid blue")     
+                 
+                 //$('p').parent().css("border","solid blue")     
+                 //$('ol').parent().css("background","red")     
+                 //$('ol').children().css("background","yellow")     
+            })
+        }
+        )
+    </script>
+    <div>
+    <h1> Montran Mumbai</h1>
+     <p>
+          Mumbai montran is leading software company in mumbai 
+     </p>
+          <span>
+              Branches
+          </span>
+          <ol>
+              <li>chennai</li>
+              <li>lucknow</li>
+              <li>bhubneswar</li>
+              <li>ranchi</li>
+          </ol>
+</div>
+<button id='b1'> p parent</button> 
+</body>
+</html>

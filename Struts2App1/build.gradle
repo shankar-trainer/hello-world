@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+    id 'war'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+ api 'org.apache.commons:commons-math3:3.6.1'
+    implementation 'com.google.guava:guava:28.0-jre'
+    testImplementation 'junit:junit:4.12'
+    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
+   
+   implementation group: 'org.apache.struts', name: 'struts2-core', version: '2.5'
+
+   implementation group: 'org.apache.struts', name: 'struts2-convention-plugin', version: '2.5.26'
+   
+   implementation group: 'org.apache.struts.xwork', name: 'xwork-core', version: '2.2.1'
+ implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
+      
+}

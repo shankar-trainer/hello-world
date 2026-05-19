@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script>
+
+        var employees={
+                          "employee":[
+                              {
+                                 "empid":10001,
+                                 "empname":"rajesh kumar",
+                                 "salary":20000
+                              },
+                              {
+                                 "empid":10002,
+                                 "empname":"mohan kumar",
+                                 "salary":30000
+                              },
+                              {
+                                 "empid":10003,
+                                 "empname":"sashi kumar",
+                                 "salary":40000
+                              },
+                              {
+                                 "empid":10004,
+                                 "empname":"umesh kumar",
+                                 "salary":60000
+                              },
+                              {
+                                 "empid":10005,
+                                 "empname":"suraj kumar",
+                                 "salary":90000
+                              },
+                              {
+                                 "empid":10006,
+                                 "empname":"parbhat kumar",
+                                 "salary":60000
+                              },
+                              {
+                                 "empid":10007,
+                                 "empname":"palak sharma",
+                                 "salary":20000
+                              },
+                              {
+                                 "empid":10008,
+                                 "empname":"aanchal  verma",
+                                 "salary":20000
+                              },
+                          ],
+                         "address":[
+                              {
+                                  "city":"delhi",
+                                  "sector":1,
+                                  "state":"delhi",
+                                  "country":"india",
+                                  "pin":100001
+                              },
+                              {
+                                  "city":"naoida",
+                                  "sector":1,
+                                  "state":"up",
+                                  "country":"india",
+                                  "pin":788787
+                              },
+                              {
+                                  "city":"patna",
+                                  "sector":5,
+                                  "state":"bihari",
+                                  "country":"india",
+                                  "pin":800001
+                              },
+                              {
+                                  "city":"kanpur",
+                                  "sector":1,
+                                  "state":"up",
+                                  "country":"india",
+                                  "pin":87887
+                              },
+                              {
+                                  "city":"gwalior",
+                                  "sector":17,
+                                  "state":"mp",
+                                  "country":"india",
+                                  "pin":455587
+                              },
+                              {
+                                  "city":"sholapur",
+                                  "sector":19,
+                                  "state":"maharastra",
+                                  "country":"india",
+                                  "pin":7657576
+                              },
+                              {
+                                  "city":"shivkasi",
+                                  "sector":1,
+                                  "state":"tamil nadu",
+                                  "country":"india",
+                                  "pin":8877887
+                              },
+                              {
+                                  "city":"kolkotta",
+                                  "sector":11,
+                                  "state":"west bengal",
+                                  "country":"india",
+                                  "pin":8978879
+                              },
+                         ] 
+
+        }
+        console.log(employees.employee[0])
+        alert(JSON.stringify(employees.employee[0]))
+        console.log(employees.employee.length)
+        for (let index = 0; index <employees.employee.length; index++) {
+        console.log(employees.employee[index].empid+"  "+employees.employee[index].empname+"  "+employees.employee[index].salary)
+        }
+      var avg=0;
+        for(var i in employees.employee){
+            //alert(employees.employee[i].empid+"  "+employees.employee[i].empname+"  "+employees.employee[i].salary)
+            avg=avg+employees.employee[i].salary
+        }
+        document.write("<table border='1px' bgcolor='yellow' width='50%' align='center'>")
+        document.write("<tr><th>Id</th><th>Name</th><th>Salary</th><th>City</th><th>Sector</th><th>State</th><th>Country</th><th>Pin</th></tr>")
+        for(var i in employees.employee){
+            document.write("<tr><td>"
+                    +employees.employee[i].empid+
+                    " </td><td> "+employees.employee[i].empname+
+                    "</td><td>  "+employees.employee[i].salary+
+                    "</td><td>"+employees.address[i].city+"</td>"
+            
+                +"</td><td>"+employees.address[i].sector+"</td>"
+                +"</td><td>"+employees.address[i].state+"</td>"
+                +"</td><td>"+employees.address[i].country+"</td>"
+                +"</td><td>"+employees.address[i].pin+"</td></tr>"
+            
+            );
+        }
+        document.write("</table>")
+
+  alert("total  salary is "+avg)
+  avg=avg/employees.employee.length;
+
+  alert("average salary is "+avg)
+
+   </script>
+</head>
+<body>
+    
+</body>
+</html>

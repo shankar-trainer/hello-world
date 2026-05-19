@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tns:book xmlns:tns="http://www.example.org/book"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/book book.xsd ">
+
+	<tns:mybook>
+		<tns:isbn>2000</tns:isbn>
+		<tns:name>xml beginner</tns:name>
+		<tns:author>kamal kumar</tns:author>
+		<tns:price>894.67</tns:price>
+		<tns:location>chennai</tns:location>
+	</tns:mybook>
+	<tns:mybook>
+		<tns:isbn>1000</tns:isbn>
+		<tns:name>xml beginner</tns:name>
+		<tns:author>kamal kumar</tns:author>
+		<tns:price>810.45</tns:price>
+		<tns:location>madurai</tns:location>
+	</tns:mybook>
+</tns:book>

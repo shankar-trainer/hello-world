@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style\style1.css'>
+    <style>
+        form {
+            background-color: bisque;
+        }
+    </style>
+    <script>
+  window.onbeforeunload = function() {
+   return "";
+   }
+    </script>
+
+    <script src='script/formvalidate.js'>
+
+
+    </script>
+
+</head>
+
+<body>
+    <form onsubmit="return  validate()">
+        <label>Enter Id </label>
+        <input id="id">
+        <span id='err_id'></span>
+        <br>
+
+        <label>Enter Name </label>
+        <input id="name"><br>
+        <label>Enter Age </label>
+        <input id="age" type="number"><br>
+        <br>
+        <label>Select Gender </label>
+        <br>
+        <input name="gender" type="radio" value='male'>Male<br>
+        <input name="gender" type="radio" value="female">Female<br>
+
+        <label>Select Hobbies </label>
+        <br>
+        <input type="checkbox"  name='hb' value="swimming">swimming<br>
+        <input type="checkbox" name='hb' value="singing">singing  <br>
+        <input type="checkbox" name='hb' value="music">music<br>
+        <input type="checkbox" name='hb' value="flowering">flowering<br>
+        <input type="submit">
+        <input type="reset">
+    </form>
+</body>
+
+</html>

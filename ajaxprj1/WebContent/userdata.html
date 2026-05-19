@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+var xhr;
+ function getdata()
+  {
+	 var id=document.getElementById('id1');
+	 xhr=new  XMLHttpRequest();
+	 xhr.open("GET","hello.txt")
+	 xhr.onreadystatechange=function(){
+		 if(xhr.readyState===4 && xhr.status===200){
+			 id.innerHTML=xhr.responseText;
+		 }
+	 };
+	 xhr.send(null);
+  }
+</script>
+</head>
+<body>
+<div id='id1'>
+</div>
+<br>
+<button onclick='getdata()'>getdata</button>
+
+</body>
+</html>

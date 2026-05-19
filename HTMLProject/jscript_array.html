@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <script>
+        var ar = [1, 2, 3, 4, 5, 6];
+        var city = new Array('delhi', 'chennai', 'madurai', 'rameswaram')
+
+        //alert(ar.length)
+        //alert(ar[0])
+        //alert(ar[1])
+        //alert(ar[2])
+        console.log('length ' + city.length)
+        for (var i = 0; i < ar.length; i++)
+            console.log(city[i])
+
+        ar3 = ar.concat(city)
+        console.log(ar3)
+        var s = ar.join("-")
+        console.log(s)
+
+        ar.reverse()
+        console.log("reverse " + ar)
+
+        ar.push(0);// push will add element at last position 
+        ar.push(-1);
+        ar.push(99);
+        console.log("after push  " + ar)
+        console.log(ar.pop())// pop remove and return last  value
+        //push and pop works at last position
+        //shift -- remove and return elment from 1st position 
+        //unshift -- add element at fisrt position  
+        console.log(ar.shift())
+        ar.unshift(999)
+        console.log(ar)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='style/style1.css'>
+
+    <script src='script/jquery-3.6.0.min.js'>
+    </script>
+
+</head>
+
+<body>
+    <script>
+        $(function () {
+            $('#addition').click(
+                function () {
+                 var a=$('#t1').val()
+                 var b=$('#t2').val()
+                 if(a=="")
+                   alert("no1 is blank")
+                  else if (b=="")
+                     alert("no2 is blank")
+                     else{ 
+                 var c=parseFloat(a)+parseFloat(b)
+                 $('#t3').val(c.toFixed(2))
+                }}
+            )
+        })
+        
+        $(function () {
+            $('#subtraction').click(
+                function () {
+                 var a=$('#t1').val()
+                 var b=$('#t2').val()
+                 if(a=="")
+                   alert("no1 is blank")
+                  else if (b=="")
+                     alert("no2 is blank")
+                     else{ 
+                 var c=parseFloat(a)-parseFloat(b)
+                 $('#t3').val(c.toFixed(2))
+                }}
+            )
+        })
+        $(function () {
+            $('#multiplication').click(
+                function () {
+                 var a=$('#t1').val()
+                 var b=$('#t2').val()
+                 if(a=="")
+                   alert("no1 is blank")
+                  else if (b=="")
+                     alert("no2 is blank")
+                     else{ 
+                 var c=parseFloat(a)*parseFloat(b)
+                 $('#t3').val(c.toFixed(2))
+                }}
+            )
+        })
+        $(function () {
+            $('#division').click(
+                function () {
+                 var a=$('#t1').val()
+                 var b=$('#t2').val()
+                 if(a=="")
+                   alert("no1 is blank")
+                  else if (b=="")
+                     alert("no2 is blank")
+                     else{ 
+                 var c=parseFloat(a)/parseFloat(b)
+                 $('#t3').val(c.toFixed(2))
+                }}
+            )
+        })
+
+    </script>
+
+    <form>
+        <label>Enter no1</label>
+        <input type="text" id="t1"><br>
+
+        <label>Enter no2</label>
+        <input type="text" id="t2"><br>
+        <label>Result</label>
+        <input type="text" id="t3"><br>
+
+        <input type="button" value="addition" id='addition'>
+        <input type="button" value= "subtraction" id='subtraction'><br>
+        <input type="button" value="multiplication" id='multiplication'>
+        <input type="button" value="division" id='division'>
+
+    </form>
+
+</body>
+
+</html>

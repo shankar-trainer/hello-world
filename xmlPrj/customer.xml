@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customers>
+	<customer custId="656565">
+		<country></country>
+		<custName>amar kumar</custName>
+		<custSalary>56000</custSalary>
+		<custId>656565</custId>
+		<custLocation>chennai</custLocation>
+		<custDob>10-10-1997</custDob>
+	</customer>
+
+	<customer>
+		<custId>656566</custId>
+		<country />
+
+		<custName>amrita sinha</custName>
+		<custSalary>67000</custSalary>
+		<custLocation>madurai</custLocation>
+		<custDob>11-10-1998</custDob>
+	</customer>
+
+	<customer>
+		<custId>656561</custId>
+		<custName>deepika kumari</custName>
+		<custSalary>89000</custSalary>
+		<custLocation>noida</custLocation>
+		<custDob>11-10-1995</custDob>
+	</customer>
+
+	<customer>
+		<custId>65689</custId>
+		<custName>karana saxena</custName>
+		<custSalary>34000</custSalary>
+		<custLocation>hubali</custLocation>
+		<custDob>10-10-1987</custDob>
+	</customer>
+
+	<customer>
+		<custId>656590</custId>
+		<custName>deepak kumar</custName>
+		<custSalary>69000</custSalary>
+		<custLocation>gurgao</custLocation>
+		<custDob>10-10-1997</custDob>
+	</customer>
+
+	<customer>
+		<custId>656565</custId>
+		<custName>vijay kumar</custName>
+		<custSalary>56000</custSalary>
+		<custLocation>ghaziabad</custLocation>
+		<custDob>10-12-1991</custDob>
+	</customer>
+
+	<customer>
+		<custId>656596</custId>
+		<custName>preetam kumar</custName>
+		<custSalary>12000</custSalary>
+		<custLocation>patna</custLocation>
+		<custDob>10-10-1990</custDob>
+	</customer>
+
+	<customer>
+		<custId>656593</custId>
+		<custName>amarjeet kumar</custName>
+		<custSalary>83000</custSalary>
+		<custLocation>kanpur</custLocation>
+		<custDob>10-11-1990</custDob>
+	</customer>
+
+	<customer>
+		<custId>656599</custId>
+		<custName>digvijay kumar</custName>
+		<custSalary>81000</custSalary>
+		<custLocation>jaipur</custLocation>
+		<custDob>10-10-1967</custDob>
+	</customer>
+
+
+</customers>

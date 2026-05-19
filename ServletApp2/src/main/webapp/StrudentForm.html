@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<script>
+		function validation() {
+			var id = document.getElementById("roll").value
+			var id = document.getElementById("password").value
+			var name = document.getElementById("name").value
+
+			if (id == "") {
+				alert("roll is blank")
+				return false;
+			} 
+			else if (isNaN(id)) {
+				alert("roll should be numeric")
+				return false;
+			} 
+			
+			
+			else if (password == "") {
+				alert("password is blank")
+				return false;
+			} else if (name == "") {
+				alert("name is blank")
+				return false;
+			} else
+				return true;
+			;
+		}
+	</script>
+	<style>
+		label{
+		 float:left;
+            width:110px;
+		}
+		input
+		{
+			margin-bottom:5px; 
+         width:110px;
+		}
+		form{
+              margin-left:300px;
+			  margin-top:100px;
+			  border:double 1px;
+			  padding: 10px;
+			  width:40%;
+
+		}
+		</style>
+</head>
+
+<body>
+
+	<form action="EmployeeServlet" onsubmit="return  validation()" method="get">
+
+		<label>Enter Id</label> <input type="text" name="roll" id="roll"><br>
+		<label>Enter Password</label> <input type="password" name="password" id="password"><br> <label>Enter
+			Name</label> <input type="text" name="name" id="name"><br><br> 
+			<label>Select Hobbies</label><br>
+			<input type="checkbox" name="hb" id="hb" value="swimming">Simming<br>
+			<input type="checkbox" name="hb" id="hb" value="singing">Singing<br>
+			<input type="checkbox" name="hb" id="hb" value="dancing">Dancing<br>
+			<input type="checkbox" name="hb" id="hb" value="reading">Reading<br>
+			<input type="checkbox" name="hb" id="hb" value="Flowering">Flowering<br>
+			<br>
+			<input type="submit" value="Login">
+
+	</form>
+
+
+</body>
+
+</html>

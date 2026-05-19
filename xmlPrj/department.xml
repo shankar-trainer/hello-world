@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE departments SYSTEM "department.dtd" >
+<departments>
+  <department>
+    <id>767667</id>
+    <name>training</name>
+    <location>mumbai</location>
+    <state state_id="566565">maharastra</state>
+    <pin>75667767</pin>
+    <dept_info>&copyright;&writer;</dept_info>
+  </department>
+
+  <department>
+    <id>767667</id>
+    <name>training</name>
+    <location>mumbai</location>
+    <state state_id="566565">maharastra</state>
+    <pin>75667767</pin>
+     <dept_info>&copyright;&writer;</dept_info>
+  </department>
+  
+</departments>

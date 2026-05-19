@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/book"
+	xmlns:tns="http://www.example.org/book" elementFormDefault="qualified">
+	<xs:element name="book">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="mybook" minOccurs="1" maxOccurs="2">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="isbn">
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:minInclusive value="1000" />
+										<xs:maxInclusive value="3000" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="name" type="xs:string" />
+							<xs:element name="author" type="xs:string" />
+							<xs:element name="price">
+								<xs:simpleType>
+									<xs:restriction base="xs:decimal">
+										<xs:totalDigits value="5" />
+										<xs:fractionDigits value="2" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+
+							<xs:element name="location">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+                                          <xs:enumeration value="chennai"/>
+                                          <xs:enumeration value="madurai"/>
+                                          <xs:enumeration value="pune"/>
+                                          <xs:enumeration value="mumbai"/>
+                                          <xs:enumeration value="rameswaram"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
