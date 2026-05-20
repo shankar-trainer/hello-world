@@ -1,0 +1,2425 @@
+Java design pattern
+
+
+•Java design patterns are standardized, reusable solutions to common 
+software design problems that occur during development. 
+•Originally formalized by the Gang of Four (GoF)in 1994, these 23 
+classic patterns provide a shared vocabulary for developers and help 
+create code that is more modular, scalable, and maintainable.
+three main categories:
+•Creational Patterns
+•Structural Patterns
+•BehavioralPatterns
+
+
+
+
+
+
+Creational Patterns
+
+•These focus on object creation mechanisms, reducing direct 
+instantiation to improve flexibility. 
+•Types:
+•Singleton: Ensures only one instance exists.
+•Factory/Abstract Factory: Decouples object creation from 
+implementation.
+•Builder: Constructs complex objects step-by-step.
+•Prototype: Clones existing instances. 
+
+
+
+
+
+
+Structural Patterns
+
+•These deal with object composition, assembling classes into 
+larger, flexible structures.
+•Types:
+•Adapter:Converts one interface into another.
+•Bridge:Decouples abstraction from implementation.
+•Composite:Treats individual and grouped objects uniformly.
+•Decorator:Dynamically adds responsibilities to objects.
+•Facade:Provides a simplified interface to complex subsystems.
+•Flyweight:Shares common data to reduce memory usage.
+•Proxy:Provides a surrogate to control access to another object.
+
+
+
+
+
+
+
+
+
+BehavioralPatterns
+
+•These manage communication and responsibilitiesbetween objects.
+•Types:
+
+
+
+•Observer:Notifies multiple objects of state changes.
+•Strategy:Defines interchangeable algorithms.
+•Command:Encapsulates requests as objects.
+•Iterator:Traverses collections without exposing representation.
+•Mediator:Centralizes communication between objects.
+•Memento:Saves and restores object state.
+•Chain of Responsibility:Passes requests along a chain of handlers.
+•State:Alters behaviorwhen internal state changes. tpointtech.com
+•
+Common Real-World Usage
+•Modern Java frameworks like Spring heavily utilize these patterns: [1
+, 2
+]
+•Singleton & DI: Manages beans and dependencies.
+•Proxy: Used in Aspect-Oriented Programming (AOP). [1
+, 2
+, 3
+, 4
+]
+
+
+
+
+
+
+
+
+
+
+
+Category
+
+Purpose
+
+Examples
+
+Creational
+
+Object creation
+
+Singleton, Factory, Builder
+
+Structural
+
+Class composition
+
+Adapter, Decorator, Facade
+
+Behavioral
+
+Object interaction
+
+Observer, Strategy, Command
+
+
+
+Quick Comparison
+
+
+Why Use Design Patterns?
+
+•Reusable solutions across projects.
+•Improved maintainability with loose coupling.
+•Scalable architecture for large systems.
+•Shared vocabulary among developers
+
+
+
+Singleton Pattern from Creational Patterns
+
+•Ensures that a class has only one instance throughout the JVM and 
+provides a global access point to it. 
+•It’s commonly used for logging, configuration, or database connection 
+pools. 
+•The most robust modern approach is either the Bill Pugh Singleton or 
+an Enum Singleton.
+•Key Concepts of Singleton
+•Single Instance: Only one object of the class exists.
+•Global Access Point: Instance is accessed via a static method.
+•Private Constructor: Prevents external instantiation.
+•Thread Safety: Must be considered in multi-threaded environments. 
+
+
+
+
+
+
+Core Requirements
+
+•Private Constructor: Prevents 
+other classes from 
+instantiating the class using 
+the new keyword.
+•Private Static Variable: Holds 
+the single instance of the 
+class.
+•Public Static Method: Often 
+named getInstance(), this 
+provides the global access 
+point to the instance.
+
+
+public class DatabaseConnector {
+
+ // 1. Private static variable (volatile ensures thread visibility)
+
+ private static volatile DatabaseConnector instance;
+
+ // 2. Private constructor
+
+ private DatabaseConnector() { }
+
+ // 3. Public static method with double-checked locking
+
+ public static DatabaseConnector getInstance() {
+
+ if (instance == null) {
+
+ synchronized (DatabaseConnector.class) {
+
+ if (instance == null) {
+
+ instance = new DatabaseConnector();
+
+ }
+
+ }
+
+ }
+
+ return instance;
+
+ }
+
+}
+
+
+When to use
+
+•Resource Management: When multiple parts of an app need to 
+share a single expensive resource, like a JDBC connection pool.
+•Global State: For maintaining application settings or user sessions 
+consistently across different modules.
+•Modern Note: In modern Java development using frameworks like 
+Spring Boot, most beans are singleton-scoped by default, 
+meaning the framework handles the singleton lifecycle
+
+
+
+Factory Design Pattern 
+
+•It is a creational pattern that hides object creation logic and 
+provides a centralized method to create objects based on input.
+•It’s widely used when the exact type of object to be created is 
+determined at runtime.
+• Key Concepts of Factory Pattern
+•Encapsulation of Object Creation: Client code doesn’t need to know the 
+exact class name.
+•Loose Coupling: Client interacts with an interface, not concrete classes.
+•Flexibility: Easy to add new product types without modifying client code.
+
+
+
+
+
+
+Shape Factory
+
+public interface Shape {
+
+ void draw();
+
+}
+
+public class Circle implements Shape {
+
+ @Override
+
+ public void draw() {
+
+ System.out.println("Inside Circle::draw() method.");
+
+ }
+
+}
+
+public class Rectangle implements Shape {
+
+ @Override
+
+ public void draw() {
+
+ System.out.println("Inside Rectangle::draw() method.");
+
+ }
+
+}
+
+public class Square implements Shape {
+
+ @Override
+
+ public void draw() {
+
+ System.out.println("Inside Square::draw() method.");
+
+ }
+
+}
+
+public class ShapeFactory {
+
+ public Shape getShape(String shapeType) {
+
+ if (shapeType == null) return null;
+
+ if (shapeType.equalsIgnoreCase("CIRCLE")) return new Circle();
+
+ else if (shapeType.equalsIgnoreCase("RECTANGLE")) return new Rectangle();
+
+ else if (shapeType.equalsIgnoreCase("SQUARE")) return new Square();
+
+ return null;
+
+ }
+
+}
+
+Step 4: Client Code
+
+public class FactoryPatternDemo {
+
+ public static void main(String[] args) {
+
+ ShapeFactory shapeFactory = new ShapeFactory();
+
+ Shape shape1 = shapeFactory.getShape("CIRCLE");
+
+ shape1.draw();
+
+ Shape shape2 = shapeFactory.getShape("RECTANGLE");
+
+ shape2.draw();
+
+ Shape shape3 = shapeFactory.getShape("SQUARE");
+
+ shape3.draw();
+
+ }
+
+}
+
+
+Pros
+
+Cons
+
+Centralized object creation
+
+May introduce complexity
+
+Promotes loose coupling
+
+Can lead to too many factory classes
+
+Easy to extend new types
+
+Slight overhead compared to direct instantiation
+
+
+
+ Real-World Use Cases
+
+•Database connections: Different DB drivers (MySQL, 
+Oracle, PostgreSQL).
+•UI Components: Buttons, text fields, dropdowns.
+
+
+Logging frameworks: Different loggers (console, file, cloud).
+
+
+Abstract Factory
+
+•is a creational design pattern often described as a "factory of 
+factories". 
+•It provides an interface for creating families of related or 
+dependent objects without specifying their exact concrete 
+classes.
+Family of Products: Unlike the standard Factory Pattern that 
+creates a single type of object, Abstract Factory handles 
+multiple related products (e.g., a "Modern" furniture family 
+might include a Modern Chair and a Modern Sofa).
+•Abstraction Layer: It isolates the client code from the actual 
+implementation of the objects, making it easier to switch 
+between different "product families" (e.g., switching from 
+Windows to Mac UI components).
+
+
+
+Core Components
+
+•Abstract Factory: An interface or abstract class declaring a set of 
+methods for creating abstract products.
+•Concrete Factory: Implements the creation methods to produce 
+specific variations of products.
+•Abstract Product: Interfaces for a set of distinct but related 
+products.
+•Concrete Product: The actual implementation of the products 
+created by corresponding concrete factories.
+•Client: Uses only the interfaces declared by the abstract factory 
+and products. 
+
+
+
+When to Use It
+
+•When a system should be independent of how its products are 
+created, composed, and represented.
+•When you need to ensure that related objects are used together 
+(e.g., a "North America" car factory should only produce North 
+American-spec parts).
+•When you want to provide a library of products and only reveal 
+their interfaces, not their implementations
+
+
+
+interface Button { void paint(); }
+
+interface Checkbox { void paint(); }
+
+Use code with caution.2. Create Concrete Productsjava// Light Theme Products
+
+class LightButton implements Button {
+
+ public void paint() { System.out.println("Rendering Light Button"); }
+
+}
+
+class LightCheckbox implements Checkbox {
+
+ public void paint() { System.out.println("Rendering Light Checkbox"); }
+
+}
+
+class DarkButton implements Button {
+
+ public void paint() { System.out.println("Rendering Dark Button"); }
+
+}
+
+class DarkCheckbox implements Checkbox {
+
+ public void paint() { System.out.println("Rendering Dark Checkbox"); }
+
+}
+
+Use code with caution.3. Define the Abstract Factoryjava// The Abstract Factory 
+interface
+
+interface GUIFactory {
+
+ Button createButton();
+
+ Checkbox createCheckbox();
+
+}
+
+Use code with caution.4. Implement Concrete Factoriesjavaclass 
+LightThemeFactory implements GUIFactory {
+
+ public Button createButton() { return new LightButton(); }
+
+ public Checkbox createCheckbox() { return new LightCheckbox(); }
+
+}
+
+class DarkThemeFactory implements GUIFactory {
+
+ public Button createButton() { return new DarkButton(); }
+
+ public Checkbox createCheckbox() { return new DarkCheckbox(); }
+
+}
+
+Use code with caution.5. Client CodeThe client doesn't care which theme is active; 
+it just uses the factory it's given.javapublic class Application {
+
+ private Button button;
+
+ private Checkbox checkbox;
+
+ public Application(GUIFactory factory) {
+
+ button = factory.createButton();
+
+ checkbox = factory.createCheckbox();
+
+ }
+
+ public void render() {
+
+ button.paint();
+
+ checkbox.paint();
+
+ }
+
+ public static void main(String[] args) {
+
+ GUIFactory factory = new DarkThemeFactory(); 
+
+ Application app = new Application(factory);
+
+ app.render(); // Output: Rendering Dark Button, Rendering Dark Checkbox
+
+ }
+
+}
+
+
+Real world uses
+
+•UI Toolkits: Windows vs Mac 
+vs Linux components.
+•Cloud Providers: AWS, Azure, 
+GCP services.
+•Database Drivers: MySQL, 
+Oracle, PostgreSQL.
+
+
+
+Builder
+
+•It is a creational pattern that helps construct complex objects step by 
+step. 
+•It separates the construction process from the representation, allowing 
+the same construction process to create different representations. 
+Key Concepts
+•Encapsulation of construction: Object creation logic is separated from the 
+object itself.
+•Step-by-step building: Useful when objects have many optional parameters.
+•Immutability: Often used with immutable objects (e.g., StringBuilder, 
+java.lang.StringBuffer).
+
+
+
+
+
+
+public class Computer {
+
+private final String HDD;
+
+ private final String RAM;
+
+ private final boolean isGraphicsCardEnabled;
+
+ private final boolean isBluetoothEnabled;
+
+ // Private constructor so only the Builder can instantiate it
+
+ private Computer(Builder builder) {
+
+ this.HDD = builder.HDD;
+
+ this.RAM = builder.RAM;
+
+ this.isGraphicsCardEnabled = builder.isGraphicsCardEnabled;
+
+ this.isBluetoothEnabled = builder.isBluetoothEnabled;
+
+ }
+
+ // Static Inner Builder Class
+
+ public static class Builder {
+
+ private final String HDD; // Mandatory
+
+ private final String RAM; // Mandatory
+
+ private boolean isGraphicsCardEnabled; // Optional
+
+ private boolean isBluetoothEnabled; // Optional
+
+ public Builder(String hdd, String ram) {
+
+ this.HDD = hdd;
+
+ this.RAM = ram;
+
+ }
+
+ public Builder setGraphicsCardEnabled(boolean 
+isGraphicsCardEnabled) {
+
+ this.isGraphicsCardEnabled = isGraphicsCardEnabled;
+
+ return this; // Return builder for chaining
+
+ }
+
+ public Builder setBluetoothEnabled(boolean isBluetoothEnabled) {
+
+ this.isBluetoothEnabled = isBluetoothEnabled;
+
+ return this;
+
+ }
+
+
+public Computer build() {
+
+ return new Computer(this);
+
+ }
+
+ }
+
+ @Override
+
+ public String toString() {
+
+ return "Computer [HDD=" + HDD + ", RAM=" + RAM + 
+
+ ", Graphics=" + isGraphicsCardEnabled + 
+
+ ", Bluetooth=" + isBluetoothEnabled + "]";
+
+ }
+
+}
+
+// Client usage
+
+public class Main {
+
+ public static void main(String[] args) {
+
+ Computer comp = new Computer.Builder("500 GB", "16 GB")
+
+ .setGraphicsCardEnabled(true)
+
+ .setBluetoothEnabled(false)
+
+ .build();
+
+ 
+System.out.println(comp);
+
+ }
+
+}
+
+
+Common Real-World Examples
+
+•Java Standard Library: The StringBuilder.append()
+StringBuilder.append() 
+method is a 
+classic example of this pattern in action.
+•Lombok: The @Builder annotation 
+automatically generates all this 
+boilerplate code for you.
+•Frameworks: Widely used in Spring Boot and Hibernate for 
+configuring complex beans and entities.
+
+
+
+Prototype Design Pattern
+
+•It is a creational pattern that allows cloning of existing objects to 
+create new ones, instead of creating them from scratch. 
+•It’s useful when object creation is costly (e.g., involving database 
+calls or complex computations).
+• Key Concepts
+•Prototype Interface: Declares a clone() method.
+•Concrete Prototype: Implements the clone() method.
+•Client: Uses the prototype to create new objects by cloning.
+•Shallow vs Deep Copy: Important to decide whether references are 
+copied or fully duplicated.
+
+
+
+
+
+
+public interface Prototype { 
+Prototype clone();
+}
+
+public class Circle implements Prototype {
+
+ private int radius;
+
+ public Circle(int radius) { 
+this.radius = radius;
+
+ }
+
+ @Override 
+public Prototype clone() { 
+return new Circle(this.radius); 
+}
+
+ @Override 
+public String toString() { 
+return "Circle with radius " + radius; 
+}
+}
+
+public class Rectangle implements Prototype { 
+private int width, height;
+
+ public Rectangle(int width, int height) { 
+this.width = width; 
+this.height = height;
+
+ }
+}
+
+@Override 
+public Prototype clone() { 
+return new Rectangle(this.width, this.height); 
+}
+
+ @Override 
+public String toString() { 
+return "Rectangle with width " + width + " and height " + 
+height;
+
+ }
+}
+
+public class PrototypeDemo {
+
+ public static void main(String[] args) {
+
+ Circle circle1 = new Circle(5); 
+Circle circle2 = (Circle) circle1.clone();
+
+ Rectangle rect1 = new Rectangle(10, 20); 
+Rectangle rect2 = (Rectangle) rect1.clone();
+
+ System.out.println(circle1); 
+System.out.println(circle2); 
+System.out.println(rect1); 
+System.out.println(rect2);
+
+ }
+
+}
+
+
+• Real-World Use Cases
+•Document editors: Copy-paste of objects.
+•Game development: Cloning enemies or assets.
+•Configuration objects: Reusing templates with slight 
+modifications.
+
+
+
+Structural Patterns
+
+•It focus on how classes and objects are composed to form larger, 
+more efficient structures. 
+•These patterns simplify the relationships between entities, 
+ensuring that system changes in one area don't necessitate a 
+complete overhaul of the entire structure.
+•7 Structural Design Patterns
+•Adapter: Converts one interface into another.
+•Bridge: Decouples abstraction from implementation.
+•Composite: Treats individual and grouped objects uniformly.
+•Decorator: Dynamically adds responsibilities to objects.
+•Facade: Provides a simplified interface to complex subsystems.
+•Flyweight: Shares common data to reduce memory usage.
+•Proxy: Provides a surrogate to control access to another object. Refactoring Guru
+
+
+
+
+
+
+Adapter Structural Patterns
+
+•It is a structural pattern that allows incompatible interfaces to 
+work together. 
+•It acts as a bridge between two classes, converting the interface 
+of one class into another that the client expects.
+• Key Concepts
+•Adapter: Converts the interface of a class into another interface.
+•Target Interface: The interface expected by the client.
+•Adaptee: The existing class with a different interface.
+•Client: Uses the target interface without worrying about incompatibility.
+
+
+
+
+
+
+It a standard AudioPlayer can only play MP3 files. We use an adapter to 
+allow it to play other formats like VLC or MP4
+
+public interface MediaPlayer {
+
+ void play(String audioType, String fileName);
+
+}
+
+public interface AdvancedMediaPlayer {
+
+ void playVlc(String fileName);
+
+ void playMp4(String fileName);
+
+}
+
+class VlcPlayer implements AdvancedMediaPlayer {
+
+ public void playVlc(String fileName) { System.out.println("Playing vlc 
+file: " + fileName); }
+
+ public void playMp4(String fileName) { /* do nothing */ }
+
+}
+
+The AdapterThis class implements the target interface and holds an 
+instance of the adaptee to translate calls.j
+
+public class MediaAdapter implements MediaPlayer {
+
+ AdvancedMediaPlayer advancedMusicPlayer;
+
+ public MediaAdapter(String audioType) {
+
+ if(audioType.equalsIgnoreCase("vlc")) {
+
+ advancedMusicPlayer = new VlcPlayer();
+
+ } 
+
+ // Other types can be initialized here
+
+ }
+
+ @Override
+
+ public void play(String audioType, String fileName) {
+
+ if(audioType.equalsIgnoreCase("vlc")) {
+
+ advancedMusicPlayer.playVlc(fileName);
+
+ }
+
+ }
+
+}
+
+The Client ImplementationThe main player uses the adapter when it 
+encounters a file type it doesn't natively support.
+
+public class AudioPlayer implements MediaPlayer {
+
+ MediaAdapter mediaAdapter;
+
+ @Override
+
+ public void play(String audioType, String fileName) {
+
+ if(audioType.equalsIgnoreCase("mp3")) {
+
+ System.out.println("Playing mp3 file: " + fileName);
+
+ } else if(audioType.equalsIgnoreCase("vlc")) {
+
+ mediaAdapter = new MediaAdapter(audioType);
+
+ mediaAdapter.play(audioType, fileName);
+
+ } else {
+
+ System.out.println("Invalid media format.");
+
+ }
+
+ }
+
+}
+
+
+ Real-World Use Cases
+
+•Legacy system integration: Adapting old APIs to new ones.
+•Database drivers: JDBC drivers adapt different databases to a 
+common interface.
+•UI frameworks: Adapting widgets across platforms.
+
+
+
+Bridge Design Pattern 
+
+•a structural pattern that decouples abstraction from its 
+implementation, allowing both to vary independently. 
+•It’s especially useful when you have multiple dimensions of 
+variation (e.g., shape types and rendering methods) and don’t 
+want an explosion of subclasses.
+
+
+
+public interface DrawAPI {
+
+ void drawCircle(int radius, int x, int y);
+
+}
+
+public class RedCircle implements DrawAPI {
+
+ public void drawCircle(int radius, int x, int y) {
+
+ System.out.println("Drawing Circle [color: red, radius: " + radius + 
+", x: " + x + ", y: " + y + "]");
+
+ }
+
+}
+
+public class GreenCircle implements DrawAPI {
+
+ public void drawCircle(int radius, int x, int y) {
+
+ System.out.println("Drawing Circle [color: green, radius: " + radius 
++ ", x: " + x + ", y: " + y + "]");
+
+ }
+
+}
+
+public abstract class Shape {
+
+ protected DrawAPI drawAPI;
+
+ protected Shape(DrawAPI drawAPI) {
+
+ this.drawAPI = drawAPI;
+
+ }
+
+ public abstract void draw(); // delegate to implementor
+
+}
+
+public class Circle extends Shape {
+
+ private int x, y, radius;
+
+ public Circle(int x, int y, int radius, DrawAPI drawAPI) {
+
+ super(drawAPI);
+
+ this.x = x;
+
+ this.y = y;
+
+ this.radius = radius;
+
+ }
+
+ public void draw() {
+
+ drawAPI.drawCircle(radius, x, y);
+
+ }
+
+}
+
+public class BridgePatternDemo {
+
+ public static void main(String[] args) {
+
+ Shape redCircle = new Circle(100, 100, 10, new RedCircle());
+
+ Shape greenCircle = new Circle(200, 200, 20, new GreenCircle());
+
+ redCircle.draw();
+
+ greenCircle.draw();
+
+ }
+
+}
+
+
+ Real-World Use Cases
+
+•UI rendering: Different platforms (Windows, Mac, Linux).
+•Device drivers: Abstraction for devices, implementations for 
+hardware.
+•Graphics libraries: Shapes with multiple rendering engines.
+
+
+
+Composite Design Pattern 
+
+•It is a structural pattern that lets you treat individual objects and 
+compositions of objects uniformly. 
+•It’s especially useful for representing tree-like structures such as file 
+systems, menus, or organizational hierarchies. 
+Key Concepts
+•Component: Declares the common interface for both simple and complex 
+objects.
+•Leaf: Represents individual objects that don’t have children.
+•Composite: Represents complex objects that can hold children (other 
+components).
+•Client: Works with both leaf and composite objects through the same interface.
+
+
+
+
+
+
+// 1. Component Interface
+
+interface FileSystemItem { 
+void showDetails();
+}
+
+// 2. Leaf Class
+
+class File implements FileSystemItem { 
+private String name;
+
+ public File(String name) { 
+this.name = name;
+
+ }
+
+ @Override 
+public void showDetails() { 
+System.out.println("File: " + name);
+
+ }
+
+}
+
+// 3. Composite Class
+
+class Folder implements FileSystemItem { 
+private String name;
+
+ private List<FileSystemItem> items = new ArrayList<>();
+
+ public Folder(String name) { 
+this.name = name; 
+}
+
+ public void add(FileSystemItem item) { 
+items.add(item); 
+}
+
+@Override
+
+ public void showDetails() {
+
+ System.out.println("Folder: " + name);
+
+ for (FileSystemItem item : items) {
+
+ item.showDetails(); // Recursively calls showDetails
+
+ }
+
+ }
+
+}
+
+// 4. Client Code
+
+public class CompositeDemo {
+
+ public static void main(String[] args) {
+
+ File file1 = new File("Resume.pdf"); 
+File file2 = new File("Photo.jpg");
+
+ 
+Folder subFolder = new Folder("Personal"); 
+subFolder.add(file1);
+
+ 
+Folder rootFolder = new Folder("Root"); 
+rootFolder.add(subFolder); rootFolder.add(file2);
+
+ // Treat root folder and individual files the same way
+
+ rootFolder.showDetails();
+
+ }
+
+}
+
+
+When to Use
+
+•When you need to represent part-whole hierarchies of objects.
+•When you want clients to ignore the difference between 
+compositions and individual objects.
+•Common real-world examples include organization charts 
+(Manager vs. Employee), UI toolkits (Containers vs. Buttons), and 
+XML/HTML trees. 
+• Real-World Use Cases
+•File systems: Files (leaf) and directories (composite).
+•GUI components: Buttons, panels, windows.
+•Organization hierarchies: Employees, managers
+
+
+
+
+
+
+Decorator Design Pattern 
+
+•Is a structural pattern that lets you dynamically add new behavior 
+to objects without modifying their existing code.
+•It uses composition instead of inheritance, allowing you to extend 
+functionality without modifying the original code
+• It’s particularly useful when you want flexible, reusable 
+enhancements instead of rigid inheritance hierarchies.
+
+
+
+• Key Concepts
+•Component: Defines the interface for objects.
+•Concrete Component: The base object being decorated.
+•Decorator: Wraps a component and adds new behavior.
+•Concrete Decorators: Implement additional features.
+
+
+
+Step 1: Component Interface
+
+public interface Coffee {
+
+ String getDescription(); 
+double getCost();
+
+}
+
+Step 2: Concrete Component
+
+public class SimpleCoffee implements Coffee {
+
+ @Override
+
+ public String getDescription() { 
+return "Simple Coffee"; 
+}
+
+ @Override
+
+ public double getCost() { 
+return 5.0;
+
+ }
+
+}
+
+Step 3: Abstract Decorator
+
+public abstract class CoffeeDecorator implements Coffee {
+
+ protected Coffee decoratedCoffee;
+
+ public CoffeeDecorator(Coffee coffee) { 
+this.decoratedCoffee = coffee; 
+}
+
+public String getDescription() {
+
+ return decoratedCoffee.getDescription();
+
+ }
+
+ public double getCost() {
+
+ return decoratedCoffee.getCost();
+
+ }
+
+}
+
+Step 4: Concrete Decorators
+
+public class MilkDecorator extends CoffeeDecorator {
+
+ public MilkDecorator(Coffee coffee) {
+
+ super(coffee);
+
+ }
+
+ @Override
+
+ public String getDescription() {
+
+ return decoratedCoffee.getDescription() + ", Milk";
+
+ }
+
+ @Override
+
+ public double getCost() {
+
+ return decoratedCoffee.getCost() + 1.5;
+
+ }
+
+}
+
+Step 5: Client Code
+
+public class DecoratorPatternDemo {
+
+ public static void main(String[] args) {
+
+ Coffee coffee = new SimpleCoffee();
+
+ System.out.println(coffee.getDescription() + " -> $" + coffee.getCost());
+
+ coffee = new MilkDecorator(coffee);
+
+ System.out.println(coffee.getDescription() + " -> $" + coffee.getCost());
+
+ }
+
+}
+
+
+ Real-World Use Cases
+
+•
+•Java I/O Streams: BufferedReader, DataInputStream, etc.
+•UI frameworks: Adding scrollbars, borders, or themes.
+•Logging systems: Wrapping loggers with extra functionality.
+
+
+
+Facade Design Pattern 
+
+•It is a structural pattern that provides a simplified interface to a 
+complex subsystem.
+•It hides the complexity of multiple classes and exposes only what 
+the client needs, making the system easier to use. 
+Key Concepts
+•Facade: A single class that provides a simplified interface.
+•Subsystem Classes: Complex classes with detailed functionality.
+•Client: Uses the facade instead of interacting directly with 
+subsystem classes.
+
+
+
+class LivingRoomLight {
+
+ void turnOff() { System.out.println("Living Room Light: OFF"); }
+
+}
+
+class KitchenLight {
+
+ void turnOff() { System.out.println("Kitchen Light: OFF"); }
+
+}
+
+class BedroomLight {
+
+ void turnOff() { System.out.println("Bedroom Light: OFF"); }
+
+}
+
+class SmartHomeFacade {
+
+ private LivingRoomLight livingRoom;
+
+ private KitchenLight kitchen;
+
+ private BedroomLight bedroom;
+
+ public SmartHomeFacade() {
+
+ this.livingRoom = new LivingRoomLight();
+
+ this.kitchen = new KitchenLight();
+
+ this.bedroom = new BedroomLight();
+
+ }
+
+public void switchOffAllLights() {
+
+ System.out.println("Preparing to turn off all lights...");
+
+ livingRoom.turnOff(); 
+kitchen.turnOff(); 
+bedroom.turnOff();
+
+ System.out.println("All lights are now off.");
+
+ }
+}
+
+SmartHomeFacade.javapublic class Main {
+
+ public static void main(String[] args) { 
+SmartHomeFacade home = new 
+SmartHomeFacade();
+
+home.switchOffAllLights();
+
+ }
+
+}
+
+
+Real-World Use Cases
+
+•
+•Java libraries: JDBC provides a facade over different database 
+drivers.
+•Spring Framework: Simplifies complex subsystems with helper 
+classes.
+•File systems: Facade for reading/writing files without exposing 
+low-level details.
+
+
+
+Flyweight Design Pattern
+
+•It is a structural pattern that minimizes memory usage by sharing as 
+much data as possible between similar objects. 
+•It’s especially useful when you need to create a large number of objects 
+that have common intrinsic properties but differ in extrinsic states.
+•
+• Key Concepts
+•Intrinsic State: Shared, immutable data stored in the flyweight object.
+•Extrinsic State: Context-specific data supplied by the client at runtime.
+•Flyweight Factory: Manages and reuses flyweight objects.
+•Client: Uses flyweights and provides extrinsic state.
+
+
+
+
+
+
+Step 1: Flyweight Interface
+
+public interface Shape { 
+void draw(int x, int y);
+}
+
+Step 2: Concrete Flyweight
+
+public class Circle implements Shape {
+
+ private String color; // intrinsic state 
+private int radius; // intrinsic state
+
+ public Circle(String color, int radius) { 
+this.color = color; 
+this.radius = radius; 
+}
+
+ @Override 
+public void draw(int x, int y) { // extrinsic state
+
+ System.out.println("Drawing Circle [color: " + color + ", radius: 
+" + radius + ", x: " + x + ", y: " + y + "]");
+
+ }
+}
+
+Step 3: Flyweight Factory
+
+public class ShapeFactory { 
+private static final HashMap<String, Shape> circleMap = new 
+HashMap<>();
+public static Shape getCircle(String color) { 
+Circle circle = (Circle) circleMap.get(color);
+
+if(circle == null) {
+
+ circle = new Circle(color, 10);
+
+ circleMap.put(color, circle);
+
+ System.out.println("Creating circle of color: " + 
+color);
+
+ }
+
+ return circle;
+
+ }
+
+}
+
+Step 4: Client Code
+
+public class FlyweightPatternDemo {
+
+ private static final String[] colors = {"Red", "Green", 
+"Blue", "White", "Black"};
+
+ public static void main(String[] args) { 
+for(int i=0; i<10; ++i) { 
+Circle circle = (Circle) 
+ShapeFactory.getCircle(colors[i % colors.length]); 
+circle.draw(i*10, i*20);
+
+ }
+
+ }
+
+}
+
+
+• Real-World Use Cases
+•Text editors: Characters share font data, only position differs.
+•Game development: Trees, bullets, or enemies reused with 
+different positions.
+•GUI systems: Reusing icons or widgets with different contexts.
+
+
+
+Proxy Design Pattern
+
+•It is a structural pattern that provides a surrogate or placeholder 
+for another object to control access to it. 
+•It’s often used for lazy initialization, access control, logging, or 
+remote method invocation. 
+Key Concepts
+•Subject Interface: Declares common operations.
+•Real Subject: The actual object that performs operations.
+•Proxy: Controls access to the real subject, adding extra behavior if 
+needed.
+•Client: Interacts with the proxy as if it were the real subject.
+
+
+
+
+
+
+Step 1: Subject Interface
+
+public interface Image {
+
+ void display();
+
+}
+
+Step 2: Real Subject
+
+public class RealImage implements Image {
+
+ private String fileName;
+
+ public RealImage(String fileName) {
+
+ this.fileName = fileName;
+
+ loadFromDisk(fileName);
+
+ }
+
+ private void loadFromDisk(String fileName) {
+
+ System.out.println("Loading " + fileName);
+
+ }
+
+ @Override
+
+ public void display() {
+
+ System.out.println("Displaying " + fileName);
+
+ }
+
+}
+
+Step 3: Proxy Class
+
+public class ProxyImage implements Image {
+
+ private RealImage realImage;
+
+ private String fileName;
+
+ public ProxyImage(String fileName) {
+
+ this.fileName = fileName;
+
+ }
+
+ @Override
+
+ public void display() {
+
+ if(realImage == null) {
+
+ realImage = new RealImage(fileName); // lazy initialization
+
+ }
+
+ realImage.display();
+
+ }
+
+}
+
+Step 4: Client Code
+
+public class ProxyPatternDemo {
+
+ public static void main(String[] args) {
+
+ Image image = new ProxyImage("test.jpg");
+
+ // Image will be loaded only once
+
+ image.display(); // loads and displays
+
+ image.display(); // displays without loading again
+
+ }
+
+}
+
+
+Real-World Use Cases
+
+•Virtual Proxy: Lazy loading of heavy objects (like images, files).
+•Protection Proxy: Access control based on user roles.
+•Remote Proxy: RMI (Remote Method Invocation) in distributed 
+systems.
+•Smart Proxy: Adds extra functionality like logging or caching.
+
+
+
+Behavioral Patterns
+
+•Focus on how objects communicate and collaborate to manage 
+responsibilities effectively. 
+•Rather than describing how objects are created or structured, these patterns 
+define the interactions and algorithms between them to ensure loose 
+coupling and flexibility. 
+•TypesObserver: Notifies multiple objects of state changes.
+•Strategy: Defines interchangeable algorithms.
+•Command: Encapsulates requests as objects.
+•Iterator: Traverses collections without exposing representation.
+•Mediator: Centralizes communication between objects.
+•Memento: Saves and restores object state.
+•Chain of Responsibility: Passes requests along a chain of handlers.
+•State: Alters behavior when internal state changes.
+
+
+
+
+
+
+Observer Design Pattern
+
+•It is behavioral pattern that defines a one-to-many dependency 
+between objects. 
+•When one object (the Subject) changes state, all its dependent objects 
+(Observers) are notified automatically. It’s widely used in event-driven 
+systems, GUIs, and messaging frameworks.
+• Core Components
+•Subject (Observable): Maintains a list of observers and provides methods to 
+attach, detach, and notify them.
+•Observer Interface: Defines an update() method that the subject calls to push 
+notifications.
+•Concrete Observers: Implement the update() method to react to changes in the 
+subject. 
+
+
+
+
+
+
+public interface Observer { 
+void update(float temperature);
+}
+
+public interface Subject { 
+void registerObserver(Observer o); 
+void removeObserver(Observer o); 
+void notifyObservers();
+
+}
+
+public class WeatherStation implements Subject {
+
+ private List<Observer> observers = new ArrayList<>(); 
+private float temperature;
+
+ @Override 
+public void registerObserver(Observer o) { 
+observers.add(o);
+
+ }
+@Override 
+public void removeObserver(Observer o) { 
+observers.remove(o);
+
+ }
+
+ @Override 
+public void notifyObservers() { 
+for (Observer observer : observers) { 
+observer.update(temperature);
+
+ } 
+}
+
+ public void setTemperature(float temperature) {
+
+ this.temperature = temperature;
+
+ notifyObservers(); // Automatically notify observers when state changes
+
+ }
+
+}
+
+public class PhoneDisplay implements Observer {
+
+ @Override
+
+ public void update(float temperature) {
+
+ System.out.println("Phone Display: Current temperature is " + temperature + "°C");
+
+ }
+
+}
+
+public class TVDisplay implements Observer {
+
+ @Override
+
+ public void update(float temperature) {
+
+ System.out.println("TV Display: Weather update - " + temperature + "°C");
+
+ }
+
+}
+
+Use code with caution.5. Run the Examplejavapublic class Main {
+
+ public static void main(String[] args) {
+
+ WeatherStation station = new WeatherStation();
+
+ Observer phone = new PhoneDisplay();
+
+ Observer tv = new TVDisplay();
+
+ station.registerObserver(phone);
+
+ station.registerObserver(tv);
+
+ // Change state: both displays are notified automatically
+
+ station.setTemperature(25.5f);
+
+ station.setTemperature(30.0f);
+
+ }
+
+
+
+
+• Real-World Use Cases
+•GUI frameworks: Button clicks notify listeners.
+•Messaging systems: Subscribers receive updates from 
+publishers.
+•Stock market apps: Observers notified when stock prices 
+change.
+
+
+
+Strategy Design Pattern 
+
+•It is a behavioral pattern that enables selecting an algorithm’s 
+behavior at runtime. 
+•Instead of hardcoding logic, you define a family of algorithms, 
+encapsulate each one, and make them interchangeable. 
+•This promotes flexibility and adheres to the Open/Closed 
+Principle.
+
+
+
+ Key Concepts
+
+•Strategy Interface: Defines a common method for all strategies.
+•Concrete Strategies: Implement different variations of the 
+algorithm.
+•Context: Maintains a reference to a strategy and delegates 
+execution to it.
+•Client: Chooses which strategy to use at runtime.
+
+
+
+ Example: Payment System
+
+Step 1: Strategy Interface
+
+public interface PaymentStrategy { 
+void pay(int amount);
+}
+
+Step 2: Concrete Strategies
+
+public class CreditCardPayment implements PaymentStrategy { 
+private String cardNumber;
+
+ public CreditCardPayment(String cardNumber) { 
+this.cardNumber = cardNumber;
+
+ }
+
+ @Override 
+public void pay(int amount) { 
+System.out.println("Paid " + amount + " using Credit Card: " + cardNumber); 
+}
+}
+
+public class PayPalPayment implements PaymentStrategy { 
+private String email;
+
+ public PayPalPayment(String email) { 
+this.email = email;
+
+ }
+
+ @Override 
+public void pay(int amount) { 
+System.out.println("Paid " + amount + " using PayPal account: " + email);
+
+ }
+}
+
+Step 3: Context Class
+
+public class ShoppingCart { 
+private PaymentStrategy paymentStrategy;
+
+ public void setPaymentStrategy(PaymentStrategy 
+paymentStrategy) { 
+this.paymentStrategy = paymentStrategy;
+
+ }
+
+ public void checkout(int amount) { 
+paymentStrategy.pay(amount);
+
+ }
+
+}
+
+Step 4: Client Code
+
+public class StrategyPatternDemo {
+
+ public static void main(String[] args) { 
+ShoppingCart cart = new ShoppingCart();
+
+ cart.setPaymentStrategy(new 
+CreditCardPayment("1234-5678-9876")); 
+cart.checkout(100);
+
+ cart.setPaymentStrategy(new 
+PayPalPayment("alice@example.com")); 
+cart.checkout(200);
+
+ }}
+
+
+ Real-World Use Cases
+
+•Sorting algorithms: Choose between quicksort, mergesort, etc.
+•Payment gateways: Credit card, PayPal, UPI.
+•Compression techniques: ZIP, RAR, GZIP.
+•Authentication methods: OAuth, JWT, LDAP.
+
+
+
+Command Design Pattern 
+
+•It is behavioral pattern that encapsulates a request as an object, 
+allowing you to parameterize clients with queues, requests, and 
+operations. 
+•It decouples the sender (invoker) from the receiver, making it 
+easier to implement undo/redo, logging, or transactional behavior.
+• Key Concepts
+•Command Interface: Declares an execute() method.
+•Concrete Command: Implements the command by invoking methods on 
+the receiver.
+•Receiver: The actual object that performs the action.
+•Invoker: Stores and executes commands.
+•Client: Creates command objects and associates them with receivers
+
+
+
+
+
+
+public interface Command { 
+void execute();
+}
+
+public class Light {
+
+ public void turnOn() { 
+System.out.println("The light is ON"); 
+}
+
+ public void turnOff() { 
+System.out.println("The light is OFF"); 
+}
+
+}
+
+public class LightOnCommand implements Command { 
+private Light light;
+
+ public LightOnCommand(Light light) { 
+this.light = light;
+
+ }
+
+ @Override 
+public void execute() { 
+light.turnOn();
+
+ }
+
+}
+
+public class LightOffCommand implements Command { 
+private Light light;
+
+ public LightOffCommand(Light light) { 
+this.light = light; 
+}
+
+ @Override 
+public void execute() { 
+light.turnOff(); 
+}
+
+}
+
+public class RemoteControl { 
+private Command command;
+
+ public void setCommand(Command command) { 
+this.command = command;
+
+ }
+
+ public void pressButton() { 
+command.execute();
+
+ }
+
+}
+
+
+public class Client {
+
+ public static void main(String[] args) {
+
+ // Receiver
+
+ Light livingRoomLight = new Light();
+
+ // Concrete Commands
+
+ Command lightOn = new 
+LightOnCommand(livingRoomLight);
+
+ Command lightOff = new 
+LightOffCommand(livingRoomLight);
+
+ // Invoker
+
+ RemoteControl remote = new RemoteControl();
+
+ // Turn light ON
+
+ remote.setCommand(lightOn);
+
+ remote.pressButton();
+
+ // Turn light OFF
+
+ remote.setCommand(lightOff);
+
+ remote.pressButton();
+
+ }
+
+}
+
+
+ Real-World Use Cases
+
+•GUI buttons: Each button triggers a command.
+•Task scheduling: Commands queued for later execution.
+•Transactional systems: Undo/redo functionality.
+•Remote controls: Each button mapped to a command.
+
+
+
+Iterator Design Pattern
+
+•It is a behavioral pattern that provides a way to access elements of a 
+collection sequentially without exposing its underlying representation. 
+•It’s widely used in Java Collections Framework (Iterator, ListIterator) 
+and is perfect for traversing complex data structures like lists, sets, or 
+trees.
+• Key Concepts
+•Iterator Interface: Defines methods like hasNext() and next().
+•Concrete Iterator: Implements traversal logic.
+•Aggregate (Collection): Provides a method to create an iterator.
+•Client: Uses the iterator to traverse elements without knowing the internal 
+structure.
+
+
+
+
+
+
+public class BookCollection { 
+private List<String> books = new ArrayList<>();
+
+ public void addBook(String book) { 
+books.add(book);
+
+ }
+
+ public Iterator createIterator() { 
+return new BookIterator(books); 
+}
+
+}
+
+public interface Iterator { 
+boolean hasNext();
+
+ Object next();
+
+}
+
+public class BookIterator implements Iterator { 
+private List<String> books;
+
+ private int position = 0;
+
+ public BookIterator(List<String> books) { 
+this.books = books;
+
+ }
+
+@Override
+
+ public boolean hasNext() { 
+return position < books.size();
+
+ }
+
+ @Override 
+public Object next() {
+
+ if(this.hasNext()) { 
+return books.get(position++); 
+}
+
+ return null; 
+}
+}
+
+public class IteratorPatternDemo {
+
+ public static void main(String[] args) {
+
+ BookCollection collection = new BookCollection();
+
+ collection.addBook("Design Patterns"); 
+collection.addBook("Effective Java"); 
+collection.addBook("Clean Code");
+
+ Iterator iterator = collection.createIterator();
+
+ while(iterator.hasNext()) 
+System.out.println("Book: " + iterator.next());
+
+ }
+
+}
+
+
+Real-World Use Cases
+
+•Java Collections: Iterator and ListIterator in ArrayList, HashSet.
+•Tree traversal: Iterating over hierarchical structures.
+•Custom collections: When building your own data structures.
+
+
+
+Mediator Design Pattern 
+
+•It is a behavioral pattern that reduces coupling between 
+classes by centralizing communication. 
+•Instead of objects referring to each other directly, they 
+communicate through a mediator, which makes the system easier 
+to maintain and extend.
+• Key Concepts
+•Mediator: Defines an interface for communication between colleagues.
+•Concrete Mediator: Implements communication logic and coordinates 
+colleagues.
+•Colleague: Objects that communicate via the mediator.
+•Client: Sets up the mediator and colleagues.
+
+
+
+
+
+
+interface ChatMediator {
+
+ void sendMessage(String msg, User user); 
+void addUser(User user);
+
+}
+
+class ChatMediatorImpl implements 
+ChatMediator { 
+private List<User> users = new ArrayList<>();
+
+ @Override 
+public void addUser(User user) { 
+this.users.add(user); 
+}
+
+ @Override 
+public void sendMessage(String msg, User user) 
+{
+
+ for (User u : users) { 
+if (u != user) { 
+u.receive(msg); 
+} 
+} 
+}
+}
+
+abstract class User { 
+protected ChatMediator mediator; 
+protected String name;
+
+ public User(ChatMediator med, String name) { 
+this.mediator = med; 
+this.name = name; 
+}
+
+ public abstract void send(String msg); 
+public abstract void receive(String msg);
+
+}
+
+class ChatUser extends User {
+
+ public ChatUser(ChatMediator med, String name) { 
+super(med, name); 
+}
+
+ @Override 
+public void send(String msg) {
+
+ System.out.println(this.name + ": Sending Message = " + 
+msg); 
+mediator.sendMessage(msg, this);
+
+ }
+
+ @Override 
+public void receive(String msg) { 
+System.out.println(this.name + ": Received Message = " + 
+msg); 
+}
+
+}
+
+
+Pros
+
+Cons
+
+Reduces direct dependencies between objects
+
+Mediator can become complex
+
+Centralizes communication logic
+
+Risk of becoming a “god class”
+
+Improves maintainability and scalability
+
+Adds an extra layer of abstraction
+
+
+
+ Real-World Use CasesChat applications: Centralized message distribution.
+
+Air traffic control: Tower acts as mediator between planes.
+
+UI frameworks: Mediator coordinates interactions between widgets.
+
+
+Memento Design Pattern
+
+•is a behavioral pattern that allows capturing and restoring an 
+object’s state without exposing its internal details. It’s often 
+used to implement undo/redo functionality in applications. 
+Key Concepts
+•Originator: The object whose state needs to be saved.
+•Memento: Stores the internal state of the originator.
+•Caretaker: Manages mementos but never modifies them.
+
+
+
+
+
+
+public class TextMemento { 
+private String state; 
+public TextMemento(String state) { 
+this.state = state; 
+}
+
+ public String getState() { 
+return state; 
+}
+}
+
+public class TextEditor { 
+private String text;
+
+ public void setText(String text) { 
+this.text = text;
+
+ }
+
+ public String getText() { 
+return text; 
+}
+
+ public TextMemento save() { 
+return new TextMemento(text);
+
+ }
+
+ public void restore(TextMemento memento) { 
+text = memento.getState();
+
+ }
+
+}
+
+public class History { 
+private Stack<TextMemento> history = new Stack<>();
+
+ public void save(TextEditor editor) { 
+history.push(editor.save());
+
+ }
+
+ public void undo(TextEditor editor) { 
+If(!history.isEmpty()) 
+editor.restore(history.pop()); 
+}
+
+}
+
+public class MementoPatternDemo {
+
+ public static void main(String[] args) { 
+TextEditor editor = new TextEditor(); 
+History history = new History();
+
+ editor.setText("Version 1"); 
+history.save(editor);
+
+ editor.setText("Version 2"); 
+history.save(editor);
+
+ editor.setText("Version 3"); 
+System.out.println("Current Text: " + editor.getText());
+
+ history.undo(editor); 
+System.out.println("After Undo: " + editor.getText());
+
+ history.undo(editor); 
+System.out.println("After Second Undo: " + editor.getText());
+
+ }
+
+}
+
+
+Real-World Use Cases
+
+•Text editors: Undo/redo 
+functionality.
+•Game development: Save 
+game states.
+•Transactional systems: 
+Rollback operations.
+
+
+
+Chain of Responsibility Design Pattern
+
+
+•It is a behavioral pattern that allows a request to be passed along 
+a chain of handlers. 
+•Each handler decides either to process the request or to pass it to 
+the next handler in the chain. This pattern promotes loose 
+coupling and flexibility in request handling. 
+Key Concepts
+•Handler Interface: Declares a method for handling requests.
+•Concrete Handlers: Implement request handling and decide whether to 
+pass it along.
+•Client: Initiates the request without knowing which handler will process 
+it.
+
+
+
+
+
+
+public abstract class Logger {
+
+ public static int INFO = 1; 
+public static int DEBUG = 2; 
+public static int ERROR = 3;
+
+ protected int level; 
+protected Logger nextLogger;
+
+ public void setNextLogger(Logger nextLogger) { 
+this.nextLogger = nextLogger; 
+}
+
+ public void logMessage(int level, String message) {
+
+ if(this.level <= level) 
+write(message);
+
+ if(nextLogger != null) 
+nextLogger.logMessage(level, message);
+
+ }
+
+ abstract protected void write(String message);
+
+}
+public class ConsoleLogger extends Logger {
+
+ public ConsoleLogger(int level) { 
+this.level = level; 
+}
+
+@Override 
+protected void write(String message) { 
+System.out.println("Console Logger: " + message);
+
+ }
+
+}
+
+public class FileLogger extends Logger { 
+public FileLogger(int level) { 
+this.level = level;
+
+ }
+
+ @Override 
+protected void write(String message) { 
+System.out.println("File Logger: " + message);
+
+ }
+
+}
+
+public class ErrorLogger extends Logger {
+
+ public ErrorLogger(int level) { 
+this.level = level; 
+}
+
+ @Override 
+protected void write(String message) { 
+System.out.println("Error Logger: " + message); 
+}
+
+}
+
+
+public class ChainPatternDemo {
+
+ private static Logger getChainOfLoggers() {
+
+ Logger errorLogger = new ErrorLogger(Logger.ERROR);
+
+ Logger fileLogger = new FileLogger(Logger.DEBUG);
+
+ Logger consoleLogger = new 
+ConsoleLogger(Logger.INFO);
+
+ errorLogger.setNextLogger(fileLogger);
+
+ fileLogger.setNextLogger(consoleLogger);
+
+ return errorLogger;
+
+ }
+
+ public static void main(String[] args) {
+
+ Logger loggerChain = getChainOfLoggers();
+
+ loggerChain.logMessage(Logger.INFO, "This is an 
+information.");
+
+ loggerChain.logMessage(Logger.DEBUG, "This is a debug 
+level information.");
+
+ loggerChain.logMessage(Logger.ERROR, "This is an error 
+information.");
+
+ }
+
+}
+
+
+ Real-World Use Cases
+
+•Logging frameworks: Different log levels handled 
+by different loggers.
+•Event handling: GUI events passed through a chain 
+of handlers.
+•Authentication systems: Multiple checks 
+(password, OTP, biometrics).
+
+
+
+State Design Pattern
+
+•It is a behavioral pattern that allows an object to change its 
+behavior when its internal state changes. It appears as if the 
+object has changed its class, but in reality, it delegates behavior to 
+different state objects. 
+Key Concepts
+•Context: Maintains an instance of a State object that defines the current 
+state.
+•State Interface: Defines the behavior associated with a particular state.
+•Concrete States: Implement behavior for specific states.
+•Client: Interacts with the context, which delegates to the current state.
+
+
+
+
+
+
+public interface State { 
+void handle();
+}
+
+public class RedLight implements State {
+
+ @Override 
+public void handle() { 
+System.out.println("Red Light: Stop!"); 
+}
+}
+
+public class GreenLight implements State {
+
+ @Override 
+public void handle() { 
+System.out.println("Green Light: Go!"); 
+}
+
+}
+public class YellowLight implements State {
+
+ @Override 
+public void handle() { 
+System.out.println("Yellow Light: Slow down!");
+
+ }
+
+}
+
+public class TrafficLightContext { 
+private State currentState;
+
+public void setState(State state) { 
+this.currentState = state;
+
+ }
+
+ public void request() { 
+currentState.handle();
+
+ }
+
+}
+
+public class StatePatternDemo {
+
+ public static void main(String[] args) {
+
+ TrafficLightContext context = new TrafficLightContext();
+
+ context.setState(new RedLight()); 
+context.request();
+
+ context.setState(new GreenLight()); 
+context.request();
+
+ context.setState(new YellowLight()); 
+context.request();
+
+ }
+
+}
+
+
+Real-World Use Cases
+
+•
+•Traffic lights: Different behaviors depending on light color.
+•Document workflow: Draft, review, published states.
+•Game development: Player states like idle, running, jumping.
+•Media players: Play, pause, stop states.
+
+
+

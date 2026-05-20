@@ -1,0 +1,385 @@
+Solid principal in php
+
+
+•SOLID principles are a set of five design guidelines
+•—Single Responsibility, 
+•Open/Closed, 
+•LiskovSubstitution, 
+•Interface Segregation, and 
+•Dependency Inversion—
+•that help PHP developers create code that is easier to maintain, test, and 
+scale.
+
+
+
+
+
+
+1. Single Responsibility Principle (SRP)
+
+•A class should have only one reason to change. 
+•This means a class should perform one specific task and nothing 
+else.
+•If a class handles data validation, database storage, and email 
+notifications all at once, it’s doing too much.
+
+
+
+Bad code
+
+class User {
+
+public function create(array $data) {
+
+// 1. Save user to database
+
+$db= new Database();
+
+$db->query("INSERT INTO users ...");
+
+// 2. Send welcome email (Violates SRP!)
+
+mail($data['email'], "Welcome!", "Thanks for signing up.");
+
+}
+
+}
+
+
+Correct Example
+
+We split the responsibilities into two separate classes: one for 
+database persistence and one for notifications.
+
+class UserRepository{
+
+public function save(array $data) {
+
+// Only handles database logic
+
+$db= new Database();
+
+$db->query("INSERT INTO users ...");
+
+}
+
+}
+
+class EmailService{
+
+public function sendWelcomeEmail($email) {
+
+// Only handles email logic
+
+mail($email, "Welcome!", "Thanks for signing up.");
+
+}
+
+}
+
+// Usage
+
+class UserController{
+
+public function register(array $data, UserRepository$repo, 
+EmailService$emailService) {
+
+$repo->save($data);
+
+$emailService->sendWelcomeEmail($data['email']);
+
+}
+
+}
+
+
+Open/Closed Principle (OCP)
+
+•"Software entities should be open for extension, but closed for 
+modification."
+•You should be able to add new functionality without changing the 
+existing code. 
+•We achieve this in PHP using Interfaces.
+
+
+
+Bad Example
+
+•If we want to add a new payment method (like Stripe), we have to modify the 
+existing PaymentManagerclass, which risks breaking PayPal.
+
+
+class PaymentManager{
+
+public function processPayment($type) {
+
+if ($type === 'paypal') {
+
+// PayPal logic
+
+} elseif ($type === 'stripe') { // Modifying existing class!
+
+// Stripe logic
+
+}
+
+}
+
+}
+
+
+Good Example
+
+•Define a PaymentMethodinterface. Now, you 
+can add as many payment methods as you want 
+by creating new classes, without ever touching 
+the PaymentProcessor.
+
+
+interface PaymentMethod{
+
+public function pay($amount);
+
+}
+
+class PaypalPaymentimplements PaymentMethod{
+
+public function pay($amount) { /* PayPal logic */ }
+
+}
+
+class StripePaymentimplements PaymentMethod{
+
+public function pay($amount) { /* Stripe logic */ }
+
+}
+
+// This class is CLOSED to modification, but OPEN 
+to extension
+
+class PaymentProcessor{
+
+public function process(PaymentMethod$method, $amount) {
+
+$method->pay($amount);
+
+}
+
+}
+
+
+LiskovSubstitution Principle (LSP)
+
+•"Objects of a superclass should be replaceable with objects of its 
+subclasses without breaking the application.“
+•A child class must be able to do everything the parent class 
+promises. It should not break the expectations set by the parent.
+
+
+
+Bad Example
+
+•A Penguin is a Bird, but it cannot fly. Forcing it to implement fly() 
+breaks the application's expectations.
+
+
+class Bird {
+
+public function fly() { return "Flying high!"; }
+
+}
+
+class Penguin extends Bird {
+
+public function fly() {
+
+throw new Exception("I can't fly!"); // Violates LSP!
+
+}
+
+}
+
+
+Good Example
+
+•Break the behaviorsdown so subclasses don't inherit methods they can't support.
+
+
+class Bird {
+
+public function eat() { return "Eating..."; }
+
+}
+
+interface FlyingBird{
+
+public function fly();
+
+}
+
+class Eagle extends Bird implements FlyingBird{
+
+public function fly() { return "Flying high!"; }
+
+}
+
+class Penguin extends Bird {
+
+// Penguins just eat, they don't implement FlyingBird
+
+}
+
+
+Interface Segregation Principle (ISP)
+
+•"A client should never be forced to implement an interface it 
+doesn't use.“
+
+
+•It is better to have many small, specific interfaces than one 
+massive "fat" interface.
+
+
+
+Bad Example
+
+An Ostrich is forced to implement a fly method it doesn't need just 
+because it implements Animal.
+
+interface Animal {
+
+public function walk();
+
+public function fly();
+
+}
+
+class Ostrich implements Animal {
+
+public function walk() { /* Walking logic */ }
+
+public function fly() { return null; } // Useless implementation!
+
+}
+
+
+Good Example
+
+Split the interface into smaller, 
+focused interfaces.
+
+PHP
+
+interface Walkable {
+
+public function walk();
+
+}
+
+interface Flyable {
+
+public function fly();
+
+}
+
+class Ostrich implements 
+Walkable {
+
+public function walk() { /* 
+Walking logic */ }
+
+}
+
+class Parrot implements Walkable, 
+Flyable {
+
+public function walk() { ... }
+
+public function fly() { ... }
+
+}
+
+
+Dependency Inversion Principle (DIP)
+
+•"High-level modules should not depend on low-level modules. 
+Both should depend on abstractions."
+•Don't hardcode specific dependencies inside your classes. 
+Instead, inject dependencies via interfaces (abstractions).
+
+
+
+Bad Example
+
+The high-level PasswordReminderis tightly coupled to the low-level MySQLConnection. 
+
+If you want to switch to MongoDB, you have to rewrite this class.
+
+class MySQLConnection{
+
+public function connect() { return "Database connection"; }
+
+}
+
+class PasswordReminder{
+
+private $dbConnection;
+
+public function __construct() {
+
+// Hardcoded dependency!
+
+$this->dbConnection= new MySQLConnection(); 
+
+}
+
+}
+
+
+Good Example
+
+•We introduce a DbConnectionInterface. 
+PasswordReminderdoesn't care whatdatabase it is, as 
+long as it adheres to the interface.
+
+
+interface DbConnectionInterface{
+
+public function connect();
+
+}
+
+class MySQLConnectionimplements 
+DbConnectionInterface{
+
+public function connect() { return "MySQL Connection"; }
+
+}
+
+class MongoConnectionimplements DbConnectionInterface{
+
+public function connect() { return "MongoDB Connection"; }
+
+}
+
+class PasswordReminder{
+
+private $dbConnection;
+
+// Inject the interface, not the concrete class
+
+public function __construct(DbConnectionInterface$dbConnection) {
+
+$this->dbConnection= $dbConnection;
+
+}
+
+}
+
+// Usage
+
+$mysql= new MySQLConnection();
+
+$reminder = new PasswordReminder($mysql); 
+
+

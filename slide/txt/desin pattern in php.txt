@@ -1,0 +1,2350 @@
+Design pattern in php
+
+
+•A design pattern isa reusable, high-level template or blueprint for 
+solving commonly occurring software design problems. 
+•They provide proven, standard approaches to structuring code, 
+enhancing maintainability, and improving communication among 
+developers. 
+•Patterns are not finished code, but rather generalized, adaptable 
+solutions to issues related to object creation, structure, or 
+behavior.
+
+
+
+•They are grouped into Creational, Structural, and Behavioralcategories.
+•These categories, often classified by the "Gang of Four," define 
+how objects are instantiated, structured for efficiency, and how 
+they communicate with each other. 
+
+
+
+Creational Patterns
+
+•These deal with object creation mechanisms.
+•These patterns deal with object creation mechanisms, increasing 
+flexibility and reuse of existing code
+•. They abstract the instantiation process, making a system independent 
+of how its objects are created
+•SingletonEnsures only one instance of a class exists.
+•Factory MethodDelegates object creation to subclasses.
+•Abstract FactoryCreates families of related objects without specifying 
+concrete classes.
+•BuilderStep-by-step construction of complex objects.
+•PrototypeClones existing objects instead of creating new ones.
+
+
+
+
+
+
+Structural Patterns
+
+•These focus on object composition.
+•These patterns explain how to assemble objects and classes into larger 
+structures while keeping them flexible and efficient. 
+•They focus on object composition, defining ways to add new 
+functionality.
+•Adapter Bridges incompatible interfaces.
+•Decorator Adds behaviordynamically without altering the original class.
+•Composite Treats individual objects and compositions uniformly.
+•Facade Provides a simplified interface to complex subsystems.
+•Proxy Controls access to another object.
+
+
+
+
+
+
+BehavioralPatterns
+
+•These handle communication between objects.
+•Defines how they interact and assign responsibilities. 
+•They increase flexibility in carrying out communication.
+•ObserverImplements publish/subscribe for event handling.
+•StrategyEncapsulates interchangeable algorithms.
+•CommandTurns requests into objects for queuing/undo.
+•Chain of ResponsibilityPasses requests along a chain of handlers.
+•StateAlters object behaviorbased on internal state.
+•IteratorProvides sequential access to elements.
+•MediatorCentralizes complex communication between objects.
+•MementoSaves and restores object state
+
+
+
+
+
+
+Creational Patterns
+
+•These deal with object creation mechanisms.
+•These patterns deal with object creation mechanisms, increasing 
+flexibility and reuse of existing code
+•. They abstract the instantiation process, making a system independent 
+of how its objects are created
+•SingletonEnsures only one instance of a class exists.
+•Factory MethodDelegates object creation to subclasses.
+•Abstract FactoryCreates families of related objects without specifying 
+concrete classes.
+•BuilderStep-by-step construction of complex objects.
+•PrototypeClones existing objects instead of creating new ones.
+
+
+
+
+
+
+Singleton
+
+•Is a creational design pattern that restricts a class to a single instance 
+and provides a global access point to it. 
+•It is widely used to manage shared resources efficiently, such as 
+database connections, loggers, or configuration settingsEnsuresonly 
+one instance of a class exists.
+•To implement the Singleton pattern, developers typically use three key 
+components:
+•Private Constructor:Prevents other objects from instantiating the class using 
+the new keyword.
+•Private Static Instance:Holds the single instance of the class inside itself.
+•Public Static Access Method:Provides a global point to get the instance. It 
+returns the existing instance if it exists, or creates one if it hasn’t been created 
+yet.
+
+
+
+
+
+
+Singleton Design Pattern and 7 Ways to Implement it
+
+class Database {
+
+private static $instance;
+
+private function __construct() {}
+
+public static function getInstance() {
+
+if (!self::$instance) {
+
+self::$instance = new Database();
+
+}
+
+return self::$instance;
+
+}
+
+}
+
+
+class Singleton {
+
+// 1. Hold the single instance
+
+private static $_instance = null;
+
+// 2. Prevent direct instantiation
+
+private function __construct() {}
+
+// 3. Global access point
+
+public static function getInstance() {
+
+if (self::$_instance == null) {
+
+self::$_instance = new Singleton();
+
+}
+
+return self::$_instance;
+
+}
+
+// 4. Prevent object cloning
+
+private function __clone() {}
+
+// 4. Prevent unserializing
+
+private function __wakeup() {}
+
+}
+
+// Usage:
+
+$obj1 = Singleton::getInstance();
+
+$obj2 = Singleton::getInstance();
+
+var_dump($obj1 === $obj2); // Returns bool(true)
+
+
+Factory Method Pattern 
+
+•The Factory Method defines an interface for creating objects, but lets 
+subclasses decide which class to instantiate. 
+•This makes your code flexible and open to extension.
+•Instead of calling new directly to instantiate a class, you call a "factory 
+method" that returns a new object. 
+•Key Components
+•Product Interface: A common interface for all objects the factory can create 
+(e.g., Notification).
+•Concrete Products: Specific implementations of that interface (e.g., 
+EmailNotification, SMSNotification).
+•Creator (Abstract Class): Declares the factory method, which returns an object 
+of the Product type.
+•Concrete Creators: Subclasses that override the factory method to return an 
+instance of a specific Concrete Product. 
+
+
+
+
+
+
+// 1. The Product Interface
+
+interface Notification {
+
+public function send(string $message): void;
+
+}
+
+// 2. Concrete Products
+
+class EmailNotificationimplements Notification {
+
+public function send(string $message): void {
+
+echo "Sending Email: $message";
+
+}
+
+}
+
+class SMSNotificationimplements Notification {
+
+public function send(string $message): void {
+
+echo "Sending SMS: $message";
+
+}
+
+}
+
+// 3. The Creator Class
+
+abstract class NotificationSender{
+
+// The Factory Method
+
+abstract public function createNotification(): Notification;
+
+public function notify(string $message): void {
+
+// Use the factory method to get a product without knowing its class
+
+$notification = $this->createNotification();
+
+$notification->send($message);
+
+}
+
+}
+
+/
+
+/ 4. Concrete Creators
+
+class EmailSenderextends NotificationSender{
+
+public function createNotification(): Notification {
+
+return new EmailNotification();
+
+}
+
+}
+
+class SMSSenderextends NotificationSender{
+
+public function createNotification(): Notification {
+
+return new SMSNotification();
+
+}
+
+}
+
+// Usage
+
+$sender = new EmailSender();
+
+$sender->notify("Hello World!"); // Output: Sending Email: Hello World!
+
+
+<?php
+
+// Product interface
+
+interface Logger {
+
+public function log(string $message);
+
+}
+
+// Concrete Products
+
+class FileLoggerimplements Logger {
+
+public function log(string $message) {
+
+echo "Logging to a file: " . $message . PHP_EOL;
+
+}
+
+}
+
+class DatabaseLoggerimplements Logger {
+
+public function log(string $message) {
+
+echo "Logging to a database: " . $message . PHP_EOL;
+
+}
+
+}
+
+// Creator abstract class
+
+abstract class LoggerFactory{
+
+abstract public function createLogger(): Logger;
+
+public function logMessage(string $message) {
+
+$logger = $this->createLogger();
+
+$logger->log($message);
+
+
+
+
+
+// Concrete Creators
+
+class FileLoggerFactoryextends LoggerFactory{
+
+public function createLogger(): Logger {
+
+return new FileLogger();
+
+}
+
+}
+
+class DatabaseLoggerFactoryextends LoggerFactory{
+
+public function createLogger(): Logger {
+
+return new DatabaseLogger();
+
+}
+
+}
+
+// Client code
+
+$fileFactory= new FileLoggerFactory();
+
+$fileFactory->logMessage("File log entry");
+
+$dbFactory= new DatabaseLoggerFactory();
+
+$dbFactory->logMessage("Database log entry");
+
+
+Abstract Factory Pattern 
+
+•It is a creational design pattern used to create families of related 
+or dependent objects without specifying their concrete classes.
+•Often described as a "factory of factories," it provides a high-level 
+interface that allows a program to remain independent of how its 
+products are produced and represented.
+•The Abstract Factory provides an interface for creating families of 
+related objects without specifying their concrete classes. 
+•It’s useful when you want to ensure that products created together 
+are compatible.
+
+
+
+<?php
+
+// Abstract Products
+
+interface Button {
+
+public function render();
+
+}
+
+interface Checkbox {
+
+public function render();
+
+}
+
+// Concrete Products for Windows
+
+class WindowsButtonimplements Button {
+
+public function render() {
+
+echo "Rendering a Windows-style button" . PHP_EOL;
+
+}
+
+}
+
+class WindowsCheckboximplements Checkbox {
+
+public function render() {
+
+echo "Rendering a Windows-style checkbox" . PHP_EOL;
+
+}
+
+}
+
+// Concrete Products for Mac
+
+class MacButtonimplements Button {
+
+public function render() {
+
+echo "Rendering a Mac-style button" . PHP_EOL;
+
+}
+
+}
+
+class MacCheckboximplements Checkbox {
+
+public function render() {
+
+echo "Rendering a Mac-style checkbox" . PHP_EOL;
+
+}
+
+}
+
+// Abstract Factory
+
+interface GUIFactory{
+
+public function createButton(): Button;
+
+public function createCheckbox(): Checkbox;
+
+}
+
+
+// Concrete Factories
+
+class WindowsFactoryimplements GUIFactory{
+
+public function createButton(): Button {
+
+return new WindowsButton();
+
+}
+
+public function createCheckbox(): Checkbox {
+
+return new WindowsCheckbox();
+
+}
+
+}
+
+class MacFactoryimplements GUIFactory{
+
+public function createButton(): Button {
+
+return new MacButton();
+
+}
+
+public function createCheckbox(): Checkbox {
+
+return new MacCheckbox();
+
+}
+
+}
+
+// Client code
+
+function renderUI(GUIFactory$factory) {
+
+$button = $factory->createButton();
+
+$checkbox = $factory->createCheckbox();
+
+$button->render();
+
+$checkbox->render();
+
+}
+
+// Example usage
+
+$windowsFactory= new WindowsFactory();
+
+renderUI($windowsFactory);
+
+$macFactory= new MacFactory();
+
+renderUI($macFactory);
+
+
+Key Points
+
+•Abstract Products → Define interfaces (Button, Checkbox).
+•Concrete Products → Implement platform-specific versions 
+(WindowsButton, MacButton).
+•Abstract Factory → Declares methods for creating products.
+•Concrete Factories → Implement creation methods for specific 
+families.
+•Client code → Works with factories without knowing the concrete 
+classes.
+•This pattern is especially useful when building cross-platform 
+applications (like UI toolkits) or systems that need to support multiple 
+product families consistently.
+
+
+
+Builder Pattern 
+
+•Is a creational design pattern that allows you to construct 
+complex objects step by step. 
+•It is particularly useful when an object requires many 
+configuration options, helping to avoid "telescoping constructors" 
+(constructors with a long list of parameters). 
+•The Builderpattern separates the construction of a complex 
+object from its representation. 
+•It allows you to build different types of objects step by step using 
+the same construction process.
+
+
+
+<?php
+
+// Product
+
+class Car {
+
+private $engine;
+
+private $wheels;
+
+private $color;
+
+public function setEngine($engine) {
+
+$this->engine = $engine;
+
+}
+
+public function setWheels($wheels) {
+
+$this->wheels = $wheels;
+
+}
+
+public function setColor($color) {
+
+$this->color= $color;
+
+}
+
+public function showSpecs() {
+
+echo "Car with {$this->engine} engine, {$this->wheels} wheels, color: {$this->color}" . PHP_EOL;
+
+}
+
+}
+
+// Builder interface
+
+interface CarBuilder{
+
+public function buildEngine();
+
+public function buildWheels();
+
+public function paintColor();
+
+public function getCar(): Car;
+
+}
+
+// Concrete Builder for Sports Car
+
+class SportsCarBuilderimplements CarBuilder{
+
+private $car;
+
+public function __construct() {
+
+$this->car = new Car();
+
+}
+
+public function buildEngine() {
+
+$this->car->setEngine("V8");
+
+}
+
+public function buildWheels() {
+
+$this->car->setWheels(4);
+
+}
+
+public function paintColor() {
+
+$this->car->setColor("Red");
+
+}
+
+public function getCar(): Car {
+
+return $this->car;
+
+}
+
+}
+
+
+// Concrete Builder for SUV
+
+class SUVBuilderimplements CarBuilder{
+
+private $car;
+
+public function __construct() {
+
+$this->car = new Car();
+
+}
+
+public function buildEngine() {
+
+$this->car->setEngine("V6");
+
+}
+
+public function buildWheels() {
+
+$this->car->setWheels(4);
+
+}
+
+public function paintColor() {
+
+$this->car->setColor("Black");
+
+}
+
+public function getCar(): Car {
+
+return $this->car;
+
+}
+
+}
+
+// Director
+
+class CarDirector{
+
+public function build(CarBuilder$builder): Car {
+
+$builder->buildEngine();
+
+$builder->buildWheels();
+
+$builder->paintColor();
+
+return $builder->getCar();
+
+}
+
+}
+
+// Client code
+
+$director = new CarDirector();
+
+$sportsCarBuilder= new SportsCarBuilder();
+
+$sportsCar= $director->build($sportsCarBuilder);
+
+$sportsCar->showSpecs();
+
+$suvBuilder= new SUVBuilder();
+
+$suv= $director->build($suvBuilder);
+
+$suv->showSpecs();
+
+Key Points
+
+•Product→ The object being built (Car).
+•Builder interface→ Declares steps for building 
+(CarBuilder).
+•Concrete Builders→ Implement steps for specific 
+products (SportsCarBuilder, SUVBuilder).
+•Director→ Controls the construction process 
+(CarDirector).
+•Client code→ Requests a car without worrying about 
+the details of construction.
+
+
+
+Prototype Pattern
+
+•Prototypepattern is a creational design patternthat allows you 
+to create new objects by cloning existing ones. 
+•Instead of instantiating classes directly, you copy a prototype 
+instance. 
+•This is especially useful when object creation is costly or complex.
+
+
+
+Key Points
+
+•Prototype interface→ Declares the clone() method.
+•Concrete Prototypes→ Implement cloning (Circle, Rectangle).
+•Client code→ Creates new objects by cloning instead of 
+instantiating.
+•Useful when object creation is expensive(e.g., database 
+connections, large configurations) or when you need many 
+similar objects.
+This pattern is often used in graphics editors, game 
+development, or configuration systemswhere duplicating 
+complex objects is more efficient than rebuilding them.
+
+
+
+<?php
+
+// Prototype interface
+
+interface Prototype {
+
+public function clone(): Prototype;
+
+}
+
+// Concrete Prototype: Circle
+
+class Circle implements Prototype {
+
+private $radius;
+
+public function __construct($radius) {
+
+$this->radius = $radius;
+
+}
+
+public function setRadius($radius) {
+
+$this->radius = $radius;
+
+}
+
+public function getRadius() {
+
+return $this->radius;
+
+}
+
+public function clone(): Prototype {
+
+return new Circle($this->radius);
+
+}
+
+}
+
+// Concrete Prototype: Rectangle
+
+class Rectangle implements Prototype {
+
+private $width;
+
+private $height;
+
+public function __construct($width, $height) {
+
+$this->width = $width;
+
+$this->height = $height;
+
+}
+
+public function setDimensions($width, $height) {
+
+$this->width = $width;
+
+$this->height = $height;
+
+}
+
+public function getDimensions() {
+
+return [$this->width, $this->height];
+
+}
+
+public function clone(): Prototype {
+
+return new Rectangle($this->width, $this->height);
+
+}
+
+}
+
+
+// Client code
+
+$circle1 = new Circle(10);
+
+$circle2 = $circle1->clone();
+
+$circle2->setRadius(20);
+
+echo "Circle1 radius: " . $circle1->getRadius() . PHP_EOL;
+
+echo "Circle2 radius: " . $circle2->getRadius() . PHP_EOL;
+
+$rect1 = new Rectangle(5, 10);
+
+$rect2 = $rect1->clone();
+
+$rect2->setDimensions(20, 40);
+
+list($w1, $h1) = $rect1->getDimensions();
+
+list($w2, $h2) = $rect2->getDimensions();
+
+echo "Rectangle1 dimensions: {$w1}x{$h1}" . PHP_EOL;
+
+echo "Rectangle2 dimensions: {$w2}x{$h2}" . PHP_EOL;
+
+
+Structural Patterns
+
+•These focus on object composition.
+•These patterns explain how to assemble objects and classes into larger 
+structures while keeping them flexible and efficient. 
+•They focus on object composition, defining ways to add new 
+functionality.
+•Adapter Bridges incompatible interfaces.
+•Decorator Adds behaviordynamically without altering the original class.
+•Composite Treats individual objects and compositions uniformly.
+•Facade Provides a simplified interface to complex subsystems.
+•Proxy Controls access to another object.
+
+
+
+
+
+
+Adapter pattern 
+
+•It is a structural design pattern used to make two incompatible 
+interfaces work together.
+•In PHP, it acts as a "wrapper" that translates the interface of an 
+existing class (the Adaptee) into another interface that a client 
+expects 
+•It is a structural design pattern that lets incompatible classes 
+work together by acting as a bridge. 
+•It’s often used to integrate legacy code or third-party libraries with 
+modern interfaces.
+
+
+
+Why Use It?
+
+•Integration: Connect your code with third-party libraries or legacy 
+systems without modifying their original source code.
+•Decoupling: Keeps your application logic separate from the 
+specific implementation details of external services.
+•Reusability: Allows you to reuse existing classes even if their 
+method names or parameters don't match your new system's 
+requirements.
+
+
+
+Core Components
+
+•Target Interface:The set of methods your client code uses.
+•Adaptee:The existing class with the incompatible interface.
+•Adapter:The middleman class that implements the Target 
+Interface and maps those calls to the Adaptee.
+•Client:The main code that interacts with the Target Interface. 
+
+
+
+In PHP, the most common approach is the Object Adapter, 
+which uses composition (storing an instance of the Adapteeinside the Adapter) because PHP does not support multiple 
+inheritance. [1
+, 2
+]
+
+// 1. The Target Interface your system expects
+
+interface PaymentProcessor{
+
+public function pay(float $amount): void;
+
+}
+
+// 2. The Adaptee(Third-party library with a different method)
+
+class PayPal {
+
+public function sendPayment($value): void {
+
+echo "Paid $value via PayPal.";
+
+}
+
+}
+
+// 3. The Adapter that bridges the two
+
+class PayPalAdapterimplements PaymentProcessor{
+
+private $paypal;
+
+public function __construct(PayPal $paypal) {
+
+$this->paypal= $paypal;
+
+}
+
+public function pay(float $amount): void {
+
+// Translate the call from pay() to sendPayment()
+
+$this->paypal->sendPayment($amount);
+
+}
+
+}
+
+// 4. Client Code
+
+$paypal= new PayPal();
+
+$adapter = new PayPalAdapter($paypal);
+
+// The client uses the 'pay' method it expects, even though PayPal uses 
+'sendPayment'
+
+$adapter->pay(100.00); 
+
+
+Use Cases
+
+•Legacy code integration→ Wrap old classes to fit new 
+requirements.
+•Third-party libraries→ Adapt external APIs to your application’s 
+interface.
+•Cross-platform development→ Bridge differences between 
+platform-specific APIs.
+•Testing→ Create mock adapters for unit testing.
+This pattern is especially useful in enterprise PHP applicationswhere you need to integrate older modules or external services 
+without rewriting them.
+
+
+
+Decorator Pattern
+
+•The Decoratoris a structural design patternthat lets you 
+dynamically add responsibilities or behaviorsto objects without 
+modifying their original code. 
+•Allows you to dynamically add new behaviorsto an object by 
+"wrapping" it within special wrapper classes. 
+•Instead of relying on rigid class inheritance, it uses compositionto stack functionalities at runtime. 
+•It’s like wrapping an object with extra functionality.
+
+
+
+Key Concepts
+
+•Dynamic Extension: You can add or remove responsibilities from 
+an object without affecting other objects of the same class.
+•Wrapper Objects: A decorator implements the same interface as 
+the object it wraps, allowing it to pass requests to the wrapped 
+object and add its own logic before or after.
+•Alternative to Subclassing: It prevents "class explosion" where 
+you'd otherwise need a new subclass for every possible 
+combination of features.
+
+
+
+// 1. The Common Interface
+
+interface CarService{
+
+public function getCost(): int;
+
+public function getDescription(): string;
+
+}
+
+// 2. Concrete Component
+
+class BasicInspectionimplements CarService{
+
+public function getCost(): int { return 25; }
+
+public function getDescription(): string { return "Basic 
+inspection"; }
+
+}
+
+// 3. Decorator Class (implements same interface)
+
+class OilChangeimplements CarService{
+
+protected $carService;
+
+public function __construct(CarService$carService) {
+
+$this->carService= $carService;
+
+}
+
+public function getCost(): int {
+
+return 29 + $this->carService->getCost();
+
+}
+
+public function getDescription(): string {
+
+return $this->carService->getDescription() . ", plus oil 
+change";
+
+}
+
+}
+
+// Usage: Stacking behaviorsat runtime
+
+$service = new BasicInspection(); // $25
+
+$service = new OilChange($service); // $25 + $29 = $54
+
+echo $service->getDescription(); // "Basic inspection, plus 
+oil change"
+
+
+Common Use Cases
+
+•Middleware/Logging: Adding logging or authentication checks to a 
+request handler.
+•UI Formatting: Wrapping text with HTML tags like <b> or <i> 
+dynamically.
+•Pricing Systems: Adding discounts, taxes, or extra service fees to a 
+base price.
+
+
+
+Composite Pattern
+
+•It is a structural design pattern in PHP used to organize objects 
+into tree-like structures to represent part-whole hierarchies. 
+•It allows you to treat individual objects (leafs) and groups of 
+objects (composites) uniformly.
+Key Points
+•Component interface→ Defines common operations (FileSystemItem).
+•Leaf→ Represents simple objects (File).
+•Composite→ Represents complex objects that can contain children (Directory).
+•Client code→ Treats both files and directories uniformly.
+
+
+
+
+
+
+
+
+<?php
+
+// Component interface
+
+interface FileSystemItem{
+
+public function showName();
+
+}
+
+// Leaf
+
+class File implements FileSystemItem{
+
+private $name;
+
+public function __construct(string $name) {
+
+$this->name = $name;
+
+}
+
+public function showName() {
+
+echo "File: " . $this->name . PHP_EOL;
+
+}
+
+}
+
+// Composite
+
+class Directory implements FileSystemItem{
+
+private $name;
+
+private $items = [];
+
+public function __construct(string $name) {
+
+$this->name = $name;
+
+}
+
+public function addItem(FileSystemItem$item) {
+
+$this->items[] = $item;
+
+}
+
+public function showName() {
+
+echo "Directory: " . $this->name . PHP_EOL;
+
+foreach ($this->items as $item) {
+
+$item->showName();
+
+}
+
+}
+
+}
+
+// Client code
+
+$file1 = new File("document.txt");
+
+$file2 = new File("photo.jpg");
+
+$dir= new Directory("MyFolder");
+
+$dir->addItem($file1);
+
+$dir->addItem($file2);
+
+$root = new Directory("Root");
+
+$root->addItem($dir);
+
+$root->addItem(new File("readme.md"));
+
+$root->showName();
+
+
+Use Cases
+
+•File systems(folders and files).
+•UI hierarchies(windows, panels, buttons).
+•Company structures(employees, departments).
+•Menus(menu items and submenus).
+
+
+
+Facade Pattern 
+
+•The Facadeis a structural design patternthat provides a 
+simplified interface to a complex subsystem. 
+•It hides the complexity of multiple classes and exposes a single 
+unified API for the client.
+•Why Use It?
+•Simplicity: It provides a one-liner for a task that might actually require 
+dozens of lines of setup.
+•Decoupling: If you swap your billing provider (e.g., from Stripe to PayPal), 
+you only change code inside the Facade, not everywhere in your app.
+•Legacy Code: It’s great for wrapping "ugly" legacy code with a modern, 
+clean interface.
+
+
+
+
+
+
+Processing System
+
+<?php
+
+// Subsystem classes
+
+class Inventory {
+
+public function checkStock($item) {
+
+echo "Checking stock for {$item}..." . PHP_EOL;
+
+return true;
+
+}
+
+}
+
+class Payment {
+
+public function makePayment($amount) {
+
+echo "Processing payment of \${$amount}..." . PHP_EOL;
+
+return true;
+
+}
+
+}
+
+class Shipping {
+
+public function shipItem($item) {
+
+echo "Shipping {$item}..." . PHP_EOL;
+
+return true;
+
+}
+
+}
+
+// Facade
+
+class OrderFacade{
+
+private $inventory;
+
+private $payment;
+
+private $shipping;
+
+public function __construct() {
+
+$this->inventory = new Inventory();
+
+$this->payment = new Payment();
+
+$this->shipping = new Shipping();
+
+}
+
+public function placeOrder($item, $amount) {
+
+if ($this->inventory->checkStock($item)) {
+
+if ($this->payment->makePayment($amount)) {
+
+$this->shipping->shipItem($item);
+
+echo "Order placed successfully!" . PHP_EOL;
+
+}
+
+}
+
+}
+
+}
+
+// Client code
+
+$order = new OrderFacade();
+
+$order->placeOrder("Laptop", 1200);
+
+
+Key Points
+
+•Subsystem classes→ Handle individual tasks (Inventory, 
+Payment, Shipping).
+•Facade class→ Provides a unified interface (OrderFacade).
+•Client code→ Calls the facade instead of dealing with multiple 
+subsystems directly.
+
+
+
+Use Cases
+
+•E-commerce systems→ Simplify order processing.
+•Database operations→ Wrap complex queries and transactions.
+•Libraries/frameworks→ Provide a clean API over complex 
+internals.
+•Legacy systems→ Hide outdated or complex code behind a 
+modern interface.
+
+
+This pattern is especially useful when you want to reduce couplingbetween client code and complex subsystems, making your 
+application easier to maintain and extend.
+
+
+Proxy Pattern 
+
+•It is a structural design patternthat provides a surrogate or 
+placeholder for another object to control access to it. 
+•It’s often used for lazy loading, access control, logging, or caching.
+•Common Use Cases in PHP
+•Virtual Proxy (Lazy Loading): Defers the creation of expensive objects (e.g., a 
+heavy database connection or a large file reader) until they are actually needed.
+•Protection Proxy: Controls access based on permissions, such as checking if a 
+user has the right to perform a specific action before delegating to the service.
+•Cache Proxy: Stores results of expensive operations and returns the cached 
+version for subsequent identical requests.
+•Remote Proxy: Provides a local representation for an object that resides in a 
+different address space (e.g., an external API).
+
+
+
+
+
+
+Key Points
+
+•Subject interface→ Defines the contract (Image).
+•Real Subject→ Performs the actual work (RealImage).
+•Proxy→ Controls access and adds behavior(ProxyImage).
+•Client code→ Works with the proxy as if it were the real object.
+
+
+
+Example: Image Proxy (Lazy Loading)
+
+<?php
+
+// Subject interface
+
+interface Image {
+
+public function display();
+
+}
+
+// Real Subject
+
+class RealImageimplements Image {
+
+private $filename;
+
+public function __construct(string $filename) {
+
+$this->filename = $filename;
+
+$this->loadFromDisk();
+
+}
+
+private function loadFromDisk() {
+
+echo "Loading image from disk: {$this->filename}" . PHP_EOL;
+
+}
+
+public function display() {
+
+echo "Displaying image: {$this->filename}" . PHP_EOL;
+
+}
+
+}
+
+// Proxy
+
+class ProxyImageimplements Image {
+
+private $filename;
+
+private $realImage;
+
+public function __construct(string $filename) {
+
+$this->filename = $filename;
+
+}
+
+public function display() {
+
+if ($this->realImage=== null) {
+
+$this->realImage= new RealImage($this->filename);
+
+}
+
+$this->realImage->display();
+
+}
+
+}
+
+// Client code
+
+$image1 = new ProxyImage("photo1.jpg");
+
+$image2 = new ProxyImage("photo2.jpg");
+
+// Images are not loaded until display() is called
+
+$image1->display();
+
+$image2->display();
+
+
+Use Cases
+
+•Lazy loading→ Load heavy resources only when needed.
+•Access control→ Restrict access to sensitive objects.
+•Remote proxy→ Represent objects in different address spaces 
+(e.g., APIs).
+•Caching/logging→ Add extra functionality without changing the 
+real object.
+This pattern is especially useful in PHP applications when dealing 
+with large files, expensive database queries, or external APIswhere you don’t want to load or execute until absolutely 
+necessary.
+
+
+
+BehavioralPatterns
+
+•These handle communication between objects.
+•They decouple interacting components to increase system flexibility, 
+reusability, and maintainability. 
+•These patterns simplify complex control flows by establishing clear 
+communication framework.
+•ObserverImplements publish/subscribe for event handling.
+•StrategyEncapsulates interchangeable algorithms.
+•CommandTurns requests into objects for queuing/undo.
+•Chain of ResponsibilityPasses requests along a chain of handlers.
+•StateAlters object behaviorbased on internal state.
+•IteratorProvides sequential access to elements.
+•MediatorCentralizes complex communication between objects
+
+
+
+
+
+
+Observer Pattern 
+
+•The Observeris a behavioraldesign patternthat defines a 
+one-to-many relationship: when one object (the subject) changes 
+state, all its dependents (observers) are notified automatically.
+•It is used to create a one-to-many relationship where an object 
+(the Subject) automatically notifies multiple other objects 
+(Observers) when its state changes.
+•Core Components
+•Subject (Publisher): Maintains a list of observers and provides methods to 
+attach, detach, and notify them.
+•Observer (Subscriber): Defines an update method that is called by the 
+Subject to signal a change.
+
+
+
+
+
+
+// 1. The Observer (Subscriber)
+
+class WelcomeEmailObserverimplements SplObserver{
+
+public function update(SplSubject$subject): void {
+
+echo "Welcome email sent to: " . $subject->getEmail() . 
+"\n";
+
+}
+
+}
+
+// 2. The Subject (Publisher)
+
+class UserRegistrationimplements SplSubject{
+
+private SplObjectStorage$observers;
+
+private string $email;
+
+public function __construct() {
+
+$this->observers = new SplObjectStorage();
+
+}
+
+public function attach(SplObserver$observer): void {
+
+$this->observers->attach($observer);
+
+}
+
+
+
+$this->observers->detach($observer);
+
+}
+
+public function notify(): void {
+
+foreach ($this->observers as $observer) {
+
+$observer->update($this);
+
+}
+
+}
+
+public function register(string $email): void {
+
+$this->email = $email;
+
+echo "User registered: $email\n";
+
+$this->notify(); // Trigger notifications
+
+}
+
+public function getEmail(): string { return $this->email; }
+
+}
+
+// 3. Usage
+
+$registration = new UserRegistration();
+
+$registration->attach(new WelcomeEmailObserver());
+
+$registration->register("hello@example.com");
+
+
+Use Cases
+
+•Event-driven systems(publish/subscribe).
+•User interfaces(update 
+multiple views when data 
+changes).
+•Messaging apps(notify 
+subscribers of new messages).
+•E-commerce(notify 
+customers when product stock 
+changes).
+
+
+
+Strategy Pattern 
+
+•is a behavioraldesign patternthat lets you define a family of 
+algorithms, encapsulate each one, and make them 
+interchangeable. 
+•The client can choose which algorithm to use at runtime without 
+changing its code.
+•It define a family of algorithms, encapsulate each one in a 
+separate class, and make them interchangeable at runtime.
+•In PHP, this is primarily used to replace large switch or if-else 
+blocks with clean, object-oriented code that is easy to extend.
+
+
+
+Core Components
+
+•Strategy Interface: Defines a common contract (method) that all 
+concrete algorithms must follow.
+•Concrete Strategies: Classes that implement the interface with 
+specific behaviors(e.g., CreditCard, PayPal, Bitcoin).
+•Context: The class that maintains a reference to a Strategy object 
+and delegates the task to it.
+•Client: The code that chooses the specific strategy and passes it 
+to the Context.
+
+
+
+// 1. Strategy Interface
+
+interface PaymentStrategy{
+
+public function pay(float $amount): string;
+
+}
+
+// 2. Concrete Strategies
+
+class PayPalPaymentimplements PaymentStrategy{
+
+public function pay(float $amount): string {
+
+return "Paid $amount via PayPal.";
+
+}
+
+}
+
+class CreditCardPaymentimplements PaymentStrategy{
+
+public function pay(float $amount): string {
+
+return "Paid $amount via Credit Card.";
+
+}
+
+}
+
+// 3. Context Class
+
+class Checkout {
+
+private PaymentStrategy$paymentMethod;
+
+public function __construct(PaymentStrategy$method) {
+
+$this->paymentMethod= $method;
+
+}
+
+public function process(float $amount) {
+
+echo $this->paymentMethod->pay($amount);
+
+}
+
+}
+
+// 4. Usage (Client)
+
+$order = new Checkout(new PayPalPayment());
+
+$order->process(100.50);
+
+
+Use Cases
+
+•Payment processing→ Different gateways (PayPal, Stripe, 
+Bitcoin).
+•Sorting algorithms→ Switch between quicksort, mergesort, etc.
+•Compression algorithms→ Choose ZIP, RAR, or GZIP.
+•Authentication methods→ Password, OAuth, biometric.
+
+
+
+When to Use It
+
+•Dynamic Behavior: You need to switch between different versions 
+of an algorithm at runtime based on user input or state.
+•Avoiding "Conditional Hell": You have a massive conditional 
+statement that chooses between several variants of the same 
+task.
+•Adhering to SOLID: It specifically follows the Open/Closed 
+Principle, allowing you to add new strategies (like a new 
+"CryptoPayment") without modifying the existing Checkout class.
+
+
+
+Key Benefits
+
+•Flexibility: You can swap behaviorswithout changing the code that 
+uses them.
+•Testability: Each strategy can be tested in isolation.
+•Encapsulation: Details of specific algorithms are hidden from the 
+rest of the application.
+
+
+
+Command Pattern
+
+•It is a behavioraldesign pattern that turns a request or action into 
+a standalone object. 
+•It encapsulates requests as objects, allowing you to queue, log, or 
+undo actions.
+•Key Components of Command Pattern
+•Command Interface: Declares the execute() method.
+•Concrete Commands: Implement the interface and call methods on the 
+receiver.
+•Receiver: The actual business logic (e.g., Light).
+•Invoker: Stores and executes commands.
+•Client: Creates commands and assigns them to the invoker.
+
+
+
+
+
+
+<?php
+
+// Command interface
+
+interface Command {
+
+public function execute();
+
+}
+
+// Receiver
+
+class Light {
+
+public function on() {
+
+echo "Light is ON\n";
+
+}
+
+public function off() {
+
+echo "Light is OFF\n";
+
+}
+
+}
+
+// Concrete Commands
+
+class LightOnCommandimplements Command {
+
+private $light;
+
+public function __construct(Light $light) {
+
+$this->light = $light;
+
+}
+
+public function execute() {
+
+$this->light->on();
+
+}
+
+}
+
+class LightOffCommandimplements Command {
+
+private $light;
+
+public function __construct(Light $light) {
+
+$this->light = $light;
+
+}
+
+public function execute() {
+
+$this->light->off();
+
+}
+
+}
+
+// Invoker
+
+class RemoteControl{
+
+private $command;
+
+public function setCommand(Command $command) {
+
+$this->command = $command;
+
+}
+
+public function pressButton() {
+
+$this->command->execute();
+
+}
+
+}
+
+// Client code
+
+$light = new Light();
+
+$remote = new RemoteControl();
+
+$remote->setCommand(new LightOnCommand($light));
+
+$remote->pressButton(); // Output: Light is ON
+
+$remote->setCommand(new LightOffCommand($light));
+
+$remote->pressButton(); // Output: Light is OFF
+
+?>
+
+
+Chain of Responsibility pattern
+
+•it lets you pass a request through a chain of handlers until one 
+processes it. 
+•Each handler decides whether to process the request or pass it to the 
+next handler in the chain.
+•This is often used in approval workflows, middleware, or validation 
+pipelines.
+•Core Idea
+•Handler Interface: Declares methods for setting the next handler and handling 
+requests.
+•Concrete Handlers: Each handler decides whether to process or forward the 
+request.
+•Client: Initiates the request without knowing which handler will process it.
+
+
+
+
+
+
+interface Handler {
+
+public function setNext(Handler $handler): Handler;
+
+public function handle(string $request): ?string;
+
+}
+
+abstract class AbstractHandlerimplements Handler {
+
+private ?Handler $nextHandler= null;
+
+public function setNext(Handler $handler): Handler {
+
+$this->nextHandler= $handler;
+
+return $handler;
+
+}
+
+public function handle(string $request): ?string {
+
+if ($this->nextHandler) {
+
+return $this->nextHandler->handle($request);
+
+}
+
+return null;
+
+}
+
+}
+
+class ChatBotextends AbstractHandler{
+
+public function handle(string $request): ?string {
+
+if ($request === "basic") {
+
+return "Bot: I've resolved your basic issue.";
+
+}
+
+return parent::handle($request);
+
+}
+
+}
+
+class SeniorEngineerextends AbstractHandler{
+
+public function handle(string $request): ?string {
+
+if ($request === "complex") {
+
+return "Engineer: I've fixed the complex bug.";
+
+}
+
+return parent::handle($request);
+
+}
+
+}
+
+// Client Code
+
+$bot = new ChatBot();
+
+$engineer = new SeniorEngineer();
+
+$bot->setNext($engineer);
+
+
+
+
+State Pattern
+
+•This pattern allows an object to change its behaviorwhen its 
+internal state changes —it appears as if the object has changed 
+its class. 
+•allows an object to change its behaviordynamically when its 
+internal state changes.
+•Instead of using massive switch or if-else blocks to check a status 
+variable, you extract state-specific behaviorsinto separate 
+classes
+•A classic example is a context(like a Document or a TCP 
+connection) that behaves differently depending on its state.
+
+
+
+Core Components
+
+•State Interface: Declares methods each state must implement. 
+(e.g., Draft, Published, Deleted)
+•Concrete States: Implement behaviorfor a particular state.
+•Context: Maintains a reference to the current state and delegates 
+behaviorto it.
+
+
+
+// 1. The State Interface
+
+interface State {
+
+public function publish(Document $doc);
+
+}
+
+// 2. Concrete States
+
+class DraftStateimplements State {
+
+public function publish(Document $doc) {
+
+echo "Moving document to Moderation...\n";
+
+$doc->transitionTo(new ModerationState());
+
+}
+
+}
+
+class PublishedStateimplements State {
+
+public function publish(Document $doc) {
+
+echo "Document is already published. No action 
+taken.\n";
+
+}
+
+}
+
+// 3. The Context
+
+class Document {
+
+private State $state;
+
+public function __construct(State $state) {
+
+$this->transitionTo($state);
+
+}
+
+public function transitionTo(State $state) {
+
+$this->state = $state;
+
+}
+
+public function publish() {
+
+$this->state->publish($this);
+
+}
+
+}
+
+// Usage
+
+$doc = new Document(new DraftState());
+
+$doc->publish(); // Outputs: Moving document to 
+Moderation...
+
+
+Iterator Pattern
+
+•provides a way to access elements of a collection sequentially 
+without exposing its underlying representation.
+•is a behavioraldesign pattern that allows you to traverse the 
+elements of a collection without exposing its underlying internal 
+structure (like an array or a linked list).
+•In PHP, this is most commonly achieved by implementing built-in 
+interfaces that allow objects to be used directly in foreach loops
+
+
+
+Core PHP Interfaces
+
+•Iterator: Requires you to implement five specific methods to 
+manage the traversal state manually:
+•rewind(): Resets the iterator to the first element.
+•current(): Returns the current element.
+•key(): Returns the key of the current element.
+•next(): Moves forward to the next element.
+•valid(): Checks if the current position is valid.
+
+
+
+•IteratorAggregate: Instead of managing the state itself, the class 
+implements a single getIterator() method that returns an external 
+iterator (like an ArrayIterator).
+
+
+
+class Playlist implements IteratorAggregate{
+
+private array $songs = [];
+
+public function addSong(string $song) {
+
+$this->songs[] = $song;
+
+}
+
+public function getIterator(): Traversable {
+
+// Delegate iteration to PHP's built-in 
+ArrayIterator
+
+return new ArrayIterator($this->songs);
+
+}
+
+}
+
+$myPlaylist= new Playlist();
+
+$myPlaylist->addSong("Song A");
+
+$myPlaylist->addSong("Song B");
+
+foreach ($myPlaylistas $song) {
+
+echo $song . "\n";
+
+}
+
+
+Mediator Pattern
+
+•is a behavioraldesign patternthat defines an object that 
+encapsulates how a set of objects interact. 
+•Instead of objects referring to each other directly, they 
+communicate through a mediator, reducing coupling.
+•a behavioraldesign pattern that centralizes communication 
+between objects to reduce direct dependencies.
+•Instead of classes interacting with each other directly—which 
+creates tight coupling—they communicate through a single 
+"mediator" object.
+
+
+
+Key Concepts
+
+•Loose Coupling: Components don't need to know about each 
+other's existence or implementation details; they only interact 
+with the mediator.
+•Centralized Control: Logic for how multiple objects interact is 
+contained in one place, making it easier to manage complex 
+workflows.
+•Single Responsibility: Components focus on their own business 
+logic rather than communication orchestration. [1
+, 2
+, 3
+, 4
+, 5
+, 6
+]
+
+
+
+Use Cases
+
+•Chat applications→ Centralized message distribution.
+•Air traffic control systems→ Planes communicate via the control 
+tower.
+•UI frameworks→ Widgets interact through a mediator.
+•Workflow engines→ Components coordinate through a central 
+mediator.
+
+
+
+interface ChatMediator{
+
+public function sendMessage(string $msg, User $user): void;
+
+}
+
+abstract class User {
+
+protected ChatMediator$mediator;
+
+protected string $name;
+
+public function __construct(ChatMediator$mediator, string $name) {
+
+$this->mediator = $mediator;
+
+$this->name = $name;
+
+}
+
+abstract public function send(string $msg): void;
+
+abstract public function receive(string $msg): void;
+
+}
+
+class ChatRoomimplements ChatMediator{
+
+private array $users = [];
+
+public function addUser(User $user): void {
+
+$this->users[] = $user;
+
+}
+
+public function sendMessage(string $msg, User $user): void {
+
+foreach ($this->users as $u) {
+
+// Don't send message to the sender
+
+if ($u !== $user) {
+
+$u->receive($msg);
+
+}
+
+}
+
+}
+
+}
+
+class ConcreteUserextends User {
+
+public function send(string $msg): void {
+
+echo "{$this->name} sending: $msg\n";
+
+$this->mediator->sendMessage($msg, $this);
+
+}
+
+public function receive(string $msg): void {
+
+echo "{$this->name} received: $msg\n";
+
+}
+
+}
+
+// Usage
+
+$mediator = new ChatRoom();
+
+$alice= new ConcreteUser($mediator, "Alice");
+
+$bob = new ConcreteUser($mediator, "Bob");
+
+$mediator->addUser($alice);
+
+$mediator->addUser($bob);
+
+$alice->send("Hi Bob!");
+
+
+interface Mediator {
+
+public function notify(object $sender, string $event): void;
+
+}
+
+class FormMediatorimplements Mediator {
+
+public function __construct(
+
+private Checkbox $customToggle,
+
+private TextField$customInput
+
+) {
+
+$this->customToggle->setMediator($this);
+
+$this->customInput->setMediator($this);
+
+}
+
+public function notify(object $sender, string $event): void {
+
+if ($sender === $this->customToggle&& $event === 'checked') {
+
+$this->customInput->enable();
+
+}
+
+}
+
+}
+
+class Checkbox {
+
+private Mediator $mediator;
+
+public function setMediator(Mediator $m) { $this->mediator = $m; }
+
+public function check() {
+
+// Logic to check box...
+
+$this->mediator->notify($this, 'checked');
+
+}
+
+}
+
+
+Memento Pattern in PHP
+
+•It is a behavioraldesign patternthat allows to capture and 
+restore an object’s state without exposing its internal details.
+•Used to capture and restore an object's internal state without 
+violating encapsulation. 
+•is primarily used to implement "undo" or "rollback" features in 
+applications like text editors or configuration managers. 
+
+
+
+// The Memento: Holds the state
+
+class Memento {
+
+private string $state;
+
+public function __construct(string $state) {
+
+$this->state = $state;
+
+}
+
+public function getState(): string {
+
+return $this->state;
+
+}
+
+}
+
+// The Originator: The object to be saved
+
+class Editor {
+
+private string $content = "";
+
+public function type(string $words): void {
+
+$this->content .= $words;
+
+}
+
+public function save(): Memento {
+
+return new Memento($this->content);
+
+}
+
+public function restore(Memento $memento): void {
+
+$this->content = $memento->getState();
+
+}
+
+public function getContent(): string {
+
+return $this->content;
+
+}
+
+}
+
+// The Caretaker: Manages history
+
+class History {
+
+private array $mementos = [];
+
+public function push(Memento $memento): void {
+
+$this->mementos[] = $memento;
+
+}
+
+public function pop(): ?Memento {
+
+return array_pop($this->mementos);
+
+}
+
+}
+
+// Usage
+
+$editor = new Editor();
+
+$history = new History();
+
+$editor->type("First sentence. ");
+
+$history->push($editor->save()); // Save Point 1
+
+$editor->type("Second sentence.");
+
+echo $editor->getContent(); // "First sentence. Second sentence."
+
+$editor->restore($history->pop()); // Undo
+
+echo $editor->getContent(); // "First sentence. "
+
+
+Use Cases
+
+•Undo/redo functionalityin editors.
+•Game save states.
+•Transaction rollbackin financial systems.
+•Configuration snapshotsfor applications.
+
+
+
