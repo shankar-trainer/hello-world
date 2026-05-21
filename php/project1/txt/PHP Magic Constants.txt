@@ -1,0 +1,21 @@
+PHP Magic Constants
+PHP has nine predefined constants that change value depending on where they are used, also called the "magic constants".
+
+The magic constants provide information about the current state of the script, such as the file name, directory name, line number, function name, class name, and more.
+
+The magic constants always start and end with double underscores (__), except for the ClassName::class constant.
+
+The magic constants are not case-sensitive, meaning __LINE__ returns the same as __line__.
+
+The following table lists the magic constants, with descriptions and examples:
+
+Constant	Description	
+__CLASS__	If used inside a class, the class name is returned.	
+__DIR__	The directory of the file.	
+__FILE__	The file name including the full path.	
+__FUNCTION__	If inside a function, the function name is returned.	
+__LINE__	The current line number of the file.	
+__METHOD__	If used inside a function that belongs to a class, both class and function name is returned.	
+__NAMESPACE__	If used inside a namespace, the name of the namespace is returned.	
+__TRAIT__	If used inside a trait, the trait name is returned.	
+ClassName::class	Returns the name of the specified class and the name of the namespace, if any.

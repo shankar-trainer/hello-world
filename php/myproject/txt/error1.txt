@@ -1,0 +1,11 @@
+<!-- <?php if (isset($_SESSION['errors'])): ?>
+        <div style="color: red;">
+            <ul>
+                <?php foreach ($_SESSION['errors'] as $error): ?>
+                    <li><?php echo htmlspecialchars($error); ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php unset($_SESSION['errors']); // Clear errors after displaying ?>
+    <?php endif; ?> -->
+   

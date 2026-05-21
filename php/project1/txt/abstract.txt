@@ -1,0 +1,51 @@
+An abstract class in PHP is a restricted class that cannot be instantiated directly. 
+
+It serves as a blueprint for other classes to inherit from and must contain at least one abstract method. [1, 2, 3, 4]  
+
+Key Characteristics 
+
+    • No Instantiation: You cannot create an object directly from an abstract class (e.g.,  will throw an error).
+    • Abstract Methods: These are methods declared in the parent class but not implemented; they only define the method signature (name and parameters).
+    • Mandatory Implementation: Any non-abstract child class that extends an abstract class must implement all of the parent’s abstract methods.
+    • Mixed Methods: Unlike interfaces, abstract classes can contain both abstract methods (without bodies) and concrete methods (with full code).
+    • Properties and Constants: They can include regular properties, constants, and static methods. [1, 3, 4, 5, 6, 7, 8, 9]
+
+Rules for Implementation 
+When a child class implements an abstract method, it must follow these strict rules from W3Schools: 
+
+    1. Same Name: The method name must match the parent declaration.
+    2. Signature Compatibility: The number of required arguments and their type hints must be the same.
+    3. Visibility: The access modifier (public, protected) must be the same or less restricted than the parent (e.g., a protected abstract method can be implemented as public, but not private). [6, 9, 10, 11]
+
+Basic Syntax Example 
+
+abstract class Base {
+    // Abstract method: no body {}
+    abstract protected function calculatePrice($item);
+
+    // Concrete method: has a body
+    public function printStatus() {
+        echo "Processing...";
+    }
+}
+
+class Invoice extends Base {
+    // Child MUST implement the abstract method
+    public function calculatePrice($item) {
+        return $item * 1.2;
+    }
+}
+
+
+According to the official PHP Manual, the syntax uses the  keyword: [12]  
+Abstract Class vs. Interface 
+
+| Feature [4, 5, 13, 14, 15] | Abstract Class | Interface  |
+| --- | --- | --- |
+| Methods | Can have both abstract and concrete methods. | Only method signatures (no bodies).  |
+| Properties | Can contain properties. | Cannot contain properties.  |
+| Inheritance | A class can only extend ONE abstract class. | A class can implement multiple interfaces.  |
+| Usage | Used for related classes sharing code. | Used to define a contract for unrelated classes.  |
+
+AI responses may include mistakes.
+

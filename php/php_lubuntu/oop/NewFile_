@@ -1,0 +1,12 @@
+Triggered when calling $obj->property = 'value'
+    public function __set($property, $value) {
+        if (property_exists($this, $property)) {
+            echo "Setting '$property' to '$value'...\n";
+            
+            // Example of simple validation for salary
+            if ($property === 'salary' && !is_numeric($value)) {
+                echo "Error: Salary must be a number!\n";
+                return;
+            }
+            
+            $this->$property = $value

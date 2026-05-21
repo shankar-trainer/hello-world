@@ -1,0 +1,29 @@
+PHP's __set and __get are magic methods used to read from or write to inaccessible (private/protected) or non-existent properties within a class. 
+They facilitate encapsulation by allowing validation or dynamic handling of data without exposing raw properties directly. 
+These methods enhance data control.Key Aspects of __get and __set__set($name, $value): 
+    Executed when writing data to inaccessible properties. 
+    It takes the property name and the value being assigned.
+    __get($name): Executed when reading data from inaccessible properties. 
+        It takes the property name and returns the value.
+    Encapsulation & Flexibility: Useful for creating dynamic properties or restricting direct access to object data, similar to getters/setters, as discussed in Stack Overflow.
+    Example Usage php
+    class User {
+    private $data = [];
+
+    // Magic setter: intercepts setting undefined or private properties
+    public function __set($name, $value) {
+        echo "Setting $name to $value\n";
+        $this->data[$name] = $value;
+    }
+
+    // Magic getter: intercepts reading undefined or private properties
+    public function __get($name) {
+        echo "Getting $name\n";
+        return $this->data[$name] ?? null;
+    }
+}
+
+$user = new User();
+$user->name = "Alice"; // Calls __set()
+echo $user->name;      // Calls __get()
+Use code with caution.Important ConsiderationsPerformance: Magic methods are slightly slower than direct property access or explicit getters/setters.IDE Support: IDEs often struggle with autocompletion for properties managed via __get/__set.Alternatives: Consider using explicit getProperty()/setProperty() methods for cleaner, safer code unless dynamism is required.
