@@ -41,27 +41,27 @@ if (isset($_POST["id"]) && isset($_POST["name"])) {
 
             <h2>Purchase Product</h2>
 
-            <div class="md-3 row mt-3">
+            <div class="mb-3 row mt-3">
                 <label class="col-6">product1 name </label>
                 <input class="col-6" name="prd1" class="form-control">
             </div>
 
-            <div class="md-3 row mt-2">
+            <div class="mb-3 row mt-2">
                 <label class="col-6">product2 name </label>
                 <input class="col-6" name="prd2" class="form-control">
             </div>
 
-            <div class="md-3 row mt-3">
+            <div class="mb-3 row mt-3">
                 <label class="col-6">product1 cost </label>
                 <input class="col-6" name="cost1" class="form-control" type="number">
             </div>
 
-            <div class="md-3 row mt-2">
+            <div class="mb-3 row mt-2">
                 <label class="col-6">product2 cost </label>
                 <input class="col-6" name="cost2" class="form-control" type="number">
             </div>
 
-            <div class="md-3 mt-2">
+            <div class="mb-3 mt-2">
                 <button type="submit" class="btn btn-success">purchase</button>
                 <button type="cancel" class="btn btn-success">cancel</button>
             </div>
