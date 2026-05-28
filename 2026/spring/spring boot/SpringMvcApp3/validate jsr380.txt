@@ -1,0 +1,88 @@
+The reason you aren't seeing validation errors for hobbyList (as well as cityList and gender) comes down to how Spring MVC binds data from HTML form selections versus how your JSR-380 validation is currently structured.
+
+Here is a breakdown of why this is happening and exactly how to fix it.
+
+The Root Causes
+1. Element-Level vs. List-Level Validation
+In your User model, you have written your validation inside the generic type declaration:
+
+Java
+private List<@NotBlank(message = "...") @Size(max = 20) String> hobbyList;
+This tells Spring to validate the individual elements inside the list if they exist. However, if a user does not check any boxes on your JSP page, the browser sends nothing. Spring binds this either as an empty list or null. Because the list contains no elements, the @NotBlank rules inside the list are never triggered.
+
+2. Typo in Your @Size Error Message
+Take a close look at your name field vs your message:
+
+Java
+@Size(min = 6, max=15, message = "name must be between 5 - 15 character")
+If the user inputs 5 characters, validation will fail because your min is actually set to 6. Keeping messages and validation limits aligned prevents confusing behavior during testing!
+
+How to Fix It
+To make sure Spring throws an error when no checkboxes, radio buttons, or dropdowns are selected, you need to apply validation annotations directly to the List object itself (not just its contents).
+
+Step 1: Update the User.java Model
+Add @NotEmpty or @NotNull directly to the collection fields.
+
+Java
+package com.cts.model;
+
+import java.util.List;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+public class User {
+
+	@NotNull(message = "id is null ")
+	@Min(value = 10000, message = "id can be minimum 10000")
+	@Max(value = 50000, message = "id can be maximum 50000")
+	private Integer id;
+	
+	@NotEmpty(message = "name is empty")
+	@Size(min = 6, max = 15, message = "name must be between 6 - 15 characters") // Fixed message typo
+	private String name;
+
+	@NotNull(message = "salary is null ")
+	@Min(value = 5000, message = "salary can be minimum 5000")
+	@Max(value = 50000, message = "salary can be maximum 50000")
+	private Float salary;
+	
+	// 1. Added @NotEmpty to ensure the user selects at least one hobby
+	@NotEmpty(message = "Please select at least one hobby") 
+	@Valid
+	private List<@NotBlank(message = "Hobby cannot be blank") 
+	             @Size(max = 20, message = "Hobby cannot exceed 20 characters") String> hobbyList;
+	
+	// 2. Added @NotEmpty to ensure a city is selected
+	@NotEmpty(message = "Please select a city")
+	@Valid
+	private List<@NotBlank(message = "city cannot be blank") String> cityList;
+	
+	// 3. Added @NotEmpty to ensure gender is selected
+	@NotEmpty(message = "Please select a gender")
+	@Valid
+	private List<@NotBlank(message = "gender cannot be blank") String> gender;
+
+	// ... Keep your existing getters and setters exactly as they are ...
+}
+Step 2: Check Your Controller Method
+Ensure that your Controller is properly triggering the validation engine. It must feature the @Valid (or @Validated) annotation right before the User object, followed immediately by the BindingResult.
+
+Java
+@PostMapping("/login")
+public String handleLogin(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+    if (result.hasErrors()) {
+        // If validation fails, reload the collection reference data so the JSP can render them again
+        model.addAttribute("hobbyList", Arrays.asList("Sports", "Music", "Reading")); 
+        model.addAttribute("cityList", Arrays.asList("New York", "London", "Tokyo"));
+        model.addAttribute("gender", Arrays.asList("Male", "Female", "Other"));
+        
+        return "your-form-jsp-page-name"; 
+    }
+    return "success-page";
+}
+⚠️ Important Note on Controller Binding: The BindingResult parameter must immediately follow the validated model object. If you place another parameter (like Model) between @Valid User user and BindingResult result, Spring's validation mechanism will break and throw an HTTP 400 or exception instead of catching the errors gracefully.
