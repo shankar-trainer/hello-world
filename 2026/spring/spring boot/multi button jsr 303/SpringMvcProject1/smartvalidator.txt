@@ -1,0 +1,186 @@
+in above disable jsr 303 validation for show all, search ,delete case only validate id, update case validate all, add case only valiudate name, amount fields 
+
+To achieve dynamic validation based on which button is clicked, you run into a classic Spring MVC problem: @Valid triggers validation automatically before your controller method logic even runs. Because show all, search, and delete only care about specific fields (or no fields at all), standard JSR-303 / Jakarta Validation on the entire @ModelAttribute will cause result.hasErrors() to return true if fields like name or amount are missing.
+
+Here are the two best approaches to handle this. Option 1 is highly recommended as it relies on clean, standard Spring/Jakarta patterns (Validation Groups).
+
+Option 1: Using Jakarta Validation Groups (Recommended)
+Validation Groups allow you to categorize your model constraints and trigger only specific groups depending on the action.
+
+Step 1: Define Marker Interfaces
+Create empty interfaces to act as your validation groups. You can group them inside a single file or separate files.
+
+Java
+package com.cts.validation;
+
+public interface ValidationGroups {
+    // For Add: validates name, amount, etc.
+    interface Add {}
+    
+    // For Update: validates everything (id, name, amount, etc.)
+    interface Update {}
+    
+    // For Search/Delete: validates only the ID
+    interface IdOnly {}
+}
+Step 2: Apply Groups to your Insurance Model
+Assign the groups to the respective fields in your entity.
+
+Java
+package com.cts.model;
+
+import com.cts.validation.ValidationGroups.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public class Insurance {
+
+    @NotNull(groups = {Update.class, IdOnly.class}, message = "ID is required")
+    @Min(value = 1, groups = {Update.class, IdOnly.class})
+    private Integer id;
+
+    @NotBlank(groups = {Add.class, Update.class}, message = "Name cannot be blank")
+    private String name;
+
+    @NotNull(groups = {Add.class, Update.class}, message = "Amount is required")
+    @Min(value = 0, groups = {Add.class, Update.class})
+    private Double amount;
+
+    // Getters and Setters
+}
+Step 3: Use Programmatic Validation in the Controller
+Since all buttons submit to the exact same mapping (/addRecord), we cannot use @Valid or @Validated at the method parameter level (because that executes before we can read the submit request parameter).
+
+Instead, inject SmartValidator programmatically to execute target validation inside your switch block:
+
+Java
+package com.cts.controller;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.SmartValidator;
+import org.springframework.web.bind.annotation.*;
+import com.cts.model.Insurance;
+import com.cts.service.InsuranceService;
+import com.cts.validation.ValidationGroups;
+
+@Controller
+@RequestMapping("/insurance")
+public class InsuranceController {
+
+    @Autowired
+    private InsuranceService service;
+
+    @Autowired
+    private SmartValidator validator; // Programmatic validator
+
+    @GetMapping("/form")
+    public String hello(ModelMap map) {
+        map.addAttribute("insurance", new Insurance());
+        return "insuranceform";
+    }
+
+    @PostMapping("/addRecord")
+    public String addRecord(@ModelAttribute Insurance insurance, BindingResult result,
+                            @RequestParam("submit") String submit, ModelMap map) {
+        
+        System.out.println("submit is " + submit);
+        
+        // 1. Manually trigger validation groups based on the submitted action
+        switch (submit.toLowerCase()) {
+            case "add record":
+                validator.validate(insurance, result, ValidationGroups.Add.class);
+                break;
+                
+            case "update record":
+                validator.validate(insurance, result, ValidationGroups.Update.class);
+                break;
+                
+            case "search by id":
+            case "delete by id":
+                validator.validate(insurance, result, ValidationGroups.IdOnly.class);
+                break;
+                
+            case "show all":
+                // No validation required at all for showing all records
+                break;
+                
+            default:
+                break;
+        }
+
+        // 2. Check for errors AFTER conditional validation
+        if (result.hasErrors()) {
+            return "insuranceform";
+        }
+
+        // 3. Process valid business logic
+        switch (submit.toLowerCase()) {
+            case "add record":
+                service.addInsurance(insurance);
+                break;
+
+            case "show all":
+                List<Insurance> allInsurance = service.getAllInsurance();
+                map.addAttribute("allInsurance", allInsurance);
+                break;
+
+            case "search by id":
+                Insurance insurance1 = service.searchById(insurance.getId());
+                map.addAttribute("insurance1", insurance1);
+                break;
+
+            case "delete by id":
+                var ins = service.deleteById(insurance.getId());
+                map.addAttribute("ins", ins);
+                break;
+                
+            case "update record":
+                var ins3 = service.updateRecord(insurance);
+                map.addAttribute("ins3", ins3);
+                break;
+        }
+
+        map.addAttribute("msg", submit);
+        return "insuranceresult";
+    }
+}
+Option 2: Clean separation via JavaScript (Alternative)
+If you prefer to keep standard @Valid tags on target controllers without managing programmatic groups, you should avoid routing all requests to one monolithic switch statement. You can use simple JavaScript in your JSP to alter the form's action endpoint based on which button is clicked.
+
+Step 1: Update JSP Buttons
+Change your submit inputs to standard buttons that trigger a JavaScript function before submission:
+
+HTML
+<div>
+    <button type="button" onclick="submitForm('addRecord')">Add Record</button>
+    <button type="button" onclick="submitForm('updateRecord')">Update Record</button>
+    <button type="button" onclick="submitForm('search')">Search By ID</button>
+    <button type="button" onclick="submitForm('delete')">Delete By ID</button>
+    <button type="button" onclick="submitForm('showAll')">Show All</button>
+</div>
+
+<script>
+function submitForm(actionPath) {
+    var form = document.getElementById('insuranceForm'); // Add id="insuranceForm" to your form:form tag
+    form.action = "${pageContext.request.contextPath}/insurance/" + actionPath;
+    form.submit();
+}
+</script>
+Step 2: Split your Controller Methods
+Now, each action hits a clean endpoint tailored specifically to its validation footprint:
+
+Java
+@PostMapping("/addRecord")
+public String addRecord(@ModelAttribute @Valid AddInsuranceDto dto, BindingResult result...) { 
+    // Only validates Add constraints
+}
+
+@PostMapping("/search")
+public String searchById(@RequestParam("id") int id, ModelMap map) {
+    // No model validation overhead, just direct parameter parsing!
+}
