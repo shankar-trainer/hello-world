@@ -1,0 +1,43 @@
+org.springframework.validation.SmartValidator is an extended variant of Spring's standard Validator interface that introduces vital support for validation hints. 
+This capability allows developers to pass validation groups (such as JSR-303 / Jakarta Bean Validation groups) dynamically when manually executing validation logic.Core Functionality.
+While the traditional Validator.validate(Object, Errors) method processes all constraints blindly, 
+SmartValidator enhances this with two fundamental methods:
+validate(Object target, Errors errors, Object... validationHints): 
+Evaluates the target object using hints (typically Class tokens representing validation groups).
+validateValue(Class<?> targetType, String fieldName, Object value, Errors errors, Object... validationHints): 
+	Validates a standalone value for a specific field without needing to instantiate the entire object.Key Implementations
+	You rarely need to write your own SmartValidator. Instead, Spring automatically bootstraps standard implementations:
+	LocalValidatorFactoryBean: The central coordinator in Spring applications that bridges the Jakarta/Hibernate validation factory with Spring’s data-binding ecosystem.
+	SpringValidatorAdapter: A generic adapter that wraps a standard JSR-303 provider to behave as a SmartValidator.
+	How to Use It ProgrammaticallyWhen standard controller-level validation (like using @Validated) is not enough, 
+you can inject SmartValidator to trigger targeted rules conditionally.
+
+1. Define Validation Groupsjavapublic interface OnCreate {}
+public interface OnUpdate {}
+Use code with caution.
+2. Apply Groups to a DTOjavapublic class UserDto {
+    @NotNull(groups = OnCreate.class)
+    private String password;
+
+    @NotBlank(groups = {OnCreate.class, OnUpdate.class})
+    private String email;
+}
+
+3. Manually Trigger a Specific Groupjava@Service
+public class UserService {
+
+    @Autowired
+    private SmartValidator validator;
+
+    public void registerUser(UserDto dto) {
+        Errors errors = new BeanPropertyBindingResult(dto, "userDto");
+        
+        // Only validates fields matching the OnCreate group
+        validator.validate(dto, errors, OnCreate.class);
+
+        if (errors.hasErrors()) {
+            throw new ValidationException(errors.toString());
+        }
+    }
+}
+Use code with caution.SmartValidator vs. Standard ValidatorValidator: Only supports full-object checks. It is completely unaware of validation groups or specific targeted constraints.SmartValidator: Understands hints, links directly with @Validated actions, and supports fractional validation on individual property values.If you are working on a custom validation scenario, let me know:Are you trying to resolve nested validation group issues?Do you need to handle cross-field conditional logic?Are you trying to process validation errors inside a custom Spring Security filter or Interceptor?
