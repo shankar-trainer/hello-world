@@ -1,3 +1,4 @@
+<%@page import="com.cts.model.Employee"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,9 +21,20 @@ label {
 </head>
 <body>
 	<div class="style1">
-		<div>id is ${employee.id}</div>
-		<div>name is ${employee.name}</div>
-		<div>salary is ${employee.salary}</div>
+	Address	Added in database
+		<p>
+		<div>id is ${address1.addr_id}</div>
+		<div>location is ${address1.location}</div>
+		<div>pin is ${address1.pincode}</div>
+
+		
+		<%   
+		
+	var emp=(Employee)request.getAttribute("employee");
+		session.setAttribute("emp1",emp);
+		
+		%>
 	</div>
+	
 </body>
 </html>

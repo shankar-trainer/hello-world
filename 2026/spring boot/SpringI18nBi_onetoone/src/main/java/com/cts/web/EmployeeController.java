@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cts.model.Address;
 import com.cts.model.Employee;
+import com.cts.service.AddressService;
 import com.cts.service.EmployeeService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -25,11 +28,18 @@ public class EmployeeController {
 		return "EmployeeForm";
 	}
 
+	@Autowired
+	private EmployeeService service;
+
+	@Autowired
+	AddressService addressService;
+
 	@PostMapping("/login")
 	public String welcome(@ModelAttribute @Valid Employee employee, BindingResult result) {
 		if (result.hasErrors())
 			return "EmployeeForm";
 		else {
+			service.addEmployee(employee);
 			return "EmployeeResult";
 		}
 	}
@@ -40,6 +50,24 @@ public class EmployeeController {
 	@PostMapping("/add")
 	public Employee addEmployee(@ModelAttribute Employee employee) {
 		return employeeService.addEmployee(employee);
+	}
+
+	@PostMapping("/addAddress")
+	public String addAddress(@RequestParam("location") String location, @RequestParam("pincode") long pincode,
+			HttpSession session, ModelMap map) {
+
+		Address address = new Address();
+		address.setLocation(location);
+		address.setPincode(pincode);
+
+		var emp1 = (Employee) session.getAttribute("emp1");
+
+		address.setEmployee(emp1);
+
+		var address1 = addressService.addAddress(address);
+		map.addAttribute("address1", address1);
+		return "addressResult";
+
 	}
 
 	@GetMapping("/search")

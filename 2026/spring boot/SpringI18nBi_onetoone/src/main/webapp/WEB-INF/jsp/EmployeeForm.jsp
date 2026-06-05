@@ -26,12 +26,13 @@ label{
 	</nav>
 	
 	
-	<form:form modelAttribute="employee" action="login" method="post" cssClass="style1">
-		<div>
+	<form:form modelAttribute="employee" 
+	action="/employee/login" method="post" cssClass="style1">
+	<%-- 	<div>
 			<form:label path="id"><spring:message code="emp.id"></spring:message></form:label>
 			<form:input path="id" />
 			<form:errors></form:errors>
-		</div>
+		</div> --%>
 		<div>
 			<form:label path="name"><spring:message code="emp.name"></spring:message></form:label>
 			<form:input path="name" />
@@ -48,7 +49,6 @@ label{
 		</div>
 
 	</form:form>
-
 
 
 </body>
