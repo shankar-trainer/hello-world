@@ -1,5 +1,7 @@
 package com.cts.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -47,10 +49,22 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
+	@GetMapping("/all")
+	public String getAllEmployee(ModelMap map){
+		
+		var list1=employeeService.getAllEmployee();
+		map.addAttribute("allrecord", list1);
+		
+	 return "allrecord";
+	}
+	
+	
 	@PostMapping("/add")
 	public Employee addEmployee(@ModelAttribute Employee employee) {
 		return employeeService.addEmployee(employee);
 	}
+	
+	
 
 	@PostMapping("/addAddress")
 	public String addAddress(@RequestParam("location") String location, @RequestParam("pincode") long pincode,
@@ -67,7 +81,6 @@ public class EmployeeController {
 		var address1 = addressService.addAddress(address);
 		map.addAttribute("address1", address1);
 		return "addressResult";
-
 	}
 
 	@GetMapping("/search")

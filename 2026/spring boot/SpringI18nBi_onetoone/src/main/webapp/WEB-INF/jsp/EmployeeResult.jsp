@@ -29,12 +29,10 @@ label {
 		<div>salary is ${employee.salary}</div>
 
 		<fieldset>
-		<%   
-		
-	var emp=(Employee)request.getAttribute("employee");
-		session.setAttribute("emp1",emp);
-		
-		%>
+			<%
+			var emp = (Employee) request.getAttribute("employee");
+			session.setAttribute("emp1", emp);
+			%>
 			<form action="/employee/addAddress" method="post">
 				<h3>Address Form</h3>
 				<div>
@@ -49,6 +47,10 @@ label {
 					<button type="reset">Cancel</button>
 				</div>
 			</form>
+			<form action="/employee/all">
+				<button type="submit">showall</button>
+			</form>
+
 		</fieldset>
 	</div>
 </body>
