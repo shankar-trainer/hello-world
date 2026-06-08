@@ -9,7 +9,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig4 {
-       @Bean
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -20,13 +20,10 @@ public class SecurityConfig4 {
                 // Note: This is needed form the costom login form to work !!!
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/",
-                                "/WEB-INF/**",
-                                "/greeting",
-                                "/login",
-                                "/bcrypt").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/login", "/bcrypt", "/WEB-INF/jsp/**").permitAll() // Only public stuff
+                        .anyRequest().authenticated() // This now includes "/"
                 )
+
                 .formLogin((form) -> form
                         // Disable this to use the Default Spring Security Login Page
                         .loginPage("/login")
@@ -35,9 +32,9 @@ public class SecurityConfig4 {
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )
-                .logout((logout) ->logout
-                                .logoutSuccessUrl("/login?logout=true")
-                                .permitAll()
+                .logout((logout) -> logout
+                        .logoutSuccessUrl("/login?logout=true")
+                        .permitAll()
                 );
         return http.build();
     }
