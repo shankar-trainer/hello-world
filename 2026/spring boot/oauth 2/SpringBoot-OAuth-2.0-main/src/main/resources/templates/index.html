@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>OAuth Demo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f6f8;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .login-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #4285F4;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #3367d6;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>OAuth 2.0 Demo</h1>
+
+    <p>
+        Sign in using your Google account to view your profile details.
+    </p>
+    <a class="login-btn"
+       href="/oauth2/authorization/github">
+        Sign in with GitHub
+    </a>
+</div>
+
+</body>
+</html>
