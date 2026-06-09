@@ -1,0 +1,64 @@
+Authentication failed with provider OidcAuthorizationCodeAuthenticationProvider since [invalid_token_response] An error occurred while attempting to retrieve the OAuth 2.0 Access Token Response: I/O error on POST request for "https://github.com/login/oauth/access_token
+
+That error usually points to a network or connectivity issue where your Spring Security application is trying to talk to GitHub's token endpoint (https://github.com/login/oauth/access_token), but the request is timing out or being blocked.
+
+Since it's an I/O error on POST request, the application is failing at the network level before GitHub can even validate your credentials.
+
+Here is a checklist to debug and fix this issue, ordered from the most likely culprits to the most overlooked.
+
+1. Check for Proxy Settings (Most Common in Corporate Environments)
+If you are behind a corporate firewall or VPN, your application needs to know how to route requests out to the internet.
+
+You can configure Spring Boot to use a proxy by passing system properties at startup:
+
+Bash
+java -Dhttp.proxyHost=your.proxy.com -Dhttp.proxyPort=8080 -Dhttps.proxyHost=your.proxy.com -Dhttps.proxyPort=8080 -jar your-app.jar
+Alternatively, if you are using a custom RestTemplate or WebClient for your OAuth2AccessTokenResponseClient, you will need to explicitly configure the proxy inside that bean.
+
+2. Verify Your Application's Internet Access
+Make sure the machine running your application can actually reach GitHub. Run a quick curl command from the exact same environment (or Docker container):
+
+Bash
+curl -X POST https://github.com/login/oauth/access_token
+If it hangs or times out: You have a local network, firewall, or DNS issue.
+
+If it returns a response (even an error like bad_verification_code or 404/405): The network is fine, and the issue is likely inside your application's SSL/TLS configuration.
+
+3. SSL/TLS and Truststore Issues
+Because this is an https request, your Java Virtual Machine (JVM) must trust GitHub’s SSL certificate.
+
+If you are using an older version of Java, it might not have updated root certificates. Try upgrading your JDK/JRE.
+
+If your corporate network uses SSL Inspection (MITM), you will need to download your company's proxy certificate and import it into your Java cacerts truststore:
+
+Bash
+keytool -importcert -trustcacerts -file company-ca.crt -alias corporate-proxy -keystore $JAVA_HOME/lib/security/cacerts
+4. Spring Security Configuration Mismatch
+Ensure your application.yml or application.properties is using the correct GitHub defaults. Spring Security has built-in provider settings for GitHub, so your configuration should look minimal:
+
+YAML
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: YOUR_GITHUB_CLIENT_ID
+            client-secret: YOUR_GITHUB_CLIENT_SECRET
+            # "provider" defaults to github, no need to override URLs unless using GitHub Enterprise
+Note: If you are using GitHub Enterprise, the token URL is different (usually https://your-company-github.com/login/oauth/access_token). Double-check that you aren't accidentally pointing a local instance to the public GitHub URL if a firewall blocks it.
+
+5. DNS Resolution Failure
+Sometimes the JVM caches bad DNS results, or your local DNS server is failing to resolve github.com. You can test this by adding a temporary logger or checking your system's /etc/hosts file to ensure nothing is hijacking the route.
+
+How to get more details
+To see the exact underlying cause of the I/O error (e.g., ConnectException, UnknownHostException, or SSLHandshakeException), add this to your application.properties to turn on debugging for the HTTP client:
+
+Properties
+logging.level.org.springframework.web.client.RestTemplate=DEBUG
+logging.level.org.springframework.security=DEBUG
+Which environment is this happening in (local machine, Docker, AWS, corporate network)? If you can share the underlying exception from the debug logs, we can pin down the exact fix.
+
+
+
+
