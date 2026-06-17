@@ -1,0 +1,147 @@
+Open kafka-server-start.bat in Notepad and remove this line
+to find cntrl+f => "wmic os"
+wmic os get osarchitecture | find /i "32-bit" >nul 2>&1IF NOT ERRORLEVEL 1 (rem 32-bit OSset KAFKA_HEAP_OPTS=-Xmx512M -Xms512M) ELSE (rem 64-bit OSset KAFKA_HEAP_OPTS=-Xmx1G -Xms1G)
+after removed it looks like below :
+IF ["%KAFKA_HEAP_OPTS%"] EQU [""] (
+    rem detect OS architecture
+   )
+
+========================
+
+
+
+C:\kafka_2.13-4.3.0\ set KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+
+
+C:\kafka_2.13-4.3.0\bin>windows\kafka-storage.bat format --standalone -t $KAFKA_CLUSTER_ID -c ..\config\server.properties
+
+
+
+C:\kafka_2.13-4.3.0\bin>windows\kafka-server-start.bat ..\config\server.properties
+
+-----------------
+create topic 
+
+bin\windows\kafka-topics.bat --create --topic my-topic-name --bootstrap-server localhost:9092
+
+Note: If you want to specify partitions or replication factor, you can add them:
+--partitions 3 --replication-factor 1
+
+list topics 
+
+ bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+ 
+===============
+for error 
+
+C:\kafka_2.13-4.3.0>bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+2026-06-17T10:13:39.919137600Z main ERROR Reconfiguration failed: No configuration found for '2c7b84de' at 'null' in 'null'
+my-topic-name
+quickstart-events
+test-topic
+
+below not work
+Navigate to your Kafka installation folder: C:\kafka_2.13-4.3.0\config\
+
+Open the file tools-log4j.properties.
+
+Change the line:
+log4j.rootLogger=INFO, stderr
+to
+log4j.rootLogger=WARN, stderr
+
+============
+
+javatechie saga orchestart
+
+public class KafkaConfigProperties {
+
+    public static final String PAYMENT_EVENTS_TOPIC = "payment-events";
+    public static final String PAYMENT_EVENTS_CMD_TOPIC = "payment-events-commands";
+    public static final String PAYMENT_EVENT_GROUP = "payment-event-group";
+
+
+    public static final String SEAT_RESERVED_TOPIC = "seat-reserved-topic";
+    public static final String SEAT_RESERVED_CMD_TOPIC = "seat-reserved-commands";
+    public static final String SEAT_EVENT_GROUP = "seat-event-group";
+
+    public static final String MOVIE_BOOKING_EVENTS_TOPIC = "movie-booking-events";
+    public static final String MOVIE_BOOKING_GROUP = "movie-booking-group";
+
+    public static final String ORCHESTRATOR_CONSUMER_GROUP = "orchestrator-event-group";
+}
+
+only create topics not groups
+
+C:\kafka_2.13-4.3.0>bin\windows\kafka-topics.bat --create --topic movie-booking-events --bootstrap-server localhost:9092
+2026-06-17T10:23:01.407337600Z main ERROR Reconfiguration failed: No configuration found for '2c7b84de' at 'null' in 'null'
+Created topic movie-booking-events.
+=========================
+data.sql seat-inventory-service 
+ execute in mysql 
+ 
+---------------------------
+localhost:8181/orchestrator/bookings
+post 
+ {
+"showId":"show_100",
+"seatIds":[
+"A1","A2"
+],
+"userId":"basant",
+
+"amount":1000
+
+}
+it will give booking id 
+---- in mysql ------------
+data.sql seat-inventory-service 
+
+
+------------------------------
+ select * from booking_seatids;
+  
+ select * from  booking;
+ -------------
+  failure case 
+ 
+localhost:8181/orchestrator/bookings
+post 
+ {
+"showId":"show_202",
+"seatIds":[
+"B1","B2"
+],
+"userId":"ram",
+
+"amount":10000
+
+} 
+in console 
+service.MovieBookingOrchestrator Orchestrator published BookingCreatedEvent (FAILED) to Booking-Service
+com.javatechie.service.BookingService    : BookingService:: Booking saved: reservation id ae033174 | status FAILED
+
+ ------------------------
+ 
+ https://github.com/Java-Techie-jt/saga-choreography
+ https://github.com/Java-Techie-jt/saga-orchestration
+ https://www.youtube.com/watch?v=JtTIXwZtScY&t=1080s
+
+Saga Orchestration in Microservices — Movie Booking System Example
+
+In this video, we dive deep into Saga Orchestration, one of the most powerful patterns to maintain data consistency across distributed microservices.
+But instead of boring theory, we break it down with a real-time Movie Ticket Booking System use case — step by step, visually, and with fun explanations!
+
+You’ll learn:
+✅ What Saga Orchestration is
+✅ How it solves distributed transaction problems
+✅ Orchestrator workflow explained
+✅ Success & compensation flows
+✅ Real-time example: Movie Booking System
+✅ When to use Orchestration vs Choreography
+✅ Best practices + common pitfalls	
+
+Java Techie demonstrates how to implement a central orchestrator to manage microservice workflows, building upon previous choreography examples. The tutorial covers creating a Spring Boot service to act as the brain for a movie booking system, handling Kafka events for service communication.
+
+
+
