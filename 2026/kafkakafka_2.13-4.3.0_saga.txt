@@ -19,8 +19,6 @@ IF ["%KAFKA_HEAP_OPTS%"] EQU [""] (
 
 ========================
 
-
-
 C:\kafka_2.13-4.3.0\ set KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
 
 
@@ -62,6 +60,7 @@ to
 log4j.rootLogger=WARN, stderr
 
 ============
+saga orchestration 
 
 javatechie saga orchestart
 
@@ -156,3 +155,88 @@ Java Techie demonstrates how to implement a central orchestrator to manage micro
 
 
 
+==========================================
+choreography pattern 
+no orchestration module required , so removed 
+
+https://www.youtube.com/watch?v=q38plWv6h5U
+https://github.com/Java-Techie-jt/saga-choreography
+
+topics in kafka same as above
+
+insert data by data.sql 
+
+
+localhost:9191/booking-service/bookSeat
+------------------------------
+post 
+ {
+"showId":"show_101",
+"seatIds":[
+"A1","A2"
+],
+"userId":"basant",
+
+"amount":1000
+
+}
+
+
+output 
+{
+    "reservationId": "d70b6715",
+    "status": "CONFIRMED"
+}
+select * from  seat_inventory ; in start 
++----+-------------------+----------------------------+----------+------------+----------+-----------+-----------------+
+| id | currentBookingId  | lastUpdated                | screenId | seatNumber | showId   | status    | theaterId       |
++----+-------------------+----------------------------+----------+------------+----------+-----------+-----------------+
+|  1 | NULL              | 2026-06-18 15:21:11.000000 | SCREEN_1 | A1         | SHOW_101 | AVAILABLE | THEATER_PVR_001 |
+|  2 | NULL              | 2026-06-18 15:21:11.000000 | SCREEN_1 | A2         | SHOW_101 | AVAILABLE | THEATER_PVR_001 |
+
+will change to available to locked 
+
++----+-------------------+----------------------------+----------+------------+----------+-----------+-----------------+
+| id | currentBookingId  | lastUpdated                | screenId | seatNumber | showId   | status    | theaterId       |
++----+-------------------+----------------------------+----------+------------+----------+-----------+-----------------+
+|  1 | d70b6715          | 2026-06-18 15:41:27.194185 | SCREEN_1 | A1         | SHOW_101 | LOCKED    | THEATER_PVR_001 |
+|  2 | d70b6715          | 2026-06-18 15:41:27.194185 | SCREEN_1 | A2         | SHOW_101 | LOCKED    | THEATER_PVR_001 |
+
+----------------------------
+
+
+failure 
+
+ {
+"showId":"show_202",
+"seatIds":[
+"B1","B2"
+],
+"userId":"ram",
+
+"amount":3000
+
+}
+
+select * from  booking ;
+
+mysql> select * from  booking ;
++---------------+--------+-------------+----------------------------+----------+-----------+--------+
+| id            | amount | bookingCode | createdAt                  | showId   | status    | userId |
++---------------+--------+-------------+----------------------------+----------+-----------+--------+
+| 1781776211040 |   1000 | cfc92282    | 2026-06-18 09:50:11.040063 | show_100 | CONFIRMED | basant |
+| 1781776412339 |   3000 | 8298b2c8    | 2026-06-18 09:53:32.339679 | show_202 | FAILED    | ram    |
++---------------+--------+-------------+----------------------------+----------+-----------+--------+
+
+c.j.listener.SeatReserveEventConsumer    : skipping payment processing as seat reservation failed for bookingId: 8298b2c8
+
+
+mysql> select * from  seat_inventory ;
++----+-------------------+----------------------------+----------+------------+----------+-----------+-----------------+
+| id | currentBookingId  | lastUpdated                | screenId | seatNumber | showId   | status    | theaterId       |
++----+-------------------+----------------------------+----------+------------+----------+-----------+-----------------+
+
+|  6 | NULL              | 2026-06-18 15:23:35.346011 | SCREEN_2 | B1         | SHOW_202 | AVAILABLE | THEATER_PVR_001 |
+|  7 | NULL              | 2026-06-18 15:23:35.346011 | SCREEN_2 | B2         | SHOW_202 | AVAILABLE | THEATER_PVR_001 |
+
+no changes not mapped to any id 
