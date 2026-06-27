@@ -1,0 +1,315 @@
+Routing
+
+•Routing in React is primarily handled using the external library 
+React Router, as React does not have built-in routing capabilities.
+•This library enables client-side navigation between different 
+components (views) without a full page reload, creating a 
+seamless single-page application (SPA) experience. 
+
+
+
+Core Concepts and Components
+
+•React Router provides components to manage application navigation 
+and keep the UI in sync with the URL. 
+•BrowserRouter: The most common router for web applications. It uses the 
+HTML5 History API to maintain clean, human-readable URLs (e.g., /about).
+•Routes: A container that holds all individual route definitions.
+•Route: Defines a mapping between a specific URL path and the component to 
+render (element) when that path is matched.
+•Link / NavLink: Used for navigation within the app. Link functions like an HTML 
+anchor tag but prevents a full page reload, while NavLinkoffers additional styling 
+properties for active links (e.g., highlighting the current page in a navigation 
+menu).
+•Outlet: Used in nested routing to specify where a child route's component 
+should be rendered within its parent's layout.
+•useNavigate: A hook for programmatic navigation (e.g., redirecting a user after a 
+login or form submission).
+•useParams: A hook that allows access to dynamic segments (parameters) from 
+the URL (e.g., extracting a user ID from /user/:id). 
+
+
+
+
+
+
+BrowserRoutervs Router
+
+•BrowserRouter
+•It is the most common router for web applications, as it uses theHTML5 
+history APIto manage navigation with clean, human-readable URLs.
+•URL Style: Uses standard, clean URLs (e.g., https://example.com/about).
+•API Used: Leverages the HTML5 History API (pushState, replaceState, 
+popstateevents) to keep the UI in sync with the URL without requiring a 
+full page reload.
+
+
+
+•Router
+•It is the core component that provides the underlying routing logic but 
+requires a specific "history" implementation to be passed to it, which 
+manages how navigation history is stored and updated.
+•Flexibility: It allows developers to use custom history implementations 
+(e.g.,browserHistory,hashHistory, ormemoryHistory) based on specific 
+environment needs.
+
+
+
+
+
+
+Install the Library
+
+npminstall react-router-dom@6
+
+•Wrap Your Application: Enclose your entire application or the 
+main section where routing is needed within 
+theBrowserRoutercomponent in entry file
+•(e.g.,index.jsorApp.js).
+
+
+
+index.js
+
+import React from 'react';
+
+import ReactDOMfrom 'react-dom/client';
+
+import { BrowserRouter} from 'react-router-dom';
+
+import App from './App';
+
+constroot = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+
+<React.StrictMode>
+
+<BrowserRouter>
+
+<App />
+
+</BrowserRouter>
+
+</React.StrictMode>
+
+);
+
+
+Define Your Routes
+
+•In your mainAppcomponent, useRoutesandRouteto map paths to components
+
+
+import { Routes, Route } from 'react-router-dom';
+
+import Home from './pages/Home';
+
+import About from './pages/About';
+
+import NotFoundfrom './pages/NotFound'; // Create a 404 component
+
+function App() {
+
+return (
+
+<Routes>
+
+<Route path="/" element={<Home />} />
+
+<Route path="/about" element={<About />} />
+
+{/* Catch-all route for 404 pages */}
+
+<Route path="*" element={<NotFound/>} />
+
+</Routes>
+
+);
+
+}
+
+
+Add Navigation Links
+
+•Use theLinkorNavLinkcomponent to allow users to navigate between pages without a full 
+refresh
+
+
+import { Link } from 'react-router-dom';
+
+function Navbar() {
+
+return (
+
+<nav>
+
+<Link to="/">Home</Link>
+
+<Link to="/about">About</Link>
+
+</nav>
+
+);
+
+}
+
+
+Link vs 
+
+•Link is used for basic, standard navigation between routes, 
+•while NavLinkis a specialized Link that automatically adds styling 
+(like an "active" class) when its route matches 
+
+
+the current URL, making it ideal for navigation menus. 
+
+
+Key Differences:
+
+•NavLink: Automatically appends an active class when clicked/active, 
+allowing for easy CSS styling to highlight the current page.
+•Link: A standard component for navigation that does not inherently track or 
+style the active state.
+•Usage: Use NavLinkfor navigation bars or menus; use Link for standard links 
+elsewhere in the application. 
+
+
+// NavLinkwith active styling
+
+<NavLinkto="/" activeClassName="active">Home</NavLink>
+
+// Standard Link
+
+<Link to="/about">About</Link>
+
+
+useParam
+
+
+•The useParamshook from React Router allows functional 
+components to access dynamic values from the URL, such as an 
+item's ID in a URL like /product/123. 
+•It returns an object where the keys are the parameter names 
+defined in the route path and the values are the corresponding 
+URL segments. 
+
+
+
+function App() {
+
+return (
+
+<Router>
+
+<nav>
+
+<Link to="/">Home</Link>
+
+</nav>
+
+<Routes>
+
+<Route path="/" element={<Home />} />
+
+{/* Define a dynamic route for product details */}
+
+<Route path="/product/:productId" 
+element={<ProductDetails/>} />
+
+</Routes>
+
+</Router>
+
+);
+
+}
+
+function Home() {
+
+return (
+
+<div>
+
+<h1>Welcome to the Store</h1>
+
+<ul>
+
+{/* Use the Link component to navigate to specific product IDs */}
+
+<li>
+
+<Link to="/product/1">Product 1</Link>
+
+</li>
+
+<li>
+
+<Link to="/product/2">Product 2</Link>
+
+</li>
+
+<li>
+
+<Link to="/product/3">Product 3</Link>
+
+</li>
+
+</ul>
+
+</div>
+
+);
+
+}
+
+
+Access the parameter in the ProductDetailscomponent 
+
+function ProductDetails() {
+
+// Destructurethe "productId" from the object returned by useParams()
+
+const{ productId} = useParams();
+
+const[product, setProduct] = useState(null);
+
+// Example of using the parameter to fetch data
+
+useEffect(() => {
+
+// In a real app, you would use productIdto make an API call
+
+// e.g., fetchProductDetails(productId).then(data => setProduct(data));
+
+console.log(`Fetching details for product ID: ${productId}`);
+
+setProduct({ id: productId, name: `Sample Product ${productId}` });
+
+}, [productId]); // Re-run effect if the ID changes
+
+if (!product) {
+
+return <div>Loading...</div>;
+
+}
+
+return (
+
+<div>
+
+<h2>Product Details</h2>
+
+<p>ID: {product.id}</p>
+
+<p>Name: {product.name}</p>
+
+</div>
+
+);
+
+}
+
+export default ProductDetails;
+
+
