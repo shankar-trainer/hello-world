@@ -1,0 +1,21 @@
+.calc{
+    border:solid 5pt;
+    padding: 20pt;
+    background-color: lightblue;
+    width: 30%;
+    margin: 100pt;
+    border-radius: 20pt;
+}
+label{
+    float: left;
+    margin-right: 10pt;
+}
+
+input{
+    width: 110pt;
+    margin-top: 2pt;
+}
+input[type='button'],input[type='reset'] {
+    width: 70pt;
+    margin-top: 4pt;
+}

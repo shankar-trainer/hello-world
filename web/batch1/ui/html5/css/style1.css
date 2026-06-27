@@ -1,0 +1,12 @@
+h1{
+    text-align: center;
+    text-indent: 50pt;
+    text-decoration: overline;
+    text-shadow: 5pt 20pt 1pt red;
+    width: 30%;
+}
+
+*{
+padding: 20pt;
+border: solid;
+}

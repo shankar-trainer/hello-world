@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="hello()">
+    <script>
+        function hello() {
+            document.getElementById("pi").innerHTML = Math.PI
+        }
+        function sinvalue(){
+            var s=document.getElementById("sin").value
+            document.getElementById("result").innerHTML =Math.sin(parseFloat(s) )
+        }
+    </script>
+
+    <div>
+        <label>Math pi is </label><span id="pi"></span>
+    </div>
+    <div>
+        <label>enter pi value to calculate sin value</label>
+        <input id="sin">
+        <div id="result" onclick="sinvalue()">
+            Result
+        </div>
+    </div>
+
+</body>
+
+</html>

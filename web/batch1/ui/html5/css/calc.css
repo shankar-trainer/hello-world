@@ -1,0 +1,30 @@
+.calc {
+    border: solid;
+    padding: 20pt;
+    background-color: bisque;
+    width: 30%;
+    border-radius: 20pt;
+    margin: 100pt;
+}
+body{
+    /* background-color: fuchsia; */
+    background-image: url("..\image\home1.jpg");
+    /* background-repeat: repeat; */
+}
+
+label {
+    float: left;
+}
+
+input {
+    width: 110pt;
+    margin-top: 2pt;
+}
+
+input[type="button"] {
+    width: 80pt;
+}
+
+input[type="reset"] {
+    width: 80pt;
+}

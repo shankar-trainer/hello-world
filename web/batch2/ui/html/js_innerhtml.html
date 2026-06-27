@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function changeit(){
+            var a=document.getElementById("id1").innerHTML
+            alert(a)
+            // document.getElementById("id1").innerHTML="<h1>welcome to javascript</h1>"
+             document.getElementById("id1").innerText="<h1>welcome to javascript</h1>"
+        }
+    </script>
+    <style>
+        span{
+            color: red;
+            font-weight: bold;
+        }
+        .col{
+            width: 48%;
+            float: left;
+            border: solid;
+            height: 200pt;
+            margin-right: 5pt;
+            background-color: burlywood;
+            /* background-image: url("image/img1.jpg"); */
+            /* background-repeat: no-repeat; */
+            /* background-repeat: repeat-x; */
+            /* background-repeat: repeat-y; */
+        }
+    </style>
+</head>
+
+<body onload="date_time()">
+   <script>
+    function date_time(){
+      document.getElementById("date").innerHTML=new Date().toLocaleDateString()        
+     
+      document.getElementById("time").innerHTML=new Date().toLocaleTimeString()        
+    }
+    var c=1;
+    function increment(){
+        document.getElementById("id2").innerText='Count is '+c++
+    }
+    function decrement(){
+        document.getElementById("id2").innerText='Count is '+c--
+    }
+
+   </script>
+
+    <div id="id1" onclick="changeit()" class="col">
+      hello world
+    </div>
+
+    <div class="col">
+      <h2>Counter program</h2>
+        <span id="id2">Count is 1 </span>
+        <div>
+        <button type="button" onclick="increment()"> increment</button>
+        <button type="button" onclick="decrement()"> decrement</button>
+    </div>
+    </div>
+    <script>
+        function total(){
+           var count=document.getElementById("n").value
+           var cost=document.getElementById("c").value
+           var tot=count*cost;
+          if(count=="")
+          document.getElementById("err_n").innerHTML='product count is blank'
+           
+         else if(cost=="")
+          document.getElementById("err_c").innerHTML='cost is blank'
+           else{
+            document.getElementById("err_n").innerHTML=''
+            
+            document.getElementById("err_c").innerHTML=''
+
+           document.getElementById("total").innerHTML=`count is ${count}<br>cost per unit is ${cost}<br>total cost is ${tot}`
+           }
+        }
+    </script>
+    <div class="col" style="margin-top: 5pt;background-color: beige;border-radius: 20pt;">
+        <h2>product calculator</h2>
+        <div>
+           <span style="float: left;color: blue;" id="date">
+
+           </span>
+           <span style="float: right;color: blue;" id="time">
+
+           </span>
+            <br><br><br>
+            <label>enter product count</label>
+            <input type="number" id="n" placeholder="enter product count">
+            <span id="err_n"></span>
+        </div>
+        <div>
+            <label>enter product cost</label>
+            <input type="number" id="c" placeholder="enter product cost">
+            <span id="err_c"></span>
+        </div>
+
+        <div id="total">
+           
+        </div>
+        <div>
+        <button onclick="total()">total</button>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+Understanding useEffect’s Dependency Array in React: A Complete Guide
+Kavishka Nimsara
+
+Welcome to today’s blog! In this article, I’ll help you understand what the dependency array in useEffect is and how to use it effectively in your React or Next.js projects. Moreover, if you’re preparing for an interview, understanding this concept could give you an edge. Let’s dive in!
+
+What is useEffect?
+    useEffectis a React Hook that allows us to perform side effects in functional components. Side effects can include fetching data, updating the DOM, or handling timers.
+
+What are Side Effects?
+
+    A side effect is when a function does something that affects the outside world, like fetching data from an API or modifying a variable outside its scope.
+
+Press enter or click to view image in full size
+
+    Basic structure of the useEffect
+    What is the Dependency Array?
+    The dependency array in useEffect determines when the effect should run.It controls when the effect executes based on the values inside the array.
+
+We can use different types in the dependency array depending on what values we want to track for changes
+
+Here’s how to use it:
+
+1. Empty Dependency Array
+When you pass an empty array ([]), the effect runs only once after the initial render.
+
+Why use an Empty Array?
+
+✔ Run code only once when the component mounts.
+
+✔ Prevent unnecessary re-executions on re-renders.
+
+Example :
+
+import { useEffect } from "react";
+
+function App() {
+  useEffect(() => {
+    console.log("Hello world!");
+  }, []); // Empty array
+
+  return <h1>Hello, World!</h1>;
+}
+
+export default App;
+You will see the output “Hello world!” only once, during the initial render (when the page is loaded), in your console.
+
+Hello world!
+Common Use Cases for an Empty Array:
+
+✔ Fetching data (API calls on mount)
+
+✔ Initializing values
+
+✔ Setting up event listeners
+
+2. Specific Dependencies [value]
+When you include specific values inside the dependency array, the effect runs only when those values change.
+
+When to Use It?
+
+✔ Updating the UI based on state/prop changes.
+
+✔ Avoiding unnecessary effect executions.
+
+✔ Fetching data when a state variable updates.
+
+Example:
+
+import { useState, useEffect } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("Effect ran because count changed:", count);
+  }, [count]);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+export default Counter;
+You will see the output “Effect ran because count changed: 0” only once during the initial render (when the page loads) in your console.
+
+However, when you click the increment button, the side effect will run again, and you will see the output like: “Effect ran because count changed: 1”, “Effect ran because count changed: 2”, “Effect ran because count changed: 3”, and so on, as the count value changes.
+
+Ouput:
+
+Effect ran because count changed: 0
+Effect ran because count changed: 1
+Effect ran because count changed: 2
+Multiple Dependencies [count1, count2]
+
+Get Kavishka Nimsara’s stories in your inbox
+Join Medium for free to get updates from this writer.
+
+Enter your email
+Subscribe
+
+Remember me for faster sign in
+
+You can include multiple dependencies in the array, and the effect runs whenever any of them change.
+
+Example:
+
+import { useState, useEffect } from "react";
+
+function MultipleCounters() {
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+
+  useEffect(() => {
+    console.log(`Effect ran because count1 or count2 changed: ${count1}, ${count2}`);
+  }, [count1, count2]);
+
+  return (
+    <div>
+      <p>Count1: {count1}</p>
+      <p>Count2: {count2}</p>
+      <button onClick={() => setCount1(count1 + 1)}>Increment Count1</button>
+      <button onClick={() => setCount2(count2 + 1)}>Increment Count2</button>
+    </div>
+  );
+}
+
+export default MultipleCounters;
+How It Works:
+
+You can see in your console:
+
+Initial Render → The effect runs once:
+Effect ran because count1 or count2 changed: 0, 0
+2. Click “Increment Count1” (count1 increases):
+
+Effect ran because count1 or count2 changed: 1, 0
+3. Click “Increment Count2” (count2 increases):
+
+Effect ran because count1 or count2 changed: 1, 1
+The effect only runs when either count1 or count2 changes, not on every render.
+
+When to Use Multiple Dependencies?
+
+✔ Reacting to Multiple State Changes
+Example: Updating the UI when either count1 or count2 changes.
+
+✔ Fetching New Data When Different Filters Change
+Example: Fetching new products when category or priceRange changes.
+
+✔ Listening to Multiple Values in an Event Listener
+Example: Watching for changes in both screenWidth and themePreference.
+
+3. Omitted Dependency Array (No Dependency Array)
+If you don’t provide a dependency array, the effect runs after every render.
+
+import { useState, useEffect } from "react";
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("Effect ran after every render");
+  });
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+    </div>
+  );
+}
+
+export default Example;
+Each time you click the “Increment” or “Decrement” buttons, the state count changes, triggering a re-render of the component.
+
+Effect ran after every render
+You can see The effect runs every time the component re-renders.
+
+When to Use useEffect Without Dependencies?
+
+✔ Logging/debugging
+
+✔ Animations after every render
+
+✔ Dynamic UI recalculations
+
+🚨 However, Running effects on every render can cause performance issues
+
+Conclusion
+The useEffect dependency array controls when the effect runs, making it a powerful tool in React. Here's a quick recap:
+
+✔ useEffect(fn, []) → Runs only once (on mount)
+
+✔ useEffect(fn, [state]) → Runs when state changes.
+
+✔ useEffect(fn, [state1, state2]) Runs when any state changes.
+
+✔useEffect(fn) (no array) → Runs on every render (⚠ avoid overuse!).
+
+Mastering these patterns will help you write better, more optimized React applications.
+
+Thanks for Reading!
+Hope this guide helped you understand how to use the useEffect dependency array effectively! Have any questions? Drop them in the comments below. Happy coding! 🎉
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .col {
+            float: left;
+            width: 40%;
+            border: solid;
+            height: 100pt;
+            margin-right: 20pt;
+            margin-left: 10pt;
+            margin-top: 20pt;
+            background-color: bisque;
+        }
+        span{
+            color: red;
+        }
+        
+        label{
+            float: left;
+            width: 100pt;
+        }
+        input{
+          width: 110pt;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script>
+        function changeit() {
+            var a = document.getElementById("id1").innerHTML
+            alert(a)
+            // document.getElementById("id1").innerHTML="<h2>welcome to inner html</h2>"
+            document.getElementById("id1").innerText = "<h2>welcome to inner html</h2>"
+        }
+        var count = 0;
+        function increment() {
+            document.getElementById("id2").innerHTML = "Count is " + count;
+            count++;
+        }
+
+        function decrement() {
+            document.getElementById("id2").innerHTML = "Count is " + count;
+            count--;
+        }
+
+    </script>
+
+    <div id="id1" onclick="changeit()" class="col">
+        hello world
+    </div>
+
+    <div class="col">
+        <h2>Counter application</h2>
+        <div id="id2">Count is </div>
+        <div>
+            <button type="button" onclick="increment()">increment</button>
+            <button type="button" onclick="decrement()">decrement</button>
+        </div>
+    </div>
+    <script>
+        function total() {
+            var n = document.getElementById("pn").value
+            var cost = document.getElementById("cost").value
+            var total = parseFloat(n) * parseFloat(cost);
+            if (n == "") {
+                document.getElementById("err_pn").innerHTML = "no of product not given"
+            }
+            else if (cost == "") {
+                document.getElementById("err_cost").innerHTML = "cost not given"
+            }
+            else {
+                document.getElementById("err_pn").innerHTML = ""
+                document.getElementById("err_cost").innerHTML = ""
+
+                document.getElementById("total").innerHTML = `total number of product${n}<br>cost ${cost}<br>total cost ${total}`
+            }
+        }
+    </script>
+    <div class="col">
+        <div>
+            <label>enter no of product</label>
+            <input type="number" id="pn">
+            <span id="err_pn"></span>
+        </div>
+
+        <div>
+            <label>enter cost</label>
+            <input type="number" id="cost">
+            <span id="err_cost"></span>
+        </div>
+
+        <div id="total">
+
+        </div>
+        <div>
+            <button type="button" onclick="total()">total </button>
+        </div>
+    </div>
+</body>
+
+</html>

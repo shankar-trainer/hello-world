@@ -1,0 +1,91 @@
+The useParams hook from React Router allows functional components to access dynamic values from the URL, such as an item's ID in a URL like /product/123. 
+It returns an object where the keys are the parameter names defined in the route path and the values are the corresponding URL segments. 
+
+useParams Example
+Here is a complete example using React Router (v6) to demonstrate how to define a dynamic route and access its parameters within a component. 
+
+1. Setup your routes in App.js 
+First, define a dynamic route using the colon syntax (e.g., :id). This tells React Router that this part of the URL is a parameter. 
+
+jsx
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import ProductDetails from './ProductDetails';
+import Home from './Home';
+
+function App() {
+  return (
+    <Router>
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* Define a dynamic route for product details */}
+        <Route path="/product/:productId" element={<ProductDetails />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+2. Create the Home component
+This component provides links to navigate to the dynamic routes. 
+
+jsx
+import { Link } from 'react-router-dom';
+
+function Home() {
+  return (
+    <div>
+      <h1>Welcome to the Store</h1>
+      <ul>
+        {/* Use the Link component to navigate to specific product IDs */}
+        <li>
+          <Link to="/product/1">Product 1</Link>
+        </li>
+        <li>
+          <Link to="/product/2">Product 2</Link>
+        </li>
+        <li>
+          <Link to="/product/3">Product 3</Link>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
+export default Home;
+3. Access the parameter in the ProductDetails component 
+In the target component, import and call useParams() to retrieve the dynamic value. Destructure the returned object to access the specific parameter by its name (which is productId from the route definition in App.js). 
+
+jsx
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+function ProductDetails() {
+  // Destructure the "productId" from the object returned by useParams()
+  const { productId } = useParams();
+  const [product, setProduct] = useState(null);
+
+  // Example of using the parameter to fetch data
+  useEffect(() => {
+    // In a real app, you would use productId to make an API call
+    // e.g., fetchProductDetails(productId).then(data => setProduct(data));
+    console.log(`Fetching details for product ID: ${productId}`);
+    setProduct({ id: productId, name: `Sample Product ${productId}` });
+  }, [productId]); // Re-run effect if the ID changes
+
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <h2>Product Details</h2>
+      <p>ID: {product.id}</p>
+      <p>Name: {product.name}</p>
+    </div>
+  );
+}
+
+export default ProductDetails;

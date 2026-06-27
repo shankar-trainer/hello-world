@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // first way
+        var ar1 = new Array(3) // array with 3 size 
+        console.log(ar1)
+
+        ar1[0] = 11 // initializing
+        ar1[1] = 22
+        ar1[2] = 33
+        console.log(ar1)
+        // second way
+        var ar2 = new Array(1, 2, 3, 4, 5); // create and initialize
+        console.log(ar2)
+
+        //third way
+        var names = ["ram kumar", "amit kumar", "chandan kumar"];
+        console.log(names)
+        console.log(names[0])
+        console.log(names[1])
+        console.log(names.length)
+
+        // simple for loop
+        document.write("<br>  using simple for  loop ")
+
+        for (var index = 0; index < names.length; index++) {
+            document.write("<br>  " + names[index])
+        }
+        // for in loop  , returns key/index
+
+        document.write("<br>  using for in loop ")
+        for (var key in names) {
+            document.write("<br>  " + names[key])
+        }
+
+        document.write("<br>  using for of loop ")
+
+        // for of or for each loop , returns one by one value
+        for (var element of names) {
+            document.write("<br>  " + element)
+        }
+    // array methods 
+     var newarray=ar1.concat(ar2);
+     console.log("concat of ar1  "+ar1+" ar2 "+ar2+" is "+newarray)
+     console.log("concat of ar1  ",ar1," ar2 ",ar2," is ",newarray)
+      
+     console.log("ar1 ",ar1)
+     var a=ar1.pop()// remove and return last element
+     console.log("popped element/ removed element   ",a);
+     console.log("after pop ar1 ",ar1)
+
+     //push add element at last position
+     ar1.push(9999);
+     console.log("after push ar1 "+ar1)
+     // shift remove and return element from first position
+     // unshift add element at fisrt position
+
+     var city=["delhi","chennai","noida"]
+     console.log(city)
+     var city1=city.join("-");
+     console.log("after join "+city1)
+
+     city.splice(1); // from first position it will remove all element
+     console.log(city)
+
+     city.splice(0,0,"mumbai");
+     console.log(city)
+
+
+
+
+
+
+     
+
+
+
+    </script>
+
+</body>
+
+</html>

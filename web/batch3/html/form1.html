@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('css/style1.css');
+    </style>
+    <style>
+        form {
+            background-color: pink;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+
+    <h1 style="text-indent: 100pt;text-shadow: 5pt 10pt 5pt yellow;">Employee form</h1>
+
+    <form action="" style="background-color: floralwhite">
+        <span style="text-align: center;text-decoration: line-through;text-transform: uppercase;">
+            employee form</span>
+        <div>
+            <label>enter id </label>
+            <input type="number" required autofocus name="id">
+        </div>
+        <div>
+            <label>enter name </label>
+            <input name="name">
+        </div>
+
+        <div>
+            <label>enter email </label>
+            <input type="email" name="email">
+        </div>
+
+        <div>
+            <label>enter dob </label>
+            <input type="date" name="dob">
+        </div>
+
+        <div>
+            <label>entery time </label>
+            <input type="time" name="entry_time">
+        </div>
+
+
+        <div>
+            <label>enter pin code </label>
+            <input pattern="[0-9]{5}" name="pin">
+        </div>
+
+        <div>
+            <label>enter feedback </label>
+            <input type="range" min="1" max="10" name="feedback">
+        </div>
+
+        <div>
+            <label>enter state </label>
+            <input name="country" list="country">
+            <datalist id="country">
+                <option>tamil nadu</option>
+                <option>tamil nadu</option>
+                <option>telengana</option>
+                <option>uttar pardesh</option>
+                <option>andhra pardes</option>
+            </datalist>
+        </div>
+        <div>
+            <label>play audio</label>
+            <audio controls>
+                <source src="media/horse.ogv">
+            </audio>
+        </div>
+        <div>
+            <label>play video</label>
+            <video controls>
+                <source src="media/mov_bbb.mp4">
+            </video>
+        </div>
+
+
+
+        <div>
+            <button type="submit"> send</button>
+            <button type="reset">cancel</button>
+        </div>
+
+
+    </form>
+
+</body>
+
+</html>

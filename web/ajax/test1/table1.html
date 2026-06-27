@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table,
+        tr,
+        td {
+          border: solid;
+        }
+    </style>
+</head>
+<body>
+<script>
+    function table(){
+     var table=document.getElementById('table')
+     var row=table.insertRow()
+     var cell1=row.insertCell(0)
+     var cell2=row.insertCell(1)
+     var cell3=row.insertCell(2)
+   cell1.innerHTML="1001"
+   cell2.innerHTML="suresh"
+   cell3.innerHTML="30000"
+    }
+</script>
+<div>
+    <table id="table">
+
+
+    </table>
+    <button onclick="table()">create table</button>
+</div>
+</body>
+</html>

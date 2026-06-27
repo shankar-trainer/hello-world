@@ -1,0 +1,14 @@
+        label{
+            float: left;
+            width: 110pt;
+        }
+
+        form{
+            margin-left: 300pt;
+            margin-top: 10pt;
+            border: solid 2pt;
+            width: 30%;
+            padding: 20pt;
+            background-color: lightyellow;
+            border-radius: 20pt;
+        }

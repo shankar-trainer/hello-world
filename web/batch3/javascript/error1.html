@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+        divide = () => {
+            var a = document.getElementById('n1').value
+            var b = document.getElementById('n2').value
+            var c=0;
+            var result=''
+            try {
+                if (b == 0)
+                    throw ('divided by zero error')
+                else
+                    c = a / b
+                result='division is ' + c
+            }
+            catch (error) {
+                alert(error)
+                result=error
+            }
+
+            document.getElementById('result').innerHTML = '<span style="color:red">'+result+'</span>'
+        }
+    </script>
+
+    <fieldset style="width: 30%;padding: 20pt;">
+        <div>
+            <label>enter no1</label> <input id="n1">
+        </div>
+
+        <div>
+            <label>enter no2</label> <input id="n2">
+        </div>
+
+        <div id="result">
+
+        </div>
+
+        <div>
+            <button onclick="divide()">divide</button>
+        </div>
+    </fieldset>
+
+</body>
+
+</html>

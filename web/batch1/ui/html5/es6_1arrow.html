@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     var ar2=[11,2,10,9,1];
+       var sum=0
+      for (const element of ar2) { // for of loop 
+         sum=sum+element
+      }
+      console.log("sum of "+ar2+" is "+sum)
+
+      sum=0;
+      ar2.forEach(element => {
+        sum=sum+element;
+      });
+
+      console.log("sum of "+ar2+" is "+sum)
+
+      sum=0;
+      sum=ar2.reduce(function(a,b){
+        return a+b;
+      })
+      
+      console.log("sum of "+ar2+" is "+sum)
+      sum=0;
+      sum=ar2.reduce((a,b)=> a+b)
+      console.log("sum of "+ar2+" is "+sum)
+    </script>    
+    
+</body>
+</html>

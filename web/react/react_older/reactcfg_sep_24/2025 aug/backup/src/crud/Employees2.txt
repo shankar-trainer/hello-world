@@ -1,0 +1,57 @@
+import axios from "axios"
+import { Fragment, useEffect, useState } from "react"
+
+export const AllEmployees = () => {
+    const [employee, setAllEmployee] = useState([])
+    const [error1, setError1] = useState('')
+    useEffect(() => {
+        // const fetchdata=as
+        try {
+            const result = axios.get("http://localhost:7070/employee")
+            setAllEmployee(result.data)
+        }
+
+        catch (error) {
+            if (error.response) {
+                console.log(`${error.result.status}- ${error.result.data.message} `)
+                setError1(`${error.result.status}- ${error.result.data.message} `)
+            }
+            else if (error.request) {
+                setError1(`no response from server `)
+            }
+            else {
+                setError1(`${error.message}`)
+            }
+        }
+    }
+
+        , [])
+    return (
+        <div className="container p-5 m-5 bg-success text-white">
+            {
+                console.log(error1 + "" + (!error1))
+            }
+            {error1 && <p className="text-warn">{{ error1 }}</p>}
+
+            {!error1 &&
+                <table className="table table-bordered table-triped">
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>dob</th>
+                    </tr>
+                    {
+                        employee.map(a =>
+                            <tr>
+                                <td>{a.id}</td>
+                                <td>{a.name}</td>
+                                <td>{a.dob}</td>
+                            </tr>
+                        )
+                    }
+                </table>
+            }
+        </div>
+    )
+
+}

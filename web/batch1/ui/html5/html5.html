@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <label>play audio</label>
+        <audio src="media/horse.ogv" type="audio/ogg" controls>
+        </audio>
+    </div>
+    
+    <div>
+        <label>play video</label>
+        <video src="media/mov_bbb.mp4" controls width="300pt" height="200pt">
+
+        </video>
+    </div>
+
+    <div>
+        <form>
+        <div>
+            <label>no1</"label>
+            <input  id="a" value="0" oninput="result.value=parseFloat(a.value)+parseFloat(b.value)">
+        </div>
+        
+        <div>
+            <label>no2</"label>
+            <input  id="b" value="0" oninput="result.value=parseFloat(a.value)-parseFloat(b.value)">
+        </div>
+        
+        <div>
+            <label>result</"label>
+            <output  id="result" value="0" for="a b">
+        </div>
+
+
+
+        </form>
+    </div>
+</body>
+</html>

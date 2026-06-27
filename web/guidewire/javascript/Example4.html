@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var user={"userid":100001,"name":"amit kumar",salary:12000};
+        // document.write(user);
+
+        document.write(JSON.stringify(user));
+        document.write("user data");
+        document.write("<br>id "+user.userid);
+        document.write("<br>name "+user.name);
+        document.write("<br>salary "+user.salary);
+
+        var insurance=[
+            {"id":100011,"name":"life insurance","maturity":10},
+            {"id":100012,"name":"car insurance","maturity":13},
+            {"id":100013,"name":"education insurance","maturity":5},
+            {"id":100014,"name":"home  insurance","maturity":17},
+            {"id":100015,"name":"personal insurance","maturity":3},
+            {"id":100016,"name":"child insurance","maturity":20},
+            {"id":100017,"name":"bike insurance","maturity":2},
+        ]
+
+        document.write("<br>all insurances "+JSON.stringify(insurance));
+        console.log("all insurances "+JSON.stringify(insurance));
+        
+        for (var index = 0; index < insurance.length; index++) {
+         document.write("<br>"+insurance[index].id+"\t"+insurance[index].name+"\t"+insurance[index].maturity+"\t");
+        }
+       
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+<fieldset style="width: 30%;">
+        <div>
+            <a href="www.google.com">google</a>
+        </div>
+        <div>
+            <a href="www.bing.com">bing</a>
+        </div>
+        <div>
+            <a href="www.search.yahoo.com">yahoo</a>
+        </div>
+
+    </fieldset>
+
+    <script>
+        var hrefs = document.getElementsByTagName('a');
+        for (let index = 0; index < hrefs.length; index++) {
+            document.write(hrefs[index].href +"<p>")
+        }
+
+        for (element of hrefs) {
+            document.write(element.href + "<br>")
+            console.log(element.href + "<br>")
+        }
+
+    </script>
+
+    
+</body>
+
+</html>

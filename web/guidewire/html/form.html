@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form style="border: solid; width: 30%;padding: 20pt; height: 250pt; margin-left: 200pt;"
+     method="get">
+        <div>
+            <label>enter id </label>
+            <input placeholder="enter your id" autocomplete="on" name="id" autofocus>
+        </div>
+
+        <div>
+            <label>enter password </label>
+            <input placeholder="enter your password" type="password" name="pass">
+        </div>
+        
+        <div>
+            <label>enter age </label>
+            <input  type="number" required name="age">
+        </div>
+        <div>
+            <label>enter email </label>
+            <input  type="email"  name="email">
+        </div>
+
+        <div>
+            <label>enter pincode </label>
+            <input    name="pin"  pattern="[0-9]{6}">
+        </div>
+        
+        <div>
+            <label>enter dob </label>
+            <input  type="date"  name="dob">
+        </div>
+       
+        <div>
+            <label>enter entry time </label>
+            <input  type="time"  name="entry">
+        </div>
+
+        <div>
+            <label>enter exit date n  time </label>
+            <input  type="datetime-local"  name="exit">
+        </div>
+        
+        <div>
+            <label>select gender </label>
+            <input  type="radio"  name="gender" value="male">male
+            <input  type="radio"  name="gender" value="female">female
+        </div>
+        
+        <div>
+            <label>select hobbies </label>
+            <input  type="checkbox"  name="hb" value="music">Music
+            <input  type="checkbox"  name="hb" value="movie">Movie
+            <input  type="checkbox"  name="hb" value="tv">TV
+            <input  type="checkbox"  name="hb" value="radio">Radio
+        </div>
+
+        <div style=margin-top:5pt>
+            <div>
+            <label>select locations </label>
+            </div>
+            <div>
+                <select name="location" multiple>
+                   <option value="chennai">Chennai</option>
+                   <option value="madurai">Madurai</option>
+                   <option value="pune">pune</option>
+                   <option value="kolkotta">Kolkotta</option>
+                   <option value="kochi">Kochi</option>
+                </select>
+            </div>
+
+            <div>
+                enter state name <input list="statelist">
+               
+                <datalist id="statelist">
+                    <option value="tamilnadu"></option>
+                    <option value="telengana"></option>
+                    <option value="andhra pardesh"></option>
+                    <option value="arunachal pardesh"></option>
+               </datalist>
+            </div>
+            
+            <div>
+                select the feedback from 1 to 10 
+                <input type="range" max="10" min="1" name="fb">
+            </div>
+
+        </div>
+        <div>
+       select biodata <input type=file>
+
+        </div>
+       
+        <div style="margin-top: 5pt;">
+           <button type="submit">send</button>
+           <button type="reset">cancel</button>
+        </div>
+    </form>
+
+</body>
+
+</html>

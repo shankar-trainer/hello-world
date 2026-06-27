@@ -1,0 +1,104 @@
+Axios interceptors are functions that allow you to intercept and modify HTTP requests or responses globally before they are handled by .then() or .catch(). They are essential for centralizing logic like adding authentication tokens to headers, logging, handling errors, or transforming data, reducing code redundancy in API calls. 
+
+Key Concepts:
+    Request Interceptor: Modifies configuration before the request is sent (e.g., adding Authorization headers).
+    Response Interceptor: Processes or handles errors in the response before it reaches the application code (e.g., refreshing tokens, logging out on 401 errors).
+    Centralization: Allows defining behavior once for all API calls. 
+
+
+Example Implementation:
+import axios from 'axios';
+
+// Add a request interceptor
+axios.interceptors.request.use(
+  config => {
+    // Add token to headers
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => Promise.reject(error)
+);
+
+// Add a response interceptor
+axios.interceptors.response.use(
+  response => response, // Directly return response
+  error => {
+    // Handle global errors (e.g., unauthorized)
+    if (error.response && error.response.status === 401) {
+      // Redirect to login or refresh token
+    }
+    return Promise.reject(error);
+  }
+);
+Common Use Cases:
+Authentication: Automatically attaching JWT tokens.
+Error Handling: Global handling of 401, 403, or 500 errors.
+Loading States: Triggering loading spinners.
+Data Transformation: Normalizing API responses. 
+
+
+Important Notes:
+Interceptors can be removed later if needed.
+Multiple interceptors can be chained.
+They are ideal for reducing boilerplate code compared to using fetch. 
+
+============================================================================
+In React, Axios interceptors are used to globally manage JWTs by automatically attaching tokens to requests and handling token expiration (401 errors) in one place. 
+
+1. Request Interceptor (Attach Token) 
+This interceptor runs before every outgoing request to inject the Authorization header. 
+
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: 'https://api.example.com',
+});
+
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`; //
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+Use code with caution.
+
+2. Response Interceptor (Handle Expiration)
+This interceptor catches 401 Unauthorized errors, attempts to refresh the token, and retries the original request seamlessly. 
+Peerlist
+Peerlist
+ +1
+javascript
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+
+    // Logic to handle 401 error, refresh token, and retry request
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      try {
+        // Implementation for calling refresh endpoint and updating tokens
+        // ... refresh logic ...
+        return api(originalRequest); 
+      } catch (refreshError) {
+        // Handle failed refresh (e.g., clear storage, redirect to login)
+        return Promise.reject(refreshError);
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+Use code with caution.
+
+Key Implementation Details
+    Prevent Infinite Loops: Use the _retry flag on the original request config.
+    Race Conditions: Use a queue for multiple concurrent failing requests while a single refresh call is in progress.
+    Security: While localStorage is common, HTTP-only cookies are more secure against XSS.

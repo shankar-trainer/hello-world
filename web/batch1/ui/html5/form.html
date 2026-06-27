@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{
+            float: left;
+            width: 100pt;
+        }
+        input{
+            width: 110pt;
+            margin-bottom: 5pt;;
+           
+        }
+        
+        form{
+            margin-left: 300pt;
+            margin-top: 30pt;
+            border: solid;
+            padding: 20pt;
+            width: 30%;;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="get">
+        <div>
+            <label>Enter id </label>
+            <!-- <input type="number"  max="9999" min="99" disabled readonly value="878787"> -->
+            <input type="number" maxlength="4" max="9999" min="99"  value="878787" autocomplete required name="id" autofocus>
+        </div>
+        <div>
+            <label>enter name</label>
+            <input maxlength="10" minlength="5" 
+            autocomplete="yes" name="name" placeholder="enter name">
+        </div>
+        <div>
+            <label>enter email</label>
+            <input  type="email"  name="email" placeholder="enter email">
+        </div>
+        
+        <div>
+            <label>enter dob</label>
+            <input  type="date"  name="dob">
+        </div>
+        <div>
+            <label>enter entry time</label>
+            <input  type="time"  name="entry_time">
+        </div>
+        
+        <div>
+            <label>enter age</label>
+            <input  type="range"  min="1" max="99" name="age">
+        </div>
+
+        <div>
+            <label>Select cities</label>
+            <select name="country" multiple>
+            <option value="india">India</option>
+            <option value="china">China</option>
+            <option value="srilanka">SriLanka</option>
+            <option value="mayamar">Mayamar</option>
+            </select>    
+        </div>
+
+        <div>
+            <label>Upload the file </label>
+            <input type="file" name="file">
+        </div>
+
+        <div>
+            <label>enter pin code</label>
+            <input type="text" pattern="[0-9]{6}">
+        </div>
+        
+        <div>
+            <label>enter state</label>
+            <input type="text" list="state" name="state1">
+            <datalist id="state">
+                <option>karnataka</option>
+                <option>kerala</option>
+                <option>tamilnadu</option>
+                <option>telengana</option>
+                <option>west bengal</option>
+                <option>andhra pardesh</option>
+            </datalist>
+        </div>
+        <div>
+            <label>search keyword</label>
+            <input type="search">
+        </div>
+
+        <div>
+            <button type="submit">send</button>
+            <button type="reset">cancel</button>
+             <!-- <input type="reset" value="cancel"> -->
+        </div>
+
+        
+
+    </form>
+
+</body>
+</html>
+<!-- file:///C:/code/cts/batch1/ui/html5/image/form.html?id=101&name=ram+kumar -->

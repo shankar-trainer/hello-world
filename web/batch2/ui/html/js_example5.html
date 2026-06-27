@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     var p= parseInt(prompt("enter number ",10))
+
+     var sum=0;
+     document.write("<table border='1'>")
+
+     for(var x=1;x<=10;x++)
+     {
+        // document.write(x*p+"<br>")
+        document.write("<tr><td>"+x*p+"</td></tr>")
+         sum=sum+x*p; 
+    }
+    // document.write("<br>sum is "+sum)
+
+    document.write("</table>")
+
+    var x=100
+    document.write("<br> no "+x+" is not a number  "+isNaN(x))
+
+    x='10001a'
+
+    document.write("<br> no "+x+" is not a number    "+isNaN(x))
+    document.write("<br>"+(10/0));
+    document.write("<br>"+(0/0));
+
+    var s1;
+    document.write("<br>"+s1);
+    </script>
+    
+</body>
+</html>

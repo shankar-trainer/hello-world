@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function addition(a, b) {
+            return a + b;
+        }
+
+        // function addition(a, b) {
+        //     return a - b;
+        // }
+
+
+        let a = 10;
+        let b = 20;
+        let c = addition(a, b);
+        document.write(`sum of ${a} and ${b} is ${c}`)
+                 //anonymous function
+        var sum = function (a, b) {
+            return a + b;
+        }
+        c = sum(a, b);
+        document.write(`<br>sum of ${a} and ${b} is ${c}`)
+
+    </script>
+
+</body>
+
+</html>

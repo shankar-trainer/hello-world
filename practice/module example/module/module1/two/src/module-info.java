@@ -1,0 +1,3 @@
+module two {
+    requires one;
+}
