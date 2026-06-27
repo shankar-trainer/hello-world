@@ -1,0 +1,20 @@
+https://stackoverflow.com/questions/42555596/not-able-to-start-kafka-with-bin-windows-kafka-server-start-bat-config-serve
+
+
+I also try to add Kafka in Windows local environment but then also it not work. But just add environment on this path: kafka\\bin\\windows
+
+Open kafka-server-start.bat in Notepad and remove this line
+
+to find cntrl+f => "wmic os"
+
+wmic os get osarchitecture | find /i "32-bit" >nul 2>&1IF NOT ERRORLEVEL 1 (rem 32-bit OSset KAFKA_HEAP_OPTS=-Xmx512M -Xms512M) ELSE (rem 64-bit OSset KAFKA_HEAP_OPTS=-Xmx1G -Xms1G)
+after removed it looks like below :
+
+IF ["%KAFKA_HEAP_OPTS%"] EQU [""] (
+    rem detect OS architecture
+   )
+now start your kafka sever it will work
+
+Share
+Improve this answer
+Follow

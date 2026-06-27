@@ -1,0 +1,77 @@
+by default not redirecting to login.jsp
+The reason Spring Security is not automatically redirecting to your login.jsp page is because of how your .loginPage("/login") and request matchers are configured.
+
+By default, Spring Security expects a Controller endpoint (not a direct file path) when you define .loginPage("/login"). If you haven't explicitly set up a controller to map the URL /login to your login.jsp view, Spring won't know how to render it. Furthermore, you have permitted all access to /WEB-INF/, which might be bypassing the security filter entirely depending on how your internal forwards are happening.
+
+Here is how you can fix this and get the redirection working properly.
+
+Step 1: Create a View Controller for /login
+Instead of pointing Spring Security directly to a file, you need to tell Spring MVC to map the /login URL to your JSP view. The cleanest way to do this without writing a full controller class is to use a WebMvcConfigurer.
+
+Create a new configuration file (or add this to an existing web config file):
+
+Java
+package com.example.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        // Maps the URL "/login" to the view name "login"
+        registry.addViewController("/login").setViewName("login");
+    }
+}
+Note: This assumes your Spring MVC View Resolver is already configured to look into /WEB-INF/ (or wherever your JSPs are) and append the .jsp extension.
+
+Step 2: Update your Security Configuration
+In your SecurityConfig4 class, you need to make sure that the login page configuration is airtight. Update your securityFilterChain bean to match this:
+
+Java
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+            .csrf(csrf -> csrf.disable()) // Only do this for development/testing!
+            .authorizeHttpRequests((requests) -> requests
+                    .requestMatchers("/", "/greeting", "/bcrypt").permitAll()
+                    // 1. Removed /login and /WEB-INF/** from here.
+                    // formLogin().permitAll() handles the login route automatically.
+                    .anyRequest().authenticated()
+            )
+            .formLogin((form) -> form
+                    .loginPage("/login") // 2. Points to the Spring MVC URL route, not the JSP file
+                    .loginProcessingUrl("/login") // 3. The POST URL where the form submits credentials
+                    .defaultSuccessUrl("/", true)
+                    .failureUrl("/login?error=true")
+                    .permitAll()
+            )
+            .logout((logout) -> logout
+                    .logoutSuccessUrl("/login?logout=true")
+                    .permitAll()
+            );
+    return http.build();
+}
+What changed?
+Removed /login from permitAll(): You don't need to manually permit it in authorizeHttpRequests. The .formLogin(...).permitAll() method handles granting public access to your login page and its processing URLs automatically.
+
+Removed /WEB-INF/: Exposing your raw internal view directory to the security filter can cause unexpected authorization bypasses or forwarding loops. Spring MVC handles internal forwards to WEB-INF safely behind the scenes.
+
+Added .loginProcessingUrl("/login"): This explicitly tells Spring Security which URL your HTML <form action="..."> should POST the username and password to.
+
+Step 3: Check your HTML/JSP Form
+Ensure your login.jsp form is submitting a POST request to the exact route you configured, and that the input names match Spring's defaults (username and password):
+
+HTML
+<form action="${pageContext.request.contextPath}/login" method="POST">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required />
+
+    <button type="submit">Log In</button>
+</form>

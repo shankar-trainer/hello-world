@@ -1,0 +1,48 @@
+To consume messages from Apache Kafka using Spring Boot, use the @KafkaListener annotation. This approach abstracts away the underlying boilerplate consumer poll loops.Here is a complete, minimal guide to setting up a functional Spring Kafka consumer.1. Add DependenciesEnsure you have the spring-kafka starter added to your build configuration.Maven (pom.xml):xml<dependency>
+    <groupId>the.org.springframework.kafka</groupId>
+    <artifactId>spring-kafka</artifactId>
+</dependency>
+Use code with caution.Gradle (build.gradle):groovyimplementation 'org.springframework.kafka:spring-kafka'
+Use code with caution.2. Configure application.ymlDefine your Kafka broker addresses, consumer group rules, and serialization strategies.yamlspring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: inventory-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+Use code with caution.group-id: Groups your instances so they share the topic's message processing load.auto-offset-reset: earliest: Instructs the consumer to read messages from the absolute beginning of the topic if no previous offset exists.3. Create the @KafkaListener ImplementationCreate a regular managed service component and annotate a processing method with @KafkaListener.javaimport org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderConsumerService {
+
+    // 1. Basic String Payload Listener
+    @KafkaListener(topics = "orders-topic", groupId = "inventory-group")
+    public void consumeStringMessage(String message) {
+        System.out.println("Received raw text message: " + message);
+    }
+
+    // 2. Advanced Listener extracting individual Metadata Headers
+    @KafkaListener(topics = "orders-topic", groupId = "analytics-group")
+    public void consumeWithMetadata(
+            @Payload String message,
+            @Header(KafkaHeaders.RECEIVED_PARTITION) int partition,
+            @Header(KafkaHeaders.OFFSET) long offset) {
+        
+        System.out.printf("Processed from partition %d at offset %d: %s%n", 
+                partition, offset, message);
+    }
+
+    // 3. Complete Context Listener using the raw ConsumerRecord
+    @KafkaListener(topics = "orders-topic", groupId = "audit-group")
+    public void consumeRawRecord(ConsumerRecord<String, String> record) {
+        System.out.println("Key: " + record.key());
+        System.out.println("Value: " + record.value());
+    }
+}
+Use code with caution.Options Overviewtopics: The name of the target stream to poll messages from. Can map to an application variable using expression syntax like ${my.topic.name}.ConsumerRecord: Accesses the exact, unparsed Kafka object wrapper, containing keys, timestamps, headers, and partition info.If you plan to use complex JSON objects instead of plain text strings, let me know. I can show you how to swap your value-deserializer configuration out for Jackson's JsonDeserializer to map payloads straight to custom Java POJOs.
