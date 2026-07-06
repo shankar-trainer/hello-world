@@ -1,10 +1,22 @@
 public class Person {
+    private int personId;
+    private  String  personName;
+    private float  personSalary;
 
-    protected  int personId;
-    protected   String  personName;
-    protected   float personSalary;
+   private static String country;
+   static int count=0;
+    static{
+        country="India";
+        System.out.println("static block called");
+    }
+
+    public Person() {
+        count++;
+        System.out.println("constructor called ");
+    }
 
     public Person(int personId, String personName, float personSalary) {
+        count++;
         this.personId = personId;
         this.personName = personName;
         this.personSalary = personSalary;
@@ -21,13 +33,12 @@ public class Person {
     public float getPersonSalary() {
         return personSalary;
     }
-}
 
-/*
-     Person    parent, super class
-     /   \
-    /     \   child class
-  Manager   Customer Employee Teacher Engineer
- one super class can have multiple subclasses
- java does not support multiple inheritance
- */
+    public static String getCountry() {
+        return country;
+    }
+    //
+//    public static void main(String[] args) {
+//
+//    }
+}

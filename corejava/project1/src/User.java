@@ -1,38 +1,41 @@
 public class User {
-    void introduction(){
-        System.out.println("i m user");
-    }
-    static void hello(){
-        System.out.println("this is polymorphism");
-    }
-}
-class Passenger extends  User {
-  // @Override static methods are inherited but can not be overridden
-    //  static methods can be rewritten
-     static void hello(){
-        System.out.println("this is polymorphism by passenger");
+    private int id;
+    private String name;
+    private String college;
+
+    User() {
+        System.out.println("default constructor called ");
+        id = 10001;
+        name = "amit kumar";
     }
 
-    @Override
-    void introduction(){
-        System.out.println("i m passenger");
+    public User(int id, String name, String college) {
+        this.id = id;
+        this.name = name;
+        this.college = college;
     }
-}
-class Father  extends  User{
-    void introduction(){
-        System.out.println("i m father");
+
+    User(int id, String name) {
+        System.out.println("overloaded constructor");
+        this.id = id;
+        this.name = name;
+        this.college="niet";
     }
-}
-class UserMain{
+
+    void userInfo() {
+        System.out.println("\nid is " + id);
+        System.out.println("name is " + name);
+        System.out.println("college is " + college);
+    }
+
     public static void main(String[] args) {
-        User user;      //dynamic binding by jvm, by overriding, runtime polymorphism
-        user=new Father();
-        user.introduction();
-        user=new Passenger();
-        user.introduction();
+        User user1 = new User();
+        User user2 = new User(10009,"kavita devi");
+        User user3 = new User(176767,"kamalkant","gl bajaj college");
 
-        Father.hello();
-        Passenger.hello();
+        user1.userInfo();
+        user2.userInfo();
+        user3.userInfo();
     }
-}
 
+}
