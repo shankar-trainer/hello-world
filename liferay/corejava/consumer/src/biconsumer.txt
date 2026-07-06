@@ -1,0 +1,53 @@
+In Java, BiConsumer<T, U> is a built-in functional interface introduced in Java 8 inside the java.util.function package. It represents an operation that accepts two input arguments and returns no result (void). Because it does not return a value, it is primarily used to execute tasks via side-effects, such as printing, logging, or modifying external data structures.Interface DefinitionThe core structure of the interface consists of one abstract method and one default method:java@FunctionalInterface
+public interface BiConsumer<T, U> {
+    void accept(T t, U u);
+
+    default BiConsumer<T, U> andThen(BiConsumer<? super T, ? super U> after) {
+        // ...
+    }
+}
+Use code with caution.Core Methodsvoid accept(T t, U u): The single abstract method. It executes the defined operation on the two given parameters.default BiConsumer<T,U> andThen(BiConsumer<...> after): A utility method used for chaining. It returns a combined BiConsumer that runs the current operation first, followed immediately by the after operation.Basic Code Examples1. Implementation using Lambda ExpressionsYou can define a BiConsumer quickly to print a concatenated string and an integer.javaimport java.util.function.BiConsumer;
+
+public class BasicExample {
+    public static void main(String[] args) {
+        // Defines a BiConsumer that takes a String and an Integer
+        BiConsumer<String, Integer> printDetails = (name, age) ->
+            System.out.println(name + " is " + age + " years old.");
+
+        // Executes the operation
+        printDetails.accept("Alice", 28);
+    }
+}
+Use code with caution.2. Chaining with andThen()You can link multiple BiConsumer actions together sequentially.javaimport java.util.function.BiConsumer;
+
+public class ChainingExample {
+    public static void main(String[] args) {
+        BiConsumer<Integer, Integer> add = (a, b) -> System.out.println("Sum: " + (a + b));
+        BiConsumer<Integer, Integer> multiply = (a, b) -> System.out.println("Product: " + (a * b));
+
+        // Chains the multiply operation to run after the add operation
+        BiConsumer<Integer, Integer> combined = add.andThen(multiply);
+
+        combined.accept(5, 4);
+        // Output:
+        // Sum: 9
+        // Product: 20
+    }
+}
+Use code with caution.Real-World Use Case: Iterating over MapsThe most common built-in application of BiConsumer in Java is the Map.forEach() method. It accepts a BiConsumer where the first argument is the key and the second argument is the value.javaimport java.util.HashMap;
+import java.util.Map;
+
+public class MapExample {
+    public static void main(String[] args) {
+        Map<String, String> capitalMap = new HashMap<>();
+        capitalMap.put("USA", "Washington D.C.");
+        capitalMap.put("Japan", "Tokyo");
+        capitalMap.put("France", "Paris");
+
+        // The forEach method takes a BiConsumer<String, String>
+        capitalMap.forEach((country, capital) ->
+            System.out.println("The capital of " + country + " is " + capital)
+        );
+    }
+}
+Use code with caution.Specialized Primitive VariantsTo prevent the performance overhead of boxing and unboxing primitive types into object wrappers (like Integer or Double), Java provides specialized primitive variants of BiConsumer:ObjIntConsumer<T>: Accepts an object of type T and a primitive int.ObjLongConsumer<T>: Accepts an object of type T and a primitive long.ObjDoubleConsumer<T>: Accepts an object of type T and a primitive double.

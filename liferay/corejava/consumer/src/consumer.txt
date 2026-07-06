@@ -1,0 +1,41 @@
+In Java 8, the Consumer<T> interface is a functional interface located in the java.util.function package that accepts a single input argument and returns no result (its return type is void). It is primarily designed to perform side effects, such as printing text, logging metrics, or modifying data structures in place.Core MethodsThe Oracle Java Docs for Consumer define two main methods for this interface:MethodTypeDescriptionvoid accept(T t)AbstractExecutes the consumer's action on the given argument t.default Consumer<T> andThen(Consumer<? super T> after)DefaultChains multiple consumers together, executing them in sequence.Basic Usage with Lambda ExpressionsInstead of writing verbose anonymous classes, Java 8 allows you to instantiate a Consumer using a swift lambda expression or method reference.javaimport java.util.function.Consumer;
+
+public class ConsumerExample {
+    public static void main(String[] args) {
+        // 1. Defined using a Lambda Expression
+        Consumer<String> printMessage = msg -> System.out.println("Message: " + msg);
+        printMessage.accept("Hello World!"); // Output: Message: Hello World!
+
+        // 2. Defined using a Method Reference
+        Consumer<String> printer = System.out.println;
+        printer.accept("Hello from Method Reference!");
+    }
+}
+Use code with caution.Practical Example: Using Iterable.forEach()The most common place you will encounter the Consumer interface is inside the Java Collection Framework's forEach method, which explicitly requires a Consumer parameter.javaimport java.util.Arrays;
+import java.util.List;
+
+public class ListForEachExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+        // The forEach method accepts a Consumer instance
+        names.forEach(name -> System.out.println(name.toUpperCase()));
+    }
+}
+Use code with caution.Chaining Consumers with andThen()You can execute multiple side effects on the same input parameter sequentially by linking operations together via the andThen() method.javaimport java.util.function.Consumer;
+
+public class ChainingExample {
+    public static void main(String[] args) {
+        Consumer<String> c1 = s -> System.out.println("Step 1: " + s.toUpperCase());
+        Consumer<String> c2 = s -> System.out.println("Step 2: " + s.toLowerCase());
+
+        // Combines both operations into a single operational sequence
+        Consumer<String> combined = c1.andThen(c2);
+
+        combined.accept("Java8");
+        // Output:
+        // Step 1: JAVA8
+        // Step 2: java8
+    }
+}
+Use code with caution.Specialized Primitive VariantsTo prevent the performance overhead of boxing and unboxing primitives into objects (like wrapping an int into an Integer), Java 8 introduces specialized primitive variants of the consumer interface:IntConsumer: Accepts a single primitive int argument; exposes void accept(int value).LongConsumer: Accepts a single primitive long argument; exposes void accept(long value).DoubleConsumer: Accepts a single primitive double argument; exposes void accept(double value).BiConsumer<T, U>: Accepts two distinct input object arguments (T and U) and returns nothing.Would you like to see how to build a custom higher-order method that accepts a Consumer as a parameter, or are you looking to integrate it with Java 8 Streams?

@@ -1,0 +1,251 @@
+geek
+
+The BiConsumer Interface is a part of the java.util.function package which has been introduced since Java 8, to implement functional programming in Java. It represents a function that takes in two arguments and produces a result. However, these kinds of functions doesn't return any value.
+
+This functional interface takes in two generics, namely:-
+
+T: denotes the type of the first input argument to the operation
+U: denotes the type of the second input argument to the operation
+The lambda expression assigned to an object of BiConsumer type is used to define its accept() which eventually applies the given operation to its arguments.
+
+BiConsumers are useful when it is not required to return any value as they are expected to operate via side-effects.
+
+Functions in BiConsumer Interface
+The BiConsumer interface consists of the following two functions:
+
+1. accept()
+
+This method accepts two values and performs the operation on the given arguments
+
+Syntax:
+
+void accept(T t, U u)
+Parameters: This method takes in two parameters:
+
+t- the first input argument
+u- the second input argument
+Returns: This method does not return any value.
+
+Below is the code to illustrate accept() method:
+
+Program 1: Program to compare 2 list of integers using BiConsumer's accept() method:
+
+
+
+// Java Program to demonstrate
+// BiConsumer's accept() method
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
+public class GFG {
+    public static void main(String args[])
+    {
+        // Create the first list
+        List<Integer> lista = new ArrayList<Integer>();
+        lista.add(2);
+        lista.add(1);
+        lista.add(3);
+        // Create the second list
+        List<Integer> listb = new ArrayList<Integer>();
+        listb.add(2);
+        listb.add(1);
+        listb.add(2);
+        // BiConsumer to compare both lists
+        BiConsumer<List<Integer>, List<Integer> >
+            equals = (list1, list2) ->
+        {
+            if (list1.size() != list2.size()) {
+                System.out.println("False");
+            }
+            else {
+                for (int i = 0; i < list1.size(); i++)
+                    if (list1.get(i) != list2.get(i)) {
+                        System.out.println("False");
+                        return;
+                    }
+                System.out.println("True");
+            }
+        };
+        equals.accept(lista, listb);
+    }
+}
+
+Output:
+False
+
+
+2. andThen()
+
+It returns a composed BiConsumer wherein the parameterized BiConsumer will be executed after the first one. If the evaluation of either operation throws an error, it is relayed to the caller of the composed operation.
+
+Note: The operation being passed as the argument should be of type BiConsumer.
+
+Syntax:
+
+default BiConsumer <T, U>
+        andThen(BiConsumer<? super T, ? super U> after)
+Parameters: This method accepts a parameter after which is the BiConsumer to be applied after the current one.
+Return Value: This method returns a composed BiConsumer that first applies the current operation first and then the after operation.
+
+Exception: This method throws NullPointerException if the after operation is null.
+
+Below is the code to illustrate andThen() method:
+
+Program 1:
+
+
+
+// Java Program to demonstrate
+// BiConsumer's andThen() method
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
+public class Main {
+    public static void main(String args[])
+    {
+        // Create first list
+        List<Integer> lista = new ArrayList<Integer>();
+        lista.add(2);
+        lista.add(1);
+        lista.add(3);
+        // Create second list
+        List<Integer> listb = new ArrayList<Integer>();
+        listb.add(2);
+        listb.add(1);
+        listb.add(2);
+        // BiConsumer to compare 2 lists of integers
+        BiConsumer<List<Integer>, List<Integer> > equals = (list1, list2) ->
+        {
+            if (list1.size() != list2.size()) {
+                System.out.println("False");
+            }
+            else {
+                for (int i = 0; i < list1.size(); i++)
+                    if (list1.get(i) != list2.get(i)) {
+                        System.out.println("False");
+                        return;
+                    }
+                System.out.println("True");
+            }
+        };
+        // BiConsumer to print 2 lists
+        BiConsumer<List<Integer>, List<Integer> > disp = (list1, list2) ->
+        {
+            list1.stream().forEach(a -> System.out.print(a + " "));
+            System.out.println();
+            list2.stream().forEach(a -> System.out.print(a + " "));
+            System.out.println();
+        };
+        // Using addThen() method
+        equals.andThen(disp).accept(lista, listb);
+    }
+}
+
+Output:
+False
+2 1 3
+2 1 2
+
+Program 2: To demonstrate when NullPointerException is returned.
+// Java Program to demonstrate
+// BiConsumer's andThen() method
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
+public class Main {
+    public static void main(String args[])
+    {
+        // Create first list
+        List<Integer> lista = new ArrayList<Integer>();
+        lista.add(2);
+        lista.add(1);
+        lista.add(3);
+        // Create second list
+        List<Integer> listb = new ArrayList<Integer>();
+        listb.add(2);
+        listb.add(1);
+        listb.add(2);
+        // BiConsumer to compare 2 lists of integers
+        BiConsumer<List<Integer>, List<Integer> > equals = (list1, list2) ->
+        {
+            if (list1.size() != list2.size()) {
+                System.out.println("False");
+            }
+            else {
+                for (int i = 0; i < list1.size(); i++)
+                    if (list1.get(i) != list2.get(i)) {
+                        System.out.println("False");
+                        return;
+                    }
+                System.out.println("True");
+            }
+        };
+        // BiConsumer to print 2 lists
+        BiConsumer<List<Integer>, List<Integer> > disp = (list1, list2) ->
+        {
+            list1.stream().forEach(a -> System.out.print(a + " "));
+            System.out.println();
+            list2.stream().forEach(a -> System.out.print(a + " "));
+            System.out.println();
+        };
+        try {
+            equals.andThen(null).accept(lista, listb);
+        }
+        catch (Exception e) {
+            System.out.println("Exception : " + e);
+        }
+    }
+}
+
+Output
+Exception : java.lang.NullPointerException
+Program 3: To demonstrate how an Exception in after the function is returned and handled.
+
+// Java Program to demonstrate
+// BiConsumer's andThen() method
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
+public class Main {
+    public static void main(String args[])
+    {
+        // Create first list
+        List<Integer> lista = new ArrayList<Integer>();
+        lista.add(2);
+        lista.add(1);
+        lista.add(3);
+        // Create second list
+        List<Integer> listb = new ArrayList<Integer>();
+        listb.add(2);
+        listb.add(1);
+        // BiConsumer to compare 2 lists of integers
+        BiConsumer<List<Integer>, List<Integer> > equals = (list1, list2) ->
+        {
+            for (int i = 0; i < list1.size(); i++)
+                if (list1.get(i) != list2.get(i)) {
+                    System.out.println("False");
+                    return;
+                }
+            System.out.println("True");
+        };
+        // BiConsumer to print 2 lists
+        BiConsumer<List<Integer>, List<Integer> > disp = (list1, list2) ->
+        {
+            list1.stream().forEach(a -> System.out.print(a + " "));
+            System.out.println();
+            list2.stream().forEach(a -> System.out.print(a + " "));
+            System.out.println();
+        };
+        try {
+            disp.andThen(equals).accept(lista, listb);
+        }
+        catch (Exception e) {
+            System.out.println("Exception : " + e);
+        }
+    }
+}
+
+Output
+2 1 3
+2 1
+Exception : java.lang.IndexOutOfBoundsException: Index 2 out of bounds for length 2
