@@ -1,0 +1,287 @@
+Method references in Java 8 serve as a shorthand notation for lambda expressions that only call an existing method. They use the double colon operator (::) to make your code more concise and easier to read.There are four distinct types of method references. Each type replaces a specific style of lambda expression.Overview of Method Reference TypesTypeSyntaxLambda Equivalent1. Static MethodContainingClass::staticMethodName(args) -> ContainingClass.staticMethodName(args)2. Instance Method (Specific Object)containingObject::instanceMethodName(args) -> containingObject.instanceMethodName(args)3. Instance Method (Arbitrary Object)ContainingType::methodName(arg0, rest) -> arg0.methodName(rest)4. ConstructorClassName::new(args) -> new ClassName(args)1. Reference to a Static MethodUse this when your lambda expression passes all its arguments directly into a static utility method.javaimport java.util.Arrays;
+import java.util.List;
+
+public class StaticMethodExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        // Using Lambda Expression
+        numbers.forEach(n -> System.out.println(n));
+
+        // Using Static Method Reference
+        numbers.forEach(System.out::println);
+    }
+}
+Use code with caution.2. Reference to an Instance Method of a Particular ObjectUse this when you are calling a method on an object instance that already exists in your local environment.javaimport java.util.Arrays;
+import java.util.List;
+
+class Mechanics {
+    public void fix(String car) {
+        System.out.println("Fixing " + car);
+    }
+}
+
+public class InstanceMethodParticularObject {
+    public static void main(String[] args) {
+        Mechanics mechanicObj = new Mechanics();
+        List<String> garage = Arrays.asList("Sedan", "SUV", "Truck");
+
+        // Using Lambda Expression
+        garage.forEach(car -> mechanicObj.fix(car));
+
+        // Using Particular Object Instance Method Reference
+        garage.forEach(mechanicObj::fix);
+    }
+}
+Use code with caution.3. Reference to an Instance Method of an Arbitrary ObjectUse this when the method being called belongs to the element passing through the stream or interface itself. The first argument of the lambda becomes the target object of the method call.javaimport java.util.Arrays;
+import java.util.List;
+
+public class InstanceMethodArbitraryObject {
+    public static void main(String[] args) {
+        List<String> words = Arrays.asList("apple", "banana", "cherry");
+
+        // Using Lambda Expression
+        words.stream().map(s -> s.toUpperCase()).forEach(System.out::println);
+
+        // Using Arbitrary Object Instance Method Reference
+        words.stream().map(String::toUpperCase).forEach(System.out::println);
+    }
+}
+Use code with caution.4. Reference to a ConstructorUse this when the lambda expression's only job is to instantiate a new instance of a class and return it.javaimport java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+
+public class ConstructorReferenceExample {
+    public static void main(String[] args) {
+        List<String> namesList = new ArrayList<>();
+        namesList.add("Alice");
+        namesList.add("Bob");
+
+        // Using Lambda Expression
+        Function<List<String>, Set<String>> toSetLambda = list -> new HashSet<>(list);
+        Set<String> set1 = toSetLambda.apply(namesList);
+
+        // Using Constructor Reference
+        Function<List<String>, Set<String>> toSetRef = HashSet::new;
+        Set<String> set2 = toSetRef.apply(namesList);
+    }
+}
+Use code with caution.You can learn more about functional features from the official Oracle Method References Guide.If you would like to explore this topic further, tell me:Do you want to see how these are used within the Java Stream API?Are you trying to refactor a specific block of code into a method reference?Do you need help understanding the underlying Functional Interfaces (Consumer, Function, etc.)?
+
+=============================
+Java Method References
+geek
+Java Method References are a shorthand way to refer to an existing method without invoking it. They were introduced in Java 8 to make lambda expressions shorter, cleaner, and more readable. Method references use the double colon (::) operator and are mainly used with functional interfaces.
+
+Introduced in Java 8 as an alternative to lambda expressions
+Improve code readability and reduce boilerplate
+Used when a lambda expression simply forwards its parameters to a single existing method (pass-through call).
+
+
+
+import java.util.Arrays;
+public class Geeks{
+
+    // Method
+    public static void print(String s){
+        System.out.println(s);
+    }
+​
+    public static void main(String[] args){
+
+        String[] names = {"Geek1", "Geek2", "Geek3"};
+​
+        // Using method reference to print each name
+        Arrays.stream(names).forEach(Geeks::print);
+    }
+}
+
+Output
+Geek1
+Geek2
+Geek3
+Explanation: In the above example, we are using method reference to print items. The print method is a static method which is used to print the names. In the main method we created an array of names and printing each one by calling the print method directly.
+
+Syntax
+ClassName::methodName
+objectReference::methodName
+ClassName::new
+
+Types of Method References
+There are four type method references that are as follows:
+
+1. Reference to a Static Method
+A static method reference is used to refer to a static method of a class. It replaces a lambda expression that simply calls a static method.
+
+Uses class name to access the method
+Method must be static
+Commonly used with utility methods
+Syntax:
+
+ClassName::staticMethodName
+
+
+
+
+import java.util.*;
+​
+class MathUtil{
+    static void square(int n) {
+        System.out.println(n * n);
+    }
+}
+​
+class GFG{
+    public static void main(String[] args) {
+​
+        List<Integer> list = Arrays.asList(2, 3, 4);
+        list.forEach(MathUtil::square);
+    }
+}
+
+Output
+4
+9
+16
+Explanation:
+
+square(int n) is a static method that prints the square of a number.
+forEach(MathUtil::square) passes each list element to the square() method.
+Internally, this works like:
+list.forEach(n -> MathUtil.square(n));
+
+2. Reference to an Instance Method of a Particular Object
+This type of method reference refers to an instance method of a specific object. The object is already created, and its method is referenced directly.
+
+Uses an existing object
+Method must be non-static
+Suitable for object-specific operations
+Syntax:
+
+objectReference::instanceMethod
+
+
+
+
+import java.util.*;
+​
+class Printer{
+    void print(String msg) {
+        System.out.println(msg);
+    }
+}
+​
+class GFG{
+    public static void main(String[] args) {
+​
+        Printer printer = new Printer();
+        List<String> data = Arrays.asList("Java", "Spring", "Boot");
+​
+        data.forEach(printer::print);
+    }
+}
+
+Output
+Java
+Spring
+Boot
+Explanation:
+
+printer is an object of the Printer class.
+printer::print refers to the instance method print().
+Each element of the list is automatically passed to print().
+Equivalent lambda expression:
+data.forEach(msg -> printer.print(msg));
+
+3. Reference to an Instance Method of an Arbitrary Object
+This method reference refers to an instance method of any object of a particular class. The actual object is determined at runtime.
+
+Uses class name instead of object
+Mostly used with Stream API
+Method is called on each element
+Syntax:
+
+ClassName::instanceMethod
+
+
+
+
+import java.util.*;
+​
+class GFG{
+
+    public static void main(String[] args){
+​
+        List<String> names = Arrays.asList("java", "spring", "microservice");
+​
+        names.stream()
+             .map(String::toUpperCase)
+             .forEach(System.out::println);
+    }
+}
+
+Output
+JAVA
+SPRING
+MICROSERVICE
+Explanation:
+
+String::toUpperCase calls toUpperCase() on each String object.
+map() transforms each element into uppercase.
+System.out::println prints the transformed values.
+Equivalent lambda expression:
+map(name -> name.toUpperCase())
+
+4. Reference to a Constructor
+A constructor reference is used to create a new object using a functional interface. It replaces a lambda expression that calls a constructor.
+
+Uses new keyword
+Commonly used with Supplier, Function
+Helps in object creation logic
+Syntax:
+
+ClassName::new
+
+
+
+
+import java.util.function.Supplier;
+​
+class Student {
+    Student() {
+        System.out.println("Student object created");
+    }
+}
+​
+class GFG{
+    public static void main(String[] args) {
+​
+        Supplier<Student> supplier = Student::new;
+        supplier.get();
+    }
+}
+
+Output
+Student object created
+Explanation:
+
+Supplier<Student> is a functional interface with get() method.
+Student::new refers to the constructor of Student.
+When supplier.get() is called, a new Student object is created.
+Equivalent lambda expression:
+Supplier<Student> supplier = () -> new Student();
+
+Method References and Functional Interfaces
+Method references work only with functional interfaces, which contain exactly one abstract method.
+
+Method signature must match abstract method
+Common functional interfaces include Consumer, Supplier, Function, Predicate
+Used heavily with Streams and Collections
+Example:
+
+List<String> list = Arrays.asList("Banana", "Apple", "Mango");
+
+list.sort(String::compareToIgnoreCase);
+

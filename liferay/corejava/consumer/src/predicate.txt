@@ -1,0 +1,50 @@
+In Java 8, a Predicate<T> is a built-in functional interface found in the java.util.function package that represents a boolean-valued function accepting a single input argument. It is primarily used for conditional filtering and data validation via its single abstract method, test(T t).1. Basic Predicate ExampleThis standalone example demonstrates how to declare a Predicate using a lambda expression and evaluate it using the test() method.javaimport java.util.function.Predicate;
+
+public class PredicateBasicExample {
+    public static void main(String[] args) {
+        // Define a predicate that checks if an integer is greater than 18
+        Predicate<Integer> isAdult = age -> age >= 18;
+
+        // Evaluate the condition using the test() method
+        System.out.println(isAdult.test(20)); // Output: true
+        System.out.println(isAdult.test(15)); // Output: false
+    }
+}
+Use code with caution.2. Using Predicate with Streams (Filtering a List)Predicates are most frequently utilized alongside the Java 8 Streams API to filter collections.javaimport java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamFilterExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("John", "Alice", "Jack", "Bob", "James");
+
+        // Filter elements that start with the letter "J"
+        List<String> jNames = names.stream()
+                                   .filter(name -> name.startsWith("J"))
+                                   .collect(Collectors.toList());
+
+        System.out.println(jNames); // Output: [John, Jack, James]
+    }
+}
+Use code with caution.3. Chaining Multiple PredicatesThe Predicate interface provides default methods like and(), or(), and negate() to combine multiple conditions dynamically.javaimport java.util.function.Predicate;
+
+public class PredicateChainingExample {
+    public static void main(String[] args) {
+        Predicate<String> startsWithA = str -> str.startsWith("A");
+        Predicate<String> isLongWord = str -> str.length() > 5;
+
+        // 1. Logical AND: Starts with 'A' AND length > 5
+        Predicate<String> andPredicate = startsWithA.and(isLongWord);
+        System.out.println(andPredicate.test("Alexander")); // Output: true
+        System.out.println(andPredicate.test("Amy"));       // Output: false
+
+        // 2. Logical OR: Starts with 'A' OR length > 5
+        Predicate<String> orPredicate = startsWithA.or(isLongWord);
+        System.out.println(orPredicate.test("Elephant"));  // Output: true
+
+        // 3. Logical Negation: Reverses the outcome
+        Predicate<String> doesNotStartWithA = startsWithA.negate();
+        System.out.println(doesNotStartWithA.test("Bob")); // Output: true
+    }
+}
+Use code with caution.Core Predicate Methods OverviewRefer to the Oracle Docs Predicate Reference for full structural details.MethodTypeDescriptiontest(T t)AbstractEvaluates the predicate condition on the argument.and(Predicate other)DefaultCombines two conditions with a short-circuiting logical AND.or(Predicate other)DefaultCombines two conditions with a short-circuiting logical OR.negate()DefaultReturns the exact logical opposite of the condition.isEqual(Object target)StaticReturns a predicate that checks if two objects are equal.If you want to customize your logic further, let me know:What data type or custom object class you want to evaluate?What specific filtering rules or conditions you need to enforce?
