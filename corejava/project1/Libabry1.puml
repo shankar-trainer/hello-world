@@ -1,0 +1,48 @@
+@startuml
+class Library {
+    protected long libraryId;
+    protected String libraryName;
+    protected String libraryLocation;
+
+    public void libraryInfo(){
+    }
+  }
+
+@enduml
+@startuml
+class StudentLibrary extends  Library {
+     private int members;
+     private float fee;
+      public StudentLibrary(int members, float fee) {
+      }
+}
+@enduml
+@startuml
+ class Leader {
+    private int id;
+    private String   name;
+    private int age;
+
+    private Speech speech; // Leader has a speech -- has a relationship
+
+    public Leader(int id, String name, int age, Speech speech) {
+public int getAge() {}
+
+    public Speech getSpeech() {}
+     public String getName() {}
+
+    public int getId() {}
+
+}
+@enduml
+@startuml
+ class Speech {
+    private int speechId;
+    private String  speechTopic;
+    private String  speechLocation;
+
+    public Speech(int speechId, String speechTopic, String speechLocation) {
+}
+}
+@enduml
+
