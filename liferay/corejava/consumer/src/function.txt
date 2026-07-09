@@ -1,0 +1,75 @@
+In Java 8, the Function<T, R> interface represents a functional interface that accepts one
+input argument of type T and produces a result of type R.
+
+It is located in the java.util.function package and is primarily used for object transformation,
+mapping, or data conversion.
+Core StructureThe interface contains exactly one abstract method called apply(T t).
+java
+@FunctionalInterface
+public interface Function<T, R> {
+    R apply(T t);
+}
+Use code with caution.Basic ExampleThe following code demonstrates a simple Function that takes a String as input and returns its length as an Integer.javaimport java.util.function.Function;
+
+public class FunctionExample {
+    public static void main(String[] args) {
+        // Define a function: Input is String (T), Output is Integer (R)
+        Function<String, Integer> stringLength = str -> str.length();
+
+        // Execute the function using the apply() method
+        Integer length = stringLength.apply("Hello World");
+
+        System.out.println("Length: " + length); // Output: Length: 11
+    }
+}
+
+Advanced Features: Chaining Functions
+The Function interface provides default methods to chain multiple functions together.
+andThen(Function after):
+Executes the current function first, and then applies the next function to its result.
+compose(Function before):
+Executes the passed function first, and then applies the current function to its result.
+
+import java.util.function.Function;
+
+public class FunctionChaining {
+    public static void main(String[] args) {
+        Function<Integer, Integer> multiplyByTwo = x -> x * 2;
+        Function<Integer, Integer> addTen = x -> x + 10;
+
+        // andThen example: (5 * 2) + 10 = 20
+        int andThenResult = multiplyByTwo.andThen(addTen).apply(5);
+        System.out.println("andThen Result: " + andThenResult);
+
+        // compose example: (5 + 10) * 2 = 30
+        int composeResult = multiplyByTwo.compose(addTen).apply(5);
+        System.out.println("compose Result: " + composeResult);
+    }
+}
+Real-World Stream API ExampleFunctions are highly useful when working with the Java 8 Stream API to
+transform lists of data.
+
+import java.util.Arrays;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamMapExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("alice", "bob", "charlie");
+
+        // Use Stream.map() which accepts a Function to transform elements
+        List<String> capitalizedNames = names.stream()
+                .map(name -> name.substring(0, 1).toUpperCase() + name.substring(1))
+                .collect(Collectors.toList());
+
+        System.out.println(capitalizedNames); // Output: [Alice, Bob, Charlie]
+    }
+}
+Use code with caution.If you are exploring other options in the java.util.function package,
+let me know:
+Do you want to pass two arguments instead of one?
+(Check out BiFunction)
+Do you need to return a boolean condition?
+(Check out Predicate)
+Are you working with primitive types like int or double to optimize performance?

@@ -1,0 +1,31 @@
+In Java 8, the Supplier<T> interface is a built-in functional interface located in the java.util.function package. It represents an operation that takes no arguments and returns a result of type T.The Interface DefinitionAccording to the official Oracle Help Center documentation, the interface contains exactly one single abstract method:java@FunctionalInterface
+public interface Supplier<T> {
+    T get(); // Gets a result without taking any input
+}
+Use code with caution.Complete Code ExampleThe code snippet below showcases a basic lambda expression implementation alongside a lazy evaluation use case via Optional.orElseGet().javaimport java.util.Optional;
+import java.util.function.Supplier;
+import java.time.LocalDateTime;
+
+public class SupplierExample {
+    public static void main(String[] args) {
+
+        // 1. Basic Example: Supply current system time
+        Supplier<LocalDateTime> timeSupplier = () -> LocalDateTime.now();
+        System.out.println("Current Time: " + timeSupplier.get());
+
+        // 2. Real-world Example: Lazy generation with Optional
+        String DB_Fallback = null;
+
+        // The supplier lambda inside orElseGet executes ONLY if the optional is empty
+        String result = Optional.ofNullable(DB_Fallback)
+                                .orElseGet(() -> fetchDefaultValue());
+
+        System.out.println("Result: " + result);
+    }
+
+    private static String fetchDefaultValue() {
+        System.out.println("Fetching fallback value... (Expensive operation)");
+        return "Default Corporate Database Value";
+    }
+}
+Use code with caution.Core CharacteristicsLazy Evaluation: The primary benefit of using a Supplier is deferring expensive object creation or execution until the exact moment it is needed.Factory Patterns: It is often utilized as a reference assignment target for constructors, such as Supplier<List<String>> listSupplier = ArrayList::new;.Primitive Specializations: To save performance overhead caused by auto-boxing, Java 8 provides specialized variations for primitives. These include IntSupplier (uses getAsInt()), DoubleSupplier (uses getAsDouble()), and BooleanSupplier (uses getAsBoolean()).Would you like to see how to combine the Supplier interface with Java Streams for data generation, or do you want to explore its use with custom object constructors?

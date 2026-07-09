@@ -1,0 +1,96 @@
+To show project reports using the Apache Maven Site Plugin, you configure reporting plugins within a dedicated <reporting> XML block inside your pom.xml.The most common example for a standard Core Java application utilizes the Maven Surefire Report Plugin to display test results and the Maven Project Info Reports Plugin to display basic project specifications.1. Configure the pom.xmlAdd the plugins into the separate <build> and <reporting> sections of your pom.xml file:xml<project xmlns="http://apache.org"
+         xmlns:xsi="http://w3.org"
+         xsi:schemaLocation="http://apache.org http://apache.org">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>core-java-reports</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- JUnit 5 for Core Java Testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.11.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Core plugin to run tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.0</version>
+            </plugin>
+            <!-- Core plugin to build the HTML site structure -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.21.0</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- This section registers reports hooked into the "mvn site" command -->
+    <reporting>
+        <plugins>
+            <!-- Generates Project Metadata reports (Dependencies, Info, etc.) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.6.0</version>
+            </plugin>
+            <!-- Generates Unit Test execution reports -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.5.0</version>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
+Use code with caution.2. Add a Sample Core Java TestCreate a basic unit test file to ensure the reporting engine has real test logs to parse. Place this file under src/test/java/com/example/AppTest.java:javapackage com.example;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class AppTest {
+    @Test
+    public void shouldPass() {
+        assertTrue(true);
+    }
+}
+Use code with caution.3. Generate and View the Site ReportsExecute the following sequential steps from your command-line terminal to assemble the reports:Run the test lifecycle to compile and produce test XML outputs:bashmvn clean test
+Use code with caution.Invoke the site documentation engine to bind and convert the metrics into static files:bashmvn site
+Use code with caution.Locate the results inside your directory path:Main Portal: target/site/index.htmlTest Log Report: target/site/surefire-report.htmlOpen the index.html file using any web browser to view the side menu and generated project metrics tabs.
+
+==================
+
+
+The primary difference between a plain Maven site and a Maven site with reporting lies in what type of content is generated into the static website. While a plain Maven site only contains handwritten static documentation, adding a reporting configuration automatically populates the site with dynamic, auto-generated project metrics and code analysis.Here is a direct breakdown of how they compare.Core Differences OverviewFeaturePlain Maven SiteMaven Site with ReportingPrimary GoalDisplays static documentation.Displays static docs plus automated project audits.POM Section UsedConfigured via <build> plugins.Configured via the <reporting> block.Content SourceCustom Markdown, APT, or FML files.Generated programmatically from code, tests, and POM data.Setup ComplexityLow (requires a basic site.xml).Medium (requires linking report plugins).Plain Maven SiteA plain Maven site relies entirely on the Apache Maven Site Plugin to bundle your custom, handwritten documentation.How it works: You create documentation files inside the src/site/ directory using formats like Markdown or APT (Almost Plain Text). You structure the navigation menu using a site.xml file.What you get: A clean, branded static HTML website containing your custom guides, architecture overviews, and FAQs.Execution command:bashmvn site
+Use code with caution.Maven Site with ReportingA Maven site with reporting takes the base site structure and injects automated quality, status, and health metrics directly into the left-hand navigation menu.How it works: You add a explicit <reporting> section to your pom.xml. When the site building lifecycle triggers, Maven executes these report plugins to analyze your source code and test directories.What you get: The base site plus an extra "Project Reports" section featuring:Project Info: Dependencies, mailing lists, and team members.Code Quality: Reports from tools like Checkstyle, PMD, or SpotBugs.Testing: Test coverage graphs (JaCoCo/Cobertura) and test failure data (Surefire).API Docs: Integrated Javadocs.Example Reporting ConfigurationTo add reports, you declare your chosen tools inside the <reporting> tag of your pom.xml:xml<reporting>
+    <plugins>
+        <!-- Generates standard project information (Dependencies, License, etc.) -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-project-info-reports-plugin</artifactId>
+            <version>3.5.0</version>
+        </plugin>
+        <!-- Automatically embeds Javadocs into the site -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.6.3</version>
+        </plugin>
+    </plugins>
+</reporting>
+Use code with caution.When you execute mvn site with this configuration, Maven hooks into the lifecycle, processes the plugins, and places the resulting HTML reports straight into your target/site/ directory alongside your handwritten text.To help tailor this to your workflow, are you trying to minimize build times on a CI/CD server, or are you looking to generate specific code quality metrics (like test coverage or Javadocs) for your team?

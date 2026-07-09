@@ -12,7 +12,8 @@ public class StaticMethodExample {
         numbers.forEach(System.out::println);
     }
 }
-Use code with caution.2. Reference to an Instance Method of a Particular ObjectUse this when you are calling a method on an object instance that already exists in your local environment.javaimport java.util.Arrays;
+Use code with caution.2. Reference to an Instance Method of a Particular ObjectUse this when you are calling a method on an object instance that already exists in your local environment.java
+import java.util.Arrays;
 import java.util.List;
 
 class Mechanics {
