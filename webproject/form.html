@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{
+            width: 110pt;
+            float: left;
+        }
+        form{
+            width:30%;
+            background-color: lightyellow;
+            border: solid;
+            padding: 30pt;
+            margin: 50pt;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="get">
+         <div>
+            <label>enter id</label>
+            <input type="number" placeholder="enter id"name="id"
+            autofocus required
+            >
+         </div>
+         
+         <div>
+            <label>enter name</label>
+            <input  placeholder="enter name" name="name" required>
+         </div>
+         
+         <div>
+            <label>enter pin</label>
+            <input  placeholder="enter pin" name="pin" pattern="[0-8]{6}">
+         </div>
+         <div>
+            <label>enter email</label>
+            <input  placeholder="enter email" name="email" type="email">
+         </div>
+         
+         <div>
+            <label>enter qualification</label>
+            <input  placeholder="enter qualification" name="qualification" type="text" list="qualification1">
+
+            <datalist id="qualification1">
+                <option value="bba"></option>
+                <option value="mba"></option>
+                <option value="bca"></option>
+                <option value="mca"></option>
+                <option value="b.tech"></option>
+                <option value="m.tech"></option>
+            </datalist>
+         </div>
+         
+         <div>
+           <label>give the feedback</label>
+            <input type="range" min="0" max="10" name="feedback">
+         </div>
+
+         <div>
+           <label>give dob date</label>
+            <input type="date" name="dob">
+         </div>
+         <div>
+           <label>give entry time</label>
+            <input type="time" name="entry_time">
+         </div>
+         
+         <div>
+           <label>give exit date and  time</label>
+            <input type="datetime-local" name="entry_date_time">
+         </div>
+
+         <div>
+            <button type="submit">login</button>
+            <button type="reset">cancel</button>
+         </div>
+         <div>
+            <label>play audio</label>
+            <audio  controls>
+               <source src="media/horse.ogv">
+            </audio>
+         </div>
+         <div>
+            <label>play video</label>
+            <video  controls>
+               <source src="media/mov_bbb.mp4">
+            </video>
+         </div>
+    </form>
+    
+</body>
+</html>
