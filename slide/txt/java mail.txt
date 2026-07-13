@@ -1,0 +1,136 @@
+java mail
+
+
+•The javax.mail(now jakarta.mail) API is the standard platform-
+independent framework for building mail and messaging 
+applications in Java. 
+•It is most commonly used to send and receive emails via 
+protocols like SMTP, POP3, and IMAP.
+
+
+
+Core Architecture Components
+
+•To work with JavaMail, you need to understand its four core 
+classes:
+•Session: The entry point for the email framework. It collects configuration 
+properties (like host, port, and authentication flags) and establishes the 
+environment.
+•Message (or MimeMessage): Represents the actual email. You use this 
+to set headers, the recipient address, the sender, the subject, and the 
+body content.
+•Transport: The mechanism used to sendthe email (typically using the 
+SMTP protocol).
+•Store and Folder: The mechanisms used to receiveand read emails 
+(typically using IMAP or POP3). Store connects to the server, and Folder 
+(like INBOX) holds the messages.
+
+
+
+
+
+
+Dependencies
+
+<dependency>
+
+<groupId>jakarta.mail</groupId>
+
+<groupId>jakarta.mail-api</groupId>
+
+<version>2.1.3</version>
+
+</dependency>
+
+<dependency>
+
+<groupId>eclipse.ee4j</groupId>
+
+<artifactId>jakarta.mail</artifactId>
+
+<version>2.1.3</version>
+
+</dependency>
+
+
+Sending a Simple Email (SMTP)
+
+public class EmailSender{
+
+public static void main(String[] args) {
+
+// 1. Define Mail Server Properties
+
+Properties properties= new Properties();
+
+properties.put("mail.smtp.host", "smtp.example.com"); // Replace with 
+your SMTP Host
+
+properties.put("mail.smtp.port", "587"); // 587 is standard for TLS
+
+properties.put("mail.smtp.auth", "true");
+
+properties.put("mail.smtp.starttls.enable", "true"); // Enable TLS 
+encryption
+
+// 2. Credentials
+
+final String username = "your-email@example.com";
+
+final String password = "your-app-password"; // Use App Passwords for 
+Gmail/Outlook
+
+// 3. Create the Session object
+
+Session session= Session.getInstance(properties, new Authenticator() {
+
+@Override
+
+protected PasswordAuthenticationgetPasswordAuthentication() {
+
+return new PasswordAuthentication(username, password);
+
+}
+
+});
+
+try {
+
+// 4. Create a default MimeMessageobject
+
+Message message= new MimeMessage(session);
+
+// 5. Set From, To, Subject, and Body
+
+message.setFrom(new InternetAddress("your-email@example.com"));
+
+message.setRecipients(
+
+Message.RecipientType.TO,
+
+InternetAddress.parse("recipient@example.com")
+
+);
+
+message.setSubject("Testing JavaMailAPI");
+
+message.setText("Hello, this is a test email sent from a Java 
+application!");
+
+// 6. Send message
+
+Transport.send(message);
+
+System.out.println("Email sent successfully!");
+
+
+
+
+
+
+
+
+
+
+
+

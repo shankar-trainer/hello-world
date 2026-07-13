@@ -1,0 +1,361 @@
+Map construct
+
+
+•MapStructis a compile-time code generator that simplifies the 
+mapping between Java bean types.
+•Itismost commonly usedin Spring Boot to convert between 
+Entities and Data Transfer Objects (DTOs).
+•Unlike other libraries that use reflection at runtime, MapStructgenerates plain Java method invocations during the build process, 
+making it extremely fast, type-safe, and easy to debug. 
+
+
+
+Dependency and plugin
+
+<dependency>
+
+<groupId>org.mapstruct</groupId>
+
+<artifactId>mapstruct</artifactId>
+
+<version>1.5.5.Final</version> <!--Use the latest 
+version -->
+
+</dependency>
+
+<plugin>
+
+<groupId>org.apache.maven.plugins</groupId>
+
+<artifactId>maven-compiler-plugin</artifactId>
+
+<configuration>
+
+<annotationProcessorPaths>
+
+<path>
+
+<groupId>org.projectlombok</groupId>
+
+<artifactId>lombok</artifactId>
+
+</path>
+
+<path>
+
+<groupId>org.mapstruct</groupId>
+
+<artifactId>mapstruct-processor</artifactId>
+
+<version>1.5.5.Final</version> <!--Match 
+MapStructversion -->
+
+</path>
+
+<path>
+
+<groupId>org.projectlombok</groupId>
+
+<artifactId>lombok-mapstruct-
+binding</artifactId>
+
+<version>0.2.0</version>
+
+</path>
+
+</annotationProcessorPaths>
+
+</configuration>
+
+</plugin>
+
+
+Core Implementation
+
+•Define the Mapper Interface: Create an interface and annotate it 
+with @Mapper. To integrate seamlessly with Spring's dependency 
+injection, use the componentModel= "spring" attribute.
+•Mapping Methods: Define methods for the conversions you need. 
+MapStructautomatically matches fields with the same names.
+•Custom Field Mapping: If field names differ, use the @Mapping 
+annotation to link the source and target propertie
+
+
+
+@Mapper(componentModel = "spring")
+
+public interface UserMapper{
+
+@Mapping(source = "fullName", target = "name") // Different field 
+names
+
+UserDTOuserToUserDTO(User user);
+
+User userDTOToUser(UserDTOuserDTO);
+
+}
+
+
+@Getter
+
+@Setter
+
+public class CarDto{
+
+private Long id;
+
+private String brand; // Field name is 
+different from entity's 'make'
+
+private int seatCount; // Field name is 
+different from entity's 'numberOfSeats'
+
+private String vehicleType; // Field name 
+is different from entity's 'type'
+
+}
+
+@Getter
+
+@Setter
+
+public class Car {
+
+private Long id;
+
+private String make;
+
+private int numberOfSeats;
+
+private String type; // e.g., SEDAN, SUV
+
+}
+
+
+@Mapper
+
+@Mapper(componentModel = "spring")
+
+public interface CarMapper{
+
+// Define custom mappings for fields with different names
+
+@Mapping(source = "make", target = "brand")
+
+@Mapping(source = "numberOfSeats", target = "seatCount")
+
+@Mapping(source = "type", target = "vehicleType")
+
+CarDtocarToCarDto(Car car);
+
+@Mapping(source = "brand", target = "make")
+
+@Mapping(source = "seatCount", target = "numberOfSeats")
+
+@Mapping(source = "vehicleType", target = "type")
+
+Car carDtoToCar(CarDtocarDto);
+
+}
+
+@Service
+
+public class CarService{
+
+private final CarMappercarMapper;
+
+@Autowired // Constructor injection is preferred
+
+public CarService(CarMappercarMapper) {
+
+this.carMapper= carMapper;
+
+}
+
+public CarDtogetCarDtoDetails(Car car) {
+
+// Map the entity to the DTO
+
+CarDtocarDto= carMapper.carToCarDto(car);
+
+// Additional business logic
+
+return carDto;
+
+}
+
+public Car saveCar(CarDtocarDto) {
+
+// Map the DTO to the entity
+
+Car carEntity= carMapper.carDtoToCar(carDto);
+
+// Save the entity to the database (e.g., using a repository)
+
+// carRepository.save(carEntity);
+
+return carEntity;
+
+}
+
+}
+
+
+Why use MapStruct?
+
+•For larger projects, MapStructis the preferred choice over manual 
+mapping or libraries like ModelMapper
+•It reduces boilerplate code while maintaining high performance 
+and strict type checking. 
+
+
+
+ModelMapper
+
+•ModelMapperis an intelligent Java library used in Spring Boot 
+applications .
+•Itisusedto automatically map properties between different 
+object models, such as converting an entity object to a Data 
+Transfer Object (DTO), with minimal boilerplate code. 
+
+
+
+Add the Dependency
+
+<dependency>
+
+<groupId>org.modelmapper</groupId>
+
+<artifactId>modelmapper</artifactId>
+
+<version>3.2.5</version> <!--Use the latest version from Maven 
+Repository -->
+
+</dependency>
+
+
+package com.example.model;
+
+import lombok.Data; // Using Lombok for 
+brevity
+
+@Data
+
+public class User {
+
+private Long id;
+
+private String firstName;
+
+private String lastName;
+
+private String email;
+
+}
+
+package com.example.dto;
+
+import lombok.Data;
+
+@Data
+
+public class UserDTO{
+
+private Long id;
+
+private String firstName;
+
+private String lastName;
+
+private String email;
+
+}
+
+
+Define a ModelMapperBean
+
+•To use ModelMapperwithin the Spring context (e.g., autowiringit into 
+services or controllers), you need to define it as a @Bean in a configuration 
+class. 
+
+
+package com.example.config;
+
+@Configuration
+
+public class ModelMapperConfig{
+
+@Bean
+
+public ModelMappermodelMapper() {
+
+return new ModelMapper();
+
+}
+
+}
+
+
+Perform Object Mapping 
+
+•Inject the ModelMapperbean into your service or 
+controller and use the map() method to perform 
+conversions. 
+
+
+package com.example.service;
+
+import org.modelmapper.ModelMapper;
+
+@Service
+
+public class UserService{
+
+private final ModelMappermodelMapper;
+
+@Autowired
+
+public UserService(ModelMappermodelMapper) {
+
+this.modelMapper= modelMapper;
+
+}
+
+public UserDTOconvertEntityToDto(User user) {
+
+// Automatically maps properties with matching names
+
+UserDTOuserDTO= modelMapper.map(user, 
+UserDTO.class);
+
+return userDTO;
+
+}
+
+public User convertDtoToEntity(UserDTOuserDTO) {
+
+User user= modelMapper.map(userDTO, User.class);
+
+return user;
+
+}
+
+}
+
+
+Key Benefits
+
+•Reduced Boilerplate Code: Automates the mapping process, 
+eliminating the need for manual getter and setter calls for each 
+property.
+•Convention-Based: Uses naming conventions to automatically 
+match properties with the same name and type, simplifying 
+common mapping scenarios.
+•Customizable: Provides a flexible API for defining custom mapping 
+rules for complex scenarios, like mapping nested objects or using 
+property converters.
+•Maintainability: Centralizes mapping logic, making the codebase 
+cleaner and easier to maintain as object models evolve. 
+
+
+
