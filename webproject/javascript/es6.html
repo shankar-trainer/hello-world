@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var ar1=[4,1,0,3,2]
+        
+        var ar3=ar1.map(function (a){
+          return a*a;
+        })
+      alert(ar3)
+
+      alert(ar1.map((p)=>p*p))
+
+      var ar4=ar1.filter(a=>a%2==0)
+      alert(ar4)
+
+     alert(ar1.reduce((a,b)=>a+b))
+     
+     alert(ar1.sort())
+
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = 100;
+        var b = 0;
+        var c;
+        var ar=[1,2,3,4,]
+
+        try {
+            c = a / b;
+            alert('division is ' + c)
+        } catch (error) {
+            alert('some error ' + error)
+        }
+
+        try {
+            c = a / b;
+            if (b == 0)
+                throw ('division b y zero error')
+            alert('division is ' + c)
+        } catch (error) {
+            alert('some error ' + error)
+        }
+
+    </script>
+
+</body>
+
+</html>

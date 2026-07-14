@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a=100
+        const p=90;
+        //p=67;// error 
+        {
+            //console.info("a is "+a);
+          let  a=10;
+            console.info("a is now  "+a);
+        }
+        console.info("a is now ..  "+a);
+
+        var sum=0;
+         for (let index = 1; index <=10; index++) {
+            let a=0; 
+            if(confirm("take number ")){ 
+                a=parseInt(prompt("enter number "+1))
+             }
+             else {
+                break;
+             }
+            sum=sum+a;
+        }
+       alert("sum is "+sum)
+
+
+    </script>    
+
+
+</body>
+</html>

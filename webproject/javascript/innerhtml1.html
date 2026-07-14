@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('css/style1.css');
+    </style>
+</head>
+<body>
+    <script>
+        function welcome(){
+            alert( document.getElementById("id1").innerHTML)
+             document.getElementById("id1").innerHTML='<h1>welcome to javascript</h1>'
+        }
+        var count=1
+        function increment(){
+            count=count+1;
+          document.getElementById('count').innerHTML=count;
+        }
+        function decrement(){
+            count=count-1;
+          document.getElementById('count').innerHTML=count;
+        }
+    </script>
+
+    <div class="calc" onclick="welcome()" id="id1">
+             hello 
+    </div>
+    <div>
+        <h2>Counter Program </h2>
+        <div id="count">
+                Count is 1
+        </div>
+        <div>
+            <button onclick="increment()">increment</button>
+            <button onclick="decrement()">decrement</button>
+        </div>
+    </div>
+</body>
+</html>

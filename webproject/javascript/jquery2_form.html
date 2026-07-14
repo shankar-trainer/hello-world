@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js">
+    </script>
+    <script>
+        $(()=>{
+            $(".calc").submit((e)=>{
+                e.preventDefault()
+
+                var id=$(".id").val()
+                var name=$(".name").val()
+                var salary=$(".salary").val()
+
+                if(id==""){
+                    alert("id is blank")
+                    return
+                }
+                else if(name==""){
+                    alert("name is blank")
+                    return
+                }
+                else if(salary==""){
+                    alert("salary is blank")
+                    return
+                }
+                else {
+                 $("#show").html(
+                   `<p>id is ${id}<br>
+                    name is ${name}<br>
+                    salary is ${salary}<br>
+                    `
+                 )
+                 .css('border','solid')
+                 .css('border-radius','20pt')
+                 .css('width','80%')
+                 .css('height','80pt')
+                 .css('margin-top','10pt');
+                 return
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <fieldset>
+    <form class="calc">
+      <div>
+        <label>enter id </label>
+        <input class="id" name="id">
+      </div>
+      
+      <div>
+        <label>enter name </label>
+        <input class="name" name="name">
+      </div>
+      <div>
+        <label>enter salary </label>
+        <input class="salary" name="salary">
+      </div>
+      
+      <div>
+        <button type="submit">send</button>
+        <button type="reset">cancel</button>
+      </div>
+      
+      <div id="show">
+
+      </divid>
+    </form>
+</fieldset>
+    
+</body>
+</html>

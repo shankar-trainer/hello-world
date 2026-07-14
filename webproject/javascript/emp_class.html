@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     class Employee{
+        // either default or overloaded constructor allowed
+    //     constructor(){
+    //      this.id=1001;
+    //      this.name="suresh kumar";
+    //    }
+        constructor(id1,name1){
+         this.id=id1;
+         this.name=name1;
+       }
+        employeeinfo(){
+             document.write("employee data")
+             document.write("<br> id  "+this.id)
+             document.write("<br> name  "+this.name)
+        }
+     }
+//   var emp=new Employee();
+  var emp=new Employee(90001,"surendra kumar");
+  emp.employeeinfo();
+
+  class Manager extends Employee{
+    constructor(id,name,salary,location){
+        super(id,name);
+        this.salary=salary;
+        this.location=location;
+    }
+    employeeinfo(){
+        super.employeeinfo();
+        document.write("<br> salary  "+this.salary)
+        document.write("<br> location  "+this.location)
+    }
+  }
+var manager=new Manager(90008,"anand parsad",20000,"new delhi")
+manager.employeeinfo();
+    </script>
+    
+</body>
+</html>

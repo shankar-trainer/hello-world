@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var ar = new Array(1, 2, 3, 43, 5)
+        var ar1 = [11, 2, 1, 33, 4, 5, 0]
+
+        for (let index = 0; index < ar.length; index++) {
+            document.write(ar[index] + ",")
+        }
+        // using for in loop  -- gives index
+        document.write("<br>")
+        for (const index in ar1) {
+            document.write(ar1[index] + ",")
+        }
+        // using for of  loop  -- returns
+
+        document.write("<br>")
+        for (const element of ar1) {
+            document.write(element + ",")
+        }
+        document.write("<br>")
+
+        // using for each method wiath arrow function
+        ar1.forEach(element => {
+            document.write(element + ",")
+        });
+
+
+    </script>
+</body>
+
+</html>

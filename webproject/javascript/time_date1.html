@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        date = new Date()
+        document.write("date is " + date)
+
+        document.write("<br>only date is " + date.getDate() + "//" + (date.getMonth() + 1) + "//" + date.getFullYear())
+
+        document.write("<br>date" + date.toDateString())
+        document.write("<br>date" + date.toLocaleDateString())
+
+        document.write("<br>time is " + date.toTimeString())
+        document.write("<br>time is " + date.toLocaleTimeString())
+
+        function display(){
+            alert("alarm is ringing")
+        }
+
+        document.write("alarm will ring after 5 seconds")
+        setTimeout(display,5000);
+
+        setTimeout(() => {
+            alert("second alarm  ")
+        }, 8000);
+
+        setInterval(() => {
+           document.write("<br>"+new Date().toTimeString()) 
+        }, 1000);
+
+
+    </script>
+</body>
+
+</html>

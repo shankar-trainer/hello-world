@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('css/style1.css');
+          label{
+            width:110pt;
+          }
+        .calc{
+            width: 40%;
+            border-radius: 20pt;
+            background-color: whitesmoke;
+            margin-left: 200pt;
+        }
+        span{
+            color: red;
+        }
+    </style>
+    <script src="script/script3.js">
+
+    </script>
+</head>
+<body>
+    <form class="calc" onsubmit="return validate()">
+        <div>
+            <label>enter id</label>
+            <input id="id">
+            <span id="err_id"></span>
+        </div>
+        
+        <div>
+            <label>enter name</label>
+            <input id="name">
+            <span id="err_name"></span>
+        </div>
+        
+        <div>
+            <label>select qualification</label>
+            <span id="err_qualification"></span>
+            <br>
+            <input type="checkbox" name="qualification" value="bca">BCA<br>
+            <input type="checkbox" name="qualification" value="mca">MCA<br>
+            <input type="checkbox" name="qualification" value="btech">B.tech<br>
+            <input type="checkbox" name="qualification" value="btech">M.tech<br>
+
+            <span id="err_name"></span>
+        </div>
+
+
+        <div>
+            <button type="submit">login</button>
+            <button type="reset">cancel</button>
+        </div>
+
+
+
+    </form>
+
+    
+</body>
+</html>

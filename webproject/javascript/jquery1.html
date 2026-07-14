@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js">
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            alert("alert from jquery")
+        })
+        $(function () {
+            alert("alert from jquery..")
+            alert($('#id1').text())
+
+            $('#id1').text('welcome to jquery')
+        })
+        $(() => {
+            $("#btn1").click(() => {
+                $('#id1').html("<h2>after this we will learn servlet</h2>")
+            })
+            var c=1;
+            $('#btn2').click(()=>{
+                $('#counter').html('Count is '+(c++))
+            })
+        })
+    </script>
+    <style>
+        .col {
+            width: 40%;
+            float: left;
+            border: solid;
+            padding: 20pt;
+            height: 100pt;
+            background-color: lime;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="col">
+        <div id="id1">
+            welcome to javascript
+        </div>
+        <button id="btn1">change it</button>
+    </div>
+
+    <div class="col" style="margin-left: 10pt;">
+        <h3>Counter Application</h3>
+        <div id="counter">
+           
+        </div>
+        <button id="btn2">increment</button>
+    </div>
+</body>
+
+</html>

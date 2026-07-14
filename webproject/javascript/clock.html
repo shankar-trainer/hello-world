@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hello{
+            border: solid;
+            border-radius: 20pt;
+            color: blue;
+            padding: 30pt;
+            margin: 100pt;
+            width: 30%;
+            font-size: 20pt;
+        }
+    </style>
+    <script>
+    mytime=()=>{
+             document.getElementById("clock").innerHTML="<div class='hello'>"+
+             new Date().toLocaleTimeString()+"</div>"
+    }
+    setInterval(mytime,1000)
+</script>
+</head>
+<body onload="mytime()">
+
+    <div id="clock">
+    </div>
+    
+</body>
+</html>

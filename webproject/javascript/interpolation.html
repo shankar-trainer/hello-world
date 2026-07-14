@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      var fname="ram";
+      var lname="kumar";
+      const country="india";
+
+      document.write("fname "+fname+"\tlname "+lname+"\t country "+country+"<br><hr>");
+
+      // interpolation
+      document.write(`first name ${fname}\<br>lname ${lname}\<br>country ${country} `)
+// multi line string 
+      let csample=`
+             #include<stdio.h>
+                void main()
+                {
+                int x=10;
+                printf("hello world");
+                printf("\nno1 is %d ",x);
+                } 
+      `
+document.write("<br>c program sample<p>");
+document.write(csample)
+
+var student={
+    "id":100001,
+    "name":"suresh parsad",
+    "subject":"math",
+    "address":{
+           "street":2,
+           "location":"annantpur",
+           "city":"noida",
+           "state":"up"
+    }
+}
+console.log(student)
+console.log(csample)
+
+document.write("<h2>Student</h2>")
+document.write("<br>id : "+student.id)
+document.write("<br>name : "+student.name)
+document.write("<br>subject : "+student.subject)
+document.write("<br>address : ");
+
+document.write("<br> \t street: "+student.address.street)
+document.write("<br> \t location: "+student.address.location)
+var add=student.address
+
+document.write("<br> \t city: "+add.city)
+document.write("<br> \t state: "+add.state)
+
+document.write(JSON.stringify(student))
+
+</script>
+    
+</body>
+</html>

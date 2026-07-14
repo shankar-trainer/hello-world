@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td{
+            border:solid
+        }
+    </style>
+</head>
+<body>
+    <script>
+              function userinput(){
+               var id= prompt("enter id",0)
+               var name= prompt("enter name")
+               var salary= prompt("enter salary")
+               var pf= prompt("enter pf percentage")
+
+               var gross_salary=salary-salary*pf;
+               
+                 document.write("<table>")
+                 document.write("<tr><td>id is "+id+"</td></tr>")
+                 document.write("<tr><td>name is "+name+"</td></tr>")
+                 document.write("<tr><td>salary is "+salary+"</td></tr>")
+                 document.write("<tr><td>pf is "+pf+"</td></tr>")
+                 document.write("<tr><td>gross salary is "+gross_salary+"</td></tr>")
+                 document.write("</table>")
+              }
+
+              userinput();
+    </script>
+</body>
+</html>
