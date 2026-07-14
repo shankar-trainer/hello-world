@@ -7,7 +7,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/hello")
+//@WebServlet("/hello")
+@WebServlet(urlPatterns = {"/hello","/test","/welcome"})
+
 public class HelloServlet extends HttpServlet {
    int count;
     @Override
@@ -21,7 +23,7 @@ public class HelloServlet extends HttpServlet {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
         out.println("<h2>Hello world</h2>");
-        out.println("<h2>User Hits </h2>"+count++);
+        out.println("<h2>User Hits "+(count++)+"</h2>");
         System.out.println("service/doGet called");
     }
 

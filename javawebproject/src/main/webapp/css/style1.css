@@ -1,0 +1,17 @@
+label{
+ float:left;
+ width:100pt;
+}
+form{
+  width:40%;
+  border:solid;
+  background-color:lightyellow;
+  padding:20pt;
+  margin:100pt;
+  border-radius:10pt;
+}
+button{
+  background-color:blue;
+  color:white;
+  border-radius:10pt;
+}
