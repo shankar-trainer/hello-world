@@ -15,6 +15,7 @@ public class DatabaseUtil {
             throw new RuntimeException(e);
         }
     }
+
     public static Connection getDatabaseConnection() throws SQLException {
         if(connection==null)
             connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/coforge_db", "root","mysql" );

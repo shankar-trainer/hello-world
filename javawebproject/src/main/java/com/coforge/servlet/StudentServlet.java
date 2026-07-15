@@ -1,5 +1,6 @@
 package com.coforge.servlet;
 
+import com.coforge.util.DatabaseUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,8 +21,9 @@ public class StudentServlet  extends HttpServlet {
     @Override
     public void init() throws ServletException {
         try {
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-            connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/coforge_db", "root","mysql" );
+//            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+//            connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/coforge_db", "root","mysql" );
+            connection= DatabaseUtil.getDatabaseConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
