@@ -30,5 +30,7 @@ public class SessionServlet1 extends HttpServlet {
         out.println("<br>Session inactive interval  time  "+session.getMaxInactiveInterval());
 
      out.println("<br><a href='product_detailsServlet'>product details</a>");
+
+     out.println("<br><a href='product_details.jsp'>product details jsp</a>");
     }
 }
