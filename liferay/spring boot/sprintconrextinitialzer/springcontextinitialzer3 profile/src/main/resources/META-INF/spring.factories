@@ -1,0 +1,2 @@
+#properties
+org.springframework.context.ApplicationContextInitializer=com.example.config.EnvironmentSelectionInitializer

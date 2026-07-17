@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Validation Example</title>
+    <!-- Basic styling to highlight validation errors -->
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { padding: 8px; width: 250px; border: 1px solid #ccc; }
+        /* Style generated automatically by the plugin for invalid elements */
+        input.error { border: 1px solid red; }
+        label.error { color: red; font-size: 0.85em; margin-top: 5px; display: block; }
+    </style>
+</head>
+<body>
+
+    <h2>User Registration</h2>
+    <!-- The validation target. Input targets are identified by their 'name' attribute -->
+    <form id="registrationForm" method="POST" action="">
+        <div class="form-group">
+            <label for="username">Username (min 3 chars):</label>
+            <input type="text" id="username" name="username">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="text" id="email" name="email">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password (min 5 chars):</label>
+            <input type="password" id="password" name="password">
+        </div>
+
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Step 1: Load Core jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- Step 2: Load the jQuery Validation Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.22.1/jquery.validate.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        // Step 3: Initialize validation on the chosen form element
+        $("#registrationForm").validate({
+            // Define targeted rule subsets mapping to input 'name' fields
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 3
+                },
+                email: {
+                    required: true,
+                    email: true // Ensures proper email structure structure (e.g. '@' and '.')
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                },
+                confirm_password: {
+                    required: true,
+                    equalTo: "#password" // Explicitly cross-checks value against the password element
+                }
+            },
+            // Specify custom user-facing validation response texts
+            messages: {
+                username: {
+                    required: "Please enter a username.",
+                    minlength: "Your username must consist of at least 3 characters."
+                },
+                email: {
+                    required: "An email address is required.",
+                    email: "Please enter a valid email syntax."
+                },
+                password: {
+                    required: "Please provide a password.",
+                    minlength: "Your password must be at least 5 characters long."
+                },
+                confirm_password: {
+                    required: "Please confirm your password entry.",
+                    equalTo: "Validation failed: Passwords do not match."
+                }
+            },
+            // Handle form execution cleanly once validation checks pass successfully
+            submitHandler: function(form) {
+                alert("Validation complete! Form is safe to submit.");
+                form.submit(); 
+            }
+        });
+    });
+    </script>
+</body>
+</html>

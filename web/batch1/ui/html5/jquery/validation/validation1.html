@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom jQuery Validation</title>
+    <style>
+        .form-group { margin-bottom: 15px; }
+        .error-msg { color: red; display: none; font-size: 14px; }
+        .input-error { border: 1px solid red; }
+    </style>
+</head>
+<body>
+    <form id="registrationForm" novalidate>
+        <div class="form-group">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username">
+            <span id="usernameError" class="error-msg">Username is required.</span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email">
+            <span id="emailError" class="error-msg">Enter a valid email address.</span>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label><br>
+            <input type="password" id="password">
+            <span id="passwordError" class="error-msg">Password must be at least 6 characters.</span>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+    $('#registrationForm').on('submit', function(e) {
+        // Track form validity status
+        let isValid = true;
+
+        // Reset previous error messages and styles
+        $('.error-msg').hide();
+        $('input').removeClass('input-error');
+
+        // 1. Username Validation (Required Check)
+        const username = $.trim($('#username').val()); // Trim white spaces
+        if (username === '') {
+            $('#usernameError').show();
+            $('#username').addClass('input-error');
+            isValid = false;
+        }
+
+        // 2. Email Validation (Regex Check)
+        const email = $.trim($('#email').val());
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email pattern
+        if (email === '' || !emailRegex.test(email)) {
+            $('#emailError').show();
+            $('#email').addClass('input-error');
+            isValid = false;
+        }
+
+        // 3. Password Validation (Length Check)
+        const password = $('#password').val(); // Do not trim passwords intentionally
+        if (password.length < 6) {
+            $('#passwordError').show();
+            $('#password').addClass('input-error');
+            isValid = false;
+        }
+
+        // Prevent actual form submission if any validation rule failed
+        if (!isValid) {
+            e.preventDefault();
+        } else {
+            alert('Form submitted successfully!');
+        }
+    });
+});
+</script>
+</body>
+</html>
