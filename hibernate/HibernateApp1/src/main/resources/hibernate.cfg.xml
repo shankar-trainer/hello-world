@@ -13,11 +13,13 @@
         <property name="jakarta.persistence.jdbc.password">mysql</property>
 
         <!-- Hibernate SQL Management -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="hibernate.show_sql">true</property>
 <!--         <property name="hibernate.format_sql">true</property>
  -->
-        <!-- Register Mapping Classes -->
         <mapping class="com.coforge.model.Employee"/>
+        <mapping class="com.coforge.model.Person"/>
+        <mapping class="com.coforge.model.Address"/>
+        <mapping class="com.coforge.model.Car"/>
     </session-factory>
 </hibernate-configuration>
