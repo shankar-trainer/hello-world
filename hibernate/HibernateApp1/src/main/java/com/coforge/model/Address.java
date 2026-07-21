@@ -1,8 +1,10 @@
 package com.coforge.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -13,6 +15,17 @@ public class Address {
 
 	private String city;
 	private String state;
+	
+	@OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
+	private Person person;
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 
 	@Override
 	public String toString() {

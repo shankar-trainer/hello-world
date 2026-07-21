@@ -27,7 +27,7 @@ public class Person {
 	@JoinColumn(name = "addId")
 	private Address address;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "person")
 	private Set<Car> carSet;
 	
 	@Override
