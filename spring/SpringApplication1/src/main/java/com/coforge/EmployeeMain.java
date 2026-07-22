@@ -3,6 +3,7 @@ package com.coforge;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.coforge.model.Address;
 import com.coforge.model.Employee;
 import com.coforge.model.HelloWorld;
 
@@ -23,6 +24,9 @@ public class EmployeeMain {
 		System.out.println("employee2\nid is " + emp1.getId());
 		System.out.println("name is " + emp1.getName());
 	
+		System.out.println(emp1);
+		Address address=emp1.getAddress();
+		System.out.println("addrees "+address);
 		
 		
 		

@@ -3,7 +3,14 @@ package com.coforge.model;
 public class Employee {
 	private int id;
 	private  String name;
+	private Address address;// Di with getter, setter
 	
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	public int getId() {
 		return id;
 	}
@@ -21,4 +28,11 @@ public class Employee {
 	    this.id=900999;	
 	    this.name="sanjay kumar";	
 	}
+	
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", address=" + address + "]";
+	}
+	
+	
 }

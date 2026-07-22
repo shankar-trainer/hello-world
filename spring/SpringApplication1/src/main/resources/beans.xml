@@ -7,11 +7,29 @@
 	<bean id="he" class="com.coforge.model.HelloWorld">
 	</bean>
 
-	<bean id="emp1" class="com.coforge.model.Employee" scope="prototype" init-method="init">
+	<bean id="emp1" class="com.coforge.model.Employee"
+		scope="prototype" init-method="init" 
+		autowire="byType">
+	<!-- 	<qualifier value="addr1"></qualifier> -->
 		<property name="id" value="54545454"></property>
 		<property name="name" value="vimla devi"></property>
+		<!-- <property name="address" ref="addr1"></property> -->
+	</bean>
+
+	<bean id="addr1" class="com.coforge.model.Address" 
+	primary="true">
+		<property name="addr_id" value="1"></property>
+		<property name="location" value="gr noida"></property>
+		<property name="city" value="noida"></property>
 	</bean>
 	
+	<bean id="addr2" class="com.coforge.model.Address">
+			
+		<property name="addr_id" value="2"></property>
+		<property name="location" value="delhi"></property>
+		<property name="city" value="laxminagar"></property>
+	</bean>
+
 	<bean id="user" class="com.coforge.model.User">
 		<constructor-arg name="userId" value="877877"></constructor-arg>
 		<constructor-arg name="userName" value="sima kumari"></constructor-arg>
