@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="he" class="com.coforge.model.HelloWorld">
+	</bean>
+
+	<bean id="emp1" class="com.coforge.model.Employee" scope="prototype" init-method="init">
+		<property name="id" value="54545454"></property>
+		<property name="name" value="vimla devi"></property>
+	</bean>
+	
+	<bean id="user" class="com.coforge.model.User">
+		<constructor-arg name="userId" value="877877"></constructor-arg>
+		<constructor-arg name="userName" value="sima kumari"></constructor-arg>
+		<constructor-arg name="userAge" value="44"></constructor-arg>
+	</bean>
+
+</beans>
