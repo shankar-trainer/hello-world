@@ -1,5 +1,7 @@
 package com.coforge.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -10,38 +12,46 @@ import org.springframework.stereotype.Repository;
 import com.coforge.model.Library;
 
 @Repository
-public class LibraryDaoImpl  implements Librarydao{
+public class LibraryDaoImpl implements Librarydao {
 
-//	@Autowired 
+	@Autowired
 	private SessionFactory factory;
+	
 	private Session session;
 	private Transaction transaction;
-	
-	public LibraryDaoImpl(SessionFactory factory){
-        this.factory=factory;
-	}
-	
+//     @Autowired
+//	public LibraryDaoImpl(SessionFactory factory) {
+//		this.factory = factory;
+//	}
 
 	@Override
 	public boolean addLibrary(Library library) {
-		session=factory.openSession();
-		transaction=session.getTransaction();
+		session = factory.openSession();
+		transaction = session.getTransaction();
 		transaction.begin();
 		session.persist(library);
 		transaction.commit();
+		session.close();
 		return true;
 	}
 
 	@Override
 	public boolean removeLibraryById(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		session = factory.openSession();
+		Library library = session.find(Library.class, id);
+
+		transaction = session.getTransaction();
+		transaction.begin();
+		session.remove(library);
+		transaction.commit();
+		session.close();
+		return true;
 	}
 
 	@Override
-	public boolean showAll() {
-		// TODO Auto-generated method stub
-		return false;
+	public List<Library> showAll() {
+		session = factory.openSession();
+		return session.createQuery("from Library").list();
 	}
 
 }

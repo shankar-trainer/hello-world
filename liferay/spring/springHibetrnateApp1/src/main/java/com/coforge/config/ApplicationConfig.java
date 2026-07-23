@@ -34,7 +34,7 @@ public class ApplicationConfig {
 
 //		properties.setProperty(AvailableSettings.DIALECT, "MySQLDialect");
 
-		properties.setProperty(AvailableSettings.HBM2DDL_AUTO, "create");
+		properties.setProperty(AvailableSettings.HBM2DDL_AUTO, "update");
 
 		properties.setProperty(AvailableSettings.SHOW_SQL, "true");
 
