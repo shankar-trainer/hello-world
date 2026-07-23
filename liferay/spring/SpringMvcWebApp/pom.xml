@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>SpringMvcWebApp</groupId>
+	<artifactId>SpringMvcWebApp</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>SpringMvcWebApp Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+	</properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.46</version>
+        </dependency>
+
+            <!-- Spring MVC -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>6.1.5</version> <!-- Use 5.x if working with legacy javax namespace -->
+            </dependency>
+
+            <!-- JSR-303 / JSR-380 Bean Validation API -->
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>3.0.2</version>
+            </dependency>
+
+            <!-- Hibernate Validator (The JSR Implementation) -->
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>8.0.1.Final</version>
+            </dependency>
+
+        <!-- Java Servlet API (provided by the Tomcat container) -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- GlassFish EL (Required for parsing error messages) -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.el</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
+
+            <dependency>
+                <groupId>jakarta.servlet.jsp.jstl</groupId>
+                <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+
+            <!-- GlassFish JSTL Implementation (Required to actually run it) -->
+            <dependency>
+                <groupId>org.glassfish.web</groupId>
+                <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+                <version>3.0.1</version>
+            </dependency>
+        </dependencies>
+
+    <build>
+		<finalName>SpringMvcWebApp</finalName>
+	</build>
+</project>
