@@ -1,7 +1,9 @@
 package com.coforge.service;
 
 import com.coforge.exception.BookException;
+import com.coforge.model.Author;
 import com.coforge.model.Book;
+import com.coforge.model.Publisher;
 import com.coforge.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class BookService {
