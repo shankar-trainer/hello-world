@@ -1,0 +1,16 @@
+spring:
+  application:
+    name:  product-order
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+#    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:file:./data/testdb
+    username: sa
+    password: password
+
+server:
+  port: 7070
+#localhost:7070/swagger-ui.html
