@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: product-application
+              uri: http://localhost:9090
+              predicates:
+                - Path=/product/**
+
+            - id: product-order-application
+              uri: http://localhost:7070
+              predicates:
+                - Path=/order/**
+
+server:
+  port: 8082

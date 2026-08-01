@@ -3,6 +3,7 @@ package com.coforge.web;
 import com.coforge.model.Order;
 import com.coforge.model.Product;
 import com.coforge.repository.OrderRepository;
+import com.coforge.repository.ProductClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,8 @@ public class OrderController {
 
     @PostMapping("/order")
     public Order addOrder(@RequestBody  Order order){
-        Product product = restTemplate.getForObject("http://localhost:9090/product/" + order.getPrdId(), Product.class);
+//        Product product = restTemplate.getForObject("http://localhost:9090/product/" + order.getPrdId(), Product.class);
+        Product product = restTemplate.getForObject("http://Product/product/" + order.getPrdId(), Product.class);
 
         if(product!=null)
         return    repo.save(order);
@@ -33,5 +35,15 @@ public class OrderController {
     public List<Order> getAllOrder(){
         return  repo.findAll();
     }
+
+
+    @Autowired
+    ProductClient client;
+
+    @GetMapping("/product")
+    public List<Product> showAllProduct() {
+        return client.getAllProduct();
+    }
+
 
 }
