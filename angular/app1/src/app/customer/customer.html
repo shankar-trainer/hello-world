@@ -1,0 +1,80 @@
+<div class="container">
+           
+    10 power 3 is {{10|square:3}}
+    <p></p>
+    dob is {{dob}}
+    <p></p>
+    dob is {{dob|date}}
+    <p></p>
+    dob is {{dob|date:'short'}}
+    <p></p>
+  {{customer|json}}
+    <table class="table table-bordered table-striped bg-info">
+        <caption align="top" class="ms-5">employee table</caption>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+        </tr>
+
+        <tr *ngFor="let c of customer">
+            <td>{{c.id}}</td>
+            <td>{{c.name|uppercase}}</td>
+            <td>{{c.salary|currency:'₹'}}</td>
+        </tr>
+    </table>
+
+    <h2>Using *ngIf </h2>
+    <table class="table table-bordered table-striped bg-info">
+        <caption align="top" class="ms-5">employee table salary>25000</caption>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+        </tr>
+
+        <tr *ngFor="let c of customer">
+            <td *ngIf="c.salary>25000">{{c.id}}</td>
+            <td *ngIf="c.salary>25000">{{c.name}}</td>
+            <td *ngIf="c.salary>25000">{{c.salary}}</td>
+        </tr>
+    </table>
+
+    <h2>Using *ngSwitch </h2>
+    <table class="table table-bordered table-striped bg-info">
+        <caption align="top" class="ms-5">employee</caption>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Designation</th>
+        </tr>
+
+        <tr *ngFor="let c of customer">
+            <td>25000">{{c.id}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.salary}}</td>
+
+            <div [ngSwitch]="c.name">
+                <span *ngSwitchCase="'amit kumar'">
+                    <td>clerk</td>
+                </span>
+                <span *ngSwitchCase="'kamal kumar'">
+                    <td>manager</td>
+                </span>
+                <span *ngSwitchCase="'jai kumar'">
+                    <td>ast manager</td>
+                </span>
+                <span *ngSwitchCase="'vikram kumar'">
+                    <td>sr developer</td>
+                </span>
+                <span *ngSwitchDefault>
+                    <td>employee</td>
+                </span>
+
+            </div>
+        </tr>
+    </table>
+
+
+</div>

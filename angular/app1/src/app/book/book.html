@@ -1,0 +1,31 @@
+<div class="container">
+
+    <div>
+        <img src="img1.jpg" width="200" height="150">
+    </div>
+    <div>
+        <img src={{img_src}} width={{img_width}} 
+        height={{img_height}}>
+    </div>
+
+    <div>
+        <img [src]="img_src1" width="250" 
+        height="200">
+    </div>
+
+    <ul *ngFor="let b of book">
+       <li>{{b.isbn}}- {{b.bname}}- {{b.cost}}</li>
+    </ul>
+
+    <table class="table table-bordered 
+    table-striped bg-info">
+        <tr>
+            <td>isbn</td><td>name</td><td>cost</td>
+        </tr>
+        <tr *ngFor="let b of book">
+         <td>{{b.isbn}}</td>
+         <td>{{b.bname}}</td>
+         <td>{{b.cost}}</td>
+        </tr>
+    </table>
+</div>
