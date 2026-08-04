@@ -19,6 +19,4 @@ public class Book {
     private Long isbn;
     private String bname;
     private float cost;
-
-
 }

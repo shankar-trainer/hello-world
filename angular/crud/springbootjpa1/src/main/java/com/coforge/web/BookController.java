@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(value = "http://localhost:4200/")
+
 public class BookController {
 
     @Autowired
@@ -19,7 +21,8 @@ public class BookController {
     @PostMapping("/book")
     public ResponseEntity<Book> addBook(@RequestBody Book book) {
         try {
-            return new ResponseEntity<>(bookService.addBook(book), HttpStatus.CREATED);
+//            return new ResponseEntity<>(bookService.addBook(book), HttpStatus.CREATED);
+            return new ResponseEntity<>(bookService.addBook(book), HttpStatus.FOUND);
 
         } catch (BookException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
@@ -58,7 +61,8 @@ public class BookController {
     @GetMapping("/book")
     public ResponseEntity<List<Book>> showAllBooks() {
         try {
-            return new ResponseEntity<>(bookService.showAllBooks(), HttpStatus.FOUND);
+//            return new ResponseEntity<>(bookService.showAllBooks(), HttpStatus.FOUND);
+            return new ResponseEntity<>(bookService.showAllBooks(), HttpStatus.OK);
         } catch (BookException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
