@@ -1,5 +1,21 @@
 <div class="container">
-           
+    
+    <div [hidden]="!status">
+       book info
+       <div>
+        isbn is {{isbn}}
+       </div>
+       
+       <div>
+        name is {{bname}}
+       </div>
+
+       <div>
+        cost is {{cost}}
+       </div>
+
+    </div>
+
     10 power 3 is {{10|square:3}}
     <p></p>
     dob is {{dob}}

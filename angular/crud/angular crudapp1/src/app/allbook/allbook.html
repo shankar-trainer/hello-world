@@ -1,0 +1,17 @@
+<div class="container">
+    <h1>All Book table</h1>
+    <table class="table table-bordered bg-info">
+        <tr>
+            <th>isbn</th>
+            <th>name</th>
+            <th>cost</th>
+        </tr>
+        <tr *ngFor="let b1 of b|async">
+         <td>{{b1.isbn}}</td>
+         <td>{{b1.bname}}</td>
+         <td>{{b1.cost}}</td>
+        </tr>
+
+    </table>
+
+</div>
