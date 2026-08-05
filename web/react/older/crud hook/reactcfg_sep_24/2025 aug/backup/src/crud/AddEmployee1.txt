@@ -1,0 +1,61 @@
+// AddEmployee.js
+import React, { useState } from 'react';
+import axios from 'axios'; // Example for API calls
+
+function AddEmployee1() {
+  const [employee, setEmployee] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+  });
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setEmployee({ ...employee, [e.target.name]: e.target.value });
+  };
+
+  const validateForm = () => {
+    let newErrors = {};
+    if (!employee.firstName.trim()) {
+      newErrors.firstName = 'First name is required.';
+    }
+    if (!employee.lastName.trim()) {
+      newErrors.lastName = 'Last name is required.';
+    }
+    // Add more validation rules for email, phone, etc.
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Return true if no errors
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      try {
+        await axios.post('/api/employees', employee); // Replace with your API endpoint
+        // Redirect or show success message
+      } catch (error) {
+        // Handle API errors
+      }
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="firstName"
+        value={employee.firstName}
+        onChange={handleChange}
+        placeholder="First Name"
+      />
+      {errors.firstName && <span className="error">{errors.firstName}</span>}
+
+      {/* Add similar inputs for lastName, email, phone */}
+
+      <button type="submit">Add Employee</button>
+    </form>
+  );
+}
+
+export default AddEmployee1;

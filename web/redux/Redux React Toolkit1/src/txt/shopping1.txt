@@ -1,0 +1,82 @@
+https://dev.to/avinash_krishnan/add-to-cart-feature-in-react-with-redux-toolkit-24f7#:~:text=Creating%20the%20Redux%20Store,itemList.
+
+https://github.com/Krishnan-Avinash/add-to-cart
+
+Add to Cart Feature in React with Redux Toolkit
+Redux, a key part of managing state in React apps, can seem daunting at first. But there's a simpler way to approach it. In this blog, I'll share my journey of understanding Redux and using it in a straightforward manner. I'll show you how to easily add features like a shopping cart to your React app with Redux. Let's explore Redux together and make state management in React simpler.
+
+Setting Up Your Environment
+Before diving into the code, make sure you have Node.js and npm (or yarn) installed on your machine. Create a new React application using Vite:
+
+npm create vite@latest
+Next, install Redux Toolkit:
+npm install @reduxjs/toolkit react-redux
+Creating the Redux Store
+First, let's create a Redux store to manage our application state. Inside the src directory, create a new folder called "store" and inside it, create a file named "store.js":
+
+import { configureStore } from "@reduxjs/toolkit";
+import cartReducer from "./cartSlice";
+
+export const store = configureStore({
+  reducer: {
+    reducer: cartReducer,
+  },
+});
+
+export default store;
+
+Defining the Cart Slice
+Now, let's define our cart slice, which includes the reducer and action creators. Create a new file named "cartSlice.js" in the "redux" folder:
+
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = { itemList: [], totalQuantity: 0, showCart: false };
+
+const cartSlice = createSlice({
+  name: "cart",
+  initialState,
+  reducers: {
+    addToCart(state, action) {
+      const newItem = action.payload;
+      const existingItem = state.itemList.find(
+        (item) => item.id === newItem.id
+      );
+      if (existingItem) {
+        existingItem.quantity++;
+        existingItem.totalPrice = existingItem.price * existingItem.quantity;
+      } else {
+        state.itemList.push({
+          name: action.payload.name,
+          price: action.payload.price,
+          totalPrice: action.payload.totalPrice,
+          id: action.payload.id,
+          quantity: 1,
+        });
+      }
+    },
+    removeFromCart(state, action) {
+      const findItem = state.itemList.find(
+        (item) => item.id === action.payload.id
+      );
+      if (findItem.quantity === 1) {
+        state.itemList = state.itemList.filter(
+          (item) => item.id != action.payload.id
+        );
+      } else {
+        findItem.quantity--;
+        findItem.totalPrice -= findItem.price;
+      }
+    },
+    setShowCart(state) {
+      state.showCart = !state.showCart;
+    },
+  },
+});
+
+export const { addToCart, removeFromCart, setShowCart } = cartSlice.actions;
+export default cartSlice.reducer;
+
+This completes the redux setup now data insertion and fetch can be done using useDispatch and useSelector respectively.
+Complete implementation of this is available in my Github:
+https://github.com/Krishnan-Avinash/add-to-cart
+

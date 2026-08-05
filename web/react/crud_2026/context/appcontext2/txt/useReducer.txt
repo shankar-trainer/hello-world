@@ -1,0 +1,60 @@
+
+
+==============
+Think of useReducer as the "professional upgrade" to useState. While useState is great for simple values (like a toggle or a string), useReducer is designed 
+for complex state logic—especially when your next state depends on the previous one or involves multiple sub-values.
+
+The Core Concept
+    It follows a specific pattern:
+
+    State: The current data/source of truth.
+
+    Action: An object describing what happened (e.g., { type: 'ADD_ARTICLE' }).
+
+    Reducer: A pure function that takes the Current State + Action and returns the New State.
+
+    Dispatch: The function you call to "send" the action to the reducer.
+
+How to Implement It
+To use it, you define a reducer function outside of your component to keep your logic clean.
+
+1. Define the Reducer
+JavaScript
+const articleReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_ARTICLE':
+      return [...state, action.article];
+    case 'REMOVE_ARTICLE':
+      return state.filter(art => art.id !== action.id);
+    default:
+      return state;
+  }
+};
+
+2. Use it in your Component
+JavaScript
+import { useReducer } from 'react';
+
+const ArticleProvider = ({ children }) => {
+  // useReducer returns an array: [currentState, dispatchFunction]
+  const [articles, dispatch] = useReducer(articleReducer, []);
+
+  return (
+    <ArticleContext.Provider value={{ articles, dispatch }}>
+      {children}
+    </ArticleContext.Provider>
+  );
+};
+When to use useReducer vs useState
+Feature	useState	useReducer
+Complexity	Simple values/objects	Deeply nested or complex state
+Logic Location	Inside the component	Outside (in the Reducer function)
+Predictability	Easy for quick changes	Better for "state transitions"
+Testing	Harder to test logic alone	Very easy (it's just a pure function)
+Why your previous error happened
+In your AddArticle component, you were doing this:
+const [dispatch] = useContext(ArticleContext);
+
+If your Provider passed the value as an object (value={{ articles, dispatch }}), useReducer’s usual array-destructuring style doesn't apply there. You have to match the "shape" of what the Provider is sending.
+
+Would you like me to help you write the articleReducer function to handle deleting or editing articles as well?

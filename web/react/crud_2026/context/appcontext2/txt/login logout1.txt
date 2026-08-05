@@ -1,0 +1,97 @@
+Since we are talking about useReducer and Context, implementing a Login/Logout system is the perfect way to see them work together. 
+This approach keeps your "User" state global so every component knows if someone is logged in.
+
+Here is a clean implementation of an authentication flow using a Reducer.
+
+1. The Auth Reducer (authReducer.js)
+This function handles the logic of what "Login" and "Logout" actually do to your state.
+
+JavaScript
+export const initialState = {
+  isLoggedIn: false,
+  user: null,
+};
+
+export const authReducer = (state, action) => {
+  switch (action.type) {
+    case "LOGIN":
+      return {
+        ...state,
+        isLoggedIn: true,
+        user: action.payload, // e.g., { name: 'John' }
+      };
+    case "LOGOUT":
+      return {
+        ...state,
+        isLoggedIn: false,
+        user: null,
+      };
+    default:
+      return state;
+  }
+};
+
+2. The Auth Context (AuthContext.js)
+We wrap the app so the user and dispatch are available everywhere.
+
+JavaScript
+import React, { createContext, useReducer } from 'react';
+import { authReducer, initialState } from './authReducer';
+
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(authReducer, initialState);
+
+  return (
+    // We pass the state and dispatch as an OBJECT
+    <AuthContext.Provider value={{ state, dispatch }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+3. The Login Component (Login.js)
+Remember the error you had earlier? Since we passed an object in the Provider, we use curly braces { } to get the dispatch.
+
+JavaScript
+import React, { useContext } from 'react';
+import { AuthContext } from './AuthContext';
+
+export const Login = () => {
+  const { state, dispatch } = useContext(AuthContext);
+
+  const handleLogin = () => {
+    dispatch({ 
+      type: "LOGIN", 
+      payload: { name: "Gemini User" } 
+    });
+  };
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+  };
+
+  return (
+    <div style={{ padding: '20px', border: '1px solid #ccc' }}>
+      {state.isLoggedIn ? (
+        <>
+          <p>Welcome back, <strong>{state.user.name}</strong>!</p>
+          <button onClick={handleLogout}>Log Out</button>
+        </>
+      ) : (
+        <>
+          <p>Please log in to continue.</p>
+          <button onClick={handleLogin}>Log In</button>
+        </>
+      )}
+    </div>
+  );
+};
+Key Takeaways for your project:
+The "Object vs Array" Rule: In useReducer itself, you use [state, dispatch]. But once you put that into a Context Provider value={{ state, dispatch }}, you must consume it using { state, dispatch }.
+
+Payloads: Notice in the Login action, we send a payload. This is how you pass data (like user info or article text) into your reducer.
+
+Conditional Rendering: Using state.isLoggedIn allows you to easily toggle between showing a "Login" button and a "Dashboard."
+
+Quick Check: Does your ArticleProvider look more like the AuthProvider above now? I can help you merge the two if you want to handle articles and users in the same app!

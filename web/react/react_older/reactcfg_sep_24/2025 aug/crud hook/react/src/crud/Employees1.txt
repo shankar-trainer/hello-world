@@ -1,0 +1,41 @@
+import axios from "axios"
+import { Fragment, useEffect, useState } from "react"
+
+export const AllEmployees = () => {
+    const [employee, setAllEmployee] = useState([])
+    const [error1, setError1] = useState('')
+    useEffect(() => {
+        axios.get("http://localhost:9090/employee").then(result => {
+            setAllEmployee(result.data)
+        },
+        (error)=>{
+             console.log("error is "+JSON.stringify(error))  
+             setError1(error.message)
+        }
+    )
+    }, [])
+    return (
+        <div className="container p-5 m-5 bg-success text-white">
+            {error1 && <p className="text-warn">{{error1}}</p>}
+
+            <table className="table table-bordered table-triped">
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>dob</th>
+                </tr>
+                {
+                    employee.map(a=>
+                        <tr>
+                            <td>{a.id}</td>
+                            <td>{a.name}</td>
+                            <td>{a.dob}</td>
+                        </tr>
+                       
+                    )
+                }
+            </table>
+        </div>
+    )
+
+}

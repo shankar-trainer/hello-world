@@ -1,0 +1,26 @@
+in redux what is provider
+
+
+The <Provider> is a component from the React Redux library that makes the Redux store available to all nested components within a React application. 
+
+Purpose
+Centralized Access: It serves as a container at the root of the application's component tree, ensuring any component can access the global Redux store without having to pass data down manually through every level (known as "prop drilling").
+Leverages React Context: Internally, <Provider> uses React's Context API to propagate the store instance to all its children efficiently.
+Enables React Redux Hooks/Functions: It allows components to interact with the store using modern Redux hooks like useSelector and useDispatch, or the traditional connect function. 
+
+Usage Example
+Typically, you wrap your entire main application component (<App />) with the <Provider> in your entry file (e.g., index.js or main.jsx), passing the created Redux store as a prop: 
+jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import store from './store'; // The Redux store you created
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+Once this is done, any component within <App /> can connect to the Redux store and read or update the state. 

@@ -1,0 +1,63 @@
+Conditional rendering in React works just like conditions in JavaScript. You use operators like if, &&, and the ternary operator (? :) to create elements representing the current state, and React updates the UI to match.
+
+Think of it like a "Choose Your Own Adventure" book for your interface—depending on the data, the user sees a different page.
+
+1. The Logical AND Operator (&&)
+This is the go-to method when you want to render something only if a condition is true, and nothing if it's false.
+
+JavaScript
+
+function Mailbox({ unreadMessages }) {
+  return (
+    <div>
+      <h1>Hello!</h1>
+      {unreadMessages.length > 0 && (
+        <h2>You have {unreadMessages.length} unread messages.</h2>
+      )}
+    </div>
+  );
+}
+Quick Tip: Be careful with numbers! If unreadMessages.length is 0, React will actually render the 0 in your UI. To avoid this, ensure the left side of the && is a boolean, like unreadMessages.length > 0.
+
+2. The Ternary Operator (condition ? true : false)
+Use this when you have an "Either / Or" scenario. It’s perfect for toggling between "Login" and "Logout" buttons.
+
+JavaScript
+
+function AuthButton({ isLoggedIn }) {
+  return (
+    <div>
+      {isLoggedIn ? (
+        <button>Log Out</button>
+      ) : (
+        <button>Log In</button>
+      )}
+    </div>
+  );
+}
+3. If/Else Statements (Better for Logic)
+When your logic gets too "noisy" to live inside the JSX (the HTML-like part), move it into a variable or a separate function using a standard if statement.
+
+JavaScript
+
+function WarningBanner({ warn }) {
+  // If the condition isn't met, return null to render nothing
+  if (!warn) {
+    return null; 
+  }
+
+  return (
+    <div className="warning">
+      Danger! Something went wrong.
+    </div>
+  );
+}
+Which one should you use?
+Method	Best For...
+&&	Showing one specific thing or nothing at all.
+Ternary (? :)	Switching between two different components/elements.
+if/else	Complex logic or preventing a component from rendering (return null).
+
+Export to Sheets
+
+Would you like me to show you how to handle conditional rendering for multiple states, like a "Loading," "Error," and "Success" screen?
