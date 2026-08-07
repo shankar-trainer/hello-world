@@ -13,4 +13,9 @@ export class BookService {
        return this.http.get("http://localhost:9090/book");
     }
 
+    addbook(b:Book):Observable<Book>{
+      return this.http.post<Book>("http://localhost:9090/book",b);
+
+    }
+
 }

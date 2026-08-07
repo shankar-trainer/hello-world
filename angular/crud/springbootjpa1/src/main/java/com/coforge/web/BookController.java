@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(value = "http://localhost:4200/")
+//@CrossOrigin(value = "http://localhost:3000/")
 
 public class BookController {
 
@@ -56,8 +57,6 @@ public class BookController {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
-
-
     @GetMapping("/book")
     public ResponseEntity<List<Book>> showAllBooks() {
         try {
