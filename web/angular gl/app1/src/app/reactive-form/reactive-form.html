@@ -1,0 +1,44 @@
+<div class="container border border-secondary p-5 m-5 w-75 bg-info" style="border-radius: 30pt;">
+    <h2>Reactive Form</h2>
+    <form action="" [formGroup]="formgroup">
+        <div class="row mb-3">
+            <label class="col-2"> Enter id</label>
+            <input class="col-6" [formControl]='id' id="id">
+            <div [hidden]="id.valid||id.untouched" class="text-danger col-4">
+                invalid id
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-2"> Enter Name</label>
+            <input class="col-6" [formControl]='name' id='name'>
+
+            <span [hidden]="name.valid||name.untouched" class="text-danger col-4">
+                invalid name
+            </span>
+
+            <span [hidden]="!name.hasError('minlength')||name.untouched" class="text-danger col-4">
+                name must of minimum 5 chars
+            </span>
+
+            <span [hidden]="!name.hasError('maxlength')||name.untouched" class="text-danger col-4">
+                name must of maximum 15 chars
+            </span>
+
+        </div>
+        <div class="row mb-3">
+            <label class="col-2"> Enter salary</label>
+            <input class="col-6" [formControl]='salary' id='salary'>
+            <div [hidden]="salary.valid||salary.untouched" class="text-danger col-4">
+                invalid salary
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success">send</button>
+            <button type="reset" class="btn btn-success ms-2">cancel</button>
+        </div>
+    </form>
+    <div>
+<!--      <code>{{ formValues$ | async | json }}</code>-->
+    </div>
+
+</div>

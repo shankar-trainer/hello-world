@@ -1,0 +1,42 @@
+<div class="container">
+
+    <div class="row border border-primary w-75 p-5 bg-info" style="border-radius: 20pt; margin-top: 50pt;">
+        <div class="col border border-success">
+            <p>calculator works!</p>
+        </div>
+        <div class="col border border-success ms-3 me-5 p-4">
+
+            <button (click)="hello()" class="btn btn-primary">
+                hello
+            </button>
+        </div>
+    </div>
+
+    <div class="row p-3 w-75 border border-primary mt-5 md-5">
+        <form>
+            <div>
+                <label>enter no1</label>
+                <input name="n1" class="form-control" placeholder="enter number1" [(ngModel)]="n2" type="number">
+            </div>
+            <div>
+                <label>enter no2</label>
+                <input name="n2" class="form-control" placeholder="enter number2" [(ngModel)]="n1" type="number">
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary" (click)="addition()">addition</button>
+                <button type="button" class="btn btn-primary ms-2"
+                (click)="subtraction()"
+                >subatraction</button>
+                <button type="button" class="btn btn-primary ms-2" (click)="mutiplication()">multiplication</button>
+                <button type="button" class="btn btn-primary ms-2" (click)="division()">division</button>
+            </div>
+
+            <div>
+                Result <p></p>
+                Result  is {{n3}}
+
+            </div>
+        </form>
+    </div>
+
+</div>
