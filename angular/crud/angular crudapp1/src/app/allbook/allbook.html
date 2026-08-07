@@ -7,7 +7,7 @@
                 <th>name</th>
                 <th>cost</th>
             </tr>
-            <!-- <tr *ngFor="let b1 of b|async"> -->
+            <!--1. <tr *ngFor="let b1 of b|async"> -->
             <tr *ngFor="let b1 of b">
                 <td>{{b1.isbn}}</td>
                 <td>{{b1.bname}}</td>
@@ -16,7 +16,7 @@
 
         </table>
     </div>
-    <div *ngIf="msg!==''">
+    <div *ngIf="msg!=''">
        {{msg}}
     </div>
 </div>
