@@ -8,6 +8,7 @@ import Customer from './hooks/Customer';
 import Counter from './hooks/Countrer';
 import UserForm from './hooks/UserForm';
 import { BrowserRouter, Link, Route, Router, Routes } from 'react-router-dom';
+import AllBook from './crud/Allbook';
 
 // function App() {
 //   return (
@@ -50,6 +51,7 @@ class App extends Component {
           <Link to="/customer" className='ms-2'>Customer</Link>
           <Link to="/counter" className='ms-2'>Employee</Link>
           <Link to="/userform" className='ms-2'>UserForm</Link>
+          <Link to="/crud_all_book" className='ms-2'>Crud All Book</Link>
         </nav>
           <Routes>
             <Route path='/' element={<Employee country="india" state="up" car={cdata}></Employee>}></Route>
@@ -58,6 +60,7 @@ class App extends Component {
             <Route path='/counter' element={<Counter></Counter>}></Route>
             <Route path='/customer' element={<Customer  company="coforge"car={cdata}></Customer>}></Route >
             <Route path='/userform' element={<UserForm></UserForm>}></Route>
+            <Route path='/crud_all_book' element={<AllBook></AllBook>}></Route>
           </Routes>
       </div>
     )
