@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+//import logo from './logo.svg';
+//import './App.css';
 import { Component } from 'react';
 import Book from './book/book';
 import Employee from './employee';
@@ -9,27 +9,9 @@ import Counter from './hooks/Countrer';
 import UserForm from './hooks/UserForm';
 import { BrowserRouter, Link, Route, Router, Routes } from 'react-router-dom';
 import AllBook from './crud/Allbook';
+import { AddBook } from './crud/AddBook';
+// import AddBook from './crud/AddBook';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 class App extends Component {
   render() {
@@ -52,6 +34,7 @@ class App extends Component {
           <Link to="/counter" className='ms-2'>Employee</Link>
           <Link to="/userform" className='ms-2'>UserForm</Link>
           <Link to="/crud_all_book" className='ms-2'>Crud All Book</Link>
+          <Link to="/crud_add_book" className='ms-2'>Crud Add Book</Link>
         </nav>
           <Routes>
             <Route path='/' element={<Employee country="india" state="up" car={cdata}></Employee>}></Route>
@@ -61,6 +44,7 @@ class App extends Component {
             <Route path='/customer' element={<Customer  company="coforge"car={cdata}></Customer>}></Route >
             <Route path='/userform' element={<UserForm></UserForm>}></Route>
             <Route path='/crud_all_book' element={<AllBook></AllBook>}></Route>
+            <Route path='/crud_add_book' element={<AddBook></AddBook>}></Route>
           </Routes>
       </div>
     )

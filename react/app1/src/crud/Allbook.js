@@ -12,8 +12,8 @@ function AllBook() {
             setAllBook(respose.data)
             setLoading(false)
         }).catch(error => {
+           // console.log("error "+JSON.stringify(error))
                 const errorMsg = error.response?.data || error.message;
-
             setError(errorMsg)
             setLoading(false)
         })
@@ -23,7 +23,7 @@ if(loading)
     return <p>Loading</p>
 if(error) 
     // return <p>{error.message}</p>   
-    return <p>{error}</p>   
+    return <p className="border border-primary p-3 m-3 w-25 bg-danger text-light ms-5">{error}</p>   
   return(
     <div className="container">
         <table className="table table-bordered bg-warning p-2 m-3 w-75">
