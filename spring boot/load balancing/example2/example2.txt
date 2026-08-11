@@ -1,0 +1,69 @@
+spring boot routing gateway with loadbalancer
+
+A Spring Boot routing gateway handles incoming requests and balances traffic across multiple microservice instances using Spring Cloud Gateway and Spring Cloud LoadBalancer.The primary mechanism that connects routing to the load balancer is the lb:// URI scheme. Instead of hardcoding a target IP address, you point the gateway route to a logical service name (e.g., lb://PRODUCT-SERVICE). The gateway then intercepts the request, looks up the healthy backend instances via a service registry (like Eureka or Consul) or static configuration, and distributes the traffic using an algorithm like Round-Robin.1. Required DependenciesAdd the gateway and load balancer starters to your gateway application's pom.xml:xml<dependencies>
+    <!-- Spring Cloud Gateway Starter (Reactive/WebFlux based) -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-gateway</artifactId>
+    </dependency>
+
+    <!-- Spring Cloud LoadBalancer Starter -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+    </dependency>
+
+    <!-- Optional: If using Eureka for dynamic instance detection -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+</dependencies>
+2. Configuration (application.yml)The most common way to implement routing with load balancing is via declarative properties.
+The example below sets up a route that intercepts requests sent to /api/products/** and balances them across multiple instances
+registered under the name PRODUCT-SERVICE.
+yaml
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: product_service_route
+          # The lb:// prefix triggers Spring Cloud LoadBalancer
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/products/**
+          filters:
+            # Removes /api from the path before passing to the backend if needed
+            - StripPrefix=1
+3. Alternative: Java DSL RoutingIf you prefer configuring your gateway routes via code instead of YAML, you can define a RouteLocator bean. The lb:// scheme operates identically here.javaimport org.springframework.cloud.gateway.route.RouteLocator;
+import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class GatewayConfig {
+
+    @Bean
+    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route("product_service_route", r -> r.path("/api/products/**")
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("lb://PRODUCT-SERVICE")) // Load balanced target
+                .build();
+    }
+}
+4. Resolving Instances without Service DiscoveryIf you do not want to use an external discovery server like Eureka, you can hardcode a static list of backend instances directly in the gateway configuration. This is useful for Docker Compose environments or simple setups.yamlspring:
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            PRODUCT-SERVICE:
+              - uri: http://localhost:8081
+              - uri: http://localhost:8082
+5. Advanced CustomizationAlgorithms: By default, Spring Cloud LoadBalancer uses RoundRobinLoadBalancer to evenly cycle requests. You can swap this to a RandomLoadBalancer or build a custom weighted routing policy by defining a custom @LoadBalancerClient configuration class.Active Health Checks: You can configure the gateway to periodically query your microservices' /actuator/health endpoint. This automatically removes unresponsive target instances from the routing pool before they cause errors for users.
