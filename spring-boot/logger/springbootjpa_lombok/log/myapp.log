@@ -1,0 +1,44 @@
+2026-08-13 11:43:42 - o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.1.0.Final
+2026-08-13 11:43:42 - com.coforge.Main - Starting Main using Java 21.0.2 with PID 3300 (C:\Users\shank\Documents\workspace-spring-tools-for-eclipse-5.2.0.RELEASE\test1\springbootjpa_lombok\target\classes started by shank in C:\Users\shank\Documents\workspace-spring-tools-for-eclipse-5.2.0.RELEASE\test1\springbootjpa_lombok)
+2026-08-13 11:43:42 - com.coforge.Main - The following 1 profile is active: "prod"
+2026-08-13 11:43:43 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-13 11:43:43 - o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-13 11:43:44 - o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-13 11:43:44 - o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 42 ms. Found 1 JPA repository interface.
+2026-08-13 11:43:44 - o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 9090 (http)
+2026-08-13 11:43:44 - o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+2026-08-13 11:43:44 - o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-13 11:43:44 - o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-08-13 11:43:44 - o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1633 ms
+2026-08-13 11:43:44 - org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-13 11:43:44 - org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-08-13 11:43:45 - o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-13 11:43:45 - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-08-13 11:43:45 - com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70eb9c16
+2026-08-13 11:43:45 - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-08-13 11:43:45 - o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/db2]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.40
+	Default catalog/schema: db2/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-13 11:43:46 - org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-13 11:43:46 - o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-13 11:43:47 - o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-13 11:43:47 - o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-13 11:43:48 - o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/db2'
+2026-08-13 11:43:48 - o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+2026-08-13 11:43:48 - o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 9090 (http) with context path '/'
+2026-08-13 11:43:48 - com.coforge.Main - Started Main in 5.907 seconds (process running for 6.439)
+2026-08-13 11:43:48 - o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-08-13 11:43:48 - o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-08-13 11:44:01 - o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-13 11:44:01 - o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-08-13 11:44:01 - o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-08-13 11:44:02 - com.coforge.web.BookController - book added
