@@ -17,5 +17,14 @@ spring:
 server:
   port: 9090
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,beans
 
 #spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+#http://localhost:9090/actuator/beans
+#http://localhost:9090/actuator/health
+#http://localhost:9090/actuator/info
+#http://localhost:9090/actuator/metrics

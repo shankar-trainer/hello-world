@@ -14,3 +14,12 @@ spring:
 server:
   port: 7070
 #localhost:7070/swagger-ui.html
+#management.endpoints.web.exposure.include=health,info,metrics,beans
+#management.endpoints.web.exposure.include=*
+# by default health, info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,beans

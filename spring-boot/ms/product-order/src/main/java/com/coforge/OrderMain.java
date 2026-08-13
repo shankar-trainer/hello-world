@@ -12,7 +12,6 @@ public class OrderMain {
 
     public static void main(String[] args) {
         SpringApplication.run(OrderMain.class,args);
-
     }
 
 }
