@@ -1,0 +1,39 @@
+server:
+  port: 9056
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/client/**, /client
+          filters:
+            - StripPrefix=1   # Optional: Use this if USER-SERVICE doesn't expect '/client' in its endpoints
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+    globalcors:
+      cors-configurations:
+        '[/**]': # FIXED: Changed from '[/]' to '[/**]' to match all sub-paths
+          allowedOriginPatterns: "*" # Note: allowedOriginPatterns is required when allowCredentials is true (or default)
+          allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+            - PATCH
+          allowedHeaders: "*"
+          allowCredentials: true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+#    service-url:
+#      defaultZone: http://localhost:9099/eureka
+    instance:
+      prefer-ip-address: true
