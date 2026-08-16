@@ -1,0 +1,203 @@
+A Spring Boot routing gateway handles incoming requests and balances traffic across multiple microservice instances using
+Spring Cloud Gateway and Spring Cloud LoadBalancer.
+The primary mechanism that connects routing to the load balancer is the lb:// URI scheme.
+
+Instead of hardcoding a target IP address, you point the gateway route to a logical service name (e.g., lb://PRODUCT-SERVICE).
+The gateway then intercepts the request, looks up the healthy backend instances via a service registry (like Eureka or Consul) or
+ static configuration, and distributes the traffic using an algorithm like Round-Robin.
+ 1. Required DependenciesAdd the gateway and load balancer starters to your gateway application's
+ pom.xml:
+ xml
+ <dependencies>
+    <!-- Spring Cloud Gateway Starter (Reactive/WebFlux based) -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-gateway</artifactId>
+    </dependency>
+
+    <!-- Spring Cloud LoadBalancer Starter -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+    </dependency>
+
+    <!-- Optional: If using Eureka for dynamic instance detection -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+</dependencies>
+
+2. Configuration (application.yml)The most common way to implement routing with load balancing is via declarative properties. The example below sets up a route that intercepts requests sent to /api/products/** and balances them across multiple instances registered under the name PRODUCT-SERVICE.yamlserver:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: product_service_route
+          # The lb:// prefix triggers Spring Cloud LoadBalancer
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/products/**
+          filters:
+            # Removes /api from the path before passing to the backend if needed
+            - StripPrefix=1
+
+3. Alternative: Java DSL RoutingIf you prefer configuring your gateway routes via code instead of YAML, you can define a RouteLocator bean.
+ The lb:// scheme operates identically here.javaimport org.springframework.cloud.gateway.route.RouteLocator;
+
+import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class GatewayConfig {
+
+    @Bean
+    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route("product_service_route", r -> r.path("/api/products/**")
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("lb://PRODUCT-SERVICE")) // Load balanced target
+                .build();
+    }
+}
+4. Resolving Instances without Service DiscoveryIf you do not want to use an external discovery server like Eureka, you can hardcode a static list of backend instances directly in the gateway configuration. This is useful for Docker Compose environments or simple setups.yamlspring:
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            PRODUCT-SERVICE:
+              - uri: http://localhost:8081
+              - uri: http://localhost:8082
+5. Advanced CustomizationAlgorithms: By default, Spring Cloud LoadBalancer uses RoundRobinLoadBalancer to evenly cycle requests. You can swap this to a RandomLoadBalancer or build a custom weighted routing policy by defining a custom @LoadBalancerClient configuration class.Active Health Checks: You can configure the gateway to periodically query your microservices' /actuator/health endpoint. This automatically removes unresponsive target instances from the routing pool before they cause errors for users.
+
+
+============================================
+
+spring boot load balancing require server.port=0
+
+In Spring Boot microservices, setting server.port=0 is a common practice, but it is not strictly required for load balancing.
+
+Understanding how it works helps clarify when you might want to use it and what you need to look out for.
+
+What does server.port=0 actually do?
+When you configure server.port=0, Spring Boot tells the embedded servlet container (Tomcat, Jetty, or Undertow) to bind to a random, available ephemeral port chosen by the operating system rather than a hardcoded port (like 8080 or 8081).
+
+Why use server.port=0 in a Load-Balanced Architecture?
+Running Multiple Instances Locally:
+If you want to test client-side load balancing (e.g., using Spring Cloud LoadBalancer and Eureka) by spinning up multiple instances of the same microservice on your local machine, hardcoding a port will cause a Port already in use conflict. Using server.port=0 allows you to launch instance after instance seamlessly, as each grabs a unique random port.
+
+Dynamic Scaling in the Cloud:
+In containerized or orchestrated environments (like Kubernetes or automated cloud VMs), ports are often dynamically allocated to avoid collisions on the same host node.
+
+Is it mandatory?
+No. If you are deploying instances to different machines, different containers, or using fixed ports via orchestration tools (like Docker mapping different host ports to a single container port), you can explicitly define unique ports (server.port=8081, 8082, etc.).
+
+Yes (practically speaking) for quick local multi-instance testing: Without it, running two instances of the exact same Spring Boot jar on your laptop requires manually passing different ports via command line arguments each time (e.g., java -jar app.jar --server.port=8081).
+
+Important Gotchas When Using server.port=0
+If you use server.port=0 alongside a service discovery tool like Eureka, you must ensure your application registers its actual chosen IP and port correctly:
+
+Properties
+# Force Eureka to register the resolved IP and random port instead of the computer hostname/localhost alias issues
+eureka.instance.prefer-ip-address=true
+If you don't configure this, other microservices trying to load-balance requests to your service might occasionally run into routing issues or try to hit port 0 literally before the context is fully refreshed and registered with the true port.
+
+================
+
+To add client-side load balancing (lb) to Spring Cloud Gateway, you need to use the lb:// scheme in your route definitions alongside a service discovery client (like Netflix Eureka, Consul, or Zookeeper).
+Medium - Medium
+
+When the gateway detects the lb:// prefix, it delegates request resolution to Spring Cloud LoadBalancer, which picks a healthy instance of your downstream microservice.
+SpringSource
+
+Step 1: Add Dependencies
+Ensure your project includes the Spring Cloud Gateway starter and a service discovery client starter (such as Eureka Client).
+Baeldung
+
+Maven (pom.xml):
+
+XML
+<dependencies>
+    <!-- Spring Cloud Gateway Starter -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-gateway</artifactId>
+    </dependency>
+
+    <!-- Service Discovery Client (e.g., Netflix Eureka Client) -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+</dependencies>
+Step 2: Configure Routes with lb:// (application.yml)
+In your configuration file, map your routes using the lb://<service-name> format. The <service-name> must match the name registered by your microservices in the discovery server (spring.application.name).
+GitHub
+
+YAML
+server:
+  port: 8080
+
+spring:
+  application:
+      name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-service-route
+          uri: lb://user-service          # Uses Spring Cloud LoadBalancer
+          predicates:
+            - Path=/users/**
+          filters:
+            - StripPrefix=1
+
+        - id: order-service-route
+          uri: lb://order-service         # Uses Spring Cloud LoadBalancer
+          predicates:
+            - Path=/orders/**
+          filters:
+            - StripPrefix=1
+
+# Eureka Client Configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+Alternative: Dynamic Discovery Locator (Optional)
+If you don't want to define every single route statically in your YAML, you can enable Discovery Locator. This automatically generates routes for all services registered in Eureka using their service ID as the path:
+
+YAML
+spring:
+  cloud:
+    gateway:
+      discovery:
+      # Automatically creates routes: /service-id/** -> lb://service-id
+        locator:
+          enabled: true
+          lower-case-service-id: true
+Step 3: Enable Discovery Client in Main Class
+Ensure your main Spring Boot application class has the @EnableDiscoveryClient annotation:
+
+Java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+public class GatewayApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(GatewayApplication.class, args);
+    }
+}
+Key Considerations:
+The lb scheme is mandatory: Without lb://, Spring Cloud Gateway treats the destination as a plain URL (e.g., http://user-service) and will fail to resolve hostnames dynamically.
+Medium - Medium
+
+Round-Robin by Default: Out of the box, Spring Cloud LoadBalancer uses a RoundRobinLoadBalancer algorithm to distribute traffic across active instances. You can override this globally or per-service with a custom ReactorLoadBalancer bean if you prefer random distribution or another strategy.

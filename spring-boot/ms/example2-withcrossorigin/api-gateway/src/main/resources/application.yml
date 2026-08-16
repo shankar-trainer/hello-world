@@ -1,0 +1,31 @@
+server:
+  port: 8080 # API Gateway Port
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: example_route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/example/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "*" # Replace with specific domains in production (e.g., "http://localhost:3000")
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowed-headers: "*"
+            allow-credentials: false
+            max-age: 3600
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
