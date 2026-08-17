@@ -1,0 +1,22 @@
+
+
+            spring:
+              cloud:
+                gateway:
+                  routes:
+                    - id: example_route
+                      uri: http://localhost:8081  # URI of the Example Service
+                      predicates:
+                        - Path=/example/**, /example  # Route requests with this path
+                      filters:
+                        - AddRequestHeader=MyHeader, MyValue  # Adds a custom header to the request
+                  globalcors:
+                    cors-configurations:
+                      '[/**]':  # Applies to all paths
+                        allowedOrigins: "*"
+                        allowedMethods: GET, POST, PUT, DELETE, OPTIONS
+                        allowedHeaders: "*"
+                        allowCredentials: true
+              main:
+                allow-bean-definition-overriding: true
+                web-application-type: reactive

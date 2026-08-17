@@ -20,3 +20,50 @@
               main:
                 allow-bean-definition-overriding: true
                 web-application-type: reactive
+
+===============
+Reactive (WebFlux) versus Servlet (Spring Web MVC).
+
+1. Traditional Spring Cloud Gateway (Reactive / WebFlux)
+YAML
+
+spring:
+  cloud:
+    gateway:
+      routes:
+
+    Underlying Stack: Built on Spring WebFlux and Project Reactor (non-blocking, asynchronous execution).
+
+    Default Server Container: Typically runs on Netty.
+
+    Use Case: Ideal for high-concurrency, high-throughput microservices architectures where non-blocking I/O operations are critical.
+
+    Context: This is the classic configuration syntax used since the inception of Spring Cloud Gateway.
+
+2. Spring Cloud Gateway on Servlet (Spring Web MVC)
+YAML
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+
+    Underlying Stack: Built on traditional Spring Web MVC (Servlet-based blocking model).
+
+    Default Server Container: Typically runs on Tomcat, Jetty, or Undertow.
+
+    Use Case: Introduced in modern Spring Cloud versions (Spring Cloud 2023.0 / Spring Boot 3.2+) to allow developers to build an API gateway using traditional Servlet stacks instead of forcing a reactive paradigm. This makes it much easier to integrate with standard Spring Security, legacy Servlet filters, and common Spring Boot starters that rely on the blocking servlet ecosystem.
+
+    Context: The explicit inclusion of server.webmvc tells Spring Boot to route the configuration through the Web MVC-backed gateway implementation rather than the default WebFlux version.
+
+Quick Comparison
+Feature	Snippet 1 (WebFlux)	Snippet 2 (Web MVC)
+Configuration Path	spring.cloud.gateway.routes	spring.cloud.gateway.server.webmvc.routes
+Web Framework	Spring WebFlux	Spring Web MVC
+Underlying Server	Netty (Default)	Tomcat / Jetty / Undertow
+Execution Model	Non-blocking / Reactive (Mono/Flux)	Blocking / Servlet-based
+Spring Boot Version	Compatible with all versions	Introduced in Spring Boot 3.2+ / Spring Cloud 2023.0+

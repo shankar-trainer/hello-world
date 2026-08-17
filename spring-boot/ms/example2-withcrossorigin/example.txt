@@ -28,7 +28,8 @@ The gateway then intercepts the request, looks up the healthy backend instances 
     </dependency>
 </dependencies>
 
-2. Configuration (application.yml)The most common way to implement routing with load balancing is via declarative properties. The example below sets up a route that intercepts requests sent to /api/products/** and balances them across multiple instances registered under the name PRODUCT-SERVICE.yamlserver:
+2. Configuration (application.yml)
+The most common way to implement routing with load balancing is via declarative properties. The example below sets up a route that intercepts requests sent to /api/products/** and balances them across multiple instances registered under the name PRODUCT-SERVICE.yamlserver:
   port: 8080
 
 spring:
@@ -47,7 +48,9 @@ spring:
             - StripPrefix=1
 
 3. Alternative: Java DSL RoutingIf you prefer configuring your gateway routes via code instead of YAML, you can define a RouteLocator bean.
- The lb:// scheme operates identically here.javaimport org.springframework.cloud.gateway.route.RouteLocator;
+ The lb:// scheme operates identically here.
+ java
+ import org.springframework.cloud.gateway.route.RouteLocator;
 
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
