@@ -1,3 +1,15 @@
+run project 
+
+cd demo_project
+
+then 
+python manage.py runserver
+
+http://127.0.0.1:8000/
+
+
+
+================
 📁 Step 1: Create and Enter a Project DirectoryOpen your terminal application and create a dedicated folder to house your web development files.bashmkdir django_example
 cd django_example
 Use code with caution.🌐 Step 2: Set Up a Virtual Environment (Recommended)Isolate your development libraries from your global operating system environments.On Windows (Command Prompt):cmdpython -m venv env
