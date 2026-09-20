@@ -1,0 +1,379 @@
+To deploy a Spring Boot application onto an external enterprise application server like WildFly, you must convert it from a standalone, self-executable JAR with an embedded server into a WAR (Web Archive) deployment. 
+
+
+Here is the step-by-step breakdown to configure, package, and deploy your Spring Boot app to WildFly.
+
+Step 1: Update the Packaging to WAR
+Open your project's pom.xml file and change the packaging type from jar to war: 
+
+
+xml
+
+<groupId>com.example</groupId>
+<artifactId>demo</artifactId>
+<version>0.0.1-SNAPSHOT</version>
+<packaging>war</packaging>  <!-- Change this from jar to war -->
+
+
+Step 2: Exclude the Embedded Tomcat ServerSince WildFly provides its own web container (Undertow), you need to ensure Spring Boot doesn't bundle its default embedded Tomcat server. Mark the tomcat starter as provided: 
+
+xml
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+<!-- Add this dependency to exclude embedded tomcat -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-tomcat</artifactId>
+    <scope>provided</scope>
+</dependency>
+
+Use code with caution.
+Step 3: Modify the Main Application ClassYou need to let the WildFly server know how to bootstrap your application. Extend your main class with SpringBootServletInitializer and override the configure method: 
+
+java package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+@SpringBootApplication
+public class DemoApplication extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(DemoApplication.class);
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+}
+
+Use code with caution.
+
+Step 4: 
+Build the WAR FileRun the following Maven command in your project base directory to compile and package your application: 
+
+bash mvn clean package
+Use code with caution.This generates a .war file inside your project's target/ directory. 
+
+5: Deploy to WildFlyThere are two main methods to deploy your newly created WAR file to your WildFly server: 
+
+Method A: Manual File Deployment (Easiest)Download and extract WildFly. 
+CCopy your generated .war file from your project's target/ directory. 
+
+Paste it directly into the WildFly deployments folder: /wildfly-<version>/standalone/deployments/. 
+
+Start the WildFly server using the terminal:
+Linux/Mac: ./bin/standalone.shWindows: .\bin\standalone.bat [1] 
+
+
+Method B: WildFly Management ConsoleStart your WildFly server.
+
+Open your browser and navigate to the WildFly Admin Console (typically at http://localhost:9990).
+
+Go to the Deployments tab in the main navigation menu.
+
+Click Upload Deployment, choose your .war file, and follow the prompts to enable it. 
+
+Important Technical Compatibility Note ⚠️Make sure your Spring Boot and WildFly versions target matching Jakarta EE standards: 
+
+Spring Boot 3.x utilizes Jakarta EE 9/10 APIs. You should deploy Spring Boot 3.x applications onto WildFly 27 or higher.
+
+
+=================================================
+
+
+
+
+Basic Setup: Run SpringBoot using JBoss (Wildfly)
+#
+jboss
+#
+wildfly
+#
+springboot
+#
+maven
+This tutorial assumes you have already set up Java and Maven in your system.
+
+1. Install JBoss (Wildfly)
+Go wildfly download page and download the tar file. For example, I downloaded version 35.0.1.Final.
+
+Image description
+
+Once downloaded, run this to unzip:
+
+tar -xvzf wildfly-<version>.tar.gz
+cd wildfly-<version>/
+
+tar -xvzf wildfly-35.0.1.Final.tar.gz
+cd wildfly-35.0.1.Final/
+
+2. Test start the Jboss server
+cd wildfly-35.0.1.Final/
+./bin/standalone.sh
+The default port is 8080, you can change port like this:
+
+./bin/standalone.sh -Djboss.http.port=9090
+Open http://localhost:9090 to see this:
+
+Image description
+
+3. Download and package a springboot app
+Go start spring and select maven.
+By default, maven will build jar. We need to use war for JBoss server.
+Locate your pom.xml and update your build to war:
+
+<packaging>war</packaging>
+Exclude the embedded tomcat:
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+Add spring-boot-starter-tomcat as provided:
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-tomcat</artifactId>
+    <scope>provided</scope>
+</dependency>
+Modify the SpringBootApplication Class to extend from SpringBootServletInitializer:
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+@SpringBootApplication
+public class MyApplication extends SpringBootServletInitializer {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+}
+Do some minimal changes to your springboot app for easier validation:
+Add ThymeLeaf in pom.xl
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+Add a HTML under resources\templates:
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <h1 th:text="${message}">Welcome to the Home Page</h1>
+</body>
+</html>
+
+Add a HomeController
+
+package com.example.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class HomeController {
+
+    @GetMapping("/home")
+    public String home(@RequestParam(name = "message", required = false, defaultValue = "Hello, Thymeleaf!") String message, Model model) {
+        model.addAttribute("message", message);
+        return "home";
+    }
+}
+4. Start the war package
+Build the WAR
+
+mvn clean package
+Copy the WAR file to JBoss deployments folder
+
+cp target/demo-0.0.1-SNAPSHOT.war $JBOSS_HOME/standalone/deployments/
+Image description
+
+5. Finally start your demo springboot app with Jboss server!
+http://localhost:9090/demo-0.0.1-SNAPSHOT/home?message=Springboot%20is%20running%20on%20jboss%20now!
+Image description
+
+profile
+The DEV Team
+Promoted
+
+Hacktoberfest image
+
+Host a Fest this October
+Hacktoberfest is back with 300+ in-person Fests and online events worldwide, all focused on building with open-source AI. Run a Hack Day with prizes and funding, or a Meet Up with talks and community time. Applications are confirmed within a week.
+
+Apply to Host →
+
+Top comments (1)
+Subscribe
+pic
+================================
+
+
+Deploying Multiple Spring Boot Applications on WildFly | Jboss with External Resources
+Abdelrahman Essaam
+Abdelrahman Essaam
+
+Follow
+5 min read
+·
+Feb 27, 2025
+
+
+
+About WildFly and Jboss
+WildFly
+WildFly is a fast, lightweight, and modular Java EE (Jakarta EE) application server designed for flexibility and scalability. It supports modern standards like MicroProfile and cloud-native development. With both standalone and domain modes, it allows easy management of multiple instances.
+
+JBoss EAP
+JBoss EAP (Enterprise Application Platform) is the enterprise-ready version of WildFly, backed by Red Hat. It focuses on stability, security, and long-term support, making it ideal for production environments. It includes all WildFly features plus enterprise-grade security, clustering, and Red Hat integrations.
+
+Problem Statement: Managing External Resource Files for Multiple Applications on WildFly
+At work, our testing team needed to test multiple lightweight middleware applications. Instead of deploying each application on its own server, we decided to run them all on a single WildFly instance to optimize resource usage and simplify management.
+
+The Challenge
+Each application typically includes a resources folder (application.yml and other config files) inside its WAR file. However, keeping these resources inside the WAR had several drawbacks:
+
+Lack of flexibility — Any configuration change required rebuilding and redeploying the application.
+Environment-specific configurations — We needed different settings for different environments (e.g., dev, test, production).
+Separation of concerns — Configuration should be managed independently from the application code.
+Shared Configurations — If multiple applications need common settings (e.g., database credentials), they can reference a central configuration file.
+Improves Security — Sensitive data can be stored outside the WAR file, reducing exposure.
+To address this, we decided to move the resource files outside the WAR so that applications could be configured externally without modifying their deployment packages. However, this introduced a new challenge:
+
+Since multiple applications were running on the same WildFly instance, we needed a way to ensure that each one correctly located its own dedicated resources folder without conflicts.
+This required a structured approach to externalizing configurations, ensuring that each application dynamically loads its respective settings while maintaining isolation within the shared WildFly environment.
+
+Externalizing Configurations in WildFly and Spring Boot
+When deploying multiple Spring Boot applications on the same WildFly server, managing configurations efficiently becomes a challenge. Instead of bundling configuration files like application.yml inside each WAR file, externalizing them allows for greater flexibility, easier updates, and better environment management.
+
+Introducing “spring.config.location"
+spring.config.location is a Spring Boot property that specifies where the application should load its configuration files (application.yml or application.properties) from. By default, Spring Boot looks for these files inside the packaged application and in standard locations like /config or the current working directory.
+
+Setting spring.config.location allows you to:
+
+Load configurations from an external directory, making updates easier without redeploying.
+Specify custom paths for different environments (e.g., development, testing, production).
+Override default locations, ensuring the application picks up the correct configuration.
+For example, this is a dummy example of using spring.config.location:
+
+java -jar myapp.jar --spring.config.location=file:/opt/configs/myapp/
+tells Spring Boot to load its configuration from /opt/configs/myapp/application.yml.
+
+Understanding System Properties and Their Limitations
+System properties in WildFly allow configuring global settings through the administration console or CLI. These properties apply across all deployed applications, making them useful for shared configurations like database connections and logging.
+
+The question here can we use system properties to specify a value for spring.config.location property?
+
+If we are deploying only one application on our WildFly instance this approach will be more than enough.
+
+
+However, when deploying multiple Spring Boot applications on the same WildFly instance, system properties become restrictive:
+
+No Per-App Customization — One setting applies to all applications.
+Configuration Conflicts — Different apps may require different configurations.
+Difficult Maintenance — Changing a global property impacts all deployments.
+To solve this, Spring Boot’s spring.config.location can be defined at the application level in jboss-web.xml, allowing each app to load its own external application.yml, ensuring flexibility and avoiding conflicts.
+
+Managing External Configuration Paths on Application Level
+Initially, we needed to specify an absolute file path for each application’s external configuration. A simple approach was to hardcode the path in an env-entry inside jboss-web.xml, as shown below:
+
+<jboss-web>
+    <env-entry>
+        <env-entry-name>spring.config.location</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>file:/opt/configs/myApp/application.yml</env-entry-value>
+    </env-entry>
+</jboss-web>
+However, this method introduced several issues:
+
+Lack of Portability: Hardcoded paths made the deployment environment dependent. Moving to a different server required manually updating the configuration file paths.
+Difficult Maintenance: Managing multiple applications meant maintaining different hardcoded paths for each one.
+Limited Flexibility: Changing the configuration location required modifying the deployment descriptor and redeploying the application.
+The Solution: Using ${jboss.home.dir} for Dynamic Paths
+To overcome these limitations, we leveraged WildFly’s built-in ${jboss.home.dir} variable. This allows us to specify configuration paths relative to the WildFly installation directory, making deployments more portable and maintainable.
+
+Updated jboss-web.xml:
+
+<jboss-web>
+    <env-entry>
+        <env-entry-name>spring.config.location</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>file:${jboss.home.dir}/external-configs/myApp/application.yml</env-entry-value>
+    </env-entry>
+</jboss-web>
+Benefits of This Approach
+Portability — The configuration path adapts to different servers without modification.
+Simplified Deployment — No need to manually update paths when migrating applications.
+Better Maintainability — All applications can store their configurations in a structured, shared location.
+Improved Flexibility — Configuration files can be updated without modifying the deployment descriptors.
+By using ${jboss.home.dir}, each Spring Boot application deployed on WildFly can have its own external configuration while keeping deployments clean and manageable.
+
+Results
+By configuring spring.config.location at the application level in jboss-web.xml, we successfully enabled each deployed Spring Boot application on the same WildFly instance to use its own external configuration without conflicts. This ensures:
+
+Application-Specific Configurations — Each app loads its own application.yml from a dedicated external folder, preventing settings from overlapping.
+Easy Maintenance & Updates — Configurations can be modified without redeploying the applications, improving flexibility.
+No Global Property Conflicts — Since each app defines its own spring.config.location, system-wide properties do not interfere.
+Additionally, this approach allows multiple applications to share common external resources when needed. Instead of defining separate configurations for each app, all applications can point to a shared directory for certain resources.
+
+For example, if multiple applications rely on XSD schema definitions to boot up web services, they can all reference a common external XSD folder instead of duplicating schema files in each deployment. This is useful for:
+
+Centralized Resource Management — A single XSD location ensures all applications use the latest schema versions.
+Consistency Across Services — Prevents mismatches between applications that depend on the same structure.
+Simplified Updates — Updating the schema in one place automatically reflects across all applications.
+This method provides the flexibility to keep configurations isolated per application while also enabling shared resources where necessary, ensuring efficient and conflict-free deployments on a single WildFly instance.
+
+Final Thoughts
+Deploying multiple applications on the same WildFly instance can be a smart choice when done correctly. Industry best practices suggest this approach in cases where:
+
+Applications are lightweight and have low resource consumption.
+They share dependencies (e.g., common libraries or services).
+Isolation isn’t a strict requirement, and applications belong to the same security and operational domain.
+Infrastructure costs need to be optimized, reducing the number of servers or instances.
+However, running multiple applications on the same instance is not recommended when:
+
+Applications have high resource demands, as they might compete for CPU, memory, or threads.
+Different security levels are required, especially if some apps handle sensitive data.
+Scalability is a priority, since scaling a single instance affects all applications.
+By carefully evaluating these factors, you can decide whether a shared WildFly instance is the right fit or if separate deployments would be more reliable and scalable.
+
+Spring Boot
+
+Jboss
+
+Wildfly
+
+External Configuration
+
+Deployment
+
+
+
+Abdelrahman Essaam
+Written by Abdelrahman Essaam
+0 followers
+·
+2 following
+I code and explore the business landscape, aiming to make an impact .
+
+

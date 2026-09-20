@@ -1,0 +1,22 @@
+run 
+
+catalina.sh  run 
+
+this will run tomcat console in ubuntu
+
+
+
+
+By App Name (Easiest)If you know the exact name of the application, you can terminate it without looking up its process ID numbers:
+
+Kill by name: pkill application_name (e.g., pkill firefox)
+
+
+
+Kill all instances: 
+
+      killall application_name (e.g., killall chrome)Force kill (if it refuses to close): Add -9 to the command (e.g., pkill -9 firefox or killall -9 chrome). 
+
+
+
+By Process ID (PID)If the application name doesn't work, you can target its specific Process ID (PID): 

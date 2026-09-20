@@ -1,0 +1,808 @@
+•Identify Spring Boot, Tomcat, WildFly, WebLogic, and WebSphere applications from logs and config 
+
+•Read application.yml, application.properties, and Spring profile configuration 
+
+•Read a Java startup banner and identify framework and version 
+
+•Use Spring Actuator /health, /info, /metrics endpoints at a basic level 
+
+•Identify Maven and Gradle build artefacts and the deployment artefact format (jar vs war vs ear) 
+
+•Diagnose HikariCP / DBCP / c3p0 connection pool exhaustion 
+
+•Resolve Spring Boot startup failures (port in use, bean wiring errors, missing properties) 
+
+•Use Spring Actuator /threaddump and /heapdump for live diagnosis 
+
+•Identify and resolve classpath and dependency conflicts 
+
+•Resolve Tomcat / WildFly app deployment failures 
+
+•Configure correct JVM args for containerised Java workloads (heap, GC, container-aware flags)
+
+
+===============================================================================================
+
+Read a Java startup banner and identify framework and version 
+
+-----------------------------------------------------------------------------------
+
+To read or change a custom banner in a Spring Boot application, you have a few built-in approaches depending on whether you want to use a standard text file, an image, configuration properties, or programmatic Java code.
+
+1. The Default Approach (banner.txt)The easiest way to read a custom banner is to let Spring Boot automatically look for it on your classpath. 
+
+Create a file named banner.txt.
+
+Place it inside the src/main/resources/ directory.Paste your text or ASCII art inside the file. Spring Boot will automatically detect and display it at startup. 
+
+2. Using Image Files
+
+Spring Boot also natively reads and converts image files into ASCII art.
+
+Drop a file named banner.gif, banner.jpg, or banner.png directly into your src/main/resources/ folder.Note: If both a text banner and an image banner exist, Spring Boot will print the image ASCII art first, followed by the text banner. 
+
+3. Changing the Banner Path via Properties
+
+If you prefer to name your banner file something else or store it in a different directory, specify its location in your application.properties or application.yml file: 
+
+properties# For a custom text banner location
+spring.banner.location=classpath:custom-folder/my-banner.txt
+
+# For a custom image banner location
+spring.banner.image.location=classpath:images/my-logo.png
+Use code with caution.
+
+
+4. Adding Dynamic Variables inside the Banner
+
+You can make your banner dynamic by inserting placeholders that Spring Boot will read and evaluate at runtime. Add these directly inside your banner.txt: 
+
+
+ __  __           _                 
+
+|  \/  |         | |                
+| \  / | ___  ___| |__   __ _ _ __  
+| |\/| |/ _ \/ __| '_ \ / _` | '_ \ 
+| |  | |  __/ (__| | | | (_| | | | |
+|_|  |_|\___|\___|_| |_|\__,_|_| |_|
+
+Application: ${spring.application.name}
+Boot Version: ${spring-boot.version}
+${AnsiColor.DEFAULT}
+Use code with caution.${AnsiColor.COLORNAME}: Dynamically changes the color of the terminal text (e.g., RED, GREEN, BRIGHT_YELLOW).${spring-boot.version}: Prints the version of Spring Boot you are running.${application.version}: Prints the version specified in your project's pom.xml or build.gradle. 
+
+5. Managing the Banner ModeIf you need to control where the banner gets outputted, add the spring.main.banner-mode property to application.properties: 
+
+properties# Options: console (default), log (sends to log file), or off (turns it completely off)
+spring.main.banner-mode=off
+Use code with caution.
+
+6. Defining a Banner Programmatically
+
+If you need to build or fetch a banner dynamically at runtime (e.g., pulling a banner from a database or a remote API), implement Spring's Banner interface in Java: 
+
+java
+
+import org.springframework.boot.Banner;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.env.Environment;
+import java.io.PrintStream;
+
+@SpringBootApplication
+public class MyApplication {
+
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(MyApplication.class);
+        
+        // Define programmatic banner logic
+        app.setBanner(new Banner() {
+            @Override
+            public void printBanner(Environment environment, Class<?> sourceClass, PrintStream out) {
+                out.println("=======================================");
+                out.println("      MY CUSTOM DYNAMIC PROGRAM BANNER ");
+                out.println("=======================================");
+            }
+        });
+        
+        app.run(args);
+    }
+}
+Use code with caution.Would you like help generating a specific ASCII art layout, or do you need assistance reading the banner contents programmatically inside a bean after the application has already started?
+
+------------------------------------------------------------------------------------
+  
+To read a Java startup banner and identify the framework and its version, you need to look at the ASCII art and the metadata line printed at the very beginning of your application console logs.Here is exactly how to break it down using a standard Spring Boot banner as an example:text  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.4.1)
+Use code with caution.
+
+1. Identify the FrameworkLook at the ASCII text art shape and the explicit labels enclosed in double colons :: right below it.What to look for: The phrase :: Spring Boot :: explicitly identifies the underlying framework. Other frameworks will use their own names (e.g., :: Quarkus :: or Micronaut).2. Identify the VersionLook to the far right of the framework label on the exact same line.What to look for: The version is enclosed in parentheses, preceded by a lowercase "v", formatted as (vX.Y.Z).In this example: 3.4.1 is the exact framework version.💡 Alternative: How to find this programmaticallyIf you are trying to write Java code that programmatically detects the Spring Boot version at startup rather than just reading the console, you can read it from the SpringBootVersion class or the implementation build manifest:java// 1. Using Spring Boot's utility class
+String springBootVersion = org.springframework.boot.SpringBootVersion.getVersion();
+System.out.println("Framework: Spring Boot | Version: " + springBootVersion);
+
+// 2. Using the Package manifest
+String versionFromPackage = SpringApplication.class.getPackage().getImplementationVersion();
+Use code with caution.Are you trying to parse a custom banner file (banner.txt), or do you have a specific log snippet you are trying to extract this information from automatically? Let me know if you need a specific regex or parsing script!
+
+------------------------------------------------------------------------------------------------------
+
+https://medium.com/@AlexanderObregon/custom-banner-management-in-spring-boot-startup-messages-9b59e01787e9
+
+
+Custom Banner Management in Spring Boot Startup Messages
+Alexander Obregon
+
+Spring Boot applications greet developers with a console banner when they start up. Most leave it untouched, but personalizing it can be surprisingly handy for projects that run in several environments or go through frequent builds. A custom banner can show details like the version, Git branch, active profile, or deployment timestamp. It’s a small addition that helps communicate what’s running and where, right at startup, without opening a dashboard or digging through logs.
+
+How the Banner System Works
+Spring Boot’s banner system is one of the first things that runs during startup, long before the application context is ready. It’s part of the SpringApplication initialization process, which sets up the environment, prepares property sources, and then prints a banner to the console or log output. This happens early enough that you can rely on it to display information from environment variables or build metadata but not yet beans or autowired components.
+
+At its core, the banner feature serves two purposes: to give a visual marker of startup and to present basic metadata that helps identify the instance or environment being launched. Teams working with several microservices often use banners to make logs easier to spot during deployment or local testing. When done well, it can save a few seconds of confusion about which service you’re watching among many terminals running at once.
+
+Banner Loading Process
+Spring Boot looks for a banner file during startup, starting with banner.txt in the classpath. If found, that file’s contents are printed during startup instead of the default Spring Boot logo. The banner can include plain text, ASCII art, or property placeholders that resolve dynamically from the environment.
+
+Here’s a minimal banner.txt file that references some of the most common placeholders:
+
+${spring.application.name}
+Build Version: ${build.version}
+Active Profile: ${spring.profiles.active}
+When the application runs, those placeholders are replaced with their actual values pulled from environment properties. For instance, if your application.properties file contains spring.application.name=InventoryService, the console output will include that name automatically.
+
+You can change where Spring Boot looks for this file by adjusting application.properties:
+
+spring.banner.location=classpath:config/banner.txt
+That line tells Spring Boot to load the banner from a custom location inside the config folder. The path can also be a filesystem path with file: or a classpath resource with classpath:
+
+Some developers prefer programmatic control instead of a static file. You can do that by setting a banner directly on the SpringApplication instance before running it:
+
+@SpringBootApplication
+public class BannerExampleApp {
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(BannerExampleApp.class);
+        app.setBanner((env, source, out) -> out.println("Custom startup message for " 
+            + env.getProperty("spring.application.name", "Unnamed App")));
+        app.run(args);
+    }
+}
+That small lambda gives you a quick way to print a one-line banner that still responds to environment data. The Environment object is available, but other beans are not yet initialized, which makes this stage perfect for lightweight metadata output.
+
+Spring Boot loads its banner from a text source. Current versions look for banner.txt by default or for a location you set with spring.banner.location. Image-based banners were removed in Spring Boot 3, so only text banners are supported. Placeholders inside a text banner still work and are replaced from the environment at startup.
+
+You can set spring.main.log-startup-info=true to print general startup information such as the application name and active profiles, but it doesn’t report banner configuration details or which banner file was used.
+
+Banner Modes
+Banner display behavior can be tuned with the spring.main.banner-mode property. It accepts three values that control how and where the banner appears.
+
+console prints to the standard output stream (System.out).
+log writes the banner through your logging configuration instead.
+off disables the banner entirely.
+A project that uses a continuous integration environment may prefer to log banners rather than print them to the console, keeping terminal output less cluttered.
+
+Here’s how you can switch modes in your configuration file:
+
+spring.main.banner-mode=log
+That sends the banner to the logging system. When your logs are managed by something like Logback or Log4j2, the banner appears at the top of your log output.
+
+If you’d rather disable the banner completely for automated testing or scripted deployments, you can do so like this:
+
+spring.main.banner-mode=off
+For applications that use multiple profiles, it can also make sense to control banner visibility per environment. The following code uses an environment-specific YAML configuration to handle that:
+
+spring:
+  main:
+    banner-mode: console
+
+---
+spring:
+  config:
+    activate:
+      on-profile: staging
+  main:
+    banner-mode: log
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  main:
+    banner-mode: "off"
+This prints the banner to the console during local development, logs it in staging for verification, and disables it entirely in production.
+
+Banner modes can also be changed programmatically when starting the application. This is useful if your build system wraps SpringApplication.run with extra logic that decides where the banner goes:
+
+SpringApplication app = new SpringApplication(BannerExampleApp.class);
+app.setBannerMode(Banner.Mode.LOG);
+app.run(args);
+That one line moves the banner output to your logging configuration, which is handy for remote deployments where the console output isn’t directly visible.
+
+Each of these banner behaviors can be mixed with custom banners, so you can still include environment data or Git metadata regardless of where the output goes. That flexibility makes it practical for everything from local development to cloud-based services running through CI/CD pipelines.
+
+Creating Dynamic and Context-Aware Banners
+A static banner is nice for branding, but a dynamic one can make startup messages actually useful. When teams deploy across multiple environments, the banner can become an instant source of truth about what version is running, which profile is active, and where it’s running. Spring Boot makes that possible by allowing banners to be created programmatically or combined with data placeholders that update automatically from environment properties. It’s a lightweight feature that can communicate the build identity before the application even starts handling traffic.
+
+Implementing a Custom Banner Programmatically
+The Banner interface gives full control over how the banner appears. It’s invoked early in the startup process, just after environment variables are available but before any beans are initialized. This makes it ideal for printing configuration data or build information that doesn’t rely on other components.
+
+Here’s a simple implementation that prints out build and environment details at startup:
+
+import org.springframework.boot.Banner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.env.Environment;
+import java.io.PrintStream;
+
+@SpringBootApplication
+public class CustomBannerApp {
+
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(CustomBannerApp.class);
+        app.setBanner(new InfoBanner());
+        app.run(args);
+    }
+
+    static class InfoBanner implements Banner {
+        @Override
+        public void printBanner(Environment env, Class<?> source, PrintStream out) {
+            String app = env.getProperty("spring.application.name", "App");
+            String version = env.getProperty("build.version", "Unknown");
+            String profile = env.getProperty("spring.profiles.active", "default");
+            out.println("======================================");
+            out.println(" Application: " + app);
+            out.println(" Version: " + version);
+            out.println(" Active Profile: " + profile);
+            out.println("======================================");
+        }
+    }
+}
+This method prints environment-specific details in a consistent format. It works well when the build process adds variables like build.version from Maven or Gradle filtering.
+
+Some teams prefer adding a visual cue for production builds. You can use ANSI color codes for that purpose. Spring Boot supports color rendering in banners by default:
+
+out.println("\u001B[33m" + "Running Production Build" + "\u001B[0m");
+That line prints the message in yellow text. It can help developers quickly spot which instance they’re working with, especially when switching between environments.
+
+Combining Dynamic Data with a Text Banner
+While programmatic banners are flexible, many projects still rely on banner.txt because it’s simple to edit and works across builds without code changes. Property placeholders inside that text file are replaced automatically when the application starts. That makes it easy to blend static visuals with dynamic values.
+
+A basic banner.txt can look like this:
+
+Welcome to ${spring.application.name}
+Build: ${build.version}
+Profile: ${spring.profiles.active}
+When the application runs, these placeholders resolve from environment properties. You can enrich it by adding your own variables in application.properties:
+
+build.version=@project.version@
+deployment.region=us-central
+Now you can extend your banner to show deployment regions or any other metadata that fits your workflow.
+
+For cases where banners differ between environments, such as development and staging, you can store separate files and load them conditionally. This can be done through spring.banner.location and Spring profiles:
+
+spring:
+  banner:
+    location: classpath:banner-dev.txt
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  banner:
+    location: classpath:banner-prod.txt
+  config:
+    activate:
+      on-profile: prod
+That way, your local builds can display a friendly banner while production shows a minimal one with deployment identifiers. It keeps everything context-aware without adding logic inside your code.
+
+Integrating Git Metadata
+Version control metadata adds a helpful layer to banners, especially when debugging a deployment. Spring Boot supports reading git.properties at runtime, and build plugins can generate that file during your build. This file contains information like the commit hash, branch name, and build time.
+
+In Maven, you can generate git.properties with the git-commit-id-maven-plugin. Projects that use the spring-boot-starter-parent already get plugin management for it, so a basic declaration looks like this:
+
+<build>
+  <plugins>
+    <plugin>
+      <groupId>io.github.git-commit-id</groupId>
+      <artifactId>git-commit-id-maven-plugin</artifactId>
+    </plugin>
+  </plugins>
+</build>
+This setup writes a git.properties file under target/classes when the build runs. Spring Boot then auto-configures a GitProperties bean from that file, so the git values can appear on the /actuator/info endpoint when Actuator is on the classpath and the info endpoint is exposed. If you want banner output to include git commit and branch data, you can either read git.properties inside a custom Banner implementation or add git.properties as an extra property source early in startup so the Environment exposes those git.* keys for placeholders in banner.txt.
+
+For deeper customization, developers can load the Git metadata manually. Here’s how that could look in a banner implementation:
+
+import java.util.Properties;
+import java.io.InputStream;
+
+public class GitInfoPrinter {
+    public static void printGitInfo(PrintStream out) {
+        try (InputStream input = GitInfoPrinter.class.getResourceAsStream("/git.properties")) {
+            if (input == null) return;
+            Properties props = new Properties();
+            props.load(input);
+            out.println("Commit: " + props.getProperty("git.commit.id.abbrev", "Unknown"));
+            out.println("Branch: " + props.getProperty("git.branch", "N/A"));
+        } catch (Exception e) {
+            out.println("Git information unavailable");
+        }
+    }
+}
+That example reads directly from the generated file, giving full control over what gets printed and how it’s formatted. Combining Git information with profile and version data helps track exactly which build is deployed without checking logs or artifact metadata.
+
+Managing Environment Variables and System Properties
+Environment variables and system properties give context to where an application is running. They can identify regions, node IDs, or runtime configurations that aren’t tied to build files. Spring Boot passes these variables to the Environment object, which can be used inside any banner implementation.
+
+This code prints the deployment region and server name when available:
+
+String region = env.getProperty("DEPLOY_REGION", "unknown");
+String host = System.getenv().getOrDefault("HOSTNAME", "local");
+out.println("Region: " + region);
+out.println("Server: " + host);
+Those two lines can be enough to confirm which cluster or container instance you’re connected to. They’re particularly helpful in cloud setups where multiple instances of the same service run side by side.
+
+If you’re working with container orchestration tools like Kubernetes, environment variables such as POD_NAME or NAMESPACE can be printed as part of the banner to identify each running pod:
+
+String pod = env.getProperty("POD_NAME", "unknown");
+String namespace = env.getProperty("NAMESPACE", "default");
+out.println("Pod: " + pod);
+out.println("Namespace: " + namespace);
+For projects that want to centralize configuration, environment data can also be pulled from a custom configuration service through EnvironmentPostProcessor. That allows injecting extra values before the banner prints. Here’s a short example:
+
+import org.springframework.boot.EnvironmentPostProcessor;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MapPropertySource;
+import java.util.Map;
+
+public class BannerEnvironmentProcessor implements EnvironmentPostProcessor {
+    @Override
+    public void postProcessEnvironment(ConfigurableEnvironment env, SpringApplication app) {
+        Map<String, Object> customData = Map.of("deploy.info", "staging-build");
+        env.getPropertySources().addLast(new MapPropertySource("customDeployData", customData));
+    }
+}
+With that registered in META-INF/spring.factories, your banner can print new environment fields without modifying core configuration files. This keeps dynamic information available early in the lifecycle while keeping your build flexible for multiple environments.
+
+Dynamic banners bridge build data, runtime context, and configuration values in a way that’s both readable and instantly useful. They’re one of the easiest ways to make a Spring Boot service self-descriptive from the moment it starts.
+
+Conclusion
+Spring Boot’s banner feature runs at a moment when the environment is ready but the rest of the application hasn’t fully started yet. That timing makes it perfect for adding build data or environment details right where developers can see them. The process itself is simple and reliable. It reads configuration, replaces placeholders with live values, and prints the message before the context loads. A banner can come from a custom class or a text file, but the same sequence happens behind the scenes. It’s a small feature that gives immediate awareness of what version is running and where, making startup logs feel more intentional and connected to the system they represent.
+
+Spring Boot Reference Documentation on Custom Banners
+SpringApplication Class Javadoc
+Spring Boot Maven Plugin Reference
+Spring Environment API Javadoc
+Spring Boot Configuration Properties
+Thanks for reading! If you found this helpful, highlighting, clapping, or leaving a comment really helps me out.
+
+==============================
+•Read application.yml, application.properties, and Spring profile configuration 
+
+
+In Spring Boot, managing external configurations is a core feature that lets you run the same application code across different environments (like development, testing, and production). You can configure settings using application.properties, application.yml, and environment-specific Spring Profiles
+
+
+Here is a guide on how Spring Boot reads these configurations, their syntax differences, and how profiles override them.
+
+
+1. application.properties vs. application.ymlSpring Boot automatically looks for and loads application.properties and application.yml (or .yaml) from your src/main/resources/ directory.
+
+
+
+While they serve the same underlying purpose, they use completely different syntaxes:Featureapplication.propertiesapplication.ymlFormatFlat, Key-Value pairsHierarchical, Tree-like structureSyntaxSeparated by . and =Separated by : and spaces (Indentation matters)ReadabilityCan get repetitive for deeply nested keys.Highly readable for complex configurations.LimitationsWorks perfectly with the @PropertySource annotation.Does not work directly with @PropertySource.
+
+Example Syntax Comparison:application.propertiespropertiesspring.application.name=my-app
+server.port=8080
+spring.datasource.url=jdbc:mysql://localhost:3306/db
+spring.datasource.username=root
+Use code with caution.application.ymlyamlspring:
+  application:
+    name: my-app
+  datasource:
+    url: jdbc:mysql://localhost:3306/db
+    username: root
+
+server:
+  port: 8080
+Use code with caution.Note: If you happen to include both application.properties and application.yml in the exact same location with conflicting properties, Spring Boot prioritizes the .properties file
+
+
+
+2. Spring Profile ConfigurationSpring Profiles allow you to segregate parts of your application configuration and make them available only in specific environments
+
+
+Option A: Profile-Specific Files (Recommended)You can create separate files using the naming convention application-{profile}.properties or application-{profile}.yml
+
+
+application.yml (Default / Common configurations):yamlserver:
+  port: 8080
+spring:
+  application:
+    name: inventory-service
+Use code with caution.application-dev.yml (Development environment overrides):yamlspring:
+  datasource:
+    url: jdbc:h2:mem:devdb
+logging:
+  level:
+    org.springframework: DEBUG
+Use code with caution.application-prod.yml (Production environment overrides):yamlserver:
+  port: 443
+spring:
+  datasource:
+    url: jdbc:mysql://prod-server:3306/proddb
+
+
+Option B: Multi-Document YAML FileIf you use YAML, you can keep all environments inside a single application.yml file by separating documents with three dashes (---) and naming the profile using spring.config.activate.on-profile:yamlspring:
+  application:
+    name: inventory-service
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+server:
+  port: 8081
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+server:
+  port: 9090
+  
+  
+3. Activating a ProfileBy default, the profile is considered default. To activate specific profiles like dev or prod, you can use one of these methods:Inside application.properties / application.yml:propertiesspring.profiles.active=dev
+
+
+
+Via Command-Line Arguments (when running your jar):bashjava -jar myapp.jar --spring.profiles.active=prod
+
+Via JVM System Properties:bashjava -Dspring.profiles.active=prod -jar myapp.jar
+
+Via OS Environment Variables (Great for Docker/K8s):bashexport SPRING_PROFILES_ACTIVE=prod
+
+  
+4. Overriding & Order of PrecedenceSpring Boot uses a very specific order when loading and applying configurations. When a conflict occurs, a later source overrides an earlier one
+
+
+1.For files packaged inside your JAR, the loading order goes from lowest to highest priority
+
+2. Default application properties (application.properties / application.yml)Profile-specific application properties (application-{profile}.properties / .yml)
+
+
+This means profile-specific properties always override default properties. Furthermore, external configurations (like environment variables or command-line arguments passed at runtime) will override anything packaged inside your JAR file
+
+======================================================
+
+
+Identify Spring Boot, Tomcat, WildFly, WebLogic, and WebSphere applications from logs and config 
+
+
+
+You can identify Spring Boot, Tomcat, WildFly, WebLogic, and WebSphere applications by looking for specific keywords, class names, directory structures, and file extensions in their configuration files and deployment logs.Here is a direct comparison to help you quickly signature-match these Java technologies:
+
+Here is a direct comparison to help you quickly signature-match these Java technologies:
+
+
+Technology
+Key Config Files
+Distinctive Log Keywords / Packages
+Default Ports
+
+Spring Boot
+application.properties, application.yml
+SpringApplication, org.springframework.boot
+8080
+Tomcat
+server.xml, web.xml, context.xml
+org.apache.catalina, Coyote
+8080
+WildFly
+standalone.xml, domain.xml
+org.jboss.as, WFLYSRV, Undertow
+8080, 9990
+WebLogic
+config.xml, weblogic.xml
+<BEA-000000>, weblogic.Server
+7001
+WebSphere
+server.xml (Liberty), virtualhosts.xml
+[WAS], com.ibm.ws, CWPKI
+9080, 9443
+
+
+
+--
+
+Log Signatures
+Spring Boot
+    • ASCII Art: By default, logs start with a large ASCII art banner reading :: Spring Boot ::.
+    • Initialization: Look for Starting Application using Java... and Started Application in X seconds.
+    • Packages: Prominent log lines containing org.springframework.boot or org.springframework.web.
+Apache Tomcat
+    • Server Info: Look for Starting service [Catalina] and Starting Servlet engine: [Apache Tomcat/X.Y.Z].
+    • Connectors: Look for Initializing Coyote HTTP/1.1 on http-nio-8080.
+WildFly (formerly JBoss)
+    • Server Boot: Logs will explicitly print WFLYSRV0025: WildFly Full X.Y.Z "Flavor" started.
+    • Subsystems: Look for logs starting with codes like WFLY, JBILD, or references to the Undertow web subsystem.
+Oracle WebLogic
+    • Log Format: WebLogic logs use a highly specific format enclosed in angle brackets: ####<Mar 10, 2026 ...> <Info> <WebLogicServer> ... <BEA-000365>.
+    • State Changes: Look for Server state changed to RUNNING.
+IBM WebSphere (Traditional & Liberty)
+    • Traditional WAS: Uses SystemOut.log and SystemErr.log. Look for message IDs starting with WSVR (e.g., WSVR0001I: Server server1 open for e-business).
+    • Liberty Profile: Look for message codes like CWWKE0001I: The server liberty-server has been launched. inside console.log or messages.log.
+
+⚙️ Configuration Signatures
+Spring Boot
+    • File names: application.properties or application.yml.
+    • Artifacts: Usually packaged as an executable standalone .jar file containing an embedded server.
+Apache Tomcat
+    • Directory: Located in a conf/ folder.
+    • Root elements: server.xml will feature <Server>, <Service>, <Engine>, and <Connector> XML tags.
+WildFly
+    • Directory: Located in standalone/configuration/ or domain/configuration/.
+    • Root elements: standalone.xml features <server xmlns="urn:jboss:domain:..."> and extensive <subsystem> tags.
+Oracle WebLogic
+    • Directory: Located within a WebLogic domain directory, e.g., /config/config.xml.
+    • Root elements: config.xml uses <domain xmlns="http://oracle.com"> and defines <server>, <cluster>, and <app-deployment>.
+IBM WebSphere
+    • Traditional WAS: Configurations are hidden deep within a cell/node structure (e.g., cells/CellName/nodes/NodeName/servers/ServerName/server.xml).
+    • Liberty Profile: Uses a simple, clean server.xml file starting with <server description="new server"> and a <featureManager> block listing IBM features.
+
+To help me tailor this to your environment, could you tell me:
+    • Are you trying to automate this detection via a script (like Bash or Python)?
+    • Do you have a snippet of a log file or a directory listing you want me to look at right now?
+    • What operating system are these applications running on?
+AI can make mistakes, so double-check responses
+
+
+=====================================================================================
+
+
+Diagnose HikariCP / DBCP / c3p0 connection pool exhaustion 
+
+Connection pool exhaustion in Spring Boot happens when all available database connections are in use, and new requests must wait or fail with a timeout error.
+Common Causes
+    • Slow queries: Queries take too long and keep connections busy.
+    • Connection leaks: Code borrows a connection but fails to close it.
+    • High concurrency: Traffic exceeds the maximum pool size limit.
+    • Under-sized pool: The maximum pool size is too small for the load.
+
+How to Diagnose
+1. Enable Pool-Specific Logging
+Add debug or trace logging in your application.properties or application.yml to track connection usage.
+    • HikariCP (Default in Spring Boot):
+      properties
+      ://level.com.zaxxer.hikari=DEBUG
+      ://level.com.zaxxer.hikari.HikariConfig=DEBUG
+      Use code with caution.
+      HikariCP logs warnings automatically when connections are acquired slowly or when the pool is exhausted. Look for logs containing Apparent connection leak detected.
+    • Apache DBCP2:
+      properties
+      logging.level.org.apache.commons.dbcp2=DEBUG
+      Use code with caution.
+    • C3P0:
+      properties
+      ://level.com.mchange.v2.c3p0=DEBUG
+      Use code with caution.
+2. Monitor Active Metrics with Actuator
+Add Spring Boot Actuator to your project to inspect real-time pool metrics.
+    1. Add the dependency:
+       xml
+       <!-- Maven -->
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-actuator</artifactId>
+       </dependency>
+       Use code with caution.
+    2. Expose the endpoints in application.properties:
+       properties
+       management.endpoints.web.exposure.include=health,metrics
+       Use code with caution.
+    3. Visit /actuator/metrics/hikaricp.connections.active or /actuator/metrics/data.source.connections.active to see how many connections are active, idle, or waiting.
+3. Check for Connection Leaks in Code
+    • HikariCP Leak Detection: Configure Hikari to log stack traces when a connection is held longer than a threshold (e.g., 2 seconds):
+      properties
+      spring.datasource.hikari.leak-detection-threshold=2000
+      Use code with caution.
+    • Review code paths: Ensure every manual Connection, Statement, or ResultSet is closed properly, preferably using Java try-with-resources blocks or letting JPA/Hibernate manage transactions correctly.
+4. Adjust Pool Sizes
+If your application is healthy but under heavy load, increase the maximum pool size cautiously (ensure your database server can handle the increased maximum connections).
+    • HikariCP:
+      properties
+      spring.datasource.hikari.maximum-pool-size=20
+      spring.datasource.hikari.connection-timeout=30000
+      Use code with caution.
+
+If you'd like, let me know:
+    • Which connection pool you are using (HikariCP, DBCP, or c3p0)
+    • The error message or stack trace from your logs
+I can help you pinpoint the exact configuration fix or code change you need.
+AI can make mistakes, so double-check responses
+
+
+
+=====================================================================
+
+
+•Resolve Spring Boot startup failures (port in use, bean wiring errors, missing properties) 
+
+When a Spring Boot application fails to start, the embedded FailureAnalyzer usually prints a clear, human-readable error report right before the stack trace
+
+Here is how to quickly resolve the three most common startup failures: Port already in use, Bean wiring errors, and Missing properties.
+
+1. Port Already in Use
+The Error: Web server failed to start. Port 8080 was already in use.
+This happens when another application, database, or a stuck zombie instance of your own application is already listening on the configured port
+
+Solutions:
+    • Option A: Free up the port
+Find the process ID (PID) occupying the port and terminate it.
+        ◦ Windows: Open CMD as Administrator and run:
+          cmd
+          netstat -ano | findstr :8080
+          taskkill /F /PID <PID_NUMBER>
+          ```
+          Use code with caution.
+        ◦ macOS / Linux: Open the terminal and run:
+          bash
+          sudo lsof -i tcp:8080
+          kill -9 <PID_NUMBER>
+          ```
+
+Option B: Change the application port
+Assign a new port in your config file:
+    • In src/main/resources/application.properties:
+      properties
+      server.port=8081
+      ```
+      Use code with caution.
+    • In application.yml:
+      yaml
+      server:
+        port: 8081
+
+2. Bean Wiring & Dependency Injection Errors
+The Error: Consider defining a bean of type 'X' in your configuration. or No qualifying bean of type available.
+This occurs when Spring's IoC container cannot locate or uniquely identify a component it needs to inject. [1, 2, 3]
+Scenario A: Bean Not Found (Missing Component)
+Spring doesn't know the class exists.
+    • Fix: Ensure the target class is annotated with a stereotype annotation like @Component, @Service, @Repository, or @Controller.
+    • Fix: Check your packages. By default, Spring Boot only scans classes inside or beneath the package containing the main @SpringBootApplication class. Move your class inside that package structure or explicitly add @ComponentScan("com.yourcompany")
+
+Scenario B: Non-Unique Bean (Ambiguous Injection)
+You have multiple classes implementing the same interface, and Spring doesn't know which one to pick. [1]
+	Fix using @Primary: Mark your preferred default implementation with @Primary.
+    • Fix using @Qualifier: Give your beans names and use @Qualifier("beanName") alongside @Autowired or your constructor injection to specify the exact bean required
+
+Scenario C: Circular Dependencies
+Bean Currently In Creation Exception. ClassA requires ClassB, and ClassB requires ClassA
+ https://medium.com/@charansai.ashokit/spring-boot-common-errors-solutions-b1ac63edecc9
+
+Fix: Refactor your code to break the loop (usually by introducing a third bean or using lazy initialization with @Lazy, though architectural refactoring is preferre
+
+
+3. Missing or Unresolved Properties
+The Error: IllegalArgumentException: Could not resolve placeholder 'my.property' in value "${my.property}".
+This happens when your code requests an environment or configuration property that hasn't been defined anywhere
+
+https://medium.com/@puneetpm/demystifying-spring-boot-startup-failures-your-ultimate-troubleshooting-guide-550a9050ef95
+
+
+Solutions:
+    • Option A: Provide a Safe Default Value
+If the property is optional, supply a fallback value directly inside the @Value annotation using a colon (:):
+      java
+      @Value("${my.custom.timeout:5000}") // Defaults to 5000 if my.custom.timeout is missing
+      private int timeout;
+      Use code with caution.
+    • Option B: Define the Value Across Profiles
+Ensure the property is declared in your active configuration file:
+      properties
+      # application.properties
+      my.custom.timeout=5000
+
+If you rely on environment-specific files (like application-prod.properties), verify that you actually activated that profile using `spring.profiles.active=prod`
+
+
+Option C: Use Strict Validation with @ConfigurationProperties
+If the property is critical, group them using @ConfigurationProperties. You can combine this with Hibernate Validator's @NotNull to fail quickly and transparently with a clear validation report, preventing silent configuration issues down the road
+
+
+
+=========================================================================================
+
+==============================
+
+
+•Use Spring Actuator /threaddump and /heapdump for live diagnosis 
+
+Spring Boot Actuator provides /threaddump and /heapdump endpoints for real-time JVM diagnostics and troubleshooting
+
+Using /threaddump
+    • Purpose: Returns a snapshot of all active threads in the Java Virtual Machine (JVM).
+    • Output Format: JSON by default, or plain text if you set the Accept: text/plain HTTP header.
+    • Use Case: Diagnose deadlocks, high CPU usage, or stuck/hung threads by comparing two dumps taken a few seconds apart.
+    • Command Example:
+      bash
+      curl http://localhost:8080/actuator/threaddump
+      Use code with caution.
+      [1, 2]
+
+https://medium.com/@sarveshkhamkar321/spring-boot-actuator-your-applications-built-in-health-monitor-7b9692890ef4
+
+
+Using /heapdump
+    • Purpose: Downloads a complete binary snapshot (.hprof for HotSpot JVM) of all objects currently in JVM memory.
+    • Output Format: Large binary stream.
+    • Use Case: Analyze memory consumption, find object accumulation, and troubleshoot memory leaks using tools like Eclipse MAT or VisualVM.
+    • Command Example:
+      bash
+      curl http://localhost:8080/actuator/heapdump -O
+      Use code with caution.
+      (Note: Triggering a heap dump pauses the JVM briefly; use it as a break-glass diagnostic tool rather than on a regular polling schedule.) [1, 2, 3, 4]
+Security Best Practices
+    • Exposure: These endpoints are sensitive and disabled or unexposed by default in many configurations. Never expose them publicly without authorization.
+    • Protection: Secure them using Spring Security or isolate them on a separate internal management port. [1, 2, 3, 4, 5]
+
+===============================================================
+•Resolve Tomcat / WildFly app deployment failures 
+
+
+To resolve Tomcat or WildFly deployment failures when migrating or running a Spring Boot application on an external application server, adjust your build configuration to prevent server and logging conflicts. [1, 2]
+
+Common Fixes for WildFly / External Server Failures
+    • Change Packaging to WAR: Modify your project configuration to produce a WAR file instead of an executable JAR.
+    • Extend SpringBootServletInitializer: Update your main application class to extend SpringBootServletInitializer so the external servlet container can initialize it.
+    • Mark Embedded Tomcat as Provided: Exclude or scope the embedded Tomcat dependencies as provided so they do not conflict with the application server's runtime.
+    • Exclude Logback Classic: Remove logback-classic from your dependencies to prevent LoggerFactory is not a Logback LoggerContext runtime exceptions inside WildFly.
+    • Remove Conflicting Undertow Starters: Ensure spring-boot-starter-undertow is omitted or provided-scoped, since WildFly supplies its own Undertow subsystem.
+    • Add Missing Servlet APIs explicitly: For Spring Boot 3.x, add the jakarta.servlet-api dependency with a provided scope if servlet initialization fails
+
+
+
+=====================================================
+
+•Configure correct JVM args for containerised Java workloads (heap, GC, container-aware flags)
+
+
+Configure JVM arguments for containerized Java workloads by enabling container awareness and setting explicit memory limits to prevent out-of-memory crashes.
+Key Container-Aware Flags
+Modern Java versions (Java 10+) automatically recognize container memory and CPU limits, but older versions or specific setups need explicit flags.
+    • -XX:+UseContainerSupport: Enables container awareness so the JVM reads limits from cgroups (enabled by default in Java 10+).
+    • -XX:MaxRAMPercentage=75.0: Sets the maximum heap and non-heap memory the JVM can use as a percentage of the container's total memory limit (leave room for off-heap memory like metaspace and thread stacks).
+    • -XX:InitialRAMPercentage=50.0: Sets the initial memory allocation percentage.
+    • -XX:MinRAMPercentage=50.0: Sets the minimum memory allocation for small containers.
+Garbage Collector (GC) Selection
+Choose a garbage collector based on your latency and throughput needs.
+    • G1GC (Default for Java 9+): Best for balanced throughput and low latency. Add -XX:+UseG1GC.
+    • ZGC (Low Latency): Best for massive heaps with ultra-low pause times (Java 15+). Add -XX:+UseZGC.
+    • ParallelGC (High Throughput): Best for batch jobs where pause time does not matter. Add -XX:+UseParallelGC.
+Recommended Example Configuration
+Use this production-ready baseline for a modern Java container (Java 17+):
+bash
+java -XX:+UseContainerSupport \
+     -XX:MaxRAMPercentage=75.0 \
+     -XX:+UseG1GC \
+     -XX:+ExitOnOutOfMemoryError \
+     -jar app.jar
+Use code with caution.
+    • -XX:+ExitOnOutOfMemoryError: Forces the container to crash immediately on a java.lang.OutOfMemoryError, allowing the orchestrator (like Kubernetes) to restart a clean instance.
+If you want, let me know:
+    • Which Java version you are using
+    • Your container memory limit (e.g., 512MB, 2GB)
+    • Your primary goal (low latency or high throughput)
+I can refine these JVM arguments for your exact setup.
+AI can make mistakes, so double-check responses
+
+
+
+
+
