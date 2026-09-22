@@ -22,3 +22,11 @@ public class Main   extends SpringBootServletInitializer{
 }
 
 //http://localhost:8080/person/pForm
+/*
+
+if in tomcat and it is test1.war then run 
+        
+http://localhost:8080/test1/person/pForm
+
+
+*/

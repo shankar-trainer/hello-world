@@ -162,6 +162,7 @@ public class MyApplication extends SpringBootServletInitializer {
         SpringApplication.run(MyApplication.class, args);
     }
 }
+
 Do some minimal changes to your springboot app for easier validation:
 Add ThymeLeaf in pom.xl
 
@@ -209,7 +210,11 @@ cp target/demo-0.0.1-SNAPSHOT.war $JBOSS_HOME/standalone/deployments/
 Image description
 
 5. Finally start your demo springboot app with Jboss server!
+
+
 http://localhost:9090/demo-0.0.1-SNAPSHOT/home?message=Springboot%20is%20running%20on%20jboss%20now!
+
+
 Image description
 
 profile

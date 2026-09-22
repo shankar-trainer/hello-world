@@ -12,7 +12,6 @@ By App Name (Easiest)If you know the exact name of the application, you can term
 Kill by name: pkill application_name (e.g., pkill firefox)
 
 
-
 Kill all instances: 
 
       killall application_name (e.g., killall chrome)Force kill (if it refuses to close): Add -9 to the command (e.g., pkill -9 firefox or killall -9 chrome). 

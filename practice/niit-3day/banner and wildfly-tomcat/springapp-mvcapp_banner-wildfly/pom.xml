@@ -31,21 +31,21 @@
 	<properties>
 		<java.version>21</java.version>
 	</properties>
+	
 	<dependencies>
-
-         <dependency>
+        <dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-
-
+		
    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
 
 	<!-- Source: https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jasper -->
+	<!-- comment  in case of tomcat and wildfly-->
 	<!--
 		<dependency>
 		    <groupId>org.apache.tomcat</groupId>
@@ -64,11 +64,17 @@
             <artifactId>spring-boot-starter-webmvc-test</artifactId>
             <scope>test</scope>
         </dependency>
-
 		
 		<dependency>
    		 <groupId>org.springframework.boot</groupId>
     	 <artifactId>spring-boot-starter-web</artifactId>
+    	 	<!-- add  in case of  wildfly-->
+    	 <exclusions>
+            <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+           </exclusion>
+       </exclusions>
        </dependency>
 
 		<dependency>
@@ -80,6 +86,17 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+				<!-- add   in case of  wildfly-->
+	  		<exclusions>
+        		<exclusion>
+            		<groupId>ch.qos.logback</groupId>
+            		<artifactId>logback-classic</artifactId>
+        		</exclusion>
+        		<exclusion>
+            		<groupId>org.apache.logging.log4j</groupId>
+            		<artifactId>log4j-to-slf4j</artifactId>
+        		</exclusion>
+       		</exclusions>
 		</dependency>
 
 		<dependency>
