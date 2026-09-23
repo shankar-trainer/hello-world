@@ -43,3 +43,37 @@ sudo rabbitmq-plugins enable rabbitmq_management
 
 Use code with caution.You can access the dashboard at http://localhost:15672 using the default username guest and password guest (local access only)
 
+==============================
+
+Here is a step-by-step example of how to implement RabbitMQ in a Spring Boot application using the standard spring-boot-starter-amqp dependency. This architecture follows a standard Direct Exchange pattern to publish and consume messages.
+
+Step 1: Add DependenciesAdd the Spring AMQP starter to your build configuration file.For Maven (pom.xml):xml<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-amqp</artifactId>
+</dependency>
+
+Use code with caution.For Gradle (build.gradle):groovyimplementation 'org.springframework.boot:spring-boot-starter-amqp'
+Use code with caution.
+
+Step 2: Configure Application PropertiesSpecify your connection credentials inside your src/main/resources/application.properties file. If RabbitMQ is running locally on default ports via Docker or desktop installation, use the following configuration:
+properties
+
+spring.rabbitmq.host=localhost
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=guest
+spring.rabbitmq.password=guest
+
+# Custom properties for our application
+app.rabbitmq.exchange=example-exchange
+app.rabbitmq.queue=example-queue
+app.rabbitmq.routingkey=example-routing-key
+
+Step 3: Define RabbitMQ ConfigurationsCreate a Java configuration class to programmatically declare your Queue, Exchange, and the Binding rule that connects them.
+
+Step 3 (Continued): Configuration BeanDefine a RabbitMQConfig class using @Configuration to declare the durable queue, direct exchange, and binding rules using property values for names and routing keys.
+
+Step 4: Create the Message ProducerInject the auto-configured RabbitTemplate into a service class to send string messages to your exchange and routing key.
+
+Step 5: Create the Message Consumer (Listener)Implement a message listener service using the @RabbitListener(queues = "${app.rabbitmq.queue}") annotation to process incoming messages from the queue.
+
+Step 6: Trigger via REST Controller (Optional)Expose a REST endpoint via a @RestController to accept query parameters and trigger the producer's sendMessage method for easy testing.For the complete source code implementation of these components, please refer to the official Spring Messaging with RabbitMQ Guide or the configuration tutorials on GeeksforGeeks.If you would like to expand this template, let me know:Do you need to send complex JSON objects instead of plain text strings?Are you setting up a specific exchange pattern like Topic or Fanout?Should we include Docker Compose setup files to quickly spin up your local test broker instance?
