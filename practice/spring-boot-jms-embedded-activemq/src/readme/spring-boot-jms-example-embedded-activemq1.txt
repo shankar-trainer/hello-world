@@ -1,0 +1,137 @@
+
+Spring Boot auto-configures the Java Message Service (JMS) infrastructure seamlessly so you can build producer and consumer messaging systems with minimal setup. 
+
+Historically, this was done using JmsTemplate, but modern applications leveraging Spring Boot 4+ can take advantage of the highly readable, fluent JmsClient API.Below is a complete, production-ready example of a Spring Boot JMS implementation using an Apache ActiveMQ Artemis broker.
+
+1. Add the DependenciesAdd the Spring Boot Starter for JMS and your chosen broker client to your build file.
+
+Maven (pom.xml):xml<dependencies>
+    <!-- Core Spring Boot Starter for JMS -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-activemq</artifactId>
+    </dependency>
+    <!-- Automatically maps object payloads to JSON strings -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-json</artifactId>
+    </dependency>
+</dependencies>
+
+Use code with caution.
+
+2. Configure the ConnectionSpring Boot automatically searches for a local broker. 
+If you are using an external ActiveMQ Artemis broker (or a Docker instance), define the properties in your config file:
+src/main/resources/application.properties
+
+properties
+
+# Connection details to your ActiveMQ Artemis instance
+spring.artemis.broker-url=tcp://localhost:61616
+spring.artemis.user=admin
+spring.artemis.password=admin
+
+# Alternative: If you don't have a broker running, you can embed one for development:
+# spring.artemis.mode=embedded
+Use code with caution.3. Create the Data Model (Payload)Define a simple POJO or Record to pass data. Spring Boot integrates with Jackson to serialize objects directly into the message text.javapackage com.example.jms.model;
+
+import java.io.Serializable;
+
+public record Order(String orderId, String customerId, double amount) implements Serializable {}
+Use code with caution.4. Create the Message Producer (Sending Messages)Inject the auto-configured messaging client into your service component. 
+
+You can choose between the classic JmsTemplate approach or the modern fluent JmsClient pattern introduced in Spring Boot 4.
+
+Option A: Using the Modern JmsClient (Recommended for Spring Boot 4+)The modern JmsClient yields cleaner and much more readable code.
+java
+
+package com.example.jms.producer;
+
+import com.example.jms.model.Order;
+import org.springframework.jms.core.JmsClient;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderProducer {
+
+    private final JmsClient jmsClient;
+
+    // Spring Boot auto-configures and injects the JmsClient bean
+    public OrderProducer(JmsClient jmsClient) {
+        this.jmsClient = jmsClient;
+    }
+
+    public void sendOrder(Order order) {
+        jmsClient.destination("order-queue")
+                 .header("region", "US-WEST") // Optional: set custom headers
+                 .priority(9)                 // Optional: set Quality of Service tags
+                 .send(order);
+    }
+}
+Use code with caution.Option B: Using the Traditional JmsTemplate (Spring Boot 3 and Older)If you are running an older production layout, use JmsTemplate instead.javapackage com.example.jms.producer;
+
+import com.example.jms.model.Order;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderProducerLegacy {
+
+    private final JmsTemplate jmsTemplate;
+
+    public OrderProducerLegacy(JmsTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
+    }
+
+    public void sendOrder(Order order) {
+        // Automatically serializes your object payload into a TextMessage
+        jmsTemplate.convertAndSend("order-queue", order);
+    }
+}
+Use code with caution.5. Create the Message Consumer (Receiving Messages)To consume incoming messages asynchronously, tag your listener method using the @JmsListener annotation. You do not need to manually configure infrastructure—Spring Boot handles connection management, threading, and acknowledgments behind the scenes.javapackage com.example.jms.consumer;
+
+import com.example.jms.model.Order;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class OrderConsumer {
+
+    private static final Logger log = LoggerFactory.getLogger(OrderConsumer.class);
+
+    // Listens to the destination queue and processes incoming payloads automatically
+    @JmsListener(destination = "order-queue")
+    public void receiveOrder(Order order) {
+        log.info("Received incoming message! Processing order ID: {}", order.orderId());
+        
+        // Place your application business logic here
+    }
+}
+Use code with caution.6. Enable JMS CapabilityAdd the entry configuration class to verify that the Jackson converter translates payload classes cleanly to standard JSON formatting. Note that @EnableJms is automatically inferred by Spring Boot if it detects dependencies on your classpath, so you can keep the entry class clean.javapackage com.example.jms;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
+import org.springframework.jms.support.converter.MessageConverter;
+import org.springframework.jms.support.converter.MessageType;
+
+@SpringBootApplication
+public class JmsApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(JmsApplication.class, args);
+    }
+
+    // Configures text-based JSON message handling instead of default binary serialization
+    @Bean
+    public MessageConverter jacksonJmsMessageConverter() {
+        MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
+        converter.setTargetType(MessageType.TEXT);
+        converter.setTypeIdPropertyName("_type");
+        return converter;
+    }
+}
+Use code with caution.For a live, step-by-step walkthrough detailing how to boot up an Apache ActiveMQ Artemis instance via Docker Compose and implement this modern fluent layout from scratch, you can watch this instructional programming guide:

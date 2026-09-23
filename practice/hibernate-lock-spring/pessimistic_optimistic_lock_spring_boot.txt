@@ -1,0 +1,346 @@
+optimistic and pessimistic lock in hibernate with example
+
+In Hibernate, optimistic and pessimistic locking are two distinct concurrency control strategies used to prevent data conflicts when
+ multiple transactions try to read and update the same database records simultaneously.
+Here is a breakdown of how they work, how to implement them, and when to use each.
+1. Optimistic LockingOptimistic locking assumes that conflicts between transactions are rare. 
+It allows multiple transactions to read and modify data concurrently without blocking each other.
+ 
+Instead of locking the row at the database level, it uses a version field to detect if another transaction modified the data before 
+committing.
+
+How it works:Transaction A and Transaction B read the same record (e.g., Version = 1).Transaction A updates the record. 
+Hibernate increments the version to 2 and successfully commits because the database version matches what it initially read.
+
+Transaction B attempts to update the same record, sending Version = 1 in its WHERE clause. Since the database version is now 2, 
+the update fails, and Hibernate throws an OptimisticLockException.
+
+Code Example:To enable optimistic locking, you simply add an attribute annotated with @Version inside your entity.
+
+java
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Version;
+
+@Entity
+public class Inventory {
+    
+    @Id
+    private Long id;
+    private String itemName;
+    private int stockCount;
+
+    @Version
+    private int version; // Hibernate automatically tracks and increments this
+    
+    // Getters and Setters
+}
+
+Use code with caution.What Hibernate generates under the hood:
+When you update the entity, Hibernate appends the version check to the SQL statement
+
+sql
+
+UPDATE Inventory SET stockCount = ?, version = version + 1 WHERE id = ? AND version = ?
+Use code with caution.
+
+2. Pessimistic LockingPessimistic locking assumes that conflicts are highly likely. Instead of checking for conflicts at the end of
+ a transaction, it strictly prevents conflicts in advance by locking the database row as soon as the data is read.
+
+How it works:Transaction A reads a record using a pessimistic lock.
+
+The database places a physical lock on that row (e.g., using FOR UPDATE).
+
+Transaction B attempts to read or modify the same row but is forced to wait (or fails immediately) until Transaction A finishes and
+releases the lock.
+
+Code Example:You can enforce pessimistic locking explicitly using EntityManager or by annotating 
+
+Spring Data JPA repository methods with @Lock.
+java
+
+import javax.persistence.LockModeType;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
+
+public interface InventoryRepository extends JpaRepository<Inventory, Long> {
+
+    // PESSIMISTIC_WRITE blocks other transactions from reading or writing
+    @Lock(LockModeType.PESSIMISTIC_WRITE) 
+    Inventory findInventoryById(Long id);
+}
+
+Use code with caution.
+
+What Hibernate generates under the hood:sql
+
+SELECT id, item_name, stock_count FROM Inventory WHERE id = ? FOR UPDATE
+
+
+Use code with caution.The FOR UPDATE clause tells the database engine to reserve this row exclusively until the current transaction
+ commits or rolls back.
+
+Direct Comparison Feature Optimistic Locking Pessimistic LockingLock Mechanism
+Application-level via an @Version column.Database-level row locking via FOR UPDATE.ConcurrencyHigh. 
+Multiple users can read and write simultaneously.Low. Other transactions must wait for the lock to release.Failure ModeThrows OptimisticLockException during commit.Blocks execution or times out if a lock cannot be acquired.Performance OverheadLow (minimal CPU check during update).High (database locks consume connection resources).Best Used For...High read/low write traffic (e.g., editing a profile).Critical transactions where collision is costly (e.g., banking, booking a seat).If you are trying to solve a specific issue in your project, let me know:What kind of application scenario you are building (e.g., e-commerce cart, seat booking, ticket counter)?The volume of traffic or concurrency you expect?
+
+
+===============================================================================
+
+
+Spring Boot handles concurrent data modifications using two primary locking mechanisms in Spring Data JPA: 
+
+Optimistic Locking and Pessimistic Locking.Optimistic locking assumes conflicts are rare and uses a version check at commit time, while pessimistic locking assumes conflicts will happen and locks the database row immediately upon reading.
+
+
+1. Optimistic Locking (Application-Level)Optimistic locking does not lock rows at the database level while a transaction is running. 
+
+Instead, it uses a version field to detect changes. If another transaction updates the same record in the meantime, the current update will fail, throwing an OptimisticLockException.
+
+The EntityAdd an @Version annotation to an integer or timestamp field. Hibernate will manage this field automatically.javaimport jakarta.persistence.*;
+
+@Entity
+public class Inventory {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String itemName;
+    private int stockCount;
+
+    @Version
+    private Long version; // Used by Hibernate for tracking changes
+
+    // Getters, Setters, and Constructors
+}
+
+Use code with caution.The RepositoryNo special setup is required for basic optimistic locking. The standard JpaRepository methods handle it natively.javaimport org.springframework.data.jpa.repository.JpaRepository;
+
+public interface InventoryRepository extends JpaRepository<Inventory, Long> {
+}
+Use code with caution.Behind the Scenes SQLWhen you save the entity, Spring Data JPA executes an SQL query similar to:sqlUPDATE inventory 
+SET stock_count = ?, version = version + 1 
+WHERE id = ? AND version = ?;
+
+Use code with caution.
+
+If zero rows are updated because the version has changed, the transaction fails.
+
+2. Pessimistic Locking (Database-Level)Pessimistic locking locks the database row on fetch. Other transactions must wait until the lock releases. Use @Lock with LockModeType.PESSIMISTIC_WRITE or PESSIMISTIC_READ in your repository. Always run pessimistic operations inside a @Transactional boundary in your service layer to handle locks and rollbacks properly.Comparison: When to use which?FeatureOptimistic LockingPessimistic LockingMechanismApplication version checks (@Version)Database locks (FOR UPDATE)PerformanceHigh throughput (No blocking)Lower throughput (Threads block & wait)Failure ModeThrows OptimisticLockExceptionThrows PessimisticLockException or TimeoutsBest Used ForLow contention: Web application forms, user profile updatesHigh contention: Financial ledgers, seat booking, flash salesYou can explore the full code examples for repositories and services in the Spring Data JPA Documentation or the GeeksforGeeks Guide on Transaction Locks.If you'd like to extend this implementation, let me know:Do you want to see how to implement automatic retry logic for OptimisticLockException?Do you need to set up custom lock timeouts to prevent deadlocks in pessimistic locking.
+
+
+================================================= medium ====================
+
+
+Optimistic vs. Pessimistic Locking in a Spring Boot Application
+Prankur Garg
+
+
+Concurrency control is a crucial aspect of modern applications that handle multiple users updating the same data. In a Spring Boot application using JPA, two common approaches to handling concurrent data modifications are Optimistic Locking and Pessimistic Locking. Understanding when and how to use them can help prevent data inconsistencies and improve application performance.
+
+1. Optimistic Locking
+Optimistic locking assumes that conflicts are rare. Instead of locking the data, it allows multiple transactions to proceed but verifies during the update whether the data has been modified by another transaction. If a conflict is detected, the transaction is rolled back.
+
+How to Implement Optimistic Locking in Spring Boot
+Add a @Version field in your entity.
+Spring Data JPA automatically checks for version mismatches before updating the entity.
+Example:
+
+import jakarta.persistence.*;
+
+@Entity
+public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private Double balance;
+
+    @Version
+    private Integer version;
+    
+    // Getters and setters
+}
+
+How it Works:
+
+When an entity is fetched, the version value is also retrieved.
+During an update, JPA checks if the version in the database is the same as in the entity.
+If another transaction has updated the entity in the meantime (changing the version), JPA throws an OptimisticLockException.
+When to Use Optimistic Locking
+Suitable when conflicts are infrequent.
+Works well in read-heavy applications.
+Useful for systems where transactions involve user interactions.
+
+
+2. Pessimistic Locking
+Pessimistic locking assumes conflicts are common. It prevents other transactions from modifying or even reading the data until the current transaction is complete by acquiring a lock at the database level.
+
+How to Implement Pessimistic Locking in Spring Boot
+Use JPA’s @Lock annotation with LockModeType.PESSIMISTIC_WRITE or LockModeType.PESSIMISTIC_READ.
+
+
+Example:
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
+import jakarta.persistence.LockModeType;
+import java.util.Optional;
+
+public interface AccountRepository extends JpaRepository<Account, Long> {
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    Optional<Account> findById(Long id);
+}
+How it Works:
+When a transaction fetches an entity with a pessimistic lock, the database ensures that no other transaction can modify or delete the entity until the lock is released.
+PESSIMISTIC_WRITE prevents other transactions from reading or modifying the entity.
+PESSIMISTIC_READ allows reading but prevents modifications.
+When to Use Pessimistic Locking
+When data consistency is critical and conflicts are frequent.
+In scenarios like bank transactions, stock trading, or booking systems where avoiding overwrites is crucial.
+If multiple transactions frequently update the same record, optimistic locking may lead to frequent rollbacks, making pessimistic locking a better choice.
+Choosing the Right Locking Mechanism
+Press enter or click to view image in full size
+
+Conclusion
+Both optimistic and pessimistic locking have their place in a Spring Boot application. If you expect minimal conflicts and want better performance, optimistic locking is the way to go. However, if data integrity is a priority and conflicts are frequent, pessimistic locking is the safer choice. Choosing the right approach depends on your application’s needs and concurrency patterns.
+
+
+=================================
+
+
+Optimistic vs. Pessimistic Locking in Spring Data
+Paul Ravvich
+Paul Ravvich
+
+Follow
+4 min read
+·
+Aug 17, 2023
+119
+
+
+5
+
+
+
+Optimistic locking is used when data conflicts are rare, using a version column to prevent concurrent updates unless the data is unchanged. Pessimistic locking assumes conflicts are likely, locking data for the duration of a transaction to prevent access by other transactions. The choice between optimistic and pessimistic locking depends on the expected frequency of data conflicts and the need for data consistency versus system performance.
+
+Press enter or click to view image in full size
+
+Optimistic vs. Pessimistic Locking in Spring Data
+Hi, this is Paul, and welcome to this article. In the realm of concurrent database operations, handling data integrity is paramount. Spring Data, integrated with JPA (Java Persistence API), offers both optimistic and pessimistic locking mechanisms. Here’s a deep dive into these techniques using Spring Data, accentuated by concrete examples.
+
+Optimistic Locking with Spring Data:
+Concept: This approach is based on the assumption that a data conflict is rare. Instead of locking the data, it checks only when the data is actually updated. This is usually achieved using a version column in the entity.
+
+Spring Data Example:
+
+@Data
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Version
+    private int version;
+
+    private String name;
+
+    private double price;
+}
+
+public interface ProductRepository extends JpaRepository<Product, Long> {}
+
+@Service
+public class ProductService {
+    @Autowired
+    private ProductRepository productRepository;
+
+    public void updatePrice(Long id, double newPrice) {
+        Product product = productRepository.findById(id).orElseThrow();
+        product.setPrice(newPrice);
+        productRepository.save(product);
+    }
+}
+In the above example, when two threads simultaneously try to update the price of the same product, the first thread will successfully update the product. But the second thread will fail as the version won’t match, throwing an ObjectOptimisticLockingFailureException.
+
+Generated SQL for updatePrice method:
+
+SELECT id, name, price, version FROM product WHERE id = ?
+UPDATE product SET name = ?, price = ?, version = ? WHERE id = ? AND version = ?
+In essence:
+
+With Optimistic Locking (as employed in the example using the @Version annotation):
+Read operations (like findById) are non-blocking and can be done in parallel by multiple threads. They don't check or care about the version column.
+Write operations (like save) will check the version column to ensure that the data hasn't changed since it was read. If another thread has updated the data in the meantime (and hence, incremented the version number), the save operation will fail with an ObjectOptimisticLockingFailureException.
+In cases where you’d like to ensure that the read operation is the latest or block other operations while reading, you’d need to employ pessimistic locking strategies like PESSIMISTIC_READ or PESSIMISTIC_WRITE. However, as mentioned in the example, there's no such mechanism applied; hence, reads are non-blocking and can occur in parallel without any limits.
+
+Pessimistic Locking with Spring Data:
+Concept:
+Pessimistic locking is a strategy that assumes contention for a data item will happen and thus prevents it by locking the item for the duration of a transaction. This approach guarantees that once a thread has a lock, no other thread can access the data until the lock is released.
+
+@Data
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private double price;
+}
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    Optional<Product> findByIdLocked(Long id);
+}
+
+@Service
+public class ProductService {
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Transactional
+    public void updatePrice(Long id, double newPrice) {
+        Product product = productRepository
+            .findByIdLocked(id)
+            .orElseThrow(EntityNotFoundException::new);
+        product.setPrice(newPrice);
+    }
+}
+The @Lock(LockModeType.PESSIMISTIC_WRITE) annotation ensures that a write lock is obtained when findByIdLocked is invoked.
+
+Get Paul Ravvich’s stories in your inbox
+Join Medium for free to get updates from this writer.
+
+Enter your email
+Subscribe
+
+Remember me for faster sign in
+
+Here, the @Transactional annotation starts a new transaction when updatePrice is invoked. If the method completes successfully, the transaction commits, and if an exception is thrown, it rolls back.
+
+Generated SQL:
+For the updatePrice method, and assuming a relational database:
+
+Fetching with the lock:
+
+SELECT id, name, price FROM product WHERE id = ? FOR UPDATE
+Updating the record:
+
+UPDATE product SET name = ?, price = ? WHERE id = ?
+Pessimistic locking, implemented in the provided example using Spring Data JPA, offers a way to prevent concurrent data access conflicts by obtaining a lock for the entire duration of the transaction. This method is particularly beneficial in high-contention scenarios. However, it’s essential to be aware of the potential for deadlocks and the impact on system throughput. Proper transaction management, as showcased with @Transactional, ensures the atomicity of operations.
+
+Conclusion:
+In the context of transaction management and data consistency in Spring Data JPA, we have two primary locking strategies at our disposal:
+
+@Transactional + @Lock(LockModeType.PESSIMISTIC_WRITE): This combination implements a pessimistic locking approach. When a read operation is performed with this configuration, the specific row in the database is locked by the application, preventing other transactions from modifying it until the current transaction completes. While this ensures strict consistency and prevents conflicts, it might reduce throughput in certain scenarios due to wait times for locks to be released.
+@Version: This annotation employs an optimistic locking strategy. Here, when data is read, no lock is applied. Instead, upon attempting an update, Spring Data JPA checks if the data's version has been modified by another transaction since the last read. Should such a modification occur, an ObjectOptimisticLockingFailureException is thrown, indicating a conflict. This strategy operates on the assumption that conflicts will be rare, and most transactions will proceed without interference.
+Depending on specific use cases and performance requirements, developers can choose between pessimistic and optimistic locking. Each method comes with its unique advantages and challenges. The decision hinges on the anticipated frequency of concurrent data access and the desired level of strictness in managing data consistency.
+
+See you in the next part of the guide!
+

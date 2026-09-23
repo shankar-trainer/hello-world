@@ -1,0 +1,583 @@
+
+spring boot jms example
+
+Setting Up Spring Boot JMSSetting up a messaging application with Spring Boot and JMS (Java Message Service) is highly streamlined. Spring Boot auto-configures the foundational components like the ConnectionFactory and JmsTemplate based on the dependencies present in your project classpath.
+
+The following complete, minimal example uses Apache ActiveMQ Artemis (the default broker favored by modern Spring Boot configurations) to send and receive text messages.
+
+1. Project DependenciesAdd the necessary dependencies to your build file. If you use Maven, your pom.xml should include the standard starter along with the Artemis broker server if you intend to run it embedded:
+xml
+
+<dependencies>
+    <!-- Core Spring Boot Starter for JMS -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-activemq</artifactId>
+    </dependency>
+    
+    <!-- Required only if you want an embedded ActiveMQ Artemis Broker -->
+    <dependency>
+        <groupId>org.apache.activemq</groupId>
+        <artifactId>artemis-jakarta-server</artifactId>
+    </dependency>
+</dependencies>
+
+
+
+Use code with caution.
+
+2. Application ConfigurationConfigure the JMS broker behavior inside your 
+
+src/main/resources/application.properties file. You can run the broker embedded directly inside your application lifecycle, or point 
+it to an external server:properties# 
+
+Run an embedded Artemis broker inside the application
+spring.artemis.mode=embedded
+
+# Alternatively, if connecting to an external broker, use:
+# spring.artemis.broker-url=tcp://localhost:61616
+# spring.artemis.user=admin
+# spring.artemis.password=admin
+
+Use code with caution.
+
+3. Producing Messages (The Publisher)Spring Boot automatically creates and injects a JmsTemplate instance. You can immediately use this component to publish payloads directly into a targeted destination queue:
+
+java
+
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MessageProducer {
+
+    private final JmsTemplate jmsTemplate;
+
+    // JmsTemplate is automatically injected by Spring Boot
+    public MessageProducer(JmsTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
+    }
+
+    public void sendMessage(String queueName, String message) {
+        System.out.println("Sending message: " + message + " to queue: " + queueName);
+        jmsTemplate.convertAndSend(queueName, message);
+    }
+}
+
+Use code with caution.
+
+4. Consuming Messages (The Subscriber)To process incoming messages asynchronously, annotate your target method with @JmsListener. Spring Boot manages the underlying listener containers, threading, and acknowledgments behind the scenes:javaimport org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MessageConsumer {
+
+    // Listens continuously to the specified destination queue
+    @JmsListener(destination = "demo-queue")
+    public void receiveMessage(String message) {
+        System.out.println("Received message from queue: " + message);
+        // Put your business logic processing here
+    }
+}
+
+Use code with caution.
+
+5. Running the ApplicationTie the setup together with a standard CommandLineRunner to trigger a test message delivery automatically when the application context initializes:
+
+java
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class JmsDemoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(JmsDemoApplication.class, args);
+    }
+
+    @Bean
+    public CommandLineRunner runDemo(MessageProducer producer) {
+        return args -> {
+            // Sends a sample text message over to the listener queue
+            producer.sendMessage("demo-queue", "Hello World from Spring Boot JMS!");
+        };
+    }
+}
+
+Use code with caution.
+
+For a visual breakdown of how modern Spring applications structure messaging interactions, these detailed video tutorials present advanced capabilities:
+
+To help tailor this example, could you share:Which specific JMS provider / message broker you plan to connect to (e.g., Apache ActiveMQ Classic, Artemis, IBM MQ, or Solace)?Whether you are dealing with complex Java Objects (JSON/XML serialization) or strict Text/Bytes messages?
+
+Your targeted Spring Boot version?
+
+I can then provide custom serialization configurations or use the fluent API alternatives if applicable.
+
+----------------------------------------------------------------------
+
+Spring Boot requires the org.apache.activemq:artemis-jakarta-server dependency on your classpath only when you want to run an embedded ActiveMQ Artemis broker.
+
+Overview of Artemis Modes in Spring BootNative Mode (Default connection to external broker): 
+
+If your application connects to a separate, running ActiveMQ Artemis instance over the network (using protocols like Netty), you only need spring-boot-starter-artemis.
+
+Embedded Mode (Running an in-process broker): If you want Spring Boot to spin up and manage an embedded broker instance locally within your application, adding org.apache.activemq:artemis-jakarta-server provides the required server and Jakarta Messaging infrastructure.
+
+Maven Dependency ExampleTo use an embedded Artemis broker in a modern Spring Boot 3.x project (which uses the Jakarta namespace instead of javax), add the following to your pom.xml:xml<dependency>
+    <groupId>org.apache.activemq</groupId>
+    <artifactId>spring-boot-starter-artemis</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.apache.activemq</groupId>
+    <artifactId>artemis-jakarta-server</artifactId>
+</dependency>
+Use code with caution.If you're configuring an embedded broker or running into a dependency conflict, tell me:Are you trying to run an embedded or native/external broker?Which Spring Boot version are you using?
+
+
+
+
+-------------------------------------------------------------------------------------------
+
+apache mqSetting Up Spring Boot with Apache ActiveMQ Classic
+
+When implementing Apache ActiveMQ Classic in Spring Boot 3.x, you can leverage automatic configuration using the spring-boot-starter-activemq artifact.
+
+The following complete, minimal architecture demonstrates how to configure an external or embedded ActiveMQ Classic broker, exchange custom Java payloads, and expose a REST endpoint to produce messages.
+
+1. Dependencies SetupAdd the core JMS starter to your pom.xml. Since Spring Boot 3+ utilizes Jakarta EE, the framework relies on jakarta.jms underneath.
+
+xml
+<dependencies>
+    <!-- Core Spring Boot Starter for JMS with ActiveMQ Classic Support -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-activemq</artifactId>
+    </dependency>
+    
+    <!-- Optional: Add Jackson if you intend to send complex Java Objects as JSON text -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-json</artifactId>
+    </dependency>
+</dependencies>
+Use code with caution.2. Broker Connection ConfigurationConfigure your connectivity parameters in src/main/resources/application.properties. By default, an external instance of ActiveMQ Classic runs its TCP transport protocol on port 61616.properties# ActiveMQ Broker Connectivity
+spring.activemq.broker-url=tcp://localhost:61616
+spring.activemq.user=admin
+spring.activemq.password=admin
+
+# Security: Trust packages for standard Java Object deserialization
+spring.activemq.packages.trust-all=true
+Use code with caution.3. Payload and Infrastructure ConfigurationTo pass complex domain objects cleanly, register a MessageConverter bean. This automatically serializes your Java objects into a text-based JSON representation when sending via JmsTemplate.javapackage com.example.demo.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
+import org.springframework.jms.support.converter.MessageConverter;
+import org.springframework.jms.support.converter.MessageType;
+
+@Configuration
+public class JmsConfig {
+
+    @Bean
+    public MessageConverter jacksonJmsMessageConverter() {
+        MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
+        converter.setTargetType(MessageType.TEXT); // Serialize object as JSON String inside a TextMessage
+        converter.setTypeIdPropertyName("_type");   // Header field carrying the Java class identity
+        return converter;
+    }
+}
+Use code with caution.Sample Domain DTO:javapackage com.example.demo.dto;
+
+import java.io.Serializable;
+
+public record OrderMessage(String orderId, String productSku, int quantity) implements Serializable {}
+Use code with caution.4. Publishing Messages (The Producer & REST Layer)Inject the JmsTemplate right into a controller to expose an API endpoint that submits payloads directly to the ActiveMQ broker queue:javapackage com.example.demo.controller;
+
+import com.example.demo.dto.OrderMessage;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/orders")
+public class OrderController {
+
+    private final JmsTemplate jmsTemplate;
+
+    public OrderController(JmsTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
+    }
+
+    @PostMapping
+    public String placeOrder(@RequestBody OrderMessage order) {
+        // Publishes the order to the queue named "orders-queue"
+        jmsTemplate.convertAndSend("orders-queue", order);
+        return "Order submitted to ActiveMQ!";
+    }
+}
+Use code with caution.5. Consuming Messages (The Listener)Annotate your processing method with @JmsListener. The target engine intercepts the payload, extracts it using your configured Jackson converter, and supplies it directly to the method footprint asynchronously.javapackage com.example.demo.consumer;
+
+import com.example.demo.dto.OrderMessage;
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class OrderConsumer {
+
+    @JmsListener(destination = "orders-queue")
+    public void receiveOrder(OrderMessage order) {
+        System.out.println("Processing incoming order from ActiveMQ: " + order.orderId());
+        System.out.println("SKU: " + order.productSku() + " | Quantity: " + order.quantity());
+    }
+}
+Use code with caution.Verifying the SetupDownload Apache ActiveMQ Classic and start it using terminal scripts: ./bin/activemq start.Open the built-in browser dashboard console at http://localhost:8161/admin (Default credentials: admin / admin).Run your Spring Boot application and execute an HTTP POST trigger matching your payload layout:bashcurl -X POST http://localhost:8080/api/orders \
+  -H "Content-Type: application/json" \
+  -d '{"orderId":"ORD-9912","productSku":"TECH-BOOKS-01","quantity":3}'
+Use code with caution.The system terminal will seamlessly output your execution logs showing immediate delivery and queue parsing down to your listener method.Would you like to explore adding reliability structures, such as configuring a Dead Letter Queue (DLQ) for failed processing attempts, or setting up Publish/Subscribe topics for multi-consumer broadcasts?
+
+
+==========================================================================
+
+
+How Spring Boot Integrates with JMS (Java Messaging Service)
+Alexander Obregon
+
+Spring Boot provides easy integration with Java Messaging Service (JMS), allowing developers to build messaging systems with minimal configuration. JMS is a standard messaging API used to send messages between two or more clients, supporting asynchronous communication. This article covers how Spring Boot handles JMS setup, including configuring message listeners, setting up connection factories, and managing queues and topics.
+
+JMS in Spring Boot Refresher
+JMS is commonly used in distributed systems for reliable communication between application components. It supports two primary messaging models:
+
+Point-to-Point (Queues): Messages are sent to a specific queue, and one consumer processes each message.
+Publish/Subscribe (Topics): Messages are broadcast to multiple subscribers.
+Spring Boot integrates JMS into applications by offering tools that make it easier to set up and manage messaging. Using Spring’s @JmsListener annotation and built-in configuration options, developers can focus on writing business logic while the framework handles much of the repetitive setup work.
+
+Setting Up JMS in a Spring Boot Application
+Integrating JMS into a Spring Boot application involves several steps, from configuring dependencies to setting up connection factories and listeners. This section will go into the technical details of how each component works and how they interconnect within the Spring Boot framework.
+
+Adding Dependencies
+The first step is to include the appropriate JMS provider dependency in the project. For this example, we use ActiveMQ, a widely used open-source JMS provider. The spring-boot-starter-activemq starter dependency includes the necessary libraries to work with ActiveMQ and Spring Boot.
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-activemq</artifactId>
+</dependency>
+Spring Boot automatically detects the dependency and prepares default configurations to simplify the initial setup. If you are using another JMS provider, you must include the respective library and may need additional configuration.
+
+Connection Factory
+The connection factory is the primary component for establishing a connection with the JMS broker. It abstracts the low-level networking and protocol handling required to connect to a broker like ActiveMQ.
+
+How It Works
+
+The ConnectionFactory is responsible for creating Connection objects that allow the application to interact with the broker.
+Each Connection spawns Session objects, which manage communication with the broker, including sending and receiving messages.
+Spring Boot provides an out-of-the-box integration with ActiveMQConnectionFactory.
+Default Configuration
+Spring Boot uses sensible defaults to configure the connection factory. These settings can be customized in the application.properties file:
+
+spring.activemq.broker-url=tcp://localhost:61616
+spring.activemq.user=admin
+spring.activemq.password=admin
+This configuration sets the broker URL and credentials for connecting to the ActiveMQ instance running locally on port 61616.
+
+Custom Connection Factory
+For advanced use cases, such as SSL connections or custom timeouts, you can define a custom ConnectionFactory bean:
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class JmsConfig {
+
+    @Bean
+    public ActiveMQConnectionFactory connectionFactory() {
+        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory();
+        factory.setBrokerURL("tcp://localhost:61616");
+        factory.setUserName("admin");
+        factory.setPassword("admin");
+        factory.setTrustedPackages(List.of("com.example")); // Restricts deserialization to trusted packages
+        return factory;
+    }
+}
+Here, setTrustedPackages is used to prevent security risks by limiting message deserialization to specific packages.
+
+JMS Listener
+JMS listeners in Spring Boot enable asynchronous message consumption without requiring developers to handle low-level JMS APIs. The @JmsListener annotation automatically registers a method as a message listener.
+
+How It Works
+
+Message Listener Container: Behind the scenes, Spring Boot creates a DefaultJmsListenerContainerFactory, which is responsible for managing the lifecycle of JMS listeners. This factory uses the configured ConnectionFactory to establish connections to the broker.
+Concurrency Control: The listener container supports concurrency settings to control the number of simultaneous message consumers.
+Message Acknowledgment: Listeners use automatic acknowledgment by default, but manual acknowledgment modes can be configured if needed.
+Configuration
+The following example demonstrates a simple JMS listener:
+
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MessageListener {
+
+    @JmsListener(destination = "test-queue", concurrency = "5-10")
+    public void receiveMessage(String message) {
+        System.out.println("Received message: " + message);
+    }
+}
+destination: Specifies the queue or topic the listener listens to.
+concurrency: Defines the minimum and maximum number of concurrent consumers. For example, "5-10" starts with 5 consumers and scales up to 10 based on demand.
+Customizing Listener Containers
+For more granular control, you can define a custom DefaultJmsListenerContainerFactory:
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+
+@Configuration
+public class ListenerConfig {
+
+    @Bean
+    public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(ActiveMQConnectionFactory connectionFactory) {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setConcurrency("5-10");
+        factory.setSessionAcknowledgeMode(Session.CLIENT_ACKNOWLEDGE);
+        return factory;
+    }
+}
+setSessionAcknowledgeMode: Configures the acknowledgment mode. For example, CLIENT_ACKNOWLEDGE allows manual acknowledgment of messages.
+setConcurrency: Controls the number of simultaneous message consumers.
+This setup gives more control over the behavior of JMS listeners, such as concurrency, transaction management, and acknowledgment.
+
+Error Handling in Listeners
+By default, unhandled exceptions in listeners are logged but do not affect the processing of subsequent messages. However, you can customize this behavior by implementing the ErrorHandler interface:
+
+import org.springframework.jms.listener.DefaultMessageListenerContainer;
+import org.springframework.util.ErrorHandler;
+
+public class CustomErrorHandler implements ErrorHandler {
+
+    @Override
+    public void handleError(Throwable t) {
+        System.err.println("Error in listener: " + t.getMessage());
+        // Additional logic such as alerting or retrying
+    }
+}
+To apply this error handler to the listener container:
+
+@Bean
+public DefaultJmsListenerContainerFactory customFactory(ActiveMQConnectionFactory connectionFactory) {
+    DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+    factory.setConnectionFactory(connectionFactory);
+    factory.setErrorHandler(new CustomErrorHandler());
+    return factory;
+}
+This configuration allows precise control over how listener errors are handled, such as retrying or sending alerts.
+
+Maintaining Active Connections in JMS Consumers
+In some cases, JMS consumers may disconnect from the broker after extended periods of inactivity, especially when using brokers like ActiveMQ. To keep consumers connected, specific configurations can help prevent unintended disconnections:
+
+Configuring Connection Keep-Alive
+Many brokers allow the use of keep-alive mechanisms to maintain an active connection. For ActiveMQ, the wireFormat.maxInactivityDuration setting can prevent the broker from closing idle connections:
+
+spring.activemq.broker-url=tcp://localhost:61616?wireFormat.maxInactivityDuration=0
+Setting maxInactivityDuration to 0 disables the inactivity timeout, allowing connections to remain open indefinitely.
+
+Using Connection Pooling
+Connection pooling improves connection management by reusing existing connections rather than creating new ones. In Spring Boot, a CachingConnectionFactory can be used to achieve this:
+
+@Bean
+public CachingConnectionFactory cachingConnectionFactory(ActiveMQConnectionFactory connectionFactory) {
+    CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(connectionFactory);
+    cachingConnectionFactory.setSessionCacheSize(10);
+    return cachingConnectionFactory;
+}
+This setup optimizes connection usage, reducing the chance of disconnection due to inactivity.
+
+Heartbeats and Connection Time-to-Live
+Heartbeats are another effective way to maintain active connections. ActiveMQ supports connectionTTL, which defines how long a connection can remain idle before being closed by the broker:
+
+spring.activemq.broker-url=tcp://localhost:61616?connectionTTL=60000
+The broker will retain the connection as long as there is communication within the specified TTL (e.g., 60 seconds).
+
+Listener Configuration for Recovery
+Spring Boot’s DefaultJmsListenerContainerFactory supports automatic recovery from disconnections. This can be configured as follows:
+
+@Bean
+public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(CachingConnectionFactory connectionFactory) {
+    DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+    factory.setConnectionFactory(connectionFactory);
+    factory.setRecoveryInterval(5000); // Retry every 5 seconds
+    factory.setPubSubDomain(false);
+    return factory;
+}
+With this setup, the listener will reconnect automatically if the broker temporarily disconnects the consumer.
+
+Durable Subscriptions for Topics
+For topic-based messaging, durable subscriptions allow consumers to receive messages even after temporary disconnections. By setting the clientId and enabling durable subscriptions in the listener container, messages sent during downtime are retained:
+
+@Bean
+public DefaultJmsListenerContainerFactory durableListenerContainerFactory(ActiveMQConnectionFactory connectionFactory) {
+    DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+    factory.setConnectionFactory(connectionFactory);
+    factory.setPubSubDomain(true);
+    factory.setClientId("durable-client-id");
+    factory.setSubscriptionDurable(true);
+    return factory;
+}
+Managing Expiration and Idle Timeout
+Messages can also expire if they are not processed within a certain timeframe. Configuring a producer with timeToLive makes sure that messages remain valid for a defined period:
+
+public void sendMessageWithExpiry(String destination, String message, long timeToLive) {
+    jmsTemplate.setTimeToLive(timeToLive);
+    jmsTemplate.convertAndSend(destination, message);
+}
+This avoids potential loss of messages during temporary consumer unavailability.
+
+Managing Queues and Topics in Spring Boot
+Queues and topics are fundamental components of JMS, facilitating communication in point-to-point and publish/subscribe models, respectively. Here, we will go over a technical overview of how Spring Boot handles the creation and management of these destinations and the mechanics of sending and receiving messages within these paradigms.
+
+Get Alexander Obregon’s stories in your inbox
+Join Medium for free to get updates from this writer.
+
+Enter your email
+Subscribe
+
+Remember me for faster sign in
+
+Queues follow the point-to-point messaging model, where messages are delivered to a single consumer. Spring Boot abstracts much of the manual setup required for queue creation, relying on the underlying JMS broker to handle the actual implementation.
+
+Queue Creation
+With ActiveMQ, queues are created dynamically when referenced by producers or consumers. This behavior can be customized for explicit queue management. For example, if you want to explicitly declare a queue in Spring Boot, you can do so programmatically:
+
+import org.apache.activemq.command.ActiveMQQueue;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class JmsQueueConfig {
+
+    @Bean
+    public ActiveMQQueue queue() {
+        return new ActiveMQQueue("example-queue");
+    }
+}
+This configuration defines a queue named example-queue that is recognized by the ActiveMQ broker.
+
+Persistent and Non-Persistent Messages
+By default, messages sent to queues can either be persistent or non-persistent, depending on how they are configured. Persistent messages are stored on disk by the broker and survive restarts, while non-persistent messages exist only in memory.
+
+To configure message persistence, you can modify the JmsTemplate:
+
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MessageProducer {
+
+    private final JmsTemplate jmsTemplate;
+
+    public MessageProducer(JmsTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
+    }
+
+    public void sendPersistentMessage(String destination, String message) {
+        jmsTemplate.setDeliveryPersistent(true);
+        jmsTemplate.convertAndSend(destination, message);
+    }
+
+    public void sendNonPersistentMessage(String destination, String message) {
+        jmsTemplate.setDeliveryPersistent(false);
+        jmsTemplate.convertAndSend(destination, message);
+    }
+}
+Topics in JMS
+Topics are used in the publish/subscribe messaging model, where messages are broadcast to multiple subscribers. Spring Boot supports topics out of the box, leveraging the broker’s ability to manage subscriptions.
+
+Topic Creation
+Similar to queues, topics can be dynamically created or explicitly defined. Here’s an example of defining a topic:
+
+import org.apache.activemq.command.ActiveMQTopic;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class JmsTopicConfig {
+
+    @Bean
+    public ActiveMQTopic topic() {
+        return new ActiveMQTopic("example-topic");
+    }
+}
+This configuration creates a topic named example-topic. Subscribers to this topic receive all messages broadcast to it.
+
+Durable and Non-Durable Subscribers
+Subscribers to topics can be durable or non-durable:
+
+Durable Subscribers: Retain messages even when the subscriber is not active. Messages are delivered as soon as the subscriber reconnects.
+Non-Durable Subscribers: Receive messages only when actively connected.
+To configure a durable subscriber in Spring Boot, set the clientId and subscriptionName properties in the listener container:
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+
+@Configuration
+public class DurableTopicConfig {
+
+    @Bean
+    public DefaultJmsListenerContainerFactory durableListenerContainerFactory(ActiveMQConnectionFactory connectionFactory) {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setPubSubDomain(true); // Indicates topic usage
+        factory.setClientId("durable-client-id");
+        factory.setSubscriptionDurable(true);
+        return factory;
+    }
+}
+With this configuration, the subscriber registers as durable and can reconnect to receive missed messages.
+
+Message Retention and Expiry
+Messages in queues and topics can have expiration times, after which they are discarded. Spring Boot allows configuration of message expiry at the producer level:
+
+public void sendMessageWithExpiry(String destination, String message, long timeToLive) {
+    jmsTemplate.setTimeToLive(timeToLive);
+    jmsTemplate.convertAndSend(destination, message);
+}
+The timeToLive parameter specifies the duration (in milliseconds) after which the message becomes invalid.
+
+Transactions in Messaging
+JMS supports transactional messaging, where multiple send and receive operations are grouped into a single transaction. In Spring Boot, you can enable transactional messaging by setting the sessionTransacted property in the listener container or JmsTemplate:
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+
+@Configuration
+public class TransactionalConfig {
+
+    @Bean
+    public DefaultJmsListenerContainerFactory transactionalContainerFactory(ActiveMQConnectionFactory connectionFactory) {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setSessionTransacted(true); // Enables transactions
+        return factory;
+    }
+}
+When sessionTransacted is set to true, all operations within the session are committed or rolled back together. This configuration helps maintain message delivery consistency in complex workflows by grouping multiple operations into a single transactional unit.
+
+Spring Boot abstracts much of the complexity involved in managing queues and topics while providing flexibility for fine-tuned configurations.
+
+Conclusion
+Spring Boot integrates seamlessly with JMS by providing tools to manage the underlying mechanics of messaging systems. Connection factories establish and maintain communication with the broker, while JMS listeners simplify the process of consuming messages with concurrency and error-handling controls. Spring Boot also abstracts queue and topic management, offering flexible configurations for both point-to-point and publish/subscribe models. Features like transactional messaging, durable subscriptions, and message expiration provide developers with the tools to build reliable and efficient messaging workflows.
+
+By focusing on the mechanics behind these components, Spring Boot offers a framework that reduces the complexity of working with JMS directly while maintaining flexibility for advanced use cases.
+
+Spring Boot JMS Documentation
+ActiveMQ Official Website
+Java Messaging Service (JMS) Overview
+Thank you for reading! If you find this article helpful, please consider highlighting, clapping, responding or connecting with me on Twitter/X as it’s very appreciated and helps keeps content like this free!
+
+

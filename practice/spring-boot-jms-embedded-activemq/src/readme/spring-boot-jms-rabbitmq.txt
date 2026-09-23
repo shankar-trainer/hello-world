@@ -1,0 +1,45 @@
+You can install RabbitMQ on Ubuntu by following the official guidelines provided in the Installing on Debian and Ubuntu - RabbitMQ documentation.
+
+Update System Packages
+Open your terminal and make sure your local package list is up to date:bash
+
+sudo apt update
+sudo apt upgrade -y
+
+Use code with caution.Install Dependencies and ErlangRabbitMQ requires Erlang to run.
+
+ Install the essential prerequisites and the Erlang package:
+ 
+ bash
+ 
+ sudo apt install -y curl gnupg apt-transport-https
+ sudo apt install -y erlang
+ 
+
+Install RabbitMQ Server
+
+Install the rabbitmq-server package from the apt repositories:bash
+
+sudo apt install -y rabbitmq-server
+Use code with caution.
+
+Start and Enable the ServiceStart the RabbitMQ service and configure it to run automatically on system boot:bashsudo systemctl start rabbitmq-server
+
+sudo systemctl enable rabbitmq-server
+
+Use code with caution.
+Check that the service is running properly:
+
+bash sudo systemctl status rabbitmq-server
+
+Use code with caution.
+
+Enable the Management Dashboard (Optional)RabbitMQ includes a helpful web-based management plugin. 
+
+Enable it with:
+bash
+
+sudo rabbitmq-plugins enable rabbitmq_management
+
+Use code with caution.You can access the dashboard at http://localhost:15672 using the default username guest and password guest (local access only)
+

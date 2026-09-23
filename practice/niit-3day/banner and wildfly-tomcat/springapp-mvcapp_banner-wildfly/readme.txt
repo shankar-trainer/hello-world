@@ -1,3 +1,6 @@
+
+wildfly-41.0.1.Final
+
 in pom.xml 
 	<!-- comment  in case of tomcat and wildfly-->
 	<!--
