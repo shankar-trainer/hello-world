@@ -1,0 +1,445 @@
+You can install RabbitMQ on Ubuntu by following the official guidelines provided in the Installing on Debian and Ubuntu - RabbitMQ documentation.
+
+Update System Packages
+Open your terminal and make sure your local package list is up to date:bash
+
+sudo apt update
+sudo apt upgrade -y
+
+Use code with caution.Install Dependencies and ErlangRabbitMQ requires Erlang to run.
+
+ Install the essential prerequisites and the Erlang package:
+ 
+ bash
+ 
+ sudo apt install -y curl gnupg apt-transport-https
+ sudo apt install -y erlang
+ 
+
+Install RabbitMQ Server
+
+Install the rabbitmq-server package from the apt repositories:bash
+
+sudo apt install -y rabbitmq-server
+Use code with caution.
+
+Start and Enable the ServiceStart the RabbitMQ service and configure it to run automatically on system boot:bashsudo systemctl start rabbitmq-server
+
+sudo systemctl enable rabbitmq-server
+
+Use code with caution.
+Check that the service is running properly:
+
+bash sudo systemctl status rabbitmq-server
+
+Use code with caution.
+
+Enable the Management Dashboard (Optional)RabbitMQ includes a helpful web-based management plugin. 
+
+Enable it with:
+bash
+
+sudo rabbitmq-plugins enable rabbitmq_management
+
+Use code with caution.You can access the dashboard at http://localhost:15672 using the default username guest and password guest (local access only)
+
+
+
+========================================================================
+
+To integrate RabbitMQ with Spring Boot, you need to use the Spring AMQP framework via the standard starter dependency. Spring Boot provides comprehensive auto-configuration, eliminating manual setup for connection factories and message templates.
+
+1. Add the DependencyAdd the standard AMQP starter to your build configuration:
+For Maven (pom.xml):xml
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-amqp</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.17.2</version>
+</dependency>
+
+
+For Gradle (build.gradle):groovyimplementation 'org.springframework.boot:spring-boot-starter-amqp'
+
+2. Configure RabbitMQ ConnectionsDefine your server settings in src/main/resources/application.properties or application.yml. If you are running RabbitMQ locally (e.g., via Docker), Spring Boot automatically attempts to connect to localhost:5672 with the guest/guest credentials.yamlspring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
+3. Setup Infrastructure ConfigurationCreate a configuration class to declare the Queue, 
+
+Exchange, and the Binding that links them together.
+java
+
+import org.springframework.amqp.core.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class RabbitMQConfig {
+
+    public static final String QUEUE_NAME = "myAppQueue";
+    public static final String EXCHANGE_NAME = "myAppExchange";
+    public static final String ROUTING_KEY = "myAppRoutingKey";
+
+    // 1. Declare the Queue
+    @Bean
+    public Queue queue() {
+        return new Queue(QUEUE_NAME, true); // true = durable queue
+    }
+
+    // 2. Declare the Exchange (Direct Exchange example)
+    @Bean
+    public DirectExchange exchange() {
+        return new DirectExchange(EXCHANGE_NAME);
+    }
+
+    // 3. Bind the Queue to the Exchange using a Routing Key
+    @Bean
+    public Binding binding(Queue queue, DirectExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY);
+    }
+}
+
+
+4. Create a Message Producer (Publisher).
+
+Inject the auto-configured RabbitTemplate to easily transmit messages downstream.
+java
+
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MessageProducer {
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    public void sendMessage(String message) {
+        System.out.println("Sending message: " + message);
+        rabbitTemplate.convertAndSend(
+            RabbitMQConfig.EXCHANGE_NAME, 
+            RabbitMQConfig.ROUTING_KEY, 
+            message
+        );
+    }
+}
+
+5. Create a Message Consumer (Listener)
+
+Use the @RabbitListener annotation on any managed bean method to asynchronously process arriving queue contents.
+java
+
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MessageConsumer {
+
+    @RabbitListener(queues = RabbitMQConfig.QUEUE_NAME)
+    public void receiveMessage(String message) {
+        System.out.println("Received message from queue: " + message);
+        // Process message logic here
+    }
+}
+
+Sending Complex Objects as JSON (Optional)By default, RabbitTemplate serializes objects using 
+Java Serialization. 
+To pass clean JSON payloads across microservices instead, define a standard Jackson converter bean inside your configuration:java
+
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
+
+@Bean
+public MessageConverter jsonMessageConverter() {
+    return new Jackson2JsonMessageConverter();
+}
+
+================== to run  above code =======================
+
+To run the code and watch the messages flow in real time without writing any test scripts, you just need a running RabbitMQ server, a quick way to trigger a message, and your IDE terminal.
+
+Here is the exact step-by-step process to run your code and instantly see the results.
+
+Step 1: Start a Local RabbitMQ Server
+
+Before starting your Spring Boot app, you need the RabbitMQ message broker running. 
+
+    The easiest way to start it is using Docker. Open your command terminal and run:
+    bash
+    docker run -d --name my-rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+
+    Port 5672: Used by your Spring Boot application to send and receive messages.
+
+    Port 15672: The web dashboard where you can visually inspect your queues.
+
+
+Step 2: Create a Controller to Trigger the MessageTo easily tell your application to send a message, create a simple web endpoint. 
+Add this class to your project:
+
+java
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class MessageController {
+
+    @Autowired
+    private MessageProducer producer;
+
+    // This creates an endpoint at http://localhost:8080/send
+    @GetMapping("/send")
+    public String publishMessage(@RequestParam("msg") String msg) {
+        producer.sendMessage(msg);
+        return "Successfully sent: " + msg;
+    }
+}
+
+Step 3: 
+
+Run the Spring Boot Application.
+
+Open your main application class (the one containing @SpringBootApplication).
+
+Right-click and select Run (or click the play button in IntelliJ / Eclipse).
+
+Watch the console logs. You should see Spring Boot connect to RabbitMQ and declare your queue (myAppQueue) and exchange (myAppExchange) automatically.
+
+Step 4: Check the Results1. In your Console Terminal (Instant Result)Open your web browser (or an app like Postman) and trigger your new endpoint by visiting:text
+
+http://localhost:8080/send?msg=HelloSpringRabbitMQ
+
+Look immediately at your IDE’s Console Output Window. Because your consumer is actively listening, you will instantly see these logs print out right next to each other:text
+
+Sending message: HelloSpringRabbitMQ
+Received message from queue: HelloSpringRabbitMQ
+
+
+2. In the RabbitMQ Web Dashboard (Visual Result)You can visually inspect your message queues directly inside RabbitMQ:
+
+Open your browser and go to: http://localhost:15672
+
+Log in with the default credentials:
+Username: guest Password: guest
+
+Click on the Queues and Streams tab at the top.
+
+You will see myAppQueue listed there, showing graphs of messages moving through it in real time!
+Would you like to see how to handle situations where the consumer is shut down so you can watch messages sit waiting in the queue, or would you like to set up
+a way to send JSON objects instead of simple text messages?
+==========================================================
+
+
+curl http://localhost:8080/send?msg=HelloSpringRabbitMQ
+
+
+curl for running as json  with post method new modern
+
+curl --json '{"id": 101, "name": "Jane Doe", "email": "jane.doe@example.com"}' http://localhost:8080/publish
+
+
+curl -X POST http://localhost:8080/publish \
+-H "Content-Type:application/json"  \
+ -d '{  "id": 101,  "name": "Jane Doe",  "email": "jane.doe@example.com"}'
+
+
+curl -X POST http://localhost:8080/publish \
+     -H "Content-Type: application/json" \
+     -d '{ "id": 101, "name": "Jane Doe", "email": "jane.doe@example.com" }'
+
+curl -X POST http://localhost:8080/publish \
+     -H "Content-Type: text/plain" \
+     -d '{ "id": 101, "name": "Jane Doe", "email": "jane.doe@example.com" }'
+=============================
+
+spring boot using rabbitmq send json data
+
+To send JSON data using RabbitMQ in Spring Boot, you must configure a Jackson2JsonMessageConverter bean. By default, Spring's RabbitTemplate uses Java serialization, which is restrictive and language-dependent. Overriding this with a Jackson converter ensures objects are automatically serialized to JSON before they are sent.Here is a complete, step-by-step guide to setting up the producer.
+
+
+1. Project DependenciesEnsure you have the required starter dependencies in your pom.xml:xml<dependencies>
+    <!-- Spring Boot starter for AMQP (RabbitMQ) -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-amqp</artifactId>
+    </dependency>
+    <!-- Web dependency to create a REST endpoint (optional) -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+</dependencies>
+Use code with caution.2. Configuration (RabbitMQConfig.java)This configuration registers the JSON message converter. Spring Boot automatically applies this converter to the RabbitTemplate.javapackage com.example.rabbitmq.config;
+
+import org.springframework.amqp.core.*;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class RabbitMQConfig {
+
+    public static final String QUEUE = "json_queue";
+    public static final String EXCHANGE = "json_exchange";
+    public static final String ROUTING_KEY = "json_routing_key";
+
+    @Bean
+    public Queue queue() {
+        return new Queue(QUEUE, true);
+    }
+
+    @Bean
+    public DirectExchange exchange() {
+        return new DirectExchange(EXCHANGE);
+    }
+
+    @Bean
+    public Binding binding(Queue queue, DirectExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY);
+    }
+
+    // Crucial step: Tell RabbitTemplate to convert Objects to JSON
+    @Bean
+    public MessageConverter jsonMessageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+}
+Use code with caution.3. Data Model (UserDto.java)Create a standard POJO or Java Record to represent the data payload.javapackage com.example.rabbitmq.dto;
+
+import lombok.Data;
+
+@Data // or use standard getters/setters
+public class UserDto {
+    private int id;
+    private String name;
+    private String email;
+}
+Use code with caution.4. Message Producer Service (RabbitMQProducer.java)Inject RabbitTemplate and use the convertAndSend method. The infrastructure seamlessly converts your POJO to JSON format behind the scenes.javapackage com.example.rabbitmq.producer;
+
+import com.example.rabbitmq.config.RabbitMQConfig;
+import com.example.rabbitmq.dto.UserDto;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+public class RabbitMQProducer {
+
+    private final RabbitTemplate rabbitTemplate;
+
+    // Constructor injection
+    public RabbitMQProducer(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
+
+    public void sendJsonMessage(UserDto user) {
+        rabbitTemplate.convertAndSend(
+            RabbitMQConfig.EXCHANGE, 
+            RabbitMQConfig.ROUTING_KEY, 
+            user
+        );
+    }
+}
+Use code with caution.5. Trigger via REST Controller (ProducerController.java)Create a fast REST endpoint to test sending your JSON payload.javapackage com.example.rabbitmq.controller;
+
+import com.example.rabbitmq.dto.UserDto;
+import com.example.rabbitmq.producer.RabbitMQProducer;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/v1")
+public class ProducerController {
+
+    private final RabbitMQProducer producer;
+
+    public ProducerController(RabbitMQProducer producer) {
+        this.producer = producer;
+    }
+
+    @PostMapping("/publish")
+    public ResponseEntity<String> sendJson(@RequestBody UserDto user) {
+        producer.sendJsonMessage(user);
+        return ResponseEntity.ok("JSON message sent successfully to RabbitMQ!");
+    }
+}
+Use code with caution.Verification 🔍Start your Spring Boot application.Send a POST request to http://localhost:8080/api/v1/publish using your preferred API client with this payload:json{
+  "id": 101,
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com"
+}
+Use code with caution.Open the RabbitMQ Management Dashboard (http://localhost:15672), check json_queue, and view the payload. The content_type property will automatically show as application/json.
+
+=======================
+
+@RabbitListener method shouldn't typically use instanceof checks on an Object payload
+
+
+
+then how to use for both string and json data
+
+Using an Object payload coupled with instanceof checks is an anti-pattern in Spring AMQP because it bypasses Spring's built-in message conversion infrastructure, turning your listener into a manual deserializer.
+
+Instead of writing manual type checks, Spring provides idiomatic ways to handle multiple payload types cleanly.
+
+1. The Idiomatic Way: Multi-Method Listeners (@RabbitHandler)
+The cleanest way to handle different types (like a raw String and a JSON-mapped object) is to use a class-level @RabbitListener combined with method-level @RabbitHandler annotations. Spring will automatically inspect the incoming message headers or content and route it to the correct method.
+
+Java
+@Component
+@RabbitListener(queues = "my-queue")
+public class MyMultiTypeListener {
+
+    @RabbitHandler
+    public void handleString(String payload) {
+        // Automatically handles plain text / string messages
+        System.out.println("Received String: " + payload);
+    }
+
+    @RabbitHandler
+    public void handleJson(MyDto payload) {
+        // Automatically deserializes JSON into your DTO
+        System.out.println("Received JSON DTO: " + payload.getName());
+    }
+}
+2. The Dynamic Way: Using Jackson's JsonNode
+If your messages can arrive as either a raw JSON string or a fully structured JSON object and you want to parse them dynamically within a single method without hardcoding multiple DTOs, accept Jackson's JsonNode instead of an Object.
+
+Java
+@RabbitListener(queues = "my-queue")
+public void handleMessage(JsonNode payload) {
+    if (payload.isTextual()) {
+        String text = payload.asText();
+        // Handle raw string case
+    } else {
+        // Handle structured JSON node case
+        String name = payload.get("name").asText();
+    }
+}
+3. Configure a ContentTypeDelegatingMessageConverter
+If your producers send messages with different __ContentTypeId__ or standard MIME headers (e.g., text/plain vs application/json), you can configure a delegating converter in your Spring configuration. This tells RabbitMQ how to convert payloads before they even reach your listener method signature:
+
+Java
+@Bean
+public MessageConverter messageConverter() {
+    ContentTypeDelegatingMessageConverter converter = new ContentTypeDelegatingMessageConverter();
+    converter.addDelegate("text/plain", new Jackson2JsonMessageConverter()); // or StringMessageConverter
+    converter.addDelegate("application/json", new Jackson2JsonMessageConverter());
+    return converter;
+}
+Are your incoming messages sent with different MIME type headers, or are they just arriving as arbitrary text and JSON payloads from different producers?
+
+
