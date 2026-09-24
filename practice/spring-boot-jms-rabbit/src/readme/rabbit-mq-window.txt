@@ -1,0 +1,22 @@
+You can install and run RabbitMQ Server on Windows by first downloading the required Erlang Runtime and then running the official Windows installer.
+
+Step 1: Install Erlang OTPDownload and install the latest 64-bit Windows binary from the Erlang Downloads Page.Run the installer and accept the default path settings. 
+
+The installer automatically sets up the ERLANG_HOME environment variable needed by RabbitMQ.
+
+Step 2: Install RabbitMQ ServerDownload the Windows installer (rabbitmq-server-{version}.exe) from the RabbitMQ Install Windows Guide.
+
+Run the installer using an administrator account and keep the "Start RabbitMQ service" option checked at the end. This registers RabbitMQ as a background Windows service running on port 5672.
+
+Step 3: Enable the Management Dashboard PluginOpen the Windows Start menu, search for the RabbitMQ Command Prompt or open cmd as an administrator and go to your RabbitMQ sbin directory (e.g., C:\Program Files\RabbitMQ Server\rabbitmq_server-{version}\sbin).Enable the web management interface by running this command:cmdrabbitmq-plugins enable rabbitmq_management
+Use code with caution.
+
+Restart the service to launch the dashboard:cmdrabbitmq-service stop
+rabbitmq-service start
+
+Use code with caution.
+
+
+Step 4: Use RabbitMQOpen your web browser and go to http://localhost:15672/.Log in using guest as both the username and the password.Use the dashboard to create queues, exchange messages, monitor performance, and manage user permissions.
+
+To give you specific code examples or configuration steps, could you clarify what programming language or framework (e.g., Python/Pika, Node.js/amqplib, C#/.NET) you plan to use to connect to RabbitMQ?RabbitMQ
