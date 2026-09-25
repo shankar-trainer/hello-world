@@ -24,7 +24,10 @@ mydb>
 // db.collectionname.find()-- will display all records
 //db.dropDatabase() -- drop current database
 
+postman post method 
+http://localhost:8080/users
 
+{"id":"6ab653e5eb0237eb1cc91f12","name":"ganesh","email":"ganesh@gmail.com"}
 
 
 
