@@ -12,7 +12,6 @@ public class CalculatorMain {
 
     public static void main(String[] args) {
         ApplicationContext context=new AnnotationConfigApplicationContext(CalculatorMain.class);
-
-        System.out.println(context.getBean(Calculator.class).addition(11,22));
+        System.out.println(context.getBean(Calculator.class).addition(11,22)); System.out.println(context.getBean(Calculator.class).division(44,0));
     }
 }
