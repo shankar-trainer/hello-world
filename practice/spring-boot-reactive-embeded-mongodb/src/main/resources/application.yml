@@ -1,0 +1,18 @@
+
+# spring.mongodb.embedded.version=6.0.5
+# spring.data.mongodb.database=reactive_test_db
+
+
+# spring:
+#   data:
+#     mongodb:
+#       host: localhost
+#       port: 27017
+#       database: test_reactive_db
+
+spring:
+  data:
+    mongodb:
+      host: 127.0.0.1 # Change from localhost to 127.0.0.1
+      port: 27017
+      database: reactive_app_db
