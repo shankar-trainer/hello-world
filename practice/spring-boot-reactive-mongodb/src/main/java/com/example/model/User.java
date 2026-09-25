@@ -3,7 +3,7 @@ package com.example.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "users")
+@Document(collection = "users")
 public class User {
     
     @Id
@@ -13,10 +13,25 @@ public class User {
 
     public User() {}
 
-    public User(String name, String email) {
+    public User(String id, String name, String email) {
+        this.id = id;
         this.name = name;
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+//
+//    public User(String name, String email) {
+//        this.name = name;
+//        this.email = email;
+//    }
 
     // Getters and Setters
     public String getId() { return id; }
