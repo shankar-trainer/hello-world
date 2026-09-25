@@ -1,0 +1,36 @@
+crossorigin is added in api-gateway not in controller 
+
+
+
+spring:
+ application:
+   name: api-gateway
+ cloud:
+   gateway:
+     server:
+       webmvc:
+         routes:
+           - id: example_route
+#            - id: user-service
+             #              uri: lb://USER-SERVICE
+             uri: http://localhost:8081
+             predicates:
+               - Path=/example/**
+         globalcors:
+           # Ensures preflight OPTIONS requests are handled even if predicates don't match
+           add-to-simple-url-handler-mapping: true
+           cors-configurations:
+             '[/**]':
+               allowedOrigins:
+                 - "https://yourfrontenddomain.com"
+               allowedMethods:
+                 - GET
+                 - POST
+                 - PUT
+                 - DELETE
+                 - OPTIONS
+               allowedHeaders:
+                 - "*"
+               allowCredentials: true
+               maxAge: 3600
+server:

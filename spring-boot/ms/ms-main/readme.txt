@@ -16,3 +16,6 @@ post
 get
 http://localhost:7070/order
 
+
+
+cross origin added in controller @CrossOrigin
