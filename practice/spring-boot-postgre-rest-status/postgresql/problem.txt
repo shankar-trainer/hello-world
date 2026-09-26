@@ -1,0 +1,82 @@
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> searchBook(@PathVariable UUID id) {
+
+//        if (bookRepository.findById(id).isEmpty())
+//            return new ResponseEntity("id not  present", HttpStatus.NOT_FOUND);
+//        return ResponseEntity.status(HttpStatus.FOUND).body(bookRepository.findById(id).get());
+ // or
+
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new BookException("id not found"));
+        return ResponseEntity.status(HttpStatus.OK).body(book);
+    }
+@ResponseStatus(HttpStatus.NOT_FOUND)
+class BookException extends RuntimeException {
+    public BookException(String message) {
+        super(message);
+    }
+}
+============================
+@ResponseStatus(HttpStatus.NOT_FOUND)
+class BookException extends RuntimeException {
+    public BookException(String message) {
+        super(message);
+    }
+}
+
+ @GetMapping("/{id}")
+ public ResponseEntity<Book> searchBook(@PathVariable UUID id) {
+Book book = bookRepository.findById(id)
+        .orElseThrow(() -> new BookException("id not found"));
+return ResponseEntity.status(HttpStatus.OK).body(book);
+}
+not caught and error not displayed in postman
+
+but
+ @GetMapping("/{id}")
+    public ResponseEntity<Book> searchBook(@PathVariable UUID id) {
+
+        if (bookRepository.findById(id).isEmpty())
+            return new ResponseEntity("id not  present", HttpStatus.NOT_FOUND);
+        return ResponseEntity.status(HttpStatus.FOUND).body(bookRepository.findById(id).get());
+ }
+works and error message displayed in postman
+
+difference in behavior comes down to how Spring Boot handles exceptions versus direct responses.
+1. Why the First Approach Doesn't Display the Message in Postman
+
+When you annotate a custom exception with @ResponseStatus(HttpStatus.NOT_FOUND), Spring successfully catches the exception and returns a 404 Not Found status code.
+GeeksforGeeks
+
+However, starting from Spring Boot 2.3+, the default error handling policy suppresses custom exception messages in the response body for security reasons (to prevent leaking internal details). Postman receives a 404 status, but the response body is either empty or contains a generic error JSON structure that doesn't display your "id not found" string.
+Baeldung+ 1
+2. Why the Second Approach Works
+
+In your second snippet, you aren't throwing an exception; you are manually constructing and returning a ResponseEntity with a raw string ("id not present") and an explicit HttpStatus.NOT_FOUND status. Because you are passing the string directly into the response body, Postman displays it immediately.
+
+(Note: In your second snippet, you used HttpStatus.FOUND for the success path. For a standard REST API GET request, you should generally use HttpStatus.OK (200) instead of FOUND (302), which is meant for URL redirection).
+Recommended Solutions
+
+If you want to keep using exceptions (which is cleaner architecture), you have two main ways to make the error message display in Postman:
+Solution A: Use a Global Exception Handler (@RestControllerAdvice) — Best Practice
+
+Instead of relying on @ResponseStatus on the exception class, catch the exception globally and return a custom ResponseEntity containing your message:
+Java
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(BookException.class)
+    public ResponseEntity<String> handleBookException(BookException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+}
+
+    Why this is better: It gives you total control over what JSON or text string is sent back to Postman whenever a BookException is thrown.
+
+Solution B: Enable Error Messages in application.properties
+
+If you prefer to keep your @ResponseStatus approach, you can force Spring Boot to include exception messages in the default error response body by adding this line to your src/main/resources/application.properties file:
+Properties
+
+server.error.include-message=always

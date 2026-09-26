@@ -1,0 +1,32 @@
+===postgresql =======
+
+https://get.enterprisedb.com/postgresql/postgresql-16.3-2-windows-x64-binaries.zip
+
+mkdir
+
+c:\pgsql_data
+extract it in c:\
+
+C:\postgresql-16.3-2-windows-x64-binaries\pgsql\bin>
+
+initdb.exe -D c:\pgsql_data -U postgres -W -E UTF8 -A scram-sha-256
+
+C:\postgresql-16.3-2-windows-x64-binaries\pgsql\bin>
+
+pg_ctl.exe -D c:\pgsql_data start
+
+C:\postgresql-16.3-2-windows-x64-binaries\pgsql\bin>psql.exe -U postgres
+
+====================  mysql ============
+
+https://dev.mysql.com/downloads/file/?id=531676
+mysqld --initialize --console
+
+mysqld --console
+
+mysql -u root -p
+
+Enter the temporary password from point 3. The root is default MySQL user name. Then type:
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'mysql';
+
