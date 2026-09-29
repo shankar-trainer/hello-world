@@ -1,7 +1,0 @@
-<web-app>
-    <context-param>
-        <param-name>college</param-name>
-        <param-value>gl bajaj</param-value>
-    </context-param>
-
-</web-app>

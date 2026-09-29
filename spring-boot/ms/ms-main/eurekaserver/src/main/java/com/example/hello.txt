@@ -1,7 +1,0 @@
-
-Eureka Server
-
-Product(id,name, cost)
-
-Product-Order(order_id, order_date, qty,product_id)
-

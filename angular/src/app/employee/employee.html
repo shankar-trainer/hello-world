@@ -1,0 +1,21 @@
+<div class="container" class="text-info bg-primary ">
+
+    <div class="text-light bg-dark w-50 p-5 m-5">
+        <p>employee works!</p>
+        name is {{name}}
+        <p>
+            age is {{age}}
+        </p>
+    </div>
+
+    <div class="bg-info text-primary w-50">
+     <table class="table">
+       <tr *ngFor="let e of emp">
+         <td>{{e.id}}</td>
+         <td>{{e.name}}</td>
+         <td>{{e.salary}}</td>
+       </tr>
+     </table>
+
+    </div>
+</div>

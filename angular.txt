@@ -1,0 +1,29 @@
+npm i -g @angular/cli
+
+
+ng new App2
+
+inside App in command prompt
+ 
+App2>ng serve
+
+App2> ng generate component  Employee
+   ng g c  Employee
+
+=== spring boot connection==
+
+ng g c PersonCompoment
+
+ng g service personservice
+
+ng g c AddPersonComponent
+
+
+ from git  download angular 
+  
+  go inside angular 
+  add npm i 
+  
+
+
+
