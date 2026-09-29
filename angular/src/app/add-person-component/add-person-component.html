@@ -14,7 +14,7 @@
 
         <div class="form-group ">
             <label>enter salary</label>
-            <input class="form-control" required min="5000" [(ngModel)]="p.salary" #salary="ngModel" name="salary">
+            <input class="form-control" type="number" required min="5000" [(ngModel)]="p.salary" #salary="ngModel" name="salary">
             <span *ngIf="salary.touched && salary.errors?.['required']" class="text-danger">
                 salary is blank
             </span>

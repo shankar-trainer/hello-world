@@ -19,10 +19,35 @@ ng g service personservice
 ng g c AddPersonComponent
 
 
- from git  download angular 
+ from git  download angular folder  
   
   go inside angular 
   add npm i 
+  
+  
+  
+  https://github.com/shankar-trainer/hello-world/tree/abes
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 
 
