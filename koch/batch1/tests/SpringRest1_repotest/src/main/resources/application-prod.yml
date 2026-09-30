@@ -1,0 +1,15 @@
+spring:
+  application:
+    name:  SpringRest1
+  jpa:
+    show-sql:  true
+    hibernate:
+      ddl-auto:  update
+  datasource:
+    url:  jdbc:mysql://localhost:3306/db2
+    username:  root
+    password:  mysql 
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+
+server:
+  port:  9090

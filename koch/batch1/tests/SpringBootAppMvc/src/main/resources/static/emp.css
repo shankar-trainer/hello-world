@@ -1,0 +1,12 @@
+form {
+			width: 50%;
+			background:lightyellow;
+			padding:20pt;
+			margin-left:250pt;
+			margin-top:50pt;
+			border:inset blue 20pt;
+		}
+		label{
+			float:left;
+			width:110pt;
+		}
