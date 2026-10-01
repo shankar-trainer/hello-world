@@ -1,0 +1,139 @@
+In the Spring Boot ecosystem, Spring Cloud Gateway is the primary tool used to build an API Gateway. It provides two distinct flavors depending on your application's architecture:
+1. Reactive API Gateway: Built on Spring WebFlux, Project Reactor, and Netty. It is asynchronous, non-blocking, and designed to handle massive volumes of concurrent connections with low resource consumption.
+2. Blocking (MVC) API Gateway: Introduced in late 2023 for Spring MVC and Tomcat/Jetty. It uses standard servlet-based blocking threads and is ideal for traditional, synchronous microservices where you want seamless compatibility with legacy Spring Security or JDBC libraries.
+Here is a side-by-side comparison and code example for both implementations.
+Comparison Overview
+Feature	Reactive API Gateway	Blocking (MVC) API Gateway
+Underlying Engine	Spring WebFlux & Netty	Spring MVC & Tomcat/Jetty
+Threading Model	Asynchronous, Non-blocking	Synchronous, Thread-per-request
+Best Used For	High concurrency, streaming, WebSockets	Traditional Spring applications, JDBC compatibility
+Dependency	spring-cloud-starter-gateway	spring-cloud-starter-gateway-mvc
+Option 1: Reactive API Gateway Example
+This is the default configuration most cloud-native microservice architectures use.
+1. Maven Dependency (pom.xml)
+xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-gateway</artifactId>
+</dependency>
+<!-- WebFlux provides the reactive engine -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>
+Use code with caution.
+2. Declarative Route Configuration (application.yml)
+yaml
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: reactive_user_route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/users/**
+          filters:
+            - AddRequestHeader=X-Gateway-Type, Reactive
+Use code with caution.
+3. Programmatic Custom Filter (Java)
+Because the reactive stack uses ServerWebExchange and Mono/Flux, you must avoid blocking operations.
+java
+import org.springframework.cloud.gateway.filter.GatewayFilter;
+import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
+
+@Component
+public class ReactiveLoggingFilter extends AbstractGatewayFilterFactory<ReactiveLoggingFilter.Config> {
+
+    public ReactiveLoggingFilter() {
+        super(Config.class);
+    }
+
+    @Override
+    public GatewayFilter apply(Config config) {
+        return (exchange, chain) -> {
+            // Pre-filter logic: non-blocking log
+            System.out.println("Reactive Gateway received request: " + exchange.getRequest().getPath());
+            
+            // Continue the filter chain asynchronously
+            return chain.filter(exchange).then(Mono.fromRunnable(() -> {
+                // Post-filter logic
+                System.out.println("Reactive Gateway sending response status: " + exchange.getResponse().getStatusCode());
+            }));
+        };
+    }
+
+    public static class Config {}
+}
+Use code with caution.
+Option 2: Blocking (MVC) API Gateway Example
+Use this configuration if your architecture relies heavily on synchronous dependencies or standard servlet filters.
+1. Maven Dependency (pom.xml)
+xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-gateway-mvc</artifactId>
+</dependency>
+<!-- Standard Tomcat/Servlet web dependency -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+Use code with caution.
+2. Declarative Route Configuration (application.yml)
+The setup structure remains similar, but under the hood, Spring processes this through standard Servlet routing.
+yaml
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: mvc_user_route
+            uri: http://localhost:8081
+            predicates:
+              - Path=/users/**
+            filters:
+              - AddRequestHeader=X-Gateway-Type, BlockingMVC
+Use code with caution.
+3. Programmatic Custom Filter (Java)
+This approach relies on traditional, blocking HttpServletRequest patterns, allowing you to use common libraries freely.
+java
+import org.springframework.cloud.gateway.server.mvc.filter.FilterFunctions;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.function.RouterFunction;
+import org.springframework.web.servlet.function.ServerResponse;
+
+import static org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions.route;
+import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions.http;
+
+@Configuration
+public class MvcGatewayConfig {
+
+    @Bean
+    public RouterFunction<ServerResponse> orderServiceRoute() {
+        return route("mvc_order_route")
+                .GET("/orders/**", http("http://localhost:8082"))
+                // Standard imperative execution style
+                .filter((request, next) -> {
+                    System.out.println("Blocking Gateway received request: " + request.path());
+                    ServerResponse response = next.handle(request);
+                    System.out.println("Blocking Gateway completed handling.");
+                    return response;
+                })
+                .build();
+    }
+}
+Use code with caution.
+To tailor this configuration further, are you looking to integrate specific cross-cutting concerns like OAuth2/JWT security, Redis-backed rate limiting, or resilience circuit breakers into your gateway setup?
+• 
+Medium
+Reactive API Gateways wi
