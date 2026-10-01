@@ -1,0 +1,42 @@
+https://github.com/Java-Techie-jt/jwt-apigateway-security
+
+The workflow in the Java-Techie-jt/jwt-apigateway-security architecture is a centralised microservices authentication system. In this setup, the API Gateway intercepts all incoming client traffic, validates JSON Web Tokens (JWTs), and routes authenticated requests to backend services like swiggy-app and restaurant-service.
+
+The architecture is managed by a swiggy-service-registry (Eureka Server) for service discovery.
+
+1. The Core Architecture Components
+    • swiggy-gateway: The central Spring Cloud API Gateway. It handles routing and applies a custom routing filter to validate JWTs before forwarding requests.
+    • identity-service: A dedicated microservice that manages user credentials, performs user registration, and issues JWT tokens.
+    • Backend Microservices (swiggy-app / restaurant-service): Core business applications that are hidden behind the gateway and accept requests only if they are forwarded by the gateway.
+2. End-to-End Workflow Stages
+
+    Stage A: Registration & Token Generation (Onboarding)
+        Before accessing protected resources, the client must obtain an access token from the Identity Service.
+        [ Client ] ------------( 1. POST /auth/register )------------> [ identity-service ]
+        [ Client ] ------------( 2. POST /auth/token )---------------> [ identity-service ] (Returns JWT)
+        1. User Registration: The client sends a POST request to http://localhost:8080/auth/register with credentials to register an account.
+
+        2. Authentication: The client sends credentials via POST to http://localhost:9898/auth/token.
+
+        3. Token Issuance: The identity-service authenticates the credentials against its user store, signs a JWT token using its secret key, and sends it back to the client.
+
+    Stage B: Accessing Protected Microservices (The Gateway Flow)
+        Once the client has the token, it can request data from the backend services.
+                     ( Bearer Token )
+        [ Client ] ---------------------> [ swiggy-gateway ]
+                                                 |
+                               ( Validates JWT with identity-service )
+                                                 |
+                                                 v
+                                 [ Protected Backend Services ]
+                                (swiggy-app / restaurant-service)
+
+    1. Client Requests Resource: The client sends an HTTP request (e.g., GET http://localhost:8080/swiggy/37jbd832) to the API Gateway port (8080), passing the token inside the Authorization: Bearer <token> header.
+
+    2. Gateway Interception: The swiggy-gateway intercepts the request using a custom filter (typically a GatewayFilter or GlobalFilter).
+
+    3. Token Validation: The gateway extracts the token from the header. It verifies the signature and checks its expiration. In some architectures, it executes a validation check against the identity-service.
+
+    4. Routing & Context Propagation:
+        • If the token is invalid/expired, the gateway drops the request and returns a 401 Unauthorized status.
+        • If the token is valid, the gateway permits the request, extracts optional user info, and proxies the traffic internally to the correct microservice mapped via the swiggy-service-registry.
