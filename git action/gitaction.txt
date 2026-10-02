@@ -1,0 +1,18 @@
+https://github.com/shankar-trainer/mvn1
+
+
+https://github.com/shankar-trainer/myproject1
+
+
+
+it must have .mvn  directory and mvnw file 
+
+it must have .mvn and mvnw, mvn fiiles 
+
+create dir .github\workflows\file.yml
+
+add actions 
+
+
+
+
