@@ -1,0 +1,14 @@
+{
+	"properties": [
+		{
+			"name": "product.service.url",
+			"type": "java.lang.String",
+			"description": "URL of the product micro-service"
+		},
+		{
+			"name": "user.service.url",
+			"type": "java.lang.String",
+			"description": "URL of the user micro-service"
+		}
+	]
+}

@@ -1,0 +1,1 @@
+/usr/local/bin/database.sh & java -jar /usr/local/lib/app.jar
