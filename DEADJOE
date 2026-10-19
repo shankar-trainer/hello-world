@@ -1,0 +1,27 @@
+
+*** These modified files were found in JOE when it aborted on Mon Oct 19 21:28:40 2026
+*** JOE was aborted because the terminal closed
+
+*** File '/home/shankar/mycode/git-repo/hello-world/.git/MERGE_MSG'
+ branch 'glbajaj_26' of https://github.com/shankar-trainer/hello-world into glbajaj_26
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+ Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+
+*** File '(Unnamed)'
+/home/shankar/mycode/2026/spring-boot/jwt-apigateway-security-main  jt/identity-service/pom.xml
+/home/shankar/mycode/2026/spring-boot/jwt-apigateway-security-main  jt/identity-service/pom.xml
+pom.xml
+pom.xml
+pom.xml
+pom.xml
+pom.xml
+/home/shankar/mycode/git-repo/hello-world/.git/MERGE_MSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc

@@ -1,0 +1,137 @@
+version: "3.8"
+
+services:
+  order-service:
+    container_name: order-service
+    image: order-service
+    build:
+      context: ./order-service/
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=jdbc:sqlserver://order-db:1433;databaseName=order-service;encrypt=true;trustServerCertificate=true
+      - DATABASE_USER=sa
+      - DATABASE_PASSWORD=@Potter77
+      - PORT=8080
+      - PRODUCT_SERVICE_URL=http://product-service:8081
+      - USER_SERVICE_URL=http://user-service:8082
+    ports:
+      - "8080:8080"
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - order-db
+    networks:
+      - reactive-network
+      
+  product-service:
+    container_name: product-service
+    image: product-service
+    build:
+      context: ./product-service/
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=mongodb://product-db:27017/product-service
+      - PORT=8081
+    ports:
+      - "8081:8081"
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - product-db
+    networks:
+      - reactive-network
+
+  user-service:
+    container_name: user-service
+    image: user-service
+    build:
+      context: ./user-service/
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=jdbc:postgresql://user-db:5432/postgres
+      - DATABASE_URL=postgres
+      - DATABASE_PASSWORD=postgres
+      - PORT=8082
+    ports:
+      - "8082:8082"
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 700M
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - user-db
+    networks:
+      - reactive-network
+      
+  user-db:
+    container_name: user-db
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=user-service
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - TZ=America/Sao_Paulo
+    ports:
+      - "5432:5432"
+    restart: on-failure
+    networks:
+      - reactive-network
+
+  order-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: order-db
+    environment:
+      SA_PASSWORD: '@Potter77'
+      ACCEPT_EULA: Y
+      MSSQL_PID: Developer
+    ports:
+      - "1433:1433"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "(/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $SA_PASSWORD -Q 'SELECT 1' | grep -q '1 rows affected') || exit 1"
+        ]
+      interval: 5s
+      timeout: 30s
+      retries: 5
+    networks:
+      - reactive-network
+
+  product-db:
+    image: mongo:latest
+    container_name: product-db
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mongo --eval 'db.runCommand({ping: 1})' | grep -q ok"
+        ]
+      interval: 5s
+      timeout: 30s
+      retries: 5
+    networks:
+      - reactive-network
+
+networks:
+  reactive-network:
+    name: reactive-network
+    driver: bridge

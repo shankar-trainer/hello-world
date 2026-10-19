@@ -1,0 +1,9 @@
+server:
+  port: 2222
+  
+spring:
+  application:
+    name: account-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test
