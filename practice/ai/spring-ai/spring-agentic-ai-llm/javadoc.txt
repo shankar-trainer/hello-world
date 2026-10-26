@@ -1,0 +1,6 @@
+in terminal 
+mvn dependency:sources
+mvn dependency:resolve -Dclassifier=javadoc
+
+then in vscode reaload project
+add ctrl+space to show javadoc
