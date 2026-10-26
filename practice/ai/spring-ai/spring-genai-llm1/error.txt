@@ -1,0 +1,48 @@
+spring ai works with ollama api key using openai dependency but not with ollama dependency . here ollama api is present on cloud
+
+Spring AI's Ollama dependency does not natively support an API key because Ollama was built to run locally without authentication. When a cloud provider hosts an Ollama instance, they typically protect it behind a custom API key, bearer token, or proxy.
+Since the spring-ai-ollama starter expects a standard, open Ollama endpoint, it lacks a dedicated api-key configuration property. The reason your application works with the spring-ai-openai dependency is that the cloud provider's hosted Ollama API is structured to be OpenAI-compatible, allowing you to supply a base URL and an API key seamlessly.
+If you want to stick with the native Ollama dependency (spring-ai-starter-model-ollama), you have two ways to resolve this:
+
+Option 1: Inject the API Key as a Custom Header (Recommended)
+
+You can tell Spring AI's Ollama client to forward your cloud API key by passing it through custom HTTP headers inside your configuration file (application.properties or application.yml).
+properties
+spring.ai.ollama.base-url=https://your-cloud-ollama-url.com
+# Use standard HTTP headers to inject your cloud API key or Bearer token
+spring.ai.ollama.chat.options.headers.Authorization=Bearer YOUR_CLOUD_OLLAMA_API_KEY
+spring.ai.ollama.chat.options.model=your-chosen-model
+Use code with caution.
+
+Option 2: Provide a Custom OllamaApi Bean
+
+If your cloud provider expects a non-standard header or you need precise programmatic control, you can override the auto-configured bean by providing your own OllamaApi setup in a @Configuration class:
+java
+import org.springframework.ai.ollama.api.OllamaApi;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Configuration
+public class OllamaCloudConfig {
+
+    @Bean
+    public OllamaApi ollamaApi() {
+        // Create a custom WebClient that includes your cloud authorization header
+        WebClient webClient = WebClient.builder()
+                .baseUrl("https://your-cloud-ollama-url.com")
+                .defaultHeader("Authorization", "Bearer YOUR_CLOUD_OLLAMA_API_KEY")
+                .build();
+
+        return new OllamaApi(webClient);
+    }
+}
+Use code with caution.
+
+Why the OpenAI Dependency is a Perfectly Valid Alternative
+
+If your cloud host provides an OpenAI-compliant route, continuing to use spring-ai-starter-model-openai is entirely acceptable and often easier. Spring AI is abstract; your controller and service logic (ChatClient or ChatModel) will remain identical regardless of which starter is backing it.
+If you would like to debug further, let me know:
+• Which cloud provider is hosting your Ollama instance?
+• What exact error message or HTTP status code do you receive when using the Ollama dependency?
+I can help you construct the exact header format needed to clear the authentication block.

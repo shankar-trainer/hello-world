@@ -1,0 +1,279 @@
+spring ai simple example with open ai
+spring boot 4.x ai simple example with open ai
+
+Integrating Spring Boot 4.x and Spring AI 2.x allows you to leverage Java 17+ (with optimized support for Java 25), Spring Framework 7.0, and a highly optimized, fluent AI ChatClient architecture.
+A minimal, production-ready "Hello World" example utilizing Spring Boot 4.1 and the Spring AI 2.0+ OpenAI starter follows.
+
+1. Build Configuration (pom.xml)
+
+Spring Boot 4.x aligns with Jakarta EE 11 and utilizes the unified Spring AI Bill of Materials (BOM) to manage versions.
+xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://apache.org" 
+         xmlns:xsi="http://w3.org"
+         xsi:schemaLocation="http://apache.org https://apache.org">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.1.0</version> <!-- Active Spring Boot 4.x Release -->
+        <relativePath/>
+    </parent>
+
+    <groupId>com.example</groupId>
+    <artifactId>spring-boot-4-ai-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <java.version>17</java.version> <!-- Supports up to Java 25 natively -->
+    </properties>
+
+    <dependencies>
+        <!-- Standard Spring Boot Web Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring AI OpenAI Starter -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-openai-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Managed BOM for Spring AI 2.x Ecosystem -->
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>2.0.0</version> 
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
+Use code with caution.
+
+2. Configure Your OpenAI API Key
+
+Expose your OpenAI API credentials as an environment variable. The Spring AI auto-configuration wrapper will pick this up implicitly:
+bash
+export OPENAI_API_KEY="your-actual-api-key-here"
+Use code with caution.
+In your src/main/resources/application.properties file, specify your preferred configuration options:
+properties
+# Target OpenAI model optimization
+spring.ai.openai.chat.options.model=gpt-4o
+spring.ai.openai.chat.options.temperature=0.7
+Use code with caution.
+
+3. Implement the REST Controller
+
+Spring AI 2.x shifts focus toward using the fluent, thread-safe ChatClient.Builder to manage local LLM setups.
+java
+package com.example.demo;
+
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class AIController {
+
+    private final ChatClient chatClient;
+
+    // The builder is auto-configured and injected securely via the starter dependency
+    public AIController(ChatClient.Builder chatClientBuilder) {
+        this.chatClient = chatClientBuilder
+                .defaultSystem("You are a helpful software engineering assistant.")
+                .build();
+    }
+
+    @GetMapping("/api/chat")
+    public String askAi(@RequestParam(value = "message", defaultValue = "Explain Virtual Threads in Spring Boot 4") String message) {
+        return this.chatClient.prompt()
+                .user(message)
+                .call()
+                .content();
+    }
+}
+Use code with caution.
+
+4. Run and Validate
+
+Boot up the application by executing your standard entry point class (@SpringBootApplication). Once running, execute a standard browser lookup or run a quick terminal command to fetch a response:
+bash
+curl "http://localhost:8080/api/chat?message=Why+use+Spring+AI?"
+Use code with caution.
+
+Why this setup is optimal for Boot 4:
+
+• Fluent API Efficiency: The chain syntax .prompt().user().call().content() allows you to change internal implementation details effortlessly. Swapping OpenAI for Anthropic or Ollama requires only a dependency switch—your controller logic remains intact.
+• Optimized Model Execution: This design interfaces cleanly with modern Spring 7 internals, utilizing lighter footprint execution contexts and faster Jackson object serializations out of the box.
+Would you like to extend this simple example to look at:
+• Structured Output Mapping: Parsing the OpenAI response automatically into an immutable Java Record (JSON output)?
+
+===================================================================
+medium 
+
+Building a simple Query/Chat Application with Spring AI and OpenAI
+Sushant Kumar
+
+
+Objective :
+This guide outlines how to develop a custom Spring Boot application that leverages OpenAI capabilities through Spring AI to process and respond to user prompts.
+
+Understanding Spring AI
+For comprehensive information about Spring AI’s capabilities and benefits for Java developers, check out my earlier article on Spring AI integration:
+
+Spring AI: Empowering Java Developers with AI Capabilities
+Introduction
+medium.com
+
+Overview of OpenAI
+OpenAI is best known for developing powerful large language models (LLMs) and generative AI tools. Large language models can be used for a wide range of tasks, from creating text to generating videos and even transcribing audio files. As a result, OpenAI has quite a few product offerings, such as ChatGPT, Codex, DALL-E 3, and Whisper.
+
+Creating Your Spring Boot Project with Gradle
+Initial Setup
+Generate a new project:
+
+Navigate to Spring Initializr (https://start.spring.io/)
+Select Gradle as your build system
+Choose your preferred language (Java/Kotlin/Groovy)
+Select an appropriate Spring Boot version
+Include essential dependencies:
+
+Spring Web framework
+Lombok for code simplification
+spring-ai-openai-spring-boot-starter for OpenAI integration
+Download and extract the generated ZIP file to your development directory
+
+Project Organization
+
+Your project will contain these standard elements:
+
+src/main/java: Primary application code location
+src/test/java: Test suite directory
+build.gradle: Build configuration specifications
+settings.gradle: Project settings definitions
+Gradle Configuration Details
+
+dependencies {
+ implementation 'org.springframework.boot:spring-boot-starter-web'
+ implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+ compileOnly 'org.projectlombok:lombok'
+ annotationProcessor 'org.projectlombok:lombok'
+ testImplementation 'org.springframework.boot:spring-boot-starter-test'
+ testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+OpenAI configurations:
+
+We need to create an API key in our OpenAI account:
+
+· Go to OpenAI management dashboard. You need to login. https://platform.openai.com/settings/organization/projects
+
+· Click on the create button at the top corner, in the extreme right. A dialogue box will appear. Decide a project name and enter it in the text box (for example, document-reader) and press the create button.
+
+· Click on the API keys link https://platform.openai.com/settings/organization/api-keys on the left facets.
+
+· Click the Create new secret key button. In the dialogue that appears, enter a name for your secret key and choose the document-reader project (which was created from the previous step) from the drop-down list. Finally, press the Create secret key button.
+
+
+
+· Copy the API key from the dialog box that appears and copy, save it for future use.
+
+Configuring OpenAI API key in your project
+Add your OpenAI key, chat model version information to your application.yaml file
+
+spring:
+  application:
+    name: spring-ai-pgvector
+  ai:
+    openai:
+      api-key: <CREDENTIAL_REMOVED>
+      embedding:
+        enabled: true
+        model: text-embedding-ada-002
+      chat:
+        model: gpt-4
+Implementation Components
+Understanding Prompts
+Prompts are the inputs provided to the AI model that guide its responses. They can be:
+
+Simple questions
+Complex instructions
+Contextual information
+Spring AI allows prompts to be represented as straightforward strings or through structured templates. The quality of your prompt significantly impacts the relevance and accuracy of the AI’s response.
+
+Service Layer Implementation
+This layer facilitates communication with the AI provider through Spring AI’s ChatModel class, specifically using OpenAiChatModel for OpenAPI integration. Key responsibilities include:
+
+Receiving and processing user queries
+Converting queries into appropriate prompt formats
+Submitting prompts to the AI model
+Processing AI responses into usable formats (text, objects, or structured data)
+Potentially supporting multiple AI providers through a façade pattern
+@Service
+@Slf4j
+public class AIQueryServiceImpl implements AIQueryService {
+
+    private final ChatModel chatModel;
+
+    public AIQueryServiceImpl(ChatModel chatModel) {
+        this.chatModel = chatModel;
+    }
+
+    public String query(String query) {
+        PromptTemplate userPromptTemplate = new PromptTemplate("{query}");
+        Message userMessage = userPromptTemplate.createMessage(Map.of("query", query));
+
+        Prompt prompt = new Prompt(userMessage);
+        Generation generation = chatModel.call(prompt).getResult();
+        return generation.getOutput().getText();
+    }
+}
+Controller Layer Functions
+This layer:
+
+Accepts incoming user requests
+Forwards queries to the service layer
+Returns formatted AI responses to users
+@RestController
+@RequestMapping("/ai")
+@Slf4j
+public class AIQueryController {
+
+    private final AIQueryService aiQueryService;
+
+    public AIQueryController(AIQueryService aiQueryService) {
+        this.aiQueryService = aiQueryService;
+    }
+
+    @GetMapping("/query")
+    public String chat(@RequestParam(name = "query") String query) {
+        return aiQueryService.query(query);
+    }
+}
+Application Verification
+Start your Spring Boot application
+Test the endpoint with:
+Browser: http://localhost:8080/ai/query?query=What is artificial intelligence?
+REST client (like Postman)
+Command line: curl -G --data-urlencode "query=What is artificial intelligence?" http://localhost:8080/ai/query
+Advanced Features
+Implement streaming responses for real-time interaction
+Add memory to maintain conversation context
+Create prompt templates for consistent AI interactions
+Implement error handling for API rate limits and other restrictions
+By following this guide, you’ll have a functional Spring Boot application that can produce AI-generated responses to user queries using OpenAI model through the Spring AI framework.
+
+
+
+Sushant Kumar
+
+https://medium.com/@sushantkr16/building-a-simple-query-chat-application-with-spring-ai-and-openai-e53309415d99
