@@ -1,0 +1,1 @@
+set OLLAMA_API_KEY=83e8e6bea3294c04b0cdffaa5f3d49cc.nfiNsZs4z_0t_MQlO9bTceBY
