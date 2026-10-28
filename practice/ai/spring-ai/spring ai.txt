@@ -1,0 +1,58 @@
+Spring AI is an official application framework within the Spring ecosystem designed to streamline the development of Generative AI applications for Java developers. Inspired by Python tools like LangChain and LlamaIndex, it allows enterprise Java applications to seamlessly connect business data and APIs with pre-trained AI models without requiring extensive AI reskilling.
+
+Core Architecture Philosophy
+
+Much like how Spring Data JPA allows you to swap underlying databases (MySQL, PostgreSQL, Oracle) via standard repository interfaces without rewriting business code, Spring AI acts as an abstraction layer for artificial intelligence. You write code using uniform Spring interfaces, and you can swap the backend AI model or vector database simply by updating your configuration or dependencies.
+
+Key Features
+
+• Multi-Provider Portable APIs: Offers standard interfaces for chat, text-to-image, embedding, audio transcription, text-to-speech, and moderation models. Supported providers include OpenAI, Google Gemini, Anthropic, Microsoft, Amazon, and local setups like Ollama.
+• Structured Output Mapping: Automatically maps the string responses from Large Language Models (LLMs) directly into Java POJOs (Plain Old Java Objects) for type-safe processing inside applications.
+• Vector Database Support: Includes a portable API for managing text chunking, embeddings, and semantic searches with built-in SQL-like metadata filtering. It integrates natively with databases like PostgreSQL/PGVector, Chroma, Pinecone, Redis, and MongoDB Atlas.
+• Tool / Function Calling: Allows developers to register standard Java methods as Spring Beans. The LLM can dynamically request to execute these functions when it needs real-time data or needs to trigger a system action.
+• Advanced AI Engineering Utilities: Features built-in support for Retrieval-Augmented Generation (RAG) pipelines, the Model Context Protocol (MCP), Chat Client APIs, conversation memory tracking, and AI Model Evaluation utilities to check for hallucinations.
+
+How to Get Started
+
+You can bootstrap a new project via the Spring Initializr, selecting the target AI models and database store components you need.
+
+1. Add the Dependency
+
+For example, to work with OpenAI, pull in the starter dependency via Maven or Gradle:
+xml
+<dependency>
+    <groupId>org.springframework.ai</groupId>
+    <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
+</dependency>
+Use code with caution.
+
+2. Configure Your API Key
+
+Supply your API key inside your application.properties or application.yml file:
+properties
+spring.ai.openai.api-key=${OPENAI_API_KEY}
+Use code with caution.
+
+3. Inject the Chat Client
+
+Use Spring’s dependency injection to pull in the ChatClient inside your REST Controller:
+java
+@RestController
+public class AiController {
+
+    private final ChatClient chatClient;
+
+    public AiController(ChatClient.Builder builder) {
+        this.chatClient = builder.build();
+    }
+
+    @GetMapping("/ai/generate")
+    public String generate(@RequestParam String message) {
+        return chatClient.prompt()
+                         .user(message)
+                         .call()
+                         .content();
+    }
+}
+Use code with caution.
+Are you planning to build a specific type of feature using Spring AI, such as an enterprise RAG system using your data, structured output parsing, or custom function calling/tool execution? Let me know, and I can provi
