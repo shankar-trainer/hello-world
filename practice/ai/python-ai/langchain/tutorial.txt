@@ -1,8 +1,10 @@
-LangChain is an open-source orchestration framework designed to simplify the creation of applications powered by Large Language Models (LLMs). It acts as a standardized modular wrapper that seamlessly connects foundational LLMs (like OpenAI, Claude, or Gemini) with external data sources, memory, APIs, and complex code workflows. Originally created by Harrison Chase in late 2022, it has evolved into a cornerstone of AI agent engineering and Retrieval-Augmented Generation (RAG).
+LangChain is an open-source orchestration framework designed to simplify the creation of applications powered by Large Language Models (LLMs). 
+It acts as a standardized modular wrapper that seamlessly connects foundational LLMs (like OpenAI, Claude, or Gemini) with external data sources, memory, APIs, and complex code workflows. Originally created by Harrison Chase in late 2022, it has evolved into a cornerstone of AI agent engineering and Retrieval-Augmented Generation (RAG).
 
 Core Architecture & Key Components
 
 LangChain structures application development through interoperable modules, abstracting away the boilerplate code required to interact directly with raw LLM APIs:
+
 • Model Interoperability: A generic interface that allows developers to toggle between closed-source and open-source models with minimal code revisions.
 • Chains & LCEL: Combines multiple components into sequential workflows. Using LangChain Expression Language (LCEL), developers can declaratively link prompts, models, and parsers using a clean | pipe syntax.
 • Prompt Management: Formats and formalizes prompt instructions, handling system directives and few-shot examples programmatically.

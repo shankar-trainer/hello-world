@@ -1,0 +1,56 @@
+LangChain is a popular Python framework designed to simplify building applications with Large Language Models (LLMs). It provides standard interfaces for chaining together different components—such as prompt templates, models, memory, and external tools—to build advanced applications like chatbots, question-answering systems, and autonomous agents.
+
+Opens in a new window
+The Complete LangChain Ecosystem - GeeksforGeeks
+LangChain Core Framework Overview. Source: GeeksforGeeks
+1. Installation
+To get started, install LangChain along with a popular model provider like OpenAI:
+
+Bash
+pip install langchain langchain-openai
+Make sure you have your API key set up in your environment variables:
+
+Bash
+export OPENAI_API_KEY="your-openai-api-key"
+2. Basic Usage: Prompts, Models, and Output Parsers
+The core building block of LangChain is the LCEL (LangChain Expression Language), which uses the pipe operator (|) to chain components together seamlessly.
+
+Python
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
+from langchain_core.output_parsers import StrOutputParser
+
+# 1. Initialize the model
+model = ChatOpenAI(model="gpt-4o-mini")
+
+# 2. Create a prompt template
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant that explains complex technical concepts in simple terms."),
+    ("user", "Explain {topic} in one short paragraph.")
+])
+
+# 3. Create an output parser
+output_parser = StrOutputParser()
+
+# 4. Combine them into a chain using LCEL
+chain = prompt | model | output_parser
+
+# 5. Invoke the chain
+result = chain.invoke({"topic": "LangChain LCEL"})
+print(result)
+3. Key Concepts to Explore
+Prompt Templates: Dynamic templates to format user inputs before sending them to the LLM.
+
+Chains: Combining multiple components (like prompt -> model -> parser) into a unified pipeline.
+
+Retrieval-Augmented Generation (RAG): Connecting LLMs to external data sources (PDFs, databases, web search) using vector stores and retrievers.
+
+Memory: Adding state management so chat applications can remember previous turns in a conversation.
+
+Agents: Giving LLMs the ability to decide which tools to use dynamically based on user input.
+
+To go deeper into LangChain:
+
+Build a complete RAG pipeline with LangChain and vector stores
+
+Create a conversational chatbot with memory
