@@ -1,3 +1,10 @@
+bash
+# Pull the model to your local machine
+ollama pull llama3.2
+
+# Verify it runs locally
+ollama run llama3.2 "Why is the sky blue?"
+
 # Spring Boot 4 + Ollama Cloud chat example
 
 This Spring AI app exposes `POST /api/chat` and returns a reply from Ollama Cloud
@@ -11,7 +18,7 @@ do not put the key in source control.
 PowerShell:
 
 ```powershell
-no need to set this value 
+no need to set  this value 
 $env:OLLAMA_API_KEY = "your-ollama-cloud-api-key"
 mvn spring-boot:run
 ```

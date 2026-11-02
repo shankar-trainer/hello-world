@@ -1,0 +1,39 @@
+bash
+# Pull the model to your local machine
+ollama pull llama3.2
+
+# Verify it runs locally
+ollama run llama3.2 "Why is the sky blue?"
+
+
+
+To stop the Ollama app and its background service on Windows, use one of the following methods:
+
+Method 1: Quit from the System Tray (Easiest)
+
+• Right-click the Ollama llama icon in the Windows system tray (bottom-right corner of your taskbar, next to the clock).
+• Select Quit.
+
+Method 2: Stop via PowerShell or Command Prompt
+
+• PowerShell (Graceful Stop): Open PowerShell and run:powershell
+Get-Process | Where-Object {$_.ProcessName -like '*ollama*'} | Stop-Process
+Use code with caution.
+• Command Prompt (Force Kill): Open Command Prompt as administrator and run:cmd
+taskkill /F /IM ollama.exe
+Use code with caution.
+
+Method 3: Stop a Running AI Model (Without Closing the App)
+
+If you only want to unload a specific active model while keeping the Ollama app open, run:
+bash
+ollama stop <model-name>
+Use code with caution.
+(Replace <model-name> with the name of your model, such as llama3.2).
+
+How to Stop Ollama from Auto-Starting on Boot
+
+If Ollama launches automatically every time you start Windows:
+1. Press Win + R, type shell:startup, and press Enter.
+2. Locate the Ollama.lnk shortcut in that folder and delete it.
+If Ollama keeps restarting or you need help checking if background services are still running, let me know what error or behavior you are seeing.
