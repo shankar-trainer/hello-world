@@ -1,0 +1,140 @@
+These are results for spring boot 4.x ai example using local ollama
+Search instead for spring boot 4.x ai exampe using locally ollama
+AI Overview
+Integrating a local Ollama LLM instance with Spring Boot 4.x is managed seamlessly using the Spring AI framework. The core advantage of Spring AI is its abstract ChatClient API; your Java code remains identical whether you are running a small local model or a massive cloud architecture. 
+
+YouTube
+·SivaLabs
+ +2
+Step 1: Fire Up Your Local Ollama Engine
+Before touch your Java project, ensure Ollama is installed and the target model is running on your machine: 
+
+Medium
+·Spring Boot Simplified
+ +1
+Download and install it from the Official Ollama Website.
+Pull and start a lightweight model (e.g., Llama 3.2 or Qwen 2.5) via your terminal:
+bash
+ollama pull llama3.2
+ollama run llama3.2
+Use code with caution.
+Verify it is running by hitting its default local health endpoint: 
+
+YouTube
+·Tekgainers
+ +2
+bash
+curl http://localhost:11434
+Use code with caution.
+Step 2: Configure Dependencies (pom.xml)
+For a Spring Boot 4.x application, ensure your build files import the unified Spring AI BOM along with the reactive WebFlux and Ollama starters: 
+
+Medium
+·Vijayaraghavn Ramalingam
+ +1
+xml
+<dependencies>
+    <!-- Web and Reactive Support -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-webflux</artifactId>
+    </dependency>
+
+    <!-- Spring AI Ollama Starter -->
+    <dependency>
+        <groupId>org.springframework.ai</groupId>
+        <artifactId>spring-ai-starter-model-ollama</artifactId>
+    </dependency>
+</dependencies>
+
+<dependencyManagement>
+    <dependencies>
+        <!-- Use the appropriate Spring AI Release Train for Boot 4.x -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-bom</artifactId>
+            <version>2.0.0-M1</version> <!-- Adjust based on current GA line -->
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+Use code with caution.
+Step 3: Configure Environment Properties
+Add the target model and Ollama connection configurations to your src/main/resources/application.properties (or YAML format): 
+
+YouTube
+·Tekgainers
+properties
+# App Port Configuration
+server.port=8080
+
+# Spring AI Ollama Properties
+spring.ai.ollama.base-url=http://localhost:11434
+spring.ai.ollama.chat.options.model=llama3.2
+spring.ai.ollama.chat.options.temperature=0.7
+Use code with caution.
+Step 4: Write the Chat Controller
+Leverage Spring AI’s modern, fluent ChatClient API. Instead of injecting the model directly, Spring recommends initializing a thread-safe client using the auto-configured ChatClient.Builder. 
+
+codecentric AG
+ +2
+java
+package com.example.ai.controller;
+
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
+
+@RestController
+@RequestMapping("/api/v1/ai")
+public class LocalAiController {
+
+    private final ChatClient chatClient;
+
+    // Constructor injection guarantees the client setup using Spring Boot's autowired builder
+    public LocalAiController(ChatClient.Builder chatClientBuilder) {
+        this.chatClient = chatClientBuilder.build();
+    }
+
+    /**
+     * Standard block response endpoint
+     */
+    @GetMapping("/ask")
+    public String askLocalModel(@RequestParam(value = "message") String message) {
+        return this.chatClient.prompt()
+                .user(message)
+                .call()
+                .content();
+    }
+
+    /**
+     * Highly recommended for local models: Streamed tokens as they generate
+     */
+    @GetMapping(value = "/stream", produces = "text/event-stream")
+    public Flux<String> streamLocalModel(@RequestParam(value = "message") String message) {
+        return this.chatClient.prompt()
+                .user(message)
+                .stream()
+                .content();
+    }
+}
+Use code with caution.
+Step 5: Test the Integration
+Run your application. You can execute quick validation commands from your terminal:
+For the Block Response:
+bash
+curl "http://localhost:8080/api/v1/ai/ask?message=Explain+quantum+computing+in+one+sentence"
+Use code with caution.
+For Token Streaming (Server-Sent Events):
+bash
+curl "http://localhost:8080/api/v1/ai/stream?message=Write+a+poem+about+Java+garbage+collection"
+Use code with caution.
+Would you like to extend this setup by adding Structured JSON Outputs or exploring local Retrieval-Augmented Generation (RAG) utilizing local vector stores? Let me know what your specific use case requires!
