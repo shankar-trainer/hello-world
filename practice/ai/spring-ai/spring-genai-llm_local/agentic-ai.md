@@ -1,3 +1,10 @@
+ollama pull qwen3:4b    ~2.8 GB ⚡ Fast & Smooth. Renders tokens at full speed. Leaves plenty of room for operating sys>
+ollama pull qwen3.5:2b  ~1.5 GB 🚀 Ultra-lightweight. Uses minimal resources. Zero chance of system slowdowns.  Good fa>
+ollama pull qwen3:8b    ~4.8 GB ❌
+
+
+ollama pull qwen3.5:2b   installed in acer system
+
 ollama pull qwen3
 <!-- ollama run qwen3:8b -->
 ollama run qwen3
