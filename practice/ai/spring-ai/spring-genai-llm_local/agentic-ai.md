@@ -4,6 +4,8 @@ ollama run qwen3
 
 • Qwen 3 (8B): Requires roughly 5 GB to 8 GB of RAM/VRAM.
 
+For an 8 GB RAM system, ollama pull qwen3:4b is the absolute best version to use.
+
 
 An agentic AI model is a large language model (LLM) fine-tuned or capable of reasoning, breaking down tasks, and calling external tools (like writing code, searching, or managing files) rather than just answering questions.
 When running locally with Ollama, the "agentic" behavior usually comes from combining a strong open-weight base model with an agent framework (like CrewAI, LangGraph, or OpenHands).
@@ -99,3 +101,26 @@ If the primary focus involves a specific workflow rather than a generic assistan
 • For software engineering: Skip the base models and use ollama pull qwen2.5-coder:7b or :14b. These variants are specifically tuned for writing code, multi-file agent execution, and processing technical logs.
 • For multimodal needs (Images/Videos): Use the ollama pull qwen3.5 family, which features early-fusion vision processing to naturally handle charts, documents, and visual inputs alongside text.
 Which exact hardware specifications (RAM, Graphics Card/Processor) are available? Sharing the system details will pinpoint the exact ideal model size.
+
+
+=====================
+
+
+The Best Version Matrix for 8 GB RAM
+
+
+The Version to Pull	Memory Footprint	Performance on 8 GB RAM	Recommendations
+ollama pull qwen3:4b	~2.8 GB	⚡ Fast & Smooth. Renders tokens at full speed. Leaves plenty of room for operating system tasks, preventing terminal lockups.	Highly Recommended. The optimal balance between intelligence and hardware constraints.
+ollama pull qwen3.5:2b	~1.5 GB	🚀 Ultra-lightweight. Uses minimal resources. Zero chance of system slowdowns.	Good fallback if you need multiple heavy apps (like Chrome or IDEs) open alongside the AI.
+ollama pull qwen3:8b	~4.8 GB	❌ Extremely slow. Runs out of active RAM once context (chat history) scales. Forces your PC into a state called "swapping", making responses painfully slow.	Avoid. Too heavy for a system with only 8 GB of total memory.
+
+
+How to Switch
+
+If you previously pulled the heavy 8B version, download the lighter 4B framework and remove the old file to clean up your drive:
+1. Pull the appropriate 4B version:bash
+ollama pull qwen3:4b
+Use code with caution.
+2. Clean up disk space by removing the 8B version:bash
+ollama rm qwen3
+ollama rm qwen3:8b
