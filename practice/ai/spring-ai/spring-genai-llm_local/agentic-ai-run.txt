@@ -1,0 +1,118 @@
+After running ollama pull qwen3.5:2b, you can use the model right away in your terminal, via an API, or through a graphical user interface.
+
+1. Run an Interactive Chat in the Terminal
+
+To start chatting immediately in your command line or terminal:
+bash
+ollama run qwen3.5:2b
+Use code with caution.
+Type your prompt or question, press Enter, and the model will generate a response locally. To exit the session, type /bye or Ctrl + D.
+
+2. Use via API (Local Server)
+
+Ollama runs a local server automatically on http://localhost:11434. You can send requests using curl:
+bash
+curl http://localhost:11434/api/chat -d '{
+  "model": "qwen3.5:2b",
+  "messages": [
+    { "role": "user", "content": "Hello!" }
+  ]
+-}'
+Use code with caution.
+
+3. Use in Python
+
+You can call the model in Python using the official ollama library:
+python
+import ollama
+
+response = ollama.chat(
+    model='qwen3.5:2b',
+    messages=[{'role': 'user', 'content': 'Hello!'}],
+)
+print(response['message']['content'])
+Use code with caution.
+
+4. Use with a Web UI
+
+If you prefer a chat-style interface like ChatGPT, you can connect your local Ollama instance to a graphical tool like Open Web UI or desktop apps that support Ollama.
+If you want, tell me:
+• Are you planning to use it via terminal, code, or a web UI?
+• What kind of task are you trying to run with it?
+I can help you write the code or set it up.
+• 
+Ollama
+qwen3.5:2b - Ollama
+from ollama import chat response = chat( model='qwen3.5:2b', messages=[{'role': 'user', 'content': 'Hello!'}], ) print(response.me...
+• 
+YouTube·Geeky Script
+How to Install & Run Qwen 3 LLM on Ollama [ 2025 Update ] ...
+11 Aug 2025 — In this complete step-by-step tutorial, learn how to install and run the Qwen 3 large language model (LLM) on Ollama — enabling fa...
+8:45
+• 
+YouTube·Fahd Mirza
+Qwen3 with Ollama - Run it Anywhere Easily
+28 Apr 2025 — Qwen3 with Ollama - Run it Anywhere Easily and we play around with it let's talk bit more about this newly released Gwen 3 model w...
+14m
+Show all
+    
+AI can make mistakes, so double-check responses        
+       
+with spring
+
+To use your local qwen3.5:2b model with Spring, you should use Spring AI, which provides a native Ollama integration.
+
+1. Add the Dependency
+
+Add the Spring AI Ollama starter to your project.
+For Maven (pom.xml):
+xml
+<dependency>
+    <groupId>org.springframework.ai</groupId>
+    <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+</dependency>
+Use code with caution.
+For Gradle (build.gradle):
+groovy
+implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
+Use code with caution.
+
+2. Configure the Model
+
+Add the following properties to your src/main/resources/application.properties (or application.yml) to point Spring AI to your local Ollama instance and the specific Qwen model:
+properties
+spring.ai.ollama.base-url=http://localhost:11434
+spring.ai.ollama.chat.options.model=qwen3.5:2b
+Use code with caution.
+
+3. Inject and Use ChatModel
+
+Spring Boot will automatically configure a ChatModel bean based on your properties. You can inject it directly into a REST Controller:
+java
+import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ChatController {
+
+    private final ChatModel chatModel;
+
+    // Spring injects the configured Ollama ChatModel automatically
+    public ChatController(ChatModel chatModel) {
+        this.chatModel = chatModel;
+    }
+
+    @GetMapping("/ai/chat")
+    public String generate(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
+        return chatModel.call(message);
+    }
+}
+Use code with caution.
+
+4. Test It
+
+1. Ensure your Ollama server is running (ollama run qwen3.5:2b).
+2. Start your Spring Boot application.
+3. Open your browser or API client and hit: http://localhost:8080/ai/chat?message=Hello
