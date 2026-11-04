@@ -1,10 +1,4 @@
-ollama pull qwen3:4b    ~2.8 GB ⚡ Fast & Smooth. Renders tokens at full speed. Leaves plenty of room for operating sys>
-ollama pull qwen3.5:2b  ~1.5 GB 🚀 Ultra-lightweight. Uses minimal resources. Zero chance of system slowdowns.  Good fa>
-ollama pull qwen3:8b    ~4.8 GB ❌
-
-
-ollama pull qwen3.5:2b   installed in acer system
-
+ollama pull qwen3.5:2b -- in system pulled 
 ollama pull qwen3
 <!-- ollama run qwen3:8b -->
 ollama run qwen3
@@ -118,7 +112,9 @@ The Best Version Matrix for 8 GB RAM
 
 The Version to Pull	Memory Footprint	Performance on 8 GB RAM	Recommendations
 ollama pull qwen3:4b	~2.8 GB	⚡ Fast & Smooth. Renders tokens at full speed. Leaves plenty of room for operating system tasks, preventing terminal lockups.	Highly Recommended. The optimal balance between intelligence and hardware constraints.
+
 ollama pull qwen3.5:2b	~1.5 GB	🚀 Ultra-lightweight. Uses minimal resources. Zero chance of system slowdowns.	Good fallback if you need multiple heavy apps (like Chrome or IDEs) open alongside the AI.
+
 ollama pull qwen3:8b	~4.8 GB	❌ Extremely slow. Runs out of active RAM once context (chat history) scales. Forces your PC into a state called "swapping", making responses painfully slow.	Avoid. Too heavy for a system with only 8 GB of total memory.
 
 

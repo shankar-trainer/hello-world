@@ -1,3 +1,5 @@
+pip install -U ollama  -- for python -U for upgrade 
+
 After running ollama pull qwen3.5:2b, you can use the model right away in your terminal, via an API, or through a graphical user interface.
 
 1. Run an Interactive Chat in the Terminal
@@ -12,6 +14,7 @@ Type your prompt or question, press Enter, and the model will generate a respons
 
 Ollama runs a local server automatically on http://localhost:11434. You can send requests using curl:
 bash
+
 curl http://localhost:11434/api/chat -d '{
   "model": "qwen3.5:2b",
   "messages": [
@@ -19,6 +22,46 @@ curl http://localhost:11434/api/chat -d '{
   ]
 -}'
 Use code with caution.
+
+in window curl http://localhost:11434/api/chat -d "{\"model\": \"qwen3.5:2b\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello!\"}]}"
+
+in postman 
+
+Method 1: The Quickest Way (Import Curl)
+
+1. Copy your raw curl command (with corrected JSON quotes):bash
+curl http://localhost:11434/api/chat -d '{"model": "qwen3.5:2b", "messages": [{"role": "user", "content": "Hello!"}]}'
+Use code with caution.
+2. Open Postman.
+3. Click the Import button in the top-left corner (or use Ctrl + O / Cmd + O).
+4. Paste the curl command into the box and hit Enter. Postman will automatically configure the method, URL, and body for you.
+
+Method 2: Manual Setup
+
+If you prefer to configure the request manually, set up these three sections:
+
+1. Method & URL
+
+• Change the dropdown method from GET to POST.
+• Enter the URL: http://localhost:11434/api/chat
+
+2. Body
+
+• Click on the Body tab below the URL bar.
+• Select the raw radio button.
+• On the far right of the radio buttons, change the text dropdown to JSON.
+• Paste the following JSON payload into the text area:
+json
+{
+  "model": "qwen3.5:2b",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "stream": false
+}
 
 3. Use in Python
 

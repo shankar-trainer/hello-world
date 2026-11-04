@@ -5,8 +5,6 @@ ollama pull llama3.2
 # Verify it runs locally
 ollama run llama3.2 "Why is the sky blue?"
 
-
-
 To stop the Ollama app and its background service on Windows, use one of the following methods:
 
 Method 1: Quit from the System Tray (Easiest)

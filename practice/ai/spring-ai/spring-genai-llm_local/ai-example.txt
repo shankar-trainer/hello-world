@@ -118,9 +118,6 @@ Why this setup is optimal for Boot 4:
 Would you like to extend this simple example to look at:
 • Structured Output Mapping: Parsing the OpenAI response automatically into an immutable Java Record (JSON output)?
 
-
-
-
 ===================================================================
 medium 
 
