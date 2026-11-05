@@ -1,0 +1,87 @@
+Traceback (most recent call last):
+  File "C:\test1\2026\cursor\ai\python-ai\hello\python agent ai\agent1.py", line 102, in <module>
+    main()
+    ~~~~^^
+  File "C:\test1\2026\cursor\ai\python-ai\hello\python agent ai\agent1.py", line 98, in main
+    print(run_agent(client, prompt, model))
+          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\test1\2026\cursor\ai\python-ai\hello\python agent ai\agent1.py", line 75, in run_agent
+    result = tool(**call.function.arguments)
+  File "C:\test1\2026\cursor\ai\python-ai\hello\python agent ai\agent1.py", line 37, in calculate
+    result = _evaluate(ast.parse(expression, mode="eval"))
+                       ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shank\AppData\Local\Programs\Python\Python313\Lib\ast.py", line 54, in parse
+    return compile(source, filename, mode, flags,
+                   _feature_version=feature_version, optimize=optimize)
+  File "<unknown>", line 1
+    Java is a programming language
+              ^^^^^^^^^^^
+SyntaxError: invalid syntax
+
+The error happens because the LLM tried to pass conversational text ("Java is a programming language") directly into your calculate tool instead of an actual math expression.
+
+When you asked a general question, the model incorrectly decided to invoke the calculate tool with a sentence, which caused ast.parse() to throw a SyntaxError.
+How to Fix It
+
+You need to make two improvements to your code:
+
+    Robust Tool Error Handling: Wrap the tool execution in a try...except block so that if a tool fails (or if the model sends invalid arguments), the error message is passed back to the LLM as the tool result. This allows the model to see its mistake, recover, and answer you directly in plain text.
+
+    Safer Argument Unpacking: Ensure call.function.arguments is safely handled (sometimes it can be a dictionary or a string depending on the library version).
+
+Here is the updated run_agent loop with error handling built-in:
+
+solution 
+
+
+def run_agent(client: Client, prompt: str, model: str) -> str:
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a helpful agent. Use the available tools when useful, "
+                "then give the user a clear answer."
+            ),
+        },
+        {"role": "user", "content": prompt},
+    ]
+
+    for _ in range(6):
+        response = client.chat(model=model, messages=messages, tools=list(TOOLS.values()))
+        messages.append(response.message)
+
+        if not response.message.tool_calls:
+            return response.message.content
+
+        for call in response.message.tool_calls:
+            tool = TOOLS.get(call.function.name)
+            if tool is None:
+                raise RuntimeError(f"The model requested an unknown tool: {call.function.name}")
+            
+            # Safely handle arguments whether they are already a dict or need unpacking
+            args = call.function.arguments
+            if isinstance(args, str):
+                import json
+                args = json.loads(args)
+
+            try:
+                result = tool(**args)
+            except Exception as e:
+                # Catch tool errors (like syntax errors in calculator) and pass back to LLM
+                result = f"Error executing tool: {e}"
+
+            messages.append(
+                {
+                    "role": "tool",
+                    "tool_name": call.function.name,
+                    "content": str(result),
+                }
+            )
+
+    raise RuntimeError("The agent reached the maximum number of tool-call rounds.")
+
+
+
+Why this happens with smaller local models:
+
+Models like llama3.2 are fast and lightweight, but they can occasionally hallucinate tool usage (trying to use calculate on non-math text). With this try...except safety net, the agent will catch the error internally, realize the tool failed, and print a proper response instead of crashing your Python script.
