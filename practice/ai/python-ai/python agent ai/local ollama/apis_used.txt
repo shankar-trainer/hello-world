@@ -1,0 +1,18 @@
+This Python program uses the Ollama Python SDK along with several modules from the Python Standard Library.
+
+Here is the breakdown of the APIs and libraries used in the program:
+1. External Libraries
+
+    ollama: Specifically uses ollama.Client and its .chat() method to interact with a locally running Ollama instance, handle message histories, and execute model tool-calling loops.
+
+2. Python Standard Library Modules
+
+    ast (Abstract Syntax Tree): Used in the _evaluate() function to parse and safely evaluate arithmetic expressions without relying on dangerous built-ins like eval().
+
+    os: Used via os.environ.get() to check environment variables (specifically looking for OLLAMA_MODEL to determine which local model to run).
+
+    operator: Used to map AST operator nodes (+, -, *, /) to standard Python arithmetic functions.
+
+    datetime: Used via datetime.now(timezone.utc).isoformat() to fetch the current UTC time for the get_current_utc_time tool.
+
+    json: Loaded dynamically inside run_agent to deserialize JSON-encoded tool arguments if they are passed as strings.
