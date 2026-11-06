@@ -1,0 +1,413 @@
+• Common CLI Commands:
+    • ollama list – View your installed models
+    • ollama run <model_name> – Run and chat with a model (e.g., ollama run phi3)
+    • ollama rm <model_name> – Delete a model
+
+
+ollama list 
+
+bash
+# Pull the model to your local machine
+ollama pull llama3.2
+
+# Verify it runs locally
+ollama run llama3.2 "Why is the sky blue?"
+
+=====================
+
+Spring AI with Ollama in local system
+
+Here is a complete, minimal example of integrating Spring AI with Ollama to interact with a Large Language Model (LLM) running locally on your machine.
+
+1. Prerequisites & Setup Ollama
+
+First, make sure Ollama is installed and running on your local machine. Open your terminal and pull a lightweight model like Llama 3.2 (or mistral / gemma):
+bash
+ollama pull llama3.2
+Use code with caution.
+
+2. Dependencies (pom.xml)
+
+Create a Spring Boot project (version 3.x or 4.x) and include the Spring AI Ollama starter.
+xml
+<dependencies>
+    <!-- Web dependency to expose a REST endpoint -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- Spring AI Ollama Starter -->
+    <dependency>
+        <groupId>org.springframework.ai</groupId>
+        <artifactId>spring-ai-starter-model-ollama</artifactId>
+    </dependency>
+</dependencies>
+
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-bom</artifactId>
+            <version>2.0.0</version> <!-- Use the latest available Spring AI version -->
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+Use code with caution.
+
+3. Configuration (application.properties)
+
+Point Spring AI to your local Ollama instance and specify the model you pulled:
+properties
+# Default local Ollama endpoint
+spring.ai.ollama.base-url=http://localhost:11434
+
+# Specify the model you downloaded via the CLI
+spring.ai.ollama.chat.options.model=llama3.2
+
+# Optional: Set the temperature for creativity (0.0 = deterministic, 1.0 = creative)
+spring.ai.ollama.chat.options.temperature=0.7
+Use code with caution.
+
+4. Create the REST Controller
+
+Spring AI automatically configures a ChatClient.Builder bean. Use it to construct a ChatClient, which provides a fluent API to communicate with your model.
+java
+package com.example.ai.controller;
+
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class AIController {
+
+    private final ChatClient chatClient;
+
+    // Inject the auto-configured builder to construct the client
+    public AIController(ChatClient.Builder chatClientBuilder) {
+        this.chatClient = chatClientBuilder.build();
+    }
+
+    @GetMapping("/api/ai/chat")
+    public String generateResponse(@RequestParam(value = "prompt", defaultValue = "Tell me a joke about Java") String prompt) {
+        return this.chatClient.prompt()
+                .user(prompt)
+                .call()
+                .content(); // Extracts the plain text string response
+    }
+}
+Use code with caution.
+
+5. Testing Your Application
+
+Run your Spring Boot application and test it via a browser, Postman, or curl:
+bash
+curl "http://localhost:8080/api/ai/chat?prompt=Why+is+the+sky+blue?"
+Use code with caution.
+If you want to build on top of this, let me know if you would like to see:
+• How to use Structured Outputs (returning a Java object instead of raw text)
+• How to implement Function Calling so the local model can fetch live data from a database/API
+• How to enable Streaming Responses (Flux<String>) for real-time ChatGPT-like typing animations
+Let me know which direction you want to take your local AI application!
+
+
+===============================
+
+
+
+----------------------------api used here ---------
+
+
+In the example provided, two core Spring AI APIs are utilized to manage the interaction with the local LLM:
+
+1. The Fluid API: ChatClient
+
+The primary API used to construct and execute the prompt is ChatClient.
+Spring AI provides this high-level, fluent interface (similar to Spring's RestClient or WebClient) to simplify how you interact with AI models. In the code, the API calls are chained together like this:
+• chatClient.prompt(): Starts the creation of a new AI request context.
+• .user(prompt): Specifies the input text or message originating from the end-user.
+• .call(): Sends the compiled request synchronously to the Ollama endpoint.
+• .content(): A convenience method that extracts the raw text string directly from the response payload, bypassing the underlying metadata wrapper.
+
+2. The Low-Level SPI: OllamaChatModel (Driven via ChatClient.Builder)
+
+Behind the scenes, the OllamaChatModel class handles the low-level communication.
+While you do not see OllamaChatModel explicitly written in the controller code, it is the actual infrastructure implementation injected into the ChatClient.Builder behind the scenes by the starter dependency (spring-ai-starter-model-ollama).
+• The builder pattern decouples your business logic from the specific AI provider.
+• If you swapped Ollama out for OpenAI or Anthropic in your dependencies, the ChatClient code snippet in the controller would remain exactly the same.
+Would you like to see how to use the lower-level OllamaChatModel API directly (which allows passing specialized OllamaOptions configurations), or are you interested in exploring how ChatClient handles more advanced tasks like managing System Prompts or Chat History?
+
+
+------------------------------------------------
+
+
+Since you said yes, let’s look at both: how to use the lower-level OllamaChatModel API directly for maximum configuration control, and how to use the ChatClient API for advanced features like Chat History and System Prompts.
+
+1. Using the Lower-Level OllamaChatModel Directly
+
+If you need direct access to the underlying engine to pass specialized, model-specific configurations (OllamaOptions), you can inject OllamaChatModel instead of the builder.
+Here is how to write the controller using the direct model API:
+java
+package com.example.ai.controller;
+
+import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class DirectOllamaController {
+
+    // Inject the model directly instead of ChatClient.Builder
+    private final OllamaChatModel chatModel;
+
+    public DirectOllamaController(OllamaChatModel chatModel) {
+        this.chatModel = chatModel;
+    }
+
+    @GetMapping("/api/ai/direct")
+    public String directChat(@RequestParam String prompt) {
+        
+        // Define highly specific runtime options for Ollama
+        OllamaOptions options = OllamaOptions.create()
+                .withModel("llama3.2")
+                .withTemperature(0.2f)        // Lower temperature = more deterministic
+                .withNumPredict(100);         // Limit the response to ~100 tokens max
+
+        // Wrap the message and custom options into a formal Prompt object
+        Prompt formalPrompt = new Prompt(new UserMessage(prompt), options);
+        
+        // Call the model directly to get a complete ChatResponse wrapper object
+        return chatModel.call(formalPrompt)
+                .getResult()
+                .getOutput()
+                .getText();
+    }
+}
+Use code with caution.
+
+2. Advanced ChatClient Capabilities
+
+If you prefer sticking with the fluent ChatClient API, it provides incredibly convenient ways to handle advanced conversational features like setting context rules (System Prompts) and tracking memory (Chat History).
+
+Adding a System Prompt & Conversation Memory
+
+This example turns the client into a specific persona (a strict pirate coder) and uses an in-memory advisor to remember what the user said in previous API requests:
+java
+package com.example.ai.controller;
+
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.PromptChatMemoryAdvisor;
+import org.springframework.ai.chat.memory.InMemoryChatMemory;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class AdvancedChatController {
+
+    private final ChatClient chatClient;
+
+    public AdvancedChatController(ChatClient.Builder chatClientBuilder) {
+        this.chatClient = chatClientBuilder
+                // 1. Establish a permanent System Prompt (Persona/Rules) for this client
+                .defaultSystem("You are a grumpy 17th-century pirate who is also a Senior Java Developer. Reply in character.")
+                // 2. Attach an advisor to automatically manage conversational state/memory
+                .defaultAdvisors(new PromptChatMemoryAdvisor(new InMemoryChatMemory()))
+                .build();
+    }
+
+    @GetMapping("/api/ai/advanced")
+    public String advancedChat(
+            @RequestParam String prompt, 
+            @RequestParam(defaultValue = "default-user-session") String sessionId) {
+        
+        return this.chatClient.prompt()
+                .user(prompt)
+                // The conversation advisor checks this ID to retrieve past messages
+                .advisors(a -> a.param(PromptChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY, sessionId))
+                .call()
+                .content();
+    }
+}
+Use code with caution.
+
+Direct Comparison: Which should you choose?
+
+
+Feature ChatClient (High-Level API) OllamaChatModel (Low-Level API)
+Code Style  Fluent, chainable builder pattern.  Traditional object creation and execution.
+Portability High. Swapping to OpenAI requires zero code changes.    Medium. Uses Ollama-specific option classes.
+State & Memory  Built-in via "Advisors" (e.g., PromptChatMemoryAdvisor).    Manual. You must fetch, array, and pass historical messages yourself.
+Use Case    Best for standard apps, RAG, and chatbots.  Best when tuning hyper-specific hardware/Ollama settings.
+
+Now that you see both approaches, let me know if you would like to:
+• See how to replace the in-memory chat memory with a persistent database (like Redis or JDBC) so conversations aren't lost when the server restarts.
+• Explore Structured Outputs using ChatClient to force your local Ollama model to respond cleanly in JSON matching a Java DTO class.
+
+
+
+----------------------------------
+
+Let’s dive into both Persistent Chat Memory (saving conversations to a database) and Structured Outputs (forcing the local model to return a clean Java object/JSON instead of plain text).
+
+1. Persistent Chat Memory (using JDBC)
+
+Using InMemoryChatMemory resets every time your server restarts. In a production app, you want to persist memory. Spring AI provides a JDBC Chat Memory implementation out of the box.
+
+Prerequisites
+
+Add the Spring Data JDBC starter and your database driver (e.g., H2, PostgreSQL, or MySQL) to your pom.xml. For a quick test, H2 works great:
+xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jdbc</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>runtime</scope>
+</dependency>
+Use code with caution.
+
+Database Schema
+
+Spring AI requires a specific table to store the messages. If you use H2 or have spring.sql.init.mode=always enabled, create a schema.sql file in your src/main/resources/ directory:
+sql
+CREATE TABLE IF NOT EXISTS chat_history (
+    id VARCHAR(36) PRIMARY KEY,
+    conversation_id VARCHAR(36) NOT NULL,
+    message_text TEXT NOT NULL,
+    message_type VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+Use code with caution.
+
+Controller Configuration
+
+Now, instantiate the JdbcChatMemory by passing your application's JdbcTemplate, and wire it into the ChatClient:
+java
+package com.example.ai.controller;
+
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.PromptChatMemoryAdvisor;
+import org.springframework.ai.chat.memory.JdbcChatMemory;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class PersistentChatController {
+
+    private final ChatClient chatClient;
+
+    public PersistentChatController(ChatClient.Builder chatClientBuilder, JdbcTemplate jdbcTemplate) {
+        // Instantiate the database-backed chat memory
+        JdbcChatMemory jdbcChatMemory = new JdbcChatMemory(jdbcTemplate);
+
+        this.chatClient = chatClientBuilder
+                .defaultAdvisors(new PromptChatMemoryAdvisor(jdbcMemory))
+                .build();
+    }
+
+    @GetMapping("/api/ai/history")
+    public String chatWithHistory(
+            @RequestParam String prompt, 
+            @RequestParam String sessionId) {
+        
+        return this.chatClient.prompt()
+                .user(prompt)
+                .advisors(a -> a.param(PromptChatMemoryAdvisor.CHAT_MEMORY_CONVERSATION_ID_KEY, sessionId))
+                .call()
+                .content();
+    }
+}
+Use code with caution.
+
+2. Structured Outputs (Mapping Responses to Java Objects)
+
+Getting a local LLM to reliably return formatted JSON can be tricky, but Spring AI’s ChatClient abstracts the complex prompt engineering required to force compliance.
+
+Step A: Define your Java Record / DTO
+
+Create the object structure you want the AI to return:
+java
+package com.example.ai.dto;
+
+import java.util.List;
+
+public record MovieReview(
+    String movieTitle,
+    int releaseYear,
+    String briefSummary,
+    int ratingOutOfTen,
+    List<String> pros,
+    List<String> cons
+) {}
+Use code with caution.
+
+Step B: Use ChatClient with .entity()
+
+Instead of calling .content() to fetch a raw String, use .entity(MovieReview.class). Spring AI will automatically instruct Ollama to output JSON and then deserialize it directly into your Java record.
+java
+package com.example.ai.controller;
+
+import com.example.ai.dto.MovieReview;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class StructuredOutputController {
+
+    private final ChatClient chatClient;
+
+    public StructuredOutputController(ChatClient.Builder chatClientBuilder) {
+        this.chatClient = chatClientBuilder.build();
+    }
+
+    @GetMapping("/api/ai/review")
+    public MovieReview getStructuredReview(@RequestParam String movieName) {
+        
+        return this.chatClient.prompt()
+                .user("Provide a detailed analysis of the movie: " + movieName)
+                .call()
+                .entity(MovieReview.class); // Magic happens here: string to Java Object transformation
+    }
+}
+Use code with caution.
+
+Testing the Structured Output
+
+If you run a curl request against this endpoint:
+bash
+curl "http://localhost:8080/api/ai/review?movieName=Inception"
+Use code with caution.
+The application will return a fully-structured, valid JSON response content-typed as application/json:
+json
+{
+  "movieTitle": "Inception",
+  "releaseYear": 2010,
+  "briefSummary": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+  "ratingOutOfTen": 9,
+  "pros": ["Brilliant concept", "Stunning visual effects", "Incredible Hans Zimmer score"],
+  "cons": ["Can be overly complex on first viewing", "Character development is secondary to the plot"]
+}
+Use code with caution.
+(Note: When doing Structured Outputs locally, using a capable model like llama3 or mistral yields highly reliable results, whereas exceptionally small models might occasionally fail formatting rules).
+If you want to take this a step further, let me know if you would like to explore:
+• Function Calling (Tools): Giving your local Ollama model the ability to execute actual Java methods in your application to look up live data (e.g., checking weather, querying your actual database tables).
+• RAG (Retrieval-Augmented Generation): Ingesting text files or PDFs into a local vector database (like PGVector or Chroma) so Ollama can answer questions based on your private documents.
+AI responses may include mistakes. For financial advice, consult a professional. Learn more
+
+
+
