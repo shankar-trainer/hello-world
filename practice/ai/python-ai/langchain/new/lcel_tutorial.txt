@@ -201,3 +201,370 @@ Build a document question-answering application.
 My recommendation: Learn Runnable, RunnablePassthrough, and RunnableParallel next. These three concepts will help you understand how real-world LangChain applications are built.
 
 
+----------------
+`PromptTemplate`
+
+
+ in LangChain is used to create reusable prompts with dynamic input variables.
+
+In your code:
+
+python
+
+```python
+from langchain_core.prompts import PromptTemplate
+
+prompt = PromptTemplate(
+    input_variables=["topic"],
+    template="Tell me about {topic}"
+)
+```
+
+### 1. How does it work?
+
+- `input_variables`: Defines the variables that the prompt expects.
+- `template`: Defines the actual prompt with placeholders.
+- `{topic}`: A placeholder that gets replaced when you invoke the prompt.
+
+### 2. Example
+
+python
+
+```python
+from langchain_core.prompts import PromptTemplate
+
+prompt = PromptTemplate(
+    input_variables=["topic"],
+    template="Explain {topic} in simple words with examples."
+)
+
+result = prompt.invoke({"topic": "Java"})
+
+print(result.text)
+```
+
+Output:
+
+text
+
+```text
+Explain Java in simple words with examples.
+```
+
+### 3. Multiple input variables
+
+You can also use multiple variables:
+
+python
+
+```python
+prompt = PromptTemplate(
+    input_variables=["topic", "level"],
+    template="Explain {topic} for a {level} level student."
+)
+
+result = prompt.invoke({
+    "topic": "Python",
+    "level": "beginner"
+})
+
+print(result.text)
+```
+
+Output:
+
+text
+
+```text
+Explain Python for a beginner level student.
+```
+
+### 4. Using PromptTemplate with Ollama
+
+This is how it connects to your previous code:
+
+python
+
+```python
+from langchain_ollama import OllamaLLM
+from langchain_core.prompts import PromptTemplate
+
+llm = OllamaLLM(
+    model="qwen3.5:2b",
+    temperature=0.1
+)
+
+prompt = PromptTemplate(
+    input_variables=["topic"],
+    template="Explain {topic} in simple words with examples."
+)
+
+chain = prompt | llm
+
+response = chain.invoke({"topic": "Java"})
+
+print(response)
+```
+
+### 5. Understanding the flow
+
+User Input
+
+`{"topic": "Java"}`
+
+PromptTemplate
+
+`Explain Java in simple words`
+
+Ollama LLM
+
+`qwen3.5:2b`
+
+Generated Response
+
+In simple terms: `PromptTemplate` prepares the question, and the LLM generates the answer.
+
+I can also explain the difference between `PromptTemplate`, `ChatPromptTemplate`, and `SystemMessage` with examples.
+
+
+-----------------
+
+RAG (Retrieval-Augmented Generation)
+RAG stands for Retrieval-Augmented Generation. It is an AI architecture that combines information retrieval with Large Language Models (LLMs) to generate more accurate, relevant, and context-aware responses using external knowledge.
+
+In simple terms:
+
+RAG = Retrieve relevant information + Give it to an LLM + Generate an answer.
+
+1. How RAG works
+How Retrieval-Augmented Generation (RAG) Solves the Limitations of LLMs | by Vinod Rane | Medium
+ 
+RAG typically works in two phases:
+
+A. Indexing phase (preparation)
+Collect documents (PDFs, Word files, websites, databases, etc.).
+
+Split documents into smaller chunks.
+
+Convert chunks into vector embeddings.
+
+Store embeddings in a vector database.
+
+B. Retrieval and generation phase (query time)
+User query: User asks a question.
+
+Embedding: Convert the query into a vector.
+
+Retrieval: Search the vector database for relevant chunks.
+
+Augmentation: Add retrieved information to the LLM prompt.
+
+Generation: LLM generates an answer based on the retrieved context.
+
+2. RAG architecture
+User Query
+
+What is our company's leave policy?
+
+Embedding Model
+
+Converts query into a vector
+
+Vector Database
+
+Searches relevant document chunks
+
+Retrieved Context
+
+Relevant company policy information
+
+LLM (GPT, Llama, etc.)
+
+Uses query + retrieved context
+
+Final Answer
+
+Context-aware response with supporting information
+
+3. Important components of RAG
+Component
+
+Purpose
+
+Document Loader
+
+Loads PDFs, files, websites, etc.
+
+Text Splitter
+
+Splits documents into chunks
+
+Embedding Model
+
+Converts text into vectors
+
+Vector Database
+
+Stores and searches embeddings
+
+Retriever
+
+Fetches relevant chunks
+
+Prompt Template
+
+Combines query and context
+
+LLM
+
+Generates the final answer
+
+4. Popular tools and technologies
+Category
+
+Examples
+
+LLMs
+
+GPT, Llama, Gemini, Claude
+
+Embedding Models
+
+OpenAI Embeddings, BGE, E5
+
+Vector Databases
+
+FAISS, Pinecone, Chroma, Milvus
+
+Frameworks
+
+LangChain, LlamaIndex
+
+Document Processing
+
+PyPDF, Unstructured
+
+Backend
+
+Python, FastAPI
+
+5. RAG vs. Fine-tuning
+Feature
+
+RAG
+
+Fine-tuning
+
+Purpose
+
+Adds external knowledge
+
+Changes model behavior
+
+Knowledge updates
+
+Relatively easy
+
+Usually requires retraining
+
+External database
+
+Typically required
+
+Not necessarily
+
+Training required
+
+No model fine-tuning required
+
+Yes
+
+Best for
+
+Company documents, knowledge bases
+
+Style, format, specialized behavior
+
+6. Example: Real-world RAG application
+Imagine you build an AI chatbot for a company.
+
+The company has:
+
+500 PDF documents.
+
+HR policies.
+
+Employee handbooks.
+
+Technical documentation.
+
+Financial reports.
+
+An employee asks:
+
+"What is the company's maternity leave policy?"
+
+Without RAG:
+
+The LLM may not know the company's internal policy.
+
+It might generate an incorrect or generic answer.
+
+With RAG:
+
+The system searches company documents.
+
+Retrieves the relevant maternity leave policy.
+
+Passes the retrieved text to the LLM.
+
+Generates an answer based on the actual policy.
+
+7. Advanced RAG concepts
+Once you understand basic RAG, explore:
+
+Chunking strategies
+
+Semantic search
+
+Hybrid search (keyword + vector search)
+
+Reranking
+
+Metadata filtering
+
+Query rewriting
+
+Multi-query retrieval
+
+Parent-child retrieval
+
+Agentic RAG
+
+Graph RAG
+
+Multimodal RAG
+
+RAG evaluation (precision, recall, faithfulness)
+
+8. Recommended RAG learning roadmap
+Python and LLM fundamentals
+
+Understand Python, APIs, tokens, prompts, and LLMs.
+
+Embeddings and vector databases
+
+Learn semantic similarity, vector search, and indexing.
+
+Build basic RAG
+
+Build a PDF question-answering application.
+
+Advanced retrieval
+
+Implement hybrid search, reranking, and metadata filtering.
+
+Production RAG
+
+Learn evaluation, monitoring, security, scalability, and deployment.
+

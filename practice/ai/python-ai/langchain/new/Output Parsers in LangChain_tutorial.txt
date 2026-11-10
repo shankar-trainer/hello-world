@@ -363,3 +363,168 @@ Runs only the LLM
 Connects three components sequentially
 
 Runs all components independently
+
+
+
+----------------
+`OllamaLLM` is a LangChain class that allows you to connect and interact with Large Language Models (LLMs) hosted by Ollama.
+
+You can use it to send prompts to models such as Llama, Qwen, Mistral, Gemma, and others.
+
+## 1. Import OllamaLLM
+
+python
+
+```python
+from langchain_ollama import OllamaLLM
+```
+
+## 2. Create an OllamaLLM object
+
+python
+
+```python
+llm = OllamaLLM(
+    model="qwen3.5:2b",
+    temperature=0.1
+)
+```
+
+Here is what each parameter means:
+
+| Parameter | Meaning |
+| --- | --- |
+| `model` | Name of the LLM you want to use |
+| `temperature` | Controls randomness in generated responses |
+| `base_url` | Ollama server URL |
+| `client_kwargs` | Additional HTTP client configuration |
+
+## 3. Invoke the model
+
+You can directly send a question to the model without using `PromptTemplate`.
+
+python
+
+```python
+from langchain_ollama import OllamaLLM
+
+llm = OllamaLLM(
+    model="qwen3.5:2b",
+    temperature=0.1
+)
+
+response = llm.invoke("What is Java?")
+
+print(response)
+```
+
+## 4. Important parameters
+
+Temperature
+
+Controls how predictable or creative the response is.
+
+| Temperature | Behavior |
+| --- | --- |
+| `0.0` | More deterministic |
+| `0.1` | Low randomness |
+| `0.5` | Balanced |
+| `1.0` | More creative |
+
+Model
+
+Specifies which language model Ollama should execute.
+
+Examples:
+
+- `qwen3.5:2b`
+- `llama3.2`
+- `mistral`
+- `gemma3`
+
+The model must be available through your Ollama installation or cloud account.
+
+Base URL
+
+Specifies where the Ollama server is running.
+
+Local Ollama:
+
+python
+
+```python
+base_url="http://localhost:11434"
+```
+
+Ollama Cloud:
+
+python
+
+```python
+base_url="https://ollama.com"
+```
+
+## 5. OllamaLLM with PromptTemplate
+
+This is where both concepts work together.
+
+python
+
+```python
+from langchain_ollama import OllamaLLM
+from langchain_core.prompts import PromptTemplate
+
+# Initialize LLM
+llm = OllamaLLM(
+    model="qwen3.5:2b",
+    temperature=0.1
+)
+
+# Create prompt
+prompt = PromptTemplate(
+    input_variables=["topic"],
+    template="Explain {topic} with examples."
+)
+
+# Create chain
+chain = prompt | llm
+
+# Execute
+response = chain.invoke({
+    "topic": "Python"
+})
+
+print(response)
+```
+
+## 6. Understand the architecture
+
+PromptTemplate
+
+Creates the prompt
+
+OllamaLLM
+
+Sends prompt to the language model
+
+Ollama Model
+
+Processes the prompt
+
+Response
+
+## 7. Difference between PromptTemplate and OllamaLLM
+
+| PromptTemplate | OllamaLLM |
+| --- | --- |
+| Creates prompts | Runs the language model |
+| Manages input variables | Generates responses |
+| Does not generate AI answers | Generates AI answers |
+| Formats text | Processes text |
+
+Remember:
+
+- `PromptTemplate` = What should I ask?
+- `OllamaLLM` = Who will answer?
+
+Next concept to learn: `ChatPromptTemplate`, which is useful for building conversational AI applications and chatbots.
