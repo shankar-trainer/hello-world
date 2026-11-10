@@ -25,8 +25,6 @@ print(result["messages"][-1].content_blocks)
 #ollama run qwen3.5:2b  no need api key
 # pip install ollama
 
-
-
 #ollama pull llama3.2
 #ollama run llama3.2 no need api key
 # pip install ollama

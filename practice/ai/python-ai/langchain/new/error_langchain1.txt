@@ -1,0 +1,139 @@
+error 
+from langchain.chains import LLMChain ModuleNotFoundError: No module named 'langchain.chains'
+
+The error occurs because in newer versions of LangChain, LLMChain is no longer available in the same way as older versions. LangChain has moved toward using LCEL (LangChain Expression Language) with the pipe (|) operator.
+
+You can fix this in two ways.
+
+1. Recommended: Use LCEL (new approach)
+You don't need LLMChain at all.
+
+
+python
+from langchain_ollama import OllamaLLM
+from langchain_core.prompts import PromptTemplate
+
+llm = OllamaLLM(
+    model="qwen3.5:2b",
+    temperature=0.1
+)
+
+prompt = PromptTemplate(
+    input_variables=["topic"],
+    template="Tell me about {topic}"
+)
+
+# Create chain
+chain = prompt | llm
+
+# Invoke chain
+response = chain.invoke({"topic": "Begusarai"})
+
+print(response)
+2. If you specifically want to use LLMChain
+First, check your installed LangChain version:
+
+
+bash
+pip show langchain
+If you are using a newer version, prefer LCEL instead of trying to use the old LLMChain API.
+
+3. Important correction in your code
+You wrote:
+
+
+python
+prompt = PromptTemplate(
+    input=["topic"],
+    template="tell about the given {topic}"
+)
+The correct parameter is:
+
+
+python
+input_variables=["topic"]
+Not input.
+
+4. Understand how LCEL works
+PromptTemplate
+
+Formats your input
+
+OllamaLLM
+
+Generates the response
+
+chain.invoke()
+
+Returns the generated output
+
+My recommendation: Learn LCEL (prompt | llm) because it is the modern approach and is easier to combine with retrievers, output parsers, and other LangChain components.
+
+
+langchain version 1.4.9
+
+That explains the error. You're using LangChain 1.4.9, where the old LLMChain API is not part of the main langchain package.
+
+In LangChain 1.x, the recommended approach is LCEL.
+
+Correct code for LangChain 1.4.9
+
+python
+from langchain_ollama import OllamaLLM
+from langchain_core.prompts import PromptTemplate
+
+llm = OllamaLLM(
+    model="qwen3.5:2b",
+    temperature=0.1
+)
+
+prompt = PromptTemplate(
+    input_variables=["topic"],
+    template="Tell me about {topic}"
+)
+
+chain = prompt | llm
+
+response = chain.invoke({"topic": "Begusarai"})
+
+print(response)
+Why your import fails
+
+python
+from langchain.chains import LLMChain
+LLMChain belongs to the older LangChain chain API.
+
+LangChain 1.x has a simplified architecture.
+
+LCEL (prompt | llm) replaces this common chaining pattern.
+
+Check your installed packages
+Run:
+
+
+bash
+pip show langchain
+pip show langchain-core
+pip show langchain-ollama
+Old vs new LangChain syntax
+Old approach
+
+New approach
+
+LLMChain
+
+LCEL
+
+chain.run()
+chain.invoke()
+prompt + llm
+prompt \| llm
+
+My suggestion: Since you're starting with LangChain, learn these concepts in order:
+
+PromptTemplate
+OllamaLLM
+LCEL (| operator)
+Output Parsers
+Chains and Runnables
+RAG (Retrieval Augmented Generation)

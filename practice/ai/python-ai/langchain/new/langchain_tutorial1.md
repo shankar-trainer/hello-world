@@ -1,6 +1,4 @@
 
----
-
 ## 1. What Is LangChain?
 
 | Feature | Why It Matters |
