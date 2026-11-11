@@ -6,8 +6,6 @@ qwen3.5:2b         0689d44085e0    2.7 GB    23 hours ago
 qwen3:4b           359d7dd4bcda    2.5 GB    5 days ago
 llama3.2:latest    a80c4f17acd5    2.0 GB    9 days ago
 
-
-
 ===============
 
 

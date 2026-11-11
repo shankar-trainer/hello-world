@@ -2,8 +2,8 @@ from langchain_ollama import OllamaLLM
 from langchain_core.prompts import PromptTemplate
 
 llm = OllamaLLM(
-    model="qwen3.5:2b",
-#    model="smollm2:135m",
+    # model="qwen3.5:2b",
+    model="smollm2:135m",
     temperature=0.1
 )
 

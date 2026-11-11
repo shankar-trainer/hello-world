@@ -6,6 +6,9 @@ from langchain_community.llms import Ollama
 # llm = Ollama(model="llama3.2")
 # ollama run llama3.2
 
+llm = Ollama(model="smollm2:135m")
+# ollama run smollm2:135m
+
 msg=llm.invoke("Explain genai and agentic ai in one sentence.")
 
 print(msg)
