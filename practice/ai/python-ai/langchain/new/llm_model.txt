@@ -1,0 +1,85 @@
+PS C:\Users\shankar> ollama.exe list
+NAME               ID              SIZE      MODIFIED
+smollm2:360m       297281b699fc    725 MB    8 minutes ago
+smollm2:135m       9077fe9d2ae1    270 MB    8 minutes ago
+qwen3.5:2b         0689d44085e0    2.7 GB    23 hours ago
+qwen3:4b           359d7dd4bcda    2.5 GB    5 days ago
+llama3.2:latest    a80c4f17acd5    2.0 GB    9 days ago
+
+
+
+===============
+
+
+SmolLM2 is a family of open-weight, compact small language models (SLMs) developed by HuggingFaceTB designed for efficient, on-device AI applications.
+
+Key Models and Sizes
+
+• SmolLM2-135M: A 135-million-parameter student model suited for edge devices, browsers, and CPU-only environments with strict English-only and 8K-context limits.
+• SmolLM2-360M: A 360-million-parameter model that offers a balanced sweet spot for speed and quality, running comfortably on hardware like a Raspberry Pi.
+• SmolLM2-1.7B: A 1.7-billion-parameter flagship variant trained on roughly 11 trillion tokens that outperforms comparable small models like Llama-3.2-1B and Qwen2.5-1.5B.
+
+
+
+
+Core Features
+
+• Context Window: 8K tokens across all variants.
+• Training Data: Built using a data-centric approach on ~11 trillion tokens, incorporating datasets like FineWeb-Edu, DCLM, The Stack, FineMath, and SmolTalk.
+• Capabilities: Excels in instruction following, text rewriting, summarization, math reasoning, and structured data extraction.
+• License & Integration: Released under the Apache 2.0 license and easily deployable via tools like Ollama SmolLM2 Library.
+Wo
+
+
+------------------
+
+
+ollama smollm2:135m Context Window: 8K tokens across all variants.
+
+what is 8k here
+
+In Ollama's SmolLM2:135M, 8K means 8,192 tokens of context window.
+
+A token is a small unit of text that the model processes. It can be:
+
+A whole word (hello)
+
+Part of a word (under + stand)
+
+Punctuation or symbols
+
+Parts of code
+
+What does an 8K context window mean?
+The model can keep approximately 8,192 tokens in its active context at a time.
+
+This includes:
+
+Your input/prompt
+
+Previous conversation messages
+
+System instructions
+
+The model's generated response
+
+Rough text equivalent
+Tokens
+
+Approximate English words
+
+1K   750 words
+
+2K   1,500 words
+
+4K 3,000 words
+
+8K 6,000 words
+
+These are rough estimates; actual token counts vary.
+
+Important: 8K does not mean the model can generate 8,192 tokens in one response. Input and output share the context window.
+
+For example, if your conversation uses 6,000 tokens, roughly 2,192 tokens remain for the response.
+
+
