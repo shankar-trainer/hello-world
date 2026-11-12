@@ -46,8 +46,6 @@ response = chain.invoke({'topic': 'black holes'})
 print(response.content)
 
 
-
-
 ================================================ stream====================
 
 Here is how you can stream the response token-by-token and use output parsers to format the data into a clean string or structured JSON.

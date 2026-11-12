@@ -1,0 +1,121 @@
+import os
+from dotenv import load_dotenv
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
+from langchain_core.output_parsers import StrOutputParser
+
+# Load environment variables (Make sure you have OPENAI_API_KEY in a .env file)
+load_dotenv()
+
+def generate_ai_response(topic: str) -> str:
+    # 1. Initialize the Language Model
+    model = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
+    
+    # 2. Define a reusable prompt template
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", "You are a witty, brilliant AI assistant. Explain topics concisely."),
+        ("user", "Explain the concept of {topic} in three bullet points.")
+    ])
+    
+    # 3. Create a clean pipeline (Chain) using the "|" operator
+    # This pipes: Prompt -> LLM -> Raw text extraction
+    chain = prompt | model | StrOutputParser()
+    
+    # 4. Execute the chain
+    response = chain.invoke({"topic": topic})
+    return response
+
+if __name__ == "__main__":
+    result = generate_ai_response("Quantum Computing")
+    print(result)
+
+
+Your code is syntactically correct, but there is a likely issue with this line:
+
+python
+
+```python
+model = ChatOpenAI(model="smollm2:135m", temperature=0.7)
+```
+
+### 1. Main error: Incorrect model/provider
+
+`ChatOpenAI` is designed to communicate with OpenAI-compatible API endpoints. The model name `smollm2:135m` is commonly used with Ollama, not OpenAI's API.
+
+If you are running SmolLM2 locally through Ollama, use `ChatOllama` instead.
+
+### 2. Corrected code for Ollama
+
+First, install the required packages:
+
+bash
+
+```bash
+pip install langchain langchain-core langchain-ollama python-dotenv
+```
+
+Download the model:
+
+bash
+
+```bash
+ollama pull smollm2:135m
+```
+
+Then use this code:
+
+python
+
+```python
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_ollama import ChatOllama
+from langchain_core.output_parsers import StrOutputParser
+
+
+def generate_ai_response(topic: str) -> str:
+
+    # 1. Initialize the local language model
+    model = ChatOllama(
+        model="smollm2:135m",
+        temperature=0.7
+    )
+
+    # 2. Define prompt template
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", "You are a witty, brilliant AI assistant. Explain topics concisely."),
+        ("user", "Explain the concept of {topic} in three bullet points.")
+    ])
+
+    # 3. Create the chain
+    chain = prompt | model | StrOutputParser()
+
+    # 4. Execute the chain
+    response = chain.invoke({"topic": topic})
+
+    return response
+
+
+if __name__ == "__main__":
+    result = generate_ai_response("Quantum Computing")
+    print(result)
+```
+
+### 3. Why this works
+
+| Component | Purpose |
+| --- | --- |
+| `ChatOllama` | Connects to locally running Ollama models |
+| `ChatPromptTemplate` | Creates reusable prompts |
+| `StrOutputParser` | Extracts the response as a string |
+| `\\|` operator | Connects components into a LangChain pipeline |
+| `chain.invoke()` | Executes the pipeline |
+
+### 4. Important distinction
+
+- `ChatOpenAI` → OpenAI API models or compatible endpoints.
+- `ChatOllama` → Locally running Ollama models.
+- `smollm2:135m` → Small local language model.
+
+Recommendation If you want to run SmolLM2 locally without paying for OpenAI API calls, use `ChatOllama`.
+
+One question: Are you running `smollm2:135m` using Ollama, or are you trying to connect it through OpenAI API?

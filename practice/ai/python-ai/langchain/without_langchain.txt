@@ -1,6 +1,5 @@
 we can do llm interraction with python then why need langchain. can we work wiythout langchain
 
-
 Yes, you absolutely can work without LangChain, and in fact, many senior engineers and AI companies actively choose to do so.
 
 At its core, interacting with a Large Language Model (LLM) requires nothing more than standard Python code and direct API requests (using official libraries like openai, anthropic, or google-genai). LangChain is not a model itself; it is simply an orchestration framework built on top of Python.
