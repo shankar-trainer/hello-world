@@ -2,8 +2,6 @@ pip install ollama
 in powershell $env:OLLAMA_API_KEY = "83e8e6bea3294c04b0cdffaa5f3d49cc.nfiNsZs4z_0t_MQlO9bTceBY"
 or in cmd set OLLAMA_API_KEY = "83e8e6bea3294c04b0cdffaa5f3d49cc.nfiNsZs4z_0t_MQlO9bTceBY"
 
-
-
 python agentic ai example with ollama on cloud not on local
 
 
@@ -46,3 +44,6 @@ To implement this using the standard OpenAI library with Ollama's compatible end
 If you are building a multi-step agent loop (such as with LangGraph or CrewAI), let me know:
 • Which orchestration framework you prefer to use
 • Whether you have custom tools (like web search or a database) the agent needs to call
+
+
+================================================================

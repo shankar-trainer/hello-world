@@ -23,7 +23,7 @@ Here is a complete, minimal example of integrating Spring AI with Ollama to inte
 
 First, make sure Ollama is installed and running on your local machine. Open your terminal and pull a lightweight model like Llama 3.2 (or mistral / gemma):
 bash
-ollama pull llama3.2
+    ollama pull llama3.2
 Use code with caution.
 
 2. Dependencies (pom.xml)

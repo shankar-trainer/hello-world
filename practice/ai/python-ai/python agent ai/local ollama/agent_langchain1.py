@@ -1,5 +1,6 @@
-# from langchain web site 
+#https://docs.langchain.com/oss/python/langchain/overview
 
+# from langchain web site
 # pip install -qU langchain "langchain[openai]"
 
 from langchain.agents import create_agent
@@ -11,7 +12,7 @@ def get_weather(city: str)->str:
 agent = create_agent(
     model="ollama:qwen3.5:2b",
     tools=[get_weather],
-    system_prompt="You are a helpful assistant",  
+    system_prompt="You are a helpful assistant",
 )
 
 result = agent.invoke(
@@ -19,14 +20,11 @@ result = agent.invoke(
 )
 print(result["messages"][-1].content_blocks)
 
-
-
-#ollama pull qwen3.5:2b 
+#ollama pull qwen3.5:2b
 #ollama run qwen3.5:2b  no need api key
 # pip install ollama
-
-
 
 #ollama pull llama3.2
 #ollama run llama3.2 no need api key
 # pip install ollama
+#ollama list

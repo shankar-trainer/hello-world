@@ -1,6 +1,7 @@
 Python agentic AI example using Ollama Cloud
 ============================================
 
+c
 This example connects directly to Ollama's hosted API. It does not connect to a
 local Ollama server and does not require a local model download.
 

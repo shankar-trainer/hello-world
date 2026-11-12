@@ -9,13 +9,17 @@ For an 8 GB RAM system, ollama pull qwen3:4b is the absolute best version to use
 
 
 An agentic AI model is a large language model (LLM) fine-tuned or capable of reasoning, breaking down tasks, and calling external tools (like writing code, searching, or managing files) rather than just answering questions.
+
 When running locally with Ollama, the "agentic" behavior usually comes from combining a strong open-weight base model with an agent framework (like CrewAI, LangGraph, or OpenHands).
 
 Top Free Local Models for Agentic Workflows (via Ollama)
 
 • Qwen Series (e.g., Qwen 2.5 / Qwen 3): Widely regarded as one of the best open-weight families for tool-calling, logic, and multi-step reasoning on consumer hardware. (Command: ollama run qwen2.5 or ollama run qwen3)
+
 • Llama Series (e.g., Llama 3.1 / Llama 4): Meta’s open-weight models handle general agent instructions, structured JSON generation, and tool use reliably. (Command: ollama run llama3.1)
+
 • Phi-4: Microsoft’s compact, high-efficiency model that punches above its weight class for reasoning and code-related tasks on lower-VRAM machines. (Command: ollama run phi4)
+
 • Gemma 4: Google's lightweight open-weight models offering clean tool-use and strong multi-turn conversational context. (Command: ollama run gemma4)
 
 Popular Free Agent Frameworks to Pair with Ollama

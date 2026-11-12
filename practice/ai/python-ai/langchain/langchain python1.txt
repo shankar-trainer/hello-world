@@ -46,7 +46,7 @@ Chains: Combining multiple components (like prompt -> model -> parser) into a un
 Retrieval-Augmented Generation (RAG): Connecting LLMs to external data sources (PDFs, databases, web search) using vector stores and retrievers.
 
 Memory: Adding state management so chat applications can remember previous turns in a conversation.
-
+Agents
 Agents: Giving LLMs the ability to decide which tools to use dynamically based on user input.
 
 To go deeper into LangChain:
