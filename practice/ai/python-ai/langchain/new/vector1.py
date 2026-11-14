@@ -1,4 +1,11 @@
+# import chromadb
+import sys
+import pysqlite3
+
+sys.modules["sqlite3"] = pysqlite3
+
 import chromadb
+
 from sentence_transformers import SentenceTransformer
 model = SentenceTransformer(
     "all-MiniLM-L6-v2"

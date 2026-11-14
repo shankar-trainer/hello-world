@@ -1,0 +1,60 @@
+To install Python 3.13 on Ubuntu 22.04 using pyenv, you first need to install the required build libraries so pyenv can compile Python from source. Follow the steps below in your terminal.
+
+1. Install Build Dependencies
+
+Update your package list and install the necessary C compilers and development libraries.
+bash
+sudo apt update
+sudo apt install -y make build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
+libffi-dev liblzma-dev
+Use code with caution.
+
+2. Install pyenv
+
+Run the official pyenv installer script to download and set up pyenv along with its plugins.
+bash
+curl https://pyenv.run | bash
+Use code with caution.
+
+3. Configure Your Shell Environment
+
+Add the pyenv initialization commands to your ~/.bashrc file so the pyenv command works in your terminal. (Note: If you use Zsh instead of Bash, replace ~/.bashrc with ~/.zshrc).
+bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+Use code with caution.
+Reload your shell configuration to apply the changes.
+bash
+exec "$SHELL"
+Use code with caution.
+
+4. Install Python 3.13
+
+Check the latest available 3.13 patch version and install it using pyenv.
+• View available 3.13 versions. Run the list command to see exact patch releases (such as 3.13.5 or 3.13.7).bash
+pyenv install --list | grep " 3.13"
+Use code with caution.
+
+• Install the latest 3.13 release. Running pyenv install 3.13 automatically downloads 
+and compiles the newest stable 3.13 version.bash
+pyenv install 3.13
+Use code with caution.
+
+5. Set Your Python Version and Verify
+
+Choose whether you want Python 3.13 to be your default everywhere or only inside a specific project folder.
+
+• Set globally for your user account. Use this to make 3.13 your default across all terminals.bash
+pyenv global 3.13
+
+Use code with caution.
+• Set locally for a single project. Navigate to your project folder and run the local command to create a .python-version file.bash
+cd /path/to/your/project
+pyenv local 3.13
+Use code with caution.
+• Confirm the active version. Check that your terminal now points to Python 3.13.bash
+python --version

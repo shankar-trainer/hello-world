@@ -1,4 +1,4 @@
- ollama.exe  run smollm2:135m
+# ollama.exe  run smollm2:135m
 
 from langchain_ollama import OllamaLLM
 from langchain_core.prompts import PromptTemplate
@@ -20,3 +20,5 @@ chain = prompt | llm
 response = chain.invoke({"topic": "java"})
 
 print(response)
+
+#pip install langchain_ollama
