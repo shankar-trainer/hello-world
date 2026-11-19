@@ -1,0 +1,22 @@
+To disable Ollama from starting automatically on boot in Bodhi Linux (which manages background services via systemd), stop and disable the systemd service using your terminal.
+
+Step-by-Step Instructions
+
+1. Stop the running Ollama service:bash
+sudo systemctl stop ollama
+Use code with caution.
+   ```
+2. Disable the service from auto-starting on boot:
+   bash sudo systemctl disable ollama    
+3. Optional: Mask the service (if you want to completely block it from being triggered by other apps or system events):
+   bash sudo systemctl mask ollama.service    
+To run Ollama manually later on demand, you can start it with:
+bash ollama serve 
+(Or simply run the ollama command, which will launch it when needed).
+If you want to re-enable Ollama to start automatically again later, you can run sudo systemctl enable ollama. Let me know if you run into any issues with the service!
+
+smollm2:360m       297281b699fc    725 MB    8 minutes ago
+smollm2:135m       9077fe9d2ae1    270 MB    8 minutes ago
+qwen3.5:2b         0689d44085e0    2.7 GB    23 hours ago
+qwen3:4b           359d7dd4bcda    2.5 GB    5 days ago
+llama3.2:latest    a80c4f17acd5    2.0 GB    9 days ago

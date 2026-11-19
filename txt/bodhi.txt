@@ -1,0 +1,16 @@
+
+Keyboard Shortcuts
+
+• Jump to a specific desktop: Press Alt + F1 for the first desktop, Alt + F2 for the second, and so on.
+• Cycle left or right: Press Ctrl + Alt + Left Arrow or Ctrl + Alt + Right :Arrow.
+
+
+ctrl+alt+w  shortcut for alt+space
+
+
+Default Window Shortcuts
+
+You can use Moksha's built-in shortcuts immediately without changing settings:
+• Window Menu (Minimize/Maximize/Close). Press Ctrl+Alt+W to open the active window's options menu.
+• Minimize Window. Press Ctrl+Alt+I (Iconic Mode Toggle).
+• Maximize Window. Press Super (Windows) + Up or Ctrl+Alt+N.

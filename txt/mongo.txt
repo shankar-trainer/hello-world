@@ -1,0 +1,75 @@
+sudo apt update && sudo apt install -y gnupg curl
+curl -fsSL https://mongodb.org | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://mongodb.org noble/mongodb-org/8.0 multiverse" | \
+   sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+
+
+
+sudo apt update
+sudo apt install -y mongodb-org
+
+
+
+sudo systemctl start mongod
+sudo systemctl enable mongod -- dont use it do it manual start up
+
+sudo systemctl status mongod
+
+
+-- for bodhi linux use bottom not up
+
+
+Bodhi Linux 7.0 is built on Ubuntu 22.04 LTS (jammy). You must manually add the official MongoDB repository using the jammy codename (not Bodhi's name) and verify your system is 64-bit.
+
+Step 1: Check Your System Architecture & Base
+
+Run this quick check in Terminology (or your terminal) to confirm you are on a 64-bit system and verify your Ubuntu base:
+bash
+uname -m && cat /etc/upstream-release/lsb-release
+Use code with caution.
+• If uname -m outputs x86_64: Proceed to Step 2.
+• If uname -m outputs i686 or i386 (32-bit Legacy Bodhi): Official mongodb-org 8.0 packages do not support 32-bit systems. You must use a 64-bit OS or run an older version via Docker/source.
+• If DISTRIB_CODENAME is focal (Bodhi 6.0) or noble (Ubuntu 24.04): Replace jammy in Step 2 with your matching Ubuntu codename (focal or noble).
+
+Step 2: Add the Official MongoDB 8.0 Repository
+
+Follow these steps in order from your terminal (requires sudo privileges):
+	1. Install required tools to download and verify the repository key:bash
+	sudo apt update && sudo apt install -y gnupg curl
+	Use code with caution.
+	2. Import the MongoDB 8.0 public GPG key (remove any broken old key first if you tried earlier):bash
+	curl -fsSL https://mongodb.org | \
+	   sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
+
+    use below 
+curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
+
+
+	Use code with caution.
+	3. Create the repository list file explicitly pointing to Ubuntu 22.04 (jammy):bash
+	echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+	Use code with caution.
+	4. Reload the local package database and install MongoDB:bash
+	sudo apt update
+	sudo apt install -y mongodb-org
+
+Use code with caution.
+
+Step 3: Start and Verify MongoDB
+
+	Once installed, start the background service and confirm it is running:
+	bash
+	sudo systemctl start mongod
+	sudo systemctl enable mongod -- dont use it
+	sudo systemctl status mongod
+
+	Use code with caution.
+	(Press q to exit the status screen once you see active (running).)
+	
+	If It Still Fails
+	
+	• Clean up broken repo files: If sudo apt update shows a 404 Not Found or NO_PUBKEY error, check /etc/apt/sources.list.d/ with ls /etc/apt/sources.list.d/ and delete any leftover mongodb*.list files before repeating Step 2.
+	• Illegal instruction (core dumped) on older CPUs: Bodhi Linux is often installed on older hardware. MongoDB 5.0+ requires a CPU with AVX instructions. If mongod crashes immediately on an older processor, you will need to install MongoDB 4.4 instead (using 4.4 in the repository URL and key) or run MongoDB in a container/cloud instance.
+	

@@ -1,0 +1,64 @@
+1. Run xrandr to list your connected and disconnected display outputs:bash
+xrandr
+Use code with caution.
+2. Look for the name of your internal display (e.g., eDP-1 or LVDS-1) and your projector port (e.g., HDMI-1 or HDMI-2).
+3. Turn off the internal display and enable only the projector:bash
+xrandr --output eDP-1 --off --output HDMI-1 --auto
+
+
+lxrandr -- dialox box to select monitor or projector
+
+bash
+# Show connected displays
+xrandr
+
+# Set resolution
+xrandr --output HDMI-1 --mode 1920x1080
+
+# Set refresh rate
+xrandr --output HDMI-1 --rate 60
+
+# Rotate display
+xrandr --output HDMI-1 --rotate left
+
+# Turn off a display
+xrandr --output HDMI-1 --off
+Best for:
+
+Linux power users.
+
+Shell scripts and automation.
+
+Window manager configurations.
+
+Custom multi-monitor setups.
+
+2. lxrandr
+GUI
+lxrandr is a lightweight graphical frontend for configuring screen settings, commonly associated with the LXDE desktop environment.
+
+x11 - Is it possible to obtain a monitor description using Xrandr? - Stack Overflow
+ 
+Features:
+
+Select screen resolution from a dropdown.
+
+Change refresh rate.
+
+Configure monitor orientation.
+
+Apply display settings without using terminal commands.
+
+Launch it with:
+
+
+bash
+lxrandr
+Install on Debian/Ubuntu:
+
+
+bash
+sudo apt install lxrandr
+Which should you use?
+Your situation
+

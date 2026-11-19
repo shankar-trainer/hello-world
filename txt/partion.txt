@@ -1,0 +1,53 @@
+To create a separate ext4 partition and mount it inside your root directory (/) after installing Bodhi Linux, you need to boot from a Live USB to shrink your existing root partition, create the new ext4 partition, and configure /etc/fstab to mount it automatically.
+Because you cannot shrink a mounted root partition while running Bodhi Linux from your main drive, you must perform the resizing from a live session.
+
+Step 1: Shrink Root and Create the New Partition
+
+1. Boot into a Live USB. Insert your Bodhi Linux installation USB and boot into the live desktop environment.
+
+2. Open GParted. Click the Applications menu at the bottom-left, go to System Tools (or Preferences), and open GParted.
+
+3. Select your drive. Use the drop-down menu in the top-right corner of GParted to select your main installation drive (for example, /dev/sda or /dev/nvme0n1).
+
+4. Shrink the root partition. Right-click your existing Bodhi Linux ext4 partition (mounted at /), select Resize/Move, drag the right slider to the left to free up space, and click Resize/Move.
+
+5. Create the new partition. Right-click the newly created unallocated space, select New, set File system to ext4, optionally add a Label (such as data or storage), and click Add.
+
+6. Apply changes. Click the green checkmark (Apply All Operations) in the top toolbar and wait for GParted to finish. Note the new partition's device name (for example, /dev/sda3).
+
+7. Reboot. Close GParted, shut down the live session, remove the USB drive, and boot back into your installed Bodhi Linux system.
+
+Step 2: Configure Automatic Mounting in Root
+
+Once logged back into your installed Bodhi Linux system, open Terminology (from Applications > System Tools > Terminology) and run the following commands.
+• Find the new partition's UUID. Run sudo blkid and copy the UUID string for your new partition (e.g., /dev/sda3).
+• Create a mount point in root. Create the folder where the partition will live inside / (replace storage with your preferred folder name):bash
+sudo mkdir /storage
+Use code with caution.
+• Edit /etc/fstab to mount at boot. Open the file system table in nano:bash
+sudo nano /etc/fstab
+Use code with caution.
+Add this line to the bottom of the file, replacing YOUR-UUID-HERE with your actual UUID:text
+UUID=YOUR-UUID-HERE  /storage  ext4  defaults  0  2
+Use code with caution.
+Press Ctrl + O, hit Enter to save, and press Ctrl + X to exit.
+• Mount and test. Run sudo mount -a to mount the partition immediately without rebooting, and verify it appears with df -h /storage.
+
+Step 3: Set User Permissions
+
+By default, a newly formatted ext4 partition is owned by root, meaning your regular user account cannot create or save files inside it.
+• Grant your user ownership. Run the following command to give your user full read and write access to the new partition:bash
+sudo chown -R $USER:$USER /storage
+Use code with caution.
+If you are looking to move an existing system folder (such as /home or /var) onto this new partition rather than creating a brand-new folder, let me know which directory you want to move and I can provide the steps to migrate the existing data safely.
+
+
+lsblk -f  shows all partion s
+
+df -h shows memory free
+
+
+
+
+
+ctrl+alt+w  shortcut for alt+space

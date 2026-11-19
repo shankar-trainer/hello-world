@@ -1,0 +1,82 @@
+Run sudo mysql to log in as root.
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysql';
+EXIT;
+
+disable mysql from autosert using service 
+
+sudo systemctl disable mysql
+
+Verify the change. Check that the startup state is set to disabled:bash
+systemctl is-enabled mysql
+
+
+sudo systemctl stop mysql
+sudo systemctl start mysql
+
+change password 
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password';
+EXIT;
+
+ mysql -u root -p
+
+
+
+
+
+To install and configure MySQL on Ubuntu, install the mysql-server package via APT, run the built-in security script, and create a dedicated non-root user for daily database operations.
+
+1. Install MySQL Server
+
+Update your local package index and install the server package from the default Ubuntu repositories:
+	sudo apt update
+	sudo apt install mysql-server
+
+Once installed, the service starts automatically. Verify that it is active and running:
+
+sudo systemctl status mysql
+Use code with caution.
+
+2. Secure the Installation
+
+On Ubuntu systems running MySQL 8.0 and later, the root user authenticates via the auth_socket plugin by default. 
+To avoid a known loop error during setup, configure a password for the root account before running the security script:
+
+1. Open the MySQL prompt. Run sudo mysql to log in as root.
+2. Set a root password. Execute the following SQL command, replacing your_password with a strong password:sql
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password';
+EXIT;
+Use code with caution.
+
+
+3. Run the security script. Launch the interactive hardening tool and follow the prompts to configure password validation, remove anonymous users, disable remote root login, and delete the test database:bash
+
+sudo mysql_secure_installation
+
+Use code with caution.
+
+(Note: After running the security script, you can switch the root user back to auth_socket authentication if you prefer logging in with sudo mysql without a password.)
+
+3. Create a Dedicated User
+
+For better security, avoid using the root account for application connections or daily queries. Log back into MySQL (mysql -u root -p) and create a dedicated user:
+sql
+	CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+	GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
+	FLUSH PRIVILEGES;
+	EXIT;
+Use code with caution.
+
+	• Local vs. Remote Access. Using 'localhost' restricts the user to local connections. Replace 'localhost' with '%' or a specific IP address if the user needs to connect remotely.
+	• Permissions. Replace *.* with database_name.* to restrict the user to a single database instead of granting global access.
+
+4. Basic Server Configuration (Optional)
+
+• Configuration File. Primary settings are located in /etc/mysql/my.cnf and /etc/mysql/mysql.conf.d/mysqld.cnf.
+• Remote Connections. By default, MySQL listens only on 127.0.0.1 (port 3306). To allow external connections, change the bind-address directive in mysqld.cnf to your server's IP address or 0.0.0.0, then restart the service with sudo systemctl restart mysql.
+• Graphical Management. If you prefer a visual interface, install MySQL Workbench via sudo apt install mysql-workbench or sudo snap install mysql-workbench-community.
+For more details on advanced tuning and backups, refer to the official Ubuntu Server MySQL Documentation.
+Are you setting this up for local development or a remote production server? Let me know if you need help configuring firewall rules (UFW), remote access, or database backups.

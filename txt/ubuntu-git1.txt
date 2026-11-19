@@ -1,0 +1,55 @@
+To install GitHub CLI (gh) and configure Git on Ubuntu, run the official repository setup and authentication commands in your terminal.
+
+1. Install Git and GitHub CLI
+
+Ensure Git is installed, add the official GitHub CLI repository for the latest version, and install gh:
+bash
+# Install Git
+sudo apt update && sudo apt install git -y
+
+# Add the official GitHub CLI repository and install gh
+(type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
+	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
+	&& out=$(mktemp) && wget -nv -O$out https://github.com \
+	&& cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+	&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+	&& sudo mkdir -p -m 755 /etc/apt/sources.list.d \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install gh -y
+Use code with caution.
+(Note: You can also run sudo apt install gh directly, though the official repository above guarantees the newest release.)
+
+2. Configure Git Identity
+
+Set the name and email address that will be attached to your Git commits:
+bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+Use code with caution.
+
+3. Authenticate and Link Git Credentials
+
+Log in to your GitHub account and let gh automatically manage your Git credentials:
+bash
+gh auth login
+Use code with caution.
+Follow the interactive prompts:
+• Account. Select GitHub.com (or GitHub Enterprise).
+• Protocol. Choose HTTPS (recommended for simplicity) or SSH.
+• Authenticate Git. Press Y when asked to authenticate Git with your GitHub credentials.
+• Login method. Select Login with a web browser (or paste a Personal Access Token if you are on a headless server without a browser).
+If you skipped linking Git during login, you can configure it manually at any time using gh auth setup-git:
+bash
+gh auth setup-git
+Use code with caution.
+
+4. Verify Setup
+
+Confirm that both tools are installed and authenticated:
+bash
+gh auth status
+git config --list
+Use code with caution.
+Are you setting this up on a desktop with a browser or a headless remote server? If you're on a headless server or prefer SSH keys, I can provide the exact token or SSH setup commands.
+
