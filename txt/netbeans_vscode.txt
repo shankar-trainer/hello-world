@@ -1,0 +1,16 @@
+https://installers.friendsofapachenetbeans.org/deb_x64/
+https://update.code.visualstudio.com/1.30.2/linux-deb-x64/stable
+
+
+cudatext light text 
+
+cudalite  fullide 
+
+netbeans 31 with jdk 26
+
+https://release-assets.githubusercontent.com/github-production-release-asset/975536241/9a240c37-823a-4e03-b810-04e67c1c843c?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-11-20T05%3A21%3A09Z&rscd=attachment%3B+filename%3Dapache-netbeans_29-1_zulu-21_amd64.deb&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-11-20T04%3A20%3A23Z&ske=2026-11-20T05%3A21%3A09Z&sks=b&skv=2018-11-09&sig=uATMI6%2B3ULfzvJ%2Ftzy1aQvdAN1dcE2wolWvcujMPHdg%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5NTE1MzAwOSwibmJmIjoxNzk1MTQ5NDA5LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.MGC_-J6Fn0WZlHU-vRCeZVghc8i99mUkG6FtO_ZQpUo&response-content-disposition=attachment%3B%20filename%3Dapache-netbeans_29-1_zulu-21_amd64.deb&response-content-type=application%2Foctet-stream
+
+
+netbeans 29 with jdk 21
+
+https://release-assets.githubusercontent.com/github-production-release-asset/975536241/9280c007-d37b-4fc2-a09f-44a30e29c30a?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-11-20T05%3A15%3A57Z&rscd=attachment%3B+filename%3Dapache-netbeans_31-1_amd64.deb&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-11-20T04%3A14%3A58Z&ske=2026-11-20T05%3A15%3A57Z&sks=b&skv=2018-11-09&sig=ahJLaC8G%2FUuQ4X%2Fap5GbCXZITLw2huvVFzE8A59Wm%2Fk%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc5NTE1MjgzNCwibmJmIjoxNzk1MTQ5MjM0LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.cNqAD_MLaDrAoWNCO4tYo-vy7nUpcIfXMdCsMkFoj0s&response-content-disposition=attachment%3B%20filename%3Dapache-netbeans_31-1_amd64.deb&response-content-type=application%2Foctet-stream
