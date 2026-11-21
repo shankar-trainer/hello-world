@@ -1,0 +1,36 @@
+windows 10 Git to Use the Modern Credential Manager
+
+
+To configure Git for Windows to use the modern, cross-platform Git Credential Manager (GCM), you need to update your global Git configuration. The modern GCM handles multi-factor authentication (MFA) and OAuth seamlessly for providers like GitHub, GitLab, Bitbucket, and Azure Repos.
+
+Step 1: Update Git for Windows
+
+The modern Git Credential Manager comes bundled by default with modern versions of Git for Windows.
+1. Open Command Prompt, PowerShell, or Git Bash.
+2. Run the following command to check your version:bash
+git --version
+Use code with caution.
+3. If your version is old, download and install the latest version from the Official Git Downloads Page. Make sure the "Git Credential Manager" component is selected during setup.
+
+Step 2: Set the Modern Credential Helper
+
+Run the following command in your terminal to set the helper globally:
+bash
+git config --global credential.helper manager
+Use code with caution.
+(Note: Older documentation might reference manager-core. In current releases, it has been unified to just manager).
+
+Step 3: Verify the Configuration
+
+To verify that Git is correctly targeting the modern manager, view your global configuration file:
+bash
+git config --global --list
+Use code with caution.
+Look for the line credential.helper=manager.
+
+Step 4: Authenticate
+
+The next time you perform a remote operation (like git push or git clone on a private repository), a secure browser pop-up window will appear.
+1. Sign in through the OAuth browser prompt.
+2. Once granted, Git will automatically generate a secure token and securely save it inside the native Windows Credential Manager. You won't have to sign in again via the terminal.
+Are you setting this up for a standard single account environment, or do you need to manage multiple distinct accounts (like a personal and a work account) on the same Windows 10 machin

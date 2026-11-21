@@ -1,0 +1,91 @@
+Bodhi Linux is Ubuntu-based, so you can install OpenJDK 21 using APT.
+
+### 1. Update package lists
+
+Open a terminal and run:
+
+bash
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+### 2. Install OpenJDK 21
+
+bash
+
+```bash
+sudo apt install openjdk-21-jdk -y
+```
+
+This installs both the JRE and JDK development tools.
+
+Ubuntu for Developers
+
++1
+
+### 3. Verify installation
+
+bash
+
+```bash
+java -version
+javac -version
+```
+
+### 4. Check installation directory
+
+bash
+
+```bash
+ls /usr/lib/jvm/
+```
+
+You should see something like:
+
+text
+
+```text
+java-21-openjdk-amd64
+java-25-openjdk-amd64
+```
+
+### 5. Launch NetBeans using Java 21
+
+bash
+
+```bash
+netbeans --jdkhome /usr/lib/jvm/java-21-openjdk-amd64
+```
+
+### 6. (Optional) Make Java 21 the default
+
+bash
+
+```bash
+sudo update-alternatives --config java
+```
+
+Select Java 21.
+
+Also configure the compiler:
+
+bash
+
+```bash
+sudo update-alternatives --config javac
+```
+
+Important: You can keep Java 25 installed alongside Java 21. NetBeans can use Java 21 while your projects can still use Java 25.
+
+If `sudo apt install openjdk-21-jdk` returns `Unable to locate package`, send me the output of:
+
+bash
+
+```bash
+cat /etc/os-release
+```
+
+I'll help you configure the correct repository for your Bodhi Linux version.
+
