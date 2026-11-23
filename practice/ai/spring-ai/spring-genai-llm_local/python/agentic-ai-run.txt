@@ -1,3 +1,10 @@
+bodhi ubuntu linux
+
+openjdk 21
+
+shankar@shankar:~/Downloads/code/mycode/ai/spring-ai/spring-genai-llm_local$ /home/shankar/Downloads/software/apache-maven-3.9.16/bin/mvn spring-boot:run
+
+
 pip install -U ollama  -- for python -U for upgrade 
 
 After running ollama pull qwen3.5:2b, you can use the model right away in your terminal, via an API, or through a graphical user interface.
@@ -6,6 +13,7 @@ After running ollama pull qwen3.5:2b, you can use the model right away in your t
 
 To start chatting immediately in your command line or terminal:
 bash
+
 ollama run qwen3.5:2b
 Use code with caution.
 Type your prompt or question, press Enter, and the model will generate a response locally. To exit the session, type /bye or Ctrl + D.
@@ -15,12 +23,52 @@ Type your prompt or question, press Enter, and the model will generate a respons
 Ollama runs a local server automatically on http://localhost:11434. You can send requests using curl:
 bash
 
+
 curl http://localhost:11434/api/chat -d '{
-  "model": "qwen3.5:2b",
+  "model": "smollm2:135m",
   "messages": [
     { "role": "user", "content": "Hello!" }
   ]
--}'
+}'
+
+
+Ollama's /api/chat endpoint streams responses by default.
+
+That's why you receive multiple JSON objects, each containing a small piece of the generated response.
+
+1. Disable streaming in Ollama
+Add "stream": false to your request:
+
+
+bash
+curl http://localhost:11434/api/chat -d '{
+  "model": "smollm2:135m",
+  "messages": [
+    { "role": "user", "content": "Hello!" }
+  ],
+  "stream": false
+}'
+
+Now Ollama returns a single JSON response:
+
+
+json
+{
+  "model": "smollm2:135m",
+  "message": {
+    "role": "assistant",
+    "content": "Hello! I'm your AI chatbot..."
+  },
+  "done": true
+}
+
+
+curl http://localhost:11434/api/chat -d '{
+  "model": "smollm2:135m",
+  "messages": [
+    { "role": "user", "content": "Hello!" }
+  ]
+}'
 Use code with caution.
 
 in window curl http://localhost:11434/api/chat -d "{\"model\": \"qwen3.5:2b\", \"messages\": [{\"role\": \"user\", \"content\": \"Hello!\"}]}"

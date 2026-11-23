@@ -25,6 +25,16 @@ public class ChatController {
         return new ChatResponse(answer);
     }
 
+    @PostMapping("/chat1")
+    public String chat1(@RequestBody ChatRequest request) {
+    String answer = chatClient.prompt()
+            .user(request.message())
+            .call()
+            .content();
+
+    return answer;
+   }
+
     public record ChatRequest(String message) {
     }
 

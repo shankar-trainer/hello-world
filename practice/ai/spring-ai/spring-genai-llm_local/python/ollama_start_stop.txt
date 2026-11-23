@@ -21,7 +21,12 @@ Use code with caution.
 taskkill /F /IM ollama.exe
 Use code with caution.
 
-Method 3: Stop a Running AI Model (Without Closing the App)
+Method 3: Stop a Running AI Model (Without Closing the App)curl http://localhost:11434/api/chat -d '{
+  "model": "qwen3.5:2b",
+  "messages": [
+    { "role": "user", "content": "Hello!" }
+  ]
+-}'
 
 If you only want to unload a specific active model while keeping the Ollama app open, run:
 bash
