@@ -1,8 +1,8 @@
 # RAG Tutorial: Retrieval-Augmented Generation
 
-RAG (Retrieval-Augmented Generation) is a technique used to build AI applications that can answer questions using your own documents, PDFs, databases, or knowledge base.
+    RAG (Retrieval-Augmented Generation) is a technique used to build AI applications that can answer questions using your own documents, PDFs, databases, or knowledge base.
 
-In this tutorial, we'll learn RAG from basics to an advanced implementation using Python and Large Language Models (LLMs).
+    In this tutorial, we'll learn RAG from basics to an advanced implementation using Python and Large Language Models (LLMs).
 
 ## 1\. What is RAG?
 
@@ -135,7 +135,7 @@ Popular options:
 
 ## 4\. Build Your First RAG Application Using Python
 
-Let's build a simple RAG application that answers questions from a text document.
+Let's build a simple RAG application that answers questions from a text  document.
 
 ### Step 1: Install dependencies
 
@@ -171,17 +171,17 @@ Create a file called `knowledge.txt`.
 text
 
 ```text
-Python is a high-level programming language.
+    Python is a high-level programming language.
 
-Machine learning is a subset of artificial intelligence.
+    Machine learning is a subset of artificial intelligence.
 
-Deep learning uses neural networks
-to learn complex patterns from data.
+    Deep learning uses neural networks
+    to learn complex patterns from data.
 
-RAG stands for Retrieval-Augmented Generation.
+    RAG stands for Retrieval-Augmented Generation.
 
-RAG combines information retrieval
-with large language models.
+    RAG combines information retrieval
+    with large language models.
 ```
 
 ### Step 3: Create text chunks

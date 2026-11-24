@@ -3,8 +3,11 @@ Retrieval-Augmented Generation (RAG) connects a Large Language Model (LLM) to ex
 How a Basic RAG Pipeline Works
 
 1. Chunking: Split documents, FAQs, or PDFs into smaller text pieces so they fit into prompts and retrieve cleanly.
+
 2. Embedding & Indexing: Convert each chunk into a numerical vector using an embedding model and store it in a vector index or database.
+
 3. Retrieval: Embed the user's question and find the closest matching document chunks via similarity search.
+
 4. Augmentation & Generation: Insert the retrieved chunks into the LLM prompt and instruct the model to answer using that context.
 
 Minimal Python Example
@@ -209,5 +212,6 @@ text
 | Retriever | Returns relevant documents |
 | Prompt | Combines context and question |
 | Ollama | Generates the final answer |
+
 
 **Note:** `ollama.generate()` is used for simple text generation. You can also use `ollama.chat()` if you want a conversational RAG application with chat history.

@@ -1,6 +1,7 @@
 ## What are **embeddings**?
 
 In modern machine-learning (especially NLP), **embeddings** are dense, low-dimensional vectors that capture the meaning or "essence" of some piece of data-words, sentences, paragraphs, images, users, products, etc.  
+
 Instead of representing a text as a long list of characters or a one-hot vector (which is huge and sparse), an embedding squeezes the information into a handful of numbers (typically 50-to-1 000 dimensions) that a model can easily manipulate.
 
 Below is a concise, step-by-step description of what embeddings are, why they matter, and how they are used in the **Sentence-Transformers** code you posted.
@@ -69,18 +70,6 @@ Thus the geometry of the embedding space reflects semantic relationships.
 
 ---
 
-## 5. Typical operations on embeddings
-
-| Operation | What it does | Example code (NumPy / PyTorch) |
-|-----------|--------------|--------------------------------|
-| **Cosine similarity** - measure of semantic closeness | `cos = (a·b) / (‖a‖‖b‖)` | `np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))` |
-| **Nearest-neighbor search** - find most similar sentences | Use FAISS, Annoy, ScaNN, or brute-force `np.argsort` | `faiss.IndexFlatIP(d).add(embeddings); idx = index.search(query, k)` |
-| **Clustering** - group sentences by topic | K-means, hierarchical clustering, DBSCAN | `from sklearn.cluster import KMeans; KMeans(n_clusters=5).fit(embeddings)` |
-| **Classification** - treat embeddings as features | Train a linear model, SVM, or a tiny neural net | `LogisticRegression().fit(embeddings, labels)` |
-| **Dimensionality reduction / visualisation** - t-SNE, UMAP | Plot 2-D map of sentence relationships | `import umap; umap.UMAP().fit_transform(embeddings)` |
-
----
-
 ## 6. Quick demo (using the code you posted)
 
 ```python
@@ -145,4 +134,3 @@ The two sentences about *machine learning* have a similarity ≈ 0.98 (very clos
 
 Feel free to ask for code snippets, deployment tips, or deeper theory!
 
-# --- User ---

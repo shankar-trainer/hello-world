@@ -1,4 +1,4 @@
-what is     "all-MiniLM-L6-v2"
+what is "all-MiniLM-L6-v2"
 
 
 it's a SentenceTransformer model, based on MiniLM, 6 layers, 384-dimensional embeddings, trained on NLI and STS, etc. 
@@ -24,8 +24,6 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 the library automatically downloads the model files, builds a PyTorch (or TensorFlow) model, and makes it ready to turn *any* English sentence into a **384-dimensional dense vector** (embedding).
 
 ---
-
-
 
 ## 4. How to load it (quick reminder)
 
