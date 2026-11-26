@@ -1,0 +1,52 @@
+git push origin glbajaj_26
+
+error: cannot pull with rebase: Your index contains uncommitted changes.
+error: please commit or stash them.
+
+This means you have modified files in your local project that are not yet committed. Git won't start a rebase until you save or temporarily store those changes.
+
+You have two options.
+
+Option 1: Stash changes (recommended)
+This temporarily saves your modifications.
+
+Run these commands one by one:
+
+1. Save your changes temporarily
+
+
+bash
+git stash
+2. Pull GitHub changes
+
+
+bash
+git pull --rebase origin glbajaj_26
+3. Push your changes
+
+
+bash
+git push origin glbajaj_26
+4. Restore your saved modifications
+
+
+bash
+git stash pop
+If stash pop produces conflicts, resolve them before continuing.
+
+Option 2: Commit your changes
+If you want to save your current changes permanently:
+
+
+bash
+git add .
+git commit -m "Save local changes"
+git pull --rebase origin glbajaj_26
+git push origin glbajaj_26
+My
+recommendation
+ Use Option 1 if you are unsure whether your modified files are ready to commit.
+
+Important: If you have untracked files, use git stash -u instead of git stash to save those too.
+
+
