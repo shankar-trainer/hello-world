@@ -1,3 +1,112 @@
+AxioDB is an embedded NoSQL document database for JavaScript and Node.js. It is designed as a lightweight alternative to MongoDB, SQLite, LowDB and NeDB.
+
+Think of it as a small database that runs directly inside your Node.js application. You don't need to install or run a separate MongoDB server.
+
+Embedded Database for AI Agents
+
++1
+
+## How AxioDB works
+
+Node.js application
+
+Express / JavaScript
+
+AxioDB
+
+Queries · Indexes · Transactions
+
+Local disk storage
+
+JSON-based database files
+
+## Main features
+
+- NoSQL database: Stores JSON-like documents.
+- MongoDB-style queries: Supports operators such as `$gt`, `$in` and `$regex`.
+- No separate server: Runs inside your Node.js process.
+- Transactions: Supports ACID transactions and crash recovery.
+- Indexing: Helps speed up data searches.
+- No native compilation: Written in JavaScript/TypeScript.
+  Embedded Database for AI Agents
+  +1
+
+## Example with Node.js
+
+Install:
+
+bash
+
+```bash
+npm install axiodb
+```
+
+Create `app.js`:
+
+javascript
+
+```javascript
+const { AxioDB } = require('axiodb');
+
+async function main() {
+    const db = new AxioDB();
+
+    const myDB = await db.createDB('School');
+
+    const students =
+        await myDB.createCollection('students');
+
+    await students.insert({
+        name: 'Rahul',
+        age: 20,
+        course: 'Computer Science'
+    });
+
+    const result = await students.query({
+        age: { $gt: 18 }
+    }).exec();
+
+    console.log(result.data.documents);
+}
+
+main().catch(console.error);
+```
+
+Run:
+
+bash
+
+```bash
+node app.js
+```
+
+## AxioDB vs MongoDB
+
+| Feature | AxioDB | MongoDB |
+| --- | --- | --- |
+| Separate server | No | Yes |
+| JSON documents | Yes | Yes |
+| Node.js support | Yes | Yes |
+| MongoDB-style queries | Yes | Yes |
+| Multi-user remote database | Limited | Yes |
+| Replication/sharding | No | Yes |
+| Best for | Local applications | Larger shared applications |
+
+## Important for your Bodhi Linux PC
+
+AxioDB's current official documentation specifies Node.js 22 or newer (some repository documentation lists Node.js 20 as the minimum). Your old Node.js 12 installation won't work.
+
+Embedded Database for AI Agents
+
++1
+
+Official website: [AxioDB documentation](<https://axiodb.in/?utm_source=chatgpt.com>).
+
+My question: Are you planning to use AxioDB to build a website with Node.js and Express, or for a desktop/offline application?
+
+====================================
+
+
 3. AxioDB — if you want MongoDB-style queries
 
 bash
