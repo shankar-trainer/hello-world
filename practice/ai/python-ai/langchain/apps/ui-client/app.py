@@ -1,6 +1,11 @@
-
+#`pip install -U `langchain-ollama` and import as `from `langchain_ollama import OllamaLLM``.
 import streamlit as st
-from langchain_community.llms import Ollama
+#from langchain_community.llms import Ollama
+
+from langchain_ollama import OllamaLLM
+
+llm = OllamaLLM(model="smollm2:135m")
+#streamlit run app.py
 
 # Page configuration
 st.set_page_config(
@@ -56,7 +61,8 @@ st.markdown("""
 # Load Ollama model
 @st.cache_resource
 def load_model():
-    return Ollama(model="smollm2:135m")
+    # return Ollama(model="smollm2:135m")
+    return OllamaLLM(model="smollm2:135m")
 
 llm = load_model()
 
@@ -112,3 +118,4 @@ st.divider()
 st.caption(
     "Built with ❤️ using Streamlit, LangChain and Ollama"
 )
+#streamlit run app.py

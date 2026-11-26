@@ -5,7 +5,7 @@ Here is a simple, modern Streamlit UI for your LangChain + Ollama chatbot using 
 bash
 
 ```bash
-pip install streamlit langchain-community ollama
+start
 ```
 
 Make sure Ollama is running and your model is downloaded:
