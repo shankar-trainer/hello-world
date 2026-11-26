@@ -1,0 +1,30 @@
+3. AxioDB — if you want MongoDB-style queries
+
+bash
+npm install axiodb
+Example:
+
+
+javascript
+const { AxioDB } = require('axiodb');
+
+async function main() {
+  const db = new AxioDB();
+
+  const app = await db.createDB('MyApp');
+  const users = await app.createCollection('users');
+
+  await users.insert({
+    name: 'John',
+    age: 25
+  });
+
+  const result = await users.query({
+    age: { $gt: 20 }
+  }).exec();
+
+  console.log(result);
+}
+
+main();
+It offers an embedded document database with MongoDB-style query syntax. However, it's a newer option, so I would test it carefully before using it for important production data. 
