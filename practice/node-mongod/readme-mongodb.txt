@@ -2,7 +2,8 @@ extracted portable MongoDB bin folder or run mongod.exe with the explicit path a
 cmd "C:\path\to\your\mongodb\bin\mongod.exe" --dbpath="C:\data\db"
 Use code with caution.Keep this terminal open. 
 
-It shows waiting for connections when ready.2. Start mongoshOpen a new Command Prompt or PowerShell window.
+It shows waiting for connections when ready.2. Start mongosh
+Open a new Command Prompt or PowerShell window.
 
 Run the MongoDB Shell (mongosh) using its path or directly if it is added to your environment variables
 
