@@ -40,3 +40,17 @@ async function run() {
 }
 
 run();
+/*
+test> show dbs;
+show all databases
+test> show collections;
+show all collections in the current database
+
+test> use mydb
+switched to db mydb
+mydb> show collections;
+testCollection
+users
+mydb> db.testCollection.find()
+
+*/

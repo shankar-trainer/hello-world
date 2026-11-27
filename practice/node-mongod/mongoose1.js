@@ -65,3 +65,6 @@ async function main() {
 }
 
 main();
+//Database: mydb
+// Collection: users
+
